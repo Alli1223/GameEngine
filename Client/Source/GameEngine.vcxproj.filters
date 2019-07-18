@@ -1,0 +1,612 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="Level.cpp">
+      <Filter>Source Files\Core\Level Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Map.cpp">
+      <Filter>Source Files\Core\Level Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Cell.cpp">
+      <Filter>Source Files\Core\Level Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="InitialisationError.cpp">
+      <Filter>Source Files\Main Game Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="SDL_project.cpp">
+      <Filter>Source Files\Main Game Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files\Main Game Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="PathFinder.cpp">
+      <Filter>Source Files\Core\Level Classes\PathFinding</Filter>
+    </ClCompile>
+    <ClCompile Include="Point.cpp">
+      <Filter>Source Files\Core\Level Classes\PathFinding</Filter>
+    </ClCompile>
+    <ClCompile Include="GUI.cpp">
+      <Filter>Source Files\Core\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ToolBar.cpp">
+      <Filter>Source Files\Core\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Icon.cpp">
+      <Filter>Source Files\Core\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="PerlinNoise.cpp">
+      <Filter>Source Files\Core\Level Classes\PCG</Filter>
+    </ClCompile>
+    <ClCompile Include="ProceduralTerrain.cpp">
+      <Filter>Source Files\Core\Level Classes\PCG</Filter>
+    </ClCompile>
+    <ClCompile Include="Inventory.cpp">
+      <Filter>Source Files\Core\Items</Filter>
+    </ClCompile>
+    <ClCompile Include="Character.cpp">
+      <Filter>Source Files\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="Chunk.cpp">
+      <Filter>Source Files\Core\Level Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="SimplexNoise.cpp">
+      <Filter>Source Files\Core\Level Classes\PCG</Filter>
+    </ClCompile>
+    <ClCompile Include="Button.cpp">
+      <Filter>Source Files\Core\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="TextUI.cpp">
+      <Filter>Source Files\Core\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Animation.cpp">
+      <Filter>Source Files\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="InventoryUI.cpp">
+      <Filter>Source Files\Core\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="CraftingUI.cpp">
+      <Filter>Source Files\Core\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Timer.cpp">
+      <Filter>Source Files\Core\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="Menu.cpp">
+      <Filter>Source Files\Core\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="GameUI.cpp">
+      <Filter>Source Files\Core\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ColourSlider.cpp">
+      <Filter>Source Files\Core\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="HSL.cpp">
+      <Filter>Source Files\Core\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="MainLevel.cpp">
+      <Filter>Source Files\Core\Level Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="UserInput.cpp">
+      <Filter>Source Files\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="GameSettings.cpp">
+      <Filter>Source Files\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Source Files\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Building.cpp">
+      <Filter>Source Files\Core\Level Classes\Buildings</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerShop.cpp">
+      <Filter>Source Files\Core\Level Classes\Buildings</Filter>
+    </ClCompile>
+    <ClCompile Include="Rendering.cpp">
+      <Filter>Source Files\Core\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture.cpp">
+      <Filter>Source Files\Core\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="Light.cpp">
+      <Filter>Source Files\Core\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="ResourceManager.cpp">
+      <Filter>Source Files\Core\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="GL_Renderer.cpp">
+      <Filter>Source Files\Core\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture2D.cpp">
+      <Filter>Source Files\Core\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="Shader.cpp">
+      <Filter>Source Files\Core\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>Source Files\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="TileSheet.cpp">
+      <Filter>Source Files\Core\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="Atlas.cpp">
+      <Filter>Source Files\Core\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="FrameBuffer.cpp">
+      <Filter>Source Files\Core\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="LightSource.cpp">
+      <Filter>Source Files\Core\Items</Filter>
+    </ClCompile>
+    <ClCompile Include="ShopCounter.cpp">
+      <Filter>Source Files\Core\Items</Filter>
+    </ClCompile>
+    <ClCompile Include="ShopDisplayShelf.cpp">
+      <Filter>Source Files\Core\Items</Filter>
+    </ClCompile>
+    <ClCompile Include="Item.cpp">
+      <Filter>Source Files\Core\Items</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelSaving.cpp">
+      <Filter>Source Files\Core\Level Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\imgui\imgui.cpp">
+      <Filter>Source Files\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\imgui\imgui_demo.cpp">
+      <Filter>Source Files\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\imgui\imgui_draw.cpp">
+      <Filter>Source Files\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\imgui\imgui_impl_opengl3.cpp">
+      <Filter>Source Files\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\imgui\imgui_impl_sdl.cpp">
+      <Filter>Source Files\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\imgui\imgui_widgets.cpp">
+      <Filter>Source Files\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="WorldEditor.cpp">
+      <Filter>Source Files\Core\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="GameWindow.cpp">
+      <Filter>Source Files\Core\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="World.cpp">
+      <Filter>Source Files\Core\Level Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Source Files\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="Bug.cpp">
+      <Filter>Source Files\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="Animal.cpp">
+      <Filter>Source Files\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="Tool.cpp">
+      <Filter>Source Files\Core\Items\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="FishingRod.cpp">
+      <Filter>Source Files\Core\Items\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="Projectile.cpp">
+      <Filter>Source Files\Core\Items</Filter>
+    </ClCompile>
+    <ClCompile Include="InfiniteWorld.cpp">
+      <Filter>Source Files\Core\Level Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="CharacterWindow.cpp">
+      <Filter>Source Files\Core\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemDescriptionWindow.cpp">
+      <Filter>Source Files\Core\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemSelection.cpp">
+      <Filter>Source Files\Core\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="NPCHouse.cpp">
+      <Filter>Source Files\Core\Level Classes\Buildings</Filter>
+    </ClCompile>
+    <ClCompile Include="Crop.cpp">
+      <Filter>Source Files\Core\Level Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="CropTile.cpp">
+      <Filter>Source Files\Core\Level Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="NPC.cpp">
+      <Filter>Source Files\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="Villager.cpp">
+      <Filter>Source Files\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemChest.cpp" />
+    <ClCompile Include="CropSquare.cpp">
+      <Filter>Source Files\Core\Items</Filter>
+    </ClCompile>
+    <ClCompile Include="PathFinderManager.cpp" />
+    <ClCompile Include="Furniture.cpp" />
+    <ClCompile Include="CollisionListener.cpp" />
+    <ClCompile Include="DungeonParty.cpp">
+      <Filter>Source Files\Main Game Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="NetworkManager.cpp" />
+    <ClCompile Include="NetworkPlayer.cpp" />
+    <ClCompile Include="Instance.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Cell.h">
+      <Filter>Headers\Core\Level Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Level.h">
+      <Filter>Headers\Core\Level Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Map.h">
+      <Filter>Headers\Core\Level Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="InitialisationError.h">
+      <Filter>Headers\Main Game Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL_project.h">
+      <Filter>Headers\Main Game Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>Headers\Main Game Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Headers\Main Game Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="PathFinder.h">
+      <Filter>Headers\Core\Level Classes\PathFinding</Filter>
+    </ClInclude>
+    <ClInclude Include="Point.h">
+      <Filter>Headers\Core\Level Classes\PathFinding</Filter>
+    </ClInclude>
+    <ClInclude Include="GUI.h">
+      <Filter>Headers\Core\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="ToolBar.h">
+      <Filter>Headers\Core\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Icon.h">
+      <Filter>Headers\Core\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="PerlinNoise.h">
+      <Filter>Headers\Core\Level Classes\PCG</Filter>
+    </ClInclude>
+    <ClInclude Include="ProceduralTerrain.h">
+      <Filter>Headers\Core\Level Classes\PCG</Filter>
+    </ClInclude>
+    <ClInclude Include="Inventory.h">
+      <Filter>Headers\Core\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="Character.h">
+      <Filter>Headers\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Headers\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="Chunk.h">
+      <Filter>Headers\Core\Level Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="SimplexNoise.h">
+      <Filter>Headers\Core\Level Classes\PCG</Filter>
+    </ClInclude>
+    <ClInclude Include="Button.h">
+      <Filter>Headers\Core\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="TextUI.h">
+      <Filter>Headers\Core\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Animation.h">
+      <Filter>Headers\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="InventoryUI.h">
+      <Filter>Headers\Core\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="CraftingUI.h">
+      <Filter>Headers\Core\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Timer.h">
+      <Filter>Headers\Core\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="Menu.h">
+      <Filter>Headers\Core\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="GameUI.h">
+      <Filter>Headers\Core\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="ColourSlider.h">
+      <Filter>Headers\Core\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="HSL.h">
+      <Filter>Headers\Core\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="MainLevel.h">
+      <Filter>Headers\Core\Level Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Headers\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="GameSettings.h">
+      <Filter>Headers\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="UserInput.h">
+      <Filter>Headers\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Building.h">
+      <Filter>Headers\Core\Level Classes\Buildings</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerShop.h">
+      <Filter>Headers\Core\Level Classes\Buildings</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture.h">
+      <Filter>Headers\Core\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="Rendering.h">
+      <Filter>Headers\Core\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="Light.h">
+      <Filter>Headers\Core\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="ResourceManager.h">
+      <Filter>Headers\Core\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="GL_Renderer.h">
+      <Filter>Headers\Core\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture2D.h">
+      <Filter>Headers\Core\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="Shader.h">
+      <Filter>Headers\Core\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>Headers\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Atlas.h">
+      <Filter>Headers\Core\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="FrameBuffer.h">
+      <Filter>Headers\Core\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="LightSource.h">
+      <Filter>Headers\Core\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="TileSheet.h">
+      <Filter>Headers\Core\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="ShopCounter.h">
+      <Filter>Headers\Core\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="ShopDisplayShelf.h">
+      <Filter>Headers\Core\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="Item.h">
+      <Filter>Headers\Core\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelSaving.h">
+      <Filter>Headers\Core\Level Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\imgui\imconfig.h">
+      <Filter>Source Files\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\imgui\imgui.h">
+      <Filter>Source Files\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\imgui\imgui_impl_opengl3.h">
+      <Filter>Source Files\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\imgui\imgui_impl_sdl.h">
+      <Filter>Source Files\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\imgui\imgui_internal.h">
+      <Filter>Source Files\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\imgui\imstb_rectpack.h">
+      <Filter>Source Files\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\imgui\imstb_textedit.h">
+      <Filter>Source Files\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\imgui\imstb_truetype.h">
+      <Filter>Source Files\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="WorldEditor.h">
+      <Filter>Headers\Core\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="GameWindow.h">
+      <Filter>Headers\Core\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Headers\Main Game Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="World.h">
+      <Filter>Headers\Core\Level Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="CellAssignment.h">
+      <Filter>Headers\Core\Level Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Animal.h">
+      <Filter>Headers\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="Bug.h">
+      <Filter>Headers\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="FishingRod.h">
+      <Filter>Headers\Core\Items\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="Tool.h">
+      <Filter>Headers\Core\Items\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="InfiniteWorld.h">
+      <Filter>Headers\Core\Level Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Projectile.h">
+      <Filter>Headers\Core\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="CropSquare.h">
+      <Filter>Headers\Core\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="NPCHouse.h">
+      <Filter>Headers\Core\Level Classes\Buildings</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterWindow.h">
+      <Filter>Headers\Core\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemDescriptionWindow.h">
+      <Filter>Headers\Core\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemSelection.h">
+      <Filter>Headers\Core\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="NPC.h">
+      <Filter>Headers\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="Villager.h">
+      <Filter>Headers\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="CropTile.h">
+      <Filter>Headers\Core\Level Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Crop.h">
+      <Filter>Headers\Core\Level Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemChest.h" />
+    <ClInclude Include="PathFinderManager.h" />
+    <ClInclude Include="Furniture.h" />
+    <ClInclude Include="CollisionListener.h" />
+    <ClInclude Include="CollisionIdentifier.h" />
+    <ClInclude Include="DungeonParty.h">
+      <Filter>Headers\Main Game Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="NetworkManager.h" />
+    <ClInclude Include="NetworkPlayer.h" />
+    <ClInclude Include="Instance.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="SDL_project.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="SDL_project.ico" />
+    <Image Include="small.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Headers">
+      <UniqueIdentifier>{85d2a310-be25-46aa-88a6-272aa5fe861c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{e1050c3b-6661-4e0f-ad9a-f78f73c03ba3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\Main Game Classes">
+      <UniqueIdentifier>{dbf0ae6c-7b23-4079-96ed-6b6cddeddbed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Main Game Classes">
+      <UniqueIdentifier>{312cdcf3-796f-49f3-bd1e-c20c8229fb53}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\Character">
+      <UniqueIdentifier>{94302ab8-34ec-41bb-9995-90d3808226d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Character">
+      <UniqueIdentifier>{f75a61e0-c2c9-4131-98b1-e2529cba3128}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Core">
+      <UniqueIdentifier>{17c62365-8464-4b21-b9f2-7c81e457e298}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Core\Tools">
+      <UniqueIdentifier>{e4ee06c1-726b-4fc0-a722-004963510a6c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\Core">
+      <UniqueIdentifier>{e4efe8b7-224c-460e-a426-f5cabfd7d9ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\Core\Tools">
+      <UniqueIdentifier>{6f9eed5a-b514-408f-b34a-8d97b275886b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Core\Items">
+      <UniqueIdentifier>{79959b5a-2da3-4857-b606-f7000ed433ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Core\Level Classes">
+      <UniqueIdentifier>{fd541410-06d9-4c7a-8100-8879ba19dc6c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Core\Level Classes\PathFinding">
+      <UniqueIdentifier>{78670b3c-6242-4d7a-8ae8-647743691a9e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Core\Level Classes\PCG">
+      <UniqueIdentifier>{d3abee87-400c-43d1-8dc3-aea6d835fd0c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Core\GUI">
+      <UniqueIdentifier>{0d827652-d7fc-41e7-b8a4-5e5b0aff302e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\Core\Items">
+      <UniqueIdentifier>{655ecf84-39d8-4683-bd95-e94648c87583}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\Core\Level Classes">
+      <UniqueIdentifier>{08f85d67-6788-4104-9167-eb2fc004eebe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\Core\Level Classes\PathFinding">
+      <UniqueIdentifier>{37765115-50b9-4cbb-80f0-1cdc119b11d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\Core\Level Classes\PCG">
+      <UniqueIdentifier>{a5aab3f2-8326-4ac0-9d87-4354c26bcb25}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\Core\GUI">
+      <UniqueIdentifier>{338eb718-5c1e-43ae-837d-1b797090963e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Core\Level Classes\Buildings">
+      <UniqueIdentifier>{76dc878d-a669-44be-814d-f9a3903d628b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\Core\Level Classes\Buildings">
+      <UniqueIdentifier>{de685f50-d89b-48d9-8694-1b97288f91c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\Core\Rendering">
+      <UniqueIdentifier>{1ed72df1-28f4-44d0-b105-33f8886ca02f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Core\Rendering">
+      <UniqueIdentifier>{120e4bcc-7313-4493-b52c-6f38b903c539}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Shaders">
+      <UniqueIdentifier>{f2c570be-261d-4d56-82a9-dff4d90ea8f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\imgui">
+      <UniqueIdentifier>{aff20041-eca4-4fec-b252-e6015c141827}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Shaders\Lighting Shaders">
+      <UniqueIdentifier>{661ac43c-f715-4579-9513-6411dd1e0c2f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\Core\Items\Tools">
+      <UniqueIdentifier>{621e0572-8a1b-457c-86d0-c128ca695d98}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Core\Items\Tools">
+      <UniqueIdentifier>{39dd8606-80b9-495c-b199-f3dc526bc192}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Shaders\vert.glsl">
+      <Filter>Source Files\Shaders</Filter>
+    </None>
+    <None Include="Shaders\UIFrag.glsl">
+      <Filter>Source Files\Shaders</Filter>
+    </None>
+    <None Include="Shaders\v_2DLightingShader.glsl">
+      <Filter>Source Files\Shaders\Lighting Shaders</Filter>
+    </None>
+    <None Include="Shaders\f_2DLightingShader.glsl">
+      <Filter>Source Files\Shaders\Lighting Shaders</Filter>
+    </None>
+    <None Include="Shaders\frag.glsl">
+      <Filter>Source Files\Shaders\Lighting Shaders</Filter>
+    </None>
+    <None Include="Shaders\basicShadowFrag.glsl">
+      <Filter>Source Files\Shaders\Lighting Shaders</Filter>
+    </None>
+    <None Include="Shaders\lightFragShader.glsl">
+      <Filter>Source Files\Shaders\Lighting Shaders</Filter>
+    </None>
+    <None Include="Shaders\shadowFragShader.glsl">
+      <Filter>Source Files\Shaders\Lighting Shaders</Filter>
+    </None>
+  </ItemGroup>
+</Project>
