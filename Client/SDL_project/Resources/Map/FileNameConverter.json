@@ -1,0 +1,12 @@
+{
+  "Locations": [
+    {
+      "name" :  "spring"
+      "fileName": "Resources\\Sprites\\"
+    },
+    {
+      "fileName": "directory"
+    }
+
+  ]
+}
