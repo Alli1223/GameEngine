@@ -248,11 +248,7 @@ void DungeonParty::run()
 		glm::vec2 halfCameraSize = { glRenderer.camera.windowSize.x / 2, glRenderer.camera.windowSize.y / 2 };
 		glRenderer.camera.Lerp_To(world.player.getPosition() - halfCameraSize, glRenderer.camera.getCameraSpeed());
 
-		
-		//newInstance.Render(glRenderer);
 
-		// Day night cycle
-		//glRenderer.timeOfDay = sin(SDL_GetTicks() / 100000.0f); // 100ms
 
 		if (SDL_GetMouseState(NULL, NULL) & SDL_BUTTON(SDL_BUTTON_RIGHT))
 		{
