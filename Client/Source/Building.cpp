@@ -5,6 +5,10 @@
 
 Building::Building()
 {
+}
+
+Building::Building(b2World* physicsWorld)
+{
 	//b2Vec2 gravity(0.0f, 0.0f);
 	//physics = std::make_unique<b2World>(gravity);
 	for (int x = 0; x < roomSize; x++)
@@ -15,7 +19,7 @@ Building::Building()
 		for (int y = 0; y < roomSize; y++)
 		{
 			// Populates the column with pointers to cells
-			Cell cell(x, y, "WoodFloor");
+			Cell cell(physicsWorld, x, y, "WoodFloor");
 
 			cell.isWalkable = true;
 			auto sharedCell = std::make_shared<Cell>(cell);
@@ -63,11 +67,11 @@ Building::Building()
 
 void Building::RenderInterior(GL_Renderer& renderer)
 {
-	if (!init)
-		InitBuilding();
+	//if (!init)
+	//	InitBuilding();
 }
 
-Building::Building(json buildingData)
+Building::Building(b2World* physicsWorld, json buildingData)
 {
 
 	//setSpawnPoint(getRoomSize() / 2 * getTileSize(), getRoomSize() / 2 * getTileSize());
@@ -109,13 +113,17 @@ Building::Building(json buildingData)
 	//}
 }
 
+Building::Building(json building)
+{
+}
+
 
 
 Building::~Building()
 {
 }
 
-void Building::InitBuilding()
+void Building::InitBuilding(b2World* physicsWorld)
 {
 	tiles.clear();
 	for (int x = 0; x < roomSize; x++)
@@ -124,7 +132,7 @@ void Building::InitBuilding()
 		tiles.push_back(column);
 		for (int y = 0; y < roomSize; y++)
 		{
-			Cell cell(x, y, "WoodFloor");
+			Cell cell(physicsWorld, x, y, "WoodFloor");
 			auto sharedCell = std::make_shared<Cell>(cell);
 			tiles[x].push_back(sharedCell);
 		}

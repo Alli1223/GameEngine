@@ -40,7 +40,7 @@ void GameUI::Render(GL_Renderer& renderer, World& world, Player& player, GameSet
 		ImGui::SameLine();
 		if (ImGui::Button("Save Shop", { 100,50 }))
 		{
-			gameSettings.levelSaving.SaveShop(world.playerShop);
+			gameSettings.levelSaving.SaveShop(*world.playerShop);
 		}
 		ImGui::SameLine();
 		if (ImGui::Button("Save Level", { 100,50 }))

@@ -59,8 +59,8 @@ void NPCHouse::RemoveOccupant(int id)
 
 void NPCHouse::RenderInterior(GL_Renderer& renderer)
 {
-	if (!init)
-		InitBuilding();
+	//if (!init)
+	//	InitBuilding();
 	// Render floor
 	for (int x = 0; x < tiles.size(); x++)
 		for (int y = 0; y < tiles[x].size(); y++)

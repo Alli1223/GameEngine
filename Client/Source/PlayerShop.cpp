@@ -4,6 +4,10 @@
 
 PlayerShop::PlayerShop()
 {
+}
+
+PlayerShop::PlayerShop(b2World* physicsWorld)
+{
 	this->setSize(500, 500);
 	this->setPosition(500, -500);
 	chestTest.setPosition(100, 200);
@@ -34,7 +38,7 @@ std::shared_ptr<Building> PlayerShop::getSharedPointer()
 }
 
 // Create the shop from a json file
-PlayerShop::PlayerShop(json jsonData)
+PlayerShop::PlayerShop(b2World* physicsWorld, json jsonData)
 {
 	BuildingType = "PlayerShop";
 	// Shop size and position
@@ -71,7 +75,7 @@ PlayerShop::PlayerShop(json jsonData)
 	json tileData = jsonData.at("TileData");
 	for (auto& tile : tileData)
 	{
-		Cell newCell(tile);
+		Cell newCell(physicsWorld, tile);
 		newCell.setSize(tileSize, tileSize);
 		tiles[newCell.getX()][newCell.getY()] = std::make_shared<Cell>(newCell);
 	}
@@ -203,8 +207,8 @@ void PlayerShop::Update(World & world)
 
 void PlayerShop::RenderInterior(GL_Renderer& renderer)
 {
-	if (!init)
-		InitBuilding();
+	//if (!init)
+	//	InitBuilding();
 
 	// Render floor
 	for (int x = 0; x < tiles.size(); x++) {

@@ -28,9 +28,11 @@ void InfiniteWorld::CreateInfiniWorld(GL_Renderer& renderer, b2World* physicsWor
 			{
 				Chunk chunk(physicsWorld, i, j);
 				chunkSize = chunk.getChunkSize();
+				
 				numOfChunksGen++;
 				MainLevel[{i, j}] = chunk;
 			}
 		}
 	}
+	
 }

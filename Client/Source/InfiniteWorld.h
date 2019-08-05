@@ -1,5 +1,6 @@
 #pragma once
 #include "Chunk.h"
+#include "ProceduralTerrain.h"
 class InfiniteWorld
 {
 public:

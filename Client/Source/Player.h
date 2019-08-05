@@ -86,10 +86,10 @@ public:
 private:
 	std::shared_ptr<Player> playerPointer = nullptr;
 	//! Speed is variable
-	float speed = 20.0f;
+	float speed = 10.0f;
 	//! Walk and run speed are constants
-	float walkSpeed = 20.0f;
-	float runSpeed = 40.0f;
+	float walkSpeed = 10.0f;
+	float runSpeed = 20.0f;
 	int renderLayer = 3;
 	//! Render the player
 	void RenderPlayer(GL_Renderer& renderer, Camera& camera);

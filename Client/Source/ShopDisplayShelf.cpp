@@ -89,9 +89,9 @@ void ShopDisplayShelf::Use(GL_Renderer & renderer, World & world, Player & playe
 		{
 			mPos += renderer.camera.getPosition();
 			setSize(1, 2);
-			setPosition(mPos / (ivec2)world.playerShop.tiles[0][0]->getSize());
+			setPosition(mPos / (ivec2)world.playerShop->tiles[0][0]->getSize());
 			// If the item has been placed remove it from inventory
-			if(world.playerShop.AddShopDisplay(getShelfPointer()))
+			if(world.playerShop->AddShopDisplay(getShelfPointer()))
 				player.inventory.removeItem(this->getSharedPointer());
 		}
 	}
@@ -106,8 +106,8 @@ void ShopDisplayShelf::Selected(GL_Renderer& renderer, World& world, Player& pla
 	glm::vec2 m_size = { 100,200 };
 	m_pos += renderer.camera.getPosition();
 	// get nearest tile cell
-	m_pos /= world.playerShop.getTileSize();
-	m_pos *= world.playerShop.getTileSize();
+	m_pos /= world.playerShop->getTileSize();
+	m_pos *= world.playerShop->getTileSize();
 	
 	renderer.RenderSpriteLighting(this->Sprite, this->NormalMap, (vec2)m_pos, m_size, this->rotation, 0.5f, this->renderLayer, this->colour, flipSprite);
 }

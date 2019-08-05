@@ -10,8 +10,9 @@ class PlayerShop : public Building
 public:
 	//! Constructor
 	PlayerShop();
+	PlayerShop(b2World* physicsWorld);
 	//! Construct shop from json file
-	PlayerShop(json shopData);
+	PlayerShop(b2World* physicsWorld, json shopData);
 	//! Destructor
 	~PlayerShop();
 

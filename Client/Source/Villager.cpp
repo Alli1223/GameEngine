@@ -46,14 +46,13 @@ std::shared_ptr<NPC> Villager::getSharedPointer()
 void Villager::Update(World& world)
 {
 	// check collisions
-	if (collidesWith(world.playerShop))
+	if (collidesWith(*world.playerShop))
 	{
-		world.playerShop.AddCustomer(getSharedPointer());
+		world.playerShop->AddCustomer(getSharedPointer());
 		isInShop = true;
 	}
-	if (collidesWith(world.playerShop.exit))
+	if (collidesWith(world.playerShop->exit))
 	{
-		world.testHouse.RemoveOccupant(getID());
 		isInShop = false;
 	}
 

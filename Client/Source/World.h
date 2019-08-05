@@ -17,6 +17,7 @@ public:
 
 	// Stores all the cells for the infinite world
 	InfiniteWorld InfiniWorld;
+
 	//! Gets a cell from the infinite world
 	std::shared_ptr<Cell>& GetCell(float x, float y);
 
@@ -27,7 +28,7 @@ public:
 
 	void InitiliseWorld(GL_Renderer& renderer);
 	//! Player shop
-	PlayerShop playerShop;
+	PlayerShop* playerShop;
 
 	//! All the buildings in the world
 	std::vector<std::shared_ptr<Building>> buildings;
@@ -35,7 +36,7 @@ public:
 	std::vector<NetworkPlayer> networkPlayers;
 	// Dungeons
 
-	NPCHouse testHouse;
+
 	//! List of bugs in the world
 	std::vector<std::shared_ptr<Bug>> insects;
 	//! List of projectiles in the world

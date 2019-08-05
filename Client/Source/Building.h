@@ -25,14 +25,15 @@ public:
 class Building : public GameObject
 {
 public:
-	//! Constructor
+	//! Constructors
 	Building();
+	Building(b2World* physicsWorld);
+	Building(b2World* physicsWorld, json building);
 	Building(json building);
-
 	//! Destructor
 	~Building();
 
-	void InitBuilding();
+	void InitBuilding(b2World* physicsWorld);
 
 	void OnEnter();
 

@@ -103,10 +103,10 @@ public:
 	/*!
 	This constructor requires an X and Y for the Cell
 	*/
-	Cell(int x, int y, int layer, std::string type);
+	Cell(b2World* physicsWorld, int x, int y, int layer, std::string type);
 	//! Without specified layer ( defaults to 0)
-	Cell(int x, int y, std::string type);
-	Cell(json cellData);
+	Cell(b2World* physicsWorld, int x, int y, std::string type);
+	Cell(b2World* physicsWorld, json cellData);
 
 	//std::shared_ptr<Cell>& getPointer();
 	//! A destructor 

@@ -29,7 +29,7 @@ Chunk::Chunk(b2World* physicsWorld, int initX, int initY)
 		for (int y = 0; y < chunkSize; y++)
 		{
 			// Populates the column with pointers to cells
-			Cell cell(x + (initX * chunkSize), y + (initY * chunkSize), "Autumn_Ground_29");
+			Cell cell(physicsWorld, x + (initX * chunkSize), y + (initY * chunkSize), "Autumn_Ground_29");
 			cell.tilePos.x = x;
 			cell.tilePos.y = y;
 			cell.isWalkable = true;
@@ -78,7 +78,7 @@ void Chunk::LoadChunk(b2World* physicsWorld, int x, int y)
 		//setPosition(pos.x, pos.y);
 		for (auto& tile : tileData)
 		{
-			Cell newCell(tile);
+			Cell newCell(physicsWorld, tile);
 
 			int tileX = newCell.tilePos.x;
 			int tileY = newCell.tilePos.y;

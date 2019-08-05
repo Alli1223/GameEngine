@@ -10,7 +10,7 @@ Cell::Cell()
 }
 
 // Create with a position
-Cell::Cell(int x, int y, int layer, std::string type)
+Cell::Cell(b2World* physicsWorld, int x, int y, int layer, std::string type)
 {
 	setX(x);
 	setY(y);
@@ -20,7 +20,7 @@ Cell::Cell(int x, int y, int layer, std::string type)
 	AssignType(layer, type);
 }
 // Create with a position
-Cell::Cell(int x, int y, std::string type)
+Cell::Cell(b2World* physicsWorld, int x, int y, std::string type)
 {
 	setX(x);
 	setY(y);
@@ -116,7 +116,7 @@ void Cell::Render(GL_Renderer& renderer)
 }
 
 // Create with json data
-Cell::Cell(json cellData)
+Cell::Cell(b2World* physicsWorld, json cellData)
 {
 	int x = cellData.at("X").get<int>();
 	int y = cellData.at("Y").get<int>();
