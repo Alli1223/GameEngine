@@ -274,17 +274,6 @@ void MainGame::run()
 		UI.Render(glRenderer, world, world.player, gameSettings);
 		
 
-		//std::cout << world.player.getX() << " " << world.player.getY() << std::endl;
-		ivec2 posi;
-		if (SDL_GetMouseState(&posi.x, &posi.y) & SDL_BUTTON(SDL_BUTTON_RIGHT))
-		{
-			//world.GetCell((posi.x +glRenderer.camera.getX()) / 100.0f, (posi.y + glRenderer.camera.getY()) / 100.0f)->AssignType(2,"Sand");
-			//std::vector<Point> path = pathfinder.findPath(world, { 2,1 }, { 10,3 });
-		}
-		//glRenderer.RenderLine(glRenderer.camera.mouse_position, { 0,0 });
-		//glRenderer.RenderText("Hello World too this is a test bit of text", { 0.5,0.5 }, { 1.0,1.0 }, { 255,255,255 });
-
-
 		// END Rendering
 		ImGui::Render();
 		SDL_GL_MakeCurrent(window, glContext);

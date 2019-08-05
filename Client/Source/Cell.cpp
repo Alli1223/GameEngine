@@ -18,6 +18,8 @@ Cell::Cell(b2World* physicsWorld, int x, int y, int layer, std::string type)
 	setPosition(x * cellSize, y * cellSize);
 	cellTextureLayer[layer] = type;
 	AssignType(layer, type);
+	physicsptr = physicsWorld;
+
 }
 // Create with a position
 Cell::Cell(b2World* physicsWorld, int x, int y, std::string type)
@@ -28,6 +30,7 @@ Cell::Cell(b2World* physicsWorld, int x, int y, std::string type)
 	setPosition(x * cellSize, y * cellSize);
 	cellTextureLayer[0] = type;
 	AssignType(0, type);
+	physicsptr = physicsWorld;
 }
 
 
@@ -35,10 +38,14 @@ void Cell::AssignType(std::string type, bool isType)
 {
 	cellTextureLayer[0] = type;
 	CellAssignment::AssignCell(*this, type, 0);
+	if (!isWalkable)
+		InitPhysics(physicsptr, b2BodyType::b2_staticBody, 0.0f, 0.0f);
 }
 void Cell::AssignType(int layer, std::string type)
 {
 	CellAssignment::AssignCell(*this, type, layer);
+	if (!isWalkable)
+		InitPhysics(physicsptr, b2BodyType::b2_staticBody, 0.0f, 0.0f);
 }
 
 void Cell::Clear()

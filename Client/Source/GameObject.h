@@ -70,6 +70,7 @@ public:
 	b2Body* rigidBody = nullptr;
 	b2Fixture* fixture = nullptr;
 	b2ContactListener* contactListener = nullptr;
+	b2World* physicsptr = nullptr;
 
 	//! Initilise the object in the physics world
 	void InitPhysics(b2World* physicsWorld, b2BodyType type, float density, float friction);
