@@ -28,6 +28,7 @@ public:
 	//! Constructor
 	Building();
 	Building(json building);
+
 	//! Destructor
 	~Building();
 
@@ -41,6 +42,8 @@ public:
 	BuildingExit exit;
 	BuildingEntrance entrance;
 	SpawnLocation spawn;
+
+	std::string BuildingType;
 
 	//! Tiles
 	std::vector<std::vector<std::shared_ptr<Cell>>> tiles;
@@ -61,6 +64,8 @@ public:
 	bool playerIsInside = false;
 
 	int getRoomSize() { return roomSize; }
+
+	int constructionLevel = 0;
 
 protected:
 

@@ -62,7 +62,7 @@ void NetworkManager::Connect()
 }
 
 //! Returns whether the player exists in the list of players
-bool DoesPlayerExist(std::vector<std::string> & playerNames, std::string playername)
+bool PlayerExists(std::vector<std::string> & playerNames, std::string playername)
 {
 	// Return true if theres a match
 	for (int i = 0; i < playerNames.size(); i++)
@@ -104,6 +104,7 @@ void NetworkManager::NetworkUpdate(World& world, std::vector<NetworkPlayer>& pla
 		runPlayerNetworkTick = false;
 		ProcessPlayerLocations(world, player);
 	}
+
 	if (runMapNetworkTick)
 	{
 		runMapNetworkTick = false;
@@ -112,7 +113,66 @@ void NetworkManager::NetworkUpdate(World& world, std::vector<NetworkPlayer>& pla
 	}
 }
 
+bool NetworkManager::UpdateNetworkPlayer(json& data, std::string name)
+{
+	// Check if player already exists and update the values
+	int ID = -1;
+	for (int i = 0; i < allPlayers->size(); i++)
+		if (allPlayers->at(i).playerName == name)
+			ID = i;
+	if (ID >= 0)
+	{
+		// Player movement
+		float x = data.at("X").get<float>();
+		float y = data.at("Y").get<float>();
+		int rotation = data.at("rotation").get<int>();
 
+		bool isMoving = data.at("isMoving").get<bool>();
+
+		// Player clothes
+		int headWear = data.at("headWear").get<int>();
+		int bodyWear = data.at("bodyWear").get<int>();
+		int legWear = data.at("legWear").get<int>();
+
+		// Hair and eye colour
+		json hairColour = data.at("hairColour");
+		json eyeColour = data.at("eyeColour");
+		int hr = hairColour.at("r").get<int>();
+		int hg = hairColour.at("g").get<int>();
+		int hb = hairColour.at("b").get<int>();
+		int er = eyeColour.at("r").get<int>();
+		int eg = eyeColour.at("g").get<int>();
+		int eb = eyeColour.at("b").get<int>();
+
+		json bodyColour = data.at("bodyColour");
+		int br = bodyColour.at("r").get<int>();
+		int bg = bodyColour.at("g").get<int>();
+		int bb = bodyColour.at("b").get<int>();
+		json legsColour = data.at("legColour");
+		int lr = legsColour.at("r").get<int>();
+		int lg = legsColour.at("g").get<int>();
+		int lb = legsColour.at("b").get<int>();
+
+		allPlayers->at(ID).setEyeColour(er, eg, eb);
+		allPlayers->at(ID).setHairColour(hr, hg, hb);
+		allPlayers->at(ID).setJacketColour(br, bg, bb);
+		allPlayers->at(ID).setJeansColour(lr, lg, lb);
+		allPlayers->at(ID).PlayerClothes.hat = (Player::Clothing::HeadWear)headWear;
+		allPlayers->at(ID).PlayerClothes.body = (Player::Clothing::BodyWear)bodyWear;
+		allPlayers->at(ID).PlayerClothes.leg = (Player::Clothing::LegWear)legWear;
+		allPlayers->at(ID).setPlayerMoving(isMoving);
+		//allPlayers[val]->setX(x);
+		//allPlayers[val]->setY(y);
+		allPlayers->at(ID).Move({ x,y });
+		allPlayers->at(ID).setTargetRotation(rotation);
+		return false;
+	}
+	// Player does not exist create them
+	else
+	{
+		return true;
+	}
+}
 
 
 void NetworkManager::ProcessPlayerLocations(World & world, Player & player)
@@ -131,13 +191,33 @@ void NetworkManager::ProcessPlayerLocations(World & world, Player & player)
 		json jsonData = ConvertToJson(updateData);
 		json playerData = jsonData.at("PlayerData");
 
-		for (auto& element : playerData)
+		// Loop through each player
+		for (auto& player : playerData)
 		{
+			std::string name = player.at("name").get<std::string>();
+
+			bool createPlayer = UpdateNetworkPlayer(player, name);
+			if (createPlayer)
+			{
+				if (name.size() > 1 && name != localPlayerName)
+				{
+					otherPlayerNames.push_back(name);
+					NetworkPlayer newPlayer;
+					newPlayer.setSize({ 100,100 });
+					newPlayer.InitPhysics(world.I_Physics.get(), newPlayer.colisionIdentity, b2BodyType::b2_dynamicBody, 1.0f, 0.3f);
+					allPlayers->push_back(newPlayer);
+				}
+			}
+			/*
+			if (name != localPlayerName && PlayerExists(otherPlayerNames, name))
+			{
+
+			}
 			// Player movement
 			float x = element.at("X").get<float>();
 			float y = element.at("Y").get<float>();
 			int rotation = element.at("rotation").get<int>();
-			std::string name = element.at("name").get<std::string>();
+			
 			bool isMoving = element.at("isMoving").get<bool>();
 
 			// Player clothes
@@ -165,10 +245,11 @@ void NetworkManager::ProcessPlayerLocations(World & world, Player & player)
 			int lb = legsColour.at("b").get<int>();
 
 			// IF player exists update deets
-			if (DoesPlayerExist(otherPlayerNames, name))
+			if (PlayerExists(otherPlayerNames, name))
 			{
 				//Get players array number
 				int val = 0;// getPlayer(name);
+				val =
 				allPlayers->at(val).setEyeColour(er, eg, eb);
 				allPlayers->at(val).setHairColour(hr, hg, hb);
 				allPlayers->at(val).setJacketColour(br, bg, bb);
@@ -182,17 +263,11 @@ void NetworkManager::ProcessPlayerLocations(World & world, Player & player)
 				allPlayers->at(val).Move({ x,y });
 				allPlayers->at(val).setTargetRotation(rotation);
 			}
+			*/
 			//Create a new player
-			else
-			{
-				if (name.size() > 1 && name != localPlayerName)
-				{
-					otherPlayerNames.push_back(name);
-					Player newPlayer;
-					newPlayer.setSize({ 100,100 });
-					//SpawnPlayer(newPlayer);
-				}
-			}
+
+				
+			
 		}
 	}
 	catch (std::exception e)
@@ -250,7 +325,7 @@ void NetworkManager::MapNetworkUpdate(Level & level)
 void NetworkManager::sendTCPMessage(std::string message)
 {
 	// Fill the buffer with the data from the string
-	boost::array<char, 512> buf;
+	boost::array<char, 16384> buf;
 	for (int i = 0; i < message.size(); i++)
 	{
 		buf[i] = message[i];
@@ -282,7 +357,7 @@ std::string NetworkManager::RecieveMessage()
 	std::stringstream inStream;
 	try
 	{
-		boost::array<char, 128> buffer;
+		boost::array<char, 16384> buffer;
 		boost::asio::streambuf read_buffer;
 		//bytes_transferred = boost::asio::write(*socket, write_buffer);
 		auto bytes_transferred = boost::asio::read_until(*socket, read_buffer, ("\r\n"));

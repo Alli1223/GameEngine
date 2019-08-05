@@ -144,11 +144,6 @@ void World::Render(GL_Renderer& renderer)
 	testHouse.setPosition(800, -1000);
 	testHouse.setSize(200, 200);
 	testHouse.Render(renderer);
-	for (auto& occupant : testHouse.occupants)
-	{
-		if (occupant != nullptr)
-			occupant->Update(*this);
-	}
 	
 
 	// If player is in the open world

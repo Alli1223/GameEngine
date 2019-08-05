@@ -16,6 +16,8 @@ public:
 	void Connect();
 	//! Main Network update function
 	void NetworkUpdate(World& world, std::vector<NetworkPlayer>& players, Player& player);
+	// Update a player variables
+	bool UpdateNetworkPlayer(json& data, std::string name);
 	//! Send a message using TCP
 	void sendTCPMessage(std::string message);
 
@@ -40,7 +42,7 @@ public:
 	bool GetNumPlayers = false;
 
 	//! How frequent the client will update player positions
-	int networkPlayerUpdateInterval = 50;
+	int networkPlayerUpdateInterval = 1000;
 	//! How frequent the client will update the map from server
 	int networkMapUpdateInterval = 1000;
 

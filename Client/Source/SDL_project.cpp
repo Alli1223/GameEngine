@@ -3,17 +3,17 @@
 
 #include "stdafx.h"
 #include "SDL_project.h"
-#include "DungeonParty.h"
+#include "MainGame.h"
 
 int main(int argc, char* args[])
 
 {
 	
-	DungeonParty game;
+	MainGame game;
 	game.run();
 	while (game.needsRestart)
 	{
-		DungeonParty game;
+		MainGame game;
 		game.run();
 	}
 	

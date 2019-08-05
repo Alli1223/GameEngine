@@ -241,7 +241,7 @@
     <ClInclude Include="Texture2D.h" />
     <ClInclude Include="TileSheet.h" />
     <ClInclude Include="Timer.h" />
-    <ClInclude Include="DungeonParty.h" />
+    <ClInclude Include="MainGame.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Texture.h" />
@@ -342,7 +342,7 @@
     <ClCompile Include="Texture2D.cpp" />
     <ClCompile Include="TileSheet.cpp" />
     <ClCompile Include="Timer.cpp" />
-    <ClCompile Include="DungeonParty.cpp" />
+    <ClCompile Include="MainGame.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

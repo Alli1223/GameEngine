@@ -227,12 +227,12 @@
     <ClCompile Include="PathFinderManager.cpp" />
     <ClCompile Include="Furniture.cpp" />
     <ClCompile Include="CollisionListener.cpp" />
-    <ClCompile Include="DungeonParty.cpp">
-      <Filter>Source Files\Main Game Classes</Filter>
-    </ClCompile>
     <ClCompile Include="NetworkManager.cpp" />
     <ClCompile Include="NetworkPlayer.cpp" />
     <ClCompile Include="Instance.cpp" />
+    <ClCompile Include="MainGame.cpp">
+      <Filter>Source Files\Main Game Classes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cell.h">
@@ -477,12 +477,12 @@
     <ClInclude Include="Furniture.h" />
     <ClInclude Include="CollisionListener.h" />
     <ClInclude Include="CollisionIdentifier.h" />
-    <ClInclude Include="DungeonParty.h">
-      <Filter>Headers\Main Game Classes</Filter>
-    </ClInclude>
     <ClInclude Include="NetworkManager.h" />
     <ClInclude Include="NetworkPlayer.h" />
     <ClInclude Include="Instance.h" />
+    <ClInclude Include="MainGame.h">
+      <Filter>Headers\Main Game Classes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="SDL_project.rc" />

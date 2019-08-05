@@ -38,13 +38,13 @@
 /*!
 This is the main class where the game is laoded and run. 
 */
-class DungeonParty
+class MainGame
 {
 public:
 	//! A constructor
-	DungeonParty();
+	MainGame();
 	//! A deconstructor
-	~DungeonParty();
+	~MainGame();
 
 	//! Main Run loop
 	void run();

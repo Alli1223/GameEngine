@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "DungeonParty.h"
+#include "MainGame.h"
 #include "InitialisationError.h"
 #pragma comment(lib, "opengl32.lib")
 #pragma comment(lib, "glu32.lib")
@@ -27,7 +27,7 @@ bool SetOpenGLAttributes()
 	return true;
 }
 
-DungeonParty::DungeonParty()
+MainGame::MainGame()
 {
 	// Try and Connect to server
 	try {
@@ -71,9 +71,9 @@ DungeonParty::DungeonParty()
 
 	// Create the window
 	if (gameSettings.fullscreen)
-		window = SDL_CreateWindow("Magic Cafe", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, gameSettings.WINDOW_WIDTH, gameSettings.WINDOW_HEIGHT, SDL_WINDOW_FULLSCREEN_DESKTOP | SDL_WINDOW_OPENGL);
+		window = SDL_CreateWindow("Game Engine", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, gameSettings.WINDOW_WIDTH, gameSettings.WINDOW_HEIGHT, SDL_WINDOW_FULLSCREEN_DESKTOP | SDL_WINDOW_OPENGL);
 	else
-		window = SDL_CreateWindow("Magic Cafe", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, gameSettings.WINDOW_WIDTH, gameSettings.WINDOW_HEIGHT, SDL_WINDOW_RESIZABLE | SDL_WINDOW_OPENGL);
+		window = SDL_CreateWindow("Game Engine", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, gameSettings.WINDOW_WIDTH, gameSettings.WINDOW_HEIGHT, SDL_WINDOW_RESIZABLE | SDL_WINDOW_OPENGL);
 
 	// Set attributed and create openGL context
 	SetOpenGLAttributes();
@@ -117,7 +117,7 @@ DungeonParty::DungeonParty()
 	//glEnable(GL_FRAMEBUFFER_SRGB);
 }
 
-DungeonParty::~DungeonParty()
+MainGame::~MainGame()
 {
 	// clean up imgui
 	ImGui_ImplOpenGL3_Shutdown();
@@ -132,7 +132,7 @@ DungeonParty::~DungeonParty()
 	SDL_Quit();
 }
 
-void DungeonParty::run()
+void MainGame::run()
 {
 	// Create renderer
 	GL_Renderer glRenderer;
@@ -198,12 +198,12 @@ void DungeonParty::run()
 	//world.player.inventory.add(wheatSeeds.getSharedPointer());
 	//for(int i =0;i < 10; i++)
 	//	world.player.inventory.add(sunflowerSeeds.getSharedPointer());
-	//world.player.inventory.add(lavenderSeeds.getSharedPointer());
-	//world.player.inventory.add(fish.getSharedPointer());
-	//world.player.inventory.add(hoe.getSharedPointer());
-	//world.player.inventory.add(rod.getSharedPointer());
-	//world.player.inventory.add(net.getSharedPointer());
-	//world.player.inventory.add(scythe.getSharedPointer());
+	world.player.inventory.add(lavenderSeeds.getSharedPointer());
+	world.player.inventory.add(fish.getSharedPointer());
+	world.player.inventory.add(hoe.getSharedPointer());
+	world.player.inventory.add(rod.getSharedPointer());
+	world.player.inventory.add(net.getSharedPointer());
+	world.player.inventory.add(scythe.getSharedPointer());
 	
 	world.onEnter(world.player);
 	//Mix_PlayMusic(gMusic, -1);

@@ -20,6 +20,7 @@ PlayerShop::PlayerShop()
 	spritePath = "Resources\\Sprites\\Buildings\\PotionShop.png";
 	spritePath_normal = "Resources\\Sprites\\Buildings\\PotionShop_normal.png";
 	this->renderLayer = 3;
+	BuildingType = "PlayerShop";
 }
 std::shared_ptr<Building> PlayerShop::getSharedPointer()
 {
@@ -35,7 +36,7 @@ std::shared_ptr<Building> PlayerShop::getSharedPointer()
 // Create the shop from a json file
 PlayerShop::PlayerShop(json jsonData)
 {
-
+	BuildingType = "PlayerShop";
 	// Shop size and position
 	float X = jsonData.at("X").get<float>();
 	float Y = jsonData.at("Y").get<float>();
