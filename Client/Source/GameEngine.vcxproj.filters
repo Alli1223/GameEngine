@@ -220,19 +220,34 @@
     <ClCompile Include="Villager.cpp">
       <Filter>Source Files\Character</Filter>
     </ClCompile>
-    <ClCompile Include="ItemChest.cpp" />
     <ClCompile Include="CropSquare.cpp">
       <Filter>Source Files\Core\Items</Filter>
     </ClCompile>
-    <ClCompile Include="PathFinderManager.cpp" />
-    <ClCompile Include="Furniture.cpp" />
-    <ClCompile Include="CollisionListener.cpp" />
-    <ClCompile Include="NetworkManager.cpp" />
-    <ClCompile Include="NetworkPlayer.cpp" />
-    <ClCompile Include="Instance.cpp" />
     <ClCompile Include="MainGame.cpp">
       <Filter>Source Files\Main Game Classes</Filter>
     </ClCompile>
+    <ClCompile Include="CollisionListener.cpp">
+      <Filter>Source Files\Core\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="Furniture.cpp">
+      <Filter>Source Files\Core\Items</Filter>
+    </ClCompile>
+    <ClCompile Include="Instance.cpp">
+      <Filter>Source Files\Main Game Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemChest.cpp">
+      <Filter>Source Files\Core\Items</Filter>
+    </ClCompile>
+    <ClCompile Include="NetworkManager.cpp">
+      <Filter>Source Files\Core\Networking</Filter>
+    </ClCompile>
+    <ClCompile Include="NetworkPlayer.cpp">
+      <Filter>Source Files\Core\Networking</Filter>
+    </ClCompile>
+    <ClCompile Include="PathFinderManager.cpp">
+      <Filter>Source Files\Core\Level Classes\PathFinding</Filter>
+    </ClCompile>
+    <ClCompile Include="Room.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cell.h">
@@ -472,17 +487,34 @@
     <ClInclude Include="Crop.h">
       <Filter>Headers\Core\Level Classes</Filter>
     </ClInclude>
-    <ClInclude Include="ItemChest.h" />
-    <ClInclude Include="PathFinderManager.h" />
-    <ClInclude Include="Furniture.h" />
-    <ClInclude Include="CollisionListener.h" />
-    <ClInclude Include="CollisionIdentifier.h" />
-    <ClInclude Include="NetworkManager.h" />
-    <ClInclude Include="NetworkPlayer.h" />
-    <ClInclude Include="Instance.h" />
     <ClInclude Include="MainGame.h">
       <Filter>Headers\Main Game Classes</Filter>
     </ClInclude>
+    <ClInclude Include="CollisionIdentifier.h">
+      <Filter>Headers\Core\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionListener.h">
+      <Filter>Headers\Core\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Furniture.h">
+      <Filter>Headers\Core\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="Instance.h">
+      <Filter>Headers\Main Game Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemChest.h">
+      <Filter>Headers\Core\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="NetworkManager.h">
+      <Filter>Headers\Core\Networking</Filter>
+    </ClInclude>
+    <ClInclude Include="PathFinderManager.h">
+      <Filter>Headers\Core\Level Classes\PathFinding</Filter>
+    </ClInclude>
+    <ClInclude Include="NetworkPlayer.h">
+      <Filter>Headers\Core\Networking</Filter>
+    </ClInclude>
+    <ClInclude Include="Room.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="SDL_project.rc" />
@@ -581,6 +613,18 @@
     </Filter>
     <Filter Include="Source Files\Core\Items\Tools">
       <UniqueIdentifier>{39dd8606-80b9-495c-b199-f3dc526bc192}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\Core\Collision">
+      <UniqueIdentifier>{00179458-57c2-4b37-999f-acb1fa4b3729}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Core\Collision">
+      <UniqueIdentifier>{ac525f36-db4c-45ef-ae30-9e5c31aa36a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Core\Networking">
+      <UniqueIdentifier>{e7befd26-af35-439e-9be3-73467fb80e8c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\Core\Networking">
+      <UniqueIdentifier>{c2295093-c72a-4808-8be9-a3df613a5efe}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

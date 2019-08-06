@@ -61,6 +61,8 @@ public:
 	Pathfinder pathfinder;
 	NetworkManager networkManager;
 	CollisionListener myListender;
+
+	std::shared_ptr<Instance> currentInstance;
 	//The music that will be played
 	Mix_Music *gMusic = NULL;
 	bool needsRestart = false;
