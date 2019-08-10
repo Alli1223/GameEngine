@@ -248,6 +248,7 @@
       <Filter>Source Files\Core\Level Classes\PathFinding</Filter>
     </ClCompile>
     <ClCompile Include="Room.cpp" />
+    <ClCompile Include="ShopFoor.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cell.h">
@@ -515,6 +516,7 @@
       <Filter>Headers\Core\Networking</Filter>
     </ClInclude>
     <ClInclude Include="Room.h" />
+    <ClInclude Include="ShopFoor.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="SDL_project.rc" />

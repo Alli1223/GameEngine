@@ -2,7 +2,7 @@
 #include "GUI.h"
 #include "GameWindow.h"
 #include "Inventory.h"
-#include "Player.h"
+#include "player.h"
 #include "ItemSelection.h"
 class CharacerWindow : public GUI
 {

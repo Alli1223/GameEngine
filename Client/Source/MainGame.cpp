@@ -5,6 +5,7 @@
 #pragma comment(lib, "glu32.lib")
 
 
+
 void showErrorMessage(const char* message, const char* title)
 {
 	// Note: this is specific to Windows, and would need redefining to work on Mac or Linux
@@ -31,7 +32,7 @@ MainGame::MainGame()
 {
 	// Try and Connect to server
 	try {
-		int initNetwork = networkManager.init(world.player.playerName);
+		int initNetwork = networkManager.init(world.I_player.playerName);
 		if (initNetwork != 0)
 			std::cout << "Error init network" << std::endl;
 		gameSettings.useNetworking = true;
@@ -158,12 +159,12 @@ void MainGame::run()
 	}
 
 	// Create player
-	gameSettings.levelSaving.LoadWorld(world, world.player);
-	world.player.setPosition(100,0);
-	world.player.setSize(100, 100);
-	world.player.Sprite = ResourceManager::LoadTexture("Resources\\Sprites\\Character\\Alli.png");
-	world.player.setEyeColour({ rand() % 255, rand() % 255 , rand() % 255 });
-	world.player.setHairColour({ rand() % 255, rand() % 255 , rand() % 255 });
+	gameSettings.levelSaving.LoadWorld(world, world.I_player);
+	world.I_player.setPosition(100,0);
+	world.I_player.setSize(100, 100);
+	world.I_player.Sprite = ResourceManager::LoadTexture("Resources\\Sprites\\Character\\Alli.png");
+	world.I_player.setEyeColour({ rand() % 255, rand() % 255 , rand() % 255 });
+	world.I_player.setHairColour({ rand() % 255, rand() % 255 , rand() % 255 });
 
 	// Create Level
 
@@ -180,7 +181,7 @@ void MainGame::run()
 
 	//ShopDisplayShelf displayShelf;
 	//for (int i = 0; i < 5; i++)
-	//			world.player.inventory.add(displayShelf.getSharedPointer());
+	//			world.I_player.inventory.add(displayShelf.getSharedPointer());
 	Fish fish;
 	Hoe hoe;
 	FishingRod rod;
@@ -195,17 +196,18 @@ void MainGame::run()
 	chest.setSize(100, 100);
 	//chest.Sprite = ResourceManager::LoadTexture("Resources\\Sprites\\Character\\Alli.png");
 	
-	//world.player.inventory.add(wheatSeeds.getSharedPointer());
+	//world.I_player.inventory.add(wheatSeeds.getSharedPointer());
 	//for(int i =0;i < 10; i++)
-	//	world.player.inventory.add(sunflowerSeeds.getSharedPointer());
-	world.player.inventory.add(lavenderSeeds.getSharedPointer());
-	world.player.inventory.add(fish.getSharedPointer());
-	world.player.inventory.add(hoe.getSharedPointer());
-	world.player.inventory.add(rod.getSharedPointer());
-	world.player.inventory.add(net.getSharedPointer());
-	world.player.inventory.add(scythe.getSharedPointer());
+	//	world.I_player.inventory.add(sunflowerSeeds.getSharedPointer());
+	world.I_player.inventory.add(lavenderSeeds.getSharedPointer());
+	world.I_player.inventory.add(fish.getSharedPointer());
+	world.I_player.inventory.add(hoe.getSharedPointer());
+	world.I_player.inventory.add(rod.getSharedPointer());
+	world.I_player.inventory.add(net.getSharedPointer());
+	world.I_player.inventory.add(scythe.getSharedPointer());
 	
-	world.onEnter(world.player);
+	world.onEnter(world.I_player);
+	//Shop.onEnter(world.I_player);
 	//Mix_PlayMusic(gMusic, -1);
 
 	//for (int i = 0; i < 10; i++)
@@ -232,21 +234,21 @@ void MainGame::run()
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		
 		if(gameSettings.useNetworking)
-			networkManager.NetworkUpdate(world,world.networkPlayers, world.player);
+			networkManager.NetworkUpdate(world,world.networkPlayers, world.I_player);
 		
 		// User input
-		input.HandleUserInput(glRenderer, world.player, gameSettings, UI);
+		input.HandleUserInput(glRenderer, GameSettings::currentInstance->I_player, gameSettings, UI);
 
 		// Set easy access variables
 		glRenderer.camera.mouse_position = { (float)mouseX, (float)mouseY };
-		glRenderer.playerPosition = world.player.getPosition();
-		world.player.cellPos = world.player.getPosition() / (float)world.InfiniWorld.getCellSize();
+		glRenderer.playerPosition = world.I_player.getPosition();
+		world.I_player.cellPos = world.I_player.getPosition() / (float)world.InfiniWorld.getCellSize();
 		gameSettings.mouseCellPos.x = mouseX / level.getCellSize() + glRenderer.camera.getX() / level.getCellSize() + 1;
 		gameSettings.mouseCellPos.y = mouseY / level.getCellSize() + glRenderer.camera.getY() / level.getCellSize() + 1;
 
 		// Camera to players position
 		glm::vec2 halfCameraSize = { glRenderer.camera.windowSize.x / 2, glRenderer.camera.windowSize.y / 2 };
-		glRenderer.camera.Lerp_To(world.player.getPosition() - halfCameraSize, glRenderer.camera.getCameraSpeed());
+		glRenderer.camera.Lerp_To(world.I_player.getPosition() - halfCameraSize, glRenderer.camera.getCameraSpeed());
 
 
 
@@ -255,23 +257,26 @@ void MainGame::run()
 			std::cout << "Spawning Projectile" << std::endl;
 			float delta_x = gameSettings.WINDOW_WIDTH / 2 - mouseX;
 			float delta_y = gameSettings.WINDOW_HEIGHT / 2 - mouseY;
-			Projectile proj(glRenderer, world.I_Physics.get(), world.player.getPosition() + 200.0f, b2Vec2(-delta_x / 10000.0f, -delta_y / 10000.0f));
+			Projectile proj(glRenderer, world.I_Physics.get(), world.I_player.getPosition() + 200.0f, b2Vec2(-delta_x / 10000.0f, -delta_y / 10000.0f));
 			float rotation = atan2(delta_y, delta_x);
 			proj.setRotation(rotation);
 			world.projectiles.push_back(proj);
+			//world.I_playerShop->Shopfloor->onEnter(world.I_player);
 		}
 
+		GameSettings::currentInstance->Update();
+		GameSettings::currentInstance->Render(glRenderer);
 		// Physics simulation
-		world.Update();
+		//world.Update();
 
 		
-		world.Render(glRenderer);
+		//world.Render(glRenderer);
 		// Render game
-		//rendering.RenderObjects(world, glRenderer, world.player, gameSettings);
+		//rendering.RenderObjects(world, glRenderer, world.I_player, gameSettings);
 		glRenderer.RenderAllLayers();
 
 		// Render UI
-		UI.Render(glRenderer, world, world.player, gameSettings);
+		UI.Render(glRenderer, world, world.I_player, gameSettings);
 		
 
 		// END Rendering
@@ -304,7 +309,7 @@ void MainGame::run()
 
 	// Save player settings when the game ends the game loop
 	if (gameSettings.saveLevelOnExit && !gameSettings.useNetworking)
-		gameSettings.levelSaving.SaveWorld(world, world.player);
+		gameSettings.levelSaving.SaveWorld(world, world.I_player);
 	if (gameSettings.savePlayerOnExit)
 		//gameSettings.savePlayerSettings(player);
 		if (gameSettings.restartGame)

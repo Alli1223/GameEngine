@@ -34,7 +34,7 @@ void LevelSaving::LoadWorld(World& world, Player& player)
 		std::string jsonData((std::istreambuf_iterator<char>(t)), std::istreambuf_iterator<char>());
 		json data = json::parse(jsonData.begin(), jsonData.end());;
 		PlayerShop shop = PlayerShop(world.I_Physics.get(), data);
-		world.playerShop = &shop;
+		world.playerShop = std::make_shared<PlayerShop>(shop);
 	}
 	//if (exists(levelSavePath))
 	//{
@@ -124,10 +124,10 @@ void LevelSaving::SaveShop(PlayerShop playerShop)
 	shop["SpawnX"] = playerShop.spawn.getX();
 	shop["SpawnY"] = playerShop.spawn.getY();
 
-	shop["TileWidth"] = playerShop.tiles.size();
-	shop["TileHeight"] = playerShop.tiles[0].size();
+	//shop["TileWidth"] = playerShop.tiles.size();
+	//shop["TileHeight"] = playerShop.tiles[0].size();
 
-	shop["TileSize"] = playerShop.tiles[0][0]->getSize().x;
+	//shop["TileSize"] = playerShop.tiles[0][0]->getSize().x;
 
 	///////////////////////////////////////
 	/// Level DATA
@@ -136,12 +136,12 @@ void LevelSaving::SaveShop(PlayerShop playerShop)
 	json tilesData;
 
 	// Get the level data
-	for (int x = 0; x < playerShop.tiles.size(); x++)
-		for (int y = 0; y < playerShop.tiles[x].size(); y++)
-		{
-			tilesData.push_back(playerShop.tiles[x][y]->getCellData());
-		}
-	shop["TileData"] = tilesData;
+	//for (int x = 0; x < playerShop.tiles.size(); x++)
+	//	for (int y = 0; y < playerShop.tiles[x].size(); y++)
+	//	{
+	//		tilesData.push_back(playerShop.tiles[x][y]->getCellData());
+	//	}
+	//shop["TileData"] = tilesData;
 
 
 	///////////////////////////////////////

@@ -14,7 +14,7 @@
 #include "Camera.h"
 #include "Inventory.h"
 #include "UserInput.h"
-#include "Player.h"
+#include "player.h"
 #include "TextUI.h"
 #include "Menu.h"
 #include "InventoryUI.h"
@@ -38,6 +38,7 @@
 /*!
 This is the main class where the game is laoded and run. 
 */
+
 class MainGame
 {
 public:
@@ -58,11 +59,13 @@ public:
 	UserInput input;
 	GameUI UI;
 	World world;
+	Room Shop;
 	Pathfinder pathfinder;
 	NetworkManager networkManager;
 	CollisionListener myListender;
 
-	std::shared_ptr<Instance> currentInstance;
+	static std::shared_ptr<Instance> currentInstance;
+	
 	//The music that will be played
 	Mix_Music *gMusic = NULL;
 	bool needsRestart = false;

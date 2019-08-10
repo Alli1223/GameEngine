@@ -2,7 +2,7 @@
 #include "Level.h"
 #include "Camera.h"
 #include "Character.h"
-#include "Player.h"
+#include "player.h"
 #include "GameSettings.h"
 #include "Light.h"
 #include "GameObject.h"

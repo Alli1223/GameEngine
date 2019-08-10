@@ -1,9 +1,10 @@
 #pragma once
-#include "Player.h"
+#include "player.h"
 #include "Timer.h"
 #include "PlayerShop.h"
 #include "TileSheet.h"
 #include "LevelSaving.h"
+
 class GameSettings
 {
 public:
@@ -66,6 +67,9 @@ public:
 
 	//! Level saving class
 	LevelSaving levelSaving;
+
+	//! Current instance to render/update
+	static Instance* currentInstance;
 	
 private:
 	TileSheet getTileSetFromID(int ID);

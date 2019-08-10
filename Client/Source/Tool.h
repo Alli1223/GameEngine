@@ -1,6 +1,6 @@
 #pragma once
 #include "Item.h"
-#include "Player.h" // Able to get from forward decloration
+#include "player.h" // Able to get from forward decloration
 class Tool : public Item
 {
 public:

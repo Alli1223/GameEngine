@@ -8,11 +8,15 @@
 #include "NPCHouse.h"
 #include "NetworkPlayer.h"
 #include "Instance.h"
+
 class World : public Instance 
 {
 public:
 	World();
 	~World();
+
+	void OnEnter(Player& player);
+	void OnExit(Player& player);
 
 
 	// Stores all the cells for the infinite world
@@ -27,8 +31,9 @@ public:
 	void Update();
 
 	void InitiliseWorld(GL_Renderer& renderer);
+
 	//! Player shop
-	PlayerShop* playerShop;
+	std::shared_ptr<PlayerShop> playerShop;
 
 	//! All the buildings in the world
 	std::vector<std::shared_ptr<Building>> buildings;
@@ -43,7 +48,7 @@ public:
 	std::vector<Projectile> projectiles;
 
 	//! The player
-	Player player;
+	//Player player;
 
 	void OrientateTillage(glm::vec2 worldPos);
 

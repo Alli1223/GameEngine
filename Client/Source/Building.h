@@ -1,5 +1,5 @@
 #pragma once
-#include "Player.h"
+#include "player.h"
 #include "Cell.h"
 
 
@@ -35,9 +35,9 @@ public:
 
 	void InitBuilding(b2World* physicsWorld);
 
-	void OnEnter();
+	virtual void OnEnter();
 
-	void OnExit();
+	virtual void OnExit();
 
 	// Trigger points
 	BuildingExit exit;
@@ -46,33 +46,23 @@ public:
 
 	std::string BuildingType;
 
-	//! Tiles
-	std::vector<std::vector<std::shared_ptr<Cell>>> tiles;
-
 	// Player
 	//std::shared_ptr<Player> player = nullptr;
 
 	//! 
 	//void BuildingUpdate(GL_Renderer& renderer, UserInput& userInput, GameSettings& gameSettings, GameUI& UI);
 
-	//! Get the tile size in the building
-	int getTileSize() { return tileSize; }
-	int setTileSize(int newSize) { return tileSize = newSize; }
 
 	//! Render interior
 	void RenderInterior(GL_Renderer& renderer);
-	//! is player inside
-	bool playerIsInside = false;
 
-	int getRoomSize() { return roomSize; }
 
 	int constructionLevel = 0;
 
 protected:
 
 	std::string modularHouseDirectory = "Resources\\Sprites\\Buildings\\Templates\\";
-	int roomSize = 20;
-	int tileSize = 50;
+
 	
 	glm::vec2 cellPos;
 	glm::vec2 spawnPoint;

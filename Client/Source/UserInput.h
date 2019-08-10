@@ -1,5 +1,5 @@
 #pragma once
-#include "Player.h"
+#include "player.h"
 #include "ToolBar.h"
 #include "Timer.h"
 #include "GameUI.h"

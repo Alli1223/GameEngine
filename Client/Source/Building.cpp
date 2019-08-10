@@ -11,21 +11,7 @@ Building::Building(b2World* physicsWorld)
 {
 	//b2Vec2 gravity(0.0f, 0.0f);
 	//physics = std::make_unique<b2World>(gravity);
-	for (int x = 0; x < roomSize; x++)
-	{
-		std::vector<std::shared_ptr<Cell>> column;
 
-		tiles.push_back(column);
-		for (int y = 0; y < roomSize; y++)
-		{
-			// Populates the column with pointers to cells
-			Cell cell(physicsWorld, x, y, "WoodFloor");
-
-			cell.isWalkable = true;
-			auto sharedCell = std::make_shared<Cell>(cell);
-			tiles[x].push_back(sharedCell);
-		}
-	}
 }
 
 //void Building::BuildingUpdate(GL_Renderer & renderer, UserInput & userInput, GameSettings & gameSettings, GameUI & UI)
@@ -125,70 +111,15 @@ Building::~Building()
 
 void Building::InitBuilding(b2World* physicsWorld)
 {
-	tiles.clear();
-	for (int x = 0; x < roomSize; x++)
-	{
-		std::vector<std::shared_ptr<Cell>> column;
-		tiles.push_back(column);
-		for (int y = 0; y < roomSize; y++)
-		{
-			Cell cell(physicsWorld, x, y, "WoodFloor");
-			auto sharedCell = std::make_shared<Cell>(cell);
-			tiles[x].push_back(sharedCell);
-		}
-	}
-
-	// Set the floor tiles
-	for (int x = 0; x < tiles.size(); x++)
-		for (int y = 0; y < tiles[x].size(); y++)
-		{
-			tiles[x][y]->isWood = true;
-			tiles[x][y]->isWalkable = true;
-			tiles[x][y]->Sprite = ResourceManager::GetAtlasTexture("roguelike", 120);
-			tiles[x][y]->NormalMap = ResourceManager::GetAtlasTexture("roguelike_normal", 120);
-			// Create walls
-			if (x == 0 || y == 0 || x == tiles.size() - 1 || y == tiles[x].size() - 1)
-			{
-				tiles[x][y]->isWalkable = false;
-				tiles[x][y]->Sprite = ResourceManager::GetAtlasTexture("roguelike", 300);
-				tiles[x][y]->NormalMap = ResourceManager::GetAtlasTexture("roguelike_normal", 300);
-				// Door
-				if (x == (tiles.size() - 1) / 2 && y == tiles[x].size() - 1)
-				{
-					tiles[x][y]->isWood = true;
-					tiles[x][y]->isWalkable = true;
-					tiles[x][y]->Sprite = ResourceManager::GetAtlasTexture("roguelike", 120);
-					tiles[x][y]->NormalMap = ResourceManager::GetAtlasTexture("roguelike_normal", 120);
-				}
-				if (x == tiles.size() / 2 && y == tiles[x].size() - 1)
-				{
-					tiles[x][y]->isWood = true;
-					tiles[x][y]->isWalkable = true;
-					tiles[x][y]->Sprite = ResourceManager::GetAtlasTexture("roguelike", 120);
-					tiles[x][y]->NormalMap = ResourceManager::GetAtlasTexture("roguelike_normal", 120);
-				}
-			}
-		}
-	init = true;
+	
 
 }
 
 void Building::OnEnter()
-{// Set the tiles collision detection on
-	for (int x = 0; x < tiles.size(); x++) {
-		for (int y = 0; y < tiles[x].size(); y++)
-			if (tiles[x][y]->hasPhysics && tiles[x][y]->getBody() != nullptr)
-				tiles[x][y]->getBody()->SetActive(true);
-	}
-	if(getBody()->IsAwake()&& getBody() != nullptr)
-		getBody()->SetActive(false);
+{
+
 }
 
 void Building::OnExit()
-{ // set tiles collision detection off and shops body on
-	for (int x = 0; x < tiles.size(); x++)
-		for (int y = 0; y < tiles[x].size(); y++)
-			if (tiles[x][y]->hasPhysics)
-				tiles[x][y]->getBody()->SetActive(false);
-	getBody()->SetActive(true);
+{
 }

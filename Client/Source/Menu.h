@@ -1,5 +1,5 @@
 #pragma once
-#include "Player.h"
+#include "player.h"
 #include "Texture.h"
 #include "Camera.h"
 #include "Button.h"

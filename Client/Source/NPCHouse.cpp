@@ -62,11 +62,11 @@ void NPCHouse::RenderInterior(GL_Renderer& renderer)
 	//if (!init)
 	//	InitBuilding();
 	// Render floor
-	for (int x = 0; x < tiles.size(); x++)
-		for (int y = 0; y < tiles[x].size(); y++)
-		{
-			tiles[x][y]->Render(renderer);
-		}
+	//for (int x = 0; x < tiles.size(); x++)
+	//	for (int y = 0; y < tiles[x].size(); y++)
+	//	{
+	//		tiles[x][y]->Render(renderer);
+	//	}
 
 
 	exit.Sprite = ResourceManager::GetAtlasTexture("roguelike", 600);
@@ -85,7 +85,7 @@ void NPCHouse::Render(GL_Renderer& renderer)
 		setSize({ getSize().x, getSize().y * 1.8f });
 		// Set entrance and exits
 		entrance.setPosition({ getPosition().x - 30, getPosition().y + 100 });
-		spawn.setPosition(500,650);
+		spawn.setPosition(500, 650);
 		exit.setPosition(500, 850);
 	}
 
@@ -95,40 +95,33 @@ void NPCHouse::Render(GL_Renderer& renderer)
 		occupant->Render(renderer);
 	}
 
-	// Render inside
-	if (playerIsInside)
-	{
-		RenderInterior(renderer);
-	}
-	// Render outside
-	else
-	{
-		if (renderer.isPlayerInWorld)
-		{
-			entrance.Sprite = ResourceManager::GetAtlasTexture("roguelike", 600);
-			entrance.Render(renderer);
-			// Render house layers
-			if (!hasFirstFloor)
-			{
-				glm::vec2 sectionSize = { size.x, size.y / 2.0f };
-				glm::vec2 groundPos = { position.x, position.y + (sectionSize.y / 2.0f) };
-				glm::vec2 roofPos = { position.x, position.y - (sectionSize.y / 2.0f) };
 
-				//Ground
-				if (this->GroundFloorBackground.Width > 0 && this->GroundFloorBackground.Height > 0)
-					renderer.RenderSpriteLighting(this->GroundFloorBackground, this->NormalMap, groundPos, sectionSize, this->rotation, this->transparency, this->renderLayer, this->colour, flipSprite);
-				if (this->GroundFloorDecoration.Width > 0 && this->GroundFloorDecoration.Height > 0)
-					renderer.RenderSpriteLighting(this->GroundFloorDecoration, this->NormalMap, groundPos, sectionSize, this->rotation, this->transparency, this->renderLayer, this->colour, flipSprite);
-				if (this->GroundFloorWindows.Width > 0 && this->GroundFloorWindows.Height > 0)
-					renderer.RenderSpriteLighting(this->GroundFloorWindows, this->NormalMap, groundPos, sectionSize, this->rotation, this->transparency, this->renderLayer, this->colour, flipSprite);
-				if (this->GroundFloorDoor.Width > 0 && this->GroundFloorDoor.Height > 0)
-					renderer.RenderSpriteLighting(this->GroundFloorDoor, this->NormalMap, groundPos, sectionSize, this->rotation, this->transparency, this->renderLayer, this->colour, flipSprite);
-				//Roof
-				if (this->RoofBackground.Width > 0 && this->RoofBackground.Height > 0)
-					renderer.RenderSpriteLighting(this->RoofBackground, this->NormalMap, roofPos, sectionSize, this->rotation, this->transparency, this->renderLayer, this->colour, flipSprite);
-				if (this->RoofDecoration.Width > 0 && this->RoofDecoration.Height > 0)
-					renderer.RenderSpriteLighting(this->RoofDecoration, this->NormalMap, roofPos, sectionSize, this->rotation, this->transparency, this->renderLayer, this->colour, flipSprite);
-			}
-		}
+
+
+	entrance.Sprite = ResourceManager::GetAtlasTexture("roguelike", 600);
+	entrance.Render(renderer);
+	// Render house layers
+	if (!hasFirstFloor)
+	{
+		glm::vec2 sectionSize = { size.x, size.y / 2.0f };
+		glm::vec2 groundPos = { position.x, position.y + (sectionSize.y / 2.0f) };
+		glm::vec2 roofPos = { position.x, position.y - (sectionSize.y / 2.0f) };
+
+		//Ground
+		if (this->GroundFloorBackground.Width > 0 && this->GroundFloorBackground.Height > 0)
+			renderer.RenderSpriteLighting(this->GroundFloorBackground, this->NormalMap, groundPos, sectionSize, this->rotation, this->transparency, this->renderLayer, this->colour, flipSprite);
+		if (this->GroundFloorDecoration.Width > 0 && this->GroundFloorDecoration.Height > 0)
+			renderer.RenderSpriteLighting(this->GroundFloorDecoration, this->NormalMap, groundPos, sectionSize, this->rotation, this->transparency, this->renderLayer, this->colour, flipSprite);
+		if (this->GroundFloorWindows.Width > 0 && this->GroundFloorWindows.Height > 0)
+			renderer.RenderSpriteLighting(this->GroundFloorWindows, this->NormalMap, groundPos, sectionSize, this->rotation, this->transparency, this->renderLayer, this->colour, flipSprite);
+		if (this->GroundFloorDoor.Width > 0 && this->GroundFloorDoor.Height > 0)
+			renderer.RenderSpriteLighting(this->GroundFloorDoor, this->NormalMap, groundPos, sectionSize, this->rotation, this->transparency, this->renderLayer, this->colour, flipSprite);
+		//Roof
+		if (this->RoofBackground.Width > 0 && this->RoofBackground.Height > 0)
+			renderer.RenderSpriteLighting(this->RoofBackground, this->NormalMap, roofPos, sectionSize, this->rotation, this->transparency, this->renderLayer, this->colour, flipSprite);
+		if (this->RoofDecoration.Width > 0 && this->RoofDecoration.Height > 0)
+			renderer.RenderSpriteLighting(this->RoofDecoration, this->NormalMap, roofPos, sectionSize, this->rotation, this->transparency, this->renderLayer, this->colour, flipSprite);
 	}
+
+
 }

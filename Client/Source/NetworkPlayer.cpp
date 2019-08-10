@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "NetworkPlayer.h"
+#include "Networkplayer.h"
 
 
 NetworkPlayer::NetworkPlayer()

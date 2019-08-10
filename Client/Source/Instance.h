@@ -1,5 +1,5 @@
 #pragma once
-#include "NetworkPlayer.h"
+#include "Networkplayer.h"
 #include "CollisionListener.h"
 class Instance
 {
@@ -8,6 +8,7 @@ public:
 	Instance();
 	//! Deconstructor
 	~Instance();
+
 
 	//! When player enters instance
 	virtual void onEnter(Player& player);
@@ -25,10 +26,13 @@ public:
 	virtual void Update();
 
 	//! Player for instance
-	Player* I_player = nullptr;
+	Player I_player;
 
 	//! List of players in instance
 	std::vector<NetworkPlayer> networkPlayers;
+
+
+private:
 
 };
 

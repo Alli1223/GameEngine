@@ -432,8 +432,8 @@ std::shared_ptr<Button> get_instance(Button& n)
 //		}
 //
 //		// Start
-//		singlePlayer.render(renderer, gameSettings.WINDOW_WIDTH / 2 + 200, gameSettings.WINDOW_HEIGHT - 100, buttonSize * 2, buttonSize);
-//		if (singlePlayer.isPressed())
+//		singleplayer.render(renderer, gameSettings.WINDOW_WIDTH / 2 + 200, gameSettings.WINDOW_HEIGHT - 100, buttonSize * 2, buttonSize);
+//		if (singleplayer.isPressed())
 //		{
 //			gameSettings.running = true;
 //			gameSettings.useNetworking = false;
@@ -450,8 +450,8 @@ std::shared_ptr<Button> get_instance(Button& n)
 //		displayMainMenu = false;
 //		}
 //		*/
-//		rotatePlayer.render(renderer, gameSettings.WINDOW_WIDTH / 2, playerCreation.getY() + playerCreation.getSize().x / 2 + buttonSize, buttonSize * 2, buttonSize);
-//		if (rotatePlayer.isPressed())
+//		rotateplayer.render(renderer, gameSettings.WINDOW_WIDTH / 2, playerCreation.getY() + playerCreation.getSize().x / 2 + buttonSize, buttonSize * 2, buttonSize);
+//		if (rotateplayer.isPressed())
 //		{
 //			int rotation = playerCreation.getTargetRotation() + 90;
 //			if (rotation > 360)

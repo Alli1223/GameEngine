@@ -4,17 +4,23 @@
 
 World::World()
 {
-	//buildings.push_back(playerShop->getSharedPointer());
-
+	PlayerShop shop(I_Physics.get());
+	playerShop = std::make_shared<PlayerShop>(shop);
 	b2Vec2 gravity(0.0f, 0.0f);
 	I_Physics = std::make_unique<b2World>(gravity);
-
-	
-	
 }
 
 
 World::~World()
+{
+}
+
+void World::OnEnter(Player& player)
+{
+	
+}
+
+void World::OnExit(Player& player)
 {
 }
 
@@ -90,25 +96,23 @@ void World::Render(GL_Renderer& renderer)
 	{
 		
 		// Check if player entered a house
-		if (player.collidesWith(house->entrance) && player.pressingUseKey)
+		if (I_player.collidesWith(house->entrance) && I_player.pressingUseKey)
 		{
-			house->spawn.previousLocation = { player.getPosition().x, player.getPosition().y + 80.0f }; // set last position
-			player.getBody()->SetTransform(b2Vec2({ house->spawn.getPosition().x * player.physicsScaleDown, house->spawn.getPosition().y * player.physicsScaleDown }), 0.0f);	// move to spawn
-			renderer.camera.SetPos(player.getX(), player.getY()); // move camera to player
-			house->playerIsInside = true;
-			player.isInBuilding = true;
+			house->spawn.previousLocation = { I_player.getPosition().x, I_player.getPosition().y + 80.0f }; // set last position
+			I_player.getBody()->SetTransform(b2Vec2({ house->spawn.getPosition().x * I_player.physicsScaleDown, house->spawn.getPosition().y * I_player.physicsScaleDown }), 0.0f);	// move to spawn
+			renderer.camera.SetPos(I_player.getX(), I_player.getY()); // move camera to player
+			I_player.isInBuilding = true;
 			renderer.isPlayerInWorld = false;
 			renderer.lights.clear();
 			house->OnEnter();
 		}
 
-		else if (player.collidesWith(house->exit) && player.pressingUseKey)
+		else if (I_player.collidesWith(house->exit) && I_player.pressingUseKey)
 		{
-			player.getBody()->SetTransform(b2Vec2({ house->spawn.previousLocation.x * player.physicsScaleDown, house->spawn.previousLocation.y * player.physicsScaleDown }), 0.0f);
-			player.setPosition(house->spawn.previousLocation - 30.0f);	// get last position
-			renderer.camera.SetPos(player.getX(), player.getY());
-			house->playerIsInside = false;
-			player.isInBuilding = false;
+			I_player.getBody()->SetTransform(b2Vec2({ house->spawn.previousLocation.x * I_player.physicsScaleDown, house->spawn.previousLocation.y * I_player.physicsScaleDown }), 0.0f);
+			I_player.setPosition(house->spawn.previousLocation - 30.0f);	// get last position
+			renderer.camera.SetPos(I_player.getX(), I_player.getY());
+			I_player.isInBuilding = false;
 			renderer.isPlayerInWorld = true;
 			house->OnExit();
 		}
@@ -117,25 +121,23 @@ void World::Render(GL_Renderer& renderer)
 	}
 	// Player Shop
 	{	
-		if (player.collidesWith(playerShop->entrance) && player.pressingUseKey)
+		if (I_player.collidesWith(playerShop->entrance) && I_player.pressingUseKey)
 		{
-			playerShop->spawn.previousLocation = { player.getPosition().x, player.getPosition().y + 80.0f }; // set last position
-			player.getBody()->SetTransform(b2Vec2({ playerShop->spawn.getPosition().x * player.physicsScaleDown, playerShop->spawn.getPosition().y * player.physicsScaleDown }), 0.0f);	// move to spawn
-			renderer.camera.SetPos(player.getX(), player.getY()); // move camera to player
-			playerShop->playerIsInside = true;
-			player.isInBuilding = true;
+			playerShop->spawn.previousLocation = { I_player.getPosition().x, I_player.getPosition().y + 80.0f }; // set last position
+			I_player.getBody()->SetTransform(b2Vec2({ playerShop->spawn.getPosition().x * I_player.physicsScaleDown, playerShop->spawn.getPosition().y * I_player.physicsScaleDown }), 0.0f);	// move to spawn
+			renderer.camera.SetPos(I_player.getX(), I_player.getY()); // move camera to player
+			I_player.isInBuilding = true;
 			renderer.isPlayerInWorld = false;
 			renderer.lights.clear();
 			playerShop->OnEnter();
 		}
 
-		else if (player.collidesWith(playerShop->exit) && player.pressingUseKey)
+		else if (I_player.collidesWith(playerShop->exit) && I_player.pressingUseKey)
 		{
-			player.getBody()->SetTransform(b2Vec2({ playerShop->spawn.previousLocation.x * player.physicsScaleDown, playerShop->spawn.previousLocation.y * player.physicsScaleDown }), 0.0f);
-			player.setPosition(playerShop->spawn.previousLocation - 30.0f);	// get last position
-			renderer.camera.SetPos(player.getX(), player.getY());
-			playerShop->playerIsInside = false;
-			player.isInBuilding = false;
+			I_player.getBody()->SetTransform(b2Vec2({ playerShop->spawn.previousLocation.x * I_player.physicsScaleDown, playerShop->spawn.previousLocation.y * I_player.physicsScaleDown }), 0.0f);
+			I_player.setPosition(playerShop->spawn.previousLocation - 30.0f);	// get last position
+			renderer.camera.SetPos(I_player.getX(), I_player.getY());
+			I_player.isInBuilding = false;
 			renderer.isPlayerInWorld = true;
 			playerShop->OnExit();
 		}
@@ -183,7 +185,7 @@ void World::Render(GL_Renderer& renderer)
 		networkPlayers[i].Render(renderer);
 	}
 
-	player.Render(renderer);
+	I_player.Render(renderer);
 	
 
 }
@@ -197,10 +199,10 @@ void World::Update()
 
 void World::InitiliseWorld(GL_Renderer & renderer)
 {
-	playerShop = &PlayerShop(I_Physics.get());
-	//if (!player.hasPhysics)
+	
+	//if (!I_player.hasPhysics)
 	//{
-	//	player.InitPhysics(I_Physics.get(),player.colisionIdentity, b2BodyType::b2_dynamicBody, 1.0f, 0.3f);
+	//	I_player.InitPhysics(I_Physics.get(),I_player.colisionIdentity, b2BodyType::b2_dynamicBody, 1.0f, 0.3f);
 	//}
 }
 

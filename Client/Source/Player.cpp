@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "Player.h"
+#include "player.h"
 #include "PathFinder.h"
 void Player::LoadResources()
 {

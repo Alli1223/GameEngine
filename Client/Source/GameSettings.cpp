@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "GameSettings.h"
 
+Instance* GameSettings::currentInstance = nullptr;
 
 GameSettings::GameSettings()
 {

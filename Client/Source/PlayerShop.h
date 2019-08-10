@@ -4,6 +4,7 @@
 #include "ShopDisplayShelf.h"
 #include "ItemChest.h"
 #include "NPC.h"
+#include "Room.h"
 
 class PlayerShop : public Building
 {
@@ -24,13 +25,10 @@ public:
 
 	void RemoveCustomer(int ID);
 
-	
-	//! Physics world
-	//std::unique_ptr<b2World> p_World;
+	//Room Shopfloor;
 
-	// Player
-	//std::shared_ptr<Player> player = nullptr;
-	
+	void OnEnter();
+
 	LightSource outsideLantern;
 	//! Polymorphed function
 	void Render(GL_Renderer& renderer);

@@ -229,6 +229,7 @@
     <ClInclude Include="Shader.h" />
     <ClInclude Include="ShopCounter.h" />
     <ClInclude Include="ShopDisplayShelf.h" />
+    <ClInclude Include="ShopFoor.h" />
     <ClInclude Include="SimplexNoise.h" />
     <ClInclude Include="Source\imgui\imconfig.h" />
     <ClInclude Include="Source\imgui\imgui.h" />
@@ -317,6 +318,7 @@
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="ShopCounter.cpp" />
     <ClCompile Include="ShopDisplayShelf.cpp" />
+    <ClCompile Include="ShopFoor.cpp" />
     <ClCompile Include="SimplexNoise.cpp" />
     <ClCompile Include="Source\imgui\imgui.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
