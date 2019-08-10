@@ -73,7 +73,12 @@ void ProceduralTerrain::generateGround(std::vector<std::vector<std::shared_ptr<C
 		tiles[x][y]->isGrass = true;
 		std::string tile = "Grass";
 		tiles[x][y]->AssignType(0, tile);
-
+		if (terrainElevation >= 1.8 && terrainElevation < 5.0)
+		{
+			tiles[x][y]->isGrass = true;
+			std::string tile = "Grass";
+			tiles[x][y]->AssignType(0, tile);
+		}
 	}
 	else if (terrainElevation >= -2.3 && terrainElevation < -1.8)
 	{

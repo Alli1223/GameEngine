@@ -36,12 +36,12 @@ void LevelSaving::LoadWorld(World& world, Player& player)
 		PlayerShop shop = PlayerShop(world.I_Physics.get(), data);
 		world.playerShop = std::make_shared<PlayerShop>(shop);
 	}
-	//if (exists(levelSavePath))
-	//{
-	//	std::ifstream t(levelSavePath);
-	//	std::string jsonData((std::istreambuf_iterator<char>(t)), std::istreambuf_iterator<char>());
-	//	json data = json::parse(jsonData.begin(), jsonData.end());
-	//}
+	if (exists(levelSavePath))
+	{
+		std::ifstream t(levelSavePath);
+		std::string jsonData((std::istreambuf_iterator<char>(t)), std::istreambuf_iterator<char>());
+		json data = json::parse(jsonData.begin(), jsonData.end());
+	}
 
 }
 

@@ -94,7 +94,7 @@ void World::Render(GL_Renderer& renderer)
 	// Buildings
 	for (auto& house : buildings)
 	{
-		
+
 		// Check if player entered a house
 		if (I_player.collidesWith(house->entrance) && I_player.pressingUseKey)
 		{
@@ -120,7 +120,7 @@ void World::Render(GL_Renderer& renderer)
 		house->Render(renderer);
 	}
 	// Player Shop
-	{	
+	{
 		if (I_player.collidesWith(playerShop->entrance) && I_player.pressingUseKey)
 		{
 			playerShop->spawn.previousLocation = { I_player.getPosition().x, I_player.getPosition().y + 80.0f }; // set last position
@@ -145,40 +145,39 @@ void World::Render(GL_Renderer& renderer)
 		//playerShop->Render(renderer);
 	}
 
-	
+
 
 	// If player is in the open world
-	if (renderer.isPlayerInWorld)
-	{
-		// Chunk / Cells
-		for (int x = ((renderer.camera.getX() / InfiniWorld.getCellSize()) / InfiniWorld.getChunkSize()) - 1;
-			x < ((renderer.camera.getX() / InfiniWorld.getCellSize()) / InfiniWorld.getChunkSize()) + renderer.camera.ChunksOnScreen.x; x++)
-			for (int y = (renderer.camera.getY() / InfiniWorld.getCellSize()) / InfiniWorld.getChunkSize() - 1;
-				y < ((renderer.camera.getY() / InfiniWorld.getCellSize()) / InfiniWorld.getChunkSize()) + renderer.camera.ChunksOnScreen.y; y++)
-		{
-			if (!InfiniWorld.MainLevel[{x, y}].tiles.size() > 0)
-			{
-				Chunk chunk(I_Physics.get(), x, y);
-				InfiniWorld.setChunSize(chunk.getChunkSize());
-				InfiniWorld.MainLevel[{x, y}] = chunk;
-			}
-			InfiniWorld.MainLevel[{x, y}].Render(renderer);
-		}
 
-		// Bugs
-		for (int i = 0; i < insects.size(); i++)
+		// Chunk / Cells
+	for (int x = ((renderer.camera.getX() / InfiniWorld.getCellSize()) / InfiniWorld.getChunkSize()) - 1;
+		x < ((renderer.camera.getX() / InfiniWorld.getCellSize()) / InfiniWorld.getChunkSize()) + renderer.camera.ChunksOnScreen.x; x++)
+		for (int y = (renderer.camera.getY() / InfiniWorld.getCellSize()) / InfiniWorld.getChunkSize() - 1;
+			y < ((renderer.camera.getY() / InfiniWorld.getCellSize()) / InfiniWorld.getChunkSize()) + renderer.camera.ChunksOnScreen.y; y++)
+	{
+		if (!InfiniWorld.MainLevel[{x, y}].tiles.size() > 0)
 		{
-			insects[i]->Render(renderer);
+			Chunk chunk(I_Physics.get(), x, y);
+			InfiniWorld.setChunSize(chunk.getChunkSize());
+			InfiniWorld.MainLevel[{x, y}] = chunk;
 		}
-		// Projectiles
-		for (int i = 0; i < projectiles.size(); i++)
-		{
-			if (projectiles[i].experationTimer.getTicks() > projectiles[i].AliveTime)
-				projectiles.erase(projectiles.begin() + i);
-			else
-				projectiles[i].Render(renderer);
-		}
+		InfiniWorld.MainLevel[{x, y}].Render(renderer);
 	}
+
+	// Bugs
+	for (int i = 0; i < insects.size(); i++)
+	{
+		insects[i]->Render(renderer);
+	}
+	// Projectiles
+	for (int i = 0; i < projectiles.size(); i++)
+	{
+		if (projectiles[i].experationTimer.getTicks() > projectiles[i].AliveTime)
+			projectiles.erase(projectiles.begin() + i);
+		else
+			projectiles[i].Render(renderer);
+	}
+
 
 	for (int i = 0; i < networkPlayers.size(); i++)
 	{
@@ -186,8 +185,6 @@ void World::Render(GL_Renderer& renderer)
 	}
 
 	I_player.Render(renderer);
-	
-
 }
 
 void World::Update()

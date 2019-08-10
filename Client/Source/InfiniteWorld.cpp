@@ -4,6 +4,9 @@
 
 InfiniteWorld::InfiniteWorld()
 {
+	Chunk tempC;
+	cellSize = tempC.getCellSize();
+	//tempC.~Chunk();
 }
 
 
@@ -13,7 +16,7 @@ InfiniteWorld::~InfiniteWorld()
 
 void InfiniteWorld::CreateInfiniWorld(GL_Renderer& renderer, b2World* physicsWorld)
 {
-
+	
 	int numOfChunksWidth = ((renderer.camera.windowSize.x / cellSize) / chunkSize) + levelGenerationRadius;
 	int numOfChunksHeight = ((renderer.camera.windowSize.y / cellSize) / chunkSize) + levelGenerationRadius;
 	renderer.camera.ChunksOnScreen.x = numOfChunksWidth;

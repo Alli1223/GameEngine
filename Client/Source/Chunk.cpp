@@ -9,6 +9,8 @@ inline bool exists(const std::string& name) {
 
 Chunk::Chunk()
 {
+	Cell cell;
+	cellSize = cell.getCellSize();
 	tiles.reserve(chunkSize);
 }
 
@@ -33,6 +35,7 @@ Chunk::Chunk(b2World* physicsWorld, int initX, int initY)
 			cell.tilePos.x = x;
 			cell.tilePos.y = y;
 			cell.isWalkable = true;
+			
 			//cell.InitPhysics(physicsWorld, b2BodyType::b2_dynamicBody);
 			auto sharedCell = std::make_shared<Cell>(cell);
 			tiles[x].push_back(sharedCell);
@@ -56,7 +59,6 @@ void Chunk::Render(GL_Renderer& renderer)
 		{
 			cellSize = tiles[0][0]->getCellSize();
 
-			
 			tiles[x][y]->Render(renderer);
 			//renderer.RenderText(std::to_string(x) + ", " + std::to_string(y), tiles[x][y]->getPosition() - renderer.camera.getPosition(), { 50.0f, 50.0f }, { 0.2f, 0.2f }, { 100,100,100 });
 		}

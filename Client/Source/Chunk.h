@@ -24,6 +24,8 @@ public:
 	//! Get Y position of chunk
 	int getY() { return y; }
 
+	int getCellSize() { return cellSize; }
+
 	int setPosition(int newX, int newY) { return x = newX, y = newY; }
 	ProceduralTerrain generator;
 	
@@ -32,7 +34,7 @@ private:
 	int y = 0;
 	int chunkSize = 8;
 	glm::ivec2 pos;
-	int cellSize = 50;
+	int cellSize = 1;
 
 	std::string savingDirectory = "Resources\\Data\\Chunks\\";
 	std::string chunkID;
