@@ -138,6 +138,9 @@ void MainGame::run()
 	// Create renderer
 	GL_Renderer glRenderer;
 
+	Menu menu;
+	menu.MainMenu(gameSettings, world, glRenderer.camera, world.I_player, glRenderer);
+
 	// Initilise the world with the physcis stored in glRenderer
 	world.InitiliseWorld(glRenderer);
 

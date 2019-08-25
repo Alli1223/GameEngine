@@ -11,6 +11,9 @@ Menu::Menu() : menuBackground(menuTextures + "Background.png"), cursor(otherText
 Menu::~Menu()
 {
 }
+void Menu::MainMenu(GameSettings& gameSettings, World& level, Camera& camera, Player& player, GL_Renderer& renderer)
+{
+}
 Uint32 get_pixel_at(Uint32 * pixels, int x, int y, int w)
 {
 	return pixels[y * w + x];
