@@ -119,7 +119,9 @@ bool NetworkManager::UpdateNetworkPlayer(json& data, std::string name)
 	int ID = -1;
 	for (int i = 0; i < allPlayers->size(); i++)
 		if (allPlayers->at(i).playerName == name)
+		{
 			ID = i;
+		}
 	if (ID >= 0)
 	{
 		// Player movement
@@ -161,8 +163,8 @@ bool NetworkManager::UpdateNetworkPlayer(json& data, std::string name)
 		allPlayers->at(ID).PlayerClothes.body = (Player::Clothing::BodyWear)bodyWear;
 		allPlayers->at(ID).PlayerClothes.leg = (Player::Clothing::LegWear)legWear;
 		allPlayers->at(ID).setPlayerMoving(isMoving);
-		//allPlayers[val]->setX(x);
-		//allPlayers[val]->setY(y);
+		//allPlayers->at(ID).setX(x);
+		//allPlayers->at(ID).setY(y);
 		allPlayers->at(ID).Move({ x,y });
 		allPlayers->at(ID).setTargetRotation(rotation);
 		return false;
@@ -204,6 +206,7 @@ void NetworkManager::ProcessPlayerLocations(World & world, Player & player)
 					otherPlayerNames.push_back(name);
 					NetworkPlayer newPlayer;
 					newPlayer.setSize({ 100,100 });
+					newPlayer.playerName = name;
 					newPlayer.InitPhysics(world.I_Physics.get(), newPlayer.colisionIdentity, b2BodyType::b2_dynamicBody, 1.0f, 0.3f);
 					allPlayers->push_back(newPlayer);
 				}
@@ -360,7 +363,7 @@ std::string NetworkManager::RecieveMessage()
 		boost::array<char, 16384> buffer;
 		boost::asio::streambuf read_buffer;
 		//bytes_transferred = boost::asio::write(*socket, write_buffer);
-		auto bytes_transferred = boost::asio::read_until(*socket, read_buffer, ("\r\n"));
+		auto bytes_transferred = boost::asio::read_until(*socket, read_buffer, ("}\r\n"));
 
 		//std::cout << "Read: " << make_string(read_buffer) << std::endl;
 
