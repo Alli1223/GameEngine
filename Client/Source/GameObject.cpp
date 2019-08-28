@@ -101,6 +101,30 @@ void GameObject::Render(GL_Renderer &renderer)
 	renderer.RenderSpriteLighting(this->Sprite, this->NormalMap, this->position, this->size, this->rotation,this->transparency,this->renderLayer, this->colour, flipSprite);
 }
 
+float GameObject::GetDistance(vec2 pointA, vec2 pointB)
+{
+	float dx = pointA.x - pointA.y;
+	float dy = pointB.x - pointB.y;
+	//pythagoras(sp)
+	float dist = 0.0;
+
+	dist = pow(dx, 2) + pow(dy, 2);
+	dist = sqrt(dist);
+
+	return dist;
+}
+
+glm::vec2 GameObject::getPosition()
+{
+	return position;
+	//if (getBody() != nullptr)
+	//{
+	//	b2Vec2 pos = getBody()->GetPosition();
+	//	return { pos.x, pos.y };
+	//}
+	//else
+}
+
 
 
 bool GameObject::collidesWith(GameObject object)

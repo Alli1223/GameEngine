@@ -181,6 +181,7 @@ void World::Render(GL_Renderer& renderer)
 
 	for (int i = 0; i < networkPlayers.size(); i++)
 	{
+		networkPlayers[i].Update();
 		networkPlayers[i].Render(renderer);
 	}
 

@@ -372,16 +372,36 @@ void Player::Move(Player::MovementDirection direction)
 		break;
 	}
 }
+
 void Player::Move(glm::vec2 newPos)
 {
-	if(newPos.x > getPosition().x)
-		getBody()->ApplyForceToCenter(b2Vec2(+getSpeed(), 0.0f), true);
-	if (newPos.x < getPosition().x)
-		getBody()->ApplyForceToCenter(b2Vec2(-getSpeed(), 0.0f), true);
-	if (newPos.y > getPosition().y)
-		getBody()->ApplyForceToCenter(b2Vec2(0.0f, +getSpeed()), true);
-	if (newPos.y < getPosition().y)
-		getBody()->ApplyForceToCenter(b2Vec2(0.0f, -getSpeed()), true);
+	//getBody()->SetLinearVelocity(b2Vec2(0.0f, 0.0f));
+	//vec2 pos = getPosition();// { getBody()->GetPosition().x, getBody()->GetPosition().y };
+	//float dist = GetDistance(pos, newPos);
+	//
+	//float lerp_x = getPosition().x + (newPos.x - getPosition().x) * 0.3f;
+	//float lerp_y = getPosition().y + (newPos.y - getPosition().y) * 0.3f;
+	//
+	//lerp_x = 10.0f;
+	//lerp_y = 10.0f;
+	////if (dist > 200.0f)
+	//{
+	//	std::cout << "Distance to destination " << playerName << " is: " << dist <<  std::endl;
+	//	//setPosition(newPos);
+	//	//getBody()->SetTransform(b2Vec2(newPos.x, newPos.y), getBody()->GetAngle());
+	//	getPosition();
+	//}
+	//if (dist > 1000.0f)
+	//{
+	//	if (newPos.x > pos.x)
+	//		getBody()->ApplyForceToCenter(b2Vec2(+lerp_x, 0.0f), true);
+	//	if (newPos.x < pos.x)
+	//		getBody()->ApplyForceToCenter(b2Vec2(-lerp_x, 0.0f), true);
+	//	if (newPos.y > pos.y)
+	//		getBody()->ApplyForceToCenter(b2Vec2(0.0f, +lerp_y), true);
+	//	if (newPos.y < pos.y)
+	//		getBody()->ApplyForceToCenter(b2Vec2(0.0f, -lerp_y), true);
+	//}
 }
 
 void Player::RenderPlayer(GL_Renderer& renderer, Camera& camera)
@@ -581,12 +601,16 @@ void Player::collidedWith(CollisionIdentifier& objectIdentity)
 	}
 }
 
+void Player::Update()
+{
+}
+
 Player Player::LoadFromJson(json playerData)
 {
 	// Player movement
 	Player ExistingPlayer;
-	int x = playerData.at("X").get<int>();
-	int y = playerData.at("Y").get<int>();
+	int x = playerData.at("X").get<float>();
+	int y = playerData.at("Y").get<float>();
 	int rotation = playerData.at("rotation").get<int>();
 	std::string name = playerData.at("name").get<std::string>();
 	bool isMoving = playerData.at("isMoving").get<bool>();

@@ -42,7 +42,7 @@ public:
 	bool GetNumPlayers = false;
 
 	//! How frequent the client will update player positions
-	int networkPlayerUpdateInterval = 1000;
+	int networkPlayerUpdateInterval = 100;
 	//! How frequent the client will update the map from server
 	int networkMapUpdateInterval = 1000;
 

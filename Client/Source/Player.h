@@ -20,7 +20,7 @@ public:
 	void renderCharacterBody(GL_Renderer& renderer, int index, bool flipSprite);
 	//! Move the player to the position
 	void Move(Player::MovementDirection direction);
-	void Move(glm::vec2 direction);
+	virtual void Move(glm::vec2 position);
 
 	void AssignSprites(GL_Renderer& renderer, int index, bool flip);
 	json getPlayerJson();
@@ -36,7 +36,7 @@ public:
 	//Gives an object the player collided with 
 	void collidedWith(CollisionIdentifier& objectIdentity);
 
-
+	virtual void Update();
 
 	Animation getWalkAnimation() { return walkHorizontalAnimation; }
 	// Get and set body colours

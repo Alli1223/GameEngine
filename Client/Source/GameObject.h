@@ -22,10 +22,13 @@ public:
 	float setX(float newX) { return position.x = newX; }
 	float setY(float newY) { return position.y = newY; }
 
+	float GetDistance(vec2 pointA, vec2 pointB);
+	//float lerpDistance(vec2 position);
+
 	//! Set the position of the object
 	glm::vec2 setPosition(float newX, float newY) { return { position.x = newX, position.y = newY }; }
 	glm::vec2 setPosition(glm::vec2 newPosition) { return position = newPosition; }
-	glm::vec2 getPosition() { return position; }
+	glm::vec2 getPosition();
 	//! Getters and setters for velocity
 	float getSpeed() { return speed; }
 	float setSpeed(float newSpeed) { return speed = newSpeed; }
