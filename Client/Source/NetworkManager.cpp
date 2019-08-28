@@ -206,6 +206,7 @@ void NetworkManager::ProcessPlayerLocations(World & world, Player & player)
 					otherPlayerNames.push_back(name);
 					NetworkPlayer newPlayer;
 					newPlayer.setSize({ 100,100 });
+					newPlayer.setPosition({ player.at("X").get<float>(), player.at("Y").get<float>() });
 					newPlayer.playerName = name;
 					newPlayer.InitPhysics(world.I_Physics.get(), newPlayer.colisionIdentity, b2BodyType::b2_dynamicBody, 1.0f, 0.3f);
 					allPlayers->push_back(newPlayer);

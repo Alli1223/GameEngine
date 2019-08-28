@@ -22,24 +22,14 @@ void NetworkPlayer::Update()
 
 	lerp_x = 10.0f;
 	lerp_y = 10.0f;
-	if (dist > 200.0f)
-	{
-		std::cout << "Distance to destination " << playerName << " is: " << dist << std::endl;
-		//setPosition(newPos);
-		//getBody()->SetTransform(b2Vec2(newPos.x, newPos.y), getBody()->GetAngle());
-		getPosition();
-	}
-	//if (dist > 1000.0f)
-	{
-		if (lastKnownPos.x > pos.x + 50.0f)
-			getBody()->ApplyForceToCenter(b2Vec2(+lerp_x, 0.0f), true);
-		if (lastKnownPos.x < pos.x - 50.0f)
-			getBody()->ApplyForceToCenter(b2Vec2(-lerp_x, 0.0f), true);
-		if (lastKnownPos.y > pos.y + 50.0f)
-			getBody()->ApplyForceToCenter(b2Vec2(0.0f, +lerp_y), true);
-		if (lastKnownPos.y < pos.y - 50.0f)
-			getBody()->ApplyForceToCenter(b2Vec2(0.0f, -lerp_y), true);
-	}
+	if (lastKnownPos.x > pos.x + 11.0f)
+		getBody()->ApplyForceToCenter(b2Vec2(+lerp_x, 0.0f), true);
+	if (lastKnownPos.x < pos.x - 11.0f)
+		getBody()->ApplyForceToCenter(b2Vec2(-lerp_x, 0.0f), true);
+	if (lastKnownPos.y > pos.y + 11.0f)
+		getBody()->ApplyForceToCenter(b2Vec2(0.0f, +lerp_y), true);
+	if (lastKnownPos.y < pos.y - 11.0f)
+		getBody()->ApplyForceToCenter(b2Vec2(0.0f, -lerp_y), true);
 }
 
 void NetworkPlayer::Move(glm::vec2 newPos)
