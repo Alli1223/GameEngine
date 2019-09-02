@@ -12,6 +12,8 @@ public:
 
 	// Create the chunk from a position
 	Chunk::Chunk(b2World* physicsWorld, int initX, int initY);
+
+	json GetJson();
 	//! get the chunk size
 	int getChunkSize() { return chunkSize; }
 	//! TList of lists of cells

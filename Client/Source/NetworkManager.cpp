@@ -109,7 +109,7 @@ void NetworkManager::NetworkUpdate(World& world, std::vector<NetworkPlayer>& pla
 	{
 		runMapNetworkTick = false;
 		//Process the map data
-		//MapNetworkUpdate(level);
+		MapNetworkUpdate(world);
 	}
 }
 
@@ -212,66 +212,6 @@ void NetworkManager::ProcessPlayerLocations(World & world, Player & player)
 					allPlayers->push_back(newPlayer);
 				}
 			}
-			/*
-			if (name != localPlayerName && PlayerExists(otherPlayerNames, name))
-			{
-
-			}
-			// Player movement
-			float x = element.at("X").get<float>();
-			float y = element.at("Y").get<float>();
-			int rotation = element.at("rotation").get<int>();
-			
-			bool isMoving = element.at("isMoving").get<bool>();
-
-			// Player clothes
-			int headWear = element.at("headWear").get<int>();
-			int bodyWear = element.at("bodyWear").get<int>();
-			int legWear = element.at("legWear").get<int>();
-
-			// Hair and eye colour
-			json hairColour = element.at("hairColour");
-			json eyeColour = element.at("eyeColour");
-			int hr = hairColour.at("r").get<int>();
-			int hg = hairColour.at("g").get<int>();
-			int hb = hairColour.at("b").get<int>();
-			int er = eyeColour.at("r").get<int>();
-			int eg = eyeColour.at("g").get<int>();
-			int eb = eyeColour.at("b").get<int>();
-
-			json bodyColour = element.at("bodyColour");
-			int br = bodyColour.at("r").get<int>();
-			int bg = bodyColour.at("g").get<int>();
-			int bb = bodyColour.at("b").get<int>();
-			json legsColour = element.at("legColour");
-			int lr = legsColour.at("r").get<int>();
-			int lg = legsColour.at("g").get<int>();
-			int lb = legsColour.at("b").get<int>();
-
-			// IF player exists update deets
-			if (PlayerExists(otherPlayerNames, name))
-			{
-				//Get players array number
-				int val = 0;// getPlayer(name);
-				val =
-				allPlayers->at(val).setEyeColour(er, eg, eb);
-				allPlayers->at(val).setHairColour(hr, hg, hb);
-				allPlayers->at(val).setJacketColour(br, bg, bb);
-				allPlayers->at(val).setJeansColour(lr, lg, lb);
-				allPlayers->at(val).PlayerClothes.hat = (Player::Clothing::HeadWear)headWear;
-				allPlayers->at(val).PlayerClothes.body = (Player::Clothing::BodyWear)bodyWear;
-				allPlayers->at(val).PlayerClothes.leg = (Player::Clothing::LegWear)legWear;
-				allPlayers->at(val).setPlayerMoving(isMoving);
-				//allPlayers[val]->setX(x);
-				//allPlayers[val]->setY(y);
-				allPlayers->at(val).Move({ x,y });
-				allPlayers->at(val).setTargetRotation(rotation);
-			}
-			*/
-			//Create a new player
-
-				
-			
 		}
 	}
 	catch (std::exception e)
@@ -284,7 +224,7 @@ void NetworkManager::ProcessPlayerLocations(World & world, Player & player)
 
 //! Process map network update
 //Make sure the network send name is the same as the recieve
-void NetworkManager::MapNetworkUpdate(Level & level)
+void NetworkManager::MapNetworkUpdate(World& world)
 {
 	sendTCPMessage("[RequestMapUpdate]\n");
 	//! What an empty map looks like
@@ -312,6 +252,7 @@ void NetworkManager::MapNetworkUpdate(Level & level)
 				Cell newCell;
 				//newCell = level.GetCellFromJson(element);
 				//level.SetCell(newCell.getX(), newCell.getY(), newCell);
+				//world.InfiniWorld.
 				cellsUpdated++;
 			}
 			std::cout << "Cells Updated: " << cellsUpdated << std::endl;

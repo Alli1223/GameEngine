@@ -178,7 +178,7 @@ Cell::~Cell(){
 }
 
 // Get the cell data from 
-json Cell::getCellData()
+json Cell::GetJson()
 {	
 	json cellData;
 	cellData["X"] = x;

@@ -101,6 +101,12 @@ void GameObject::Render(GL_Renderer &renderer)
 	renderer.RenderSpriteLighting(this->Sprite, this->NormalMap, this->position, this->size, this->rotation,this->transparency,this->renderLayer, this->colour, flipSprite);
 }
 
+json GameObject::GetJson()
+{
+	json empty;
+	return empty;
+}
+
 float GameObject::GetDistance(vec2 pointA, vec2 pointB)
 {
 	float dx = pointA.x - pointA.y;

@@ -176,7 +176,6 @@ void MainGame::run()
 
 	ProceduralTerrain pt;
 	//pt.populateTerrain(level);
-	//level = gameSettings.loadGameFromSave("Resources\\Map\\Testing_Map.json");
 
 	// Projection matrix
 	glRenderer.SetProjectionMatrix();

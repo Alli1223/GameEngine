@@ -24,7 +24,7 @@ public:
 	//! Process the players location from json
 	void ProcessPlayerLocations(World& world, Player& player);
 	//! Process cell data
-	void MapNetworkUpdate(Level& level);
+	void MapNetworkUpdate(World& level);
 	//! Return a string from recieve message
 	std::string RecieveMessage();
 	

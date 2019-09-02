@@ -147,9 +147,7 @@ void World::Render(GL_Renderer& renderer)
 
 
 
-	// If player is in the open world
-
-		// Chunk / Cells
+	// Render the world
 	for (int x = ((renderer.camera.getX() / InfiniWorld.getCellSize()) / InfiniWorld.getChunkSize()) - 1;
 		x < ((renderer.camera.getX() / InfiniWorld.getCellSize()) / InfiniWorld.getChunkSize()) + renderer.camera.ChunksOnScreen.x; x++)
 		for (int y = (renderer.camera.getY() / InfiniWorld.getCellSize()) / InfiniWorld.getChunkSize() - 1;

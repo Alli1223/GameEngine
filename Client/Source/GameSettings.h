@@ -24,8 +24,8 @@ public:
 	
 
 	//! Whether the game will save the game when it closes
-	bool saveLevelOnExit = false;
-	bool savePlayerOnExit = false;
+	bool saveLevelOnExit = true;
+	bool savePlayerOnExit = true;
 
 	bool restartGame = false;
 	//! Get screen resolution

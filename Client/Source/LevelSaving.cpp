@@ -61,7 +61,7 @@ void LevelSaving::SaveLevel(World& world)
 			json tiles;
 			for (int x = 0; x < world.InfiniWorld.MainLevel[pos].tiles.size(); x++)
 				for (int y = 0; y < world.InfiniWorld.MainLevel[pos].tiles[0].size(); y++)
-					tiles.push_back(world.InfiniWorld.MainLevel[pos].tiles[x][y]->getCellData());
+					tiles.push_back(world.InfiniWorld.MainLevel[pos].tiles[x][y]->GetJson());
 
 			chunk["Pos"] = std::to_string(pos.first) + "_" + std::to_string(pos.second);
 			chunk["Tiles"] = tiles;

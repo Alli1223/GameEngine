@@ -15,6 +15,9 @@ public:
 	//! Draw sprite
 	virtual void Render(GL_Renderer &renderer);
 
+	//! Override Get Json Data
+	virtual json GetJson();
+
 	//! Getters and setters for positions
 	float getX() { return position.x; }
 	float getY() { return position.y; }

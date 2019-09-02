@@ -52,6 +52,24 @@ Chunk::Chunk(b2World* physicsWorld, int initX, int initY)
 	}
 }
 
+json Chunk::GetJson()
+{
+
+	json chunk;
+	chunk["ChunkX"] = x;
+	chunk["ChunkY"] = y;
+	
+	json cells;
+	for (int x = 0; x < tiles.size(); x++)
+		for (int y = 0; y < tiles[x].size(); y++)
+		{
+			cells.push_back(tiles[x][y]->GetJson());
+		}
+	chunk["Data"] = cells;
+
+	return chunk;
+}
+
 void Chunk::Render(GL_Renderer& renderer)
 {
 	for (int x = 0; x < tiles.size(); x++)

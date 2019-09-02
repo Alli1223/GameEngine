@@ -113,7 +113,7 @@ public:
 	~Cell();
 	void Clear();
 	//! Gets the cells data and returns it in json format
-	json getCellData();
+	json GetJson();
 	//! Assign the cells type
 	void AssignType(std::string type, bool Istype);
 	void AssignType(int layer, std::string type);
