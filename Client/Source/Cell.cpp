@@ -44,6 +44,7 @@ void Cell::AssignType(std::string type, bool isType)
 void Cell::AssignType(int layer, std::string type)
 {
 	CellAssignment::AssignCell(*this, type, layer);
+
 	//if (!isWalkable)
 	//	InitPhysics(physicsptr, b2BodyType::b2_staticBody, 0.0f, 0.0f);
 }

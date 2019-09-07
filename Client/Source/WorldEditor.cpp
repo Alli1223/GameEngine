@@ -116,9 +116,15 @@ void WorldEditor::Render(GL_Renderer& renderer, World& world, Player& player)
 						if (placementArea > 1)
 							for (int xp = -placementArea; xp < placementArea; xp++)
 								for (int yp = -placementArea; yp < placementArea; yp++)
+								{
 									world.GetCell(mX + xp, mY + yp)->AssignType(0, cellNames[selected]);
+									world.updatedCells.push_back(world.GetCell(mX * xp, mY * yp));
+								}
 						else
+						{
 							world.GetCell(mX, mY)->AssignType(1, cellNames[selected]);
+							world.updatedCells.push_back(world.GetCell(mX, mY));
+						}
 					}
 				}
 				if (SDL_GetMouseState(&X, &Y) & SDL_BUTTON(SDL_BUTTON_MIDDLE))
@@ -133,9 +139,15 @@ void WorldEditor::Render(GL_Renderer& renderer, World& world, Player& player)
 						if (placementArea > 1)
 							for (int xp = 0; xp < placementArea; xp++)
 								for (int yp = 0; yp < placementArea; yp++)
+								{
 									world.GetCell(mX * xp, mY * yp)->AssignType(1, cellNames[selected]);
+									world.updatedCells.push_back(world.GetCell(mX * xp, mY * yp));
+								}
 						else
+						{
 							world.GetCell(mX, mY)->AssignType(1, cellNames[selected]);
+							world.updatedCells.push_back(world.GetCell(mX, mY));
+						}
 					}
 				}
 			}

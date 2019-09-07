@@ -39,22 +39,6 @@ std::shared_ptr<Cell>& World::GetCell(float X, float Y)
 		cellX = cellX - (chunkX * chunkSize);
 	if (cellY > chunkSize)
 		cellY = cellY - (chunkY * chunkSize);
-
-	//if (cellX == -1)
-	//{
-	//	cellX = 7; // chunksize
-	//	chunkX = -1;
-	//}
-	//if (cellY == -1)
-	//{
-	//	cellX = chunkSize - 1;
-	//	chunkY = -1;
-	//}
-
-	//if (cellX < 0)
-	//	cellX--;
-	//if (cellY < 0)
-	//	cellY--;
 	
 	// If the cell is negative then offset the position by chunksize
 	if (X < 0.0f)
@@ -84,6 +68,7 @@ std::shared_ptr<Cell>& World::GetCell(float X, float Y)
 		else
 			return InfiniWorld.MainLevel[{ chunkX, chunkY }].tiles[cellX][cellY];
 	}
+	
 }
 
 

@@ -29,6 +29,7 @@ void InfiniteWorld::CreateInfiniWorld(GL_Renderer& renderer, b2World* physicsWor
 		{
 			if (!MainLevel[{i, j}].tiles.size() > 0)
 			{
+				
 				Chunk chunk(physicsWorld, i, j);
 				chunkSize = chunk.getChunkSize();
 				

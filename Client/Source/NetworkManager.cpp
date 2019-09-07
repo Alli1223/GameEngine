@@ -105,7 +105,7 @@ void NetworkManager::NetworkUpdate(World& world, std::vector<NetworkPlayer>& pla
 		ProcessPlayerLocations(world, player);
 	}
 
-	if (runMapNetworkTick)
+	if (runMapNetworkTick || world.updatedCells.size() > 0)
 	{
 		runMapNetworkTick = false;
 		//Process the map data
@@ -226,6 +226,22 @@ void NetworkManager::ProcessPlayerLocations(World & world, Player & player)
 //Make sure the network send name is the same as the recieve
 void NetworkManager::MapNetworkUpdate(World& world)
 {
+	// IF there are cells to update
+	if (world.updatedCells.size() > 0)
+	{
+		json cellsData;
+		json updatedCellsarray;
+		for (int i = 0; i < world.updatedCells.size(); i++)
+		{
+			json cellData = world.updatedCells[i]->GetJson();
+			updatedCellsarray.push_back(cellData);
+		}
+		cellsData["CellDataArray"] = updatedCellsarray;
+
+		sendTCPMessage("[CellData]" + cellsData.dump() + "\n");
+		world.updatedCells.clear();
+	}
+
 	sendTCPMessage("[RequestMapUpdate]\n");
 	//! What an empty map looks like
 	std::string EmptyMap = "{\"MapData\":[]}\r\n";
@@ -249,9 +265,11 @@ void NetworkManager::MapNetworkUpdate(World& world)
 			for (auto& element : mapData)
 			{
 
-				Cell newCell;
+				Cell newCell(world.I_Physics.get(),element);
+				world.GetCell(newCell.getX(), newCell.getY()) = std::make_shared<Cell>(newCell);
 				//newCell = level.GetCellFromJson(element);
 				//level.SetCell(newCell.getX(), newCell.getY(), newCell);
+				//world.GetCell(newce)
 				//world.InfiniWorld.
 				cellsUpdated++;
 			}
@@ -263,7 +281,6 @@ void NetworkManager::MapNetworkUpdate(World& world)
 		}
 	}
 }
-
 
 
 //! Sends a tcp message to the socket
