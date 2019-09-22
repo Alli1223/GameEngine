@@ -91,17 +91,18 @@ void WorldEditor::Render(GL_Renderer& renderer, World& world, Player& player)
 		{
 			int X = 0, Y = 0;
 			SDL_GetMouseState(&X, &Y);
+
 			mX = (X + renderer.camera.getX() + (cellSize / 2)) / cellSize;
 			mY = (Y + renderer.camera.getY() + (cellSize / 2)) / cellSize;
+			
+
 			// If the mouse is ouside of the box
 			if (X > window.getX() - (window.getWidth() / 2) && X < window.getX() + (window.getWidth() / 2) && Y > window.getY() - (window.getHeight() / 2) && Y < window.getY() + (window.getHeight() / 2))
 			{
 
 			}
-			else
+			else // Inside the box
 			{
-
-
 				cellHighlight.setPosition(mX * cellSize, mY * cellSize);
 				cellHighlight.setSize(cellSize, cellSize);
 
@@ -124,6 +125,7 @@ void WorldEditor::Render(GL_Renderer& renderer, World& world, Player& player)
 						{
 							world.GetCell(mX, mY)->AssignType(1, cellNames[selected]);
 							world.updatedCells.push_back(world.GetCell(mX, mY));
+							std::cout << "Updating cell: " << world.GetCell(mX, mY)->getX() << " " << world.GetCell(mX, mY)->getY() << " -- mouse Pos: " << mX << " " << mY << std::endl;
 						}
 					}
 				}

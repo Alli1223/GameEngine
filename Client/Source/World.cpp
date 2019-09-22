@@ -28,12 +28,12 @@ void World::OnExit(Player& player)
 std::shared_ptr<Cell>& World::GetCell(float X, float Y)
 {
 	// Get the chunk
-	int chunkSize = InfiniWorld.getChunkSize();
+	float chunkSize = InfiniWorld.getChunkSize();
 	int chunkX = (X / chunkSize);
 	int chunkY = (Y / chunkSize);
 	// Get the cell pos
-	int cellX = X - chunkX * chunkSize;
-	int cellY = Y - chunkY * chunkSize;
+	int cellX = X - (float)(chunkX * chunkSize);
+	int cellY = Y - (float)(chunkY * chunkSize);
 
 	if (cellX > chunkSize)
 		cellX = cellX - (chunkX * chunkSize);
@@ -66,7 +66,10 @@ std::shared_ptr<Cell>& World::GetCell(float X, float Y)
 		}
 		// Return the tile
 		else
+		{
 			return InfiniWorld.MainLevel[{ chunkX, chunkY }].tiles[cellX][cellY];
+			
+		}
 	}
 	
 }
