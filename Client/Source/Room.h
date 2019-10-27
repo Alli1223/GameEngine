@@ -9,8 +9,10 @@ public:
 	//! Deconstructor
 	~Room();
 
-	virtual void Render(GL_Renderer* renderer);
-	virtual void Update();
+	//! Setup room override
+	void InstanceSetup(Player& player);
+
+	virtual void Render(GL_Renderer& renderer);
 	
 	//! room tiles
 	std::vector<std::vector<std::shared_ptr<Cell>>> tiles;

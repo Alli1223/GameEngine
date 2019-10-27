@@ -17,7 +17,7 @@ public:
 	void MainMenu(GameSettings& gameSettings, World& level, Camera& camera, Player& player, GL_Renderer& renderer);
 
 	//! Run character screen loop
-	void CharacterCustomisationMenu(GameSettings& gameSettings, Camera& camera, Player& player, GL_Renderer& renderer, World& level);
+	//void CharacterCustomisationMenu(GameSettings& gameSettings, Camera& camera, Player& player, GL_Renderer& renderer, World& level);
 
 	// Set mouse pointer size
 	int setCursorSize(int newCursorSize) { return menuCursorSize = newCursorSize; }
@@ -26,11 +26,11 @@ public:
 
 private:
 	//! Change body buttons
-	void changeEarType(Player& player, bool increment);
-	void changeEyeType(Player& player, bool increment);
-	void changeHairType(Player& player, bool increment);
-	void changeTopType(Player& player, bool increment);
-	void changeBottomType(Player& player, bool increment);
+	//void changeEarType(Player& player, bool increment);
+	//void changeEyeType(Player& player, bool increment);
+	//void changeHairType(Player& player, bool increment);
+	//void changeTopType(Player& player, bool increment);
+	//void changeBottomType(Player& player, bool increment);
 	//! To end main menu while loop
 	bool displayMainMenu = true;
 	//! To end character menu while loop
@@ -45,16 +45,10 @@ private:
 	bool showColourSlider = false;
 	bool renderCursor = true;
 
-	ColourSlider bodyColourSlider;
-	ColourSlider eyeColourSlider;
-	ColourSlider hairColourSlider;
-	ColourSlider topColourSlider;
-	ColourSlider bottomColourSlider;
-	//! Stores the menus background texture
-	Texture menuBackground;
-
-
-	//! Cursor texture
-	Texture cursor;
+	//ColourSlider bodyColourSlider;
+	//ColourSlider eyeColourSlider;
+	//ColourSlider hairColourSlider;
+	//ColourSlider topColourSlider;
+	//ColourSlider bottomColourSlider;
 };
 

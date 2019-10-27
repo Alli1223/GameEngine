@@ -13,6 +13,9 @@ public:
 	//! When player enters instance
 	virtual void onEnter(Player& player);
 
+	//! Instance setup
+	virtual void InstanceSetup(Player& player);
+
 	//! When player exits instace
 	virtual void onExit(Player& player);
 

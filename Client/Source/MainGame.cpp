@@ -138,8 +138,8 @@ void MainGame::run()
 	// Create renderer
 	GL_Renderer glRenderer;
 
-	Menu menu;
-	menu.MainMenu(gameSettings, world, glRenderer.camera, world.I_player, glRenderer);
+	//Menu menu;
+	//menu.MainMenu(gameSettings, world, glRenderer.camera, world.I_player, glRenderer);
 
 	// Initilise the world with the physcis stored in glRenderer
 	world.InitiliseWorld(glRenderer);
@@ -208,7 +208,10 @@ void MainGame::run()
 	world.I_player.inventory.add(net.getSharedPointer());
 	world.I_player.inventory.add(scythe.getSharedPointer());
 	
-	world.onEnter(world.I_player);
+	//world.onEnter(world.I_player);
+	Room room;
+
+	room.onEnter(world.I_player);
 	//Shop.onEnter(world.I_player);
 	//Mix_PlayMusic(gMusic, -1);
 
@@ -241,30 +244,23 @@ void MainGame::run()
 		// User input
 		input.HandleUserInput(glRenderer, GameSettings::currentInstance->I_player, gameSettings, UI);
 
-		// Set easy access variables
-		glRenderer.camera.mouse_position = { (float)mouseX, (float)mouseY };
-		glRenderer.playerPosition = world.I_player.getPosition();
-		world.I_player.cellPos = world.I_player.getPosition() / (float)world.InfiniWorld.getCellSize();
-		gameSettings.mouseCellPos.x = mouseX / level.getCellSize() + glRenderer.camera.getX() / level.getCellSize() + 1;
-		gameSettings.mouseCellPos.y = mouseY / level.getCellSize() + glRenderer.camera.getY() / level.getCellSize() + 1;
-
-		// Camera to players position
-		glm::vec2 halfCameraSize = { glRenderer.camera.windowSize.x / 2, glRenderer.camera.windowSize.y / 2 };
-		glRenderer.camera.Lerp_To(world.I_player.getPosition() - halfCameraSize, glRenderer.camera.getCameraSpeed());
 
 
 
-		if (SDL_GetMouseState(NULL, NULL) & SDL_BUTTON(SDL_BUTTON_RIGHT))
-		{
-			std::cout << "Spawning Projectile" << std::endl;
-			float delta_x = gameSettings.WINDOW_WIDTH / 2 - mouseX;
-			float delta_y = gameSettings.WINDOW_HEIGHT / 2 - mouseY;
-			Projectile proj(glRenderer, world.I_Physics.get(), world.I_player.getPosition() + 200.0f, b2Vec2(-delta_x / 10000.0f, -delta_y / 10000.0f));
-			float rotation = atan2(delta_y, delta_x);
-			proj.setRotation(rotation);
-			world.projectiles.push_back(proj);
-			//world.I_playerShop->Shopfloor->onEnter(world.I_player);
-		}
+
+
+
+		//if (SDL_GetMouseState(NULL, NULL) & SDL_BUTTON(SDL_BUTTON_RIGHT))
+		//{
+		//	std::cout << "Spawning Projectile" << std::endl;
+		//	float delta_x = gameSettings.WINDOW_WIDTH / 2 - mouseX;
+		//	float delta_y = gameSettings.WINDOW_HEIGHT / 2 - mouseY;
+		//	Projectile proj(glRenderer, world.I_Physics.get(), world.I_player.getPosition() + 200.0f, b2Vec2(-delta_x / 10000.0f, -delta_y / 10000.0f));
+		//	float rotation = atan2(delta_y, delta_x);
+		//	proj.setRotation(rotation);
+		//	world.projectiles.push_back(proj);
+		//	//world.I_playerShop->Shopfloor->onEnter(world.I_player);
+		//}
 
 		GameSettings::currentInstance->Update();
 		GameSettings::currentInstance->Render(glRenderer);

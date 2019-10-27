@@ -3,6 +3,9 @@
 
 Room::Room()
 {
+	b2Vec2 gravity(0.0f, 0.0f);
+	I_Physics = std::make_unique<b2World>(gravity);
+
 	for (int x = 0; x < roomSize; x++)
 	{
 		std::vector<std::shared_ptr<Cell>> column;
@@ -14,19 +17,6 @@ Room::Room()
 			Cell cell(I_Physics.get(), x, y, "WoodFloor");
 
 			cell.isWalkable = true;
-			auto sharedCell = std::make_shared<Cell>(cell);
-			tiles[x].push_back(sharedCell);
-		}
-	}
-
-	tiles.clear();
-	for (int x = 0; x < roomSize; x++)
-	{
-		std::vector<std::shared_ptr<Cell>> column;
-		tiles.push_back(column);
-		for (int y = 0; y < roomSize; y++)
-		{
-			Cell cell(I_Physics.get(), x, y, "WoodFloor");
 			auto sharedCell = std::make_shared<Cell>(cell);
 			tiles[x].push_back(sharedCell);
 		}
@@ -70,13 +60,31 @@ Room::~Room()
 
 }
 
-void Room::Render(GL_Renderer* renderer)
+
+
+void Room::InstanceSetup(Player& player)
 {
+	player.getBody()->SetTransform({ 1,1 }, 0.0f);
 }
 
-void Room::Update()
+void Room::Render(GL_Renderer& renderer)
 {
+	// Camera to players position
+	glm::vec2 halfCameraSize = { renderer.camera.windowSize.x / 2, renderer.camera.windowSize.y / 2 };
+	renderer.camera.Lerp_To(I_player.getPosition() - halfCameraSize, renderer.camera.getCameraSpeed());
+
+	I_player.Update();
+	I_player.Render(renderer);
+
+	for (int x = 0; x < roomSize; x++)
+	{
+		for (int y = 0; y < roomSize; y++)
+		{
+			tiles[x][y]->Render(renderer);
+		}
+	}
 }
+
 
 
 

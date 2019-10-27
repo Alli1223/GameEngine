@@ -82,7 +82,7 @@ std::shared_ptr<Item> Fish::getSharedPointer()
 ///////////////////////////////////////////////////////////////////////
 WheatSeeds::WheatSeeds()
 {
-	this->Sprite = ResourceManager::GetAtlasTexture("crops", 1);;
+	this->Sprite = ResourceManager::GetAtlasTexture("crops", 1);
 	this->NormalMap = ResourceManager::GetAtlasTexture("crops", 1);
 	this->icon.Background = ResourceManager::GetAtlasTexture("crops", 1);
 }

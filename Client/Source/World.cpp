@@ -79,6 +79,7 @@ std::shared_ptr<Cell>& World::GetCell(float X, float Y)
 
 void World::Render(GL_Renderer& renderer)
 {
+
 	// Buildings
 	for (auto& house : buildings)
 	{

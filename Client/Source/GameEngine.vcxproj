@@ -225,6 +225,7 @@
     <ClInclude Include="Resource.h" />
     <ClInclude Include="ResourceManager.h" />
     <ClInclude Include="Room.h" />
+    <ClInclude Include="RoomDesigner.h" />
     <ClInclude Include="SDL_project.h" />
     <ClInclude Include="Shader.h" />
     <ClInclude Include="ShopCounter.h" />
@@ -314,6 +315,7 @@
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="ResourceManager.cpp" />
     <ClCompile Include="Room.cpp" />
+    <ClCompile Include="RoomDesigner.cpp" />
     <ClCompile Include="SDL_project.cpp" />
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="ShopCounter.cpp" />
