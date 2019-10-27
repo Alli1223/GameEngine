@@ -18,6 +18,12 @@ void GameUI::Render(GL_Renderer& renderer, World& world, Player& player, GameSet
 	characterWindow.init(player);
 	characterWindow.Render(renderer);
 	worldEdit.Render(renderer, world, player);
+
+	if (player.isInBuilding)
+	{
+		roomDesigner.Render(renderer);
+	}
+
 	bool show_demo_window = true;
 
 	// 1. Show the big demo window (Most of the sample code is in ImGui::ShowDemoWindow()! You can browse its code to learn more about Dear ImGui!).

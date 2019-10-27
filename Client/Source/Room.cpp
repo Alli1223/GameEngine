@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "Room.h"
+#include "RoomDesigner.h"
 
 Room::Room()
 {
@@ -64,6 +65,7 @@ Room::~Room()
 
 void Room::InstanceSetup(Player& player)
 {
+	player.isInBuilding = true;
 	player.getBody()->SetTransform({ 1,1 }, 0.0f);
 }
 

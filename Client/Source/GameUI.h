@@ -26,6 +26,9 @@ public:
 
 	GameWindow inventoryWindow;
 
+	//! Room Designer
+	RoomDesigner roomDesigner;
+
 	//Function that renders all the UI elements
 	void Render(GL_Renderer& renderer, World& world, Player& player, GameSettings& gameSettings);
 

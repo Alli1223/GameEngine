@@ -274,7 +274,7 @@ void MainGame::run()
 		glRenderer.RenderAllLayers();
 
 		// Render UI
-		UI.Render(glRenderer, world, world.I_player, gameSettings);
+		UI.Render(glRenderer, world, GameSettings::currentInstance->I_player, gameSettings);
 		
 
 		// END Rendering

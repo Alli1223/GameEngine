@@ -1,6 +1,7 @@
 #pragma once
 #include "Instance.h"
 #include "Cell.h"
+#include "RoomDesigner.h"
 class Room : public Instance
 {
 public:

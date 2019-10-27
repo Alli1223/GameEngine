@@ -77,7 +77,6 @@ void UserInput::HandleUserInput(GL_Renderer& renderer, Player& player, GameSetti
 	// Set the players speed
 	float deltaTime = gameSettings.deltaTime;
 	player.setVelocity(player.getSpeed() * deltaTime, player.getSpeed() * deltaTime);
-	std::cout << player.getBody()->GetTransform().p.x << std::endl;
 
 
 
