@@ -2,6 +2,7 @@
 #include "Instance.h"
 #include "Cell.h"
 #include "RoomDesigner.h"
+#include "Wall.h"
 class Room : public Instance
 {
 public:
@@ -27,7 +28,7 @@ private:
 
 
 	int roomSize = 20;
-	int tileSize = 50;
+	int tileSize = 100;
 	
 };
 

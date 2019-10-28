@@ -19,7 +19,7 @@ void Room::InstanceSetup(Player& player)
 {
 	player.isInBuilding = true;
 	player.getBody()->SetTransform({ 1,1 }, 0.0f);
-
+	
 
 	for (int x = 0; x < roomSize; x++)
 	{
@@ -30,7 +30,9 @@ void Room::InstanceSetup(Player& player)
 		{
 			// Populates the column with pointers to cells
 			Cell cell(I_Physics.get(), x, y, "WoodFloor");
-
+			cell.setSize({ tileSize, tileSize });
+			cell.setCellSize(tileSize);
+			cell.setPosition(x * tileSize, y * tileSize);
 			cell.isWalkable = true;
 			auto sharedCell = std::make_shared<Cell>(cell);
 			tiles[x].push_back(sharedCell);
@@ -48,9 +50,11 @@ void Room::InstanceSetup(Player& player)
 			// Create walls
 			if (x == 0 || y == 0 || x == tiles.size() - 1 || y == tiles[x].size() - 1)
 			{
-				tiles[x][y]->isWalkable = false;
-				tiles[x][y]->Sprite = ResourceManager::GetAtlasTexture("roguelike", 300);
-				tiles[x][y]->NormalMap = ResourceManager::GetAtlasTexture("roguelike_normal", 300);
+				Wall wall;
+				tiles[x][y]->CellItem = wall.getSharedPointer();
+				//tiles[x][y]->isWalkable = false;
+				//tiles[x][y]->Sprite = ResourceManager::GetAtlasTexture("roguelike", 300);
+				//tiles[x][y]->NormalMap = ResourceManager::GetAtlasTexture("roguelike_normal", 300);
 				// Door
 				if (x == (tiles.size() - 1) / 2 && y == tiles[x].size() - 1)
 				{

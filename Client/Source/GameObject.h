@@ -64,6 +64,8 @@ public:
 	Texture2D Sprite;
 	Texture2D NormalMap;
 
+	//! What layer the object gets rendererd
+	//* 1: Ground3 is player level *//
 	int renderLayer = 0;
 	bool RenderAbovePlayer = false;
 

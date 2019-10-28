@@ -4,6 +4,7 @@
 #include "Animation.h"
 #include "LightSource.h"
 #include "CropSquare.h"
+#include "Furniture.h"
 class CellAssignment; // Define CellAssignment as forward decoration
 
 struct Vegetation : public GameObject
@@ -108,12 +109,16 @@ public:
 	Cell(b2World* physicsWorld, int x, int y, std::string type);
 	Cell(b2World* physicsWorld, json cellData);
 
-	//std::shared_ptr<Cell>& getPointer();
 	//! A destructor 
 	~Cell();
 	void Clear();
+
+	//! Item that is in the cell
+	std::shared_ptr<Item> CellItem = nullptr;
+
 	//! Gets the cells data and returns it in json format
 	json GetJson();
+
 	//! Assign the cells type
 	void AssignType(std::string type, bool Istype);
 	void AssignType(int layer, std::string type);
@@ -198,7 +203,7 @@ public:
 	std::shared_ptr<LightSource> light;
 
 	int getCellSize() { return cellSize; }
-
+	int setCellSize(int newSize) { return cellSize = newSize; }
 	//! used to save where the tile is within the chunk
 	glm::ivec2 tilePos;
 

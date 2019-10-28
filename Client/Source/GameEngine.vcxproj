@@ -253,6 +253,7 @@
     <ClInclude Include="ToolBar.h" />
     <ClInclude Include="UserInput.h" />
     <ClInclude Include="Villager.h" />
+    <ClInclude Include="Wall.h" />
     <ClInclude Include="World.h" />
     <ClInclude Include="WorldEditor.h" />
   </ItemGroup>
@@ -362,6 +363,7 @@
     <ClCompile Include="ToolBar.cpp" />
     <ClCompile Include="UserInput.cpp" />
     <ClCompile Include="Villager.cpp" />
+    <ClCompile Include="Wall.cpp" />
     <ClCompile Include="World.cpp" />
     <ClCompile Include="WorldEditor.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>

@@ -9,5 +9,12 @@ public:
 	Door::~Door();
 
 	void Render(GL_Renderer& renderer);
+
+	int test();
+
+private:
+	std::string  itemName = "Door";
+	std::string  itemDescription = "UnspecifiedItem";
+	int maximumStackSize = 5;
 };
 

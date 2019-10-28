@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "RoomDesigner.h"
-
+#include "GameSettings.h"
 RoomDesigner::RoomDesigner() 
 {
 	GUI.ToggleButton.setPosition({ 0,0 });
@@ -15,13 +15,14 @@ RoomDesigner::~RoomDesigner()
 void RoomResigerGUI::CreateButtons()
 {
 
-	for (int i = 0; i < 10; i++)
-	{
-		Button newButton;
-		Door door;
-		newButton.buttonItem.push_back(door.getSharedPointer());
-		buttons.push_back(newButton);
-	}
+	highlight.Sprite = ResourceManager::LoadTexture("Resources\\Sprites\\GUI\\LuminanceSlider.png");
+	highlight.transparency = 0.5f;
+	highlight.renderLayer = 4;
+
+	Button newButton;
+	Door door;
+	newButton.buttonItem.push_back(door.getSharedPointer());
+	buttons.push_back(newButton);
 	int x = getPosition().x;
 	int y = getPosition().y;
 	for (int i = 0; i < buttons.size(); i++)
@@ -37,7 +38,6 @@ void RoomResigerGUI::CreateButtons()
 	}
 
 	updateButttons = false;
-
 }
 
 
@@ -69,5 +69,26 @@ void RoomDesigner::Render(GL_Renderer& renderer)
 		}
 	}
 
+	if (selectedItem != nullptr)
+	{
+		//(Door)selectedItem->tes
+
+		std::shared_ptr<Door> FurnitureItem = std::dynamic_pointer_cast<Door>(selectedItem);
+		GameSettings
+		int cellSize = 50;
+		if(roomInstance != nullptr)
+			cellSize = roomInstance->getTileSize();
+		int X = 0, Y = 0;
+		SDL_GetMouseState(&X, &Y);
+		int mX = (X + renderer.camera.getX() + (cellSize / 2)) / cellSize;
+		int mY = (Y + renderer.camera.getY() + (cellSize / 2)) / cellSize;
+
+		GUI.highlight.setPosition(mX * cellSize, mY * cellSize);
+		GUI.highlight.setSize(cellSize, cellSize);
+
+		GUI.highlight.Render(renderer);
+		//FurnitureItem->R
+		
+	}
 }
 

@@ -1,6 +1,10 @@
 #pragma once
 #include "Item.h"
 //Inherits this: ShopDisplayShelf.h,ShopDisplayShelf.cpp
+#include "Cell.h"
+
+// forward decloration
+class Cell;
 
 class Furniture : public Item
 {
@@ -24,6 +28,9 @@ public:
 	virtual int getMaximumStackSize() { return maximumStackSize; }
 	virtual int getStack() { return stack; }
 	virtual int setStack(int newStack) { return stack = newStack; }
+
+	void Place(Cell& cell);
+
 
 private:
 	//! Item name

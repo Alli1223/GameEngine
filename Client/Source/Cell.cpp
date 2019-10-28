@@ -86,6 +86,8 @@ void Cell::Render(GL_Renderer& renderer)
 	if (hasPhysics && getBody() != nullptr)
 		this->setPosition(getBody()->GetPosition().x *  physicsScaleUp, getBody()->GetPosition().y  * physicsScaleUp);// Set sprite position from scaled down plysics
 	
+	if (CellItem != nullptr)
+		CellItem->Render(renderer);
 	
 	if (isWater)
 	{
@@ -118,9 +120,6 @@ void Cell::Render(GL_Renderer& renderer)
 	{
 		this->cropSquare->Render(renderer);
 	}
-	//renderer.RenderText(std::to_string(x) + ", " + std::to_string(y), this->getPosition() - renderer.camera.getPosition(), this->getSize() / 2.0f, { 0.2f, 0.2f }, { 100,100,100 });
-	
-	//renderer.renderLater.push_back(*this);
 }
 
 // Create with json data
