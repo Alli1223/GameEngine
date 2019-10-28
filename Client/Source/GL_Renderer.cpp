@@ -437,6 +437,7 @@ void GL_Renderer::RenderAllLayers()
 
 void GL_Renderer::RenderSpriteLighting(Texture2D &texture, Texture2D &normals, glm::vec2& position, glm::vec2& size, GLfloat rotate, GLfloat transparency, int renderLayer, glm::vec3& color, std::pair<bool, bool> flipSprite)
 {
+	// If on same layer as player determine whether to render player on top or below object
 	if (renderLayer == 3)
 	{
 		if (playerPosition.y < position.y)

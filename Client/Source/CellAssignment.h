@@ -50,7 +50,6 @@ void CellAssignment::AssignCell(Cell& cell, std::string& type, int layer)
 	cell.cellTextureLayer[layer] = type;
 	cell.isWater = false;
 	cell.isGrass = false;
-
 	if (type.compare(0, 12, "Weather_Grass") == 0)
 	{
 

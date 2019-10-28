@@ -250,6 +250,7 @@
     <ClCompile Include="Room.cpp" />
     <ClCompile Include="ShopFoor.cpp" />
     <ClCompile Include="RoomDesigner.cpp" />
+    <ClCompile Include="Door.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cell.h">
@@ -519,6 +520,7 @@
     <ClInclude Include="Room.h" />
     <ClInclude Include="ShopFoor.h" />
     <ClInclude Include="RoomDesigner.h" />
+    <ClInclude Include="Door.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="SDL_project.rc" />

@@ -6,6 +6,20 @@ Room::Room()
 {
 	b2Vec2 gravity(0.0f, 0.0f);
 	I_Physics = std::make_unique<b2World>(gravity);
+};
+
+
+
+Room::~Room()
+{
+}
+
+
+void Room::InstanceSetup(Player& player)
+{
+	player.isInBuilding = true;
+	player.getBody()->SetTransform({ 1,1 }, 0.0f);
+
 
 	for (int x = 0; x < roomSize; x++)
 	{
@@ -54,19 +68,6 @@ Room::Room()
 				}
 			}
 		}
-};
-
-Room::~Room()
-{
-
-}
-
-
-
-void Room::InstanceSetup(Player& player)
-{
-	player.isInBuilding = true;
-	player.getBody()->SetTransform({ 1,1 }, 0.0f);
 }
 
 void Room::Render(GL_Renderer& renderer)
