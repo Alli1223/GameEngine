@@ -16,10 +16,7 @@ Door::~Door()
 
 void Door::Render(GL_Renderer& renderer)
 {
+	renderLayer = 3;
 	renderer.RenderSpriteLighting(this->Sprite, this->NormalMap, this->position, this->size, this->rotation, this->transparency, this->renderLayer, this->colour, flipSprite);
 }
 
-int Door::test()
-{
-	return 1337;
-}

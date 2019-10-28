@@ -17,6 +17,7 @@ struct RoomResigerGUI : public GUI
 	bool toggleButton = true;
 	Button ToggleButton;
 	Cell highlight;
+	int cellSize = 100;
 };
 class RoomDesigner 
 {
@@ -26,13 +27,15 @@ public:
 	//! Destroctor
 	~RoomDesigner();
 
-	std::shared_ptr<Room> roomInstance = nullptr;
+	Room* room = nullptr;
 
 	void Render(GL_Renderer& renderer);
 
 	std::shared_ptr<Item> selectedItem = nullptr;
 
 	RoomResigerGUI GUI;
+
+
 
 
 };

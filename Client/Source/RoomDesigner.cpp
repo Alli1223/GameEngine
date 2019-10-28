@@ -14,6 +14,7 @@ RoomDesigner::~RoomDesigner()
 }
 void RoomResigerGUI::CreateButtons()
 {
+	
 
 	highlight.Sprite = ResourceManager::LoadTexture("Resources\\Sprites\\GUI\\LuminanceSlider.png");
 	highlight.transparency = 0.5f;
@@ -23,6 +24,8 @@ void RoomResigerGUI::CreateButtons()
 	Door door;
 	newButton.buttonItem.push_back(door.getSharedPointer());
 	buttons.push_back(newButton);
+
+
 	int x = getPosition().x;
 	int y = getPosition().y;
 	for (int i = 0; i < buttons.size(); i++)
@@ -44,7 +47,11 @@ void RoomResigerGUI::CreateButtons()
 void RoomDesigner::Render(GL_Renderer& renderer)
 {
 	if (GUI.updateButttons)
+	{
 		GUI.CreateButtons();
+		room = (Room*)(GameSettings::currentInstance);
+		GUI.cellSize = room->getTileSize();
+	}
 	GUI.ToggleButton.Render(renderer);
 	if (GUI.ToggleButton.isPressed())
 	{
@@ -71,24 +78,26 @@ void RoomDesigner::Render(GL_Renderer& renderer)
 
 	if (selectedItem != nullptr)
 	{
-		//(Door)selectedItem->tes
-
 		std::shared_ptr<Door> FurnitureItem = std::dynamic_pointer_cast<Door>(selectedItem);
-		GameSettings
-		int cellSize = 50;
-		if(roomInstance != nullptr)
-			cellSize = roomInstance->getTileSize();
+
+		if(room != nullptr)
+			GUI.cellSize = room->getTileSize();
 		int X = 0, Y = 0;
 		SDL_GetMouseState(&X, &Y);
-		int mX = (X + renderer.camera.getX() + (cellSize / 2)) / cellSize;
-		int mY = (Y + renderer.camera.getY() + (cellSize / 2)) / cellSize;
+		int mX = (X + renderer.camera.getX() + (GUI.cellSize / 2)) / GUI.cellSize;
+		int mY = (Y + renderer.camera.getY() + (GUI.cellSize / 2)) / GUI.cellSize;
 
-		GUI.highlight.setPosition(mX * cellSize, mY * cellSize);
-		GUI.highlight.setSize(cellSize, cellSize);
-
+		GUI.highlight.setPosition(mX * GUI.cellSize, mY * GUI.cellSize);
+		GUI.highlight.setSize(GUI.cellSize, GUI.cellSize);
 		GUI.highlight.Render(renderer);
-		//FurnitureItem->R
-		
+
+		if (SDL_GetMouseState(&X, &Y) & SDL_BUTTON(SDL_BUTTON_LEFT))
+		{
+			room->SetCellItem(mX, mY, selectedItem);
+			//room->tiles[mX][mY]->CellItem = selectedItem;
+			selectedItem = nullptr;
+
+		}
 	}
 }
 

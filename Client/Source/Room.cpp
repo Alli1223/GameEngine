@@ -92,6 +92,27 @@ void Room::Render(GL_Renderer& renderer)
 	}
 }
 
+std::shared_ptr<Cell>& Room::GetCell(int x, int y)
+{
+	if (x > 0 && y > 0 && x < tiles.size() && y < tiles[0].size())
+	{
+		return tiles[x][y];
+	}
+}
+
+void Room::SetCellItem(int x, int y, std::shared_ptr<Item> item)
+{
+	if (x > 0 && y > 0 && x < tiles.size() && y < tiles[0].size())
+	{
+		item->setPosition(tiles[x][y]->getPosition());
+		item->setSize(tiles[x][y]->getSize());
+		item->renderLayer = 2;
+		tiles[x][y]->CellItem = item;
+	}
+}
+
+
+
 
 
 

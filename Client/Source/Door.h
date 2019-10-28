@@ -10,11 +10,9 @@ public:
 
 	void Render(GL_Renderer& renderer);
 
-	int test();
-
 private:
 	std::string  itemName = "Door";
-	std::string  itemDescription = "UnspecifiedItem";
+	std::string  itemDescription = "Door";
 	int maximumStackSize = 5;
 };
 

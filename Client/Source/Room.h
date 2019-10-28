@@ -15,6 +15,9 @@ public:
 	void InstanceSetup(Player& player);
 
 	virtual void Render(GL_Renderer& renderer);
+
+	std::shared_ptr<Cell>& GetCell(int x, int y);
+	void SetCellItem(int x, int y, std::shared_ptr<Item> item);
 	
 	//! room tiles
 	std::vector<std::vector<std::shared_ptr<Cell>>> tiles;
