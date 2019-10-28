@@ -29,7 +29,6 @@ public:
 	virtual int getStack() { return stack; }
 	virtual int setStack(int newStack) { return stack = newStack; }
 
-	void Place(Cell& cell);
 
 
 private:

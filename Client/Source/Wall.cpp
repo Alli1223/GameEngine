@@ -8,6 +8,7 @@ Wall::Wall()
 
 	std::string directory = IconSpriteDirectory + "ShopDisplayShelf.png";
 	this->icon.Background = ResourceManager::LoadTexture(directory.c_str());
+	renderLayer = 1;
 }
 
 Wall::~Wall()

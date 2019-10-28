@@ -17,7 +17,10 @@ public:
 	virtual void Render(GL_Renderer& renderer);
 
 	std::shared_ptr<Cell>& GetCell(int x, int y);
+	//Create item on the cell
 	void SetCellItem(int x, int y, std::shared_ptr<Item> item);
+	//! Initilise with physics
+	void SetCellItem(int x, int y, std::shared_ptr<Item> item, b2BodyType type);
 	
 	//! room tiles
 	std::vector<std::vector<std::shared_ptr<Cell>>> tiles;
@@ -28,7 +31,6 @@ public:
 	int getTileSize() { return tileSize; }
 	int setTileSize(int newSize) { return tileSize = newSize; }
 private:
-
 
 	int roomSize = 20;
 	int tileSize = 100;

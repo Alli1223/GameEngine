@@ -8,6 +8,7 @@ Door::Door()
 
 	std::string directory = IconSpriteDirectory + "ShopDisplayShelf.png";
 	this->icon.Background = ResourceManager::LoadTexture(directory.c_str());
+	renderLayer = 3;
 }
 
 Door::~Door()
@@ -16,7 +17,7 @@ Door::~Door()
 
 void Door::Render(GL_Renderer& renderer)
 {
-	renderLayer = 3;
+
 	renderer.RenderSpriteLighting(this->Sprite, this->NormalMap, this->position, this->size, this->rotation, this->transparency, this->renderLayer, this->colour, flipSprite);
 }
 

@@ -7,5 +7,6 @@ public:
 	Wall::Wall();
 	//! Destructor
 	Wall::~Wall();
+	
 };
 

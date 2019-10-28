@@ -51,7 +51,8 @@ void Room::InstanceSetup(Player& player)
 			if (x == 0 || y == 0 || x == tiles.size() - 1 || y == tiles[x].size() - 1)
 			{
 				Wall wall;
-				tiles[x][y]->CellItem = wall.getSharedPointer();
+				SetCellItem(x, y, wall.getSharedPointer(), b2BodyType::b2_staticBody);
+				//tiles[x][y]->CellItem = wall.getSharedPointer();
 				//tiles[x][y]->isWalkable = false;
 				//tiles[x][y]->Sprite = ResourceManager::GetAtlasTexture("roguelike", 300);
 				//tiles[x][y]->NormalMap = ResourceManager::GetAtlasTexture("roguelike_normal", 300);
@@ -102,11 +103,22 @@ std::shared_ptr<Cell>& Room::GetCell(int x, int y)
 
 void Room::SetCellItem(int x, int y, std::shared_ptr<Item> item)
 {
-	if (x > 0 && y > 0 && x < tiles.size() && y < tiles[0].size())
+	if (x >= 0 && y >= 0 && x < tiles.size() && y < tiles[0].size())
 	{
 		item->setPosition(tiles[x][y]->getPosition());
 		item->setSize(tiles[x][y]->getSize());
 		item->renderLayer = 2;
+		tiles[x][y]->CellItem = item;
+	}
+}
+
+void Room::SetCellItem(int x, int y, std::shared_ptr<Item> item, b2BodyType type)
+{
+	if (x >= 0 && y >= 0 && x < tiles.size() && y < tiles[0].size())
+	{
+		item->setPosition(tiles[x][y]->getPosition());
+		item->setSize(tiles[x][y]->getSize());
+		item->InitPhysics(I_Physics.get(), type, 10.0f, 1.0f);
 		tiles[x][y]->CellItem = item;
 	}
 }

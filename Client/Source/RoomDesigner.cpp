@@ -80,7 +80,7 @@ void RoomDesigner::Render(GL_Renderer& renderer)
 	{
 		std::shared_ptr<Door> FurnitureItem = std::dynamic_pointer_cast<Door>(selectedItem);
 
-		if(room != nullptr)
+		if (room != nullptr)
 			GUI.cellSize = room->getTileSize();
 		int X = 0, Y = 0;
 		SDL_GetMouseState(&X, &Y);
@@ -93,10 +93,18 @@ void RoomDesigner::Render(GL_Renderer& renderer)
 
 		if (SDL_GetMouseState(&X, &Y) & SDL_BUTTON(SDL_BUTTON_LEFT))
 		{
-			room->SetCellItem(mX, mY, selectedItem);
-			//room->tiles[mX][mY]->CellItem = selectedItem;
-			selectedItem = nullptr;
-
+			//mouse inside window
+			if (X > GUI.getX() - (GUI.getWidth() / 2) && X < GUI.getX() + (GUI.getWidth() / 2) && Y > GUI.getY() - (GUI.getHeight() / 2) && Y < GUI.getY() + (GUI.getHeight() / 2))
+			{
+			}
+			else // outside window
+			{
+				room->SetCellItem(mX, mY, selectedItem, b2BodyType::b2_staticBody);
+				GUI.buttons.erase(GUI.buttons.begin(), GUI.buttons.end());
+				//room->tiles[mX][mY]->CellItem = selectedItem;
+				selectedItem = nullptr;
+				GUI.CreateButtons();
+			}
 		}
 	}
 }

@@ -184,29 +184,29 @@ void MainGame::run()
 	//ShopDisplayShelf displayShelf;
 	//for (int i = 0; i < 5; i++)
 	//			world.I_player.inventory.add(displayShelf.getSharedPointer());
-	Fish fish;
-	Hoe hoe;
-	FishingRod rod;
-	BugNet net;
-	Scythe scythe;
-	SunflowerSeeds sunflowerSeeds;
-	WheatSeeds wheatSeeds;
-	LavenderSeeds lavenderSeeds;
+	//Fish fish;
+	//Hoe hoe;
+	//FishingRod rod;
+	//BugNet net;
+	//Scythe scythe;
+	//SunflowerSeeds sunflowerSeeds;
+	//WheatSeeds wheatSeeds;
+	//LavenderSeeds lavenderSeeds;
 
-	ItemChest chest;
-	chest.setPosition(0, 100);
-	chest.setSize(100, 100);
+	//ItemChest chest;
+	//chest.setPosition(0, 100);
+	//chest.setSize(100, 100);
 	//chest.Sprite = ResourceManager::LoadTexture("Resources\\Sprites\\Character\\Alli.png");
 	
 	//world.I_player.inventory.add(wheatSeeds.getSharedPointer());
 	//for(int i =0;i < 10; i++)
 	//	world.I_player.inventory.add(sunflowerSeeds.getSharedPointer());
-	world.I_player.inventory.add(lavenderSeeds.getSharedPointer());
-	world.I_player.inventory.add(fish.getSharedPointer());
-	world.I_player.inventory.add(hoe.getSharedPointer());
-	world.I_player.inventory.add(rod.getSharedPointer());
-	world.I_player.inventory.add(net.getSharedPointer());
-	world.I_player.inventory.add(scythe.getSharedPointer());
+	//world.I_player.inventory.add(lavenderSeeds.getSharedPointer());
+	//world.I_player.inventory.add(fish.getSharedPointer());
+	//world.I_player.inventory.add(hoe.getSharedPointer());
+	//world.I_player.inventory.add(rod.getSharedPointer());
+	//world.I_player.inventory.add(net.getSharedPointer());
+	//world.I_player.inventory.add(scythe.getSharedPointer());
 	
 	//world.onEnter(world.I_player);
 	Room room;
@@ -233,56 +233,39 @@ void MainGame::run()
 		level.setCellsInWindowSize(gameSettings.WINDOW_WIDTH / level.getCellSize(), gameSettings.WINDOW_HEIGHT / level.getCellSize());
 		SDL_GetMouseState(&mouseX, &mouseY);
 
+		// Compute timings
 		currentTicks = SDL_GetTicks();
 		float deltaTime = (float)(currentTicks - lastTicks) / 1000.0f;
+
+		// Clear screen
 		glClearColor(0.4f, 0.4f, 0.4f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		
+		// Process networking
 		if(gameSettings.useNetworking)
 			networkManager.NetworkUpdate(world,world.networkPlayers, world.I_player);
 		
 		// User input
 		input.HandleUserInput(glRenderer, GameSettings::currentInstance->I_player, gameSettings, UI);
 
-
-
-
-
-
-
-		//if (SDL_GetMouseState(NULL, NULL) & SDL_BUTTON(SDL_BUTTON_RIGHT))
-		//{
-		//	std::cout << "Spawning Projectile" << std::endl;
-		//	float delta_x = gameSettings.WINDOW_WIDTH / 2 - mouseX;
-		//	float delta_y = gameSettings.WINDOW_HEIGHT / 2 - mouseY;
-		//	Projectile proj(glRenderer, world.I_Physics.get(), world.I_player.getPosition() + 200.0f, b2Vec2(-delta_x / 10000.0f, -delta_y / 10000.0f));
-		//	float rotation = atan2(delta_y, delta_x);
-		//	proj.setRotation(rotation);
-		//	world.projectiles.push_back(proj);
-		//	//world.I_playerShop->Shopfloor->onEnter(world.I_player);
-		//}
-
+		// Update physics
 		GameSettings::currentInstance->Update();
-		GameSettings::currentInstance->Render(glRenderer);
-		// Physics simulation
-		//world.Update();
 
-		
-		//world.Render(glRenderer);
+		// Render Scene
+		GameSettings::currentInstance->Render(glRenderer);
+
 		// Render game
-		//rendering.RenderObjects(world, glRenderer, world.I_player, gameSettings);
 		glRenderer.RenderAllLayers();
 
 		// Render UI
 		UI.Render(glRenderer, world, GameSettings::currentInstance->I_player, gameSettings);
 		
-
 		// END Rendering
 		ImGui::Render();
 		SDL_GL_MakeCurrent(window, glContext);
 		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 		
-		glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+		//glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 		SDL_GL_SwapWindow(window);
 
 		if (gameSettings.displayFPS)
@@ -313,3 +296,15 @@ void MainGame::run()
 		if (gameSettings.restartGame)
 			needsRestart = true;
 }
+
+//if (SDL_GetMouseState(NULL, NULL) & SDL_BUTTON(SDL_BUTTON_RIGHT))
+//{
+//	std::cout << "Spawning Projectile" << std::endl;
+//	float delta_x = gameSettings.WINDOW_WIDTH / 2 - mouseX;
+//	float delta_y = gameSettings.WINDOW_HEIGHT / 2 - mouseY;
+//	Projectile proj(glRenderer, world.I_Physics.get(), world.I_player.getPosition() + 200.0f, b2Vec2(-delta_x / 10000.0f, -delta_y / 10000.0f));
+//	float rotation = atan2(delta_y, delta_x);
+//	proj.setRotation(rotation);
+//	world.projectiles.push_back(proj);
+//	//world.I_playerShop->Shopfloor->onEnter(world.I_player);
+//}
