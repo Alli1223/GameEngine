@@ -11,6 +11,11 @@ GameObject::GameObject(glm::vec2 pos, glm::vec2 size, Texture2D sprite, glm::vec
 
 GameObject::~GameObject()
 {
+	// Remove physics from world
+	if (rigidBody != nullptr)
+	{
+		getBody()->GetWorld()->DestroyBody(rigidBody);
+	}
 }
 
 void GameObject::InitPhysics(b2World* physicsWorld, b2BodyType type, float density, float friction)

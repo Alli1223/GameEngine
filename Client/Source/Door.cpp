@@ -13,6 +13,7 @@ Door::Door()
 
 Door::~Door()
 {
+
 }
 
 void Door::Render(GL_Renderer& renderer)

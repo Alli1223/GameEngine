@@ -19,6 +19,10 @@ void Furniture::Render(GL_Renderer& renderer, World& world)
 	renderer.RenderSpriteLighting(this->Sprite, this->NormalMap, this->position, this->size, this->rotation, this->transparency, this->renderLayer, this->colour, flipSprite);
 }
 
+void Furniture::Remove()
+{
+}
+
 void Furniture::Use(GL_Renderer& renderer, World& world, Player& player)
 {
 

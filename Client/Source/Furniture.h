@@ -22,6 +22,8 @@ public:
 	//! Render with more options
 	virtual void Render(GL_Renderer& renderer, World& world);
 
+	virtual void Remove();
+
 	//! Virtual Getters and Setters
 	virtual std::string getName() { return itemName; }
 	virtual std::string getItemDescription() { return itemDescription; }

@@ -20,11 +20,15 @@ void RoomResigerGUI::CreateButtons()
 	highlight.transparency = 0.5f;
 	highlight.renderLayer = 4;
 
-	Button deleteButton("Delete");
-	Button newButton;
+	
 	Door door;
-	newButton.buttonItem.push_back(door.getSharedPointer());
-	buttons.push_back(newButton);
+	Wall wall;
+
+	Button deleteButton("Delete");
+	Button wallButton(wall.getSharedPointer());
+	Button doorButton(door.getSharedPointer());
+
+	buttons.push_back(doorButton);
 	buttons.push_back(deleteButton);
 
 
@@ -128,6 +132,7 @@ void RoomDesigner::Render(GL_Renderer& renderer)
 					{
 						room->SetCellItem(mX, mY, nullptr);
 						GUI.erase = false;
+						selectedItem = nullptr;
 					}
 				}
 			}

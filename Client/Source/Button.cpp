@@ -18,6 +18,11 @@ Button::Button(std::string newText, std::string backgroundType) :  text(newText)
 
 }
 
+Button::Button(std::shared_ptr<Item>& item)
+{
+	buttonItem.push_back(item);
+}
+
 Button::~Button()
 {
 	

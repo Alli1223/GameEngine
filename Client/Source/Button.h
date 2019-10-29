@@ -10,6 +10,7 @@ public:
 	//! Constructor (takes in text for the button) Leave " "" "  for no text
 	Button(std::string newText);
 	Button(std::string newText, std::string backgroundType);
+	Button(std::shared_ptr<Item>& item);
 	//! Destructor
 	~Button();
 	//! Render the button

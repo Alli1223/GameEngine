@@ -8,6 +8,11 @@ public:
 	//! Destructor
 	Door::~Door();
 
+	enum Type {
+		Entrance,
+		Exit
+	}type;
+
 	void Render(GL_Renderer& renderer);
 
 private:
