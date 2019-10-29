@@ -10,6 +10,7 @@ struct RoomResigerGUI : public GUI
 
 	Texture2D backgroundTesture;
 	bool updateButttons = true;
+	bool erase = false;
 	int iconSize = 50;
 
 	void CreateButtons();
@@ -18,6 +19,7 @@ struct RoomResigerGUI : public GUI
 	Button ToggleButton;
 	Cell highlight;
 	int cellSize = 100;
+
 };
 class RoomDesigner 
 {

@@ -43,6 +43,9 @@ private:
 	bool timeout = false;
 	bool isMouseOver = false;
 
+	//! Text size
+	float textSize = 0.2f;
+
 	bool mouseOverIncreaseSize = true;
 	int mouseOverSizeInrease = 5;
 	//! buttons texture location

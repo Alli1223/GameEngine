@@ -20,10 +20,12 @@ void RoomResigerGUI::CreateButtons()
 	highlight.transparency = 0.5f;
 	highlight.renderLayer = 4;
 
+	Button deleteButton("Delete");
 	Button newButton;
 	Door door;
 	newButton.buttonItem.push_back(door.getSharedPointer());
 	buttons.push_back(newButton);
+	buttons.push_back(deleteButton);
 
 
 	int x = getPosition().x;
@@ -39,7 +41,6 @@ void RoomResigerGUI::CreateButtons()
 			buttons[i].setSize({ iconSize, iconSize });
 		}
 	}
-
 	updateButttons = false;
 }
 
@@ -67,45 +68,69 @@ void RoomDesigner::Render(GL_Renderer& renderer)
 		{
 			if (GUI.buttons[i].isPressed())
 			{
-				selectedItem = GUI.buttons[i].buttonItem[0];
+				if (GUI.buttons[i].buttonItem.size() > 0)
+				{
+					selectedItem = GUI.buttons[i].buttonItem[0];
+				}
+				else
+					GUI.erase = true;
 			}
 			GUI.buttons[i].Render(renderer);
-			GUI.buttons[i].buttonItem[0]->icon.setPosition(GUI.buttons[i].getPosition());
-			GUI.buttons[i].buttonItem[0]->icon.setSize(GUI.buttons[i].getSize());
-			GUI.buttons[i].buttonItem[0]->icon.Render(renderer);
+			if (GUI.buttons[i].buttonItem.size() > 0)
+			{
+				GUI.buttons[i].buttonItem[0]->icon.setPosition(GUI.buttons[i].getPosition());
+				GUI.buttons[i].buttonItem[0]->icon.setSize(GUI.buttons[i].getSize());
+				GUI.buttons[i].buttonItem[0]->icon.Render(renderer);
+			}
 		}
 	}
 
-	if (selectedItem != nullptr)
+	if (selectedItem != nullptr || GUI.erase)
 	{
 		std::shared_ptr<Door> FurnitureItem = std::dynamic_pointer_cast<Door>(selectedItem);
 
 		if (room != nullptr)
-			GUI.cellSize = room->getTileSize();
-		int X = 0, Y = 0;
-		SDL_GetMouseState(&X, &Y);
-		int mX = (X + renderer.camera.getX() + (GUI.cellSize / 2)) / GUI.cellSize;
-		int mY = (Y + renderer.camera.getY() + (GUI.cellSize / 2)) / GUI.cellSize;
-
-		GUI.highlight.setPosition(mX * GUI.cellSize, mY * GUI.cellSize);
-		GUI.highlight.setSize(GUI.cellSize, GUI.cellSize);
-		GUI.highlight.Render(renderer);
-
-		if (SDL_GetMouseState(&X, &Y) & SDL_BUTTON(SDL_BUTTON_LEFT))
 		{
-			//mouse inside window
-			if (X > GUI.getX() - (GUI.getWidth() / 2) && X < GUI.getX() + (GUI.getWidth() / 2) && Y > GUI.getY() - (GUI.getHeight() / 2) && Y < GUI.getY() + (GUI.getHeight() / 2))
+			GUI.cellSize = room->getTileSize();
+			int X = 0, Y = 0;
+			SDL_GetMouseState(&X, &Y);
+			int mX = (X + renderer.camera.getX() + (GUI.cellSize / 2)) / GUI.cellSize;
+			int mY = (Y + renderer.camera.getY() + (GUI.cellSize / 2)) / GUI.cellSize;
+
+			GUI.highlight.setPosition(mX * GUI.cellSize, mY * GUI.cellSize);
+			GUI.highlight.setSize(GUI.cellSize, GUI.cellSize);
+			GUI.highlight.Render(renderer);
+
+			if (SDL_GetMouseState(&X, &Y) & SDL_BUTTON(SDL_BUTTON_LEFT))
 			{
-			}
-			else // outside window
-			{
-				room->SetCellItem(mX, mY, selectedItem, b2BodyType::b2_staticBody);
-				GUI.buttons.erase(GUI.buttons.begin(), GUI.buttons.end());
-				//room->tiles[mX][mY]->CellItem = selectedItem;
-				selectedItem = nullptr;
-				GUI.CreateButtons();
+				if (selectedItem != nullptr)
+				{
+					//mouse inside window
+					if (X > GUI.getX() - (GUI.getWidth() / 2) && X < GUI.getX() + (GUI.getWidth() / 2) && Y > GUI.getY() - (GUI.getHeight() / 2) && Y < GUI.getY() + (GUI.getHeight() / 2))
+					{
+					}
+					else // outside window
+					{
+						room->SetCellItem(mX, mY, selectedItem, b2BodyType::b2_staticBody);
+						GUI.buttons.erase(GUI.buttons.begin(), GUI.buttons.end());
+						selectedItem = nullptr;
+						GUI.CreateButtons();
+					}
+				}
+
+				else if (GUI.erase)
+				{
+					//mouse inside window
+					if (X > GUI.getX() - (GUI.getWidth() / 2) && X < GUI.getX() + (GUI.getWidth() / 2) && Y > GUI.getY() - (GUI.getHeight() / 2) && Y < GUI.getY() + (GUI.getHeight() / 2))
+					{
+					}
+					else // outside window
+					{
+						room->SetCellItem(mX, mY, nullptr);
+						GUI.erase = false;
+					}
+				}
 			}
 		}
 	}
 }
-
