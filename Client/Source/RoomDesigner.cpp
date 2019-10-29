@@ -28,9 +28,9 @@ void RoomResigerGUI::CreateButtons()
 	Button wallButton(wall.getSharedPointer());
 	Button doorButton(door.getSharedPointer());
 
+	buttons.push_back(wallButton);
 	buttons.push_back(doorButton);
 	buttons.push_back(deleteButton);
-
 
 	int x = getPosition().x;
 	int y = getPosition().y;

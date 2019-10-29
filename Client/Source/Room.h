@@ -31,7 +31,6 @@ public:
 	int getTileSize() { return tileSize; }
 	int setTileSize(int newSize) { return tileSize = newSize; }
 private:
-
 	int roomSize = 20;
 	int tileSize = 100;
 	
