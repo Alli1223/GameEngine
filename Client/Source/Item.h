@@ -18,6 +18,8 @@ public:
 	//! Destructor
 	~Item();
 
+	glm::vec2 setPosition(glm::vec2 newPosition);
+
 	//! Runs when an item is selected and clicked
 	virtual void Use(GL_Renderer& renderer, World& world, Player& player);
 	//! Runs when an item is selected
@@ -38,6 +40,7 @@ public:
 		return itemData;
 	}
 	virtual std::string getName() { return itemName; }
+	virtual std::string setName(std::string newName) { return itemName = newName; }
 	virtual std::string getItemDescription() { return itemDescription; }
 	virtual int getMaximumStackSize() { return maximumStackSize; }
 	virtual int getStack() { return stack; }
@@ -50,6 +53,7 @@ public:
 protected:
 	std::string ToolSpriteDirectory = "Resources\\Sprites\\Items\\Tools\\";
 	std::string IconSpriteDirectory = "Resources\\Sprites\\Items\\Icons\\";
+	std::string UISpriteDirectory = "Resources\\UI\\";
 	//! Item Description
 	std::string itemDescription = "Item does not have description overload";
 	int stack = 0;

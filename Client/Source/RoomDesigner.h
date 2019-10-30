@@ -4,13 +4,27 @@
 #include "Door.h"
 #include "Room.h"
 class Room;
+
+//! Action to set for a button
+struct ActionItem : public Item
+{
+public:
+	enum action
+	{
+		Move,
+		Delete
+	}actionType;
+
+	//! Construct with an item
+	ActionItem::ActionItem(ActionItem::action action);
+};
 struct RoomResigerGUI : public GUI
 {
 	std::vector<Button> buttons;
 
 	Texture2D backgroundTesture;
 	bool updateButttons = true;
-	bool erase = false;
+	bool selected = false;
 	int iconSize = 50;
 
 	void CreateButtons();
@@ -19,6 +33,8 @@ struct RoomResigerGUI : public GUI
 	Button ToggleButton;
 	Cell highlight;
 	int cellSize = 100;
+
+	float timeItemPressed;
 
 };
 class RoomDesigner 
@@ -34,7 +50,7 @@ public:
 	void Render(GL_Renderer& renderer);
 
 	std::shared_ptr<Item> selectedItem = nullptr;
-
+	std::shared_ptr<Item> tempItem = nullptr;
 	RoomResigerGUI GUI;
 
 

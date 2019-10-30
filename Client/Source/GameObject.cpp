@@ -125,6 +125,8 @@ float GameObject::GetDistance(vec2 pointA, vec2 pointB)
 	return dist;
 }
 
+
+
 glm::vec2 GameObject::getPosition()
 {
 	return position;

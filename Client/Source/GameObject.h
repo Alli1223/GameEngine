@@ -30,7 +30,7 @@ public:
 
 	//! Set the position of the object
 	glm::vec2 setPosition(float newX, float newY) { return { position.x = newX, position.y = newY }; }
-	glm::vec2 setPosition(glm::vec2 newPosition) { return position = newPosition; }
+	virtual glm::vec2 setPosition(glm::vec2 newPosition) { return position = newPosition; }
 	glm::vec2 getPosition();
 	//! Getters and setters for velocity
 	float getSpeed() { return speed; }

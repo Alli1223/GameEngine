@@ -111,8 +111,6 @@ void Room::SetCellItem(int x, int y, std::shared_ptr<Item> item)
 			item->setSize(tiles[x][y]->getSize());
 			tiles[x][y]->CellItem = item;
 		}
-		else
-			tiles[x][y]->CellItem = nullptr;
 	}
 }
 

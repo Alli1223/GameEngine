@@ -23,13 +23,17 @@ void RoomResigerGUI::CreateButtons()
 	
 	Door door;
 	Wall wall;
+	ActionItem deleteAction(ActionItem::action::Delete);
+	ActionItem moveAction(ActionItem::action::Move);
 
-	Button deleteButton("Delete");
+	Button deleteButton(moveAction.getSharedPointer());
+	Button moveButton(deleteAction.getSharedPointer());
 	Button wallButton(wall.getSharedPointer());
 	Button doorButton(door.getSharedPointer());
 
 	buttons.push_back(wallButton);
 	buttons.push_back(doorButton);
+	buttons.push_back(moveButton);
 	buttons.push_back(deleteButton);
 
 	int x = getPosition().x;
@@ -44,6 +48,7 @@ void RoomResigerGUI::CreateButtons()
 			buttons[i].setPosition({ x,y });
 			buttons[i].setSize({ iconSize, iconSize });
 		}
+		x += buttons[i].getSize().x;
 	}
 	updateButttons = false;
 }
@@ -77,7 +82,7 @@ void RoomDesigner::Render(GL_Renderer& renderer)
 					selectedItem = GUI.buttons[i].buttonItem[0];
 				}
 				else
-					GUI.erase = true;
+					GUI.selected = true;
 			}
 			GUI.buttons[i].Render(renderer);
 			if (GUI.buttons[i].buttonItem.size() > 0)
@@ -89,7 +94,7 @@ void RoomDesigner::Render(GL_Renderer& renderer)
 		}
 	}
 
-	if (selectedItem != nullptr || GUI.erase)
+	if (selectedItem != nullptr)
 	{
 		std::shared_ptr<Door> FurnitureItem = std::dynamic_pointer_cast<Door>(selectedItem);
 
@@ -112,30 +117,71 @@ void RoomDesigner::Render(GL_Renderer& renderer)
 					//mouse inside window
 					if (X > GUI.getX() - (GUI.getWidth() / 2) && X < GUI.getX() + (GUI.getWidth() / 2) && Y > GUI.getY() - (GUI.getHeight() / 2) && Y < GUI.getY() + (GUI.getHeight() / 2))
 					{
+						if(GUI.selected == true)
+							GUI.selected = false;
 					}
 					else // outside window
 					{
-						room->SetCellItem(mX, mY, selectedItem, b2BodyType::b2_staticBody);
-						GUI.buttons.erase(GUI.buttons.begin(), GUI.buttons.end());
-						selectedItem = nullptr;
-						GUI.CreateButtons();
-					}
-				}
-
-				else if (GUI.erase)
-				{
-					//mouse inside window
-					if (X > GUI.getX() - (GUI.getWidth() / 2) && X < GUI.getX() + (GUI.getWidth() / 2) && Y > GUI.getY() - (GUI.getHeight() / 2) && Y < GUI.getY() + (GUI.getHeight() / 2))
-					{
-					}
-					else // outside window
-					{
-						room->SetCellItem(mX, mY, nullptr);
-						GUI.erase = false;
-						selectedItem = nullptr;
+						if (selectedItem->getName() == "Move")
+						{
+							// Select item
+							if (GUI.selected == false)
+							{
+								GUI.timeItemPressed = SDL_GetTicks();
+								tempItem = room->GetCell(mX, mY)->CellItem;
+								GUI.selected = true;
+							}
+							else // palce selected
+							{
+								if (tempItem != nullptr && SDL_GetTicks() > GUI.timeItemPressed + 250.0f)
+								{
+									// Place item
+									room->SetCellItem(mX, mY, tempItem);
+									tempItem = nullptr;
+									selectedItem = nullptr;
+									GUI.selected = false;
+								}
+							}
+						}
+						else if (selectedItem->getName() == "Delete") 
+						{
+							// Remove item
+							room->SetCellItem(mX, mY, nullptr);
+							GUI.selected = false;
+							selectedItem = nullptr;
+						}
+						else
+						{
+							// Place item
+							room->SetCellItem(mX, mY, selectedItem, b2BodyType::b2_staticBody);
+							GUI.buttons.erase(GUI.buttons.begin(), GUI.buttons.end());
+							selectedItem = nullptr;
+							GUI.CreateButtons();
+						}
 					}
 				}
 			}
 		}
 	}
+}
+
+ActionItem::ActionItem(ActionItem::action action)
+{
+	std::string directory = "null";
+	switch (action)
+	{
+	default:
+		break;
+	case ActionItem::Move:
+		directory = UISpriteDirectory + "R_Button.png";
+		this->setName("Move");
+		this->icon.Background = ResourceManager::LoadTexture(directory.c_str());
+		break;
+	case ActionItem::Delete:
+		directory = UISpriteDirectory + "NoButton.png";
+		this->setName("Delete");
+		this->icon.Background = ResourceManager::LoadTexture(directory.c_str());
+		break;
+	}
+
 }

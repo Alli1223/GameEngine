@@ -28,6 +28,15 @@ Item::~Item()
 {
 }
 
+glm::vec2 Item::setPosition(glm::vec2 newPosition)
+{
+	//if (rigidBody != nullptr)
+	//{
+	//	this->getBody()->SetTransform({ newPosition.x * physicsScaleDown, newPosition.y * physicsScaleDown }, getRotation());
+	//}
+	return position = newPosition;
+}
+
 ///////////////////////////////////////////////////////////////////////
 // Fish
 ///////////////////////////////////////////////////////////////////////
