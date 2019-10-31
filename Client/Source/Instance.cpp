@@ -46,6 +46,11 @@ void Instance::Render(GL_Renderer& renderer)
 
 void Instance::Update()
 {
+	// Update NPCS
+	for (auto npc : npcs)
+	{
+		npc->Update();
+	}
 	// Get refresh rate
 	I_Physics->Step(1.0f / 100.0f, 6, 2);
 }

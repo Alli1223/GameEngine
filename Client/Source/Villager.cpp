@@ -66,7 +66,7 @@ void Villager::Update()
 			if (path.size() == 0) // create the path
 			{
 				vec2 randPos = { (rand() % 20) - 10, (rand() % 20) - 10 };
-			//	this->path = pathfinder->findPathThread(world, this->getPosition() / (float)world.getCellSize(), randPos, isInShop);
+				//this->path = pathfinder->findPathThread(world, this->getPosition() / (float)world.getCellSize(), randPos, isInShop);
 			}
 			break;
 		}
@@ -289,5 +289,51 @@ void Villager::RenderBody(int index)
 	case Clothing::LegWear::maleBottom2:
 		bottom = ResourceManager::GetAtlasTexture("MaleBottom_2", index);
 		break;
+	}
+}
+
+void Villager::UpdatePathPosition()
+{
+	// If the agent has a path
+	if (path.size() > 0)
+	{
+		glm::ivec2 agentCellPos = (getPosition() + (getSize() / 2.0f)) / 100.0f;
+		// if the agent has reached the next point, iterate
+		if (pathPointIterator < path.size())
+			if (agentCellPos == path[pathPointIterator])
+			{
+				if (agentCellPos == path[path.size() - 1]) // reached the goal
+					path.clear(), pathPointIterator = 0;
+				else
+					pathPointIterator++;
+			}
+			else // move towards that point
+			{
+				glm::vec2 pathPos = path[pathPointIterator];
+				vec2 thisPos = this->getPosition() + (getSize().x / 2.0f);
+				pathPos *= 100.0f;
+
+				// Distance to destination from this position - path position
+				float deltaX = agentCellPos.x - (path[pathPointIterator].x);
+				float deltaY = agentCellPos.y - (path[pathPointIterator].y);
+				float length = sqrt(deltaX * deltaX + deltaY * deltaY);
+				// Normalize 
+				deltaX /= length;
+				deltaY /= length;
+				float angleInDegrees = atan2(deltaY, deltaX) * 180.0 / PI;
+
+				// Apply correction to rotation
+				///this->rotation = angleInDegrees + 90;
+
+				// Multiply direction by magnitude 
+				deltaX *= walkSpeed;
+				deltaY *= walkSpeed;
+
+				deltaX *= -1.0f;
+				deltaY *= -1.0f;
+
+
+				getBody()->ApplyForceToCenter(b2Vec2(deltaX, deltaY), true);
+			}
 	}
 }

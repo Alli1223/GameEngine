@@ -480,6 +480,7 @@ bool Pathfinder::isPathObsructed(World& level, Point firstPoint, Point secondPoi
 	return true;
 }
 
+/*
 void Pathfinder::drawPath(std::vector<Point>& path, SDL_Renderer* renderer, Camera& camera, World& level)
 {
 	// Start at the start point
@@ -517,7 +518,7 @@ void Pathfinder::drawPath(std::vector<Point>& path, SDL_Renderer* renderer, Came
 				cell.h = cellSize;
 				SDL_RenderDrawRect(renderer, &cell);
 			}
-			*/
+			
 	}
 
 	// Step through the path
@@ -535,3 +536,4 @@ void Pathfinder::drawPath(std::vector<Point>& path, SDL_Renderer* renderer, Came
 		lastY = nextY;
 	}
 }
+*/

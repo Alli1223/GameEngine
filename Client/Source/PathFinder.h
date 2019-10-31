@@ -1,6 +1,6 @@
 #pragma once
 #include "Point.h"
-#include "World.h"
+#include "Cell.h"
 #include <future>
 
 enum class NodeStatus { None, Closed, Open };
@@ -82,7 +82,7 @@ public:
 	std::vector<glm::ivec2> findPathGrid(std::vector<std::vector<std::shared_ptr<Cell>>> tiles, ivec2 startp, ivec2 goalp);
 	//! Returns the path that has been found
 	std::vector<glm::ivec2> reconstructPath(std::shared_ptr<Node> goalNode);
-	void drawPath(std::vector<Point>& path, SDL_Renderer* renderer, Camera& camera, World& level);
+	//void drawPath(std::vector<Point>& path, SDL_Renderer* renderer, Camera& camera, World& level);
 	std::vector<glm::ivec2> Path;
 	
 	bool isCoputingPath() { return computingPath; }

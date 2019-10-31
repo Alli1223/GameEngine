@@ -75,6 +75,7 @@ void Room::InstanceSetup(Player& player)
 		}
 }
 
+
 void Room::Render(GL_Renderer& renderer)
 {
 	// Camera to players position
@@ -143,13 +144,8 @@ void Room::SpawnNPC(std::shared_ptr<NPC> npc)
 		shopkeeper->setPosition(500, 500);
 		shopkeeper->InitPhysics(I_Physics.get(), shopkeeper->bodyType, 10.0f, 1.0f);
 		shopkeeper->GenerateVillager();
+		shopkeeper->tiles = tiles;
 		//shopkeeper->setPosition(500, 500);
 		npcs.push_back(shopkeeper);
 	}
 }
-
-
-
-
-
-

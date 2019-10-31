@@ -3,6 +3,7 @@
 #include "LightSource.h"
 #include "Timer.h"
 #include "CollisionIdentifier.h"
+#include "Projectile.h"
 
 class Player : public Character
 {

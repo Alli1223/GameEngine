@@ -1,7 +1,6 @@
 #pragma once
 #include "NPC.h"
-
-class Pathfinder;
+#include "PathFinder.h"
 
 class Villager : public NPC
 {
@@ -21,9 +20,10 @@ public:
 
 	std::shared_ptr<Pathfinder> pathfinder;
 
+	//! Pointers to current level
+	std::vector<std::vector<std::shared_ptr<Cell>>> tiles;
 
-
-private:
+protected:
 	// Render the body with the sprite index
 	void RenderBody(int index);
 
@@ -31,6 +31,8 @@ private:
 	int pathPointIterator = 0;
 
 	std::shared_ptr<Villager> thisVillagerPointer = nullptr;
+
+	virtual void UpdatePathPosition();
 
 
 	float walkSpeed = 5.0f;

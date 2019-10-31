@@ -109,8 +109,9 @@ void RoomDesigner::Render(GL_Renderer& renderer)
 		GUI.shopManagement.Render(renderer);
 
 		// Hire Staff
-		if (GUI.shopManagement.buttons[0].isPressed())
+		if (GUI.shopManagement.buttons[0].isPressed() && SDL_GetTicks() > GUI.timeItemPressed + 500.0f)
 		{
+			GUI.timeItemPressed = SDL_GetTicks();
 			Shopkeeper newStaff;
 			room->SpawnNPC(newStaff.getSharedPointer());
 		}
