@@ -50,6 +50,8 @@ public:
 	Icon icon;
 
 	bool isInFocus = false;
+
+	b2BodyType bodyType;
 protected:
 	std::string ToolSpriteDirectory = "Resources\\Sprites\\Items\\Tools\\";
 	std::string IconSpriteDirectory = "Resources\\Sprites\\Items\\Icons\\";

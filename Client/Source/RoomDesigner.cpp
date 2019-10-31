@@ -130,12 +130,14 @@ void RoomDesigner::Render(GL_Renderer& renderer)
 								GUI.timeItemPressed = SDL_GetTicks();
 								tempItem = room->GetCell(mX, mY)->CellItem;
 								GUI.selected = true;
+								room->SetCellItem(mX, mY, nullptr);
 							}
 							else // palce selected
 							{
-								if (tempItem != nullptr && SDL_GetTicks() > GUI.timeItemPressed + 250.0f)
+								if (tempItem != nullptr && SDL_GetTicks() > GUI.timeItemPressed + 250.0f) // only place after 250ms has expired to avoid placing back down in same space
 								{
 									// Place item
+									//tempItem->setPosition({ mX, mY });
 									room->SetCellItem(mX, mY, tempItem);
 									tempItem = nullptr;
 									selectedItem = nullptr;
@@ -149,11 +151,13 @@ void RoomDesigner::Render(GL_Renderer& renderer)
 							room->SetCellItem(mX, mY, nullptr);
 							GUI.selected = false;
 							selectedItem = nullptr;
+							GUI.buttons.erase(GUI.buttons.begin(), GUI.buttons.end());
+							GUI.CreateButtons();
 						}
 						else
 						{
 							// Place item
-							room->SetCellItem(mX, mY, selectedItem, b2BodyType::b2_staticBody);
+							room->SetCellItem(mX, mY, selectedItem, selectedItem->bodyType);
 							GUI.buttons.erase(GUI.buttons.begin(), GUI.buttons.end());
 							selectedItem = nullptr;
 							GUI.CreateButtons();

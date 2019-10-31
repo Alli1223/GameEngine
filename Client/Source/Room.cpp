@@ -111,6 +111,10 @@ void Room::SetCellItem(int x, int y, std::shared_ptr<Item> item)
 			item->setSize(tiles[x][y]->getSize());
 			tiles[x][y]->CellItem = item;
 		}
+		else
+		{
+			tiles[x][y]->CellItem = nullptr;
+		}
 	}
 }
 
@@ -121,8 +125,8 @@ void Room::SetCellItem(int x, int y, std::shared_ptr<Item> item, b2BodyType type
 		item->setPosition(tiles[x][y]->getPosition());
 		item->setSize(tiles[x][y]->getSize());
 		item->InitPhysics(I_Physics.get(), type, 10.0f, 1.0f);
-		if (type == b2BodyType::b2_staticBody)
-			tiles[x][y]->isWalkable = false;
+		//if (type == b2BodyType::b2_staticBody)
+			//tiles[x][y]->isWalkable = false;
 		tiles[x][y]->CellItem = item;
 	}
 }
