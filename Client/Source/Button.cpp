@@ -80,6 +80,10 @@ void Button::Render(GL_Renderer& renderer)
 		Initalise();
 	// Set object variables
 	UpdateInfo();
+	if (isActivated)
+	{
+		setSize(getSize() - 5.0f);
+	}
 	
 	// If the button has text, render it in the center of the button
 	renderer.RenderGUI(this->Background, this->position, this->size, this->rotation, this->transparency, this->colour, this->flipSprite);

@@ -9,7 +9,7 @@ public:
 	//! Destructor
 	~NPC();
 
-
+	b2BodyType bodyType;
 	void Move(MovementDirection direction);
 
 	virtual void Update(World& world);
@@ -19,10 +19,14 @@ public:
 	int getID() { return ID; }
 	int setID(int newID) { return ID = newID; }
 
+	//! Get a shared pointer to this object
+	virtual std::shared_ptr<NPC> getSharedPointer();
+
 	//! Whether the NPC is at home
 	bool isAtHome = false;
 protected:
 
+	std::shared_ptr<NPC> thisptr = nullptr;
 	// ID for identifing this vilager
 	int ID = -1;
 

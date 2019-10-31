@@ -27,35 +27,12 @@ void Villager::GenerateVillager()
 	this->PlayerClothes.body = Clothing::BodyWear(rand() % 4);
 	this->PlayerClothes.leg = Clothing::LegWear(rand() % 4);
 	this->money = rand() % 50;
-	w_action = WorldActions::toShop;
+	s_action = ShopActions::browsing;
 }
 
-std::shared_ptr<NPC> Villager::getSharedPointer()
-{
-	if (thisVillagerPointer == nullptr)
-	{
-		auto sharedVillager = std::make_shared<Villager>(*this);
-		return std::shared_ptr<Villager>(sharedVillager);
-	}
-	else
-	{
-		return thisVillagerPointer;
-	}
-}
 
-void Villager::Update(World& world)
+void Villager::Update()
 {
-	// check collisions
-	if (collidesWith(*world.playerShop))
-	{
-		world.playerShop->AddCustomer(getSharedPointer());
-		isInShop = true;
-	}
-	if (collidesWith(world.playerShop->exit))
-	{
-		isInShop = false;
-	}
-
 	// IF the player in in a building
 	if (isInShop)
 	{
@@ -97,7 +74,7 @@ void Villager::Update(World& world)
 	// If the agent has a path
 	if (path.size() > 0)
 	{
-		glm::ivec2 agentCellPos = (getPosition() + (getSize() / 2.0f)) / (float)world.getCellSize();
+		glm::ivec2 agentCellPos = (getPosition() + (getSize() / 2.0f)) / 50.0f;
 		// if the agent has reached the next point, iterate
 		if (pathPointIterator < path.size())
 			if (agentCellPos == path[pathPointIterator])

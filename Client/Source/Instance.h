@@ -1,6 +1,7 @@
 #pragma once
 #include "Networkplayer.h"
 #include "CollisionListener.h"
+#include "NPC.h"
 class Instance
 {
 public:
@@ -33,7 +34,7 @@ public:
 
 	//! List of players in instance
 	std::vector<NetworkPlayer> networkPlayers;
-	std::vector<NPC> npcs;
+	std::vector<std::shared_ptr<NPC>> npcs;
 
 
 private:

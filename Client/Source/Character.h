@@ -137,10 +137,12 @@ public:
 
 	//! Character clothes
 	Clothing PlayerClothes;
+
 protected:
 	std::string CharacterDirectory = "Resources\\Characters\\";
 	std::string CharacterClothingDirectory = "Resources\\Characters\\Clothing\\";
 	std::string PlayerAccessoriesDirectory = "Resources\\Characters\\Accessories\\";
+
 
 private:
 	//! Rotation values

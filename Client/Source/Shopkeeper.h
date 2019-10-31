@@ -8,8 +8,9 @@ public:
 	//! Destructor
 	Shopkeeper::~Shopkeeper();
 
-	void Update();
+	std::shared_ptr<NPC> getSharedPointer();
 
+	void Update();
 
 };
 

@@ -3,6 +3,7 @@
 
 NPC::NPC()
 {
+	bodyType = b2BodyType::b2_dynamicBody;
 }
 
 
@@ -58,5 +59,20 @@ void NPC::Update(World & world)
 
 void NPC::Update()
 {
+}
+
+std::shared_ptr<NPC> NPC::getSharedPointer()
+{
+	if (thisptr == nullptr)
+	{
+		auto sharedNPCptr = std::make_shared<NPC>(*this);
+		thisptr = sharedNPCptr;
+		return std::shared_ptr<NPC>(thisptr);
+	}
+	else
+	{
+		return thisptr;
+	}
+
 }
 

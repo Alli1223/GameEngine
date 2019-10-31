@@ -91,6 +91,10 @@ void Room::Render(GL_Renderer& renderer)
 			tiles[x][y]->Render(renderer);
 		}
 	}
+	for (int i = 0; i < npcs.size(); i++)
+	{
+		npcs[i]->Render(renderer);
+	}
 }
 
 std::shared_ptr<Cell>& Room::GetCell(int x, int y)
@@ -135,9 +139,12 @@ void Room::SpawnNPC(std::shared_ptr<NPC> npc)
 {
 	if (npc->characterType == "Shopkeeper")
 	{
-		std::shared_ptr<Shopkeeper> shopkeeper = std::dynamic_pointer_cast<Shopkeeper>(npc);
+		auto shopkeeper = std::dynamic_pointer_cast<Shopkeeper>(npc);
 		shopkeeper->setPosition(500, 500);
-
+		shopkeeper->InitPhysics(I_Physics.get(), shopkeeper->bodyType, 10.0f, 1.0f);
+		shopkeeper->GenerateVillager();
+		//shopkeeper->setPosition(500, 500);
+		npcs.push_back(shopkeeper);
 	}
 }
 

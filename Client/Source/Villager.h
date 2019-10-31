@@ -15,8 +15,7 @@ public:
 	//! Pathfinder path
 	std::vector<glm::ivec2> path;
 	//! Get a shared pointer to this object
-	std::shared_ptr<NPC> getSharedPointer();
-	void Update(World & world);
+	void Update();
 	// Render the NPC
 	void Render(GL_Renderer& renderer);
 

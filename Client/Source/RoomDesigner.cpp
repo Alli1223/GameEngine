@@ -111,7 +111,8 @@ void RoomDesigner::Render(GL_Renderer& renderer)
 		// Hire Staff
 		if (GUI.shopManagement.buttons[0].isPressed())
 		{
-			Shopkeeper
+			Shopkeeper newStaff;
+			room->SpawnNPC(newStaff.getSharedPointer());
 		}
 
 	}

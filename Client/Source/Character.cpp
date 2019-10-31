@@ -22,3 +22,4 @@ void Character::Move(int newX, int newY)
 	
 }
 
+
