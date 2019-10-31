@@ -13,6 +13,7 @@ public:
 	void Move(MovementDirection direction);
 
 	virtual void Update(World& world);
+	virtual void Update();
 
 	// Get and Set NPC ID
 	int getID() { return ID; }

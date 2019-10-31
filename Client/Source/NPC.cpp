@@ -56,3 +56,7 @@ void NPC::Update(World & world)
 {
 }
 
+void NPC::Update()
+{
+}
+
