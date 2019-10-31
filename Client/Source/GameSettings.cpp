@@ -13,7 +13,7 @@ GameSettings::~GameSettings()
 {
 }
 
-void GameSettings::getScreenResolution()
+glm::vec2 GameSettings::getScreenResolution()
 {
 	for (int i = 0; i < SDL_GetNumVideoDisplays(); ++i) {
 
@@ -28,7 +28,7 @@ void GameSettings::getScreenResolution()
 	}
 	WINDOW_HEIGHT = currentDisplay.h;
 	WINDOW_WIDTH = currentDisplay.w;
-
+	return { WINDOW_WIDTH, WINDOW_HEIGHT };
 }
 
 void GameSettings::CalculateFramesPerSecond()

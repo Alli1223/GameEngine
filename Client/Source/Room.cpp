@@ -131,6 +131,16 @@ void Room::SetCellItem(int x, int y, std::shared_ptr<Item> item, b2BodyType type
 	}
 }
 
+void Room::SpawnNPC(std::shared_ptr<NPC> npc)
+{
+	if (npc->characterType == "Shopkeeper")
+	{
+		std::shared_ptr<Shopkeeper> shopkeeper = std::dynamic_pointer_cast<Shopkeeper>(npc);
+		shopkeeper->setPosition(500, 500);
+
+	}
+}
+
 
 
 

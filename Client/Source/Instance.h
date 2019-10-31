@@ -33,6 +33,7 @@ public:
 
 	//! List of players in instance
 	std::vector<NetworkPlayer> networkPlayers;
+	std::vector<NPC> npcs;
 
 
 private:

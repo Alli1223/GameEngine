@@ -3,6 +3,7 @@
 
 Shopkeeper::Shopkeeper()
 {
+	characterType = "Shopkeeper";
 }
 
 Shopkeeper::~Shopkeeper()

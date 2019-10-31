@@ -3,6 +3,7 @@
 #include "Button.h"
 #include "Door.h"
 #include "Room.h"
+#include "GameWindow.h"
 class Room;
 
 //! Action to set for a button
@@ -13,7 +14,7 @@ public:
 	{
 		Move,
 		Delete
-	}actionType;
+	} actionType;
 
 	//! Construct with an item
 	ActionItem::ActionItem(ActionItem::action action);
@@ -36,6 +37,7 @@ struct RoomResigerGUI : public GUI
 
 	float timeItemPressed;
 
+	GameWindow shopManagement;
 };
 class RoomDesigner 
 {

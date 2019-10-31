@@ -7,6 +7,10 @@ RoomDesigner::RoomDesigner()
 	GUI.ToggleButton.setSize({ 50,50 });
 	GUI.setSize({ 500,500 });
 	GUI.setPosition({ 50,500 });
+
+	GUI.shopManagement.setPosition({ 1600,500 });
+	GUI.shopManagement.setSize({ 250,100 });
+	GUI.shopManagement.isOpen = true;
 }
 RoomDesigner::~RoomDesigner()
 {
@@ -15,7 +19,6 @@ RoomDesigner::~RoomDesigner()
 void RoomResigerGUI::CreateButtons()
 {
 	
-
 	highlight.Sprite = ResourceManager::LoadTexture("Resources\\Sprites\\GUI\\LuminanceSlider.png");
 	highlight.transparency = 0.5f;
 	highlight.renderLayer = 4;
@@ -51,6 +54,14 @@ void RoomResigerGUI::CreateButtons()
 		x += buttons[i].getSize().x;
 	}
 	updateButttons = false;
+
+	// Shop Managerment
+	Button HireStaff("Hire");
+	shopManagement.buttons.push_back(HireStaff);
+	for (int i = 0; i < shopManagement.buttons.size(); i++)
+	{
+		shopManagement.buttons[i].setPosition({ shopManagement.getPosition().x , shopManagement.getPosition().y});
+	}
 }
 
 
@@ -66,9 +77,9 @@ void RoomDesigner::Render(GL_Renderer& renderer)
 	if (GUI.ToggleButton.isPressed())
 	{
 		if (GUI.toggleButton == false)
-			GUI.toggleButton = true;
+			GUI.toggleButton = true, GUI.shopManagement.isOpen = true;
 		else if (GUI.toggleButton == true)
-			GUI.toggleButton = false;
+			GUI.toggleButton = false, GUI.shopManagement.isOpen = false;
 	}
 	if (GUI.toggleButton)
 	{
@@ -93,7 +104,17 @@ void RoomDesigner::Render(GL_Renderer& renderer)
 			}
 		}
 	}
+	if (GUI.shopManagement.isOpen)
+	{
+		GUI.shopManagement.Render(renderer);
 
+		// Hire Staff
+		if (GUI.shopManagement.buttons[0].isPressed())
+		{
+			Shopkeeper
+		}
+
+	}
 	if (selectedItem != nullptr)
 	{
 		std::shared_ptr<Door> FurnitureItem = std::dynamic_pointer_cast<Door>(selectedItem);

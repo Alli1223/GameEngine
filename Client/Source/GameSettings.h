@@ -29,7 +29,7 @@ public:
 
 	bool restartGame = false;
 	//! Get screen resolution
-	void getScreenResolution();
+	glm::vec2 getScreenResolution();
 	//! Calculate FPS
 	void CalculateFramesPerSecond();
 

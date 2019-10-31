@@ -156,7 +156,5 @@ private:
 	bool incrementalRotating = false;
 	//! if the Character is moving
 	bool isMoving = false;
-
-
 };
 

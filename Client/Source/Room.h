@@ -3,6 +3,7 @@
 #include "Cell.h"
 #include "RoomDesigner.h"
 #include "Wall.h"
+#include "Shopkeeper.h"
 class Room : public Instance
 {
 public:
@@ -26,6 +27,8 @@ public:
 	std::vector<std::vector<std::shared_ptr<Cell>>> tiles;
 
 	int getRoomSize() { return roomSize; }
+
+	void SpawnNPC(std::shared_ptr<NPC> npc);
 
 	//! Get the tile size in the building
 	int getTileSize() { return tileSize; }

@@ -259,6 +259,7 @@
     <ClCompile Include="Door.cpp">
       <Filter>Source Files\Core\Items\Furniture</Filter>
     </ClCompile>
+    <ClCompile Include="Shopkeeper.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cell.h">
@@ -537,6 +538,7 @@
     <ClInclude Include="ItemDescriptionWindow.h">
       <Filter>Headers\Core\GUI\Element</Filter>
     </ClInclude>
+    <ClInclude Include="Shopkeeper.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="SDL_project.rc" />

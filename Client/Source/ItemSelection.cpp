@@ -299,47 +299,51 @@ void ItemSelection::CreateItemSelection(std::vector<std::vector<std::shared_ptr<
 
 void ItemSelection::Render(GL_Renderer& renderer)
 {
-	if (!isInitalised)
-		Initalise();
-	// Render this background
-	renderer.RenderGUI(this->Background, this->position, this->size, this->rotation, this->transparency, this->colour, flipSprite);
-
-	// Create and render items
-	if(inventoryPointer != nullptr)
-		CreateItemSelection(inventoryPointer->getItemList());
-
-	// loop through each of the items
-	for (int i = 0; i < buttons.size(); i++)
+	// only render if it has been created
+	if (getPosition().x > 0 && getPosition().y > 0 && getSize().x > 0 && getSize().y > 0)
 	{
-		buttons[i].Render(renderer);
+		if (!isInitalised)
+			Initalise();
+		// Render this background
+		renderer.RenderGUI(this->Background, this->position, this->size, this->rotation, this->transparency, this->colour, flipSprite);
 
-		if (selected == i)
-			buttons[i].setSize(iconSize / 2, iconSize / 2);
-		else
-			buttons[i].setSize(iconSize, iconSize);
-		if (buttons[i].isPressed())
-			selected = i;
+		// Create and render items
+		if (inventoryPointer != nullptr)
+			CreateItemSelection(inventoryPointer->getItemList());
 
-
-
-		// Render the item on top of the button
-		if (buttons[i].buttonItem.size() > 0)
+		// loop through each of the items
+		for (int i = 0; i < buttons.size(); i++)
 		{
+			buttons[i].Render(renderer);
 
-			buttons[i].buttonItem.front()->icon.setPosition(buttons[i].getPosition());
-			buttons[i].buttonItem.front()->icon.setSize(buttons[i].getSize() / 1.3f);
-			buttons[i].buttonItem.front()->icon.Render(renderer);
+			if (selected == i)
+				buttons[i].setSize(iconSize / 2, iconSize / 2);
+			else
+				buttons[i].setSize(iconSize, iconSize);
+			if (buttons[i].isPressed())
+				selected = i;
+
+
+
+			// Render the item on top of the button
+			if (buttons[i].buttonItem.size() > 0)
+			{
+
+				buttons[i].buttonItem.front()->icon.setPosition(buttons[i].getPosition());
+				buttons[i].buttonItem.front()->icon.setSize(buttons[i].getSize() / 1.3f);
+				buttons[i].buttonItem.front()->icon.Render(renderer);
+			}
+
+			// Item Stack number
+
+			if (buttons[i].buttonItem.size() > 0)
+			{
+				renderer.RenderText(std::to_string(buttons[i].buttonItem.size()), buttons[i].buttonItem.front()->icon.getPosition() + (buttons[i].buttonItem.front()->icon.getSize() / 3.0f), buttons[i].getSize() / 5.0f, { 0.2f, 0.2f }, { 100,100,100 });
+			}
 		}
 
-		// Item Stack number
 
-		if (buttons[i].buttonItem.size() > 0)
-		{
-			renderer.RenderText(std::to_string(buttons[i].buttonItem.size()), buttons[i].buttonItem.front()->icon.getPosition() + (buttons[i].buttonItem.front()->icon.getSize() / 3.0f), buttons[i].getSize() / 5.0f, { 0.2f, 0.2f }, { 100,100,100 });
-		}
+		if (itemDescription.showWindow)
+			itemDescription.Render(renderer);
 	}
-
-
-	if (itemDescription.showWindow)
-		itemDescription.Render(renderer);
 }
