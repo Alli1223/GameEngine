@@ -141,11 +141,12 @@ void Room::SpawnNPC(std::shared_ptr<NPC> npc)
 	if (npc->characterType == "Shopkeeper")
 	{
 		auto shopkeeper = std::dynamic_pointer_cast<Shopkeeper>(npc);
-		shopkeeper->setPosition(500, 500);
+		shopkeeper->setPosition(rand() % tileSize * roomSize, rand() % tileSize * roomSize);
+		shopkeeper->setSize(shopkeeper->getSize() / 4.0f);
 		shopkeeper->InitPhysics(I_Physics.get(), shopkeeper->bodyType, 10.0f, 1.0f);
+		shopkeeper->setSize(shopkeeper->getSize() * 4.0f);
 		shopkeeper->GenerateVillager();
 		shopkeeper->tiles = tiles;
-		//shopkeeper->setPosition(500, 500);
 		npcs.push_back(shopkeeper);
 	}
 }

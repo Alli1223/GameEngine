@@ -27,8 +27,9 @@ void GameObject::InitPhysics(b2World* physicsWorld, b2BodyType type, float densi
 		rigidbody.type = type;
 		rigidbody.position.Set(this->position.x * physicsScaleDown, this->position.y * physicsScaleDown);
 		rigidBody = physicsWorld->CreateBody(&rigidbody);
-		
+
 		b2PolygonShape box;
+
 		xMeters = physicsScaleDown * (size.x / 2.0f);
 		yMeters = physicsScaleDown * (size.y / 2.0f);
 

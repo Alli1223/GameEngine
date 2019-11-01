@@ -33,7 +33,7 @@ void Shopkeeper::Update()
 		{
 			// Choose random spot in room to walk to
 		case ShopActions::browsing:
-			path = pathfinder->findPathGrid(tiles, getPosition() / 100.0f, { rand() % tiles.size(), rand() % tiles[0].size() });
+			path = pathfinder->findPathThread(tiles, getPosition() / 100.0f, { rand() % tiles.size(), rand() % tiles[0].size() });
 			//this->path = pathfinder->findPathThread(world, this->getPosition() / (float)world.playerShop.getTileSize(), { rand() % 5, rand() % 5 }, isInShop);
 			break;
 			// Walk to the exit

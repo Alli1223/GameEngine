@@ -29,30 +29,36 @@ std::vector<std::shared_ptr<Node>> Pathfinder::getNeighbours(std::shared_ptr<Nod
 {
 	std::vector<std::shared_ptr<Node>> result;
 	// If the node is within the level
-	if (node->point.getX() -1 >= 0 && node->point.getX() + 1 < searchSize)
-	{
-		if (node->point.getY() -1 >= 0 && node->point.getY() + 1< searchSize)
+	try {
+		if (node->point.getX() - 1 >= 0 && node->point.getX() + 1 < searchSize)
 		{
-			//left
-			result.push_back(getOrCreateNode(node->point.getX() - 1, node->point.getY()));
-			//right
-			result.push_back(getOrCreateNode(node->point.getX() + 1, node->point.getY()));
-			//up
-			result.push_back(getOrCreateNode(node->point.getX(), node->point.getY() - 1));
-			//down
-			result.push_back(getOrCreateNode(node->point.getX(), node->point.getY() + 1));
-
-			// Diagonal paths
-			if (diagonalPaths)
+			if (node->point.getY() - 1 >= 0 && node->point.getY() + 1 < searchSize)
 			{
-				result.push_back(getOrCreateNode(node->point.getX() - 1, node->point.getY() - 1));
-				result.push_back(getOrCreateNode(node->point.getX() - 1, node->point.getY() + 1));
-				result.push_back(getOrCreateNode(node->point.getX() + 1, node->point.getY() - 1));
-				result.push_back(getOrCreateNode(node->point.getX() + 1, node->point.getY() + 1));
+				//left
+				result.push_back(getOrCreateNode(node->point.getX() - 1, node->point.getY()));
+				//right
+				result.push_back(getOrCreateNode(node->point.getX() + 1, node->point.getY()));
+				//up
+				result.push_back(getOrCreateNode(node->point.getX(), node->point.getY() - 1));
+				//down
+				result.push_back(getOrCreateNode(node->point.getX(), node->point.getY() + 1));
+
+				// Diagonal paths
+				if (diagonalPaths)
+				{
+					result.push_back(getOrCreateNode(node->point.getX() - 1, node->point.getY() - 1));
+					result.push_back(getOrCreateNode(node->point.getX() - 1, node->point.getY() + 1));
+					result.push_back(getOrCreateNode(node->point.getX() + 1, node->point.getY() - 1));
+					result.push_back(getOrCreateNode(node->point.getX() + 1, node->point.getY() + 1));
+				}
 			}
 		}
+		return result;
 	}
-	return result;
+	catch (std::exception e)
+	{
+		std::cout << e.what() << std::endl;
+	}
 }
 
 
@@ -87,7 +93,6 @@ std::shared_ptr<Node> Pathfinder::getOpenSetElementWithLowestScore()
 {
 	std::shared_ptr<Node> result = nullptr;
 	double lowestFScore = 1e10;
-
 
 	for (auto column : nodes)
 	{
@@ -163,7 +168,44 @@ std::vector<std::future< std::vector<glm::ivec2>>> paths; // List of pathfinding
 //	std::vector<ivec2> empty;
 //	return empty;
 //}
-//
+
+std::vector<glm::ivec2> Pathfinder::findPathThread(std::vector<std::vector<std::shared_ptr<Cell>>> tiles, ivec2 startp, ivec2 goalp)
+{
+	searchSize = 5;
+	// Create the thread
+	if (!computingPath)
+	{
+		auto futurePath = std::async(&Pathfinder::findPathGrid, this, tiles, startp, goalp);
+
+		// Erase previous path
+		if (id != -1)
+		{
+			if (!paths[id].valid())
+				paths.erase(paths.begin() + id);
+		}
+		// Add to list of pathfinding threads	
+		id = paths.size();
+		paths.push_back(std::move(futurePath));
+		computingPath = true;
+
+	}
+
+
+	// If the path has finished computing
+	if (paths[id].valid() && computingPath)
+		if (paths[id].wait_for(std::chrono::seconds(0)) == std::future_status::ready) // return the path
+		{
+			auto res1 = paths[id].get();
+			Path = res1;
+			computingPath = false;
+			return Path;
+		}
+
+
+	std::vector<ivec2> empty;
+	return empty;
+}
+
 //std::vector<glm::ivec2> Pathfinder::findPathInfiniWorld(World& world, ivec2 startp, ivec2 goalp)
 //{
 //	Point start;
@@ -307,6 +349,7 @@ std::vector<glm::ivec2> Pathfinder::findPathGrid(std::vector<std::vector<std::sh
 	std::cout << "First Pos: " << start.getX() << "," << start.getY() << " End: " << goal.getX() << "," << goal.getY() << std::endl;
 	// IF the start and end are accessable
 	//if (world.GetCell(start.getX(), start.getY())->isWalkable && world.GetCell(goal.getX(), goal.getY())->isWalkable)
+	try
 	{
 
 		//start and end offset
@@ -322,11 +365,10 @@ std::vector<glm::ivec2> Pathfinder::findPathGrid(std::vector<std::vector<std::sh
 		//startNode = start;
 
 		//change searchSize based on distance between target
-		searchSize = euclideanDistance(start, goal) * 2;
-		std::cout << "SearchSize: " << searchSize << std::endl;
-		std::cout << "Second Pos: " << start.getX() << "," << start.getY() << " End: " << goal.getX() << "," << goal.getY() << std::endl;
-		if (searchSize <= 5)
-			searchSize = 10;
+		//searchSize = euclideanDistance(start, goal) * 2;
+		//std::cout << "SearchSize: " << searchSize << std::endl;
+		//std::cout << "Second Pos: " << start.getX() << "," << start.getY() << " End: " << goal.getX() << "," << goal.getY() << std::endl;
+		searchSize = tiles.size();
 
 		// Create nodes for every cell in the grid
 		for (int x = 0; x < searchSize; x++)
@@ -362,7 +404,7 @@ std::vector<glm::ivec2> Pathfinder::findPathGrid(std::vector<std::vector<std::sh
 				// Loops through each of the neighbours
 				for each (auto neighbour in getNeighbours(currentNode))
 				{
-					cellPos.x = neighbour->point.getX() , cellPos.y = neighbour->point.getY();
+					cellPos.x = neighbour->point.getX(), cellPos.y = neighbour->point.getY();
 					// If the cell is walkable
 					//if(world.GetCell(cellPos.x, cellPos.y)->isWalkable)
 					if (!isInClosedSet(neighbour->point))
@@ -386,10 +428,18 @@ std::vector<glm::ivec2> Pathfinder::findPathGrid(std::vector<std::vector<std::sh
 				}
 			}
 		}
+
+
+		//Return empty path if there is no route
+		std::vector<ivec2> EmptyPath;
+		return EmptyPath;
 	}
-	//Return empty path if there is no route
-	std::vector<ivec2> EmptyPath;
-	return EmptyPath;
+	catch (std::exception e)
+	{
+		std::cout << e.what() << std::endl;
+		std::vector<ivec2> EmptyPath;
+		return EmptyPath;
+	}
 	//throw PathfinderError();
 }
 

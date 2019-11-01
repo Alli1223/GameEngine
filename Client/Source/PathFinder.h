@@ -77,6 +77,7 @@ class Pathfinder
 public:
 	//! Finds a path in a seperate thread (requires to be run frequently to check if thread has completed) 
 	//std::vector<glm::ivec2> findPathThread(World& world, ivec2 startp, ivec2 goalp, bool isBuilding);
+	std::vector<glm::ivec2> findPathThread(std::vector<std::vector<std::shared_ptr<Cell>>> tiles, ivec2 startp, ivec2 goalp);
 	//! Finds a path from point a to point b
 	//std::vector<glm::ivec2> findPathInfiniWorld(World& world, glm::ivec2 start, glm::ivec2 goal);
 	std::vector<glm::ivec2> findPathGrid(std::vector<std::vector<std::shared_ptr<Cell>>> tiles, ivec2 startp, ivec2 goalp);
