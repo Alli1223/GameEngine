@@ -77,25 +77,24 @@ void Villager::Render(GL_Renderer& renderer)
 {
 	if (!hasPhysics)
 	{
-		setSize({ getSize().x / 2.0f, getSize().y});
+		setSize({ getSize().x / 2.0f, getSize().y });
 		//InitPhysics(renderer.p_World.get(), b2BodyType::b2_dynamicBody, 1.0f, 0.3f);
-		setSize({ getSize().x * 2.0f, getSize().y});
+		setSize({ getSize().x * 2.0f, getSize().y });
 	}
-	this->setPosition({ this->getBody()->GetPosition().x *  physicsScaleUp,this->getBody()->GetPosition().y *  physicsScaleUp });
+	this->setPosition({ this->getBody()->GetPosition().x * physicsScaleUp,this->getBody()->GetPosition().y * physicsScaleUp });
 	getBody()->SetLinearDamping(1000.0f); // dont let the player gradually increase speed
 	RenderBody(0);
-	if (!isSelected)
-	{
-		renderer.RenderSpriteLighting(this->nakedBody, this->NormalMap, this->position, this->size, this->rotation, this->transparency, this->renderLayer, bodyColour, flipSprite);
-		renderer.RenderSpriteLighting(this->hair, this->NormalMap, this->position, this->size, this->rotation, this->transparency, this->renderLayer, this->hairColour, flipSprite);
 
-		renderer.RenderSpriteLighting(this->eyes, this->NormalMap, this->position, this->size, this->rotation, this->transparency, this->renderLayer, this->eyeColour, flipSprite);
-		renderer.RenderSpriteLighting(this->ears, this->NormalMap, this->position, this->size, this->rotation, this->transparency, this->renderLayer, this->bodyColour, flipSprite);
-		if (bottom.Width > 0 && bottom.Height > 0)
-			renderer.RenderSpriteLighting(this->bottom, this->NormalMap, this->position, this->size, this->rotation, this->transparency, this->renderLayer, this->bottomColour, flipSprite);
-		if (top.Width > 0 && top.Height > 0)
-			renderer.RenderSpriteLighting(this->top, this->NormalMap, this->position, this->size, this->rotation, this->transparency, this->renderLayer, this->topColour, flipSprite);
-	}
+	renderer.RenderSpriteLighting(this->nakedBody, this->NormalMap, this->position, this->size, this->rotation, this->transparency, this->renderLayer, bodyColour, flipSprite);
+	renderer.RenderSpriteLighting(this->hair, this->NormalMap, this->position, this->size, this->rotation, this->transparency, this->renderLayer, this->hairColour, flipSprite);
+
+	renderer.RenderSpriteLighting(this->eyes, this->NormalMap, this->position, this->size, this->rotation, this->transparency, this->renderLayer, this->eyeColour, flipSprite);
+	renderer.RenderSpriteLighting(this->ears, this->NormalMap, this->position, this->size, this->rotation, this->transparency, this->renderLayer, this->bodyColour, flipSprite);
+	if (bottom.Width > 0 && bottom.Height > 0)
+		renderer.RenderSpriteLighting(this->bottom, this->NormalMap, this->position, this->size, this->rotation, this->transparency, this->renderLayer, this->bottomColour, flipSprite);
+	if (top.Width > 0 && top.Height > 0)
+		renderer.RenderSpriteLighting(this->top, this->NormalMap, this->position, this->size, this->rotation, this->transparency, this->renderLayer, this->topColour, flipSprite);
+
 	glm::ivec2 mPos;
 	if (SDL_GetMouseState(&mPos.x, &mPos.y) & SDL_BUTTON(SDL_BUTTON_LEFT))
 	{
@@ -109,7 +108,7 @@ void Villager::Render(GL_Renderer& renderer)
 	}
 	if (isSelected)
 	{
-		renderer.RenderOutline(this->nakedBody, this->position, this->size * 4.0f, this->rotation, this->transparency, this->bodyColour, flipSprite);
+		renderer.RenderOutline(this->nakedBody, this->position, this->size * 1.15f, this->rotation, this->transparency, this->bodyColour, flipSprite);
 	}
 }
 

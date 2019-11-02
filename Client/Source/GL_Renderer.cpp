@@ -51,7 +51,7 @@ GL_Renderer::GL_Renderer()
 	this->spriteShader = ResourceManager::LoadShader("Shaders\\vert.glsl", "Shaders\\frag.glsl", nullptr, "shader");
 	this->GUIShader = ResourceManager::LoadShader("Shaders\\vert.glsl", "Shaders\\UIFrag.glsl", nullptr, "GUIShader");
 	this->lightingShader = ResourceManager::LoadShader("Shaders\\v_2DLightingShader.glsl", "Shaders\\f_2DLightingShader.glsl", nullptr, "normalShader");
-	this->outlineShader = ResourceManager::LoadShader("Shaders\\vert.glsl", "Shaders\\outlineShader.glsl", nullptr, "outlineShader");
+	this->outlineShader = ResourceManager::LoadShader("Shaders\\Outline\\vert.glsl", "Shaders\\Outline\\frag.glsl", nullptr, "outlineShader");
 	this->textShader = ResourceManager::LoadShader("Shaders\\Text\\vert.glsl", "Shaders\\Text\\frag.glsl", nullptr, "textShader");
 
 	ResourceManager::LoadAtlas("roguelike", SpriteSheets + "roguelikeSheet_transparent.png", 56, 16);
@@ -596,7 +596,7 @@ void GL_Renderer::RenderOutline(Texture2D& texture, glm::vec2& position, glm::ve
 
 
 	// Set transparency
-	this->outlineShader.SetFloat("Transparency", transparency);
+	this->outlineShader.SetFloat("Transparency", 0.5f);
 
 	// Render textured quad
 	glActiveTexture(GL_TEXTURE0);
