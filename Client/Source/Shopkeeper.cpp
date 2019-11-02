@@ -27,21 +27,21 @@ std::shared_ptr<NPC> Shopkeeper::getSharedPointer()
 
 void Shopkeeper::Update()
 {
+	
 	if (path.size() == 0)
 	{
 		switch (s_action)
 		{
 			// Choose random spot in room to walk to
 		case ShopActions::browsing:
-			path = pathfinder->findPathThread(tiles, getPosition() / 100.0f, { rand() % tiles.size(), rand() % tiles[0].size() });
-			//this->path = pathfinder->findPathThread(world, this->getPosition() / (float)world.playerShop.getTileSize(), { rand() % 5, rand() % 5 }, isInShop);
+			//path = pathfinder->findPathThread(tiles, getPosition() / 100.0f, { rand() % tiles.size(), rand() % tiles[0].size() });
 			break;
 			// Walk to the exit
 		case ShopActions::exiting:
-			//this->path = pathfinder->findPathThread(world, this->getPosition() / (float)world.getCellSize(), world.playerShop.entrance.getPosition() / (float)world.getCellSize(), isInShop);
 			break;
 		}
 	}
 	else
 		UpdatePathPosition();
 }
+

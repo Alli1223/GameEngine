@@ -71,48 +71,6 @@ void Villager::Update()
 			break;
 		}
 	}
-	// If the agent has a path
-	if (path.size() > 0)
-	{
-		glm::ivec2 agentCellPos = (getPosition() + (getSize() / 2.0f)) / 50.0f;
-		// if the agent has reached the next point, iterate
-		if (pathPointIterator < path.size())
-			if (agentCellPos == path[pathPointIterator])
-			{
-				if (agentCellPos == path[path.size() - 1]) // reached the goal
-					path.clear(), pathPointIterator = 0;
-				else
-					pathPointIterator++;
-			}
-			else // move towards that point
-			{
-				glm::vec2 pathPos = path[pathPointIterator];
-				vec2 thisPos = this->getPosition() + (getSize().x / 2.0f);
-				pathPos *= 100.0f;
-
-				// Distance to destination from this position - path position
-				float deltaX = agentCellPos.x - (path[pathPointIterator].x);
-				float deltaY = agentCellPos.y - (path[pathPointIterator].y);
-				float length = sqrt(deltaX * deltaX + deltaY * deltaY);
-				// Normalize 
-				deltaX /= length;
-				deltaY /= length;
-				float angleInDegrees = atan2(deltaY, deltaX) * 180.0 / PI;
-
-				// Apply correction to rotation
-				///this->rotation = angleInDegrees + 90;
-
-				// Multiply direction by magnitude 
-				deltaX *= walkSpeed;
-				deltaY *= walkSpeed;
-
-				deltaX *= -1.0f;
-				deltaY *= -1.0f;
-
-
-				getBody()->ApplyForceToCenter(b2Vec2(deltaX, deltaY), true);
-			}
-	}
 }
 
 void Villager::Render(GL_Renderer& renderer)
@@ -126,16 +84,33 @@ void Villager::Render(GL_Renderer& renderer)
 	this->setPosition({ this->getBody()->GetPosition().x *  physicsScaleUp,this->getBody()->GetPosition().y *  physicsScaleUp });
 	getBody()->SetLinearDamping(1000.0f); // dont let the player gradually increase speed
 	RenderBody(0);
-	renderer.RenderSpriteLighting(this->nakedBody, this->NormalMap, this->position, this->size, this->rotation, this->transparency, this->renderLayer, bodyColour, flipSprite);
-	renderer.RenderSpriteLighting(this->hair, this->NormalMap, this->position, this->size, this->rotation, this->transparency, this->renderLayer, this->hairColour, flipSprite);
+	if (!isSelected)
+	{
+		renderer.RenderSpriteLighting(this->nakedBody, this->NormalMap, this->position, this->size, this->rotation, this->transparency, this->renderLayer, bodyColour, flipSprite);
+		renderer.RenderSpriteLighting(this->hair, this->NormalMap, this->position, this->size, this->rotation, this->transparency, this->renderLayer, this->hairColour, flipSprite);
 
-		renderer.RenderSpriteLighting(this->eyes, this->NormalMap, this->position, this->size, this->rotation, this->transparency, this->renderLayer, this->eyeColour,flipSprite);
-	renderer.RenderSpriteLighting(this->ears, this->NormalMap, this->position, this->size, this->rotation, this->transparency, this->renderLayer, this->bodyColour, flipSprite);
-	if (bottom.Width > 0 && bottom.Height > 0)
-		renderer.RenderSpriteLighting(this->bottom, this->NormalMap, this->position, this->size, this->rotation, this->transparency, this->renderLayer, this->bottomColour, flipSprite);
-	if (top.Width > 0 && top.Height > 0)
-		renderer.RenderSpriteLighting(this->top, this->NormalMap, this->position, this->size, this->rotation, this->transparency, this->renderLayer, this->topColour, flipSprite);
-
+		renderer.RenderSpriteLighting(this->eyes, this->NormalMap, this->position, this->size, this->rotation, this->transparency, this->renderLayer, this->eyeColour, flipSprite);
+		renderer.RenderSpriteLighting(this->ears, this->NormalMap, this->position, this->size, this->rotation, this->transparency, this->renderLayer, this->bodyColour, flipSprite);
+		if (bottom.Width > 0 && bottom.Height > 0)
+			renderer.RenderSpriteLighting(this->bottom, this->NormalMap, this->position, this->size, this->rotation, this->transparency, this->renderLayer, this->bottomColour, flipSprite);
+		if (top.Width > 0 && top.Height > 0)
+			renderer.RenderSpriteLighting(this->top, this->NormalMap, this->position, this->size, this->rotation, this->transparency, this->renderLayer, this->topColour, flipSprite);
+	}
+	glm::ivec2 mPos;
+	if (SDL_GetMouseState(&mPos.x, &mPos.y) & SDL_BUTTON(SDL_BUTTON_LEFT))
+	{
+		if ((mPos.x + renderer.camera.getPosition().x > getPosition().x - getHalfSize().x) && (mPos.x + renderer.camera.getPosition().x < getPosition().x + getHalfSize().x))
+		{
+			if ((mPos.y + renderer.camera.getPosition().y > getPosition().y - getHalfSize().y) && (mPos.y + renderer.camera.getPosition().y < getPosition().y + getHalfSize().y))
+			{
+				isSelected = true;
+			}
+		}
+	}
+	if (isSelected)
+	{
+		renderer.RenderOutline(this->nakedBody, this->position, this->size * 4.0f, this->rotation, this->transparency, this->bodyColour, flipSprite);
+	}
 }
 
 void Villager::RenderBody(int index)

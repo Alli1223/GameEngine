@@ -383,6 +383,7 @@
     <None Include="Shaders\frag.glsl" />
     <None Include="Shaders\f_2DLightingShader.glsl" />
     <None Include="Shaders\lightFragShader.glsl" />
+    <None Include="Shaders\outlineShader.glsl" />
     <None Include="Shaders\shadowFragShader.glsl" />
     <None Include="Shaders\UIFrag.glsl" />
     <None Include="Shaders\vert.glsl" />

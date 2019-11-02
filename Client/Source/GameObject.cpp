@@ -131,12 +131,6 @@ float GameObject::GetDistance(vec2 pointA, vec2 pointB)
 glm::vec2 GameObject::getPosition()
 {
 	return position;
-	//if (getBody() != nullptr)
-	//{
-	//	b2Vec2 pos = getBody()->GetPosition();
-	//	return { pos.x, pos.y };
-	//}
-	//else
 }
 
 
@@ -160,14 +154,6 @@ bool GameObject::collidesWith(GameObject object)
 
 
 	return !(left2 > right1 ||	right2 < left1 ||	top2 > bottom1 ||	bottom2 < top1);
-
-	//if (SDL_HasIntersection(&this->getTexture().getRect(), &object.getTexture().getRect()) == SDL_TRUE)
-	//{
-	//	return true;
-	//}
-	//else
-	//	return false;
-
 }
 
 void GameObject::collidedWith(CollisionIdentifier & objectIdentity)

@@ -24,6 +24,7 @@ public:
 
 	//! Whether the NPC is at home
 	bool isAtHome = false;
+	bool isSelected = false;
 protected:
 
 	std::shared_ptr<NPC> thisptr = nullptr;

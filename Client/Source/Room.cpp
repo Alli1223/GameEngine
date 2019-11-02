@@ -98,6 +98,21 @@ void Room::Render(GL_Renderer& renderer)
 	}
 }
 
+void Room::Update()
+{
+	// Update NPCS
+	for (auto npc : npcs)
+	{
+		npc->Update();
+		if (npc->isSelected)
+		{
+
+		}
+	}
+	// Get refresh rate
+	I_Physics->Step(1.0f / 100.0f, 6, 2);
+}
+
 std::shared_ptr<Cell>& Room::GetCell(int x, int y)
 {
 	if (x > 0 && y > 0 && x < tiles.size() && y < tiles[0].size())

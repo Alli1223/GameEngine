@@ -17,6 +17,8 @@ public:
 
 	virtual void Render(GL_Renderer& renderer);
 
+	virtual void Update();
+
 	std::shared_ptr<Cell>& GetCell(int x, int y);
 	//Create item on the cell
 	void SetCellItem(int x, int y, std::shared_ptr<Item> item);
@@ -34,6 +36,7 @@ public:
 	int getTileSize() { return tileSize; }
 	int setTileSize(int newSize) { return tileSize = newSize; }
 private:
+	std::shared_ptr<NPC> selectedNPC = nullptr;
 	int roomSize = 20;
 	int tileSize = 100;
 	

@@ -700,5 +700,8 @@
     <None Include="Shaders\shadowFragShader.glsl">
       <Filter>Source Files\Shaders\Lighting Shaders</Filter>
     </None>
+    <None Include="Shaders\outlineShader.glsl">
+      <Filter>Source Files\Shaders\Lighting Shaders</Filter>
+    </None>
   </ItemGroup>
 </Project>

@@ -46,12 +46,15 @@ public:
 	void RenderGUI(Texture2D &texture, glm::vec2& position, glm::vec2& size, GLfloat rotate, GLfloat transparency, glm::vec3& color, std::pair<bool, bool> flipSprite);
 	void SetProjectionMatrix();
 
-	// Render with normals
+	//! Render with normals
 	void RenderSpriteLighting(Texture2D &texture, Texture2D &normals, glm::vec2& position, glm::vec2& size, GLfloat rotate, GLfloat transparency, int renderLayer, glm::vec3& color, std::pair<bool, bool> flipSprite);
 	void RenderShadows(Texture2D& texture, glm::vec2& position, glm::vec2& size, glm::vec2  resolution);
 
-	// Render text to the screen
+	//! Render text to the screen
 	void RenderText(std::string text, glm::vec2 position, glm::vec2 size, glm::vec2 textSize, glm::vec3 color);
+
+	//! Render outline
+	void RenderOutline(Texture2D& texture, glm::vec2& position, glm::vec2& size, GLfloat rotate, GLfloat transparency, glm::vec3& color, std::pair<bool, bool> flipSprite);
 	//! Create a map of all the ascii textures
 	void CreateTextCharacterAtals();
 	std::map<int, Light> lights;
@@ -83,6 +86,7 @@ private:
 	Shader GUIShader;
 	Shader lightingShader;
 	Shader textShader;
+	Shader outlineShader;
 
 	GLuint vertexbuffer;
 

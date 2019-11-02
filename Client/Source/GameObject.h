@@ -40,6 +40,7 @@ public:
 	float setSize(float x, float y) { return size.x = x, size.y = y; }
 	glm::vec2 setSize(glm::vec2 newSize) { return size = newSize; }
 	glm::vec2 getSize() { return size; }
+	glm::vec2 getHalfSize() { return size / 2.0f; }
 	float getWidth() { return size.x; }
 	float getHeight() { return size.y; }
 

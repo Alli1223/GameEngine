@@ -51,6 +51,7 @@ GL_Renderer::GL_Renderer()
 	this->spriteShader = ResourceManager::LoadShader("Shaders\\vert.glsl", "Shaders\\frag.glsl", nullptr, "shader");
 	this->GUIShader = ResourceManager::LoadShader("Shaders\\vert.glsl", "Shaders\\UIFrag.glsl", nullptr, "GUIShader");
 	this->lightingShader = ResourceManager::LoadShader("Shaders\\v_2DLightingShader.glsl", "Shaders\\f_2DLightingShader.glsl", nullptr, "normalShader");
+	this->outlineShader = ResourceManager::LoadShader("Shaders\\vert.glsl", "Shaders\\outlineShader.glsl", nullptr, "outlineShader");
 	this->textShader = ResourceManager::LoadShader("Shaders\\Text\\vert.glsl", "Shaders\\Text\\frag.glsl", nullptr, "textShader");
 
 	ResourceManager::LoadAtlas("roguelike", SpriteSheets + "roguelikeSheet_transparent.png", 56, 16);
@@ -92,6 +93,8 @@ GL_Renderer::GL_Renderer()
 	ResourceManager::LoadAtlas("lavender_normal", CropSprites + "lavender.png", 12, { 31, 63 });
 	ResourceManager::LoadAtlas("sunflower", CropSprites + "Sunflower.png", 12, {31, 63});
 }
+
+
 
 
 void GL_Renderer::CreateTextCharacterAtals()
@@ -247,6 +250,9 @@ void GL_Renderer::SetProjectionMatrix()
 
 	ResourceManager::GetShader("normalShader").Use().SetInteger("image", 0);
 	ResourceManager::GetShader("normalShader").SetMatrix4("projection", projection);
+
+	ResourceManager::GetShader("outlineShader").Use().SetInteger("image", 0);
+	ResourceManager::GetShader("outlineShader").SetMatrix4("projection", projection);
 
 	ResourceManager::GetShader("GUIShader").Use().SetInteger("image", 0);
 	ResourceManager::GetShader("GUIShader").SetMatrix4("projection", projection);
@@ -566,3 +572,38 @@ void GL_Renderer::RenderShadows(Texture2D& texture, glm::vec2& position, glm::ve
 
 
 
+void GL_Renderer::RenderOutline(Texture2D& texture, glm::vec2& position, glm::vec2& size, GLfloat rotate, GLfloat transparency, glm::vec3& color, std::pair<bool, bool> flipSprite)
+{
+	this->outlineShader.Use();
+
+	// Prepare transformations
+	glm::mat4 model;
+	model = glm::translate(model, glm::vec3((position - size / 2.0f) - camera.getPosition(), 0.0f));  // First translate (transformations are: scale happens first, then rotation and then final translation happens; reversed order)
+
+	model = glm::translate(model, glm::vec3(0.5f * size.x, 0.5f * size.y, 0.0f)); // Move origin of rotation to center of quad
+	if (rotate != 0.0f)
+		model = glm::rotate(model, rotate, glm::vec3(0.0f, 0.0f, 1.0f)); // Then rotate
+	if (flipSprite.first)
+		model = glm::scale(model, glm::vec3(-1.0f, 1.0f, 1.0f)); // flip horizontally
+
+	else if (flipSprite.second)
+		model = glm::scale(model, glm::vec3(1.0f, -1.0f, 1.0f)); // flip vertically
+
+	model = glm::translate(model, glm::vec3(-0.5f * size.x, -0.5f * size.y, 0.0f)); // Move origin back
+	model = glm::scale(model, glm::vec3(size, 1.0f)); // Last scale	
+
+	this->outlineShader.SetMatrix4("model", model);
+
+
+	// Set transparency
+	this->outlineShader.SetFloat("Transparency", transparency);
+
+	// Render textured quad
+	glActiveTexture(GL_TEXTURE0);
+	texture.Bind();
+
+	glBindVertexArray(this->quadVAO);
+	glDrawArrays(GL_TRIANGLES, 0, 6);
+	glBindVertexArray(0);
+
+}

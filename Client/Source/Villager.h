@@ -18,6 +18,7 @@ public:
 	// Render the NPC
 	void Render(GL_Renderer& renderer);
 
+
 	std::shared_ptr<Pathfinder> pathfinder;
 
 	//! Pointers to current level
