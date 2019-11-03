@@ -597,6 +597,8 @@ void GL_Renderer::RenderOutline(Texture2D& texture, glm::vec2& position, glm::ve
 
 	// Set transparency
 	this->outlineShader.SetFloat("Transparency", 0.5f);
+	this->outlineShader.SetVector3f("outlineColour", { 0.5f,0.1f,0.8f });
+	
 
 	// Render textured quad
 	glActiveTexture(GL_TEXTURE0);

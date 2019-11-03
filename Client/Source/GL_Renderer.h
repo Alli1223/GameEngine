@@ -75,6 +75,8 @@ public:
 	float timeOfDay;
 	//! The games camera
 	Camera camera;
+
+	int currentInstanceCellSize = 100;
 private:
 	void init();
 	// Init shadows shader FBO

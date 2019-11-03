@@ -33,6 +33,10 @@ void Villager::GenerateVillager()
 
 void Villager::Update()
 {
+	if (isSelected)
+	{
+		
+	}
 	// IF the player in in a building
 	if (isInShop)
 	{
@@ -81,6 +85,7 @@ void Villager::Render(GL_Renderer& renderer)
 		//InitPhysics(renderer.p_World.get(), b2BodyType::b2_dynamicBody, 1.0f, 0.3f);
 		setSize({ getSize().x * 2.0f, getSize().y });
 	}
+	I_renderer = &renderer;
 	this->setPosition({ this->getBody()->GetPosition().x * physicsScaleUp,this->getBody()->GetPosition().y * physicsScaleUp });
 	getBody()->SetLinearDamping(1000.0f); // dont let the player gradually increase speed
 	RenderBody(0);
@@ -95,9 +100,11 @@ void Villager::Render(GL_Renderer& renderer)
 	if (top.Width > 0 && top.Height > 0)
 		renderer.RenderSpriteLighting(this->top, this->NormalMap, this->position, this->size, this->rotation, this->transparency, this->renderLayer, this->topColour, flipSprite);
 
+	// if selected
 	glm::ivec2 mPos;
 	if (SDL_GetMouseState(&mPos.x, &mPos.y) & SDL_BUTTON(SDL_BUTTON_LEFT))
 	{
+		isSelected = false;
 		if ((mPos.x + renderer.camera.getPosition().x > getPosition().x - getHalfSize().x) && (mPos.x + renderer.camera.getPosition().x < getPosition().x + getHalfSize().x))
 		{
 			if ((mPos.y + renderer.camera.getPosition().y > getPosition().y - getHalfSize().y) && (mPos.y + renderer.camera.getPosition().y < getPosition().y + getHalfSize().y))
@@ -105,10 +112,11 @@ void Villager::Render(GL_Renderer& renderer)
 				isSelected = true;
 			}
 		}
+		
 	}
 	if (isSelected)
 	{
-		renderer.RenderOutline(this->nakedBody, this->position, this->size * 1.15f, this->rotation, this->transparency, this->bodyColour, flipSprite);
+		renderer.RenderOutline(this->nakedBody, this->position, this->size, this->rotation, this->transparency, this->bodyColour, flipSprite);
 	}
 }
 

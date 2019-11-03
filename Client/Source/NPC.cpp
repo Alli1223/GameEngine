@@ -3,6 +3,8 @@
 
 NPC::NPC()
 {
+	//TODO: make this reliable
+	ID = rand() % 9999999;
 	bodyType = b2BodyType::b2_dynamicBody;
 }
 
@@ -59,6 +61,20 @@ void NPC::Update(World & world)
 
 void NPC::Update()
 {
+}
+
+bool NPC::FindPath(glm::ivec2 start, glm::ivec2 end)
+{
+	if (tiles.size() > 0)
+	{
+		this->path = pathfinder->findPathThread(tiles, getPosition() / 100.0f, { rand() % tiles.size(), rand() % tiles[0].size() });
+
+		if (path.size() > 0)
+			return true;
+		else
+			return false;
+	}
+	return false;
 }
 
 std::shared_ptr<NPC> NPC::getSharedPointer()

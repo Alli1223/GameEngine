@@ -674,6 +674,12 @@
     <Filter Include="Headers\Core\GUI\Menu">
       <UniqueIdentifier>{6e0b5e42-20e5-43cb-9e8a-cc1e0839c55f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Shaders\Outline">
+      <UniqueIdentifier>{3dad1768-d254-4750-b9df-82bc31ae164c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Shaders\Text">
+      <UniqueIdentifier>{29892fb7-62d2-4c69-a668-3ac564a2ee06}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="Shaders\vert.glsl">
@@ -702,6 +708,18 @@
     </None>
     <None Include="Shaders\outlineShader.glsl">
       <Filter>Source Files\Shaders\Lighting Shaders</Filter>
+    </None>
+    <None Include="Shaders\Outline\frag.glsl">
+      <Filter>Source Files\Shaders\Outline</Filter>
+    </None>
+    <None Include="Shaders\Outline\vert.glsl">
+      <Filter>Source Files\Shaders\Outline</Filter>
+    </None>
+    <None Include="Shaders\Text\vert.glsl">
+      <Filter>Source Files\Shaders\Text</Filter>
+    </None>
+    <None Include="Shaders\Text\frag.glsl">
+      <Filter>Source Files\Shaders\Text</Filter>
     </None>
   </ItemGroup>
 </Project>

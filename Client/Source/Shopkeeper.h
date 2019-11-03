@@ -12,5 +12,8 @@ public:
 
 	void Update();
 
+protected:
+	float walkSpeed = 1.0f;
+
 };
 

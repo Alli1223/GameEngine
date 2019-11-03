@@ -259,11 +259,6 @@ void MainGame::run()
 
 		// Render UI
 		UI.Render(glRenderer, world, GameSettings::currentInstance->I_player, gameSettings);
-
-		for each (auto npc in GameSettings::currentInstance->npcs)
-		{
-			npc->Render(glRenderer);
-		}
 		
 		// END Rendering
 		ImGui::Render();

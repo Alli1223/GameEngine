@@ -78,6 +78,7 @@ void Room::InstanceSetup(Player& player)
 
 void Room::Render(GL_Renderer& renderer)
 {
+	renderer.currentInstanceCellSize = tileSize;
 	// Camera to players position
 	glm::vec2 halfCameraSize = { renderer.camera.windowSize.x / 2, renderer.camera.windowSize.y / 2 };
 	renderer.camera.Lerp_To(I_player.getPosition() - halfCameraSize, renderer.camera.getCameraSpeed());
@@ -100,15 +101,20 @@ void Room::Render(GL_Renderer& renderer)
 
 void Room::Update()
 {
-	// Update NPCS
+	// Update NPCs
+	bool npcSelected = false;
 	for (auto npc : npcs)
 	{
 		npc->Update();
 		if (npc->isSelected)
 		{
-
+				selectedNPC = npc;
+				npcSelected = true;
 		}
 	}
+	if (!npcSelected)
+		selectedNPC = nullptr;
+
 	// Get refresh rate
 	I_Physics->Step(1.0f / 100.0f, 6, 2);
 }

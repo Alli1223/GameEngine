@@ -1,6 +1,6 @@
 #pragma once
 #include "NPC.h"
-#include "PathFinder.h"
+
 
 class Villager : public NPC
 {
@@ -11,33 +11,24 @@ public:
 
 	//! Generate the NPC with random values
 	void GenerateVillager();
-	//! Pathfinder path
-	std::vector<glm::ivec2> path;
+
 	//! Get a shared pointer to this object
 	void Update();
 	// Render the NPC
 	void Render(GL_Renderer& renderer);
 
 
-	std::shared_ptr<Pathfinder> pathfinder;
-
-	//! Pointers to current level
-	std::vector<std::vector<std::shared_ptr<Cell>>> tiles;
-
 protected:
 	// Render the body with the sprite index
 	void RenderBody(int index);
 
-	//pathfinding
-	int pathPointIterator = 0;
+	GL_Renderer* I_renderer;
 
 	std::shared_ptr<Villager> thisVillagerPointer = nullptr;
 
 	virtual void UpdatePathPosition();
 
-
-	float walkSpeed = 5.0f;
-	//! TODO: needs
+	float walkSpeed = 1.0f;
 
 	//! If the villager has nothing to do
 	bool isWondering = true;
@@ -58,7 +49,9 @@ protected:
 		browsing,
 		lookAtItem,
 		paying,
-		exiting
+		exiting,
+		idle,
+		movingToPostion
 
 	} s_action;
 
