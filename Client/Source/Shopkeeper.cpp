@@ -29,19 +29,23 @@ void Shopkeeper::Update()
 {
 	if (isSelected)
 	{
-		this->s_action = ShopActions::idle;
-		if(path.size() > 0)
-			path.erase(path.begin(), path.end());
-
 		int mX = 0, mY = 0;
-		if (SDL_GetMouseState(&mX, &mY) & SDL_BUTTON(SDL_BUTTON_RIGHT))
+		if (SDL_GetMouseState(&mX, &mY) & SDL_BUTTON(SDL_BUTTON_RIGHT) && path.size() == 0)
 		{
-			
+
 			mX = (mX + I_renderer->camera.getX() + (I_renderer->currentInstanceCellSize / 2)) / I_renderer->currentInstanceCellSize;
 			mY = (mY + I_renderer->camera.getY() + (I_renderer->currentInstanceCellSize / 2)) / I_renderer->currentInstanceCellSize;
 
-
-
+			path = pathfinder->findPathThread(tiles, getPosition() / (float)I_renderer->currentInstanceCellSize, { mX,mY });
+			this->s_action = ShopActions::movingToPostion;
+		}
+		else
+		{
+			if (s_action == ShopActions::browsing && path.size() > 0)
+			{
+				this->s_action = ShopActions::idle;
+				path.erase(path.begin(), path.end());
+			}
 		}
 	}
 	else
