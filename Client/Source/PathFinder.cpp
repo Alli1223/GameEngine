@@ -406,25 +406,25 @@ std::vector<glm::ivec2> Pathfinder::findPathGrid(std::vector<std::vector<std::sh
 				{
 					cellPos.x = neighbour->point.getX(), cellPos.y = neighbour->point.getY();
 					// If the cell is walkable
-					//if(world.GetCell(cellPos.x, cellPos.y)->isWalkable)
-					if (!isInClosedSet(neighbour->point))
-					{
-
-						double gTentative = currentNode->g + euclideanDistance(neighbour->point, goal);
-
-						if (neighbour->status != NodeStatus::Open || gTentative < neighbour->g)
+					if (tiles[cellPos.x][cellPos.y]->isWalkable)
+						if (!isInClosedSet(neighbour->point))
 						{
-							neighbour->g = gTentative;
-							neighbour->h = euclideanDistance(neighbour->point, goal);
-							neighbour->cameFrom = currentNode;
 
+							double gTentative = currentNode->g + euclideanDistance(neighbour->point, goal);
 
-							if (neighbour->status != NodeStatus::Open)
+							if (neighbour->status != NodeStatus::Open || gTentative < neighbour->g)
 							{
-								addToOpenSet(neighbour);
+								neighbour->g = gTentative;
+								neighbour->h = euclideanDistance(neighbour->point, goal);
+								neighbour->cameFrom = currentNode;
+
+
+								if (neighbour->status != NodeStatus::Open)
+								{
+									addToOpenSet(neighbour);
+								}
 							}
 						}
-					}
 				}
 			}
 		}

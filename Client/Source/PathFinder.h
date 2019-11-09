@@ -123,7 +123,7 @@ private:
 	//! A bool that enables stringpulling
 	bool StringPullPath = false;
 	//! A bool that enables pathfinding to use diagonal paths
-	bool diagonalPaths = true;
+	bool diagonalPaths = false;
 
 	bool OnlyUsePaths = true;
 

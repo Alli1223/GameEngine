@@ -37,7 +37,7 @@ void Character::Move(int newX, int newY)
 void Character::RotateCharacter(GL_Renderer& renderer)
 {
 	// Walk down
-	if (getTargetRotation() > 210 && getTargetRotation() < 140)
+	if (getTargetRotation() == -90)
 	{
 		if (isPlayerMoving())
 		{
@@ -54,7 +54,7 @@ void Character::RotateCharacter(GL_Renderer& renderer)
 
 
 	// Walk Left (A)
-	else if (getTargetRotation() > 50 && getTargetRotation() < 140)
+	else if (getTargetRotation() == 0)
 	{
 		if (isPlayerMoving())
 		{
@@ -71,7 +71,7 @@ void Character::RotateCharacter(GL_Renderer& renderer)
 	}
 	// Walk Right (D)
 	
-	else if (getTargetRotation() > 210 && getTargetRotation() < 310)
+	else if (getTargetRotation() == 180 || getTargetRotation() == -180)
 	{
 		if (isPlayerMoving())
 		{
@@ -87,7 +87,7 @@ void Character::RotateCharacter(GL_Renderer& renderer)
 
 	}
 	// Walk Up (W)
-	else if ((getTargetRotation() > 310 && getTargetRotation() <= 360) || (getTargetRotation() >= 0 && getTargetRotation() < 50))
+	else if (getTargetRotation() == 90)
 	{
 		if (walkVerticalAnimation.getCurrentFrame() == 4)
 			walkVerticalAnimation.setCurrentFrame(0);
@@ -101,10 +101,6 @@ void Character::RotateCharacter(GL_Renderer& renderer)
 
 		}
 
-	}
-	else
-	{
-		RenderCharacterBody(renderer, legFlipIdleAnimation.getCurrentFrame() + 10, false);
 	}
 }
 

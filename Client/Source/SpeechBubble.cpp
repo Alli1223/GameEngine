@@ -15,7 +15,7 @@ void SpeechBubble::Render(GL_Renderer& renderer)
 	// Render in relation to camera
 	if (text.size() > 0)
 	{
-		renderer.RenderGUI(this->Background, this->position - renderer.camera.getPosition(), this->size, this->rotation, this->transparency, this->colour, flipSprite);
+		//renderer.RenderGUI(this->Background, this->position - renderer.camera.getPosition(), this->size, this->rotation, this->transparency, this->colour, flipSprite);
 
 		renderer.RenderText(text, { (this->position.x -renderer.camera.getPosition().x) - size.x / 2, position.y - renderer.camera.getPosition().y }, this->size, { textSize, textSize }, { 0.5,1.0,1.0 });
 	}
