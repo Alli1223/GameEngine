@@ -69,5 +69,6 @@ void Shopkeeper::Update()
 	}
 	else
 		UpdatePathPosition();
+
 }
 

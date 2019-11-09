@@ -6,6 +6,7 @@
 #include "Timer.h"
 #include "CollisionIdentifier.h"
 #include "Projectile.h"
+#include "SpeechBubble.h"
 class Character : public GameObject
 {
 public:
@@ -42,6 +43,9 @@ public:
 
 	//! Move the Charater and check for collisions
 	void Move(int newX, int newY);
+
+	//! Text for the character
+	SpeechBubble speechBubble;
 
 	enum MovementDirection
 	{

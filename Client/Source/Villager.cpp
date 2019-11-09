@@ -132,6 +132,9 @@ void Villager::Render(GL_Renderer& renderer)
 	{
 		renderer.RenderOutline(this->nakedBody, this->position, this->size, this->rotation, this->transparency, this->bodyColour, flipSprite);
 	}
+	speechBubble.text = std::to_string(this->getTargetRotation());
+	speechBubble.setPosition(getPosition());
+	speechBubble.Render(renderer);
 }
 
 

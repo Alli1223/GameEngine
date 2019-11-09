@@ -13,7 +13,6 @@ public:
 	b2BodyType bodyType;
 
 	void Move(MovementDirection direction);
-
 	
 	virtual void Update(World& world);
 	virtual void Update();

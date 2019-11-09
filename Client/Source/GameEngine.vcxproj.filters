@@ -260,6 +260,7 @@
       <Filter>Source Files\Core\Items\Furniture</Filter>
     </ClCompile>
     <ClCompile Include="Shopkeeper.cpp" />
+    <ClCompile Include="SpeechBubble.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cell.h">
@@ -539,6 +540,7 @@
       <Filter>Headers\Core\GUI\Element</Filter>
     </ClInclude>
     <ClInclude Include="Shopkeeper.h" />
+    <ClInclude Include="SpeechBubble.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="SDL_project.rc" />
