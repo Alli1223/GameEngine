@@ -1,9 +1,7 @@
 #pragma once
 #include "Character.h"
-#include "LightSource.h"
-#include "Timer.h"
-#include "CollisionIdentifier.h"
-#include "Projectile.h"
+
+
 
 class Player : public Character
 {
@@ -23,7 +21,7 @@ public:
 	void Move(Player::MovementDirection direction);
 	virtual void Move(glm::vec2 position);
 
-	void AssignSprites(GL_Renderer& renderer, int index, bool flip);
+
 	json getPlayerJson();
 
 	glm::vec2 renderOffset;
@@ -60,7 +58,7 @@ public:
 	//! Inventory
 	Inventory inventory;
 
-	LightSource playerLight;
+
 
 	bool pressingUseKey = false;
 
@@ -103,102 +101,7 @@ private:
 	//! Pixel size of the player sprite in the spritesheet
 	int pixelSize = 64;
 
-	//! Default colours
-	vec3 hairColour = { 255,255,255 };
-	vec3 eyeColour = { 255,255,255 };
-	vec3 topColour = { 255,255,255 };
-	vec3 bottomColour = { 255,255,255 };
-
-	vec3 bodyColour = { 255,224,189 };
-	//! Texture locations
-	std::string characterTextureLocation = "Resources\\Sprites\\Character\\";
-	std::string clothesTextureLocation = "Resources\\Characters\\Accessories\\Clothing\\";
-
-	std::string CharacterTextureLocation = "Resources\\Characters\\";
-	std::string CharacterEarsTextureLocation = "Resources\\Characters\\Accessories\\Ears\\";
-	std::string CharacterEyesTextureLocation = "Resources\\Characters\\Accessories\\Eyes\\";
-	std::string CharacterHairTextureLocation = "Resources\\Characters\\Accessories\\Hair\\";
-
-	//! Gender Textures
-	//Texture male;
-	//Texture female;
-	Texture2D nakedBody;
-	Texture2D hair;
-	Texture2D eyes;
-	Texture2D ears;
-	Texture2D shadow;
-	Texture2D top;
-	Texture2D bottom;
-
-	//! Ear Textures
-	Texture2D aquaticEar;
-	Texture2D catEar1;
-	Texture2D catEar2;
-	Texture2D elfEar1;
-	Texture2D elfEar2;
-	Texture2D elfEar3;
-	Texture2D elfEar4;
-	Texture2D elfEar5;
-	Texture2D elfEar6;
-	Texture2D human;
-	
-
-	Texture2D eye1;
-	Texture2D eye2;
-	Texture2D eye3;
-	Texture2D eye4;
-	Texture2D eye5;
-	Texture2D eye6;
-	Texture2D eye7;
-	Texture2D eye8;
-	Texture2D eye9;
-	Texture2D eye10;
-	Texture2D eye11;
-	Texture2D eye12;
-	Texture2D eye13;
-
-	Texture2D hair1;
-	Texture2D hair2;
-	Texture2D hair3;
-	Texture2D hair4;
-	Texture2D hair5;
-	Texture2D hair6;
-	Texture2D hair7;
-	Texture2D hair8;
 
 
-	//!Shadow
-	Texture2D playerShadow;
-
-	//! Texture for the Character
-	Texture2D characterIdleTexture;
-	Texture2D walkTexture;
-	Texture2D sideBlinkTexture;
-	Texture2D shortHairTexture;
-	Texture2D longHairTexture;
-	Texture2D eyesTexture;
-
-	//! Texture for the clothes
-	Texture2D femaleTop1;
-	Texture2D femaleTop2;
-	Texture2D femaleBottom1;
-	Texture2D femaleBottom2;
-
-	//! Animations
-	Animation walkHorizontalAnimation;
-	Animation walkVerticalAnimation;
-	Animation legFlipIdleAnimation;
-
-	Animation fishingCast;
-	Animation fishingReel;
-
-	//! Idle and blink timers
-	Timer idleAnimationTimer;
-	Timer blinkSpeed;
-	bool blink = false;
-	//! How often the player blinks in ms
-	float blinkFrequency = 5000.0f;
-	//! Length the player has their eyes closed
-	float blinkDuration = 100.0f;
 };
 

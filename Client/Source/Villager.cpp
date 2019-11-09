@@ -79,6 +79,7 @@ void Villager::Update()
 
 void Villager::Render(GL_Renderer& renderer)
 {
+
 	if (!hasPhysics)
 	{
 		setSize({ getSize().x / 2.0f, getSize().y });
@@ -88,18 +89,31 @@ void Villager::Render(GL_Renderer& renderer)
 	I_renderer = &renderer;
 	this->setPosition({ this->getBody()->GetPosition().x * physicsScaleUp,this->getBody()->GetPosition().y * physicsScaleUp });
 	getBody()->SetLinearDamping(1000.0f); // dont let the player gradually increase speed
-	RenderBody(0);
 
-	renderer.RenderSpriteLighting(this->nakedBody, this->NormalMap, this->position, this->size, this->rotation, this->transparency, this->renderLayer, bodyColour, flipSprite);
-	renderer.RenderSpriteLighting(this->hair, this->NormalMap, this->position, this->size, this->rotation, this->transparency, this->renderLayer, this->hairColour, flipSprite);
+	if (isPlayerMoving())
+	{
+		walkHorizontalAnimation.OnAnimate();
+		walkVerticalAnimation.OnAnimate();
+		blink = false;
+	}
+	else
+	{
+		walkHorizontalAnimation.setCurrentFrame(0);
+		walkVerticalAnimation.setCurrentFrame(0);
+	}
+	RotateCharacter(renderer);
+	//RenderBody(0);
 
-	renderer.RenderSpriteLighting(this->eyes, this->NormalMap, this->position, this->size, this->rotation, this->transparency, this->renderLayer, this->eyeColour, flipSprite);
-	renderer.RenderSpriteLighting(this->ears, this->NormalMap, this->position, this->size, this->rotation, this->transparency, this->renderLayer, this->bodyColour, flipSprite);
-	if (bottom.Width > 0 && bottom.Height > 0)
-		renderer.RenderSpriteLighting(this->bottom, this->NormalMap, this->position, this->size, this->rotation, this->transparency, this->renderLayer, this->bottomColour, flipSprite);
-	if (top.Width > 0 && top.Height > 0)
-		renderer.RenderSpriteLighting(this->top, this->NormalMap, this->position, this->size, this->rotation, this->transparency, this->renderLayer, this->topColour, flipSprite);
-
+	//renderer.RenderSpriteLighting(this->nakedBody, this->NormalMap, this->position, this->size, this->rotation, this->transparency, this->renderLayer, bodyColour, flipSprite);
+	//renderer.RenderSpriteLighting(this->hair, this->NormalMap, this->position, this->size, this->rotation, this->transparency, this->renderLayer, this->hairColour, flipSprite);
+	//
+	//renderer.RenderSpriteLighting(this->eyes, this->NormalMap, this->position, this->size, this->rotation, this->transparency, this->renderLayer, this->eyeColour, flipSprite);
+	//renderer.RenderSpriteLighting(this->ears, this->NormalMap, this->position, this->size, this->rotation, this->transparency, this->renderLayer, this->bodyColour, flipSprite);
+	//if (bottom.Width > 0 && bottom.Height > 0)
+	//	renderer.RenderSpriteLighting(this->bottom, this->NormalMap, this->position, this->size, this->rotation, this->transparency, this->renderLayer, this->bottomColour, flipSprite);
+	//if (top.Width > 0 && top.Height > 0)
+	//	renderer.RenderSpriteLighting(this->top, this->NormalMap, this->position, this->size, this->rotation, this->transparency, this->renderLayer, this->topColour, flipSprite);
+	//
 	// if selected
 	glm::ivec2 mPos;
 	if (SDL_GetMouseState(&mPos.x, &mPos.y) & SDL_BUTTON(SDL_BUTTON_LEFT))
@@ -119,6 +133,8 @@ void Villager::Render(GL_Renderer& renderer)
 		renderer.RenderOutline(this->nakedBody, this->position, this->size, this->rotation, this->transparency, this->bodyColour, flipSprite);
 	}
 }
+
+
 
 void Villager::RenderBody(int index)
 {
@@ -316,6 +332,8 @@ void Villager::UpdatePathPosition()
 
 
 				getBody()->ApplyForceToCenter(b2Vec2(deltaX, deltaY), true);
+				this->setPlayerMoving(true);
+				this->setTargetRotation(angleInDegrees);
 			}
 	}
 }

@@ -18,6 +18,7 @@ RoomDesigner::~RoomDesigner()
 }
 void RoomResigerGUI::CreateButtons()
 {
+	shopManagement.Background = ResourceManager::LoadTexture("Resources\\UI\\Background.png");
 	
 	highlight.Sprite = ResourceManager::LoadTexture("Resources\\Sprites\\GUI\\LuminanceSlider.png");
 	highlight.transparency = 0.5f;
@@ -109,9 +110,8 @@ void RoomDesigner::Render(GL_Renderer& renderer)
 		GUI.shopManagement.Render(renderer);
 
 		// Hire Staff
-		if (GUI.shopManagement.buttons[0].isPressed() && SDL_GetTicks() > GUI.timeItemPressed + 100.0f)
+		if (GUI.shopManagement.buttons[0].isPressed() && SDL_GetTicks() > GUI.timeItemPressed + 300.0f)
 		{
-
 			GUI.timeItemPressed = SDL_GetTicks();
 			Shopkeeper newStaff;
 			room->SpawnNPC(newStaff.getSharedPointer());

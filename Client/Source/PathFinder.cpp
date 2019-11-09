@@ -345,8 +345,8 @@ std::vector<glm::ivec2> Pathfinder::findPathGrid(std::vector<std::vector<std::sh
 	// Clear all the node for fresh pathfind
 	nodes.clear();
 
-	std::cout << "Computing Path" << std::endl;
-	std::cout << "First Pos: " << start.getX() << "," << start.getY() << " End: " << goal.getX() << "," << goal.getY() << std::endl;
+
+	std::cout << "Start Pos: " << start.getX() << "," << start.getY() << " End: " << goal.getX() << "," << goal.getY() << std::endl;
 	// IF the start and end are accessable
 	//if (world.GetCell(start.getX(), start.getY())->isWalkable && world.GetCell(goal.getX(), goal.getY())->isWalkable)
 	try

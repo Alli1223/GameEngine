@@ -2,6 +2,10 @@
 #include "Animation.h"
 #include "GameObject.h"
 #include "Inventory.h"
+#include "LightSource.h"
+#include "Timer.h"
+#include "CollisionIdentifier.h"
+#include "Projectile.h"
 class Character : public GameObject
 {
 public:
@@ -24,6 +28,12 @@ public:
 	bool setPlayerMoving(bool yayornay) { return isMoving = yayornay; }
 	bool isPlayerMoving() { return isMoving; }
 
+	void RotateCharacter(GL_Renderer& renderer);
+
+
+	//! Renders the characters clothes
+	void RenderCharacterBody(GL_Renderer& renderer, int index, bool flipSprite);
+	void AssignSprites(GL_Renderer& renderer, int index, bool flip);
 	//! Character Type
 	std::string characterType = "NPC";
 
@@ -47,6 +57,8 @@ public:
 	} direction;
 
 	bool isInBuilding = false;
+
+	LightSource playerLight;
 
 	//! Enum for chacter customisation
 	typedef struct
@@ -138,12 +150,109 @@ public:
 	//! Character clothes
 	Clothing PlayerClothes;
 
+	//! Default colours
+	vec3 hairColour = { 255,255,255 };
+	vec3 eyeColour = { 255,255,255 };
+	vec3 topColour = { 255,255,255 };
+	vec3 bottomColour = { 255,255,255 };
+
+	vec3 bodyColour = { 255,224,189 };
+
 protected:
 	std::string CharacterDirectory = "Resources\\Characters\\";
 	std::string CharacterClothingDirectory = "Resources\\Characters\\Clothing\\";
 	std::string PlayerAccessoriesDirectory = "Resources\\Characters\\Accessories\\";
 
+	//! Texture locations
+	std::string characterTextureLocation = "Resources\\Sprites\\Character\\";
+	std::string clothesTextureLocation = "Resources\\Characters\\Accessories\\Clothing\\";
 
+	std::string CharacterTextureLocation = "Resources\\Characters\\";
+	std::string CharacterEarsTextureLocation = "Resources\\Characters\\Accessories\\Ears\\";
+	std::string CharacterEyesTextureLocation = "Resources\\Characters\\Accessories\\Eyes\\";
+	std::string CharacterHairTextureLocation = "Resources\\Characters\\Accessories\\Hair\\";
+
+	//! Gender Textures
+//Texture male;
+//Texture female;
+	Texture2D nakedBody;
+	Texture2D hair;
+	Texture2D eyes;
+	Texture2D ears;
+	Texture2D shadow;
+	Texture2D top;
+	Texture2D bottom;
+
+	//! Ear Textures
+	Texture2D aquaticEar;
+	Texture2D catEar1;
+	Texture2D catEar2;
+	Texture2D elfEar1;
+	Texture2D elfEar2;
+	Texture2D elfEar3;
+	Texture2D elfEar4;
+	Texture2D elfEar5;
+	Texture2D elfEar6;
+	Texture2D human;
+
+
+	Texture2D eye1;
+	Texture2D eye2;
+	Texture2D eye3;
+	Texture2D eye4;
+	Texture2D eye5;
+	Texture2D eye6;
+	Texture2D eye7;
+	Texture2D eye8;
+	Texture2D eye9;
+	Texture2D eye10;
+	Texture2D eye11;
+	Texture2D eye12;
+	Texture2D eye13;
+
+	Texture2D hair1;
+	Texture2D hair2;
+	Texture2D hair3;
+	Texture2D hair4;
+	Texture2D hair5;
+	Texture2D hair6;
+	Texture2D hair7;
+	Texture2D hair8;
+
+
+	//!Shadow
+	Texture2D playerShadow;
+
+	//! Texture for the Character
+	Texture2D characterIdleTexture;
+	Texture2D walkTexture;
+	Texture2D sideBlinkTexture;
+	Texture2D shortHairTexture;
+	Texture2D longHairTexture;
+	Texture2D eyesTexture;
+
+	//! Texture for the clothes
+	Texture2D femaleTop1;
+	Texture2D femaleTop2;
+	Texture2D femaleBottom1;
+	Texture2D femaleBottom2;
+
+	//! Animations
+	Animation walkHorizontalAnimation;
+	Animation walkVerticalAnimation;
+	Animation legFlipIdleAnimation;
+
+	Animation fishingCast;
+	Animation fishingReel;
+
+	//! Idle and blink timers
+	Timer idleAnimationTimer;
+	Timer blinkSpeed;
+	bool blink = false;
+	//! How often the player blinks in ms
+	float blinkFrequency = 5000.0f;
+	//! Length the player has their eyes closed
+	float blinkDuration = 100.0f;
 private:
 	//! Rotation values
 	int targetRotation = 0, rotationSpeed = 5;
