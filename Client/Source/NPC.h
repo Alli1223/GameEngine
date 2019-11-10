@@ -27,6 +27,9 @@ public:
 	//! Get a shared pointer to this object
 	virtual std::shared_ptr<NPC> getSharedPointer();
 
+	//! Reset Path if there have been any changes
+	virtual void ResetPath();
+
 	//! Whether the NPC is at home
 	bool isAtHome = false;
 	bool isSelected = false;
@@ -36,8 +39,6 @@ public:
 
 	
 protected:
-	//pathfinding
-	int pathPointIterator = 0;
 
 	//! Pathfinder path
 	std::vector<glm::ivec2> path;

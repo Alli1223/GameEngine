@@ -80,12 +80,12 @@ void Villager::Update()
 void Villager::Render(GL_Renderer& renderer)
 {
 
-	if (!hasPhysics)
-	{
-		setSize({ getSize().x / 2.0f, getSize().y });
-		//InitPhysics(renderer.p_World.get(), b2BodyType::b2_dynamicBody, 1.0f, 0.3f);
-		setSize({ getSize().x * 2.0f, getSize().y });
-	}
+	//if (!hasPhysics)
+	//{
+	//	setSize({ getSize().x / 2.0f, getSize().y });
+	//	//InitPhysics(renderer.p_World.get(), b2BodyType::b2_dynamicBody, 1.0f, 0.3f);
+	//	setSize({ getSize().x * 2.0f, getSize().y });
+	//}
 	I_renderer = &renderer;
 	this->setPosition({ this->getBody()->GetPosition().x * physicsScaleUp,this->getBody()->GetPosition().y * physicsScaleUp });
 	getBody()->SetLinearDamping(1000.0f); // dont let the player gradually increase speed
@@ -298,25 +298,25 @@ void Villager::UpdatePathPosition()
 	// If the agent has a path
 	if (path.size() > 0)
 	{
-		glm::ivec2 agentCellPos = (getPosition() + (getSize() / 2.0f)) / 100.0f;
+		glm::ivec2 agentCellPos = getPosition()  / 100.0f;
 		// if the agent has reached the next point, iterate
-		if (pathPointIterator < path.size())
-			if (agentCellPos == path[pathPointIterator])
+		if (pathfinder->pathPointIterator < path.size())
+			if (agentCellPos == path[pathfinder->pathPointIterator])
 			{
 				if (agentCellPos == path[path.size() - 1]) // reached the goal
-					path.clear(), pathPointIterator = 0;
+					path.clear(), pathfinder->pathPointIterator = 0;
 				else
-					pathPointIterator++;
+					pathfinder->pathPointIterator++;
 			}
 			else // move towards that point
 			{
-				glm::vec2 pathPos = path[pathPointIterator];
+				glm::vec2 pathPos = path[pathfinder->pathPointIterator];
 				vec2 thisPos = this->getPosition() + (getSize().x / 2.0f);
 				pathPos *= 100.0f;
 
 				// Distance to destination from this position - path position
-				float deltaX = agentCellPos.x - (path[pathPointIterator].x);
-				float deltaY = agentCellPos.y - (path[pathPointIterator].y);
+				float deltaX = agentCellPos.x - (path[pathfinder->pathPointIterator].x);
+				float deltaY = agentCellPos.y - (path[pathfinder->pathPointIterator].y);
 				float length = sqrt(deltaX * deltaX + deltaY * deltaY);
 				// Normalize 
 				deltaX /= length;

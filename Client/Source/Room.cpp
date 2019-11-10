@@ -151,8 +151,8 @@ void Room::SetCellItem(int x, int y, std::shared_ptr<Item> item, b2BodyType type
 		item->setPosition(tiles[x][y]->getPosition());
 		item->setSize(tiles[x][y]->getSize());
 		item->InitPhysics(I_Physics.get(), type, 10.0f, 1.0f);
-		//if (type == b2BodyType::b2_staticBody)
-			//tiles[x][y]->isWalkable = false;
+		if (type == b2BodyType::b2_staticBody)
+			tiles[x][y]->isWalkable = false;
 		tiles[x][y]->CellItem = item;
 	}
 }
@@ -162,7 +162,7 @@ void Room::SpawnNPC(std::shared_ptr<NPC> npc)
 	if (npc->characterType == "Shopkeeper")
 	{
 		auto shopkeeper = std::dynamic_pointer_cast<Shopkeeper>(npc);
-		shopkeeper->setPosition(rand() % tileSize * roomSize, rand() % tileSize * roomSize);
+		shopkeeper->setPosition(500, 500);
 		shopkeeper->setSize(shopkeeper->getSize() / 4.0f);
 		shopkeeper->InitPhysics(I_Physics.get(), shopkeeper->bodyType, 10.0f, 1.0f);
 		shopkeeper->setSize(shopkeeper->getSize() * 4.0f);

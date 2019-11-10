@@ -155,6 +155,10 @@ void RoomDesigner::Render(GL_Renderer& renderer)
 								tempItem = room->GetCell(mX, mY)->CellItem;
 								GUI.selected = true;
 								room->SetCellItem(mX, mY, nullptr);
+								if (room->GetCell(mX, mY)->isWalkable == false)
+								{
+									room->GetCell(mX, mY)->isWalkable = true;
+								}
 							}
 							else // palce selected
 							{
@@ -185,6 +189,10 @@ void RoomDesigner::Render(GL_Renderer& renderer)
 							GUI.buttons.erase(GUI.buttons.begin(), GUI.buttons.end());
 							selectedItem = nullptr;
 							GUI.CreateButtons();
+							for (auto npc : room->npcs)
+							{
+								npc->ResetPath();
+							}
 						}
 					}
 				}
@@ -193,6 +201,7 @@ void RoomDesigner::Render(GL_Renderer& renderer)
 	}
 }
 
+// Constructor
 ActionItem::ActionItem(ActionItem::action action)
 {
 	std::string directory = "null";

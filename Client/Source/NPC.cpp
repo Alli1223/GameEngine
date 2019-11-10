@@ -92,3 +92,9 @@ std::shared_ptr<NPC> NPC::getSharedPointer()
 
 }
 
+void NPC::ResetPath()
+{
+	pathfinder->isComputingPath(false);
+	path = pathfinder->findPathThread(tiles, { pathfinder->start.getX(), pathfinder->start.getY() }, { pathfinder->goal.getX(), pathfinder->goal.getY() });
+}
+

@@ -86,7 +86,13 @@ public:
 	//void drawPath(std::vector<Point>& path, SDL_Renderer* renderer, Camera& camera, World& level);
 	std::vector<glm::ivec2> Path;
 	
-	bool isCoputingPath() { return computingPath; }
+	bool isComputingPath() { return computingPath; }
+	bool isComputingPath(bool newVal) { return computingPath = newVal; }
+	//! Start and end points
+	Point start;
+	Point goal;
+	//pathfinding
+	int pathPointIterator = 0;
 private:
 	//! A vector of nodes that is within the level that can be searched
 	std::vector<std::vector<std::shared_ptr<Node>>> nodes;
@@ -114,7 +120,9 @@ private:
 	bool isInClosedSet(Point& point);
 	bool offsetPath = false;
 	glm::vec2 offset;
+
 	Point startNode;
+
 
 	int searchSize = 10;
 

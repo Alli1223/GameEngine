@@ -182,12 +182,12 @@ std::vector<glm::ivec2> Pathfinder::findPathThread(std::vector<std::vector<std::
 		{
 			if (!paths[id].valid())
 				paths.erase(paths.begin() + id);
+			pathPointIterator = 0;
 		}
 		// Add to list of pathfinding threads	
 		id = paths.size();
 		paths.push_back(std::move(futurePath));
 		computingPath = true;
-
 	}
 
 
@@ -200,7 +200,6 @@ std::vector<glm::ivec2> Pathfinder::findPathThread(std::vector<std::vector<std::
 			computingPath = false;
 			return Path;
 		}
-
 
 	std::vector<ivec2> empty;
 	return empty;
@@ -337,8 +336,6 @@ std::vector<glm::ivec2> Pathfinder::findPathThread(std::vector<std::vector<std::
 //}
 std::vector<glm::ivec2> Pathfinder::findPathGrid(std::vector<std::vector<std::shared_ptr<Cell>>> tiles, ivec2 startp, ivec2 goalp)
 {
-	Point start;
-	Point goal;
 	goal.setPosition(goalp.x, goalp.y);
 	start.setPosition(startp.x, startp.y);
 
@@ -409,7 +406,6 @@ std::vector<glm::ivec2> Pathfinder::findPathGrid(std::vector<std::vector<std::sh
 					if (tiles[cellPos.x][cellPos.y]->isWalkable)
 						if (!isInClosedSet(neighbour->point))
 						{
-
 							double gTentative = currentNode->g + euclideanDistance(neighbour->point, goal);
 
 							if (neighbour->status != NodeStatus::Open || gTentative < neighbour->g)
