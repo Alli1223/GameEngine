@@ -81,7 +81,7 @@ CropSquare& Cell::GetCropSquare()
 
 void Cell::Render(GL_Renderer& renderer)
 {
-	if (!hasPhysics && !isWalkable)
+	if (!hasPhysics && !isWalkable && physicsptr != nullptr)
 		InitPhysics(physicsptr, b2BodyType::b2_staticBody, 10.0f, 1.0f);
 	if (hasPhysics && getBody() != nullptr)
 		this->setPosition(getBody()->GetPosition().x *  physicsScaleUp, getBody()->GetPosition().y  * physicsScaleUp);// Set sprite position from scaled down plysics

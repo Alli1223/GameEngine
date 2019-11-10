@@ -20,6 +20,11 @@ public:
 	//! Save the level
 	void SaveLevel(World& world);
 
+	//! Save the Instance
+	void SaveInstance(Instance* instance);
+	//! Load an instance
+	json LoadInstance();
+
 private:
 
 	std::ofstream shopSave;

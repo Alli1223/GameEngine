@@ -2,13 +2,17 @@
 #include "Networkplayer.h"
 #include "CollisionListener.h"
 #include "NPC.h"
+
 class Instance
 {
 public:
 	//! Constructor
 	Instance();
+	Instance(json data);
 	//! Deconstructor
 	~Instance();
+
+	virtual json GetJson();
 
 
 	//! When player enters instance
@@ -29,6 +33,8 @@ public:
 	//! Update
 	virtual void Update();
 
+
+
 	//! Player for instance
 	Player I_player;
 
@@ -36,8 +42,10 @@ public:
 	std::vector<NetworkPlayer> networkPlayers;
 	std::vector<std::shared_ptr<NPC>> npcs;
 
+protected:
 
 private:
+
 
 };
 

@@ -24,10 +24,10 @@ void GameUI::Render(GL_Renderer& renderer, World& world, Player& player, GameSet
 		roomDesigner.Render(renderer);
 	}
 
-	for each (auto npc in GameSettings::currentInstance->npcs)
-	{
-		npc->Render(renderer);
-	}
+	//for each (auto npc in GameSettings::currentInstance->npcs)
+	//{
+	//	npc->Render(renderer);
+	//}
 
 
 	bool show_demo_window = true;
@@ -52,7 +52,7 @@ void GameUI::Render(GL_Renderer& renderer, World& world, Player& player, GameSet
 		ImGui::SameLine();
 		if (ImGui::Button("Save Shop", { 100,50 }))
 		{
-			gameSettings.levelSaving.SaveShop(*world.playerShop);
+			gameSettings.levelSaving.SaveInstance(GameSettings::currentInstance);
 		}
 		ImGui::SameLine();
 		if (ImGui::Button("Save Level", { 100,50 }))

@@ -32,9 +32,9 @@ void LevelSaving::LoadWorld(World& world, Player& player)
 	{
 		std::ifstream t(shopSavePath);
 		std::string jsonData((std::istreambuf_iterator<char>(t)), std::istreambuf_iterator<char>());
-		json data = json::parse(jsonData.begin(), jsonData.end());;
-		PlayerShop shop = PlayerShop(world.I_Physics.get(), data);
-		world.playerShop = std::make_shared<PlayerShop>(shop);
+		json data = json::parse(jsonData.begin(), jsonData.end());
+		//Room shop = Room(data);
+		//world.playerShop = std::make_shared<PlayerShop>(shop);
 	}
 	if (exists(levelSavePath))
 	{
@@ -42,7 +42,6 @@ void LevelSaving::LoadWorld(World& world, Player& player)
 		std::string jsonData((std::istreambuf_iterator<char>(t)), std::istreambuf_iterator<char>());
 		json data = json::parse(jsonData.begin(), jsonData.end());
 	}
-
 }
 
 void LevelSaving::SaveLevel(World& world)
@@ -84,6 +83,32 @@ void LevelSaving::SaveLevel(World& world)
 	//std::cout << "Level Saved." << std::endl;
 	//levelSave.close();
 
+}
+
+void LevelSaving::SaveInstance(Instance* instance)
+{
+	json instanceJson;
+	instanceJson = instance->GetJson();
+
+	shopSave.open(shopSavePath);
+	shopSave << instanceJson.dump();
+	std::cout << "Saved Player Shop" << std::endl;
+	shopSave.close();
+}
+
+json LevelSaving::LoadInstance()
+{
+	// Load shop if file exists
+	if (exists(shopSavePath))
+	{
+		std::ifstream t(shopSavePath);
+		std::string jsonData((std::istreambuf_iterator<char>(t)), std::istreambuf_iterator<char>());
+		json data = json::parse(jsonData.begin(), jsonData.end());
+		//Room shop = Room(data);
+		//std::shared_ptr<Instance> instance = std::make_shared<Room>(shop);
+		return data;
+	}
+	return nullptr;
 }
 
 

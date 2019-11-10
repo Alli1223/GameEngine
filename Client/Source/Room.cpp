@@ -6,12 +6,70 @@ Room::Room()
 {
 	b2Vec2 gravity(0.0f, 0.0f);
 	I_Physics = std::make_unique<b2World>(gravity);
+}
+Room::Room(json data)
+{
+
+	b2Vec2 gravity(0.0f, 0.0f);
+	I_Physics = std::make_unique<b2World>(gravity);
+	for (int x = 0; x < roomSize; x++)
+	{
+		std::vector<std::shared_ptr<Cell>> column;
+
+		tiles.push_back(column);
+		for (int y = 0; y < roomSize; y++)
+		{
+			// Populates the column with pointers to cells
+			Cell cell(I_Physics.get(), x, y, "WoodFloor");
+			cell.setSize({ tileSize, tileSize });
+			cell.setCellSize(tileSize);
+			cell.setPosition(x * tileSize, y * tileSize);
+			cell.isWalkable = true;
+			auto sharedCell = std::make_shared<Cell>(cell);
+			tiles[x].push_back(sharedCell);
+		}
+	}
+
+	json levelData = data.at("TileData");
+	// Get the tiles from file and assign them
+	for (auto& tile : levelData)
+	{
+		Cell newCell(I_Physics.get(),tile);
+		//newCell.setSize(cellSize, cellSize);
+		this->tiles[newCell.getX()][newCell.getY()] = std::make_shared<Cell>(newCell);
+	}
 };
 
 
 
 Room::~Room()
 {
+}
+
+json Room::GetJson()
+{
+	json instanceJson;
+
+	instanceJson["Type"] = "Shop";
+
+	json tilesData;
+	json npcData;
+	for each (auto npc in npcs)
+	{
+		npcData.push_back(npc->GetJson());
+	}
+
+	// Get the level data
+	for (int x = 0; x < tiles.size(); x++)
+		for (int y = 0; y < tiles[x].size(); y++)
+		{
+			tilesData.push_back(tiles[x][y]->GetJson());
+		}
+
+	instanceJson["TileData"] = tilesData;
+	instanceJson["npcData"] = npcData;
+
+	return instanceJson;
 }
 
 
@@ -163,9 +221,9 @@ void Room::SpawnNPC(std::shared_ptr<NPC> npc)
 	{
 		auto shopkeeper = std::dynamic_pointer_cast<Shopkeeper>(npc);
 		shopkeeper->setPosition(500, 500);
-		shopkeeper->setSize(shopkeeper->getSize() / 4.0f);
+		shopkeeper->setSize(shopkeeper->getSize() / 8.0f);
 		shopkeeper->InitPhysics(I_Physics.get(), shopkeeper->bodyType, 10.0f, 1.0f);
-		shopkeeper->setSize(shopkeeper->getSize() * 4.0f);
+		shopkeeper->setSize(shopkeeper->getSize() * 8.0f);
 		shopkeeper->GenerateVillager();
 		shopkeeper->tiles = tiles;
 		npcs.push_back(shopkeeper);

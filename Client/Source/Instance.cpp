@@ -10,9 +10,20 @@ Instance::Instance()
 	I_Physics->SetContactListener(&contact);
 }
 
+Instance::Instance(json data)
+{
+}
+
 
 Instance::~Instance()
 {
+}
+
+json Instance::GetJson()
+{
+	json instanceJson;
+	//instanceJson["Type"] = "empty";
+	return instanceJson;
 }
 
 
@@ -54,3 +65,4 @@ void Instance::Update()
 	// Get refresh rate
 	I_Physics->Step(1.0f / 100.0f, 6, 2);
 }
+

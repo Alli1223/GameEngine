@@ -4,13 +4,17 @@
 #include "RoomDesigner.h"
 #include "Wall.h"
 #include "Shopkeeper.h"
+#include "Libraries/json/json.hpp"
 class Room : public Instance
 {
 public:
 	//! Constructor
 	Room();
+	Room(json data);
 	//! Deconstructor
 	~Room();
+
+	json GetJson();
 
 	//! Setup room override
 	void InstanceSetup(Player& player);

@@ -209,7 +209,10 @@ void MainGame::run()
 	//world.I_player.inventory.add(scythe.getSharedPointer());
 	
 	//world.onEnter(world.I_player);
-	Room room;
+
+	//GameSettings::currentInstance = gameSettings.levelSaving.LoadInstance();
+	Room room(gameSettings.levelSaving.LoadInstance());
+	//currentInstance->onEnter(world.I_player);
 
 	room.onEnter(world.I_player);
 	//Shop.onEnter(world.I_player);
@@ -289,8 +292,8 @@ void MainGame::run()
 	}
 
 	// Save player settings when the game ends the game loop
-	if (gameSettings.saveLevelOnExit && !gameSettings.useNetworking)
-		gameSettings.levelSaving.SaveWorld(world, world.I_player);
+	//if (gameSettings.saveLevelOnExit && !gameSettings.useNetworking)
+		//gameSettings.levelSaving.SaveWorld(world, world.I_player);
 	if (gameSettings.savePlayerOnExit)
 		//gameSettings.savePlayerSettings(player);
 		if (gameSettings.restartGame)
