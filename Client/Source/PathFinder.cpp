@@ -171,7 +171,6 @@ std::vector<std::future< std::vector<glm::ivec2>>> paths; // List of pathfinding
 
 std::vector<glm::ivec2> Pathfinder::findPathThread(std::vector<std::vector<std::shared_ptr<Cell>>> tiles, ivec2 startp, ivec2 goalp)
 {
-	searchSize = 5;
 	// Create the thread
 	if (!computingPath)
 	{

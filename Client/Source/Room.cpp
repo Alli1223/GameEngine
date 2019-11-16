@@ -143,14 +143,25 @@ void Room::Render(GL_Renderer& renderer)
 
 	I_player.Update();
 	I_player.Render(renderer);
+	glm::ivec2 cellsInScreen = renderer.camera.windowSize / (float)tileSize;
 
-	for (int x = 0; x < roomSize; x++)
-	{
-		for (int y = 0; y < roomSize; y++)
+	for (int x = (renderer.camera.getX() / tileSize); x <= (renderer.camera.getX() / tileSize)  + cellsInScreen.x + 1; x++)
+		for (int y = (renderer.camera.getY() / tileSize); y <= (renderer.camera.getY() / tileSize) + cellsInScreen.y + 2; y++)
 		{
-			tiles[x][y]->Render(renderer);
+			if (x >= 0 && y >= 0 && x < roomSize && y < roomSize)
+			{
+				tiles[x][y]->Render(renderer);
+			}
+			
 		}
-	}
+
+	//for (int x = 0; x < roomSize; x++)
+	//{
+	//	for (int y = 0; y < roomSize; y++)
+	//	{
+	//		tiles[x][y]->Render(renderer);
+	//	}
+	//}
 	for (int i = 0; i < npcs.size(); i++)
 	{
 		npcs[i]->Render(renderer);
