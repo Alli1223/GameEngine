@@ -54,16 +54,19 @@ void Shopkeeper::Update()
 	}
 	if (path.size() == 0)
 	{
+		setPlayerMoving(false);
 		switch (s_action)
 		{
 			// Choose random spot in room to walk to
 		case ShopActions::browsing:
 			path = pathfinder->findPathThread(tiles, getPosition() / 100.0f, { rand() % tiles.size(), rand() % tiles[0].size() });
 			break;
+
 			// Walk to the exit
 		case ShopActions::exiting:
 			break;
 		case ShopActions::idle:
+			
 			break;
 		}
 	}

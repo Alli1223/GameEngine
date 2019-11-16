@@ -9,6 +9,8 @@ Villager::Villager()
 	this->renderLayer = 3;
 	this->setSize(100, 100);
 	this->ID = rand() % 999999999;
+	playerLight.lightType = LightSource::LightType::npcAmbientLight;
+	playerLight.isOn = false;
 }
 
 
@@ -88,7 +90,7 @@ void Villager::Render(GL_Renderer& renderer)
 	//}
 	I_renderer = &renderer;
 	this->setPosition({ this->getBody()->GetPosition().x * physicsScaleUp,this->getBody()->GetPosition().y * physicsScaleUp });
-	getBody()->SetLinearDamping(1000.0f); // dont let the player gradually increase speed
+	getBody()->SetLinearDamping(2000.0f); // dont let the player gradually increase speed
 
 	if (isPlayerMoving())
 	{
@@ -100,20 +102,37 @@ void Villager::Render(GL_Renderer& renderer)
 	{
 		walkHorizontalAnimation.setCurrentFrame(0);
 		walkVerticalAnimation.setCurrentFrame(0);
+		// Blinking when idle
+		if (blinkSpeed.getTicks() > blinkFrequency)
+		{
+			if (!blink)
+				blink = true;
+			if (blinkSpeed.getTicks() > blinkFrequency + blinkDuration)
+				blinkSpeed.restart();
+		}
+		else
+			blink = false;
+
+		// What a mess
+		if (idleAnimationTimer.getTicks() > 10000)
+		{
+			legFlipIdleAnimation.setStartIndex(36);
+			legFlipIdleAnimation.OnAnimate();
+			if (idleAnimationTimer.getTicks() > 11000)
+			{
+				idleAnimationTimer.restart();
+				legFlipIdleAnimation.setCurrentFrame(0);
+			}
+
+		}
+		else
+			legFlipIdleAnimation.setStartIndex(32);
 	}
+
+	//Assign sprites
 	RotateCharacter(renderer);
 	//RenderBody(0);
 
-	//renderer.RenderSpriteLighting(this->nakedBody, this->NormalMap, this->position, this->size, this->rotation, this->transparency, this->renderLayer, bodyColour, flipSprite);
-	//renderer.RenderSpriteLighting(this->hair, this->NormalMap, this->position, this->size, this->rotation, this->transparency, this->renderLayer, this->hairColour, flipSprite);
-	//
-	//renderer.RenderSpriteLighting(this->eyes, this->NormalMap, this->position, this->size, this->rotation, this->transparency, this->renderLayer, this->eyeColour, flipSprite);
-	//renderer.RenderSpriteLighting(this->ears, this->NormalMap, this->position, this->size, this->rotation, this->transparency, this->renderLayer, this->bodyColour, flipSprite);
-	//if (bottom.Width > 0 && bottom.Height > 0)
-	//	renderer.RenderSpriteLighting(this->bottom, this->NormalMap, this->position, this->size, this->rotation, this->transparency, this->renderLayer, this->bottomColour, flipSprite);
-	//if (top.Width > 0 && top.Height > 0)
-	//	renderer.RenderSpriteLighting(this->top, this->NormalMap, this->position, this->size, this->rotation, this->transparency, this->renderLayer, this->topColour, flipSprite);
-	//
 	// if selected
 	glm::ivec2 mPos;
 	if (SDL_GetMouseState(&mPos.x, &mPos.y) & SDL_BUTTON(SDL_BUTTON_LEFT))
@@ -128,13 +147,13 @@ void Villager::Render(GL_Renderer& renderer)
 		}
 		
 	}
-	//speechBubble.text = std::to_string(this->getTargetRotation());
-	//speechBubble.setPosition(getPosition());
-	//speechBubble.Render(renderer);
 	if (isSelected)
 	{
 		renderer.RenderOutline(this->nakedBody, this->position, this->size, this->rotation, this->transparency, this->bodyColour, this->flipSprite);
 	}
+	speechBubble.text = std::to_string(this->getTargetRotation());
+	speechBubble.setPosition(getPosition());
+	speechBubble.Render(renderer);
 
 }
 

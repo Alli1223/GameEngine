@@ -120,7 +120,6 @@ void Character::RenderCharacterBody(GL_Renderer& renderer, int index, bool flipS
 	if (top.Width > 0 && top.Height > 0)
 		renderer.RenderSpriteLighting(this->top, this->NormalMap, this->position, this->size, this->rotation, this->transparency, this->renderLayer, this->topColour, { flipSprite, false });
 
-	playerLight.lightType = LightSource::LightType::playerAmbientLight;
 	playerLight.setPosition(this->getPosition());
 	playerLight.Render(renderer);
 }

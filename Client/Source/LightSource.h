@@ -21,6 +21,7 @@ public:
 		streetLight,
 		lantern,
 		playerAmbientLight,
+		npcAmbientLight,
 		fireflyLight
 	} lightType;
 

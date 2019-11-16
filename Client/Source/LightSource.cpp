@@ -90,6 +90,17 @@ void LightSource::Render(GL_Renderer& renderer)
 			renderer.lights.erase(lightID);
 		break;
 
+	case LightType::npcAmbientLight:
+		lightIntensity = 0.25f;
+		light.colour = { 0.9f, 0.8f, 0.9f , 0.5f };
+		light.position = { this->position, lightIntensity };
+
+		if (isOn) // Remove the lgith if off
+			renderer.lights[lightID] = light;
+		else
+			renderer.lights.erase(lightID);
+		break;
+
 		// FIREFLY
 	case LightType::fireflyLight:
 		lightIntensity = 0.005f;

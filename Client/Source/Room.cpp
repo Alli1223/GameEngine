@@ -109,25 +109,26 @@ void Room::InstanceSetup(Player& player)
 			{
 				Wall wall;
 				SetCellItem(x, y, wall.getSharedPointer(), b2BodyType::b2_staticBody);
+				tiles[x][y]->isWalkable = false;
 				//tiles[x][y]->CellItem = wall.getSharedPointer();
 				//tiles[x][y]->isWalkable = false;
 				//tiles[x][y]->Sprite = ResourceManager::GetAtlasTexture("roguelike", 300);
 				//tiles[x][y]->NormalMap = ResourceManager::GetAtlasTexture("roguelike_normal", 300);
 				// Door
-				if (x == (tiles.size() - 1) / 2 && y == tiles[x].size() - 1)
-				{
-					tiles[x][y]->isWood = true;
-					tiles[x][y]->isWalkable = true;
-					tiles[x][y]->Sprite = ResourceManager::GetAtlasTexture("roguelike", 120);
-					tiles[x][y]->NormalMap = ResourceManager::GetAtlasTexture("roguelike_normal", 120);
-				}
-				if (x == tiles.size() / 2 && y == tiles[x].size() - 1)
-				{
-					tiles[x][y]->isWood = true;
-					tiles[x][y]->isWalkable = true;
-					tiles[x][y]->Sprite = ResourceManager::GetAtlasTexture("roguelike", 120);
-					tiles[x][y]->NormalMap = ResourceManager::GetAtlasTexture("roguelike_normal", 120);
-				}
+				//if (x == (tiles.size() - 1) / 2 && y == tiles[x].size() - 1)
+				//{
+				//	tiles[x][y]->isWood = true;
+				//	tiles[x][y]->isWalkable = true;
+				//	tiles[x][y]->Sprite = ResourceManager::GetAtlasTexture("roguelike", 120);
+				//	tiles[x][y]->NormalMap = ResourceManager::GetAtlasTexture("roguelike_normal", 120);
+				//}
+				//if (x == tiles.size() / 2 && y == tiles[x].size() - 1)
+				//{
+				//	tiles[x][y]->isWood = true;
+				//	tiles[x][y]->isWalkable = true;
+				//	tiles[x][y]->Sprite = ResourceManager::GetAtlasTexture("roguelike", 120);
+				//	tiles[x][y]->NormalMap = ResourceManager::GetAtlasTexture("roguelike_normal", 120);
+				//}
 			}
 		}
 }

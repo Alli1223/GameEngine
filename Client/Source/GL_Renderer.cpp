@@ -624,5 +624,4 @@ void GL_Renderer::RenderOutline(Texture2D& texture, glm::vec2& position, glm::ve
 	outlines[i].g_Transparency.push_back(transparency);
 	outlines[i].g_Colour.push_back(color);
 	outlines[i].g_flip.push_back(flipSprite);
-
 }
