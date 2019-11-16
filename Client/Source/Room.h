@@ -41,7 +41,7 @@ public:
 	int setTileSize(int newSize) { return tileSize = newSize; }
 private:
 	std::shared_ptr<NPC> selectedNPC = nullptr;
-	int roomSize = 100;
+	int roomSize = 20;
 	int tileSize = 100;
 	
 };

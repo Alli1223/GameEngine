@@ -63,6 +63,6 @@ void Instance::Update()
 		npc->Update();
 	}
 	// Get refresh rate
-	I_Physics->Step(1.0f / 100.0f, 6, 2);
+	//I_Physics->Step(1.0f / 100.0f, 6, 2);
 }
 

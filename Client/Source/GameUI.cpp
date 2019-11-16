@@ -55,6 +55,11 @@ void GameUI::Render(GL_Renderer& renderer, World& world, Player& player, GameSet
 			gameSettings.levelSaving.SaveInstance(GameSettings::currentInstance);
 		}
 		ImGui::SameLine();
+		if (ImGui::Button("Load Shop", { 100,50 }))
+		{
+			//GameSettings::currentInstance =  gameSettings.levelSaving.LoadInstance();
+		}
+		ImGui::SameLine();
 		if (ImGui::Button("Save Level", { 100,50 }))
 		{
 			gameSettings.levelSaving.SaveLevel(world);

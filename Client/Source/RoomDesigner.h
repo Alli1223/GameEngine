@@ -3,6 +3,7 @@
 #include "Button.h"
 #include "Door.h"
 #include "Room.h"
+#include "Kiosk.h"
 #include "GameWindow.h"
 class Room;
 

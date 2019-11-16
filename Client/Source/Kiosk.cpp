@@ -1,10 +1,10 @@
 #include "stdafx.h"
-#include "Wall.h"
+#include "Kiosk.h"
 
-Wall::Wall()
+Kiosk::Kiosk()
 {
-	Sprite = ResourceManager::GetAtlasTexture("roguelike", 123);
-	NormalMap = ResourceManager::GetAtlasTexture("roguelike_normal", 123);
+	Sprite = ResourceManager::GetAtlasTexture("roguelike", 321);
+	NormalMap = ResourceManager::GetAtlasTexture("roguelike_normal", 321);
 
 	std::string directory = IconSpriteDirectory + "ShopDisplayShelf.png";
 	this->icon.Background = ResourceManager::LoadTexture(directory.c_str());
@@ -12,17 +12,17 @@ Wall::Wall()
 	bodyType = b2BodyType::b2_staticBody;
 }
 
-Wall::Wall(json data)
+Kiosk::Kiosk(json data)
 {
 
 }
 
-Wall::~Wall()
+Kiosk::~Kiosk()
 {
 
 }
 
-json Wall::GetJson()
+json Kiosk::GetJson()
 {
 	json data;
 	data["Type"] = itemName;

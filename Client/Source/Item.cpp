@@ -8,12 +8,14 @@ Item::Item()
 
 Item::Item(json jsonData)
 {
-	if (jsonData.at("Type") == "Wall")
+	if (jsonData.count("Type") > 0)
 	{
-		Wall wall;
-		*this = wall;
+		if (jsonData.at("Type") == "Wall")
+		{
+			Wall wall;
+			*this = wall;
+		}
 	}
-	
 }
 
 void Item::Render(GL_Renderer& renderer)

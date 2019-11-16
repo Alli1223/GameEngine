@@ -104,7 +104,8 @@ json LevelSaving::LoadInstance()
 		std::ifstream t(shopSavePath);
 		std::string jsonData((std::istreambuf_iterator<char>(t)), std::istreambuf_iterator<char>());
 		json data = json::parse(jsonData.begin(), jsonData.end());
-		//Room shop = Room(data);
+		//Room shop(data);
+		//shop.GetJson();
 		//std::shared_ptr<Instance> instance = std::make_shared<Room>(shop);
 		return data;
 	}

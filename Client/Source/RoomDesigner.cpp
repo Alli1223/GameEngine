@@ -27,6 +27,7 @@ void RoomResigerGUI::CreateButtons()
 	
 	Door door;
 	Wall wall;
+	Kiosk kiosk;
 	ActionItem deleteAction(ActionItem::action::Delete);
 	ActionItem moveAction(ActionItem::action::Move);
 
@@ -34,9 +35,11 @@ void RoomResigerGUI::CreateButtons()
 	Button moveButton(deleteAction.getSharedPointer());
 	Button wallButton(wall.getSharedPointer());
 	Button doorButton(door.getSharedPointer());
+	Button kioskButton(door.getSharedPointer());
 
 	buttons.push_back(wallButton);
 	buttons.push_back(doorButton);
+	buttons.push_back(kioskButton);
 	buttons.push_back(moveButton);
 	buttons.push_back(deleteButton);
 

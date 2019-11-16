@@ -76,7 +76,7 @@ void Room::InstanceSetup(Player& player)
 {
 	player.isInBuilding = true;
 	player.getBody()->SetTransform({ 1,1 }, 0.0f);
-	
+
 
 	for (int x = 0; x < roomSize; x++)
 	{

@@ -189,6 +189,7 @@
     <ClInclude Include="ItemChest.h" />
     <ClInclude Include="ItemDescriptionWindow.h" />
     <ClInclude Include="ItemSelection.h" />
+    <ClInclude Include="Kiosk.h" />
     <ClInclude Include="LevelSaving.h" />
     <ClInclude Include="Light.h" />
     <ClInclude Include="LightSource.h" />
@@ -283,6 +284,7 @@
     <ClCompile Include="ItemChest.cpp" />
     <ClCompile Include="ItemDescriptionWindow.cpp" />
     <ClCompile Include="ItemSelection.cpp" />
+    <ClCompile Include="Kiosk.cpp" />
     <ClCompile Include="LevelSaving.cpp" />
     <ClCompile Include="Light.cpp" />
     <ClCompile Include="LightSource.cpp" />
