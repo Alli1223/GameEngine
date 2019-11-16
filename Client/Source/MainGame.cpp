@@ -211,19 +211,25 @@ void MainGame::run()
 	//world.onEnter(world.I_player);
 
 	//GameSettings::currentInstance = gameSettings.levelSaving.LoadInstance();
-	Room room(gameSettings.levelSaving.LoadInstance());
+	Room room;
+	json roomData = gameSettings.levelSaving.LoadInstance();
+	if (roomData != nullptr)
+	{
+		Room room2(roomData);
+		room2.onEnter(world.I_player);
+	}
+	else
+	{
+		
+		room.onEnter(world.I_player);
+	}
+
 	//currentInstance->onEnter(world.I_player);
 
-	room.onEnter(world.I_player);
+	
 	//Shop.onEnter(world.I_player);
 	//Mix_PlayMusic(gMusic, -1);
 
-	//for (int i = 0; i < 10; i++)
-	//{
-	//	Firefly firefly;
-	//	firefly.setPosition(rand() % 1000, rand() % 1000);
-	//	world.insects.push_back(firefly.getSharedPointer());
-	//}
 	/////////////////////////////////////////////// MAIN LOOP ///////////////////////////////////////
 	while (gameSettings.running)
 	{

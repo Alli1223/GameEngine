@@ -9,7 +9,6 @@ Room::Room()
 }
 Room::Room(json data)
 {
-
 	b2Vec2 gravity(0.0f, 0.0f);
 	I_Physics = std::make_unique<b2World>(gravity);
 	for (int x = 0; x < roomSize; x++)

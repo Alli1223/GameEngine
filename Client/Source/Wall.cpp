@@ -12,6 +12,19 @@ Wall::Wall()
 	bodyType = b2BodyType::b2_staticBody;
 }
 
+Wall::Wall(json data)
+{
+
+}
+
 Wall::~Wall()
 {
+
+}
+
+json Wall::GetJson()
+{
+	json data;
+	data["Type"] = itemName;
+	return json();
 }

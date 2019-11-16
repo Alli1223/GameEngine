@@ -170,6 +170,9 @@ Cell::Cell(b2World* physicsWorld, json cellData)
 		CropSquare newCropSquare(crops);
 		this->cropSquare = std::make_shared<CropSquare>(newCropSquare);
 	}
+
+	if(cellData.at("Item") != nullptr)
+		this->CellItem = std::make_shared<Item>(Item(cellData.at("Item")));
 	
 	//cellType = cellData.at("Type").get<std::string>();
 }
@@ -250,7 +253,8 @@ json Cell::GetJson()
 	if(isWheat)
 		cellData["Wheat"] = isWheat;
 
-
+	if (CellItem != nullptr)
+		cellData["Item"] = CellItem->GetJson();
 	
 	return cellData;
 }

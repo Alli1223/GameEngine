@@ -128,13 +128,14 @@ void Villager::Render(GL_Renderer& renderer)
 		}
 		
 	}
+	//speechBubble.text = std::to_string(this->getTargetRotation());
+	//speechBubble.setPosition(getPosition());
+	//speechBubble.Render(renderer);
 	if (isSelected)
 	{
-		renderer.RenderOutline(this->nakedBody, this->position, this->size, this->rotation, this->transparency, this->bodyColour, flipSprite);
+		renderer.RenderOutline(this->nakedBody, this->position, this->size, this->rotation, this->transparency, this->bodyColour, this->flipSprite);
 	}
-	speechBubble.text = std::to_string(this->getTargetRotation());
-	speechBubble.setPosition(getPosition());
-	speechBubble.Render(renderer);
+
 }
 
 

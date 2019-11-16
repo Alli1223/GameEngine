@@ -108,6 +108,7 @@ void Character::RenderCharacterBody(GL_Renderer& renderer, int index, bool flipS
 {
 
 	AssignSprites(renderer, index, flipSprite);
+	this->flipSprite = { flipSprite, false };
 	//playerShadow.renderAnim(renderer, frameX, frameY, x, y, pixelSize, characterSize, flipSprite);
 	renderer.RenderSpriteLighting(this->nakedBody, this->NormalMap, this->position, this->size, this->rotation, this->transparency, this->renderLayer, bodyColour, { flipSprite, false });
 	renderer.RenderSpriteLighting(this->hair, this->NormalMap, this->position, this->size, this->rotation, this->transparency, this->renderLayer, this->hairColour, { flipSprite, false });
@@ -130,13 +131,13 @@ void Character::AssignSprites(GL_Renderer& renderer, int index, bool flipSprite)
 	{
 		// MALE BODY TYPE
 	case Body::Gender::male:
-		nakedBody = ResourceManager::GetAtlasTexture("maleBasic", index);
-		NormalMap = ResourceManager::GetAtlasTexture("maleBasic_normal", index);
+		this->nakedBody = ResourceManager::GetAtlasTexture("maleBasic", index);
+		this->NormalMap = ResourceManager::GetAtlasTexture("maleBasic_normal", index);
 		break;
 		// FEMALE BODY TYPE 
 	case Body::Gender::female:
-		nakedBody = ResourceManager::GetAtlasTexture("femaleBasic", index);
-		NormalMap = ResourceManager::GetAtlasTexture("femaleBasic_normal", index);
+		this->nakedBody = ResourceManager::GetAtlasTexture("femaleBasic", index);
+		this->NormalMap = ResourceManager::GetAtlasTexture("femaleBasic_normal", index);
 		break;
 	}
 

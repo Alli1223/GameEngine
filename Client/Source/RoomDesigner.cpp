@@ -154,7 +154,9 @@ void RoomDesigner::Render(GL_Renderer& renderer)
 								GUI.timeItemPressed = SDL_GetTicks();
 								tempItem = room->GetCell(mX, mY)->CellItem;
 								GUI.selected = true;
+
 								room->SetCellItem(mX, mY, nullptr);
+
 								if (room->GetCell(mX, mY)->isWalkable == false)
 								{
 									room->GetCell(mX, mY)->isWalkable = true;

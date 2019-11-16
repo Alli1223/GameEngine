@@ -438,6 +438,12 @@ void GL_Renderer::RenderAllLayers()
 				RenderSpriteLighting(layer.second.g_Sprite[i], layer.second.g_Normal[i], layer.second.g_Pos[i], layer.second.g_Size[i], layer.second.g_Rotate[i], layer.second.g_Transparency[i], -1, layer.second.g_Colour[i], layer.second.g_flip[i]);
 		}
 	}
+	for (auto outline : outlines)
+	{
+		for (int i = 0; i < outline.second.g_Sprite.size(); i++)
+			RenderOutlines(outline.second.g_Sprite[i], outline.second.g_Pos[i], outline.second.g_Size[i], outline.second.g_Rotate[i], outline.second.g_Transparency[i], outline.second.g_Colour[i], outline.second.g_flip[i]);
+	}
+	outlines.erase(outlines.begin(), outlines.end());
 	layers.erase(layers.begin(), layers.end());
 }
 
@@ -570,9 +576,7 @@ void GL_Renderer::RenderShadows(Texture2D& texture, glm::vec2& position, glm::ve
 
 }
 
-
-
-void GL_Renderer::RenderOutline(Texture2D& texture, glm::vec2& position, glm::vec2& size, GLfloat rotate, GLfloat transparency, glm::vec3& color, std::pair<bool, bool> flipSprite)
+void GL_Renderer::RenderOutlines(Texture2D& texture, glm::vec2& position, glm::vec2& size, GLfloat rotate, GLfloat transparency, glm::vec3& color, std::pair<bool, bool> flipSprite)
 {
 	this->outlineShader.Use();
 
@@ -598,7 +602,7 @@ void GL_Renderer::RenderOutline(Texture2D& texture, glm::vec2& position, glm::ve
 	// Set transparency
 	this->outlineShader.SetFloat("Transparency", 0.5f);
 	this->outlineShader.SetVector3f("outlineColour", { 0.5f,0.1f,0.8f });
-	
+
 
 	// Render textured quad
 	glActiveTexture(GL_TEXTURE0);
@@ -607,5 +611,18 @@ void GL_Renderer::RenderOutline(Texture2D& texture, glm::vec2& position, glm::ve
 	glBindVertexArray(this->quadVAO);
 	glDrawArrays(GL_TRIANGLES, 0, 6);
 	glBindVertexArray(0);
+
+}
+
+void GL_Renderer::RenderOutline(Texture2D& texture, glm::vec2& position, glm::vec2& size, GLfloat rotate, GLfloat transparency, glm::vec3& color, std::pair<bool, bool> flipSprite)
+{
+	int i = outlines.size();
+	outlines[i].g_Sprite.push_back(texture);
+	outlines[i].g_Pos.push_back(position);
+	outlines[i].g_Size.push_back(size);
+	outlines[i].g_Rotate.push_back(rotate);
+	outlines[i].g_Transparency.push_back(transparency);
+	outlines[i].g_Colour.push_back(color);
+	outlines[i].g_flip.push_back(flipSprite);
 
 }

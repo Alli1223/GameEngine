@@ -62,6 +62,7 @@ public:
 	glm::vec2 resolution;
 
 	std::map<int, GL_Sprite> layers;
+	std::map<int, GL_Sprite> outlines;
 
 	//! Used for calculating whether the sprite should be rendererd before or after the player 
 	glm::vec2 playerPosition;
@@ -78,6 +79,8 @@ public:
 
 	int currentInstanceCellSize = 100;
 private:
+
+	void RenderOutlines(Texture2D& texture, glm::vec2& position, glm::vec2& size, GLfloat rotate, GLfloat transparency, glm::vec3& color, std::pair<bool, bool> flipSprite);
 	void init();
 	// Init shadows shader FBO
 	GLuint fbo;

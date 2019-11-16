@@ -50,22 +50,6 @@ protected:
 	int ID = -1;
 
 
-	//! Body Textures
-	Texture2D nakedBody;
-	Texture2D hair;
-	Texture2D eyes;
-	Texture2D ears;
-	Texture2D shadow;
-	Texture2D top;
-	Texture2D bottom;
-
-	//! Default colours
-	vec3 hairColour = { 255,255,255 };
-	vec3 eyeColour = { 255,255,255 };
-	vec3 topColour = { 255,255,255 };
-	vec3 bottomColour = { 255,255,255 };
-	vec3 bodyColour = { 255,224,189 };
-
 	
 
 };

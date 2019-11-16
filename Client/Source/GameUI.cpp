@@ -24,10 +24,10 @@ void GameUI::Render(GL_Renderer& renderer, World& world, Player& player, GameSet
 		roomDesigner.Render(renderer);
 	}
 
-	//for each (auto npc in GameSettings::currentInstance->npcs)
-	//{
-	//	npc->Render(renderer);
-	//}
+	for each (auto npc in GameSettings::currentInstance->npcs)
+	{
+		npc->Render(renderer);
+	}
 
 
 	bool show_demo_window = true;

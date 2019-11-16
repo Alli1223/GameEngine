@@ -6,6 +6,16 @@ Item::Item()
 {
 }
 
+Item::Item(json jsonData)
+{
+	if (jsonData.at("Type") == "Wall")
+	{
+		Wall wall;
+		*this = wall;
+	}
+	
+}
+
 void Item::Render(GL_Renderer& renderer)
 {
 	renderer.RenderSpriteLighting(this->Sprite, this->NormalMap, this->position, this->size, this->rotation, this->transparency, this->renderLayer, this->colour, flipSprite);
