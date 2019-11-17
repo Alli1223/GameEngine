@@ -11,6 +11,8 @@ RoomDesigner::RoomDesigner()
 	GUI.shopManagement.setPosition({ 1600,500 });
 	GUI.shopManagement.setSize({ 250,100 });
 	GUI.shopManagement.isOpen = true;
+	GUI.shopManagement.Background = ResourceManager::LoadTexture("Resources\\UI\\Background.png");
+
 }
 RoomDesigner::~RoomDesigner()
 {
@@ -23,7 +25,6 @@ void RoomResigerGUI::CreateButtons()
 	highlight.Sprite = ResourceManager::LoadTexture("Resources\\Sprites\\GUI\\LuminanceSlider.png");
 	highlight.transparency = 0.5f;
 	highlight.renderLayer = 4;
-
 	
 	Door door;
 	Wall wall;
@@ -44,7 +45,7 @@ void RoomResigerGUI::CreateButtons()
 	buttons.push_back(deleteButton);
 
 	int x = getPosition().x;
-	int y = getPosition().y;
+	int y = getPosition().y - getSize().y / 2;
 	for (int i = 0; i < buttons.size(); i++)
 	{
 		if (x < getPosition().x + getSize().x)

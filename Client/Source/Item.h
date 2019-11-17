@@ -18,27 +18,24 @@ public:
 	//! Destructor
 	~Item();
 
+	std::shared_ptr<Item> ConstructFromJson(json data);
+
 	glm::vec2 setPosition(glm::vec2 newPosition);
 
 	//! Runs when an item is selected and clicked
 	virtual void Use(GL_Renderer& renderer, World& world, Player& player);
 	//! Runs when an item is selected
 	virtual void Selected(GL_Renderer& renderer, World& world, Player& player);
+
+	//! Needs getSharedPointer() Override to that class
 	std::shared_ptr<Item> getSharedPointer()
 	{
 		auto sharedItem = std::make_shared<Item>(*this); // make shared Item
 		return sharedItem;
 	}
+	//! Needs GetJson() Override for that class
+	virtual json GetJson();
 
-	virtual json getItemJson()
-	{
-		std::cout << "This is a NULL object" << std::endl;
-		json itemData;
-		itemData["Type"] = "NULL";
-		itemData["X"] = getPosition().x;
-		itemData["Y"] = getPosition().y;
-		return itemData;
-	}
 	virtual std::string getName() { return itemName; }
 	virtual std::string setName(std::string newName) { return itemName = newName; }
 	virtual std::string getItemDescription() { return itemDescription; }
@@ -76,7 +73,7 @@ public:
 
 	//! Get a shared pointer to this object
 	std::shared_ptr<Item> getSharedPointer();
-	json getItemJson();
+	json GetJson();
 	std::string getName() { return itemName; }
 	std::string getItemDescription() { return itemDescription; }
 	int getMaximumStackSize() { return maximumStackSize; }
@@ -101,7 +98,7 @@ public:
 	void Use(GL_Renderer& renderer, World& world, Player& player);
 
 	std::shared_ptr<Item> getSharedPointer();
-	json getItemJson();
+	json GetJson();
 	std::string getName() { return itemName; }
 	std::string getItemDescription() { return itemDescription; }
 	int getMaximumStackSize() { return maximumStackSize; }
@@ -125,7 +122,7 @@ public:
 	void Use(GL_Renderer& renderer, World& world, Player& player);
 
 	std::shared_ptr<Item> getSharedPointer();
-	json getItemJson();
+	json GetJson();
 	std::string getName() { return itemName; }
 	std::string getItemDescription() { return itemDescription; }
 	int getMaximumStackSize() { return maximumStackSize; }
@@ -149,7 +146,7 @@ public:
 	void Use(GL_Renderer& renderer, World& world, Player& player);
 
 	std::shared_ptr<Item> getSharedPointer();
-	json getItemJson();
+	json GetJson();
 	std::string getName() { return itemName; }
 	int getMaximumStackSize() { return maximumStackSize; }
 	int getStack() { return stack; }

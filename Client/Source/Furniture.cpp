@@ -23,6 +23,11 @@ void Furniture::Remove()
 {
 }
 
+json Furniture::GetJson()
+{
+	return json();
+}
+
 void Furniture::Use(GL_Renderer& renderer, World& world, Player& player)
 {
 

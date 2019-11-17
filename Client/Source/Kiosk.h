@@ -13,7 +13,7 @@ public:
 	json GetJson();
 
 	//! Item name
-	std::string itemName = "Wall";
+	std::string itemName = "Kiosk";
 	//! Item description
 	std::string itemDescription = "Item does not have description overload";
 

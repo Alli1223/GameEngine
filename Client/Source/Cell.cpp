@@ -171,8 +171,14 @@ Cell::Cell(b2World* physicsWorld, json cellData)
 		this->cropSquare = std::make_shared<CropSquare>(newCropSquare);
 	}
 
-	if(cellData.count("Item") > 0)
-		this->CellItem = std::make_shared<Item>(Item(cellData.at("Item")));
+	if (cellData.count("Item") > 0)
+	{
+		json itemData = cellData.at("Item");
+		Item item2(itemData);
+		std::shared_ptr<Item> item = item2.ConstructFromJson(itemData);
+		this->CellItem = item;
+	}
+	
 	
 	//cellType = cellData.at("Type").get<std::string>();
 }

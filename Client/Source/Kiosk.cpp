@@ -6,7 +6,7 @@ Kiosk::Kiosk()
 	Sprite = ResourceManager::GetAtlasTexture("roguelike", 321);
 	NormalMap = ResourceManager::GetAtlasTexture("roguelike_normal", 321);
 
-	std::string directory = IconSpriteDirectory + "ShopDisplayShelf.png";
+	std::string directory = IconSpriteDirectory + "Red.png";
 	this->icon.Background = ResourceManager::LoadTexture(directory.c_str());
 	renderLayer = 1;
 	bodyType = b2BodyType::b2_staticBody;

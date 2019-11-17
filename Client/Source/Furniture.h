@@ -24,6 +24,9 @@ public:
 
 	virtual void Remove();
 
+	//! Get Item Json
+	virtual json GetJson();
+
 	//! Virtual Getters and Setters
 	virtual std::string getName() { return itemName; }
 	virtual std::string getItemDescription() { return itemDescription; }

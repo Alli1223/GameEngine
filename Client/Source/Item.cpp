@@ -8,14 +8,44 @@ Item::Item()
 
 Item::Item(json jsonData)
 {
-	if (jsonData.count("Type") > 0)
+	if (jsonData.count("Type") >= 0)
 	{
 		if (jsonData.at("Type") == "Wall")
 		{
 			Wall wall;
+
+			float x = jsonData.at("X");
+			float y = jsonData.at("Y");
+			float w = jsonData.at("W");
+			float h = jsonData.at("H");
+
+			wall.setPosition({ x, y });
+			wall.setSize({ w,h });
 			*this = wall;
+			wall.getSharedPointer();
 		}
 	}
+}
+std::shared_ptr<Item> Item::ConstructFromJson(json jsonData)
+{
+	if (jsonData.count("Type") >= 0)
+	{
+		if (jsonData.at("Type") == "Wall")
+		{
+			Wall wall;
+
+			float x = jsonData.at("X");
+			float y = jsonData.at("Y");
+			float w = jsonData.at("W");
+			float h = jsonData.at("H");
+
+			wall.setPosition({ x, y });
+			wall.setSize({ w,h });
+			*this = wall;
+			return wall.getSharedPointer();
+		}
+	}
+
 }
 
 void Item::Render(GL_Renderer& renderer)
@@ -35,10 +65,22 @@ void Item::Selected(GL_Renderer & renderer, World & world, Player & player)
 {
 }
 
+json Item::GetJson()
+{
+	std::cout << "This is a NULL object" << std::endl;
+	json itemData;
+	itemData["Type"] = "NULL";
+	itemData["X"] = getPosition().x;
+	itemData["Y"] = getPosition().y;
+	return itemData;
+}
+
 
 Item::~Item()
 {
 }
+
+
 
 glm::vec2 Item::setPosition(glm::vec2 newPosition)
 {
@@ -58,7 +100,7 @@ Fish::Fish()
 	this->NormalMap = ResourceManager::GetAtlasTexture("roguelike_normal", 728);
 	this->icon.Background = ResourceManager::GetAtlasTexture("roguelike", 728);
 }
-json Fish::getItemJson()
+json Fish::GetJson()
 {
 	std::cout << "This is a Fish object" << std::endl;
 	json Item;
@@ -88,7 +130,7 @@ std::shared_ptr<Item> Fish::getSharedPointer()
 //	auto sharedItem = std::make_shared<Wheat>(*this); // make shared Item
 //	return sharedItem;
 //}
-//json Wheat::getItemJson()
+//json Wheat::GetJson()
 //{
 //	std::cout << "This is a Wheat object" << std::endl;
 //	json Item;
@@ -113,7 +155,7 @@ std::shared_ptr<Item> WheatSeeds::getSharedPointer()
 	auto sharedItem = std::make_shared<WheatSeeds>(*this); // make shared Item
 	return sharedItem;
 }
-json WheatSeeds::getItemJson()
+json WheatSeeds::GetJson()
 {
 	std::cout << "This is a " << itemName.c_str() << " object" << std::endl;
 	json Item;
@@ -152,7 +194,7 @@ std::shared_ptr<Item> SunflowerSeeds::getSharedPointer()
 	auto sharedItem = std::make_shared<SunflowerSeeds>(*this); // make shared Item
 	return sharedItem;
 }
-json SunflowerSeeds::getItemJson()
+json SunflowerSeeds::GetJson()
 {
 	std::cout << "This is a " << itemName.c_str() << " object" << std::endl;
 	json Item;
@@ -191,7 +233,7 @@ std::shared_ptr<Item> LavenderSeeds::getSharedPointer()
 	auto sharedItem = std::make_shared<LavenderSeeds>(*this); // make shared Item
 	return sharedItem;
 }
-json LavenderSeeds::getItemJson()
+json LavenderSeeds::GetJson()
 {
 	std::cout << "This is a " << itemName.c_str() << " object" << std::endl;
 	json Item;

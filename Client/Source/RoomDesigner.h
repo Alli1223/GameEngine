@@ -24,7 +24,7 @@ struct RoomResigerGUI : public GUI
 {
 	std::vector<Button> buttons;
 
-	Texture2D backgroundTesture;
+	Texture2D backgroundTexture;
 	bool updateButttons = true;
 	bool selected = false;
 	int iconSize = 50;

@@ -9,7 +9,11 @@ public:
 	//! Destructor
 	Wall::~Wall();
 
-	json GetJson();
+	//! Get Item Json
+	json GetJson() override;
+
+	//! Get pointer
+	std::shared_ptr<Item> getSharedPointer();
 
 	//! Item name
 	std::string itemName = "Wall";

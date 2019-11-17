@@ -36,6 +36,7 @@ Room::Room(json data)
 		Cell newCell(I_Physics.get(),tile);
 		//newCell.setSize(cellSize, cellSize);
 		this->tiles[newCell.getX()][newCell.getY()] = std::make_shared<Cell>(newCell);
+		this->SetCellItem(newCell.getX(), newCell.getY(), newCell.CellItem);
 	}
 };
 
@@ -78,59 +79,43 @@ void Room::InstanceSetup(Player& player)
 	player.getBody()->SetTransform({ 1,1 }, 0.0f);
 
 
-	for (int x = 0; x < roomSize; x++)
+	if (tiles.size() == 0)
 	{
-		std::vector<std::shared_ptr<Cell>> column;
-
-		tiles.push_back(column);
-		for (int y = 0; y < roomSize; y++)
+		for (int x = 0; x < roomSize; x++)
 		{
-			// Populates the column with pointers to cells
-			Cell cell(I_Physics.get(), x, y, "WoodFloor");
-			cell.setSize({ tileSize, tileSize });
-			cell.setCellSize(tileSize);
-			cell.setPosition(x * tileSize, y * tileSize);
-			cell.isWalkable = true;
-			auto sharedCell = std::make_shared<Cell>(cell);
-			tiles[x].push_back(sharedCell);
-		}
-	}
+			std::vector<std::shared_ptr<Cell>> column;
 
-	// Set the floor tiles
-	for (int x = 0; x < tiles.size(); x++)
-		for (int y = 0; y < tiles[x].size(); y++)
-		{
-			tiles[x][y]->isWood = true;
-			tiles[x][y]->isWalkable = true;
-			tiles[x][y]->Sprite = ResourceManager::GetAtlasTexture("roguelike", 120);
-			tiles[x][y]->NormalMap = ResourceManager::GetAtlasTexture("roguelike_normal", 120);
-			// Create walls
-			if (x == 0 || y == 0 || x == tiles.size() - 1 || y == tiles[x].size() - 1)
+			tiles.push_back(column);
+			for (int y = 0; y < roomSize; y++)
 			{
-				Wall wall;
-				SetCellItem(x, y, wall.getSharedPointer(), b2BodyType::b2_staticBody);
-				tiles[x][y]->isWalkable = false;
-				//tiles[x][y]->CellItem = wall.getSharedPointer();
-				//tiles[x][y]->isWalkable = false;
-				//tiles[x][y]->Sprite = ResourceManager::GetAtlasTexture("roguelike", 300);
-				//tiles[x][y]->NormalMap = ResourceManager::GetAtlasTexture("roguelike_normal", 300);
-				// Door
-				//if (x == (tiles.size() - 1) / 2 && y == tiles[x].size() - 1)
-				//{
-				//	tiles[x][y]->isWood = true;
-				//	tiles[x][y]->isWalkable = true;
-				//	tiles[x][y]->Sprite = ResourceManager::GetAtlasTexture("roguelike", 120);
-				//	tiles[x][y]->NormalMap = ResourceManager::GetAtlasTexture("roguelike_normal", 120);
-				//}
-				//if (x == tiles.size() / 2 && y == tiles[x].size() - 1)
-				//{
-				//	tiles[x][y]->isWood = true;
-				//	tiles[x][y]->isWalkable = true;
-				//	tiles[x][y]->Sprite = ResourceManager::GetAtlasTexture("roguelike", 120);
-				//	tiles[x][y]->NormalMap = ResourceManager::GetAtlasTexture("roguelike_normal", 120);
-				//}
+				// Populates the column with pointers to cells
+				Cell cell(I_Physics.get(), x, y, "WoodFloor");
+				cell.setSize({ tileSize, tileSize });
+				cell.setCellSize(tileSize);
+				cell.setPosition(x * tileSize, y * tileSize);
+				cell.isWalkable = true;
+				auto sharedCell = std::make_shared<Cell>(cell);
+				tiles[x].push_back(sharedCell);
 			}
 		}
+
+		// Set the floor tiles
+		for (int x = 0; x < tiles.size(); x++)
+			for (int y = 0; y < tiles[x].size(); y++)
+			{
+				tiles[x][y]->isWood = true;
+				tiles[x][y]->isWalkable = true;
+				tiles[x][y]->Sprite = ResourceManager::GetAtlasTexture("roguelike", 120);
+				tiles[x][y]->NormalMap = ResourceManager::GetAtlasTexture("roguelike_normal", 120);
+				// Create walls
+				if (x == 0 || y == 0 || x == tiles.size() - 1 || y == tiles[x].size() - 1)
+				{
+					Wall wall;
+					SetCellItem(x, y, wall.getSharedPointer(), b2BodyType::b2_staticBody);
+					tiles[x][y]->isWalkable = false;
+				}
+			}
+	}
 }
 
 

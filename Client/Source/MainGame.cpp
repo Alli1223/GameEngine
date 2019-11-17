@@ -212,10 +212,11 @@ void MainGame::run()
 
 	//GameSettings::currentInstance = gameSettings.levelSaving.LoadInstance();
 	Room room;
+
 	json roomData = gameSettings.levelSaving.LoadInstance();
+	Room room2(roomData);
 	if (roomData != nullptr)
 	{
-		Room room2(roomData);
 		room2.onEnter(world.I_player);
 	}
 	else

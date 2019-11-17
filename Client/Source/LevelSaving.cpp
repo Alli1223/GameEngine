@@ -188,7 +188,7 @@ void LevelSaving::SaveShop(PlayerShop playerShop)
 		json items;
 		for (int j = 0; j < playerShop.shopDisplays[i]->shelfInventory.getCurrentSize(); j++)
 		{
-			items.push_back(playerShop.shopDisplays[i]->shelfInventory.get(j)->getItemJson());
+			items.push_back(playerShop.shopDisplays[i]->shelfInventory.get(j)->GetJson());
 		}
 		displayShelf["Items"] = items;	// add items
 		displayShelfs.push_back(displayShelf);
