@@ -25,7 +25,9 @@ void Furniture::Remove()
 
 json Furniture::GetJson()
 {
-	return json();
+	json data;
+	data["Type"] = "NULL";
+	return data;
 }
 
 void Furniture::Use(GL_Renderer& renderer, World& world, Player& player)

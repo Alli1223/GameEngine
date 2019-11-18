@@ -8,6 +8,12 @@ public:
 	//! Destructor
 	Door::~Door();
 
+	//! Get Item Json
+	json GetJson() override;
+
+	//! Get pointer
+	std::shared_ptr<Item> getSharedPointer();
+
 	enum Type {
 		Entrance,
 		Exit

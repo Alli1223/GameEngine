@@ -26,7 +26,6 @@ Wall::~Wall()
 
 json Wall::GetJson()
 {
-	std::cout << "This is a Wall object" << std::endl;
 	json itemData;
 	itemData["Type"] = "Wall";
 	itemData["X"] = getPosition().x;

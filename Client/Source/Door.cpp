@@ -16,6 +16,23 @@ Door::~Door()
 
 }
 
+json Door::GetJson()
+{
+	json itemData;
+	itemData["Type"] = "Door";
+	itemData["X"] = getPosition().x;
+	itemData["Y"] = getPosition().y;
+	itemData["W"] = getSize().x;
+	itemData["H"] = getSize().y;
+	return itemData;
+}
+
+std::shared_ptr<Item> Door::getSharedPointer()
+{
+	auto sharedItem = std::make_shared<Door>(*this); // make shared Item
+	return sharedItem;
+}
+
 void Door::Render(GL_Renderer& renderer)
 {
 

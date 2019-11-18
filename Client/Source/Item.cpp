@@ -22,7 +22,19 @@ Item::Item(json jsonData)
 			wall.setPosition({ x, y });
 			wall.setSize({ w,h });
 			*this = wall;
-			wall.getSharedPointer();
+		}
+		if (jsonData.at("Type") == "Wall")
+		{
+			Door door;
+
+			float x = jsonData.at("X");
+			float y = jsonData.at("Y");
+			float w = jsonData.at("W");
+			float h = jsonData.at("H");
+
+			door.setPosition({ x, y });
+			door.setSize({ w,h });
+			*this = door;
 		}
 	}
 }
