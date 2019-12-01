@@ -14,7 +14,7 @@ InfiniteWorld::~InfiniteWorld()
 {
 }
 
-std::shared_ptr<Cell>& InfiniteWorld::GetCell(float X, float Y)
+std::shared_ptr<Cell> InfiniteWorld::GetCell(float X, float Y)
 {
 	// Get the chunk
 	float chunkSize = getChunkSize();
@@ -49,17 +49,14 @@ std::shared_ptr<Cell>& InfiniteWorld::GetCell(float X, float Y)
 		// If tiles doesnt exist
 		if (MainLevel[{ chunkX, chunkY }].tiles.size() == 0)
 		{
-			std::shared_ptr<Cell> nothing;
-			return nothing;
+			return nullptr;
 		}
 		// Return the tile
 		else
 		{
 			return MainLevel[{ chunkX, chunkY }].tiles[cellX][cellY];
-
 		}
 	}
-
 }
 
 
@@ -90,19 +87,48 @@ void InfiniteWorld::CreateInfiniWorld(GL_Renderer& renderer, b2World* physicsWor
 	
 }
 
-void InfiniteWorld::OrientateCells(Camera& camera, int x, int y)
+void InfiniteWorld::OrientateCells(Camera& camera, int x, int y, Cell::GroundType)
 {
-	for (int cX = -1; cX < MainLevel[{x, y}].getChunkSize(); cX++)
+	for (int cX = 0; cX < MainLevel[{x, y}].getChunkSize(); cX++)
 	{
-		for (int cY = -1; cY < MainLevel[{x, y}].getChunkSize(); cY++)
+		for (int cY = 0; cY < MainLevel[{x, y}].getChunkSize(); cY++)
 		{
-			if (cX == -1 || cY == -1 || cX == getChunkSize() || cY == getChunkSize())
+			if (MainLevel[{x, y}].tiles[cX][cY]->groundType == Cell::groundType::grass1)
 			{
-				generator.populateTerrain(MainLevel[{x, y}].tiles);
+				if (getNeighbourCells(MainLevel[{x, y}].tiles[cX][cY]).at(0) != nullptr)
+				{
+
+				}
 			}
-			GetCell(x, y);
+			//GetCell(x, y);
 		}
 	}
 
-	generator.populateTerrain(MainLevel[{x, y}].tiles);
+	//generator.populateTerrain(MainLevel[{x, y}].tiles);
+}
+
+std::vector<std::shared_ptr<Cell>> InfiniteWorld::getNeighbourCells(std::shared_ptr<Cell> node)
+{
+	std::vector<std::shared_ptr<Cell>> result;
+	// If the node is within the level
+
+	//left
+
+	result.push_back(GetCell(node->getX() - 1, node->getY()));
+
+	//right
+	result.push_back(GetCell(node->getX() + 1, node->getY()));
+	//up
+	result.push_back(GetCell(node->getX(), node->getY() - 1));
+	//down
+	result.push_back(GetCell(node->getX(), node->getY() + 1));
+
+	// Diagonals
+	result.push_back(GetCell(node->getX() - 1, node->getY() - 1));
+	result.push_back(GetCell(node->getX() - 1, node->getY() + 1));
+	result.push_back(GetCell(node->getX() + 1, node->getY() - 1));
+	result.push_back(GetCell(node->getX() + 1, node->getY() + 1));
+
+
+	return result;
 }

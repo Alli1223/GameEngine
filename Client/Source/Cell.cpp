@@ -57,7 +57,6 @@ void Cell::Clear()
 	newCleanCell.setY(this->getY());
 	newCleanCell.setSize(this->getSize());
 	*this = newCleanCell;
-
 }
 
 void Cell::Init()

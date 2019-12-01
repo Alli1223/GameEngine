@@ -169,6 +169,14 @@ public:
 
 	bool isDisplayCase = false;
 
+	enum GroundType
+	{
+		grass1,
+		grass2,
+		dirt1,
+		dirt2
+	}groundType;
+
 
 	enum orientation
 	{
