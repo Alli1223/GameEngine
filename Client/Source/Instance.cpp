@@ -57,6 +57,7 @@ void Instance::Render(GL_Renderer& renderer)
 
 void Instance::Update()
 {
+
 	// Update NPCS
 	for (auto npc : npcs)
 	{

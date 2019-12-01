@@ -510,7 +510,7 @@ bool Pathfinder::isPathObsructed(World& level, Point firstPoint, Point secondPoi
 		}
 		else
 		{
-			//if (level.tiles[x][y]->isWalkable == false)
+			//if (level.tile->isWalkable == false)
 			//	return false;
 
 		}

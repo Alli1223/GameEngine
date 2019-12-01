@@ -134,6 +134,8 @@ void World::Render(GL_Renderer& renderer)
 		//playerShop->Render(renderer);
 	}
 
+	glm::vec2 halfCameraSize = { renderer.camera.windowSize.x / 2, renderer.camera.windowSize.y / 2 };
+	renderer.camera.Lerp_To(I_player.getPosition() - halfCameraSize, renderer.camera.getCameraSpeed());
 
 
 	// Render the world
@@ -147,6 +149,7 @@ void World::Render(GL_Renderer& renderer)
 			Chunk chunk(I_Physics.get(), x, y);
 			InfiniWorld.setChunSize(chunk.getChunkSize());
 			InfiniWorld.MainLevel[{x, y}] = chunk;
+			InfiniWorld.OrientateCells(renderer.camera,x,y);
 		}
 		InfiniWorld.MainLevel[{x, y}].Render(renderer);
 	}

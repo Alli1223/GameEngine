@@ -185,7 +185,7 @@ void MainGame::run()
 	//for (int i = 0; i < 5; i++)
 	//			world.I_player.inventory.add(displayShelf.getSharedPointer());
 	//Fish fish;
-	//Hoe hoe;
+	Hoe hoe;
 	//FishingRod rod;
 	//BugNet net;
 	//Scythe scythe;
@@ -203,7 +203,7 @@ void MainGame::run()
 	//	world.I_player.inventory.add(sunflowerSeeds.getSharedPointer());
 	//world.I_player.inventory.add(lavenderSeeds.getSharedPointer());
 	//world.I_player.inventory.add(fish.getSharedPointer());
-	//world.I_player.inventory.add(hoe.getSharedPointer());
+	world.I_player.inventory.add(hoe.getSharedPointer());
 	//world.I_player.inventory.add(rod.getSharedPointer());
 	//world.I_player.inventory.add(net.getSharedPointer());
 	//world.I_player.inventory.add(scythe.getSharedPointer());
@@ -226,7 +226,7 @@ void MainGame::run()
 	}
 
 	//currentInstance->onEnter(world.I_player);
-
+	world.onEnter(world.I_player);
 	
 	//Shop.onEnter(world.I_player);
 	//Mix_PlayMusic(gMusic, -1);
