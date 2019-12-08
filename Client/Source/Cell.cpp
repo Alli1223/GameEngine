@@ -43,17 +43,19 @@ void Cell::AssignType(std::string type, bool isType)
 }
 void Cell::AssignType(int layer, std::string type)
 {
-	if(type != "")
-		CellAssignment::AssignCell(*this, type, layer);
 
+	CellAssignment::AssignCell(*this, type, layer);
+
+
+	//if (!isWalkable)
+	//	InitPhysics(physicsptr, b2BodyType::b2_staticBody, 0.0f, 0.0f);
+}
+void Cell::AssignType(int layer)
+{
 	if (groundType != Cell::GroundType::empty)
 	{
 		CellAssignment::AssignCellFromType(*this, layer);
 	}
-	
-
-	//if (!isWalkable)
-	//	InitPhysics(physicsptr, b2BodyType::b2_staticBody, 0.0f, 0.0f);
 }
 
 void Cell::Clear()
@@ -75,7 +77,7 @@ void Cell::Init()
 void Cell::SetGroundType(Cell::GroundType type, int layer)
 {
 	groundType = type;
-	AssignType(layer, "");
+	AssignType(layer);
 }
 
 CropSquare& Cell::GetCropSquare()
@@ -132,7 +134,7 @@ void Cell::Render(GL_Renderer& renderer)
 	{
 		this->cropSquare->Render(renderer);
 	}
-	renderer.RenderText(std::to_string((int)orientation), this->position - renderer.camera.getPosition(), this->size, { 0.5,0.5 }, this->colour);
+	renderer.RenderText(std::to_string((int)orientation) + " " + std::to_string(getX()) + "," + std::to_string(getY()), this->position - renderer.camera.getPosition(), this->size, { 0.2,0.2 }, this->colour);
 }
 
 // Create with json data

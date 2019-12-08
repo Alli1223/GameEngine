@@ -122,7 +122,7 @@ public:
 	//! Assign the cells type
 	void AssignType(std::string type, bool Istype);
 	void AssignType(int layer, std::string type);
-
+	void AssignType(int layer);
 	//! Render the cell
 	void Render(GL_Renderer& renderer);
 
@@ -184,6 +184,7 @@ public:
 
 	enum Orientation
 	{
+		none,
 		topLeft,
 		topMiddle,
 		topRight,

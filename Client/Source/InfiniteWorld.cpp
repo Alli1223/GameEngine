@@ -32,13 +32,13 @@ std::shared_ptr<Cell> InfiniteWorld::GetCell(float X, float Y)
 	// If the cell is negative then offset the position by chunksize
 	if (X < 0.0f)
 	{
-		cellX += chunkSize - 1;
+		cellX += (chunkSize - 1);
 		chunkX -= 1;
 
 	}
 	if (Y < 0.0f)
 	{
-		cellY += chunkSize - 1;
+		cellY += (chunkSize - 1);
 		chunkY -= 1;
 	}
 
@@ -388,4 +388,6 @@ void InfiniteWorld::OrientateCell(std::shared_ptr<Cell> node)
 			}
 		}
 	}
+
+	node->AssignType(1);
 }

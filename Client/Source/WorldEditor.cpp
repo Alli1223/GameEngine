@@ -368,11 +368,13 @@ void WorldEditor::Render(GL_Renderer& renderer, World& world, Player& player)
 		{
 			mX = (X + renderer.camera.getX() + (cellSize / 2)) / cellSize;
 			mY = (Y + renderer.camera.getY() + (cellSize / 2)) / cellSize;
+
 			std::string vegSting = "LongGrass";
 			//if (world.GetCell(mX, mY)->vegetation.size() < 5)
 				//world.GetCell(mX, mY)->AssignType(1, vegSting);
 
-			world.GetCell(mX, mY)->SetGroundType(Cell::GroundType::grass1, 0);
+			world.InfiniWorld.GetCell(mX, mY)->SetGroundType(Cell::GroundType::grass1, 1);
+			std::cout << mX << " " << mY << " : " << world.InfiniWorld.GetCell(mX, mY)->orientation << std::endl;
 		}
 	}
 	ImGui::SameLine();
