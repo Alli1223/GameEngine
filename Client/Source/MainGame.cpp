@@ -203,7 +203,7 @@ void MainGame::run()
 	//	world.I_player.inventory.add(sunflowerSeeds.getSharedPointer());
 	//world.I_player.inventory.add(lavenderSeeds.getSharedPointer());
 	//world.I_player.inventory.add(fish.getSharedPointer());
-	world.I_player.inventory.add(hoe.getSharedPointer());
+	//world.I_player.inventory.add(hoe.getSharedPointer());
 	//world.I_player.inventory.add(rod.getSharedPointer());
 	//world.I_player.inventory.add(net.getSharedPointer());
 	//world.I_player.inventory.add(scythe.getSharedPointer());

@@ -6,7 +6,7 @@ class CellAssignment
 public:
 	
 	static void AssignCell(Cell& cell, std::string& type, int layer);
-
+	static void AssignCellFromType(Cell& cell, int layer);
 	CellAssignment();
 	~CellAssignment();
 	static const float ground_layer;
@@ -451,3 +451,75 @@ void CellAssignment::AssignCell(Cell& cell, std::string& type, int layer)
 		// load house from json
 	}
 }
+
+int GetAtlasPositionFromOrientation(Cell::Orientation orient)
+{
+	switch (orient)
+	{
+	default:
+		break;
+
+	case Cell::Orientation::topLeft:
+		return 0;
+		break;
+	case Cell::Orientation::topMiddle:
+		return 1;
+		break;
+	case Cell::Orientation::topRight:
+		return 2;
+		break;
+	case Cell::Orientation::middleLeft:
+		return 7;
+		break;
+
+	case Cell::Orientation::middle:
+		return 8;
+		break;
+
+	case Cell::Orientation::middleRight:
+		return 9;
+		break;
+
+	case Cell::Orientation::bottomLeft:
+		return 14;
+		break;
+
+	case Cell::Orientation::bottomMiddle:
+		return 15;
+		break;
+
+	case Cell::Orientation::bottomRight:
+		return 16;
+		break;
+	case Cell::Orientation::alone:
+		return 58;
+		break;
+
+	}
+}
+void CellAssignment::AssignCellFromType(Cell& cell, int layer)
+{
+	switch (cell.groundType)
+	{
+	default:
+		break;
+	case Cell::GroundType::grass1:
+		if (layer == 0) // Set the ground sprite
+		{
+			cell.Sprite = ResourceManager::GetAtlasTexture("spring_grass_light", GetAtlasPositionFromOrientation(cell.orientation));
+			cell.NormalMap = ResourceManager::GetAtlasTexture("spring_grass_normal", GetAtlasPositionFromOrientation(cell.orientation));
+			cell.renderLayer = ground_layer;
+		}
+		else
+		{
+			cell.layerdSprite = ResourceManager::GetAtlasTexture("spring_grass_light", GetAtlasPositionFromOrientation(cell.orientation));
+			cell.layerdSprite_normal = ResourceManager::GetAtlasTexture("spring_grass_normal", GetAtlasPositionFromOrientation(cell.orientation));
+			cell.renderLayer = surface_layer;
+		}
+		break;
+	case Cell::GroundType::grass2:
+		AssignCell(cell, "Summer_Ground_" + std::to_string(GetAtlasPositionFromOrientation(cell.orientation)), layer);
+		break;
+	}
+}
+

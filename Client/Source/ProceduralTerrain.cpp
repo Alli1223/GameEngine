@@ -170,11 +170,11 @@ void ProceduralTerrain::GenerateCellOrientations(std::shared_ptr<Chunk>& chunk, 
 	{
 		if (chunk->tile->isWater && chunk->tiles[x - 1][y]->isGrass)
 		{
-			chunk->tile->orientation = Cell::orientation::middleLeft;
+			chunk->tile->Orientation = Cell::Orientation::middleLeft;
 		}
 		if (chunk->tile->isWater && chunk->tiles[x + 1][y]->isGrass)
 		{
-			chunk->tile->orientation = Cell::orientation::middleLeft;
+			chunk->tile->Orientation = Cell::Orientation::middleLeft;
 		}
 
 		// Center of Chunk
@@ -183,27 +183,27 @@ void ProceduralTerrain::GenerateCellOrientations(std::shared_ptr<Chunk>& chunk, 
 			// Top Left
 			if (chunk->tile->isWater && chunk->tiles[x - 1][y - 1]->isGrass && chunk->tiles[x][y - 1]->isGrass && chunk->tiles[x - 1][y]->isGrass)
 			{
-				chunk->tile->orientation = Cell::orientation::topLeft;
+				chunk->tile->Orientation = Cell::Orientation::topLeft;
 			}
 			else if (chunk->tile->isWater && chunk->tiles[x][y - 1]->isGrass)
 			{
-				chunk->tile->orientation = Cell::orientation::topMiddle;
+				chunk->tile->Orientation = Cell::Orientation::topMiddle;
 			}
 			else if (chunk->tile->isWater && chunk->tiles[x + 1][y - 1]->isGrass && chunk->tiles[x][y - 1]->isGrass && chunk->tiles[x + 1][y]->isGrass)
 			{
-				chunk->tile->orientation = Cell::orientation::topRight;
+				chunk->tile->Orientation = Cell::Orientation::topRight;
 			}
 			else if (chunk->tile->isWater && chunk->tiles[x - 1][y]->isGrass)
 			{
-				chunk->tile->orientation = Cell::orientation::middleLeft;
+				chunk->tile->Orientation = Cell::Orientation::middleLeft;
 			}
 			else if (chunk->tile->isWater && chunk->tiles[x + 1][y]->isGrass)
 			{
-				chunk->tile->orientation = Cell::orientation::middleRight;
+				chunk->tile->Orientation = Cell::Orientation::middleRight;
 			}
 			else if (chunk->tile->isWater && chunk->tiles[x][y + 1]->isGrass)
 			{
-				chunk->tile->orientation = Cell::orientation::bottomMiddle;
+				chunk->tile->Orientation = Cell::Orientation::bottomMiddle;
 			}
 			
 		}
@@ -211,9 +211,9 @@ void ProceduralTerrain::GenerateCellOrientations(std::shared_ptr<Chunk>& chunk, 
 	else if (y - 1 >= 0 && y + 1 < chunkSize)
 	{
 		if (chunk->tile->isWater && chunk->tiles[x][y - 1]->isGrass)
-			chunk->tile->orientation = Cell::orientation::topMiddle;
+			chunk->tile->Orientation = Cell::Orientation::topMiddle;
 		if (chunk->tile->isWater && chunk->tiles[x][y + 1]->isGrass)
-			chunk->tile->orientation = Cell::orientation::topMiddle;
+			chunk->tile->Orientation = Cell::Orientation::topMiddle;
 
 	}
 	

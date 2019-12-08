@@ -52,66 +52,66 @@ void Rendering::renderCellsAroundObject(Level& level, int& x, int& y)
 	{
 		if (level.tiles[x][y]->isWater && level.tiles[x - 1][y]->isGrass)
 		{
-			level.tiles[x][y]->orientation = Cell::orientation::middleLeft;
+			level.tiles[x][y]->orientation = Cell::Orientation::middleLeft;
 		}
 		if (level.tiles[x][y]->isWater && level.tiles[x + 1][y]->isGrass)
 		{
-			level.tiles[x][y]->orientation = Cell::orientation::middleRight;
+			level.tiles[x][y]->orientation = Cell::Orientation::middleRight;
 		}
 
 		// Center of Chunk
 		if (y - 1 >= 0 && y + 1 < levelSize)
 		{
 			if(level.tiles[x][y]->isWater)
-				level.tiles[x][y]->orientation = Cell::orientation::middle;
+				level.tiles[x][y]->orientation = Cell::Orientation::middle;
 			
 			// Edges
 			if (level.tiles[x][y]->isWater && level.tiles[x][y - 1]->isGrass)
 			{
-				level.tiles[x][y]->orientation = Cell::orientation::topMiddle;
+				level.tiles[x][y]->orientation = Cell::Orientation::topMiddle;
 			}
 			if (level.tiles[x][y]->isWater && level.tiles[x - 1][y]->isGrass)
 			{
-				level.tiles[x][y]->orientation = Cell::orientation::middleLeft;
+				level.tiles[x][y]->orientation = Cell::Orientation::middleLeft;
 			}
 			if (level.tiles[x][y]->isWater && level.tiles[x + 1][y]->isGrass)
 			{
-				level.tiles[x][y]->orientation = Cell::orientation::middleRight;
+				level.tiles[x][y]->orientation = Cell::Orientation::middleRight;
 			}
 			if (level.tiles[x][y]->isWater && level.tiles[x][y + 1]->isGrass)
 			{
-				level.tiles[x][y]->orientation = Cell::orientation::bottomMiddle;
+				level.tiles[x][y]->orientation = Cell::Orientation::bottomMiddle;
 			}
 
 			// Top corners
 			if (level.tiles[x][y]->isWater && !level.tiles[x - 1][y - 1]->isWater && !level.tiles[x][y - 1]->isWater && !level.tiles[x - 1][y]->isWater)
 			{
-				level.tiles[x][y]->orientation = Cell::orientation::topLeft;
+				level.tiles[x][y]->orientation = Cell::Orientation::topLeft;
 			}
 			else if (level.tiles[x][y]->isWater && !level.tiles[x + 1][y - 1]->isWater && !level.tiles[x][y - 1]->isWater && !level.tiles[x + 1][y]->isWater)
 			{
-				level.tiles[x][y]->orientation = Cell::orientation::topRight;
+				level.tiles[x][y]->orientation = Cell::Orientation::topRight;
 			}
 			// Bottom corners
 			else if (level.tiles[x][y]->isWater && !level.tiles[x - 1][y + 1]->isWater && !level.tiles[x][y + 1]->isWater && !level.tiles[x - 1][y]->isWater)
 			{
-				level.tiles[x][y]->orientation = Cell::orientation::bottomLeft;
+				level.tiles[x][y]->orientation = Cell::Orientation::bottomLeft;
 			}
 			else if (level.tiles[x][y]->isWater && !level.tiles[x + 1][y + 1]->isWater && !level.tiles[x][y + 1]->isWater && !level.tiles[x + 1][y]->isWater)
 			{
-				level.tiles[x][y]->orientation = Cell::orientation::bottomRight;
+				level.tiles[x][y]->orientation = Cell::Orientation::bottomRight;
 			}
 
 			if(level.tiles[x][y]->isWater && level.tiles[x + 1][y]->isWater && level.tiles[x - 1][y]->isWater && level.tiles[x][y + 1]->isWater && level.tiles[x][y - 1]->isWater)
-				level.tiles[x][y]->orientation = Cell::orientation::middle;
+				level.tiles[x][y]->orientation = Cell::Orientation::middle;
 		}
 	}
 	else if (y - 1 >= 0 && y + 1 < levelSize)
 	{
 		if (level.tiles[x][y]->isWater && level.tiles[x][y - 1]->isGrass)
-			level.tiles[x][y]->orientation = Cell::orientation::topMiddle;
+			level.tiles[x][y]->orientation = Cell::Orientation::topMiddle;
 		if (level.tiles[x][y]->isWater && level.tiles[x][y + 1]->isGrass)
-			level.tiles[x][y]->orientation = Cell::orientation::bottomMiddle;
+			level.tiles[x][y]->orientation = Cell::Orientation::bottomMiddle;
 
 	}
 }
@@ -160,31 +160,31 @@ void Rendering::AssignTileSprites(std::vector<std::vector<std::shared_ptr<Cell>>
 
 		switch (tiles[x][y]->orientation)
 		{
-		case Cell::orientation::topLeft:
+		case Cell::Orientation::topLeft:
 			tiles[x][y]->Sprite = ResourceManager::GetAtlasTexture("roguelike", waterTopLeft);//AddToBatchRendering(waterTopLeft, xPos, yPos, cellSize, ground);
 			break;
-		case Cell::orientation::topMiddle:
+		case Cell::Orientation::topMiddle:
 			tiles[x][y]->Sprite = ResourceManager::GetAtlasTexture("roguelike", waterTopMiddle);//AddToBatchRendering(waterTopMiddle, xPos, yPos, cellSize, ground);
 			break;
-		case Cell::orientation::topRight:
+		case Cell::Orientation::topRight:
 			tiles[x][y]->Sprite = ResourceManager::GetAtlasTexture("roguelike", waterTopRight);//AddToBatchRendering(waterTopRight, xPos, yPos, cellSize, ground);
 			break;
-		case Cell::orientation::middleLeft:
+		case Cell::Orientation::middleLeft:
 			tiles[x][y]->Sprite = ResourceManager::GetAtlasTexture("roguelike", waterMiddleLeft);//AddToBatchRendering(waterMiddleLeft, xPos, yPos, cellSize, ground);
 			break;
-		case Cell::orientation::middle:
+		case Cell::Orientation::middle:
 			tiles[x][y]->Sprite = ResourceManager::GetAtlasTexture("roguelike", waterID);//AddToBatchRendering(waterMiddle, xPos, yPos, cellSize, ground);
 			break;
-		case Cell::orientation::middleRight:
+		case Cell::Orientation::middleRight:
 			tiles[x][y]->Sprite = ResourceManager::GetAtlasTexture("roguelike", waterMiddleRight);//AddToBatchRendering(waterMiddleRight, xPos, yPos, cellSize, ground);
 			break;
-		case Cell::orientation::bottomLeft:
+		case Cell::Orientation::bottomLeft:
 			tiles[x][y]->Sprite = ResourceManager::GetAtlasTexture("roguelike", waterBottomLeft);//AddToBatchRendering(waterBottomLeft, xPos, yPos, cellSize, ground);
 			break;
-		case Cell::orientation::bottomMiddle:
+		case Cell::Orientation::bottomMiddle:
 			tiles[x][y]->Sprite = ResourceManager::GetAtlasTexture("roguelike", waterBottomMiddle);//AddToBatchRendering(waterBottomMiddle, xPos, yPos, cellSize, ground);
 			break;
-		case Cell::orientation::bottomRight:
+		case Cell::Orientation::bottomRight:
 			tiles[x][y]->Sprite = ResourceManager::GetAtlasTexture("roguelike", waterBottomRight);//AddToBatchRendering(waterBottomRight, xPos, yPos, cellSize, ground);
 			break;
 		}

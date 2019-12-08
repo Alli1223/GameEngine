@@ -149,9 +149,10 @@ void World::Render(GL_Renderer& renderer)
 			Chunk chunk(I_Physics.get(), x, y);
 			InfiniWorld.setChunSize(chunk.getChunkSize());
 			InfiniWorld.MainLevel[{x, y}] = chunk;
-			//InfiniWorld.OrientateCells(renderer.camera,x,y);
+			InfiniWorld.OrientateCells(renderer.camera,x,y);
 		}
 		InfiniWorld.MainLevel[{x, y}].Render(renderer);
+		InfiniWorld.OrientateCells(renderer.camera, x, y);
 	}
 
 	// Bugs

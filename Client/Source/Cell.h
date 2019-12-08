@@ -126,6 +126,7 @@ public:
 	//! Render the cell
 	void Render(GL_Renderer& renderer);
 
+
 	// Getter functions
 	//! Gets the Cell's X value
 	int getX() const { return x; }
@@ -171,14 +172,17 @@ public:
 
 	enum GroundType
 	{
+		empty,
 		grass1,
 		grass2,
 		dirt1,
 		dirt2
 	}groundType;
 
+	void SetGroundType(Cell::GroundType type ,int layer);
 
-	enum orientation
+
+	enum Orientation
 	{
 		topLeft,
 		topMiddle,
@@ -193,8 +197,12 @@ public:
 		inv_topLeft,
 		inv_topRight,
 		inv_bottomLeft,
-		inv_bottomRight
+		inv_bottomRight,
+
+		alone
 	} orientation;
+
+	void SetOrientation(Cell::Orientation newOrientation) { orientation = newOrientation; }
 
 	Texture2D layerdSprite;
 	Texture2D layerdSprite_normal;
