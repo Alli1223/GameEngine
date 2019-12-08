@@ -93,7 +93,7 @@ void InfiniteWorld::OrientateCells(Camera& camera, int x, int y, Cell::GroundTyp
 	{
 		for (int cY = 0; cY < MainLevel[{x, y}].getChunkSize(); cY++)
 		{
-			if (MainLevel[{x, y}].tiles[cX][cY]->groundType == Cell::groundType::grass1)
+			if (MainLevel[{x, y}].tiles[cX][cY]->groundType == Cell::GroundType::grass1)
 			{
 				if (getNeighbourCells(MainLevel[{x, y}].tiles[cX][cY]).at(0) != nullptr)
 				{
