@@ -16,6 +16,8 @@ InfiniteWorld::~InfiniteWorld()
 
 std::shared_ptr<Cell> InfiniteWorld::GetCell(float X, float Y)
 {
+	X += 0.9f;
+	Y += 0.9f;
 	// Get the chunk
 	float chunkSize = getChunkSize();
 	int chunkX = (X / chunkSize);
@@ -89,7 +91,7 @@ void InfiniteWorld::CreateInfiniWorld(GL_Renderer& renderer, b2World* physicsWor
 
 void InfiniteWorld::OrientateCells(Camera& camera, int x, int y)
 {
-	if (MainLevel[{x, y}].updateOrientations.getTicks() > 2000.0f || !MainLevel[{x, y}].updateOrientations.isStarted())
+	if (MainLevel[{x, y}].updateOrientations.getTicks() > 200.0f || !MainLevel[{x, y}].updateOrientations.isStarted())
 	{
 		for (int cX = 0; cX < MainLevel[{x, y}].getChunkSize(); cX++)
 		{

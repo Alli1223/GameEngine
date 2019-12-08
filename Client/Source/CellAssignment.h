@@ -541,6 +541,8 @@ void CellAssignment::AssignCellFromType(Cell& cell, int layer)
 		break;
 	case Cell::GroundType::spring_water:
 		AssignLayer(cell, "spring_water", layer);
+		cell.isWater = true;
+		cell.isWalkable = false;
 		break;
 	}
 }

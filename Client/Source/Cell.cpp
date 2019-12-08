@@ -134,7 +134,7 @@ void Cell::Render(GL_Renderer& renderer)
 	{
 		this->cropSquare->Render(renderer);
 	}
-	//renderer.RenderText(std::to_string((int)orientation) + " " + std::to_string(getX()) + "," + std::to_string(getY()), this->position - renderer.camera.getPosition(), this->size, { 0.2,0.2 }, this->colour);
+	//renderer.RenderText(std::to_string(getX()) + "," + std::to_string(getY()), this->position - renderer.camera.getPosition(), this->size, { 0.2,0.2 }, this->colour);
 }
 
 // Create with json data
