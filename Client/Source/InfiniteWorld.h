@@ -28,8 +28,10 @@ public:
 	int getChunkSize() { return chunkSize; }
 	int setChunSize(int newSize) { return chunkSize = newSize; }
 
+
 private:
 	int cellSize = 1;
 	int chunkSize = 8;
 	int levelGenerationRadius = 1;
+
 };

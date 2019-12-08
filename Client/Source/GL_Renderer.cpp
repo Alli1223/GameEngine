@@ -65,8 +65,12 @@ GL_Renderer::GL_Renderer()
 	ResourceManager::LoadAtlas("spring_dirt_1_normal", TerrainSprite + "Spring\\spring_dirt_1_normal.png", 6, 63);
 	ResourceManager::LoadAtlas("spring_dirt_2", TerrainSprite + "Spring\\spring_dirt_2.png", 6, 63);
 	ResourceManager::LoadAtlas("spring_grass_light", TerrainSprite + "Spring\\spring_grass_light.png", 6, 63);
-	ResourceManager::LoadAtlas("spring_grass_normal", TerrainSprite + "Spring\\spring_grass_normal.png", 6, 63);
+	ResourceManager::LoadAtlas("spring_grass_light_normal", TerrainSprite + "Spring\\spring_grass_normal.png", 6, 63);
 	ResourceManager::LoadAtlas("spring_grass_dark", TerrainSprite + "spring_grass_dark.png", 6, 63);
+	ResourceManager::LoadAtlas("spring_grass_dark_normal", TerrainSprite + "Spring\\spring_grass_normal.png", 6, 63);
+
+	ResourceManager::LoadAtlas("spring_water", TerrainSprite + "Spring\\water_spring.png", 6, 63);
+	ResourceManager::LoadAtlas("spring_water_normal", TerrainSprite + "Spring\\spring_dirt_1_normal.png", 6, 63);
 
 	// Ground sprites
 	ResourceManager::LoadAtlas("autumn_ground", TerrainSprite + "Ground\\Autumn_tilesheet.png", 27, 63);

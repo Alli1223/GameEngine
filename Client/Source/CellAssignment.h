@@ -534,22 +534,13 @@ void CellAssignment::AssignCellFromType(Cell& cell, int layer)
 	default:
 		break;
 	case Cell::GroundType::spring_grass:
-		AssignLayer(cell, "spring_grass_1", layer);
-		if (layer == 0) // Set the ground sprite
-		{
-			cell.Sprite = ResourceManager::GetAtlasTexture("spring_grass_light", GetAtlasPositionFromOrientation(cell.orientation));
-			cell.NormalMap = ResourceManager::GetAtlasTexture("spring_grass_normal", GetAtlasPositionFromOrientation(cell.orientation));
-			cell.renderLayer = ground_layer;
-		}
-		else
-		{
-			cell.layerdSprite = ResourceManager::GetAtlasTexture("spring_grass_light", GetAtlasPositionFromOrientation(cell.orientation));
-			cell.layerdSprite_normal = ResourceManager::GetAtlasTexture("spring_grass_normal", GetAtlasPositionFromOrientation(cell.orientation));
-			cell.renderLayer = surface_layer;
-		}
+		AssignLayer(cell, "spring_grass_light", layer);
 		break;
 	case Cell::GroundType::spring_dirt:
 		AssignLayer(cell, "spring_dirt_1", layer);
+		break;
+	case Cell::GroundType::spring_water:
+		AssignLayer(cell, "spring_water", layer);
 		break;
 	}
 }

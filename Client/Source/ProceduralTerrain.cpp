@@ -87,20 +87,28 @@ void ProceduralTerrain::generateGround(std::shared_ptr<Cell>& tile)
 			tile->isGrass = true;
 			std::string cell = "Grass";
 			tile->AssignType(0, cell);
+			tile->SetGroundType(Cell::GroundType::spring_grass, 1);
+		}
+		if (terrainElevation >= 9.0 && terrainElevation < 12.0)
+		{
+			tile->isGrass = true;
+			std::string cell = "Grass";
+			tile->AssignType(0, cell);
+			tile->SetGroundType(Cell::GroundType::spring_dirt, 1);
 		}
 	}
 	else if (terrainElevation >= -2.3 && terrainElevation < -1.8)
 	{
-		std::string cell = "Sand";
-		tile->AssignType(0, cell);
-		tile->isSand = true;
+		std::string cell = "Dirt";
+		tile->SetGroundType(Cell::GroundType::spring_dirt, 1);
+		tile->isDirt = true;
 		tile->isGrass = false;
 		tile->isWater = false;
 	}
 	else if (terrainElevation < -2.3)
 	{
 		std::string cell = "Water";
-		tile->AssignType(0, cell);
+		tile->SetGroundType(Cell::GroundType::spring_water,0);
 		tile->isWater = true;
 		tile->isWalkable = false;
 	}

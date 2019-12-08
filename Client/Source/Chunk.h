@@ -30,7 +30,7 @@ public:
 
 	int setPosition(int newX, int newY) { return x = newX, y = newY; }
 	ProceduralTerrain generator;
-	
+	Timer updateOrientations;
 private:
 	int x = 0;
 	int y = 0;
