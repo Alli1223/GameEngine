@@ -106,7 +106,7 @@ void InfiniteWorld::OrientateCells(Camera& camera, int x, int y)
 void InfiniteWorld::OrientateCell(std::shared_ptr<Cell> node)
 {
 
-
+	node->SetOrientation(Cell::Orientation::none);
 	// Top Left //
 	//left
 	if (GetCell(node->getX() - 1, node->getY())->groundType != node->groundType)
@@ -119,9 +119,9 @@ void InfiniteWorld::OrientateCell(std::shared_ptr<Cell> node)
 				{ //TopLeft
 					if (GetCell(node->getX() - 1, node->getY() - 1)->groundType != node->groundType)
 					{ //TopRight
-						if (GetCell(node->getX() + 1, node->getY() - 1)->groundType != node->groundType)
+						//if (GetCell(node->getX() + 1, node->getY() - 1)->groundType != node->groundType)
 						{ //BottomLeft
-							if (GetCell(node->getX() - 1, node->getY() + 1)->groundType != node->groundType)
+							//if (GetCell(node->getX() - 1, node->getY() + 1)->groundType != node->groundType)
 							{ //BottomRight
 								if (GetCell(node->getX() + 1, node->getY() + 1)->groundType == node->groundType)
 								{
@@ -145,9 +145,9 @@ void InfiniteWorld::OrientateCell(std::shared_ptr<Cell> node)
 			{ //Down
 				if (GetCell(node->getX(), node->getY() + 1)->groundType == node->groundType)
 				{ //TopLeft
-					if (GetCell(node->getX() - 1, node->getY() - 1)->groundType != node->groundType)
+					//if (GetCell(node->getX() - 1, node->getY() - 1)->groundType != node->groundType)
 					{ //TopRight
-						if (GetCell(node->getX() + 1, node->getY() - 1)->groundType != node->groundType)
+						//if (GetCell(node->getX() + 1, node->getY() - 1)->groundType != node->groundType)
 						{ //BottomLeft
 							if (GetCell(node->getX() - 1, node->getY() + 1)->groundType == node->groundType)
 							{ //BottomRight
@@ -174,13 +174,13 @@ void InfiniteWorld::OrientateCell(std::shared_ptr<Cell> node)
 			{ //Down
 				if (GetCell(node->getX(), node->getY() + 1)->groundType == node->groundType)
 				{ //TopLeft
-					if (GetCell(node->getX() - 1, node->getY() - 1)->groundType != node->groundType)
+					//if (GetCell(node->getX() - 1, node->getY() - 1)->groundType != node->groundType)
 					{ //TopRight
 						if (GetCell(node->getX() + 1, node->getY() - 1)->groundType != node->groundType)
 						{ //BottomLeft
 							if (GetCell(node->getX() - 1, node->getY() + 1)->groundType == node->groundType)
 							{ //BottomRight
-								if (GetCell(node->getX() + 1, node->getY() + 1)->groundType != node->groundType)
+								//if (GetCell(node->getX() + 1, node->getY() + 1)->groundType != node->groundType)
 								{
 									node->SetOrientation(Cell::Orientation::topRight);
 								}
@@ -203,11 +203,11 @@ void InfiniteWorld::OrientateCell(std::shared_ptr<Cell> node)
 			{ //Down
 				if (GetCell(node->getX(), node->getY() + 1)->groundType == node->groundType)
 				{ //TopLeft
-					if (GetCell(node->getX() - 1, node->getY() - 1)->groundType != node->groundType)
+					//if (GetCell(node->getX() - 1, node->getY() - 1)->groundType != node->groundType)
 					{ //TopRight
 						if (GetCell(node->getX() + 1, node->getY() - 1)->groundType == node->groundType)
 						{ //BottomLeft
-							if (GetCell(node->getX() - 1, node->getY() + 1)->groundType != node->groundType)
+							//if (GetCell(node->getX() - 1, node->getY() + 1)->groundType != node->groundType)
 							{ //BottomRight
 								if (GetCell(node->getX() + 1, node->getY() + 1)->groundType == node->groundType)
 								{
@@ -261,11 +261,11 @@ void InfiniteWorld::OrientateCell(std::shared_ptr<Cell> node)
 				{ //TopLeft
 					if (GetCell(node->getX() - 1, node->getY() - 1)->groundType == node->groundType)
 					{ //TopRight
-						if (GetCell(node->getX() + 1, node->getY() - 1)->groundType != node->groundType)
+						//if (GetCell(node->getX() + 1, node->getY() - 1)->groundType != node->groundType)
 						{ //BottomLeft
 							if (GetCell(node->getX() - 1, node->getY() + 1)->groundType == node->groundType)
 							{ //BottomRight
-								if (GetCell(node->getX() + 1, node->getY() + 1)->groundType != node->groundType)
+								//if (GetCell(node->getX() + 1, node->getY() + 1)->groundType != node->groundType)
 								{
 									node->SetOrientation(Cell::Orientation::middleRight);
 								}
@@ -287,13 +287,13 @@ void InfiniteWorld::OrientateCell(std::shared_ptr<Cell> node)
 			{ //Down
 				if (GetCell(node->getX(), node->getY() + 1)->groundType != node->groundType)
 				{ //TopLeft
-					if (GetCell(node->getX() - 1, node->getY() - 1)->groundType != node->groundType)
+					//if (GetCell(node->getX() - 1, node->getY() - 1)->groundType != node->groundType)
 					{ //TopRight
 						if (GetCell(node->getX() + 1, node->getY() - 1)->groundType == node->groundType)
 						{ //BottomLeft
 							if (GetCell(node->getX() - 1, node->getY() + 1)->groundType != node->groundType)
 							{ //BottomRight
-								if (GetCell(node->getX() + 1, node->getY() + 1)->groundType != node->groundType)
+								//if (GetCell(node->getX() + 1, node->getY() + 1)->groundType != node->groundType)
 								{
 									node->SetOrientation(Cell::Orientation::bottomLeft);
 								}
@@ -319,9 +319,9 @@ void InfiniteWorld::OrientateCell(std::shared_ptr<Cell> node)
 					{ //TopRight
 						if (GetCell(node->getX() + 1, node->getY() - 1)->groundType == node->groundType)
 						{ //BottomLeft
-							if (GetCell(node->getX() - 1, node->getY() + 1)->groundType != node->groundType)
+							//if (GetCell(node->getX() - 1, node->getY() + 1)->groundType != node->groundType)
 							{ //BottomRight
-								if (GetCell(node->getX() + 1, node->getY() + 1)->groundType != node->groundType)
+								//if (GetCell(node->getX() + 1, node->getY() + 1)->groundType != node->groundType)
 								{
 									node->SetOrientation(Cell::Orientation::bottomMiddle);
 								}
@@ -345,9 +345,9 @@ void InfiniteWorld::OrientateCell(std::shared_ptr<Cell> node)
 				{ //TopLeft
 					if (GetCell(node->getX() - 1, node->getY() - 1)->groundType == node->groundType)
 					{ //TopRight
-						if (GetCell(node->getX() + 1, node->getY() - 1)->groundType != node->groundType)
+						//if (GetCell(node->getX() + 1, node->getY() - 1)->groundType != node->groundType)
 						{ //BottomLeft
-							if (GetCell(node->getX() - 1, node->getY() + 1)->groundType != node->groundType)
+							//if (GetCell(node->getX() - 1, node->getY() + 1)->groundType != node->groundType)
 							{ //BottomRight
 								if (GetCell(node->getX() + 1, node->getY() + 1)->groundType != node->groundType)
 								{
@@ -380,6 +380,118 @@ void InfiniteWorld::OrientateCell(std::shared_ptr<Cell> node)
 								if (GetCell(node->getX() + 1, node->getY() + 1)->groundType != node->groundType)
 								{
 									node->SetOrientation(Cell::Orientation::alone);
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	// Inverted Top Left //
+	//left
+	if (GetCell(node->getX() - 1, node->getY())->groundType == node->groundType)
+	{ //Right
+		if (GetCell(node->getX() + 1, node->getY())->groundType == node->groundType)
+		{ //Up
+			if (GetCell(node->getX(), node->getY() - 1)->groundType == node->groundType)
+			{ //Down
+				if (GetCell(node->getX(), node->getY() + 1)->groundType == node->groundType)
+				{ //TopLeft
+					if (GetCell(node->getX() - 1, node->getY() - 1)->groundType == node->groundType)
+					{ //TopRight
+						if (GetCell(node->getX() + 1, node->getY() - 1)->groundType == node->groundType)
+						{ //BottomLeft
+							if (GetCell(node->getX() - 1, node->getY() + 1)->groundType == node->groundType)
+							{ //BottomRight
+								if (GetCell(node->getX() + 1, node->getY() + 1)->groundType != node->groundType)
+								{
+									node->SetOrientation(Cell::Orientation::inv_topLeft);
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	// Inverted Top Right //
+	//left
+	if (GetCell(node->getX() - 1, node->getY())->groundType == node->groundType)
+	{ //Right
+		if (GetCell(node->getX() + 1, node->getY())->groundType == node->groundType)
+		{ //Up
+			if (GetCell(node->getX(), node->getY() - 1)->groundType == node->groundType)
+			{ //Down
+				if (GetCell(node->getX(), node->getY() + 1)->groundType == node->groundType)
+				{ //TopLeft
+					if (GetCell(node->getX() - 1, node->getY() - 1)->groundType == node->groundType)
+					{ //TopRight
+						if (GetCell(node->getX() + 1, node->getY() - 1)->groundType == node->groundType)
+						{ //BottomLeft
+							if (GetCell(node->getX() - 1, node->getY() + 1)->groundType != node->groundType)
+							{ //BottomRight
+								if (GetCell(node->getX() + 1, node->getY() + 1)->groundType == node->groundType)
+								{
+									node->SetOrientation(Cell::Orientation::inv_topRight);
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	// Inverted Bottom Left //
+	//left
+	if (GetCell(node->getX() - 1, node->getY())->groundType == node->groundType)
+	{ //Right
+		if (GetCell(node->getX() + 1, node->getY())->groundType == node->groundType)
+		{ //Up
+			if (GetCell(node->getX(), node->getY() - 1)->groundType == node->groundType)
+			{ //Down
+				if (GetCell(node->getX(), node->getY() + 1)->groundType == node->groundType)
+				{ //TopLeft
+					if (GetCell(node->getX() - 1, node->getY() - 1)->groundType == node->groundType)
+					{ //TopRight
+						if (GetCell(node->getX() + 1, node->getY() - 1)->groundType != node->groundType)
+						{ //BottomLeft
+							if (GetCell(node->getX() - 1, node->getY() + 1)->groundType == node->groundType)
+							{ //BottomRight
+								if (GetCell(node->getX() + 1, node->getY() + 1)->groundType == node->groundType)
+								{
+									node->SetOrientation(Cell::Orientation::inv_bottomLeft);
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	// Inverted Bottom Right //
+	//left
+	if (GetCell(node->getX() - 1, node->getY())->groundType == node->groundType)
+	{ //Right
+		if (GetCell(node->getX() + 1, node->getY())->groundType == node->groundType)
+		{ //Up
+			if (GetCell(node->getX(), node->getY() - 1)->groundType == node->groundType)
+			{ //Down
+				if (GetCell(node->getX(), node->getY() + 1)->groundType == node->groundType)
+				{ //TopLeft
+					if (GetCell(node->getX() - 1, node->getY() - 1)->groundType != node->groundType)
+					{ //TopRight
+						if (GetCell(node->getX() + 1, node->getY() - 1)->groundType == node->groundType)
+						{ //BottomLeft
+							if (GetCell(node->getX() - 1, node->getY() + 1)->groundType == node->groundType)
+							{ //BottomRight
+								if (GetCell(node->getX() + 1, node->getY() + 1)->groundType == node->groundType)
+								{
+									node->SetOrientation(Cell::Orientation::inv_bottomRight);
 								}
 							}
 						}

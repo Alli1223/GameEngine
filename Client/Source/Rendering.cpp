@@ -26,14 +26,15 @@ Rendering::Rendering()
 	//cropsAtlas.setTileWidth(8);
 	//cropsAtlas.setAtlasType(0);
 
-	ResourceManager::LoadAtlas("roguelike", rogueLikeAtlasTextureLocation + "roguelikeSheet_transparent.png", 56, 16);
-	ResourceManager::LoadAtlas("roguelike_normal", rogueLikeAtlasTextureLocation + "roguelikeSheet_transparent_normal.png", 56, 16);
-
-	ResourceManager::LoadAtlas("spring_dirt_1", springTerrainSpriteTextureLocation + "dirt_spring.png", 6, 63);
-	ResourceManager::LoadAtlas("spring_dirt_2", springTerrainSpriteTextureLocation + "dirt_spring_2.png", 6, 63);
-	ResourceManager::LoadAtlas("spring_grass_1", springTerrainSpriteTextureLocation + "spring_grass_1.png", 6, 63);
-	ResourceManager::LoadAtlas("spring_grass_1_normal", springTerrainSpriteTextureLocation + "spring_grass_1_Normal.png", 6, 63);
-	ResourceManager::LoadAtlas("spring_grass_2", springTerrainSpriteTextureLocation + "spring_grass_2.png", 6, 63);
+	//ResourceManager::LoadAtlas("roguelike", rogueLikeAtlasTextureLocation + "roguelikeSheet_transparent.png", 56, 16);
+	//ResourceManager::LoadAtlas("roguelike_normal", rogueLikeAtlasTextureLocation + "roguelikeSheet_transparent_normal.png", 56, 16);
+	//
+	//ResourceManager::LoadAtlas("spring_dirt_1", springTerrainSpriteTextureLocation + "dirt_spring.png", 6, 63);
+	//ResourceManager::LoadAtlas("spring_dirt_1_normal", springTerrainSpriteTextureLocation + "dirt_spring.png", 6, 63);
+	//ResourceManager::LoadAtlas("spring_dirt_2", springTerrainSpriteTextureLocation + "dirt_spring_2.png", 6, 63);
+	//ResourceManager::LoadAtlas("spring_grass_light", springTerrainSpriteTextureLocation + "spring_grass_light.png", 6, 63);
+	//ResourceManager::LoadAtlas("spring_grass_light_normal", springTerrainSpriteTextureLocation + "spring_grass_normal.png", 6, 63);
+	//ResourceManager::LoadAtlas("spring_grass_2", springTerrainSpriteTextureLocation + "spring_grass_2.png", 6, 63);
 }
 
 //! Destructor

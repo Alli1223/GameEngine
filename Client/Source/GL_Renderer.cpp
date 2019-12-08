@@ -62,6 +62,7 @@ GL_Renderer::GL_Renderer()
 	ResourceManager::LoadAtlas("flowers_normal", SpriteSheets + "flowers_normal.png", 15, 31);
 
 	ResourceManager::LoadAtlas("spring_dirt_1", TerrainSprite + "Spring\\spring_dirt_1.png", 6, 63);
+	ResourceManager::LoadAtlas("spring_dirt_1_normal", TerrainSprite + "Spring\\spring_dirt_1_normal.png", 6, 63);
 	ResourceManager::LoadAtlas("spring_dirt_2", TerrainSprite + "Spring\\spring_dirt_2.png", 6, 63);
 	ResourceManager::LoadAtlas("spring_grass_light", TerrainSprite + "Spring\\spring_grass_light.png", 6, 63);
 	ResourceManager::LoadAtlas("spring_grass_normal", TerrainSprite + "Spring\\spring_grass_normal.png", 6, 63);

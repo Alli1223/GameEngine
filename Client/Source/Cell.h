@@ -173,9 +173,26 @@ public:
 	enum GroundType
 	{
 		empty,
-		grass1,
-		grass2,
-		dirt1,
+		spring_grass,
+		summer_grass,
+		autumn_grass,
+		winter_grass,
+
+		spring_dirt,
+		summer_dirt,
+		autumn_dirt,
+		winter_dirt,
+
+		spring_sand,
+		summer_sand,
+		autumn_sand,
+		winter_sand,
+
+		spring_water,
+		summer_water,
+		autumn_water,
+		winter_water,
+
 		dirt2
 	}groundType;
 

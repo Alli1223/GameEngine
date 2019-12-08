@@ -495,6 +495,36 @@ int GetAtlasPositionFromOrientation(Cell::Orientation orient)
 		return 58;
 		break;
 
+	case Cell::Orientation::inv_topLeft:
+		return 3;
+		break;
+	case Cell::Orientation::inv_topRight:
+		return 5;
+		break;
+
+	case Cell::Orientation::inv_bottomLeft:
+		return 17;
+		break;
+	case Cell::Orientation::inv_bottomRight:
+		return 19;
+		break;
+
+	}
+}
+
+void AssignLayer(Cell& cell, std::string textureName, int layer)
+{
+	if (layer == 0) // Set the ground sprite
+	{
+		cell.Sprite = ResourceManager::GetAtlasTexture(textureName, GetAtlasPositionFromOrientation(cell.orientation));
+		cell.NormalMap = ResourceManager::GetAtlasTexture(textureName + "_normal", GetAtlasPositionFromOrientation(cell.orientation));
+		cell.renderLayer = 0;
+	}
+	else
+	{
+		cell.layerdSprite = ResourceManager::GetAtlasTexture(textureName, GetAtlasPositionFromOrientation(cell.orientation));
+		cell.layerdSprite_normal = ResourceManager::GetAtlasTexture(textureName + "_normal", GetAtlasPositionFromOrientation(cell.orientation));
+		cell.renderLayer = 1;
 	}
 }
 void CellAssignment::AssignCellFromType(Cell& cell, int layer)
@@ -503,7 +533,8 @@ void CellAssignment::AssignCellFromType(Cell& cell, int layer)
 	{
 	default:
 		break;
-	case Cell::GroundType::grass1:
+	case Cell::GroundType::spring_grass:
+		AssignLayer(cell, "spring_grass_1", layer);
 		if (layer == 0) // Set the ground sprite
 		{
 			cell.Sprite = ResourceManager::GetAtlasTexture("spring_grass_light", GetAtlasPositionFromOrientation(cell.orientation));
@@ -517,8 +548,8 @@ void CellAssignment::AssignCellFromType(Cell& cell, int layer)
 			cell.renderLayer = surface_layer;
 		}
 		break;
-	case Cell::GroundType::grass2:
-		AssignCell(cell, "Summer_Ground_" + std::to_string(GetAtlasPositionFromOrientation(cell.orientation)), layer);
+	case Cell::GroundType::spring_dirt:
+		AssignLayer(cell, "spring_dirt_1", layer);
 		break;
 	}
 }
