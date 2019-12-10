@@ -7,6 +7,17 @@ Button::Button()
 	this->setPosition(500, 500);
 	this->setSize(50, 50);
 }
+Button::Button(std::string buttonText, glm::vec2 position, std::string textureLocation, glm::vec2 size, glm::vec3 buttonColour, glm::vec3 textColour)
+{
+	if (buttonText.size() > 0)
+		text = buttonText;
+
+	this->position = position;
+	this->Background = ResourceManager::LoadTexture(textureLocation);
+	this->size = size;
+	this->setColour(buttonColour);
+	this->textColour = textColour;
+}
 Button::Button(std::string newText) : text(newText)
 {
 	//this->imageLocation = "Resources\\UI\\CharacterSheet\\IconBorder.png";

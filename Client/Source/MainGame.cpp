@@ -233,7 +233,7 @@ void MainGame::run()
 	world.onEnter(world.I_player);
 	
 	//Shop.onEnter(world.I_player);
-	Mix_PlayMusic(gMusic, -1);
+	//Mix_PlayMusic(gMusic, -1);
 
 	/////////////////////////////////////////////// MAIN LOOP ///////////////////////////////////////
 	while (gameSettings.running)

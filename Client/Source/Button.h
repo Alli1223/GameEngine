@@ -7,6 +7,7 @@ class Button : public GUI
 public:
 	Button();
 	Button(glm::vec2 pos, glm::vec2 size, Texture2D sprite, glm::vec3 color = glm::vec3(1.0f));
+	Button(std::string buttonText, glm::vec2 position, std::string textureLocation, glm::vec2 size, glm::vec3 buttonColour, glm::vec3 textColour);
 	//! Constructor (takes in text for the button) Leave " "" "  for no text
 	Button(std::string newText);
 	Button(std::string newText, std::string backgroundType);

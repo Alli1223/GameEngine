@@ -24,7 +24,8 @@ Menu::~Menu()
 
 void Menu::MainMenu(GameSettings& gameSettings, World& level, Camera& camera, Player& player, GL_Renderer& renderer, SDL_Window* window, SDL_GLContext& glContext)
 {
-
+	this->window = window;
+	this->glContext = &glContext;
 	// Create buttons
 	//Button characterScreen("Character Customisation");
 	//Button exit({ 50,25 }, { 100,50 }, ResourceManager::LoadTexture("Resources\\UI\\Background.png"), { 255,255,255 });
@@ -76,11 +77,9 @@ void Menu::MainMenu(GameSettings& gameSettings, World& level, Camera& camera, Pl
 		// Clear screen
 		glClearColor(0.4f, 0.4f, 0.4f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-		ImGui_ImplOpenGL3_NewFrame();
-		ImGui_ImplSDL2_NewFrame(window);
-		ImGui::NewFrame();
 
-
+		ShowCursor(true);
+		SDL_ShowCursor(SDL_ENABLE);
 		//SDL_ShowCursor(SDL_DISABLE);
 		//SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 		//SDL_RenderClear(renderer);
@@ -103,15 +102,16 @@ void Menu::MainMenu(GameSettings& gameSettings, World& level, Camera& camera, Pl
 
 		if (play.isPressed())
 		{
+			CharacterCustomisationMenu(gameSettings, camera, player, renderer, level);
+		}
 
+		if (exit.isPressed())
+		{
+			gameSettings.running = false;
+			break;
 		}
 
 
-
-		// END Rendering
-		ImGui::Render();
-		SDL_GL_MakeCurrent(window, glContext);
-		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
 		//glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 		SDL_GL_SwapWindow(window);
@@ -171,11 +171,13 @@ void Menu::MainMenu(GameSettings& gameSettings, World& level, Camera& camera, Pl
 	}
 }
 
-/*
+
 void Menu::CharacterCustomisationMenu(GameSettings& gameSettings, Camera& camera, Player& player, GL_Renderer& renderer, World& level)
 {
-	Button back("Back");
-	Button singlePlayer("Start");
+	Button back("Back", { 100,100 }, "Resources\\UI\\Buttons\\NoButton.png", { 100,100 }, { 200,100,50 }, { 255,255,255 });
+
+	Button singlePlayer("", { camera.windowSize.x / 2, camera.windowSize.y / 2  }, "Resources\\UI\\Buttons\\Confirm.png", { 100,100 }, { 200,100,50 }, { 255,255,255 });
+
 	Button loadSave("Load Save");
 	Button rotatePlayer("Rotate");
 	// LEFT SIDE (ORGANIC)
@@ -242,10 +244,13 @@ void Menu::CharacterCustomisationMenu(GameSettings& gameSettings, Camera& camera
 				displayCharacterMenu = false;
 			}
 		}
-		SDL_ShowCursor(SDL_DISABLE);
-		SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
-		SDL_RenderClear(renderer);
-		menuBackground.render(renderer, gameSettings.WINDOW_WIDTH / 2, gameSettings.WINDOW_HEIGHT / 2, gameSettings.WINDOW_WIDTH, gameSettings.WINDOW_HEIGHT);
+
+		// Start render
+		// Clear screen
+		glClearColor(0.4f, 0.4f, 0.4f, 1.0f);
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+		//menuBackground.render(renderer, gameSettings.WINDOW_WIDTH / 2, gameSettings.WINDOW_HEIGHT / 2, gameSettings.WINDOW_WIDTH, gameSettings.WINDOW_HEIGHT);
 
 		/////// Organic customisation buttons //////
 
@@ -256,295 +261,312 @@ void Menu::CharacterCustomisationMenu(GameSettings& gameSettings, Camera& camera
 		int CbuttonsX = playerCreation.getX() + playerCreation.getSize().x + bSize2;
 		int CbuttonsY = playerCreation.getY() - buttonSize * 4;
 
-		//femaleGender.getButtonBackgroundTexture().alterTextureColour(200, 150, 20);
-		maleGender.render(renderer, ObuttonsX, ObuttonsY, buttonSize, buttonSize);
-		femaleGender.render(renderer, ObuttonsX - bSize2, ObuttonsY, buttonSize, buttonSize);
+		back.Render(renderer);
+		singlePlayer.Render(renderer);
 
-		ChangeHairTypeL.render(renderer, ObuttonsX - bSize2, ObuttonsY + buttonSize * 2, buttonSize, buttonSize);
-		ChangeHairTypeR.render(renderer, ObuttonsX, ObuttonsY + buttonSize * 2, buttonSize, buttonSize);
-
-		ChangeEyeTypeL.render(renderer, ObuttonsX - bSize2, ObuttonsY + buttonSize * 3, buttonSize, buttonSize);
-		ChangeEyeTypeR.render(renderer, ObuttonsX, ObuttonsY + buttonSize * 3, buttonSize, buttonSize);
-
-		ChangeEarTypeL.render(renderer, ObuttonsX - bSize2, ObuttonsY + buttonSize * 4, buttonSize, buttonSize);
-		ChangeEarTypeR.render(renderer, ObuttonsX, ObuttonsY + buttonSize * 4, buttonSize, buttonSize);
-
-		ChangeBodyColour.render(renderer, ObuttonsX - buttonSize, ObuttonsY + buttonSize * 5, 200, 50);
-		ChangeEyeColour.render(renderer, ObuttonsX - buttonSize, ObuttonsY + buttonSize * 6, 200, 50);
-		ChangeHairColour.render(renderer, ObuttonsX - buttonSize, ObuttonsY + buttonSize * 7, 200, 50);
-
-
-		// Clothes Customisation buttons ( RIGHT SIDE)
-		changeTopL.render(renderer, CbuttonsX - bSize2, CbuttonsY + buttonSize * 2, buttonSize, buttonSize);
-		changeTopR.render(renderer, CbuttonsX, CbuttonsY + buttonSize * 2, buttonSize, buttonSize);
-
-		changeBottomL.render(renderer, CbuttonsX - bSize2, CbuttonsY + buttonSize * 3, buttonSize, buttonSize);
-		changeBottomR.render(renderer, CbuttonsX, CbuttonsY + buttonSize * 3, buttonSize, buttonSize);
-
-		ChangeTopColour.render(renderer, CbuttonsX - buttonSize, ObuttonsY + buttonSize * 5, buttonSize * 4, buttonSize);
-		ChangeBottomColour.render(renderer, CbuttonsX - buttonSize, ObuttonsY + buttonSize * 6, buttonSize * 4, buttonSize);
-
-		//changeBottom.render(renderer, playerCreation.getX() + playerCreation.getSize(), playerCreation.getY() + 100, 100, 50);
-
-
-		randomiseAll.render(renderer, playerCreation.getX(), gameSettings.WINDOW_HEIGHT - buttonSize, buttonSize * 3, buttonSize);
-
-
-
-		// BUTTON FUNCTIONALITY
-		if (maleGender.isPressed())
-			playerCreation.body.gender = Player::Body::Gender::male;
-		if (femaleGender.isPressed())
-			playerCreation.body.gender = Player::Body::Gender::female;
-
-		// Change Ear buttons
-		if (ChangeEarTypeL.isPressed())
-		{
-			changeEarType(playerCreation, false);
-		}
-		else if (ChangeEarTypeR.isPressed())
-		{
-			changeEarType(playerCreation, true);
-		}
-
-		// Change Eye buttons
-		if (ChangeEyeTypeL.isPressed())
-		{
-			changeEyeType(playerCreation, false);
-		}
-		else if (ChangeEyeTypeR.isPressed())
-		{
-			changeEyeType(playerCreation, true);
-		}
-
-		// Change Hair buttons
-		if (ChangeHairTypeL.isPressed())
-		{
-			changeHairType(playerCreation, false);
-		}
-		else if (ChangeHairTypeR.isPressed())
-		{
-			changeHairType(playerCreation, true);
-		}
-
-
-
-
-		// Button functionality
-		//Legs
-		if (changeBottomL.isPressed())
-		{
-			changeBottomType(playerCreation, false);
-		}
-		else if (changeBottomR.isPressed())
-		{
-			changeBottomType(playerCreation, true);
-		}
-		// Body
-		if (changeTopL.isPressed())
-		{
-			changeTopType(playerCreation, false);
-		}
-		else if (changeTopR.isPressed())
-		{
-			changeTopType(playerCreation, true);
-		}
-
-
-
-		// Body Colour
-		if (ChangeBodyColour.isPressed())
-		{
-			hairColourSlider.Disable();
-			eyeColourSlider.Disable();
-			topColourSlider.Disable();
-			bottomColourSlider.Disable();
-			if (bodyColourSlider.isEnabled())
-				bodyColourSlider.Disable();
-			else
-				bodyColourSlider.Enable();
-
-		}
-		// Hair colour
-		if (ChangeHairColour.isPressed())
-		{
-			bodyColourSlider.Disable();
-			eyeColourSlider.Disable();
-			topColourSlider.Disable();
-			bottomColourSlider.Disable();
-			if (hairColourSlider.isEnabled())
-				hairColourSlider.Disable();
-			else
-				hairColourSlider.Enable();
-		}
-		// Eye colour
-		if (ChangeEyeColour.isPressed())
-		{
-			hairColourSlider.Disable();
-			bodyColourSlider.Disable();
-			topColourSlider.Disable();
-			bottomColourSlider.Disable();
-			if (eyeColourSlider.isEnabled())
-				eyeColourSlider.Disable();
-			else
-				eyeColourSlider.Enable();
-		}
-
-		// Clothes colours
-		if (ChangeTopColour.isPressed())
-		{
-			hairColourSlider.Disable();
-			bodyColourSlider.Disable();
-			bottomColourSlider.Disable();
-			eyeColourSlider.Disable();
-			if (topColourSlider.isEnabled())
-				topColourSlider.Disable();
-			else
-				topColourSlider.Enable();
-		}
-		if (ChangeBottomColour.isPressed())
-		{
-			hairColourSlider.Disable();
-			bodyColourSlider.Disable();
-			eyeColourSlider.Disable();
-			topColourSlider.Disable();
-			if (bottomColourSlider.isEnabled())
-				bottomColourSlider.Disable();
-			else
-				bottomColourSlider.Enable();
-		}
-		// Random button
-		if (randomiseAll.isPressed())
-		{
-			playerCreation.setHairColour(rand() % 255, rand() % 255, rand() % 255);
-			playerCreation.setEyeColour(rand() % 255, rand() % 255, rand() % 255);
-			playerCreation.setJacketColour(rand() % 255, rand() % 255, rand() % 255);
-			playerCreation.setJeansColour(rand() % 255, rand() % 255, rand() % 255);
-			playerCreation.setBodyColour(rand() % 255, rand() % 255, rand() % 255);
-			playerCreation.body.earType = Player::Body::EarType(rand() % 8);
-			playerCreation.body.eyeType = Player::Body::EyeType(rand() % 13);
-			playerCreation.body.hairType = Player::Body::HairType(rand() % 8);
-		}
-
-
-
-		// Colour slider object positions and functionality
-		// body slider
-		if (bodyColourSlider.isEnabled())
-		{
-			//ChangeBodyColour.getButtonBackgroundTexture().alterTextureColour(bodyColourSlider.getColour());
-			bodyColourSlider.setPosition(gameSettings.WINDOW_WIDTH / 2, gameSettings.WINDOW_HEIGHT / 6);
-			bodyColourSlider.setWidth(360);
-			bodyColourSlider.setHeight(50);
-			bodyColourSlider.Render(renderer);
-			playerCreation.setBodyColour(bodyColourSlider.getColour());
-		}
-		// hair slider
-		if (hairColourSlider.isEnabled())
-		{
-			//ChangeHairColour.getButtonBackgroundTexture().alterTextureColour(hairColourSlider.getColour());
-			hairColourSlider.setPosition(gameSettings.WINDOW_WIDTH / 2, gameSettings.WINDOW_HEIGHT / 6);
-			hairColourSlider.setWidth(360);
-			hairColourSlider.setHeight(50);
-			hairColourSlider.Render(renderer);
-			playerCreation.setHairColour(hairColourSlider.getColour());
-		}
-		// eye slider
-		if (eyeColourSlider.isEnabled())
-		{
-			//ChangeEyeColour.getButtonBackgroundTexture().alterTextureColour(eyeColourSlider.getColour());
-			eyeColourSlider.setPosition(gameSettings.WINDOW_WIDTH / 2, gameSettings.WINDOW_HEIGHT / 6);
-			eyeColourSlider.setWidth(360);
-			eyeColourSlider.setHeight(50);
-			eyeColourSlider.Render(renderer);
-			playerCreation.setEyeColour(eyeColourSlider.getColour());
-		}
-
-		// If top colour slider is enabled
-		if (topColourSlider.isEnabled())
-		{
-			//ChangeTopColour.getButtonBackgroundTexture().alterTextureColour(topColourSlider.getColour());
-			topColourSlider.setPosition(gameSettings.WINDOW_WIDTH / 2, gameSettings.WINDOW_HEIGHT / 6);
-			topColourSlider.setWidth(360);
-			topColourSlider.setHeight(50);
-			topColourSlider.Render(renderer);
-			playerCreation.setTopColour(topColourSlider.getColour());
-		}
-		// if bottom colour slider is enabled
-		if (bottomColourSlider.isEnabled())
-		{
-			//ChangeBottomColour.getButtonBackgroundTexture().alterTextureColour(bottomColourSlider.getColour());
-			bottomColourSlider.setPosition(gameSettings.WINDOW_WIDTH / 2, gameSettings.WINDOW_HEIGHT / 6);
-			bottomColourSlider.setWidth(360);
-			bottomColourSlider.setHeight(50);
-			bottomColourSlider.Render(renderer);
-			playerCreation.setBottomColour(bottomColourSlider.getColour());
-		}
-
-		//TODO: fix this
-		// Render player
-		//playerCreation.RenderPlayer(gl, camera);
-
-
-		// Back button
-		back.render(renderer, 50, 150, 100, 50);
 		if (back.isPressed())
 		{
-			displayCharacterMenu = false;
-			return;
+			gameSettings.running = false;
+			break;
 		}
 
-		// Start
-		singleplayer.render(renderer, gameSettings.WINDOW_WIDTH / 2 + 200, gameSettings.WINDOW_HEIGHT - 100, buttonSize * 2, buttonSize);
-		if (singleplayer.isPressed())
-		{
-			gameSettings.running = true;
-			gameSettings.useNetworking = false;
-			displayCharacterMenu = false;
-			displayMainMenu = false;
-		}
-
-		loadSave.render(renderer, gameSettings.WINDOW_WIDTH / 2, gameSettings.WINDOW_HEIGHT - 100 - buttonSize * 2, buttonSize * 2, buttonSize);
-		if (loadSave.isPressed())
-		{
-			displayCharacterMenu = false;
-			gameSettings.loadGameFromSave(level);
-			player = gameSettings.getPlayerFromSave();
-			displayMainMenu = false;
-		}
-
-		rotateplayer.render(renderer, gameSettings.WINDOW_WIDTH / 2, playerCreation.getY() + playerCreation.getSize().x / 2 + buttonSize, buttonSize * 2, buttonSize);
-		if (rotateplayer.isPressed())
-		{
-			int rotation = playerCreation.getTargetRotation() + 90;
-			if (rotation > 360)
-				rotation = 0;
-			playerCreation.setTargetRotation(rotation);
-		}
+		//glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+		SDL_GL_SwapWindow(window);
 
 
 
 
-		//Render the mouse cursor last
-		if (renderCursor)
-			cursor.render(renderer, mouseX + (menuCursorSize / 2), mouseY + (menuCursorSize / 2), menuCursorSize, menuCursorSize);
-		SDL_RenderPresent(renderer);
-	
+
+
+		////femaleGender.getButtonBackgroundTexture().alterTextureColour(200, 150, 20);
+		//maleGender.Render(renderer, ObuttonsX, ObuttonsY, buttonSize, buttonSize);
+		//femaleGender.render(renderer, ObuttonsX - bSize2, ObuttonsY, buttonSize, buttonSize);
+		//
+		//ChangeHairTypeL.render(renderer, ObuttonsX - bSize2, ObuttonsY + buttonSize * 2, buttonSize, buttonSize);
+		//ChangeHairTypeR.render(renderer, ObuttonsX, ObuttonsY + buttonSize * 2, buttonSize, buttonSize);
+		//
+		//ChangeEyeTypeL.render(renderer, ObuttonsX - bSize2, ObuttonsY + buttonSize * 3, buttonSize, buttonSize);
+		//ChangeEyeTypeR.render(renderer, ObuttonsX, ObuttonsY + buttonSize * 3, buttonSize, buttonSize);
+		//
+		//ChangeEarTypeL.render(renderer, ObuttonsX - bSize2, ObuttonsY + buttonSize * 4, buttonSize, buttonSize);
+		//ChangeEarTypeR.render(renderer, ObuttonsX, ObuttonsY + buttonSize * 4, buttonSize, buttonSize);
+		//
+		//ChangeBodyColour.render(renderer, ObuttonsX - buttonSize, ObuttonsY + buttonSize * 5, 200, 50);
+		//ChangeEyeColour.render(renderer, ObuttonsX - buttonSize, ObuttonsY + buttonSize * 6, 200, 50);
+		//ChangeHairColour.render(renderer, ObuttonsX - buttonSize, ObuttonsY + buttonSize * 7, 200, 50);
+		//
+		//
+		//// Clothes Customisation buttons ( RIGHT SIDE)
+		//changeTopL.render(renderer, CbuttonsX - bSize2, CbuttonsY + buttonSize * 2, buttonSize, buttonSize);
+		//changeTopR.render(renderer, CbuttonsX, CbuttonsY + buttonSize * 2, buttonSize, buttonSize);
+		//
+		//changeBottomL.render(renderer, CbuttonsX - bSize2, CbuttonsY + buttonSize * 3, buttonSize, buttonSize);
+		//changeBottomR.render(renderer, CbuttonsX, CbuttonsY + buttonSize * 3, buttonSize, buttonSize);
+		//
+		//ChangeTopColour.render(renderer, CbuttonsX - buttonSize, ObuttonsY + buttonSize * 5, buttonSize * 4, buttonSize);
+		//ChangeBottomColour.render(renderer, CbuttonsX - buttonSize, ObuttonsY + buttonSize * 6, buttonSize * 4, buttonSize);
+		//
+		////changeBottom.render(renderer, playerCreation.getX() + playerCreation.getSize(), playerCreation.getY() + 100, 100, 50);
+		//
+		//
+		//randomiseAll.render(renderer, playerCreation.getX(), gameSettings.WINDOW_HEIGHT - buttonSize, buttonSize * 3, buttonSize);
+		//
+		//
+		//
+		//// BUTTON FUNCTIONALITY
+		//if (maleGender.isPressed())
+		//	playerCreation.body.gender = Player::Body::Gender::male;
+		//if (femaleGender.isPressed())
+		//	playerCreation.body.gender = Player::Body::Gender::female;
+		//
+		//// Change Ear buttons
+		//if (ChangeEarTypeL.isPressed())
+		//{
+		//	changeEarType(playerCreation, false);
+		//}
+		//else if (ChangeEarTypeR.isPressed())
+		//{
+		//	changeEarType(playerCreation, true);
+		//}
+		//
+		//// Change Eye buttons
+		//if (ChangeEyeTypeL.isPressed())
+		//{
+		//	changeEyeType(playerCreation, false);
+		//}
+		//else if (ChangeEyeTypeR.isPressed())
+		//{
+		//	changeEyeType(playerCreation, true);
+		//}
+		//
+		//// Change Hair buttons
+		//if (ChangeHairTypeL.isPressed())
+		//{
+		//	changeHairType(playerCreation, false);
+		//}
+		//else if (ChangeHairTypeR.isPressed())
+		//{
+		//	changeHairType(playerCreation, true);
+		//}
+		//
+		//
+		//
+		//
+		//// Button functionality
+		////Legs
+		//if (changeBottomL.isPressed())
+		//{
+		//	changeBottomType(playerCreation, false);
+		//}
+		//else if (changeBottomR.isPressed())
+		//{
+		//	changeBottomType(playerCreation, true);
+		//}
+		//// Body
+		//if (changeTopL.isPressed())
+		//{
+		//	changeTopType(playerCreation, false);
+		//}
+		//else if (changeTopR.isPressed())
+		//{
+		//	changeTopType(playerCreation, true);
+		//}
+		//
+		//
+		//
+		//// Body Colour
+		//if (ChangeBodyColour.isPressed())
+		//{
+		//	hairColourSlider.Disable();
+		//	eyeColourSlider.Disable();
+		//	topColourSlider.Disable();
+		//	bottomColourSlider.Disable();
+		//	if (bodyColourSlider.isEnabled())
+		//		bodyColourSlider.Disable();
+		//	else
+		//		bodyColourSlider.Enable();
+		//
+		//}
+		//// Hair colour
+		//if (ChangeHairColour.isPressed())
+		//{
+		//	bodyColourSlider.Disable();
+		//	eyeColourSlider.Disable();
+		//	topColourSlider.Disable();
+		//	bottomColourSlider.Disable();
+		//	if (hairColourSlider.isEnabled())
+		//		hairColourSlider.Disable();
+		//	else
+		//		hairColourSlider.Enable();
+		//}
+		//// Eye colour
+		//if (ChangeEyeColour.isPressed())
+		//{
+		//	hairColourSlider.Disable();
+		//	bodyColourSlider.Disable();
+		//	topColourSlider.Disable();
+		//	bottomColourSlider.Disable();
+		//	if (eyeColourSlider.isEnabled())
+		//		eyeColourSlider.Disable();
+		//	else
+		//		eyeColourSlider.Enable();
+		//}
+		//
+		//// Clothes colours
+		//if (ChangeTopColour.isPressed())
+		//{
+		//	hairColourSlider.Disable();
+		//	bodyColourSlider.Disable();
+		//	bottomColourSlider.Disable();
+		//	eyeColourSlider.Disable();
+		//	if (topColourSlider.isEnabled())
+		//		topColourSlider.Disable();
+		//	else
+		//		topColourSlider.Enable();
+		//}
+		//if (ChangeBottomColour.isPressed())
+		//{
+		//	hairColourSlider.Disable();
+		//	bodyColourSlider.Disable();
+		//	eyeColourSlider.Disable();
+		//	topColourSlider.Disable();
+		//	if (bottomColourSlider.isEnabled())
+		//		bottomColourSlider.Disable();
+		//	else
+		//		bottomColourSlider.Enable();
+		//}
+		//// Random button
+		//if (randomiseAll.isPressed())
+		//{
+		//	playerCreation.setHairColour(rand() % 255, rand() % 255, rand() % 255);
+		//	playerCreation.setEyeColour(rand() % 255, rand() % 255, rand() % 255);
+		//	playerCreation.setJacketColour(rand() % 255, rand() % 255, rand() % 255);
+		//	playerCreation.setJeansColour(rand() % 255, rand() % 255, rand() % 255);
+		//	playerCreation.setBodyColour(rand() % 255, rand() % 255, rand() % 255);
+		//	playerCreation.body.earType = Player::Body::EarType(rand() % 8);
+		//	playerCreation.body.eyeType = Player::Body::EyeType(rand() % 13);
+		//	playerCreation.body.hairType = Player::Body::HairType(rand() % 8);
+		//}
+		//
+		//
+		//
+		//// Colour slider object positions and functionality
+		//// body slider
+		//if (bodyColourSlider.isEnabled())
+		//{
+		//	//ChangeBodyColour.getButtonBackgroundTexture().alterTextureColour(bodyColourSlider.getColour());
+		//	bodyColourSlider.setPosition(gameSettings.WINDOW_WIDTH / 2, gameSettings.WINDOW_HEIGHT / 6);
+		//	bodyColourSlider.setWidth(360);
+		//	bodyColourSlider.setHeight(50);
+		//	bodyColourSlider.Render(renderer);
+		//	playerCreation.setBodyColour(bodyColourSlider.getColour());
+		//}
+		//// hair slider
+		//if (hairColourSlider.isEnabled())
+		//{
+		//	//ChangeHairColour.getButtonBackgroundTexture().alterTextureColour(hairColourSlider.getColour());
+		//	hairColourSlider.setPosition(gameSettings.WINDOW_WIDTH / 2, gameSettings.WINDOW_HEIGHT / 6);
+		//	hairColourSlider.setWidth(360);
+		//	hairColourSlider.setHeight(50);
+		//	hairColourSlider.Render(renderer);
+		//	playerCreation.setHairColour(hairColourSlider.getColour());
+		//}
+		//// eye slider
+		//if (eyeColourSlider.isEnabled())
+		//{
+		//	//ChangeEyeColour.getButtonBackgroundTexture().alterTextureColour(eyeColourSlider.getColour());
+		//	eyeColourSlider.setPosition(gameSettings.WINDOW_WIDTH / 2, gameSettings.WINDOW_HEIGHT / 6);
+		//	eyeColourSlider.setWidth(360);
+		//	eyeColourSlider.setHeight(50);
+		//	eyeColourSlider.Render(renderer);
+		//	playerCreation.setEyeColour(eyeColourSlider.getColour());
+		//}
+		//
+		//// If top colour slider is enabled
+		//if (topColourSlider.isEnabled())
+		//{
+		//	//ChangeTopColour.getButtonBackgroundTexture().alterTextureColour(topColourSlider.getColour());
+		//	topColourSlider.setPosition(gameSettings.WINDOW_WIDTH / 2, gameSettings.WINDOW_HEIGHT / 6);
+		//	topColourSlider.setWidth(360);
+		//	topColourSlider.setHeight(50);
+		//	topColourSlider.Render(renderer);
+		//	playerCreation.setTopColour(topColourSlider.getColour());
+		//}
+		//// if bottom colour slider is enabled
+		//if (bottomColourSlider.isEnabled())
+		//{
+		//	//ChangeBottomColour.getButtonBackgroundTexture().alterTextureColour(bottomColourSlider.getColour());
+		//	bottomColourSlider.setPosition(gameSettings.WINDOW_WIDTH / 2, gameSettings.WINDOW_HEIGHT / 6);
+		//	bottomColourSlider.setWidth(360);
+		//	bottomColourSlider.setHeight(50);
+		//	bottomColourSlider.Render(renderer);
+		//	playerCreation.setBottomColour(bottomColourSlider.getColour());
+		//}
+		//
+		////TODO: fix this
+		//// Render player
+		////playerCreation.RenderPlayer(gl, camera);
+		//
+		//
+		//// Back button
+		//back.render(renderer, 50, 150, 100, 50);
+		//if (back.isPressed())
+		//{
+		//	displayCharacterMenu = false;
+		//	return;
+		//}
+		//
+		//// Start
+		//singleplayer.render(renderer, gameSettings.WINDOW_WIDTH / 2 + 200, gameSettings.WINDOW_HEIGHT - 100, buttonSize * 2, buttonSize);
+		//if (singleplayer.isPressed())
+		//{
+		//	gameSettings.running = true;
+		//	gameSettings.useNetworking = false;
+		//	displayCharacterMenu = false;
+		//	displayMainMenu = false;
+		//}
+		//
+		//loadSave.render(renderer, gameSettings.WINDOW_WIDTH / 2, gameSettings.WINDOW_HEIGHT - 100 - buttonSize * 2, buttonSize * 2, buttonSize);
+		//if (loadSave.isPressed())
+		//{
+		//	displayCharacterMenu = false;
+		//	gameSettings.loadGameFromSave(level);
+		//	player = gameSettings.getPlayerFromSave();
+		//	displayMainMenu = false;
+		//}
+		//
+		//rotateplayer.render(renderer, gameSettings.WINDOW_WIDTH / 2, playerCreation.getY() + playerCreation.getSize().x / 2 + buttonSize, buttonSize * 2, buttonSize);
+		//if (rotateplayer.isPressed())
+		//{
+		//	int rotation = playerCreation.getTargetRotation() + 90;
+		//	if (rotation > 360)
+		//		rotation = 0;
+		//	playerCreation.setTargetRotation(rotation);
+		//}
+		//
+		//
+		//
+		//
+		////Render the mouse cursor last
+		//if (renderCursor)
+		//	cursor.render(renderer, mouseX + (menuCursorSize / 2), mouseY + (menuCursorSize / 2), menuCursorSize, menuCursorSize);
+		//SDL_RenderPresent(renderer);
+
 
 
 	//Only copy over the customsiation stuff
 	//playerCreation.setSize(100);
-	player.PlayerClothes = playerCreation.PlayerClothes;
-	player.setHairColour(playerCreation.gethairColour().r, playerCreation.gethairColour().g, playerCreation.gethairColour().b);
-	player.setEyeColour(playerCreation.getEyeColour().r, playerCreation.getEyeColour().g, playerCreation.getEyeColour().b);
-	player.setJacketColour(playerCreation.getJacketColour().r, playerCreation.getJacketColour().g, playerCreation.getJacketColour().b);
-	player.setJeansColour(playerCreation.getJeansColour().r, playerCreation.getJeansColour().g, playerCreation.getJeansColour().b);
-	player.body = playerCreation.body;
-	player.setBodyColour(playerCreation.getBodyColour().r, playerCreation.getBodyColour().g, playerCreation.getBodyColour().b);
+		player.PlayerClothes = playerCreation.PlayerClothes;
+		player.setHairColour(playerCreation.gethairColour().r, playerCreation.gethairColour().g, playerCreation.gethairColour().b);
+		player.setEyeColour(playerCreation.getEyeColour().r, playerCreation.getEyeColour().g, playerCreation.getEyeColour().b);
+		player.setJacketColour(playerCreation.getJacketColour().r, playerCreation.getJacketColour().g, playerCreation.getJacketColour().b);
+		player.setJeansColour(playerCreation.getJeansColour().r, playerCreation.getJeansColour().g, playerCreation.getJeansColour().b);
+		player.body = playerCreation.body;
+		player.setBodyColour(playerCreation.getBodyColour().r, playerCreation.getBodyColour().g, playerCreation.getBodyColour().b);
 
 	}
 
-
+}
 
 
 

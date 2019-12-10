@@ -45,6 +45,9 @@ private:
 	bool showColourSlider = false;
 	bool renderCursor = true;
 
+	SDL_Window* window;
+	SDL_GLContext* glContext;
+
 	//ColourSlider bodyColourSlider;
 	//ColourSlider eyeColourSlider;
 	//ColourSlider hairColourSlider;
