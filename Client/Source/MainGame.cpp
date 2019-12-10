@@ -138,17 +138,21 @@ void MainGame::run()
 	// Create renderer
 	GL_Renderer glRenderer;
 
-	//Menu menu;
-	//menu.MainMenu(gameSettings, world, glRenderer.camera, world.I_player, glRenderer);
-
-	// Initilise the world with the physcis stored in glRenderer
-	world.InitiliseWorld(glRenderer);
-
 	// Create text characters from ttf files
 	glRenderer.CreateTextCharacterAtals();
 	glRenderer.camera.windowSize.x = gameSettings.WINDOW_WIDTH;
 	glRenderer.camera.windowSize.y = gameSettings.WINDOW_HEIGHT;
 	glRenderer.camera.SetPos(0, 0);
+
+	// Projection matrix after camera has been setup
+	glRenderer.SetProjectionMatrix();
+
+	// Main Menu
+	Menu menu;
+	menu.MainMenu(gameSettings, world, glRenderer.camera, world.I_player, glRenderer, window, glContext);
+
+	// Initilise the world with the physcis stored in glRenderer
+	world.InitiliseWorld(glRenderer);
 
 	// Get ticks used for delta time
 	int lastTicks = SDL_GetTicks();
@@ -229,7 +233,7 @@ void MainGame::run()
 	world.onEnter(world.I_player);
 	
 	//Shop.onEnter(world.I_player);
-	//Mix_PlayMusic(gMusic, -1);
+	Mix_PlayMusic(gMusic, -1);
 
 	/////////////////////////////////////////////// MAIN LOOP ///////////////////////////////////////
 	while (gameSettings.running)
@@ -253,7 +257,7 @@ void MainGame::run()
 		
 		// Process networking
 		if(gameSettings.useNetworking)
-			networkManager.NetworkUpdate(world,world.networkPlayers, world.I_player);
+			networkManager.NetworkUpdate(world, GameSettings::currentInstance->I_Physics.get(),world.networkPlayers, world.I_player);
 		
 		// User input
 		input.HandleUserInput(glRenderer, GameSettings::currentInstance->I_player, gameSettings, UI);

@@ -15,14 +15,14 @@ public:
 
 	void Connect();
 	//! Main Network update function
-	void NetworkUpdate(World& world, std::vector<NetworkPlayer>& players, Player& player);
+	void NetworkUpdate(World& world, b2World* I_Physics, std::vector<NetworkPlayer>& players, Player& player);
 	// Update a player variables
 	bool UpdateNetworkPlayer(json& data, std::string name);
 	//! Send a message using TCP
 	void sendTCPMessage(std::string message);
 
 	//! Process the players location from json
-	void ProcessPlayerLocations(World& world, Player& player);
+	void ProcessPlayerLocations(b2World* I_Physics, Player& player);
 	//! Process cell data
 	void MapNetworkUpdate(World& level);
 	//! Return a string from recieve message

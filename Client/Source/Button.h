@@ -16,6 +16,8 @@ public:
 	//! Render the button
 	void Render(GL_Renderer& renderer);
 
+
+
 	//! Change the buttons text
 	std::string setText(std::string newText) { return text = newText; }
 
@@ -28,10 +30,13 @@ public:
 	bool isHovered();
 	void UpdateInfo();
 
+	glm::vec3 textColour;
 
 	//! pointer to buttons item (if any)
 	std::vector<std::shared_ptr<Item>> buttonItem;
-
+protected:
+	//! Runs when the button is pressed
+	void ButtonPressed();
 private:
 	//! Buttons text
 	std::string text;
@@ -43,6 +48,7 @@ private:
 	bool isActivated = false;
 	bool timeout = false;
 	bool isMouseOver = false;
+	bool runOnceUpdate = true;
 
 	//! Text size
 	float textSize = 0.2f;
@@ -51,6 +57,8 @@ private:
 	int mouseOverSizeInrease = 5;
 	//! buttons texture location
 	std::string buttonTextureLocation = "Resources\\UI\\";
+
+	glm::vec3 oldColour;
 
 };
 

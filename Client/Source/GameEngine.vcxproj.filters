@@ -681,6 +681,9 @@
     <Filter Include="Source Files\Shaders\Outline">
       <UniqueIdentifier>{3dad1768-d254-4750-b9df-82bc31ae164c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Shaders\GUI Shaders">
+      <UniqueIdentifier>{685caa6c-abc6-4673-9d8e-05e7888bd9e0}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Source Files\Shaders\Text">
       <UniqueIdentifier>{29892fb7-62d2-4c69-a668-3ac564a2ee06}</UniqueIdentifier>
     </Filter>
@@ -699,9 +702,6 @@
       <Filter>Source Files\Shaders\Lighting Shaders</Filter>
     </None>
     <None Include="Shaders\frag.glsl">
-      <Filter>Source Files\Shaders\Lighting Shaders</Filter>
-    </None>
-    <None Include="Shaders\basicShadowFrag.glsl">
       <Filter>Source Files\Shaders\Lighting Shaders</Filter>
     </None>
     <None Include="Shaders\lightFragShader.glsl">
@@ -724,6 +724,15 @@
     </None>
     <None Include="Shaders\Text\frag.glsl">
       <Filter>Source Files\Shaders\Text</Filter>
+    </None>
+    <None Include="Shaders\basicShadowFrag.glsl">
+      <Filter>Source Files\Shaders\Lighting Shaders</Filter>
+    </None>
+    <None Include="Shaders\GUI\vert.glsl">
+      <Filter>Source Files\Shaders\GUI Shaders</Filter>
+    </None>
+    <None Include="Shaders\GUI\frag.glsl">
+      <Filter>Source Files\Shaders\GUI Shaders</Filter>
     </None>
   </ItemGroup>
 </Project>

@@ -75,7 +75,7 @@ bool PlayerExists(std::vector<std::string> & playerNames, std::string playername
 }
 
 //! main netwrok update function
-void NetworkManager::NetworkUpdate(World& world, std::vector<NetworkPlayer>& players, Player& player)
+void NetworkManager::NetworkUpdate(World& world, b2World* I_Physics, std::vector<NetworkPlayer>& players, Player& player)
 {
 	allPlayers = &players;
 	// Interval Timer
@@ -102,7 +102,7 @@ void NetworkManager::NetworkUpdate(World& world, std::vector<NetworkPlayer>& pla
 	if (runPlayerNetworkTick)
 	{
 		runPlayerNetworkTick = false;
-		ProcessPlayerLocations(world, player);
+		ProcessPlayerLocations(I_Physics, player);
 	}
 
 	if (runMapNetworkTick || world.updatedCells.size() > 0)
@@ -177,7 +177,7 @@ bool NetworkManager::UpdateNetworkPlayer(json& data, std::string name)
 }
 
 
-void NetworkManager::ProcessPlayerLocations(World & world, Player & player)
+void NetworkManager::ProcessPlayerLocations(b2World* I_Physics, Player & player)
 {
 	//Create the json to send to the server
 	json playerData = player.getPlayerJson();
@@ -208,7 +208,7 @@ void NetworkManager::ProcessPlayerLocations(World & world, Player & player)
 					newPlayer.setSize({ 100,100 });
 					newPlayer.setPosition({ player.at("X").get<float>(), player.at("Y").get<float>() });
 					newPlayer.playerName = name;
-					newPlayer.InitPhysics(world.I_Physics.get(), newPlayer.colisionIdentity, b2BodyType::b2_dynamicBody, 1.0f, 0.3f);
+					newPlayer.InitPhysics(I_Physics, newPlayer.colisionIdentity, b2BodyType::b2_dynamicBody, 1.0f, 0.3f);
 					allPlayers->push_back(newPlayer);
 				}
 			}

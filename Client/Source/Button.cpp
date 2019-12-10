@@ -3,15 +3,16 @@
 
 Button::Button()
 {
-	this->imageLocation = "Resources\\UI\\CharacterSheet\\IconBorder.png";
+	//this->imageLocation = "Resources\\UI\\CharacterSheet\\IconBorder.png";
 	this->setPosition(500, 500);
 	this->setSize(50, 50);
 }
 Button::Button(std::string newText) : text(newText)
 {
-	this->imageLocation = "Resources\\UI\\CharacterSheet\\IconBorder.png";
+	//this->imageLocation = "Resources\\UI\\CharacterSheet\\IconBorder.png";
 	this->setPosition(500, 500);
 	this->setSize(50, 50);
+	this->textColour = { 0.5,1.0,1.0 };
 }
 Button::Button(std::string newText, std::string backgroundType) :  text(newText)
 {
@@ -74,21 +75,38 @@ void Button::UpdateInfo()
 		isMouseOver = false;
 }
 
+void Button::ButtonPressed()
+{
+	if (runOnceUpdate)
+	{
+		oldColour = getColour();
+		setColour(getColour() - 10.0f);
+		runOnceUpdate = false;
+	}
+}
+
 void Button::Render(GL_Renderer& renderer)
 {
 	if (!isInitalised)
 		Initalise();
 	// Set object variables
 	UpdateInfo();
+
 	if (isActivated)
 	{
-		setSize(getSize() - 5.0f);
+		ButtonPressed();
+	}
+	else
+	{
+		if(!runOnceUpdate)
+			setColour(oldColour);
+		runOnceUpdate = true;
 	}
 	
 	// If the button has text, render it in the center of the button
 	renderer.RenderGUI(this->Background, this->position, this->size, this->rotation, this->transparency, this->colour, this->flipSprite);
 	if (text.size() > 0)
-		renderer.RenderText(text, { this->position.x - size.x / 2, position.y + size.y / 2 }, this->size, { textSize, textSize }, { 0.5,1.0,1.0 });
+		renderer.RenderText(text, { this->position.x , position.y + size.y / 4 }, this->size, { textSize, textSize }, textColour);
 		//buttonText.render(renderer, text, getX() - (getWidth() / 2) +(getWidth() / 20), getY() - (getHeight() / 2) + (getHeight() / 5), getWidth() - (getWidth() / 10) / 2, getHeight() / 2, buttonTextColour);
 }
 

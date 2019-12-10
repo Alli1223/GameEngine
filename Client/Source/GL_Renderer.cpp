@@ -49,7 +49,7 @@ GL_Renderer::GL_Renderer()
 {
 	this->init();
 	this->spriteShader = ResourceManager::LoadShader("Shaders\\vert.glsl", "Shaders\\frag.glsl", nullptr, "shader");
-	this->GUIShader = ResourceManager::LoadShader("Shaders\\vert.glsl", "Shaders\\UIFrag.glsl", nullptr, "GUIShader");
+	this->GUIShader = ResourceManager::LoadShader("Shaders\\GUI\\vert.glsl", "Shaders\\GUI\\frag.glsl", nullptr, "GUIShader");
 	this->lightingShader = ResourceManager::LoadShader("Shaders\\v_2DLightingShader.glsl", "Shaders\\f_2DLightingShader.glsl", nullptr, "normalShader");
 	this->outlineShader = ResourceManager::LoadShader("Shaders\\Outline\\vert.glsl", "Shaders\\Outline\\frag.glsl", nullptr, "outlineShader");
 	this->textShader = ResourceManager::LoadShader("Shaders\\Text\\vert.glsl", "Shaders\\Text\\frag.glsl", nullptr, "textShader");
@@ -361,7 +361,7 @@ void GL_Renderer::RenderSprite(Texture2D &texture, glm::vec2& position, glm::vec
 //! Render a sprite to screen
 void GL_Renderer::RenderGUI(Texture2D &texture, glm::vec2& position, glm::vec2& size, GLfloat rotate, GLfloat transparency, glm::vec3& color, std::pair<bool, bool> flipSprite)
 {
-	this->lightingShader.Use();
+	this->GUIShader.Use();
 
 	// Prepare transformations
 	glm::mat4 model;
@@ -377,15 +377,13 @@ void GL_Renderer::RenderGUI(Texture2D &texture, glm::vec2& position, glm::vec2& 
 
 	model = glm::scale(model, glm::vec3(size, 1.0f)); // Last scale	
 
-	this->lightingShader.SetMatrix4("model", model);
+	this->GUIShader.SetMatrix4("model", model);
 
-	// Lighting
-	this->lightingShader.SetVector3f("ambientLight", { 0.9, 0.9, 0.9 });
-	this->lightingShader.SetInteger("UseLights", 0);
+	// Set Colour (and convert to 0.0/1.0 rather than 0/255)
 
-
+	this->GUIShader.SetVector3f("imageColour", color / 255.0f);
 	// Set transparency
-	this->lightingShader.SetFloat("Transparency", transparency);
+	this->GUIShader.SetFloat("Transparency", transparency);
 
 	// Render textured quad
 	glActiveTexture(GL_TEXTURE0);

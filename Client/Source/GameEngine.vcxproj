@@ -386,6 +386,8 @@
     <None Include="Shaders\basicShadowFrag.glsl" />
     <None Include="Shaders\frag.glsl" />
     <None Include="Shaders\f_2DLightingShader.glsl" />
+    <None Include="Shaders\GUI\frag.glsl" />
+    <None Include="Shaders\GUI\vert.glsl" />
     <None Include="Shaders\lightFragShader.glsl" />
     <None Include="Shaders\outlineShader.glsl" />
     <None Include="Shaders\Outline\frag.glsl" />

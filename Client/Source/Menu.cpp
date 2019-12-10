@@ -22,15 +22,29 @@ Menu::~Menu()
 //}
 
 
-void Menu::MainMenu(GameSettings& gameSettings, World& level, Camera& camera, Player& player, GL_Renderer& renderer)
+void Menu::MainMenu(GameSettings& gameSettings, World& level, Camera& camera, Player& player, GL_Renderer& renderer, SDL_Window* window, SDL_GLContext& glContext)
 {
+
 	// Create buttons
 	//Button characterScreen("Character Customisation");
 	//Button exit({ 50,25 }, { 100,50 }, ResourceManager::LoadTexture("Resources\\UI\\Background.png"), { 255,255,255 });
 	Button exit("Exit");
-	exit.Background = ResourceManager::LoadTexture("Resources\\UI\\Background.png");
-	exit.setPosition({ 100,100 });
-	exit.setSize({ 100,100 });
+	exit.Background = ResourceManager::LoadTexture("Resources\\UI\\Buttons\\Plain_Button.png");
+	exit.setPosition({ camera.windowSize.x / 2, camera.windowSize.y / 2 - 80 });
+	exit.setSize({ 200,40 });
+	exit.setColour({ 200,100,50 });
+	exit.textColour = { 255,255,255 };
+
+	Button play("Play");
+	play.Background = ResourceManager::LoadTexture("Resources\\UI\\Buttons\\Plain_Button.png");
+	play.setPosition({ camera.windowSize.x / 2, camera.windowSize.y / 2 + 80 });
+	play.setSize({ 200,40 });
+	play.setColour({ 200,100,50 });
+	play.textColour = { 255,255,255 };
+	//exit.transparency = 0.5f;
+
+	//Button play("Play");
+	//play.Background = ResourceManager::LoadTexture("Resources\\UI\\Background.png");
 	//
 	//Button useNetworking("Multiplayer");
 	//Button Fullscreen("FullScreen");
@@ -59,6 +73,14 @@ void Menu::MainMenu(GameSettings& gameSettings, World& level, Camera& camera, Pl
 		}
 
 		// Start render
+		// Clear screen
+		glClearColor(0.4f, 0.4f, 0.4f, 1.0f);
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+		ImGui_ImplOpenGL3_NewFrame();
+		ImGui_ImplSDL2_NewFrame(window);
+		ImGui::NewFrame();
+
+
 		//SDL_ShowCursor(SDL_DISABLE);
 		//SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 		//SDL_RenderClear(renderer);
@@ -72,8 +94,37 @@ void Menu::MainMenu(GameSettings& gameSettings, World& level, Camera& camera, Pl
 		int menuSeperationDistance = 75;
 		int buttonHeight = 50;
 		int buttonWidth = 200;
+
+
+
 		// Render buttons
 		exit.Render(renderer);
+		play.Render(renderer);
+
+		if (play.isPressed())
+		{
+
+		}
+
+
+
+		// END Rendering
+		ImGui::Render();
+		SDL_GL_MakeCurrent(window, glContext);
+		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+
+		//glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+		SDL_GL_SwapWindow(window);
+
+
+
+
+
+
+
+
+
+
 
 		/*
 		// New Game
@@ -116,10 +167,14 @@ void Menu::MainMenu(GameSettings& gameSettings, World& level, Camera& camera, Pl
 		SDL_RenderPresent(renderer);
 	}
 
+	*/
+	}
+}
 
-	oid Menu::CharacterCustomisationMenu(GameSettings & gameSettings, Camera & camera, Player & player, SDL_Renderer * renderer, Level & level)
-
-		Button back("Back");
+/*
+void Menu::CharacterCustomisationMenu(GameSettings& gameSettings, Camera& camera, Player& player, GL_Renderer& renderer, World& level)
+{
+	Button back("Back");
 	Button singlePlayer("Start");
 	Button loadSave("Load Save");
 	Button rotatePlayer("Rotate");
@@ -173,6 +228,8 @@ void Menu::MainMenu(GameSettings& gameSettings, World& level, Camera& camera, Pl
 	playerCreation.setPosition(gameSettings.WINDOW_WIDTH / 2, gameSettings.WINDOW_HEIGHT / 2);
 	playerCreation.PlayerClothes.body = Player::Clothing::femaleTop1;
 	playerCreation.PlayerClothes.leg = Player::Clothing::femaleBottom2;
+
+
 	while (displayCharacterMenu)
 	{
 		if (SDL_GetMouseState(&mouseX, &mouseY) & SDL_BUTTON(SDL_BUTTON_LEFT))
@@ -446,14 +503,14 @@ void Menu::MainMenu(GameSettings& gameSettings, World& level, Camera& camera, Pl
 			displayCharacterMenu = false;
 			displayMainMenu = false;
 		}
-		/*
+
 		loadSave.render(renderer, gameSettings.WINDOW_WIDTH / 2, gameSettings.WINDOW_HEIGHT - 100 - buttonSize * 2, buttonSize * 2, buttonSize);
 		if (loadSave.isPressed())
 		{
-		displayCharacterMenu = false;
-		gameSettings.loadGameFromSave(level);
-		player = gameSettings.getPlayerFromSave();
-		displayMainMenu = false;
+			displayCharacterMenu = false;
+			gameSettings.loadGameFromSave(level);
+			player = gameSettings.getPlayerFromSave();
+			displayMainMenu = false;
 		}
 
 		rotateplayer.render(renderer, gameSettings.WINDOW_WIDTH / 2, playerCreation.getY() + playerCreation.getSize().x / 2 + buttonSize, buttonSize * 2, buttonSize);
@@ -472,7 +529,7 @@ void Menu::MainMenu(GameSettings& gameSettings, World& level, Camera& camera, Pl
 		if (renderCursor)
 			cursor.render(renderer, mouseX + (menuCursorSize / 2), mouseY + (menuCursorSize / 2), menuCursorSize, menuCursorSize);
 		SDL_RenderPresent(renderer);
-	}
+	
 
 
 	//Only copy over the customsiation stuff
@@ -485,10 +542,28 @@ void Menu::MainMenu(GameSettings& gameSettings, World& level, Camera& camera, Pl
 	player.body = playerCreation.body;
 	player.setBodyColour(playerCreation.getBodyColour().r, playerCreation.getBodyColour().g, playerCreation.getBodyColour().b);
 
+	}
 
 
 
-	oid Menu::changeEarType(Player & player, bool increment)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	/*
+	void Menu::changeEarType(Player & player, bool increment)
 
 		if (increment)
 		{
@@ -760,5 +835,4 @@ void Menu::MainMenu(GameSettings& gameSettings, World& level, Camera& camera, Pl
 				player.PlayerClothes.body = Player::Clothing::noTop;
 		}
 		*/
-	}
-}
+	

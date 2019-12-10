@@ -32,6 +32,9 @@ public:
 	GLfloat getRotation() { return rotation; }
 	GLfloat setRotation(GLfloat newRotation) { return rotation = newRotation; }
 
+	glm::vec3 setColour(glm::vec3 newColour) { return colour = newColour; }
+	glm::vec3 getColour() { return colour; }
+
 	Texture2D Background;
 	float transparency = 1.0;
 
