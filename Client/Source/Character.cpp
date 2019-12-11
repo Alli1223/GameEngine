@@ -246,7 +246,7 @@ void Character::AssignSprites(GL_Renderer& renderer, int index, bool flipSprite)
 		break;
 	}
 
-	switch (PlayerClothes.body)
+	switch (CharacterClothes.body)
 	{
 	case Clothing::BodyWear::femaleTop1:
 		top = ResourceManager::GetAtlasTexture("FemaleTop_1", index);
@@ -261,7 +261,7 @@ void Character::AssignSprites(GL_Renderer& renderer, int index, bool flipSprite)
 		top = ResourceManager::GetAtlasTexture("MaleTop_2", index);
 		break;
 	}
-	switch (PlayerClothes.leg)
+	switch (CharacterClothes.leg)
 	{
 	case Clothing::LegWear::femaleBottom1:
 		bottom = ResourceManager::GetAtlasTexture("FemaleBottom_1", index);

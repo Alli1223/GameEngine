@@ -182,8 +182,8 @@ void Menu::CharacterCustomisationMenu(GameSettings& gameSettings, Camera& camera
 	playerCreation = gameSettings.getPlayerFromSave();
 	playerCreation.setSize(gameSettings.WINDOW_WIDTH / 5, gameSettings.WINDOW_WIDTH / 5);
 	playerCreation.setPosition(gameSettings.WINDOW_WIDTH / 2, gameSettings.WINDOW_HEIGHT / 2);
-	playerCreation.PlayerClothes.body = Player::Clothing::femaleTop1;
-	playerCreation.PlayerClothes.leg = Player::Clothing::femaleBottom2;
+	playerCreation.CharacterClothes.body = Player::Clothing::femaleTop1;
+	playerCreation.CharacterClothes.leg = Player::Clothing::femaleBottom2;
 	playerCreation.setRenderLayer(0);
 
 	/////// Organic customisation buttons //////
@@ -587,7 +587,7 @@ void Menu::CharacterCustomisationMenu(GameSettings& gameSettings, Camera& camera
 
 
 	}
-	player.PlayerClothes = playerCreation.PlayerClothes;
+	player.CharacterClothes = playerCreation.CharacterClothes;
 	player.setHairColour(playerCreation.gethairColour().r, playerCreation.gethairColour().g, playerCreation.gethairColour().b);
 	player.setEyeColour(playerCreation.getEyeColour().r, playerCreation.getEyeColour().g, playerCreation.getEyeColour().b);
 	player.setJacketColour(playerCreation.getJacketColour().r, playerCreation.getJacketColour().g, playerCreation.getJacketColour().b);
@@ -847,21 +847,21 @@ void Menu::changeBottomType(Player& player, bool increment)
 {
 	if (increment)
 	{
-		if (player.PlayerClothes.leg == Player::Clothing::noBottoms)
-			player.PlayerClothes.leg = Player::Clothing::femaleBottom1;
-		else if (player.PlayerClothes.leg == Player::Clothing::femaleBottom1)
-			player.PlayerClothes.leg = Player::Clothing::femaleBottom2;
-		else if (player.PlayerClothes.leg == Player::Clothing::femaleBottom2)
-			player.PlayerClothes.leg = Player::Clothing::noBottoms;
+		if (player.CharacterClothes.leg == Player::Clothing::noBottoms)
+			player.CharacterClothes.leg = Player::Clothing::femaleBottom1;
+		else if (player.CharacterClothes.leg == Player::Clothing::femaleBottom1)
+			player.CharacterClothes.leg = Player::Clothing::femaleBottom2;
+		else if (player.CharacterClothes.leg == Player::Clothing::femaleBottom2)
+			player.CharacterClothes.leg = Player::Clothing::noBottoms;
 	}
 	else
 	{
-		if (player.PlayerClothes.leg == Player::Clothing::noBottoms)
-			player.PlayerClothes.leg = Player::Clothing::femaleBottom2;
-		else if (player.PlayerClothes.leg == Player::Clothing::femaleBottom2)
-			player.PlayerClothes.leg = Player::Clothing::femaleBottom1;
-		else if (player.PlayerClothes.leg == Player::Clothing::femaleBottom1)
-			player.PlayerClothes.leg = Player::Clothing::noBottoms;
+		if (player.CharacterClothes.leg == Player::Clothing::noBottoms)
+			player.CharacterClothes.leg = Player::Clothing::femaleBottom2;
+		else if (player.CharacterClothes.leg == Player::Clothing::femaleBottom2)
+			player.CharacterClothes.leg = Player::Clothing::femaleBottom1;
+		else if (player.CharacterClothes.leg == Player::Clothing::femaleBottom1)
+			player.CharacterClothes.leg = Player::Clothing::noBottoms;
 	}
 }
 
@@ -869,20 +869,20 @@ void Menu::changeTopType(Player& player, bool increment)
 {
 	if (increment)
 	{
-		if (player.PlayerClothes.body == Player::Clothing::noTop)
-			player.PlayerClothes.body = Player::Clothing::femaleTop1;
-		else if (player.PlayerClothes.body == Player::Clothing::femaleTop1)
-			player.PlayerClothes.body = Player::Clothing::femaleTop2;
-		else if (player.PlayerClothes.body == Player::Clothing::femaleTop2)
-			player.PlayerClothes.body = Player::Clothing::noTop;
+		if (player.CharacterClothes.body == Player::Clothing::noTop)
+			player.CharacterClothes.body = Player::Clothing::femaleTop1;
+		else if (player.CharacterClothes.body == Player::Clothing::femaleTop1)
+			player.CharacterClothes.body = Player::Clothing::femaleTop2;
+		else if (player.CharacterClothes.body == Player::Clothing::femaleTop2)
+			player.CharacterClothes.body = Player::Clothing::noTop;
 	}
 	else
 	{
-		if (player.PlayerClothes.body == Player::Clothing::noTop)
-			player.PlayerClothes.body = Player::Clothing::femaleTop2;
-		else if (player.PlayerClothes.body == Player::Clothing::femaleTop2)
-			player.PlayerClothes.body = Player::Clothing::femaleTop1;
-		else if (player.PlayerClothes.body == Player::Clothing::femaleTop1)
-			player.PlayerClothes.body = Player::Clothing::noTop;
+		if (player.CharacterClothes.body == Player::Clothing::noTop)
+			player.CharacterClothes.body = Player::Clothing::femaleTop2;
+		else if (player.CharacterClothes.body == Player::Clothing::femaleTop2)
+			player.CharacterClothes.body = Player::Clothing::femaleTop1;
+		else if (player.CharacterClothes.body == Player::Clothing::femaleTop1)
+			player.CharacterClothes.body = Player::Clothing::noTop;
 	}
 }

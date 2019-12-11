@@ -152,7 +152,7 @@ public:
 	Body body;
 
 	//! Character clothes
-	Clothing PlayerClothes;
+	Clothing CharacterClothes;
 
 	//! Default colours
 	vec3 hairColour = { 255,255,255 };

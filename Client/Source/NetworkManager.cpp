@@ -159,9 +159,9 @@ bool NetworkManager::UpdateNetworkPlayer(json& data, std::string name)
 		allPlayers->at(ID).setHairColour(hr, hg, hb);
 		allPlayers->at(ID).setJacketColour(br, bg, bb);
 		allPlayers->at(ID).setJeansColour(lr, lg, lb);
-		allPlayers->at(ID).PlayerClothes.hat = (Player::Clothing::HeadWear)headWear;
-		allPlayers->at(ID).PlayerClothes.body = (Player::Clothing::BodyWear)bodyWear;
-		allPlayers->at(ID).PlayerClothes.leg = (Player::Clothing::LegWear)legWear;
+		allPlayers->at(ID).CharacterClothes.hat = (Player::Clothing::HeadWear)headWear;
+		allPlayers->at(ID).CharacterClothes.body = (Player::Clothing::BodyWear)bodyWear;
+		allPlayers->at(ID).CharacterClothes.leg = (Player::Clothing::LegWear)legWear;
 		allPlayers->at(ID).setPlayerMoving(isMoving);
 		//allPlayers->at(ID).setX(x);
 		//allPlayers->at(ID).setY(y);

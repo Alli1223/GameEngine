@@ -26,8 +26,8 @@ void Villager::GenerateVillager()
 	this->body.earType = Body::EarType(rand() % 10);
 	this->body.hairType = Body::HairType(rand() % 8);
 	this->body.gender = Body::Gender(rand() % 2);
-	this->PlayerClothes.body = Clothing::BodyWear(rand() % 4);
-	this->PlayerClothes.leg = Clothing::LegWear(rand() % 4);
+	this->CharacterClothes.body = Clothing::BodyWear(rand() % 4);
+	this->CharacterClothes.leg = Clothing::LegWear(rand() % 4);
 	this->money = rand() % 50;
 	s_action = ShopActions::browsing;
 }
@@ -281,7 +281,7 @@ void Villager::RenderBody(int index)
 		break;
 	}
 
-	switch (PlayerClothes.body)
+	switch (CharacterClothes.body)
 	{
 	case Clothing::BodyWear::femaleTop1:
 		top = ResourceManager::GetAtlasTexture("FemaleTop_1", index);
@@ -296,7 +296,7 @@ void Villager::RenderBody(int index)
 		top = ResourceManager::GetAtlasTexture("MaleTop_2", index);
 		break;
 	}
-	switch (PlayerClothes.leg)
+	switch (CharacterClothes.leg)
 	{
 	case Clothing::LegWear::femaleBottom1:
 		bottom = ResourceManager::GetAtlasTexture("FemaleBottom_1", index);

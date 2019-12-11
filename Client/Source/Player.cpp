@@ -95,8 +95,8 @@ Player::Player() : colisionIdentity(CollisionIdentifier::CollisionEntityTypes::p
 	this->body.earType = Body::EarType(rand() % 10);
 	this->body.hairType = Body::HairType(rand() % 8);
 	this->body.gender = Body::Gender(rand() % 2);
-	this->PlayerClothes.body = Clothing::BodyWear(rand() % 4);
-	this->PlayerClothes.leg = Clothing::LegWear(rand() % 4);
+	this->CharacterClothes.body = Clothing::BodyWear(rand() % 4);
+	this->CharacterClothes.leg = Clothing::LegWear(rand() % 4);
 
 
 
@@ -378,18 +378,18 @@ json Player::getPlayerJson()
 	playerData["PlayerData"]["X"] = getX();
 	playerData["PlayerData"]["Y"] = getY();
 	playerData["PlayerData"]["isMoving"] = isPlayerMoving();
-	playerData["PlayerData"]["headWear"] = PlayerClothes.hat;
+	playerData["PlayerData"]["headWear"] = CharacterClothes.hat;
 	playerData["PlayerData"]["hairColour"]["r"] = gethairColour().r;
 	playerData["PlayerData"]["hairColour"]["g"] = gethairColour().g;
 	playerData["PlayerData"]["hairColour"]["b"] = gethairColour().b;
 	playerData["PlayerData"]["eyeColour"]["r"] = getEyeColour().r;
 	playerData["PlayerData"]["eyeColour"]["g"] = getEyeColour().g;
 	playerData["PlayerData"]["eyeColour"]["b"] = getEyeColour().b;
-	playerData["PlayerData"]["bodyWear"] = PlayerClothes.body;
+	playerData["PlayerData"]["bodyWear"] = CharacterClothes.body;
 	playerData["PlayerData"]["upperClothesColour"]["r"] = getJacketColour().r;
 	playerData["PlayerData"]["upperClothesColour"]["g"] = getJacketColour().g;
 	playerData["PlayerData"]["upperClothesColour"]["b"] = getJacketColour().b;
-	playerData["PlayerData"]["legWear"] = PlayerClothes.leg;
+	playerData["PlayerData"]["legWear"] = CharacterClothes.leg;
 	playerData["PlayerData"]["legColour"]["r"] = getJeansColour().r;
 	playerData["PlayerData"]["legColour"]["g"] = getJeansColour().g;
 	playerData["PlayerData"]["legColour"]["b"] = getJeansColour().b;
@@ -496,9 +496,9 @@ Player Player::LoadFromJson(json playerData)
 	ExistingPlayer.body.gender = (Player::Body::Gender)gender;
 	ExistingPlayer.body.earType = (Player::Body::EarType)EarType;
 	ExistingPlayer.body.eyeType = (Player::Body::EyeType)EyeType;
-	ExistingPlayer.PlayerClothes.hat = (Player::Clothing::HeadWear)headWear;
-	ExistingPlayer.PlayerClothes.body = (Player::Clothing::BodyWear)bodyWear;
-	ExistingPlayer.PlayerClothes.leg = (Player::Clothing::LegWear)legWear;
+	ExistingPlayer.CharacterClothes.hat = (Player::Clothing::HeadWear)headWear;
+	ExistingPlayer.CharacterClothes.body = (Player::Clothing::BodyWear)bodyWear;
+	ExistingPlayer.CharacterClothes.leg = (Player::Clothing::LegWear)legWear;
 	ExistingPlayer.setPlayerMoving(isMoving);
 	return ExistingPlayer;
 }
