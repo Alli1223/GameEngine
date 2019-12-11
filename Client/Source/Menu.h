@@ -26,11 +26,11 @@ public:
 
 private:
 	//! Change body buttons
-	//void changeEarType(Player& player, bool increment);
-	//void changeEyeType(Player& player, bool increment);
-	//void changeHairType(Player& player, bool increment);
-	//void changeTopType(Player& player, bool increment);
-	//void changeBottomType(Player& player, bool increment);
+	void changeEarType(Player& player, bool increment);
+	void changeEyeType(Player& player, bool increment);
+	void changeHairType(Player& player, bool increment);
+	void changeTopType(Player& player, bool increment);
+	void changeBottomType(Player& player, bool increment);
 	//! To end main menu while loop
 	bool displayMainMenu = true;
 	//! To end character menu while loop
@@ -48,10 +48,10 @@ private:
 	SDL_Window* window;
 	SDL_GLContext* glContext;
 
-	//ColourSlider bodyColourSlider;
-	//ColourSlider eyeColourSlider;
-	//ColourSlider hairColourSlider;
-	//ColourSlider topColourSlider;
-	//ColourSlider bottomColourSlider;
+	ColourSlider bodyColourSlider;
+	ColourSlider eyeColourSlider;
+	ColourSlider hairColourSlider;
+	ColourSlider topColourSlider;
+	ColourSlider bottomColourSlider;
 };
 

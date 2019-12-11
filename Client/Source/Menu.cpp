@@ -196,8 +196,8 @@ void Menu::CharacterCustomisationMenu(GameSettings& gameSettings, Camera& camera
 	int CbuttonsY = playerCreation.getY() - buttonSize * 4;
 
 	// Create buttons
-	Button back("Back", { 100,100 }, "Resources\\UI\\Buttons\\NoButton.png", { 100,100 }, { 200,100,50 }, { 255,255,255 });
-	Button singlePlayer("", { camera.windowSize.x - 200, camera.windowSize.y / 2 + 400 }, "Resources\\UI\\Buttons\\Confirm.png", { 100,100 }, { 200,100,50 }, { 255,255,255 });
+	Button back("", { 100,100 }, "Resources\\UI\\Buttons\\NoButton.png", { 100,100 }, { 200,100,50 }, { 255,255,255 });
+	Button confirm("", { camera.windowSize.x - 200, camera.windowSize.y / 2 + 400 }, "Resources\\UI\\Buttons\\Confirm.png", { 200,50 }, { 200,100,50 }, { 255,255,255 });
 	Button loadSave("Load Save", { camera.windowSize.x / 2, camera.windowSize.y / 2 + (camera.windowSize.y / 4) }, "Resources\\UI\\Buttons\\Plain_Button.png", { 200,50 }, { 200,100,50 }, { 255,255,255 });
 
 
@@ -206,40 +206,56 @@ void Menu::CharacterCustomisationMenu(GameSettings& gameSettings, Camera& camera
 	// Skin colour
 	// Eye Type
 	// Eye Colour
+	int leftPosition1 = camera.windowSize.x / 2 - camera.windowSize.x / 4;
+	int leftPosition2 = camera.windowSize.x / 2 - camera.windowSize.x / 4 - 100;
+	glm::vec3 buttonColour = {200,150,150};
 
-	// Gender
-	Button femaleGender("", { playerCreation.getX() - 200, playerCreation.getY() - 100 }, "Resources\\UI\\Buttons\\FemaleButton.png", { 50,50 }, { 200,100,50 }, { 255,255,255 });
-	Button maleGender("", { playerCreation.getX() - 100, playerCreation.getY() - 100 }, "Resources\\UI\\Buttons\\MaleButton.png", { 50,50 }, { 200,100,50 }, { 255,255,255 });
+	// Genders
+	Button femaleGender("", { playerCreation.getX() - leftPosition1, playerCreation.getY() - 100 }, "Resources\\UI\\Buttons\\FemaleButton.png", { 50,50 }, buttonColour, { 255,255,255 });
+	Button maleGender("", { playerCreation.getX() - leftPosition2, playerCreation.getY() - 100 }, "Resources\\UI\\Buttons\\MaleButton.png", { 50,50 }, buttonColour, { 255,255,255 });
+	// Colours
 	//Skin Colour
-	Button ChangeSkinColourL("", { playerCreation.getX() - 200, playerCreation.getY() }, "Resources\\UI\\Buttons\\L_Button.png", { 50,50 }, { 200,100,50 }, { 255,255,255 });
-	Button ChangeSkinColourR("", { playerCreation.getX() - 100, playerCreation.getY() }, "Resources\\UI\\Buttons\\R_Button.png", { 50,50 }, { 200,100,50 }, { 255,255,255 });
-	//Hair
-	Button ChangeHairColourL("", { playerCreation.getX() - 200, playerCreation.getY() + 100 }, "Resources\\UI\\Buttons\\L_Button.png", { 50,50 }, { 200,100,50 }, { 255,255,255 });
-	Button ChangeHairColourR("", { playerCreation.getX() - 100, playerCreation.getY() + 100 }, "Resources\\UI\\Buttons\\R_Button.png", { 50,50 }, { 200,100,50 }, { 255,255,255 });
-	//Eye
-	Button ChangeEyeColourL("", { playerCreation.getX() - 200, playerCreation.getY() + 200 }, "Resources\\UI\\Buttons\\L_Button.png", { 50,50 }, { 200,100,50 }, { 255,255,255 });
-	Button ChangeEyeColourR("", { playerCreation.getX() - 100, playerCreation.getY() + 200 }, "Resources\\UI\\Buttons\\R_Button.png", { 50,50 }, { 200,100,50 }, { 255,255,255 });
+	Button ChangeSkinColourL("", { playerCreation.getX() - leftPosition1, playerCreation.getY() }, "Resources\\UI\\Buttons\\L_Button.png", { 50,50 }, buttonColour, { 255,255,255 });
+	Button ChangeSkinColourR("", { playerCreation.getX() - leftPosition2, playerCreation.getY() }, "Resources\\UI\\Buttons\\R_Button.png", { 50,50 }, buttonColour, { 255,255,255 });
+	//Hair Colour
+	Button ChangeHairColourL("", { playerCreation.getX() - leftPosition1, playerCreation.getY() + 50 }, "Resources\\UI\\Buttons\\L_Button.png", { 50,50 }, buttonColour, { 255,255,255 });
+	Button ChangeHairColourR("", { playerCreation.getX() - leftPosition2, playerCreation.getY() + 50 }, "Resources\\UI\\Buttons\\R_Button.png", { 50,50 }, buttonColour, { 255,255,255 });
+	//Eye Colour
+	Button ChangeEyeColourL("", { playerCreation.getX() - leftPosition1, playerCreation.getY() + 100 }, "Resources\\UI\\Buttons\\L_Button.png", { 50,50 }, buttonColour, { 255,255,255 });
+	Button ChangeEyeColourR("", { playerCreation.getX() - leftPosition2, playerCreation.getY() + 100 }, "Resources\\UI\\Buttons\\R_Button.png", { 50,50 }, buttonColour, { 255,255,255 });
+
+	//Types
+	//Hair Type
+	Button ChangeHairTypeL("", { playerCreation.getX() - leftPosition1, playerCreation.getY() + 150 }, "Resources\\UI\\Buttons\\L_Button.png", { 50,50 }, buttonColour, { 255,255,255 });
+	Button ChangeHairTypeR("", { playerCreation.getX() - leftPosition2, playerCreation.getY() + 150 }, "Resources\\UI\\Buttons\\R_Button.png", { 50,50 }, buttonColour, { 255,255,255 });
 	//Ear
-	Button ChangeEarTypeL("", { playerCreation.getX() - 200, playerCreation.getY() + 200 }, "Resources\\UI\\Buttons\\L_Button.png", { 50,50 }, { 200,100,50 }, { 255,255,255 });
-	Button ChangeEarTypeR("", { playerCreation.getX() - 100, playerCreation.getY() + 200 }, "Resources\\UI\\Buttons\\R_Button.png", { 50,50 }, { 200,100,50 }, { 255,255,255 });
+	Button ChangeEarTypeL("", { playerCreation.getX() - leftPosition1, playerCreation.getY() + 150 }, "Resources\\UI\\Buttons\\L_Button.png", { 50,50 }, buttonColour, { 255,255,255 });
+	Button ChangeEarTypeR("", { playerCreation.getX() - leftPosition2, playerCreation.getY() + 150 }, "Resources\\UI\\Buttons\\R_Button.png", { 50,50 }, buttonColour, { 255,255,255 });
+	//Eye
+	Button ChangeEyeTypeL("", { playerCreation.getX() - leftPosition1, playerCreation.getY() + 150 }, "Resources\\UI\\Buttons\\L_Button.png", { 50,50 }, buttonColour, { 255,255,255 });
+	Button ChangeEyeTypeR("", { playerCreation.getX() - leftPosition2, playerCreation.getY() + 150 }, "Resources\\UI\\Buttons\\R_Button.png", { 50,50 }, buttonColour, { 255,255,255 });
+
 
 	// Colours
-	Button ChangeBodyColour("Body Colour", { playerCreation.getX() + 100, playerCreation.getY() - 100 }, "Resources\\UI\\Buttons\\Plain_Button.png", { 50,50 }, { 200,100,50 }, { 255,255,255 });
-	//Button ChangeBodyColour("Body Colour");
-	Button ChangeEyeColour("Eye Colour");
-	Button ChangeHairColour("Hair Colour");
+	Button ChangeBodyColour("Body Colour", { playerCreation.getX() - leftPosition1 + 50, playerCreation.getY() + 200 }, "Resources\\UI\\Buttons\\Plain_Button.png", { 200,50 }, buttonColour, { 255,255,255 });
+	Button ChangeEyeColour("Eye Colour", { playerCreation.getX() - leftPosition1 + 50, playerCreation.getY()  + 250}, "Resources\\UI\\Buttons\\Plain_Button.png", { 200,50 }, buttonColour, { 255,255,255 });
+	Button ChangeHairColour("Hair Colour", { playerCreation.getX() - leftPosition1 + 50, playerCreation.getY() + 300 }, "Resources\\UI\\Buttons\\Plain_Button.png", { 200,50 }, buttonColour, { 255,255,255 });
+
 
 	// Right Side ( CLOTHES)
+	int rightPosition1 = camera.windowSize.x / 2 - camera.windowSize.x / 4 - 100;
+	int rightPosition2 = camera.windowSize.x / 2 - camera.windowSize.x / 4;
+	int rightPositionCenter = camera.windowSize.x / 2 - camera.windowSize.x / 4 - 50;
 
 	//Top
-	Button changeTopL("", "L_Button");
-	Button changeTopR("", "R_Button");
-	// Bottom
-	Button changeBottomL("", "L_Button");
-	Button changeBottomR("", "R_Button");
+	Button changeTopL("", { playerCreation.getX() + rightPosition1, playerCreation.getY() }, "Resources\\UI\\Buttons\\L_Button.png", { 50,50 }, buttonColour, { 255,255,255 });
+	Button changeTopR("", { playerCreation.getX() + rightPosition2, playerCreation.getY() }, "Resources\\UI\\Buttons\\R_Button.png", { 50,50 }, buttonColour, { 255,255,255 });
+	//Bottom
+	Button changeBottomL("", { playerCreation.getX() + rightPosition1, playerCreation.getY() + 50 }, "Resources\\UI\\Buttons\\L_Button.png", { 50,50 }, buttonColour, { 255,255,255 });
+	Button changeBottomR("", { playerCreation.getX() + rightPosition2, playerCreation.getY() + 50 }, "Resources\\UI\\Buttons\\R_Button.png", { 50,50 }, buttonColour, { 255,255,255 });
 	//Colour
-	Button ChangeTopColour("Top Colour");
-	Button ChangeBottomColour("Bottom Colour");
+	Button ChangeTopColour("Top Colour", { playerCreation.getX() + rightPositionCenter, playerCreation.getY() + 200 }, "Resources\\UI\\Buttons\\Plain_Button.png", { 200,50 }, buttonColour, { 255,255,255 });
+	Button ChangeBottomColour("Bottom Colour", { playerCreation.getX() + rightPositionCenter, playerCreation.getY() + 250 }, "Resources\\UI\\Buttons\\Plain_Button.png", { 200,50 }, buttonColour, { 255,255,255 });
 
 
 
@@ -271,7 +287,7 @@ void Menu::CharacterCustomisationMenu(GameSettings& gameSettings, Camera& camera
 
 
 		back.Render(renderer);
-		singlePlayer.Render(renderer);
+		confirm.Render(renderer);
 		femaleGender.Render(renderer);
 		maleGender.Render(renderer);
 		ChangeSkinColourL.Render(renderer);
@@ -280,10 +296,29 @@ void Menu::CharacterCustomisationMenu(GameSettings& gameSettings, Camera& camera
 		ChangeHairColourR.Render(renderer);
 		ChangeEyeColourL.Render(renderer);
 		ChangeEyeColourR.Render(renderer);
+		ChangeHairTypeL.Render(renderer);
+		ChangeHairTypeR.Render(renderer);
 		ChangeEarTypeL.Render(renderer);
 		ChangeEarTypeR.Render(renderer);
+		ChangeEyeTypeL.Render(renderer);
+		ChangeEyeTypeR.Render(renderer);
+		
+		ChangeBodyColour.Render(renderer);
+
+		ChangeEyeColour.Render(renderer);
+		ChangeHairColour.Render(renderer);
 
 		playerCreation.Render(renderer);
+
+		changeTopL.Render(renderer);
+		changeTopR.Render(renderer);
+
+		changeBottomL.Render(renderer);
+		changeBottomR.Render(renderer);
+
+		ChangeTopColour.Render(renderer);
+		ChangeBottomColour.Render(renderer);
+
 
 		if (back.isPressed())
 		{
@@ -291,271 +326,237 @@ void Menu::CharacterCustomisationMenu(GameSettings& gameSettings, Camera& camera
 			break;
 		}
 
-		//glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
-		SDL_GL_SwapWindow(window);
 
 
 
 
-
-
-		////femaleGender.getButtonBackgroundTexture().alterTextureColour(200, 150, 20);
-		//maleGender.Render(renderer, ObuttonsX, ObuttonsY, buttonSize, buttonSize);
-		//femaleGender.render(renderer, ObuttonsX - bSize2, ObuttonsY, buttonSize, buttonSize);
-		//
-		//ChangeHairTypeL.render(renderer, ObuttonsX - bSize2, ObuttonsY + buttonSize * 2, buttonSize, buttonSize);
-		//ChangeHairTypeR.render(renderer, ObuttonsX, ObuttonsY + buttonSize * 2, buttonSize, buttonSize);
-		//
-		//ChangeEyeTypeL.render(renderer, ObuttonsX - bSize2, ObuttonsY + buttonSize * 3, buttonSize, buttonSize);
-		//ChangeEyeTypeR.render(renderer, ObuttonsX, ObuttonsY + buttonSize * 3, buttonSize, buttonSize);
-		//
-		//ChangeEarTypeL.render(renderer, ObuttonsX - bSize2, ObuttonsY + buttonSize * 4, buttonSize, buttonSize);
-		//ChangeEarTypeR.render(renderer, ObuttonsX, ObuttonsY + buttonSize * 4, buttonSize, buttonSize);
-		//
-		//ChangeBodyColour.render(renderer, ObuttonsX - buttonSize, ObuttonsY + buttonSize * 5, 200, 50);
-		//ChangeEyeColour.render(renderer, ObuttonsX - buttonSize, ObuttonsY + buttonSize * 6, 200, 50);
-		//ChangeHairColour.render(renderer, ObuttonsX - buttonSize, ObuttonsY + buttonSize * 7, 200, 50);
-		//
-		//
-		//// Clothes Customisation buttons ( RIGHT SIDE)
-		//changeTopL.render(renderer, CbuttonsX - bSize2, CbuttonsY + buttonSize * 2, buttonSize, buttonSize);
-		//changeTopR.render(renderer, CbuttonsX, CbuttonsY + buttonSize * 2, buttonSize, buttonSize);
-		//
-		//changeBottomL.render(renderer, CbuttonsX - bSize2, CbuttonsY + buttonSize * 3, buttonSize, buttonSize);
-		//changeBottomR.render(renderer, CbuttonsX, CbuttonsY + buttonSize * 3, buttonSize, buttonSize);
-		//
-		//ChangeTopColour.render(renderer, CbuttonsX - buttonSize, ObuttonsY + buttonSize * 5, buttonSize * 4, buttonSize);
-		//ChangeBottomColour.render(renderer, CbuttonsX - buttonSize, ObuttonsY + buttonSize * 6, buttonSize * 4, buttonSize);
-		//
-		////changeBottom.render(renderer, playerCreation.getX() + playerCreation.getSize(), playerCreation.getY() + 100, 100, 50);
-		//
-		//
 		//randomiseAll.render(renderer, playerCreation.getX(), gameSettings.WINDOW_HEIGHT - buttonSize, buttonSize * 3, buttonSize);
 		//
 		//
 		//
 		//// BUTTON FUNCTIONALITY
-		//if (maleGender.isPressed())
-		//	playerCreation.body.gender = Player::Body::Gender::male;
-		//if (femaleGender.isPressed())
-		//	playerCreation.body.gender = Player::Body::Gender::female;
-		//
-		//// Change Ear buttons
-		//if (ChangeEarTypeL.isPressed())
-		//{
-		//	changeEarType(playerCreation, false);
-		//}
-		//else if (ChangeEarTypeR.isPressed())
-		//{
-		//	changeEarType(playerCreation, true);
-		//}
-		//
-		//// Change Eye buttons
-		//if (ChangeEyeTypeL.isPressed())
-		//{
-		//	changeEyeType(playerCreation, false);
-		//}
-		//else if (ChangeEyeTypeR.isPressed())
-		//{
-		//	changeEyeType(playerCreation, true);
-		//}
-		//
-		//// Change Hair buttons
-		//if (ChangeHairTypeL.isPressed())
-		//{
-		//	changeHairType(playerCreation, false);
-		//}
-		//else if (ChangeHairTypeR.isPressed())
-		//{
-		//	changeHairType(playerCreation, true);
-		//}
-		//
-		//
-		//
-		//
-		//// Button functionality
-		////Legs
-		//if (changeBottomL.isPressed())
-		//{
-		//	changeBottomType(playerCreation, false);
-		//}
-		//else if (changeBottomR.isPressed())
-		//{
-		//	changeBottomType(playerCreation, true);
-		//}
-		//// Body
-		//if (changeTopL.isPressed())
-		//{
-		//	changeTopType(playerCreation, false);
-		//}
-		//else if (changeTopR.isPressed())
-		//{
-		//	changeTopType(playerCreation, true);
-		//}
-		//
-		//
-		//
-		//// Body Colour
-		//if (ChangeBodyColour.isPressed())
-		//{
-		//	hairColourSlider.Disable();
-		//	eyeColourSlider.Disable();
-		//	topColourSlider.Disable();
-		//	bottomColourSlider.Disable();
-		//	if (bodyColourSlider.isEnabled())
-		//		bodyColourSlider.Disable();
-		//	else
-		//		bodyColourSlider.Enable();
-		//
-		//}
-		//// Hair colour
-		//if (ChangeHairColour.isPressed())
-		//{
-		//	bodyColourSlider.Disable();
-		//	eyeColourSlider.Disable();
-		//	topColourSlider.Disable();
-		//	bottomColourSlider.Disable();
-		//	if (hairColourSlider.isEnabled())
-		//		hairColourSlider.Disable();
-		//	else
-		//		hairColourSlider.Enable();
-		//}
-		//// Eye colour
-		//if (ChangeEyeColour.isPressed())
-		//{
-		//	hairColourSlider.Disable();
-		//	bodyColourSlider.Disable();
-		//	topColourSlider.Disable();
-		//	bottomColourSlider.Disable();
-		//	if (eyeColourSlider.isEnabled())
-		//		eyeColourSlider.Disable();
-		//	else
-		//		eyeColourSlider.Enable();
-		//}
-		//
-		//// Clothes colours
-		//if (ChangeTopColour.isPressed())
-		//{
-		//	hairColourSlider.Disable();
-		//	bodyColourSlider.Disable();
-		//	bottomColourSlider.Disable();
-		//	eyeColourSlider.Disable();
-		//	if (topColourSlider.isEnabled())
-		//		topColourSlider.Disable();
-		//	else
-		//		topColourSlider.Enable();
-		//}
-		//if (ChangeBottomColour.isPressed())
-		//{
-		//	hairColourSlider.Disable();
-		//	bodyColourSlider.Disable();
-		//	eyeColourSlider.Disable();
-		//	topColourSlider.Disable();
-		//	if (bottomColourSlider.isEnabled())
-		//		bottomColourSlider.Disable();
-		//	else
-		//		bottomColourSlider.Enable();
-		//}
-		//// Random button
-		//if (randomiseAll.isPressed())
-		//{
-		//	playerCreation.setHairColour(rand() % 255, rand() % 255, rand() % 255);
-		//	playerCreation.setEyeColour(rand() % 255, rand() % 255, rand() % 255);
-		//	playerCreation.setJacketColour(rand() % 255, rand() % 255, rand() % 255);
-		//	playerCreation.setJeansColour(rand() % 255, rand() % 255, rand() % 255);
-		//	playerCreation.setBodyColour(rand() % 255, rand() % 255, rand() % 255);
-		//	playerCreation.body.earType = Player::Body::EarType(rand() % 8);
-		//	playerCreation.body.eyeType = Player::Body::EyeType(rand() % 13);
-		//	playerCreation.body.hairType = Player::Body::HairType(rand() % 8);
-		//}
-		//
-		//
-		//
-		//// Colour slider object positions and functionality
-		//// body slider
-		//if (bodyColourSlider.isEnabled())
-		//{
-		//	//ChangeBodyColour.getButtonBackgroundTexture().alterTextureColour(bodyColourSlider.getColour());
-		//	bodyColourSlider.setPosition(gameSettings.WINDOW_WIDTH / 2, gameSettings.WINDOW_HEIGHT / 6);
-		//	bodyColourSlider.setWidth(360);
-		//	bodyColourSlider.setHeight(50);
-		//	bodyColourSlider.Render(renderer);
-		//	playerCreation.setBodyColour(bodyColourSlider.getColour());
-		//}
-		//// hair slider
-		//if (hairColourSlider.isEnabled())
-		//{
-		//	//ChangeHairColour.getButtonBackgroundTexture().alterTextureColour(hairColourSlider.getColour());
-		//	hairColourSlider.setPosition(gameSettings.WINDOW_WIDTH / 2, gameSettings.WINDOW_HEIGHT / 6);
-		//	hairColourSlider.setWidth(360);
-		//	hairColourSlider.setHeight(50);
-		//	hairColourSlider.Render(renderer);
-		//	playerCreation.setHairColour(hairColourSlider.getColour());
-		//}
-		//// eye slider
-		//if (eyeColourSlider.isEnabled())
-		//{
-		//	//ChangeEyeColour.getButtonBackgroundTexture().alterTextureColour(eyeColourSlider.getColour());
-		//	eyeColourSlider.setPosition(gameSettings.WINDOW_WIDTH / 2, gameSettings.WINDOW_HEIGHT / 6);
-		//	eyeColourSlider.setWidth(360);
-		//	eyeColourSlider.setHeight(50);
-		//	eyeColourSlider.Render(renderer);
-		//	playerCreation.setEyeColour(eyeColourSlider.getColour());
-		//}
-		//
-		//// If top colour slider is enabled
-		//if (topColourSlider.isEnabled())
-		//{
-		//	//ChangeTopColour.getButtonBackgroundTexture().alterTextureColour(topColourSlider.getColour());
-		//	topColourSlider.setPosition(gameSettings.WINDOW_WIDTH / 2, gameSettings.WINDOW_HEIGHT / 6);
-		//	topColourSlider.setWidth(360);
-		//	topColourSlider.setHeight(50);
-		//	topColourSlider.Render(renderer);
-		//	playerCreation.setTopColour(topColourSlider.getColour());
-		//}
-		//// if bottom colour slider is enabled
-		//if (bottomColourSlider.isEnabled())
-		//{
-		//	//ChangeBottomColour.getButtonBackgroundTexture().alterTextureColour(bottomColourSlider.getColour());
-		//	bottomColourSlider.setPosition(gameSettings.WINDOW_WIDTH / 2, gameSettings.WINDOW_HEIGHT / 6);
-		//	bottomColourSlider.setWidth(360);
-		//	bottomColourSlider.setHeight(50);
-		//	bottomColourSlider.Render(renderer);
-		//	playerCreation.setBottomColour(bottomColourSlider.getColour());
-		//}
-		//
-		////TODO: fix this
-		//// Render player
-		////playerCreation.RenderPlayer(gl, camera);
-		//
-		//
-		//// Back button
+
+		if (maleGender.isPressed())
+			playerCreation.body.gender = Player::Body::Gender::male;
+		if (femaleGender.isPressed())
+			playerCreation.body.gender = Player::Body::Gender::female;
+		
+		// Change Ear buttons
+		if (ChangeEarTypeL.isPressed())
+		{
+			changeEarType(playerCreation, false);
+		}
+		else if (ChangeEarTypeR.isPressed())
+		{
+			changeEarType(playerCreation, true);
+		}
+		
+		// Change Eye buttons
+		if (ChangeEyeTypeL.isPressed())
+		{
+			changeEyeType(playerCreation, false);
+		}
+		else if (ChangeEyeTypeR.isPressed())
+		{
+			changeEyeType(playerCreation, true);
+		}
+		
+		// Change Hair buttons
+		if (ChangeHairTypeL.isPressed())
+		{
+			changeHairType(playerCreation, false);
+		}
+		else if (ChangeHairTypeR.isPressed())
+		{
+			changeHairType(playerCreation, true);
+		}
+		
+		
+		
+		
+		// Button functionality
+		//Legs
+		if (changeBottomL.isPressed())
+		{
+			changeBottomType(playerCreation, false);
+		}
+		else if (changeBottomR.isPressed())
+		{
+			changeBottomType(playerCreation, true);
+		}
+		// Body
+		if (changeTopL.isPressed())
+		{
+			changeTopType(playerCreation, false);
+		}
+		else if (changeTopR.isPressed())
+		{
+			changeTopType(playerCreation, true);
+		}
+		
+		
+		
+		// Body Colour
+		if (ChangeBodyColour.isPressed())
+		{
+			hairColourSlider.Disable();
+			eyeColourSlider.Disable();
+			topColourSlider.Disable();
+			bottomColourSlider.Disable();
+			if (bodyColourSlider.isEnabled())
+				bodyColourSlider.Disable();
+			else
+				bodyColourSlider.Enable();
+		
+		}
+		// Hair colour
+		if (ChangeHairColour.isPressed())
+		{
+			bodyColourSlider.Disable();
+			eyeColourSlider.Disable();
+			topColourSlider.Disable();
+			bottomColourSlider.Disable();
+			if (hairColourSlider.isEnabled())
+				hairColourSlider.Disable();
+			else
+				hairColourSlider.Enable();
+		}
+		// Eye colour
+		if (ChangeEyeColour.isPressed())
+		{
+			hairColourSlider.Disable();
+			bodyColourSlider.Disable();
+			topColourSlider.Disable();
+			bottomColourSlider.Disable();
+			if (eyeColourSlider.isEnabled())
+				eyeColourSlider.Disable();
+			else
+				eyeColourSlider.Enable();
+		}
+		
+		// Clothes colours
+		if (ChangeTopColour.isPressed())
+		{
+			hairColourSlider.Disable();
+			bodyColourSlider.Disable();
+			bottomColourSlider.Disable();
+			eyeColourSlider.Disable();
+			if (topColourSlider.isEnabled())
+				topColourSlider.Disable();
+			else
+				topColourSlider.Enable();
+		}
+		if (ChangeBottomColour.isPressed())
+		{
+			hairColourSlider.Disable();
+			bodyColourSlider.Disable();
+			eyeColourSlider.Disable();
+			topColourSlider.Disable();
+			if (bottomColourSlider.isEnabled())
+				bottomColourSlider.Disable();
+			else
+				bottomColourSlider.Enable();
+		}
+		// Random button
+		if (randomiseAll.isPressed())
+		{
+			playerCreation.setHairColour(rand() % 255, rand() % 255, rand() % 255);
+			playerCreation.setEyeColour(rand() % 255, rand() % 255, rand() % 255);
+			playerCreation.setJacketColour(rand() % 255, rand() % 255, rand() % 255);
+			playerCreation.setJeansColour(rand() % 255, rand() % 255, rand() % 255);
+			playerCreation.setBodyColour(rand() % 255, rand() % 255, rand() % 255);
+			playerCreation.body.earType = Player::Body::EarType(rand() % 8);
+			playerCreation.body.eyeType = Player::Body::EyeType(rand() % 13);
+			playerCreation.body.hairType = Player::Body::HairType(rand() % 8);
+		}
+		
+		
+		
+		// Colour slider object positions and functionality
+		// body slider
+		if (bodyColourSlider.isEnabled())
+		{
+			//ChangeBodyColour.getButtonBackgroundTexture().alterTextureColour(bodyColourSlider.getColour());
+			bodyColourSlider.setPosition(gameSettings.WINDOW_WIDTH / 2, gameSettings.WINDOW_HEIGHT / 6);
+			bodyColourSlider.setWidth(360);
+			bodyColourSlider.setHeight(50);
+			bodyColourSlider.Render(renderer);
+			playerCreation.setBodyColour(bodyColourSlider.getColour());
+		}
+		// hair slider
+		if (hairColourSlider.isEnabled())
+		{
+			//ChangeHairColour.getButtonBackgroundTexture().alterTextureColour(hairColourSlider.getColour());
+			hairColourSlider.setPosition(gameSettings.WINDOW_WIDTH / 2, gameSettings.WINDOW_HEIGHT / 6);
+			hairColourSlider.setWidth(360);
+			hairColourSlider.setHeight(50);
+			hairColourSlider.Render(renderer);
+			playerCreation.setHairColour(hairColourSlider.getColour());
+		}
+		// eye slider
+		if (eyeColourSlider.isEnabled())
+		{
+			//ChangeEyeColour.getButtonBackgroundTexture().alterTextureColour(eyeColourSlider.getColour());
+			eyeColourSlider.setPosition(gameSettings.WINDOW_WIDTH / 2, gameSettings.WINDOW_HEIGHT / 6);
+			eyeColourSlider.setWidth(360);
+			eyeColourSlider.setHeight(50);
+			eyeColourSlider.Render(renderer);
+			playerCreation.setEyeColour(eyeColourSlider.getColour());
+		}
+		
+		// If top colour slider is enabled
+		if (topColourSlider.isEnabled())
+		{
+			//ChangeTopColour.getButtonBackgroundTexture().alterTextureColour(topColourSlider.getColour());
+			topColourSlider.setPosition(gameSettings.WINDOW_WIDTH / 2, gameSettings.WINDOW_HEIGHT / 6);
+			topColourSlider.setWidth(360);
+			topColourSlider.setHeight(50);
+			topColourSlider.Render(renderer);
+			playerCreation.setTopColour(topColourSlider.getColour());
+		}
+		// if bottom colour slider is enabled
+		if (bottomColourSlider.isEnabled())
+		{
+			//ChangeBottomColour.getButtonBackgroundTexture().alterTextureColour(bottomColourSlider.getColour());
+			bottomColourSlider.setPosition(gameSettings.WINDOW_WIDTH / 2, gameSettings.WINDOW_HEIGHT / 6);
+			bottomColourSlider.setWidth(360);
+			bottomColourSlider.setHeight(50);
+			bottomColourSlider.Render(renderer);
+			playerCreation.setBottomColour(bottomColourSlider.getColour());
+		}
+		
+		//TODO: fix this
+		// Render player
+		//playerCreation.RenderPlayer(gl, camera);
+		
+		
+		// Back button
 		//back.render(renderer, 50, 150, 100, 50);
-		//if (back.isPressed())
-		//{
-		//	displayCharacterMenu = false;
-		//	return;
-		//}
-		//
-		//// Start
+		if (back.isPressed())
+		{
+			displayCharacterMenu = false;
+			return;
+		}
+		
+		// Start
 		//singleplayer.render(renderer, gameSettings.WINDOW_WIDTH / 2 + 200, gameSettings.WINDOW_HEIGHT - 100, buttonSize * 2, buttonSize);
-		//if (singleplayer.isPressed())
-		//{
-		//	gameSettings.running = true;
-		//	gameSettings.useNetworking = false;
-		//	displayCharacterMenu = false;
-		//	displayMainMenu = false;
-		//}
-		//
+		if (confirm.isPressed())
+		{
+			gameSettings.running = true;
+			gameSettings.useNetworking = false;
+			displayCharacterMenu = false;
+			displayMainMenu = false;
+		}
+		
 		//loadSave.render(renderer, gameSettings.WINDOW_WIDTH / 2, gameSettings.WINDOW_HEIGHT - 100 - buttonSize * 2, buttonSize * 2, buttonSize);
-		//if (loadSave.isPressed())
-		//{
-		//	displayCharacterMenu = false;
-		//	gameSettings.loadGameFromSave(level);
-		//	player = gameSettings.getPlayerFromSave();
-		//	displayMainMenu = false;
-		//}
-		//
+		if (loadSave.isPressed())
+		{
+			displayCharacterMenu = false;
+			//gameSettings.loadGameFromSave(level);
+			player = gameSettings.getPlayerFromSave();
+			displayMainMenu = false;
+		}
+		
 		//rotateplayer.render(renderer, gameSettings.WINDOW_WIDTH / 2, playerCreation.getY() + playerCreation.getSize().x / 2 + buttonSize, buttonSize * 2, buttonSize);
 		//if (rotateplayer.isPressed())
 		//{
@@ -564,16 +565,19 @@ void Menu::CharacterCustomisationMenu(GameSettings& gameSettings, Camera& camera
 		//		rotation = 0;
 		//	playerCreation.setTargetRotation(rotation);
 		//}
-		//
-		//
-		//
-		//
+		
+		
+		
+		
 		////Render the mouse cursor last
 		//if (renderCursor)
 		//	cursor.render(renderer, mouseX + (menuCursorSize / 2), mouseY + (menuCursorSize / 2), menuCursorSize, menuCursorSize);
 		//SDL_RenderPresent(renderer);
 
 
+
+		//glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+		SDL_GL_SwapWindow(window);
 
 	//Only copy over the customsiation stuff
 	//playerCreation.setSize(100);
@@ -605,277 +609,277 @@ void Menu::CharacterCustomisationMenu(GameSettings& gameSettings, Camera& camera
 
 
 
-	/*
-	void Menu::changeEarType(Player & player, bool increment)
-
-		if (increment)
-		{
-			switch (player.body.earType)
-			{
-			case Player::Body::EarType::aquatic:
-				player.body.earType = Player::Body::EarType::cat1;
-				break;
-			case Player::Body::EarType::cat1:
-				player.body.earType = Player::Body::EarType::cat2;
-				break;
-			case Player::Body::EarType::cat2:
-				player.body.earType = Player::Body::EarType::elf1;
-				break;
-			case Player::Body::EarType::elf1:
-				player.body.earType = Player::Body::EarType::elf2;
-				break;
-			case Player::Body::EarType::elf2:
-				player.body.earType = Player::Body::EarType::elf3;
-				break;
-			case Player::Body::EarType::elf3:
-				player.body.earType = Player::Body::EarType::elf4;
-				break;
-			case Player::Body::EarType::elf4:
-				player.body.earType = Player::Body::EarType::elf5;
-				break;
-			case Player::Body::EarType::elf5:
-				player.body.earType = Player::Body::EarType::elf6;
-				break;
-			case Player::Body::EarType::elf6:
-				player.body.earType = Player::Body::EarType::human;
-				break;
-			case Player::Body::EarType::human:
-				player.body.earType = Player::Body::EarType::aquatic;
-				break;
-			}
-		}
-		else
-			switch (player.body.earType)
-			{
-			case Player::Body::EarType::aquatic:
-				player.body.earType = Player::Body::EarType::human;
-				break;
-			case Player::Body::EarType::human:
-				player.body.earType = Player::Body::EarType::elf6;
-				break;
-			case Player::Body::EarType::elf6:
-				player.body.earType = Player::Body::EarType::elf5;
-				break;
-			case Player::Body::EarType::elf5:
-				player.body.earType = Player::Body::EarType::elf4;
-				break;
-			case Player::Body::EarType::elf4:
-				player.body.earType = Player::Body::EarType::elf3;
-				break;
-			case Player::Body::EarType::elf3:
-				player.body.earType = Player::Body::EarType::elf2;
-				break;
-			case Player::Body::EarType::elf2:
-				player.body.earType = Player::Body::EarType::elf1;
-				break;
-			case Player::Body::EarType::elf1:
-				player.body.earType = Player::Body::EarType::cat2;
-				break;
-			case Player::Body::EarType::cat2:
-				player.body.earType = Player::Body::EarType::cat1;
-				break;
-			case Player::Body::EarType::cat1:
-				player.body.earType = Player::Body::EarType::aquatic;
-				break;
-			}
-
-
-
-	oid Menu::changeEyeType(Player & player, bool increment)
-
-		if (increment)
-		{
-			switch (player.body.eyeType)
-			{
-			case Player::Body::EyeType::eye1:
-				player.body.eyeType = Player::Body::EyeType::eye2;
-				break;
-			case Player::Body::EyeType::eye2:
-				player.body.eyeType = Player::Body::EyeType::eye3;
-				break;
-			case Player::Body::EyeType::eye3:
-				player.body.eyeType = Player::Body::EyeType::eye4;
-				break;
-			case Player::Body::EyeType::eye4:
-				player.body.eyeType = Player::Body::EyeType::eye5;
-				break;
-			case Player::Body::EyeType::eye5:
-				player.body.eyeType = Player::Body::EyeType::eye6;
-				break;
-			case Player::Body::EyeType::eye6:
-				player.body.eyeType = Player::Body::EyeType::eye7;
-				break;
-			case Player::Body::EyeType::eye7:
-				player.body.eyeType = Player::Body::EyeType::eye8;
-				break;
-			case Player::Body::EyeType::eye8:
-				player.body.eyeType = Player::Body::EyeType::eye9;
-				break;
-			case Player::Body::EyeType::eye9:
-				player.body.eyeType = Player::Body::EyeType::eye10;
-				break;
-			case Player::Body::EyeType::eye10:
-				player.body.eyeType = Player::Body::EyeType::eye11;
-				break;
-			case Player::Body::EyeType::eye11:
-				player.body.eyeType = Player::Body::EyeType::eye12;
-				break;
-			case Player::Body::EyeType::eye12:
-				player.body.eyeType = Player::Body::EyeType::eye13;
-				break;
-			case Player::Body::EyeType::eye13:
-				player.body.eyeType = Player::Body::EyeType::eye1;
-				break;
-			}
-		}
-		else
-			switch (player.body.eyeType)
-			{
-			case Player::Body::EyeType::eye13:
-				player.body.eyeType = Player::Body::EyeType::eye12;
-				break;
-			case Player::Body::EyeType::eye12:
-				player.body.eyeType = Player::Body::EyeType::eye11;
-				break;
-			case Player::Body::EyeType::eye11:
-				player.body.eyeType = Player::Body::EyeType::eye10;
-				break;
-			case Player::Body::EyeType::eye10:
-				player.body.eyeType = Player::Body::EyeType::eye9;
-				break;
-			case Player::Body::EyeType::eye9:
-				player.body.eyeType = Player::Body::EyeType::eye8;
-				break;
-			case Player::Body::EyeType::eye8:
-				player.body.eyeType = Player::Body::EyeType::eye7;
-				break;
-			case Player::Body::EyeType::eye7:
-				player.body.eyeType = Player::Body::EyeType::eye6;
-				break;
-			case Player::Body::EyeType::eye6:
-				player.body.eyeType = Player::Body::EyeType::eye5;
-				break;
-			case Player::Body::EyeType::eye5:
-				player.body.eyeType = Player::Body::EyeType::eye4;
-				break;
-			case Player::Body::EyeType::eye4:
-				player.body.eyeType = Player::Body::EyeType::eye3;
-				break;
-			case Player::Body::EyeType::eye3:
-				player.body.eyeType = Player::Body::EyeType::eye2;
-				break;
-			case Player::Body::EyeType::eye2:
-				player.body.eyeType = Player::Body::EyeType::eye1;
-				break;
-			case Player::Body::EyeType::eye1:
-				player.body.eyeType = Player::Body::EyeType::eye13;
-				break;
-			}
-
-
-
-	oid Menu::changeHairType(Player & player, bool increment)
-
-		if (increment)
-		{
-			switch (player.body.hairType)
-			{
-			case Player::Body::HairType::hair1:
-				player.body.hairType = Player::Body::HairType::hair2;
-				break;
-			case Player::Body::HairType::hair2:
-				player.body.hairType = Player::Body::HairType::hair3;
-				break;
-			case Player::Body::HairType::hair3:
-				player.body.hairType = Player::Body::HairType::hair4;
-				break;
-			case Player::Body::HairType::hair4:
-				player.body.hairType = Player::Body::HairType::hair5;
-				break;
-			case Player::Body::HairType::hair5:
-				player.body.hairType = Player::Body::HairType::hair6;
-				break;
-			case Player::Body::HairType::hair6:
-				player.body.hairType = Player::Body::HairType::hair7;
-				break;
-			case Player::Body::HairType::hair7:
-				player.body.hairType = Player::Body::HairType::hair8;
-				break;
-			case Player::Body::HairType::hair8:
-				player.body.hairType = Player::Body::HairType::hair1;
-			}
-		}
-		else
-			switch (player.body.hairType)
-			{
-			case Player::Body::HairType::hair8:
-				player.body.hairType = Player::Body::HairType::hair7;
-				break;
-			case Player::Body::HairType::hair7:
-				player.body.hairType = Player::Body::HairType::hair6;
-				break;
-			case Player::Body::HairType::hair6:
-				player.body.hairType = Player::Body::HairType::hair5;
-				break;
-			case Player::Body::HairType::hair5:
-				player.body.hairType = Player::Body::HairType::hair4;
-				break;
-			case Player::Body::HairType::hair4:
-				player.body.hairType = Player::Body::HairType::hair3;
-				break;
-			case Player::Body::HairType::hair3:
-				player.body.hairType = Player::Body::HairType::hair2;
-				break;
-			case Player::Body::HairType::hair2:
-				player.body.hairType = Player::Body::HairType::hair1;
-				break;
-			case Player::Body::HairType::hair1:
-				player.body.hairType = Player::Body::HairType::hair8;
-
-			}
-
-
-
-	oid Menu::changeBottomType(Player & player, bool increment)
-
-		if (increment)
-		{
-			if (player.PlayerClothes.leg == Player::Clothing::noBottoms)
-				player.PlayerClothes.leg = Player::Clothing::femaleBottom1;
-			else if (player.PlayerClothes.leg == Player::Clothing::femaleBottom1)
-				player.PlayerClothes.leg = Player::Clothing::femaleBottom2;
-			else if (player.PlayerClothes.leg == Player::Clothing::femaleBottom2)
-				player.PlayerClothes.leg = Player::Clothing::noBottoms;
-		}
-		else
-		{
-			if (player.PlayerClothes.leg == Player::Clothing::noBottoms)
-				player.PlayerClothes.leg = Player::Clothing::femaleBottom2;
-			else if (player.PlayerClothes.leg == Player::Clothing::femaleBottom2)
-				player.PlayerClothes.leg = Player::Clothing::femaleBottom1;
-			else if (player.PlayerClothes.leg == Player::Clothing::femaleBottom1)
-				player.PlayerClothes.leg = Player::Clothing::noBottoms;
-		}
-
-	oid Menu::changeTopType(Player & player, bool increment)
-
-		if (increment)
-		{
-			if (player.PlayerClothes.body == Player::Clothing::noTop)
-				player.PlayerClothes.body = Player::Clothing::femaleTop1;
-			else if (player.PlayerClothes.body == Player::Clothing::femaleTop1)
-				player.PlayerClothes.body = Player::Clothing::femaleTop2;
-			else if (player.PlayerClothes.body == Player::Clothing::femaleTop2)
-				player.PlayerClothes.body = Player::Clothing::noTop;
-		}
-		else
-		{
-			if (player.PlayerClothes.body == Player::Clothing::noTop)
-				player.PlayerClothes.body = Player::Clothing::femaleTop2;
-			else if (player.PlayerClothes.body == Player::Clothing::femaleTop2)
-				player.PlayerClothes.body = Player::Clothing::femaleTop1;
-			else if (player.PlayerClothes.body == Player::Clothing::femaleTop1)
-				player.PlayerClothes.body = Player::Clothing::noTop;
-		}
-		*/
 	
+void Menu::changeEarType(Player & player, bool increment)
+{
+	if (increment)
+	{
+		switch (player.body.earType)
+		{
+		case Player::Body::EarType::aquatic:
+			player.body.earType = Player::Body::EarType::cat1;
+			break;
+		case Player::Body::EarType::cat1:
+			player.body.earType = Player::Body::EarType::cat2;
+			break;
+		case Player::Body::EarType::cat2:
+			player.body.earType = Player::Body::EarType::elf1;
+			break;
+		case Player::Body::EarType::elf1:
+			player.body.earType = Player::Body::EarType::elf2;
+			break;
+		case Player::Body::EarType::elf2:
+			player.body.earType = Player::Body::EarType::elf3;
+			break;
+		case Player::Body::EarType::elf3:
+			player.body.earType = Player::Body::EarType::elf4;
+			break;
+		case Player::Body::EarType::elf4:
+			player.body.earType = Player::Body::EarType::elf5;
+			break;
+		case Player::Body::EarType::elf5:
+			player.body.earType = Player::Body::EarType::elf6;
+			break;
+		case Player::Body::EarType::elf6:
+			player.body.earType = Player::Body::EarType::human;
+			break;
+		case Player::Body::EarType::human:
+			player.body.earType = Player::Body::EarType::aquatic;
+			break;
+		}
+	}
+	else
+		switch (player.body.earType)
+		{
+		case Player::Body::EarType::aquatic:
+			player.body.earType = Player::Body::EarType::human;
+			break;
+		case Player::Body::EarType::human:
+			player.body.earType = Player::Body::EarType::elf6;
+			break;
+		case Player::Body::EarType::elf6:
+			player.body.earType = Player::Body::EarType::elf5;
+			break;
+		case Player::Body::EarType::elf5:
+			player.body.earType = Player::Body::EarType::elf4;
+			break;
+		case Player::Body::EarType::elf4:
+			player.body.earType = Player::Body::EarType::elf3;
+			break;
+		case Player::Body::EarType::elf3:
+			player.body.earType = Player::Body::EarType::elf2;
+			break;
+		case Player::Body::EarType::elf2:
+			player.body.earType = Player::Body::EarType::elf1;
+			break;
+		case Player::Body::EarType::elf1:
+			player.body.earType = Player::Body::EarType::cat2;
+			break;
+		case Player::Body::EarType::cat2:
+			player.body.earType = Player::Body::EarType::cat1;
+			break;
+		case Player::Body::EarType::cat1:
+			player.body.earType = Player::Body::EarType::aquatic;
+			break;
+		}
+}
+
+
+void Menu::changeEyeType(Player & player, bool increment)
+{
+	if (increment)
+	{
+		switch (player.body.eyeType)
+		{
+		case Player::Body::EyeType::eye1:
+			player.body.eyeType = Player::Body::EyeType::eye2;
+			break;
+		case Player::Body::EyeType::eye2:
+			player.body.eyeType = Player::Body::EyeType::eye3;
+			break;
+		case Player::Body::EyeType::eye3:
+			player.body.eyeType = Player::Body::EyeType::eye4;
+			break;
+		case Player::Body::EyeType::eye4:
+			player.body.eyeType = Player::Body::EyeType::eye5;
+			break;
+		case Player::Body::EyeType::eye5:
+			player.body.eyeType = Player::Body::EyeType::eye6;
+			break;
+		case Player::Body::EyeType::eye6:
+			player.body.eyeType = Player::Body::EyeType::eye7;
+			break;
+		case Player::Body::EyeType::eye7:
+			player.body.eyeType = Player::Body::EyeType::eye8;
+			break;
+		case Player::Body::EyeType::eye8:
+			player.body.eyeType = Player::Body::EyeType::eye9;
+			break;
+		case Player::Body::EyeType::eye9:
+			player.body.eyeType = Player::Body::EyeType::eye10;
+			break;
+		case Player::Body::EyeType::eye10:
+			player.body.eyeType = Player::Body::EyeType::eye11;
+			break;
+		case Player::Body::EyeType::eye11:
+			player.body.eyeType = Player::Body::EyeType::eye12;
+			break;
+		case Player::Body::EyeType::eye12:
+			player.body.eyeType = Player::Body::EyeType::eye13;
+			break;
+		case Player::Body::EyeType::eye13:
+			player.body.eyeType = Player::Body::EyeType::eye1;
+			break;
+		}
+	}
+	else
+		switch (player.body.eyeType)
+		{
+		case Player::Body::EyeType::eye13:
+			player.body.eyeType = Player::Body::EyeType::eye12;
+			break;
+		case Player::Body::EyeType::eye12:
+			player.body.eyeType = Player::Body::EyeType::eye11;
+			break;
+		case Player::Body::EyeType::eye11:
+			player.body.eyeType = Player::Body::EyeType::eye10;
+			break;
+		case Player::Body::EyeType::eye10:
+			player.body.eyeType = Player::Body::EyeType::eye9;
+			break;
+		case Player::Body::EyeType::eye9:
+			player.body.eyeType = Player::Body::EyeType::eye8;
+			break;
+		case Player::Body::EyeType::eye8:
+			player.body.eyeType = Player::Body::EyeType::eye7;
+			break;
+		case Player::Body::EyeType::eye7:
+			player.body.eyeType = Player::Body::EyeType::eye6;
+			break;
+		case Player::Body::EyeType::eye6:
+			player.body.eyeType = Player::Body::EyeType::eye5;
+			break;
+		case Player::Body::EyeType::eye5:
+			player.body.eyeType = Player::Body::EyeType::eye4;
+			break;
+		case Player::Body::EyeType::eye4:
+			player.body.eyeType = Player::Body::EyeType::eye3;
+			break;
+		case Player::Body::EyeType::eye3:
+			player.body.eyeType = Player::Body::EyeType::eye2;
+			break;
+		case Player::Body::EyeType::eye2:
+			player.body.eyeType = Player::Body::EyeType::eye1;
+			break;
+		case Player::Body::EyeType::eye1:
+			player.body.eyeType = Player::Body::EyeType::eye13;
+			break;
+		}
+}
+
+
+void Menu::changeHairType(Player & player, bool increment)
+{
+	if (increment)
+	{
+		switch (player.body.hairType)
+		{
+		case Player::Body::HairType::hair1:
+			player.body.hairType = Player::Body::HairType::hair2;
+			break;
+		case Player::Body::HairType::hair2:
+			player.body.hairType = Player::Body::HairType::hair3;
+			break;
+		case Player::Body::HairType::hair3:
+			player.body.hairType = Player::Body::HairType::hair4;
+			break;
+		case Player::Body::HairType::hair4:
+			player.body.hairType = Player::Body::HairType::hair5;
+			break;
+		case Player::Body::HairType::hair5:
+			player.body.hairType = Player::Body::HairType::hair6;
+			break;
+		case Player::Body::HairType::hair6:
+			player.body.hairType = Player::Body::HairType::hair7;
+			break;
+		case Player::Body::HairType::hair7:
+			player.body.hairType = Player::Body::HairType::hair8;
+			break;
+		case Player::Body::HairType::hair8:
+			player.body.hairType = Player::Body::HairType::hair1;
+		}
+	}
+	else
+		switch (player.body.hairType)
+		{
+		case Player::Body::HairType::hair8:
+			player.body.hairType = Player::Body::HairType::hair7;
+			break;
+		case Player::Body::HairType::hair7:
+			player.body.hairType = Player::Body::HairType::hair6;
+			break;
+		case Player::Body::HairType::hair6:
+			player.body.hairType = Player::Body::HairType::hair5;
+			break;
+		case Player::Body::HairType::hair5:
+			player.body.hairType = Player::Body::HairType::hair4;
+			break;
+		case Player::Body::HairType::hair4:
+			player.body.hairType = Player::Body::HairType::hair3;
+			break;
+		case Player::Body::HairType::hair3:
+			player.body.hairType = Player::Body::HairType::hair2;
+			break;
+		case Player::Body::HairType::hair2:
+			player.body.hairType = Player::Body::HairType::hair1;
+			break;
+		case Player::Body::HairType::hair1:
+			player.body.hairType = Player::Body::HairType::hair8;
+
+		}
+}
+
+
+void Menu::changeBottomType(Player& player, bool increment)
+{
+	if (increment)
+	{
+		if (player.PlayerClothes.leg == Player::Clothing::noBottoms)
+			player.PlayerClothes.leg = Player::Clothing::femaleBottom1;
+		else if (player.PlayerClothes.leg == Player::Clothing::femaleBottom1)
+			player.PlayerClothes.leg = Player::Clothing::femaleBottom2;
+		else if (player.PlayerClothes.leg == Player::Clothing::femaleBottom2)
+			player.PlayerClothes.leg = Player::Clothing::noBottoms;
+	}
+	else
+	{
+		if (player.PlayerClothes.leg == Player::Clothing::noBottoms)
+			player.PlayerClothes.leg = Player::Clothing::femaleBottom2;
+		else if (player.PlayerClothes.leg == Player::Clothing::femaleBottom2)
+			player.PlayerClothes.leg = Player::Clothing::femaleBottom1;
+		else if (player.PlayerClothes.leg == Player::Clothing::femaleBottom1)
+			player.PlayerClothes.leg = Player::Clothing::noBottoms;
+	}
+}
+
+void Menu::changeTopType(Player& player, bool increment)
+{
+	if (increment)
+	{
+		if (player.PlayerClothes.body == Player::Clothing::noTop)
+			player.PlayerClothes.body = Player::Clothing::femaleTop1;
+		else if (player.PlayerClothes.body == Player::Clothing::femaleTop1)
+			player.PlayerClothes.body = Player::Clothing::femaleTop2;
+		else if (player.PlayerClothes.body == Player::Clothing::femaleTop2)
+			player.PlayerClothes.body = Player::Clothing::noTop;
+	}
+	else
+	{
+		if (player.PlayerClothes.body == Player::Clothing::noTop)
+			player.PlayerClothes.body = Player::Clothing::femaleTop2;
+		else if (player.PlayerClothes.body == Player::Clothing::femaleTop2)
+			player.PlayerClothes.body = Player::Clothing::femaleTop1;
+		else if (player.PlayerClothes.body == Player::Clothing::femaleTop1)
+			player.PlayerClothes.body = Player::Clothing::noTop;
+	}
+}

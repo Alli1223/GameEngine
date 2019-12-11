@@ -11,10 +11,50 @@ ColourSlider::~ColourSlider()
 {
 }
 
-
-void ColourSlider::Render(SDL_Renderer* renderer)
+void ColourSlider::Setup() 
 {
-	/*
+	setup = false;
+	HueSlider = ResourceManager::LoadTexture("Resources\\Sprites\\GUI\\HueSlider.png");
+	LuminanceSlider = ResourceManager::LoadTexture("Resources\\Sprites\\GUI\\LuminanceSlider.png");
+	SaturationSlider = ResourceManager::LoadTexture("Resources\\Sprites\\GUI\\SaturationSlider.png");
+	sliderIcon = ResourceManager::LoadTexture("Resources\\Sprites\\GUI\\SliderIndicator.png");
+
+	// HUE
+	IncrementHue.setPosition(getX() + getWidth() / 2 + buttonSize, getY() - 50);
+	IncrementHue.setSize(buttonSize, buttonSize);
+	IncrementHue.Background = ResourceManager::LoadTexture("Resources\\UI\\Buttons\\R_Button.png");
+
+	DecrementHue.setPosition(getX() - getWidth() / 2 - buttonSize, getY() - 50);
+	DecrementHue.setSize(buttonSize, buttonSize);
+	DecrementHue.Background = ResourceManager::LoadTexture("Resources\\UI\\Buttons\\L_Button.png");
+
+	// Saturation
+	IncrementSaturation.setPosition({ getX() + getWidth() / 3.6 / 2 + buttonSize, getY() });
+	IncrementSaturation.setSize(buttonSize, buttonSize);
+	IncrementSaturation.Background = ResourceManager::LoadTexture("Resources\\UI\\Buttons\\R_Button.png");
+
+	DecrementSaturation.setPosition({ getX() - getWidth() / 3.6 / 2 - buttonSize, getY() });
+	DecrementSaturation.setSize(buttonSize, buttonSize);
+	DecrementSaturation.Background = ResourceManager::LoadTexture("Resources\\UI\\Buttons\\L_Button.png");
+
+	// Luminance
+	IncrementLuminance.setPosition({ getX() + getWidth() / 3.6 / 2 + buttonSize, getY() + 50 });
+	IncrementLuminance.setSize(buttonSize, buttonSize);
+	IncrementLuminance.Background = ResourceManager::LoadTexture("Resources\\UI\\Buttons\\R_Button.png");
+
+	DecrementLuminance.setPosition({ getX() - getWidth() / 3.6 / 2 - buttonSize, getY() + 50 });
+	DecrementLuminance.setSize(buttonSize, buttonSize);
+	DecrementLuminance.Background = ResourceManager::LoadTexture("Resources\\UI\\Buttons\\L_Button.png");
+
+
+
+}
+
+
+void ColourSlider::Render(GL_Renderer& renderer)
+{
+	if(setup)
+		Setup();
 	bool useOffset = false;
 	if (SDL_GetMouseState(&x, &y) & SDL_BUTTON(SDL_BUTTON_LEFT))
 	{
@@ -32,28 +72,45 @@ void ColourSlider::Render(SDL_Renderer* renderer)
 		}
 	}
 
-	// HUE
-	DecrementHue.render(renderer, getX() - getWidth() / 2 - buttonSize, getY() - 50, buttonSize, buttonSize);
-	IncrementHue.render(renderer, getX() + getWidth() / 2 + buttonSize, getY() - 50, buttonSize, buttonSize);
-	HueSlider.render(renderer, getX(), getY() - 50, getWidth(), getHeight() / 3);
-	if(!useOffset)
-		sliderIcon.render(renderer, getX() + hueValue - 180, getY() - 50, sliderWidth, getHeight() / 3);
-	else
-		sliderIcon.render(renderer, getX() + hueValue, getY() - 50, sliderWidth, getHeight() / 3);
+	// Buttons
 
-	// Saturation
-	DecrementSaturation.render(renderer, getX() - getWidth() / 3.6 / 2 - buttonSize, getY(), buttonSize, buttonSize);
-	IncrementSaturation.render(renderer, getX() + getWidth() / 3.6 / 2 + buttonSize, getY(), buttonSize, buttonSize);
-	SaturationSlider.alterTextureColour(colour);
-	SaturationSlider.render(renderer, getX(), getY(), getWidth() / 3.6, getHeight() / 3);
-	sliderIcon.render(renderer, getX() - 50 + saturationValue, getY(), sliderWidth, getHeight() / 3);
+	DecrementHue.Render(renderer);
+	IncrementHue.Render(renderer);
+
+	DecrementSaturation.Render(renderer);
+	IncrementSaturation.Render(renderer);
+
+	DecrementLuminance.Render(renderer);
+	IncrementLuminance.Render(renderer);
+
+	// Sliders
+
+	glm::vec2 hueposition = { getX(), getY() - 50 };
+	glm::vec2 huesize = { getWidth(), getHeight() / 3 };
+	renderer.RenderGUI(HueSlider, hueposition, huesize, 0.0f, 0.5f, colour, flipSprite);
+
+	glm::vec2 saturationposition = { getX(), getY() - 50 };
+	glm::vec2 saturationsize = { getWidth(), getHeight() / 3 };
+	renderer.RenderGUI(SaturationSlider, saturationposition, saturationsize, 0.0f, 0.5f, colour, flipSprite);
+
+	glm::vec2 ssliderIconposition = { getX() - 50 + saturationValue, getY() };
+	glm::vec2 ssliderIconsize = { sliderWidth, getHeight() / 3 };
+	renderer.RenderGUI(sliderIcon, ssliderIconposition, ssliderIconsize, 0.0f, 0.5f, colour, flipSprite);
+	//if(!useOffset)
+	//	sliderIcon.render(renderer, getX() + hueValue - 180, getY() - 50, sliderWidth, getHeight() / 3);
+	//else
+	//	sliderIcon.render(renderer, getX() + hueValue, getY() - 50, sliderWidth, getHeight() / 3);
+
+
+	renderer.RenderGUI(HueSlider, hueposition, huesize, 0.0f, 0.5f, colour, flipSprite);
 
 	// Luminance
-	DecrementLuminance.render(renderer, getX() - getWidth() / 3.6 / 2 - buttonSize, getY() + 50, buttonSize, buttonSize);
-	IncrementLuminance.render(renderer, getX() + getWidth() / 3.6 / 2 + buttonSize, getY() + 50, buttonSize, buttonSize);
+	glm::vec2 lsliderIconposition = { getX() - 50 + LuminanceValue, getY() + 50 };
+	glm::vec2 lsliderIconsize = { sliderWidth, getHeight() / 3 };
+	renderer.RenderGUI(sliderIcon, ssliderIconposition, lsliderIconsize, 0.0f, 0.5f, colour, flipSprite);
 	//LuminanceSlider.alterTextureColour(colour);
-	LuminanceSlider.render(renderer, getX(), getY() + 50, getWidth() / 3.6, getHeight() / 3);
-	sliderIcon.render(renderer, getX() - 50 + LuminanceValue, getY() + 50, sliderWidth, getHeight() / 3);
+	//LuminanceSlider.render(renderer, getX(), getY() + 50, getWidth() / 3.6, getHeight() / 3);
+	//sliderIcon.render(renderer, getX() - 50 + LuminanceValue, getY() + 50, sliderWidth, getHeight() / 3);
 
 	
 	// Hue Buttons
@@ -85,7 +142,7 @@ void ColourSlider::Render(SDL_Renderer* renderer)
 	hsl.Luminance = LuminanceValue;
 
 	colour = hsl.TurnToRGB();
-	*/
+	
 }
 
 

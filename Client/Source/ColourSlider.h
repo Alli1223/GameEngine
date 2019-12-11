@@ -12,8 +12,10 @@ public:
 	//! Destructor
 	~ColourSlider();
 
+	void Setup();
+
 	//! Render the colour slider
-	void Render(SDL_Renderer* renderer);
+	void Render(GL_Renderer& renderer);
 
 	//! Get and set default colours
 	vec3 getColour() { return colour; }
@@ -32,7 +34,7 @@ public:
 private:
 	//! Whether the slider is visiable
 	bool enabled = false;
-
+	bool setup = true;
 	// ! Default values
 	int hueValue = 180;
 	int saturationValue = 50;
@@ -56,10 +58,12 @@ private:
 	const std::string GUILocations = "Resources\\Sprites\\GUI\\";
 
 	//! Textures and buttons for slider
-	//Texture HueSlider;
-	//Texture SaturationSlider;
-	//Texture LuminanceSlider;
-	//Texture sliderIcon;
+	
+	Texture2D HueSlider;
+	Texture2D SaturationSlider;
+	Texture2D LuminanceSlider;
+	Texture2D sliderIcon;
+
 	Button IncrementHue;
 	Button DecrementHue;
 	Button IncrementSaturation;
