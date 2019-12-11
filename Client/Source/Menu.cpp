@@ -215,25 +215,25 @@ void Menu::CharacterCustomisationMenu(GameSettings& gameSettings, Camera& camera
 	Button maleGender("", { playerCreation.getX() - leftPosition2, playerCreation.getY() - 100 }, "Resources\\UI\\Buttons\\MaleButton.png", { 50,50 }, buttonColour, { 255,255,255 });
 	// Colours
 	//Skin Colour
-	Button ChangeSkinColourL("", { playerCreation.getX() - leftPosition1, playerCreation.getY() }, "Resources\\UI\\Buttons\\L_Button.png", { 50,50 }, buttonColour, { 255,255,255 });
-	Button ChangeSkinColourR("", { playerCreation.getX() - leftPosition2, playerCreation.getY() }, "Resources\\UI\\Buttons\\R_Button.png", { 50,50 }, buttonColour, { 255,255,255 });
-	//Hair Colour
-	Button ChangeHairColourL("", { playerCreation.getX() - leftPosition1, playerCreation.getY() + 50 }, "Resources\\UI\\Buttons\\L_Button.png", { 50,50 }, buttonColour, { 255,255,255 });
-	Button ChangeHairColourR("", { playerCreation.getX() - leftPosition2, playerCreation.getY() + 50 }, "Resources\\UI\\Buttons\\R_Button.png", { 50,50 }, buttonColour, { 255,255,255 });
-	//Eye Colour
-	Button ChangeEyeColourL("", { playerCreation.getX() - leftPosition1, playerCreation.getY() + 100 }, "Resources\\UI\\Buttons\\L_Button.png", { 50,50 }, buttonColour, { 255,255,255 });
-	Button ChangeEyeColourR("", { playerCreation.getX() - leftPosition2, playerCreation.getY() + 100 }, "Resources\\UI\\Buttons\\R_Button.png", { 50,50 }, buttonColour, { 255,255,255 });
+	//Button ChangeSkinColourL("", { playerCreation.getX() - leftPosition1, playerCreation.getY() }, "Resources\\UI\\Buttons\\L_Button.png", { 50,50 }, buttonColour, { 255,255,255 });
+	//Button ChangeSkinColourR("", { playerCreation.getX() - leftPosition2, playerCreation.getY() }, "Resources\\UI\\Buttons\\R_Button.png", { 50,50 }, buttonColour, { 255,255,255 });
+	////Hair Colour
+	//Button ChangeHairColourL("", { playerCreation.getX() - leftPosition1, playerCreation.getY() + 50 }, "Resources\\UI\\Buttons\\L_Button.png", { 50,50 }, buttonColour, { 255,255,255 });
+	//Button ChangeHairColourR("", { playerCreation.getX() - leftPosition2, playerCreation.getY() + 50 }, "Resources\\UI\\Buttons\\R_Button.png", { 50,50 }, buttonColour, { 255,255,255 });
+	////Eye Colour
+	//Button ChangeEyeColourL("", { playerCreation.getX() - leftPosition1, playerCreation.getY() + 100 }, "Resources\\UI\\Buttons\\L_Button.png", { 50,50 }, buttonColour, { 255,255,255 });
+	//Button ChangeEyeColourR("", { playerCreation.getX() - leftPosition2, playerCreation.getY() + 100 }, "Resources\\UI\\Buttons\\R_Button.png", { 50,50 }, buttonColour, { 255,255,255 });
 
 	//Types
 	//Hair Type
-	Button ChangeHairTypeL("", { playerCreation.getX() - leftPosition1, playerCreation.getY() + 150 }, "Resources\\UI\\Buttons\\L_Button.png", { 50,50 }, buttonColour, { 255,255,255 });
-	Button ChangeHairTypeR("", { playerCreation.getX() - leftPosition2, playerCreation.getY() + 150 }, "Resources\\UI\\Buttons\\R_Button.png", { 50,50 }, buttonColour, { 255,255,255 });
+	Button ChangeHairTypeL("", { playerCreation.getX() - leftPosition1, playerCreation.getY() }, "Resources\\UI\\Buttons\\L_Button.png", { 50,50 }, buttonColour, { 255,255,255 });
+	Button ChangeHairTypeR("", { playerCreation.getX() - leftPosition2, playerCreation.getY() }, "Resources\\UI\\Buttons\\R_Button.png", { 50,50 }, buttonColour, { 255,255,255 });
 	//Ear
-	Button ChangeEarTypeL("", { playerCreation.getX() - leftPosition1, playerCreation.getY() + 150 }, "Resources\\UI\\Buttons\\L_Button.png", { 50,50 }, buttonColour, { 255,255,255 });
-	Button ChangeEarTypeR("", { playerCreation.getX() - leftPosition2, playerCreation.getY() + 150 }, "Resources\\UI\\Buttons\\R_Button.png", { 50,50 }, buttonColour, { 255,255,255 });
+	Button ChangeEarTypeL("", { playerCreation.getX() - leftPosition1, playerCreation.getY() + 50 }, "Resources\\UI\\Buttons\\L_Button.png", { 50,50 }, buttonColour, { 255,255,255 });
+	Button ChangeEarTypeR("", { playerCreation.getX() - leftPosition2, playerCreation.getY() + 50 }, "Resources\\UI\\Buttons\\R_Button.png", { 50,50 }, buttonColour, { 255,255,255 });
 	//Eye
-	Button ChangeEyeTypeL("", { playerCreation.getX() - leftPosition1, playerCreation.getY() + 150 }, "Resources\\UI\\Buttons\\L_Button.png", { 50,50 }, buttonColour, { 255,255,255 });
-	Button ChangeEyeTypeR("", { playerCreation.getX() - leftPosition2, playerCreation.getY() + 150 }, "Resources\\UI\\Buttons\\R_Button.png", { 50,50 }, buttonColour, { 255,255,255 });
+	Button ChangeEyeTypeL("", { playerCreation.getX() - leftPosition1, playerCreation.getY() + 100 }, "Resources\\UI\\Buttons\\L_Button.png", { 50,50 }, buttonColour, { 255,255,255 });
+	Button ChangeEyeTypeR("", { playerCreation.getX() - leftPosition2, playerCreation.getY() + 100 }, "Resources\\UI\\Buttons\\R_Button.png", { 50,50 }, buttonColour, { 255,255,255 });
 
 
 	// Colours
@@ -290,12 +290,12 @@ void Menu::CharacterCustomisationMenu(GameSettings& gameSettings, Camera& camera
 		confirm.Render(renderer);
 		femaleGender.Render(renderer);
 		maleGender.Render(renderer);
-		ChangeSkinColourL.Render(renderer);
-		ChangeSkinColourR.Render(renderer);
-		ChangeHairColourL.Render(renderer);
-		ChangeHairColourR.Render(renderer);
-		ChangeEyeColourL.Render(renderer);
-		ChangeEyeColourR.Render(renderer);
+		//ChangeSkinColourL.Render(renderer);
+		//ChangeSkinColourR.Render(renderer);
+		//ChangeHairColourL.Render(renderer);
+		//ChangeHairColourR.Render(renderer);
+		//ChangeEyeColourL.Render(renderer);
+		//ChangeEyeColourR.Render(renderer);
 		ChangeHairTypeL.Render(renderer);
 		ChangeHairTypeR.Render(renderer);
 		ChangeEarTypeL.Render(renderer);

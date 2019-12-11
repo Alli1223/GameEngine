@@ -42,6 +42,7 @@ Button::~Button()
 bool Button::isPressed()
 {
 	UpdateInfo();
+
 	if (isActivated)
 	{
 		isActivated = false;
@@ -49,6 +50,7 @@ bool Button::isPressed()
 	}
 	else
 		return false;
+	
 }
 
 bool Button::isHovered()
@@ -65,9 +67,14 @@ void Button::UpdateInfo()
 	SDL_GetMouseState(&tx, &ty);
 	if (SDL_GetTicks() / 1000.0 > timeButtonWasPressed + buttonTimeout)
 	{
+		ButtonPressed();
 		isActivated = false;
 		timeout = false;
 		timeButtonWasPressed = 0;
+
+		if (!runOnceUpdate)
+			setColour(oldColour);
+		runOnceUpdate = true;
 	}
 
 	if (tx > getX() - (getWidth() / 2) && tx < getX() + (getWidth() / 2) && ty > getY() - (getHeight() / 2) && ty < getY() + (getHeight() / 2))
@@ -80,6 +87,7 @@ void Button::UpdateInfo()
 			isActivated = true;
 			timeButtonWasPressed = SDL_GetTicks() / 1000.0;
 			timeout = true;
+			ButtonPressed();
 		}
 	}
 	else
@@ -107,12 +115,7 @@ void Button::Render(GL_Renderer& renderer)
 	{
 		ButtonPressed();
 	}
-	else
-	{
-		if(!runOnceUpdate)
-			setColour(oldColour);
-		runOnceUpdate = true;
-	}
+	
 	
 	// If the button has text, render it in the center of the button
 	renderer.RenderGUI(this->Background, this->position, this->size, this->rotation, this->transparency, this->colour, this->flipSprite);

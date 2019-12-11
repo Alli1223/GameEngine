@@ -22,28 +22,34 @@ void ColourSlider::Setup()
 	// HUE
 	IncrementHue.setPosition(getX() + getWidth() / 2 + buttonSize, getY() - 50);
 	IncrementHue.setSize(buttonSize, buttonSize);
+	IncrementHue.setColour(buttonColour);
 	IncrementHue.Background = ResourceManager::LoadTexture("Resources\\UI\\Buttons\\R_Button.png");
 
 	DecrementHue.setPosition(getX() - getWidth() / 2 - buttonSize, getY() - 50);
 	DecrementHue.setSize(buttonSize, buttonSize);
+	DecrementHue.setColour(buttonColour);
 	DecrementHue.Background = ResourceManager::LoadTexture("Resources\\UI\\Buttons\\L_Button.png");
 
 	// Saturation
 	IncrementSaturation.setPosition({ getX() + getWidth() / 3.6 / 2 + buttonSize, getY() });
 	IncrementSaturation.setSize(buttonSize, buttonSize);
+	IncrementSaturation.setColour(buttonColour);
 	IncrementSaturation.Background = ResourceManager::LoadTexture("Resources\\UI\\Buttons\\R_Button.png");
 
 	DecrementSaturation.setPosition({ getX() - getWidth() / 3.6 / 2 - buttonSize, getY() });
 	DecrementSaturation.setSize(buttonSize, buttonSize);
+	DecrementSaturation.setColour(buttonColour);
 	DecrementSaturation.Background = ResourceManager::LoadTexture("Resources\\UI\\Buttons\\L_Button.png");
 
 	// Luminance
 	IncrementLuminance.setPosition({ getX() + getWidth() / 3.6 / 2 + buttonSize, getY() + 50 });
 	IncrementLuminance.setSize(buttonSize, buttonSize);
+	IncrementLuminance.setColour(buttonColour);
 	IncrementLuminance.Background = ResourceManager::LoadTexture("Resources\\UI\\Buttons\\R_Button.png");
 
 	DecrementLuminance.setPosition({ getX() - getWidth() / 3.6 / 2 - buttonSize, getY() + 50 });
 	DecrementLuminance.setSize(buttonSize, buttonSize);
+	DecrementLuminance.setColour(buttonColour);
 	DecrementLuminance.Background = ResourceManager::LoadTexture("Resources\\UI\\Buttons\\L_Button.png");
 
 
@@ -73,7 +79,6 @@ void ColourSlider::Render(GL_Renderer& renderer)
 	}
 
 	// Buttons
-
 	DecrementHue.Render(renderer);
 	IncrementHue.Render(renderer);
 
@@ -83,34 +88,36 @@ void ColourSlider::Render(GL_Renderer& renderer)
 	DecrementLuminance.Render(renderer);
 	IncrementLuminance.Render(renderer);
 
-	// Sliders
 
+	// Hue slider
 	glm::vec2 hueposition = { getX(), getY() - 50 };
 	glm::vec2 huesize = { getWidth(), getHeight() / 3 };
-	renderer.RenderGUI(HueSlider, hueposition, huesize, 0.0f, 0.5f, colour, flipSprite);
+	renderer.RenderGUI(HueSlider, hueposition, huesize, 0.0f, 0.5f, buttonColour, flipSprite);
 
-	glm::vec2 saturationposition = { getX(), getY() - 50 };
-	glm::vec2 saturationsize = { getWidth(), getHeight() / 3 };
-	renderer.RenderGUI(SaturationSlider, saturationposition, saturationsize, 0.0f, 0.5f, colour, flipSprite);
+	// Luminance SLider Icon
+	glm::vec2 HueIconposition = { getX() - 50 + LuminanceValue, getY() + 50 };
+	glm::vec2 HueIconsize = { sliderWidth, getHeight() / 3 };
+	renderer.RenderGUI(sliderIcon, HueIconposition, HueIconsize, 0.0f, 0.5f, colour / 255.0f, flipSprite);
 
+	// Saturation slider
+	glm::vec2 saturationposition = { getX(), getY() };
+	glm::vec2 saturationsize = { getWidth() / 3.6, getHeight() / 3};
+	renderer.RenderGUI(SaturationSlider, saturationposition, saturationsize, 0.0f, 1.0f, colour, flipSprite);
+
+	// Saturation slider Icon
 	glm::vec2 ssliderIconposition = { getX() - 50 + saturationValue, getY() };
 	glm::vec2 ssliderIconsize = { sliderWidth, getHeight() / 3 };
-	renderer.RenderGUI(sliderIcon, ssliderIconposition, ssliderIconsize, 0.0f, 0.5f, colour, flipSprite);
-	//if(!useOffset)
-	//	sliderIcon.render(renderer, getX() + hueValue - 180, getY() - 50, sliderWidth, getHeight() / 3);
-	//else
-	//	sliderIcon.render(renderer, getX() + hueValue, getY() - 50, sliderWidth, getHeight() / 3);
+	renderer.RenderGUI(sliderIcon, ssliderIconposition, ssliderIconsize, 0.0f, 0.5f, colour , flipSprite);
 
+	// Luminance Slider
+	glm::vec2 lposition = { getX(), getY() + 50 };
+	glm::vec2 lsize = { getWidth() / 3.6, getHeight() / 3 };
+	renderer.RenderGUI(LuminanceSlider, lposition, lsize, 0.0f, 0.5f, colour / 255.0f, flipSprite);
 
-	renderer.RenderGUI(HueSlider, hueposition, huesize, 0.0f, 0.5f, colour, flipSprite);
-
-	// Luminance
+	// Luminance SLider Icon
 	glm::vec2 lsliderIconposition = { getX() - 50 + LuminanceValue, getY() + 50 };
 	glm::vec2 lsliderIconsize = { sliderWidth, getHeight() / 3 };
-	renderer.RenderGUI(sliderIcon, ssliderIconposition, lsliderIconsize, 0.0f, 0.5f, colour, flipSprite);
-	//LuminanceSlider.alterTextureColour(colour);
-	//LuminanceSlider.render(renderer, getX(), getY() + 50, getWidth() / 3.6, getHeight() / 3);
-	//sliderIcon.render(renderer, getX() - 50 + LuminanceValue, getY() + 50, sliderWidth, getHeight() / 3);
+	renderer.RenderGUI(sliderIcon, ssliderIconposition, lsliderIconsize, 0.0f, 0.5f, colour / 255.0f, flipSprite);
 
 	
 	// Hue Buttons

@@ -42,7 +42,7 @@ private:
 	//! Buttons text
 	std::string text;
 	double timeButtonWasPressed = 0.0;
-	double buttonTimeout = 0.3;
+	double buttonTimeout = 0.15;
 	//! mouse position
 	int tx, ty;
 	//! if the button is active

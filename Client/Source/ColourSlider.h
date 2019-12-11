@@ -45,6 +45,7 @@ private:
 
 	//! Colour in RGB
 	vec3 colour{ 255,255,255 };
+	glm::vec3 buttonColour = { 200,150,100 };
 
 	//! slider increment speed
 	const int incrementSpeed = 5;
