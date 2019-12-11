@@ -308,7 +308,7 @@ void Menu::CharacterCustomisationMenu(GameSettings& gameSettings, Camera& camera
 		ChangeEyeColour.Render(renderer);
 		ChangeHairColour.Render(renderer);
 
-		playerCreation.Render(renderer);
+;
 
 		changeTopL.Render(renderer);
 		changeTopR.Render(renderer);
@@ -318,6 +318,9 @@ void Menu::CharacterCustomisationMenu(GameSettings& gameSettings, Camera& camera
 
 		ChangeTopColour.Render(renderer);
 		ChangeBottomColour.Render(renderer);
+
+
+		playerCreation.Render(renderer);
 
 
 		if (back.isPressed())
@@ -581,16 +584,16 @@ void Menu::CharacterCustomisationMenu(GameSettings& gameSettings, Camera& camera
 
 	//Only copy over the customsiation stuff
 	//playerCreation.setSize(100);
-		player.PlayerClothes = playerCreation.PlayerClothes;
-		player.setHairColour(playerCreation.gethairColour().r, playerCreation.gethairColour().g, playerCreation.gethairColour().b);
-		player.setEyeColour(playerCreation.getEyeColour().r, playerCreation.getEyeColour().g, playerCreation.getEyeColour().b);
-		player.setJacketColour(playerCreation.getJacketColour().r, playerCreation.getJacketColour().g, playerCreation.getJacketColour().b);
-		player.setJeansColour(playerCreation.getJeansColour().r, playerCreation.getJeansColour().g, playerCreation.getJeansColour().b);
-		player.body = playerCreation.body;
-		player.setBodyColour(playerCreation.getBodyColour().r, playerCreation.getBodyColour().g, playerCreation.getBodyColour().b);
+
 
 	}
-
+	player.PlayerClothes = playerCreation.PlayerClothes;
+	player.setHairColour(playerCreation.gethairColour().r, playerCreation.gethairColour().g, playerCreation.gethairColour().b);
+	player.setEyeColour(playerCreation.getEyeColour().r, playerCreation.getEyeColour().g, playerCreation.getEyeColour().b);
+	player.setJacketColour(playerCreation.getJacketColour().r, playerCreation.getJacketColour().g, playerCreation.getJacketColour().b);
+	player.setJeansColour(playerCreation.getJeansColour().r, playerCreation.getJeansColour().g, playerCreation.getJeansColour().b);
+	player.body = playerCreation.body;
+	player.setBodyColour(playerCreation.getBodyColour().r, playerCreation.getBodyColour().g, playerCreation.getBodyColour().b);
 }
 
 

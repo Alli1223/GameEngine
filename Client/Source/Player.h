@@ -28,9 +28,6 @@ public:
 	glm::vec2 screenCenter;
 	int xOffset, yOffset;
 
-	//! Player clothes
-	Clothing PlayerClothes;
-
 	//! @Overloaded
 	//Gives an object the player collided with 
 	void collidedWith(CollisionIdentifier& objectIdentity);
