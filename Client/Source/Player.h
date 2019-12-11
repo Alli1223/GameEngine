@@ -80,6 +80,9 @@ public:
 	float getRunSpeed() { return runSpeed; }
 	float getWalkSpeed() { return walkSpeed; }
 
+	int getRenderLayer() { return renderLayer; }
+	int setRenderLayer(int newLayer) { return renderLayer = newLayer; }
+
 	//! Player Name
 	std::string playerName;
 private:

@@ -223,12 +223,11 @@ void Player::Move(glm::vec2 newPos)
 
 void Player::RenderPlayer(GL_Renderer& renderer, Camera& camera)
 {
-	
-	//getBody()->SetLinearVelocity(b2Vec2(0.0f, 0.0f));
-	this->setPosition({ this->getBody()->GetPosition().x *  physicsScaleUp,this->getBody()->GetPosition().y *  physicsScaleUp });
-	//std::cout << "Player: " << this->getBody()->GetPosition().x * xMeters * 2000.0f << " _ " << this->getBody()->GetPosition().y * yMeters * 2000.0f << std::endl;
-	//std::cout << "Player: " << this->getX() << " _ " << this->getY() << std::endl;
-	getBody()->SetLinearDamping(1000.0f);
+	if (this->getBody() != nullptr)
+	{
+		this->setPosition({ this->getBody()->GetPosition().x * physicsScaleUp,this->getBody()->GetPosition().y * physicsScaleUp });
+		getBody()->SetLinearDamping(1000.0f);
+	}
 	//this->getBody()->SetTransform(b2Vec2(getBody()->GetPosition().x, getBody()->GetPosition().y), this->getRotation());
 	if (isPlayerMoving())
 	{

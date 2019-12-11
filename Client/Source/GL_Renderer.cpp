@@ -189,15 +189,6 @@ void GL_Renderer::RenderText(std::string text, glm::vec2 position, glm::vec2 siz
 				}
 		}
 
-
-
-		//if (position.x > posSize.x)
-		//{
-		//	position.x -= size.x;
-		//	position.y += (ch.Size.y * 2) * textSize.y;
-		//}
-		//
-
 		GLfloat xpos = position.x + ch.Bearing.x * textSize.x;
 		GLfloat ypos = position.y - ch.Bearing.y * textSize.y;
 		

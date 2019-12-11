@@ -174,12 +174,33 @@ void Menu::MainMenu(GameSettings& gameSettings, World& level, Camera& camera, Pl
 
 void Menu::CharacterCustomisationMenu(GameSettings& gameSettings, Camera& camera, Player& player, GL_Renderer& renderer, World& level)
 {
+
+
+	Player playerCreation = gameSettings.getPlayerFromSave();
+
+	// Load player from file
+	playerCreation = gameSettings.getPlayerFromSave();
+	playerCreation.setSize(gameSettings.WINDOW_WIDTH / 5, gameSettings.WINDOW_WIDTH / 5);
+	playerCreation.setPosition(gameSettings.WINDOW_WIDTH / 2, gameSettings.WINDOW_HEIGHT / 2);
+	playerCreation.PlayerClothes.body = Player::Clothing::femaleTop1;
+	playerCreation.PlayerClothes.leg = Player::Clothing::femaleBottom2;
+	playerCreation.setRenderLayer(0);
+
+	/////// Organic customisation buttons //////
+
+	int buttonSize = 50;
+	int bSize2 = buttonSize * 2;
+	int ObuttonsX = playerCreation.getX() - playerCreation.getSize().x;
+	int ObuttonsY = playerCreation.getY() - buttonSize * 4;
+	int CbuttonsX = playerCreation.getX() + playerCreation.getSize().x + bSize2;
+	int CbuttonsY = playerCreation.getY() - buttonSize * 4;
+
+	// Create buttons
 	Button back("Back", { 100,100 }, "Resources\\UI\\Buttons\\NoButton.png", { 100,100 }, { 200,100,50 }, { 255,255,255 });
+	Button singlePlayer("", { camera.windowSize.x - 200, camera.windowSize.y / 2 + 400 }, "Resources\\UI\\Buttons\\Confirm.png", { 100,100 }, { 200,100,50 }, { 255,255,255 });
+	Button loadSave("Load Save", { camera.windowSize.x / 2, camera.windowSize.y / 2 + (camera.windowSize.y / 4) }, "Resources\\UI\\Buttons\\Plain_Button.png", { 200,50 }, { 200,100,50 }, { 255,255,255 });
 
-	Button singlePlayer("", { camera.windowSize.x / 2, camera.windowSize.y / 2  }, "Resources\\UI\\Buttons\\Confirm.png", { 100,100 }, { 200,100,50 }, { 255,255,255 });
 
-	Button loadSave("Load Save");
-	Button rotatePlayer("Rotate");
 	// LEFT SIDE (ORGANIC)
 	// Gender
 	// Skin colour
@@ -187,22 +208,24 @@ void Menu::CharacterCustomisationMenu(GameSettings& gameSettings, Camera& camera
 	// Eye Colour
 
 	// Gender
-	Button femaleGender("", "FemaleButton");
-	Button maleGender("", "MaleButton");
+	Button femaleGender("", { playerCreation.getX() - 200, playerCreation.getY() - 100 }, "Resources\\UI\\Buttons\\FemaleButton.png", { 50,50 }, { 200,100,50 }, { 255,255,255 });
+	Button maleGender("", { playerCreation.getX() - 100, playerCreation.getY() - 100 }, "Resources\\UI\\Buttons\\MaleButton.png", { 50,50 }, { 200,100,50 }, { 255,255,255 });
 	//Skin Colour
-	Button ChangeSkinColourL("", "LButton");
-	Button ChangeSkinColourR("", "RButton");
+	Button ChangeSkinColourL("", { playerCreation.getX() - 200, playerCreation.getY() }, "Resources\\UI\\Buttons\\L_Button.png", { 50,50 }, { 200,100,50 }, { 255,255,255 });
+	Button ChangeSkinColourR("", { playerCreation.getX() - 100, playerCreation.getY() }, "Resources\\UI\\Buttons\\R_Button.png", { 50,50 }, { 200,100,50 }, { 255,255,255 });
 	//Hair
-	Button ChangeHairTypeL("", "L_Button");
-	Button ChangeHairTypeR("", "R_Button");
+	Button ChangeHairColourL("", { playerCreation.getX() - 200, playerCreation.getY() + 100 }, "Resources\\UI\\Buttons\\L_Button.png", { 50,50 }, { 200,100,50 }, { 255,255,255 });
+	Button ChangeHairColourR("", { playerCreation.getX() - 100, playerCreation.getY() + 100 }, "Resources\\UI\\Buttons\\R_Button.png", { 50,50 }, { 200,100,50 }, { 255,255,255 });
 	//Eye
-	Button ChangeEyeTypeL("", "L_Button");
-	Button ChangeEyeTypeR("", "R_Button");
+	Button ChangeEyeColourL("", { playerCreation.getX() - 200, playerCreation.getY() + 200 }, "Resources\\UI\\Buttons\\L_Button.png", { 50,50 }, { 200,100,50 }, { 255,255,255 });
+	Button ChangeEyeColourR("", { playerCreation.getX() - 100, playerCreation.getY() + 200 }, "Resources\\UI\\Buttons\\R_Button.png", { 50,50 }, { 200,100,50 }, { 255,255,255 });
 	//Ear
-	Button ChangeEarTypeL("", "L_Button");
-	Button ChangeEarTypeR("", "R_Button");
+	Button ChangeEarTypeL("", { playerCreation.getX() - 200, playerCreation.getY() + 200 }, "Resources\\UI\\Buttons\\L_Button.png", { 50,50 }, { 200,100,50 }, { 255,255,255 });
+	Button ChangeEarTypeR("", { playerCreation.getX() - 100, playerCreation.getY() + 200 }, "Resources\\UI\\Buttons\\R_Button.png", { 50,50 }, { 200,100,50 }, { 255,255,255 });
+
 	// Colours
-	Button ChangeBodyColour("Body Colour");
+	Button ChangeBodyColour("Body Colour", { playerCreation.getX() + 100, playerCreation.getY() - 100 }, "Resources\\UI\\Buttons\\Plain_Button.png", { 50,50 }, { 200,100,50 }, { 255,255,255 });
+	//Button ChangeBodyColour("Body Colour");
 	Button ChangeEyeColour("Eye Colour");
 	Button ChangeHairColour("Hair Colour");
 
@@ -222,14 +245,7 @@ void Menu::CharacterCustomisationMenu(GameSettings& gameSettings, Camera& camera
 
 	Button randomiseAll("Random");
 
-	Player playerCreation = gameSettings.getPlayerFromSave();
 
-	// Load player from file
-	playerCreation = gameSettings.getPlayerFromSave();
-	playerCreation.setSize(gameSettings.WINDOW_WIDTH / 5, gameSettings.WINDOW_WIDTH / 5);
-	playerCreation.setPosition(gameSettings.WINDOW_WIDTH / 2, gameSettings.WINDOW_HEIGHT / 2);
-	playerCreation.PlayerClothes.body = Player::Clothing::femaleTop1;
-	playerCreation.PlayerClothes.leg = Player::Clothing::femaleBottom2;
 
 
 	while (displayCharacterMenu)
@@ -252,17 +268,22 @@ void Menu::CharacterCustomisationMenu(GameSettings& gameSettings, Camera& camera
 
 		//menuBackground.render(renderer, gameSettings.WINDOW_WIDTH / 2, gameSettings.WINDOW_HEIGHT / 2, gameSettings.WINDOW_WIDTH, gameSettings.WINDOW_HEIGHT);
 
-		/////// Organic customisation buttons //////
 
-		int buttonSize = 50;
-		int bSize2 = buttonSize * 2;
-		int ObuttonsX = playerCreation.getX() - playerCreation.getSize().x;
-		int ObuttonsY = playerCreation.getY() - buttonSize * 4;
-		int CbuttonsX = playerCreation.getX() + playerCreation.getSize().x + bSize2;
-		int CbuttonsY = playerCreation.getY() - buttonSize * 4;
 
 		back.Render(renderer);
 		singlePlayer.Render(renderer);
+		femaleGender.Render(renderer);
+		maleGender.Render(renderer);
+		ChangeSkinColourL.Render(renderer);
+		ChangeSkinColourR.Render(renderer);
+		ChangeHairColourL.Render(renderer);
+		ChangeHairColourR.Render(renderer);
+		ChangeEyeColourL.Render(renderer);
+		ChangeEyeColourR.Render(renderer);
+		ChangeEarTypeL.Render(renderer);
+		ChangeEarTypeR.Render(renderer);
+
+		playerCreation.Render(renderer);
 
 		if (back.isPressed())
 		{
