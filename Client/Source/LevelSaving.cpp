@@ -112,6 +112,24 @@ json LevelSaving::LoadInstance()
 	return nullptr;
 }
 
+std::vector<Player> LevelSaving::LoadPlayers()
+{
+	std::vector<Player> savedChars;
+	for (int i = 0; i < 30; i++)
+	{
+		if (exists(playerSavePath + std::to_string(i)))
+		{
+			std::ifstream t(playerSavePath);
+			std::string jsonData((std::istreambuf_iterator<char>(t)), std::istreambuf_iterator<char>());
+			json data = json::parse(jsonData.begin(), jsonData.end());
+			Player player;
+			player.LoadFromJson(data);
+			savedChars.push_back(player);
+		}
+	}
+	return savedChars;
+}
+
 
 void LevelSaving::SaveWorld(World& world, Player& player)
 {
@@ -123,7 +141,7 @@ void LevelSaving::SaveWorld(World& world, Player& player)
 void LevelSaving::SavePlayer(Player& player)
 {
 	json playerData = player.getPlayerJson();
-	playerSave.open(playerSavePath);
+	playerSave.open(playerSavePath + std::to_string(player.getID()));
 	playerSave << playerData.dump();
 	std::cout << "Saved Player Shop" << std::endl;
 	playerSave.close();

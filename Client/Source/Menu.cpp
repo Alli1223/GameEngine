@@ -11,6 +11,68 @@ Menu::~Menu()
 {
 }
 
+void Menu::CharacterSelection(GameSettings& gameSettings, GL_Renderer& renderer, World& level, Player& player)
+{
+	existingPlayers = gameSettings.levelSaving.LoadPlayers();
+	//! Create New
+	//set ID to characterList size
+	Button createNew("Create New");
+	createNew.Background = ResourceManager::LoadTexture("Resources\\UI\\Buttons\\Plain_Button.png");
+	createNew.setPosition({ renderer.camera.windowSize.x / 2, renderer.camera.windowSize.y - 200 });
+	createNew.setSize({ 200,40 });
+	createNew.setColour({ 200,100,50 });
+	createNew.textColour = { 255,255,255 };
+
+	//! Select Existing
+	std::vector<Button> existingPlayerButtons;
+	for (int i = 0; i < existingPlayers.size(); i++)
+	{
+		Button playerButton(std::to_string(player.getID()), { renderer.camera.windowSize.x / 2, 50 * i }, "Resources\\UI\\Buttons\\Plain_Button.png", { 200,50 }, { 123,123,123 }, { 255,255,255 });
+		existingPlayerButtons.push_back(playerButton);
+	}
+
+
+
+
+	while (displayMainMenu)
+	{
+		if (SDL_GetMouseState(&mouseX, &mouseY) & SDL_BUTTON(SDL_BUTTON_LEFT))
+		{
+
+		}
+		SDL_Event ev;
+		if (SDL_PollEvent(&ev) != 0) {
+			if (ev.type == SDL_QUIT) {
+				displayMainMenu = false;
+			}
+		}
+		// Start render
+		// Clear screen
+		glClearColor(0.4f, 0.4f, 0.4f, 1.0f);
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+		ShowCursor(true);
+		SDL_ShowCursor(SDL_ENABLE);
+
+
+		// Render buttons
+		for each (auto playerButton in existingPlayerButtons)
+		{
+			playerButton.Render(renderer);
+		}
+		createNew.Render(renderer);
+
+		if (createNew.isPressed())
+		{
+			CharacterCustomisationMenu(gameSettings, renderer.camera, player, renderer, level);
+			break;
+		}
+
+		SDL_GL_SwapWindow(window);
+	}
+}
+
+
 //Uint32 get_pixel_at(Uint32 * pixels, int x, int y, int w)
 //{
 //	return pixels[y * w + x];
@@ -28,7 +90,7 @@ void Menu::MainMenu(GameSettings& gameSettings, World& level, Camera& camera, Pl
 	this->glContext = &glContext;
 	// Create buttons
 	//Button characterScreen("Character Customisation");
-	//Button exit({ 50,25 }, { 100,50 }, ResourceManager::LoadTexture("Resources\\UI\\Background.png"), { 255,255,255 });
+	//Button exit({ 50,25 }, { 100,50 }, ResourceManager::LoadTexture("Resources\\UI\\Background.png"), textColour);
 	Button exit("Exit");
 	exit.Background = ResourceManager::LoadTexture("Resources\\UI\\Buttons\\Plain_Button.png");
 	exit.setPosition({ camera.windowSize.x / 2, camera.windowSize.y / 2 - 80 });
@@ -38,19 +100,10 @@ void Menu::MainMenu(GameSettings& gameSettings, World& level, Camera& camera, Pl
 
 	Button play("Play");
 	play.Background = ResourceManager::LoadTexture("Resources\\UI\\Buttons\\Plain_Button.png");
-	play.setPosition({ camera.windowSize.x / 2, camera.windowSize.y / 2 + 80 });
+	play.setPosition({ camera.windowSize.x / 2, camera.windowSize.y / 2 });
 	play.setSize({ 200,40 });
 	play.setColour({ 200,100,50 });
 	play.textColour = { 255,255,255 };
-	//exit.transparency = 0.5f;
-
-	//Button play("Play");
-	//play.Background = ResourceManager::LoadTexture("Resources\\UI\\Background.png");
-	//
-	//Button useNetworking("Multiplayer");
-	//Button Fullscreen("FullScreen");
-	//Button loadFromSave("Load Save Game");
-	//Button play("New Game");
 
 
 	// Scale mouse correctly depending on resolution
@@ -80,21 +133,6 @@ void Menu::MainMenu(GameSettings& gameSettings, World& level, Camera& camera, Pl
 
 		ShowCursor(true);
 		SDL_ShowCursor(SDL_ENABLE);
-		//SDL_ShowCursor(SDL_DISABLE);
-		//SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
-		//SDL_RenderClear(renderer);
-		//menuBackground.alterTransparency(100);
-		//menuBackground.alterTextureColour(150, 150, 150);
-		//menuBackground.render(renderer, gameSettings.WINDOW_WIDTH / 2, gameSettings.WINDOW_HEIGHT / 2, gameSettings.WINDOW_WIDTH, gameSettings.WINDOW_HEIGHT);
-
-
-		int menuY = gameSettings.WINDOW_HEIGHT / 2;
-		int menuX = gameSettings.WINDOW_WIDTH / 2;
-		int menuSeperationDistance = 75;
-		int buttonHeight = 50;
-		int buttonWidth = 200;
-
-
 
 		// Render buttons
 		exit.Render(renderer);
@@ -102,7 +140,8 @@ void Menu::MainMenu(GameSettings& gameSettings, World& level, Camera& camera, Pl
 
 		if (play.isPressed())
 		{
-			CharacterCustomisationMenu(gameSettings, camera, player, renderer, level);
+			CharacterSelection(gameSettings, renderer, level, player);
+			//CharacterCustomisationMenu(gameSettings, camera, player, renderer, level);
 		}
 
 		if (exit.isPressed())
@@ -112,71 +151,16 @@ void Menu::MainMenu(GameSettings& gameSettings, World& level, Camera& camera, Pl
 		}
 
 
-
-		//glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 		SDL_GL_SwapWindow(window);
-
-
-
-
-
-
-
-
-
-
-
-		/*
-		// New Game
-		play.Render(renderer, menuX, menuY - menuSeperationDistance * 2, buttonWidth, buttonHeight);
-		if (play.isPressed())
-		{
-			displayCharacterMenu = true;
-			CharacterCustomisationMenu(gameSettings, camera, player, renderer, level);
-			//displayMainMenu = false;
-		}
-
-		loadFromSave.render(renderer, menuX, menuY - menuSeperationDistance, buttonWidth, buttonHeight);
-
-		// Load from save
-		if (loadFromSave.isPressed())
-		{
-			gameSettings.loadGameFromSave("test");
-			player = gameSettings.getPlayerFromSave();
-			displayMainMenu = false;
-		}
-
-		// Dont save data when exit is pressed
-		if (exit.isPressed())
-		{
-			gameSettings.running = false;
-			gameSettings.saveLevelOnExit = false;
-			gameSettings.savePlayerOnExit = false;
-			displayMainMenu = false;
-		}
-		// Character Screen
-		characterScreen.render(renderer);
-		if (characterScreen.isPressed())
-		{
-			CharacterCustomisationMenu(gameSettings, camera, player, renderer, level);
-			displayCharacterMenu = true;
-		}
-
-		//Render the mouse cursor last
-		cursor.render(renderer, mouseX + (menuCursorSize / 2), mouseY + (menuCursorSize / 2), menuCursorSize, menuCursorSize);
-		SDL_RenderPresent(renderer);
-	}
-
-	*/
 	}
 }
 
 
 void Menu::CharacterCustomisationMenu(GameSettings& gameSettings, Camera& camera, Player& player, GL_Renderer& renderer, World& level)
 {
-
-
 	Player playerCreation = gameSettings.getPlayerFromSave();
+
+	glm::vec3 textColour = { 255,255,255 };
 
 	// Load player from file
 	playerCreation = gameSettings.getPlayerFromSave();
@@ -196,9 +180,9 @@ void Menu::CharacterCustomisationMenu(GameSettings& gameSettings, Camera& camera
 	int CbuttonsY = playerCreation.getY() - buttonSize * 4;
 
 	// Create buttons
-	Button back("", { 100,100 }, "Resources\\UI\\Buttons\\NoButton.png", { 100,100 }, { 200,100,50 }, { 255,255,255 });
-	Button confirm("", { camera.windowSize.x - 200, camera.windowSize.y / 2 + 400 }, "Resources\\UI\\Buttons\\Confirm.png", { 200,50 }, { 200,100,50 }, { 255,255,255 });
-	Button loadSave("Load Save", { camera.windowSize.x / 2, camera.windowSize.y / 2 + (camera.windowSize.y / 4) }, "Resources\\UI\\Buttons\\Plain_Button.png", { 200,50 }, { 200,100,50 }, { 255,255,255 });
+	Button back("", { 100,100 }, "Resources\\UI\\Buttons\\NoButton.png", { 100,100 }, { 200,100,50 }, textColour);
+	Button confirm("", { camera.windowSize.x - 200, camera.windowSize.y / 2 + 400 }, "Resources\\UI\\Buttons\\Confirm.png", { 200,50 }, { 200,100,50 }, textColour);
+	Button loadSave("Load Save", { camera.windowSize.x / 2, camera.windowSize.y / 2 + (camera.windowSize.y / 4) }, "Resources\\UI\\Buttons\\Plain_Button.png", { 200,50 }, { 200,100,50 }, textColour);
 
 
 	// LEFT SIDE (ORGANIC)
@@ -208,38 +192,28 @@ void Menu::CharacterCustomisationMenu(GameSettings& gameSettings, Camera& camera
 	// Eye Colour
 	int leftPosition1 = camera.windowSize.x / 2 - camera.windowSize.x / 4;
 	int leftPosition2 = camera.windowSize.x / 2 - camera.windowSize.x / 4 - 100;
-	glm::vec3 buttonColour = {200,150,150};
+	glm::vec3 buttonColour = { 200,150,150 };
 
 	// Genders
-	Button femaleGender("", { playerCreation.getX() - leftPosition1, playerCreation.getY() - 100 }, "Resources\\UI\\Buttons\\FemaleButton.png", { 50,50 }, buttonColour, { 255,255,255 });
-	Button maleGender("", { playerCreation.getX() - leftPosition2, playerCreation.getY() - 100 }, "Resources\\UI\\Buttons\\MaleButton.png", { 50,50 }, buttonColour, { 255,255,255 });
+	Button femaleGender("", { playerCreation.getX() - leftPosition1, playerCreation.getY() - 100 }, "Resources\\UI\\Buttons\\FemaleButton.png", { 50,50 }, buttonColour, textColour);
+	Button maleGender("", { playerCreation.getX() - leftPosition2, playerCreation.getY() - 100 }, "Resources\\UI\\Buttons\\MaleButton.png", { 50,50 }, buttonColour, textColour);
 	// Colours
-	//Skin Colour
-	//Button ChangeSkinColourL("", { playerCreation.getX() - leftPosition1, playerCreation.getY() }, "Resources\\UI\\Buttons\\L_Button.png", { 50,50 }, buttonColour, { 255,255,255 });
-	//Button ChangeSkinColourR("", { playerCreation.getX() - leftPosition2, playerCreation.getY() }, "Resources\\UI\\Buttons\\R_Button.png", { 50,50 }, buttonColour, { 255,255,255 });
-	////Hair Colour
-	//Button ChangeHairColourL("", { playerCreation.getX() - leftPosition1, playerCreation.getY() + 50 }, "Resources\\UI\\Buttons\\L_Button.png", { 50,50 }, buttonColour, { 255,255,255 });
-	//Button ChangeHairColourR("", { playerCreation.getX() - leftPosition2, playerCreation.getY() + 50 }, "Resources\\UI\\Buttons\\R_Button.png", { 50,50 }, buttonColour, { 255,255,255 });
-	////Eye Colour
-	//Button ChangeEyeColourL("", { playerCreation.getX() - leftPosition1, playerCreation.getY() + 100 }, "Resources\\UI\\Buttons\\L_Button.png", { 50,50 }, buttonColour, { 255,255,255 });
-	//Button ChangeEyeColourR("", { playerCreation.getX() - leftPosition2, playerCreation.getY() + 100 }, "Resources\\UI\\Buttons\\R_Button.png", { 50,50 }, buttonColour, { 255,255,255 });
-
 	//Types
 	//Hair Type
-	Button ChangeHairTypeL("", { playerCreation.getX() - leftPosition1, playerCreation.getY() }, "Resources\\UI\\Buttons\\L_Button.png", { 50,50 }, buttonColour, { 255,255,255 });
-	Button ChangeHairTypeR("", { playerCreation.getX() - leftPosition2, playerCreation.getY() }, "Resources\\UI\\Buttons\\R_Button.png", { 50,50 }, buttonColour, { 255,255,255 });
+	Button ChangeHairTypeL("", { playerCreation.getX() - leftPosition1, playerCreation.getY() }, "Resources\\UI\\Buttons\\L_Button.png", { 50,50 }, buttonColour, textColour);
+	Button ChangeHairTypeR("", { playerCreation.getX() - leftPosition2, playerCreation.getY() }, "Resources\\UI\\Buttons\\R_Button.png", { 50,50 }, buttonColour, textColour);
 	//Ear
-	Button ChangeEarTypeL("", { playerCreation.getX() - leftPosition1, playerCreation.getY() + 50 }, "Resources\\UI\\Buttons\\L_Button.png", { 50,50 }, buttonColour, { 255,255,255 });
-	Button ChangeEarTypeR("", { playerCreation.getX() - leftPosition2, playerCreation.getY() + 50 }, "Resources\\UI\\Buttons\\R_Button.png", { 50,50 }, buttonColour, { 255,255,255 });
+	Button ChangeEarTypeL("", { playerCreation.getX() - leftPosition1, playerCreation.getY() + 50 }, "Resources\\UI\\Buttons\\L_Button.png", { 50,50 }, buttonColour, textColour);
+	Button ChangeEarTypeR("", { playerCreation.getX() - leftPosition2, playerCreation.getY() + 50 }, "Resources\\UI\\Buttons\\R_Button.png", { 50,50 }, buttonColour, textColour);
 	//Eye
-	Button ChangeEyeTypeL("", { playerCreation.getX() - leftPosition1, playerCreation.getY() + 100 }, "Resources\\UI\\Buttons\\L_Button.png", { 50,50 }, buttonColour, { 255,255,255 });
-	Button ChangeEyeTypeR("", { playerCreation.getX() - leftPosition2, playerCreation.getY() + 100 }, "Resources\\UI\\Buttons\\R_Button.png", { 50,50 }, buttonColour, { 255,255,255 });
+	Button ChangeEyeTypeL("", { playerCreation.getX() - leftPosition1, playerCreation.getY() + 100 }, "Resources\\UI\\Buttons\\L_Button.png", { 50,50 }, buttonColour, textColour);
+	Button ChangeEyeTypeR("", { playerCreation.getX() - leftPosition2, playerCreation.getY() + 100 }, "Resources\\UI\\Buttons\\R_Button.png", { 50,50 }, buttonColour, textColour);
 
 
 	// Colours
-	Button ChangeBodyColour("Body Colour", { playerCreation.getX() - leftPosition1 + 50, playerCreation.getY() + 200 }, "Resources\\UI\\Buttons\\Plain_Button.png", { 200,50 }, buttonColour, { 255,255,255 });
-	Button ChangeEyeColour("Eye Colour", { playerCreation.getX() - leftPosition1 + 50, playerCreation.getY()  + 250}, "Resources\\UI\\Buttons\\Plain_Button.png", { 200,50 }, buttonColour, { 255,255,255 });
-	Button ChangeHairColour("Hair Colour", { playerCreation.getX() - leftPosition1 + 50, playerCreation.getY() + 300 }, "Resources\\UI\\Buttons\\Plain_Button.png", { 200,50 }, buttonColour, { 255,255,255 });
+	Button ChangeBodyColour("Body Colour", { playerCreation.getX() - leftPosition1 + 50, playerCreation.getY() + 200 }, "Resources\\UI\\Buttons\\Plain_Button.png", { 200,50 }, buttonColour, textColour);
+	Button ChangeEyeColour("Eye Colour", { playerCreation.getX() - leftPosition1 + 50, playerCreation.getY() + 250 }, "Resources\\UI\\Buttons\\Plain_Button.png", { 200,50 }, buttonColour, textColour);
+	Button ChangeHairColour("Hair Colour", { playerCreation.getX() - leftPosition1 + 50, playerCreation.getY() + 300 }, "Resources\\UI\\Buttons\\Plain_Button.png", { 200,50 }, buttonColour, textColour);
 
 
 	// Right Side ( CLOTHES)
@@ -248,18 +222,18 @@ void Menu::CharacterCustomisationMenu(GameSettings& gameSettings, Camera& camera
 	int rightPositionCenter = camera.windowSize.x / 2 - camera.windowSize.x / 4 - 50;
 
 	//Top
-	Button changeTopL("", { playerCreation.getX() + rightPosition1, playerCreation.getY() }, "Resources\\UI\\Buttons\\L_Button.png", { 50,50 }, buttonColour, { 255,255,255 });
-	Button changeTopR("", { playerCreation.getX() + rightPosition2, playerCreation.getY() }, "Resources\\UI\\Buttons\\R_Button.png", { 50,50 }, buttonColour, { 255,255,255 });
+	Button changeTopL("", { playerCreation.getX() + rightPosition1, playerCreation.getY() }, "Resources\\UI\\Buttons\\L_Button.png", { 50,50 }, buttonColour, textColour);
+	Button changeTopR("", { playerCreation.getX() + rightPosition2, playerCreation.getY() }, "Resources\\UI\\Buttons\\R_Button.png", { 50,50 }, buttonColour, textColour);
 	//Bottom
-	Button changeBottomL("", { playerCreation.getX() + rightPosition1, playerCreation.getY() + 50 }, "Resources\\UI\\Buttons\\L_Button.png", { 50,50 }, buttonColour, { 255,255,255 });
-	Button changeBottomR("", { playerCreation.getX() + rightPosition2, playerCreation.getY() + 50 }, "Resources\\UI\\Buttons\\R_Button.png", { 50,50 }, buttonColour, { 255,255,255 });
+	Button changeBottomL("", { playerCreation.getX() + rightPosition1, playerCreation.getY() + 50 }, "Resources\\UI\\Buttons\\L_Button.png", { 50,50 }, buttonColour, textColour);
+	Button changeBottomR("", { playerCreation.getX() + rightPosition2, playerCreation.getY() + 50 }, "Resources\\UI\\Buttons\\R_Button.png", { 50,50 }, buttonColour, textColour);
 	//Colour
-	Button ChangeTopColour("Top Colour", { playerCreation.getX() + rightPositionCenter, playerCreation.getY() + 200 }, "Resources\\UI\\Buttons\\Plain_Button.png", { 200,50 }, buttonColour, { 255,255,255 });
-	Button ChangeBottomColour("Bottom Colour", { playerCreation.getX() + rightPositionCenter, playerCreation.getY() + 250 }, "Resources\\UI\\Buttons\\Plain_Button.png", { 200,50 }, buttonColour, { 255,255,255 });
+	Button ChangeTopColour("Top Colour", { playerCreation.getX() + rightPositionCenter, playerCreation.getY() + 200 }, "Resources\\UI\\Buttons\\Plain_Button.png", { 200,50 }, buttonColour, textColour);
+	Button ChangeBottomColour("Bottom Colour", { playerCreation.getX() + rightPositionCenter, playerCreation.getY() + 250 }, "Resources\\UI\\Buttons\\Plain_Button.png", { 200,50 }, buttonColour, textColour);
 
 
 
-	Button randomiseAll("Random");
+	Button randomiseAll("Random", { camera.windowSize.x / 2, camera.windowSize.y + camera.windowSize.y / 3 }, "Resources\\UI\\Buttons\\Plain_Button.png", { 200, 50 }, buttonColour, textColour);
 
 
 
@@ -318,6 +292,8 @@ void Menu::CharacterCustomisationMenu(GameSettings& gameSettings, Camera& camera
 
 		ChangeTopColour.Render(renderer);
 		ChangeBottomColour.Render(renderer);
+
+		randomiseAll.Render(renderer);
 
 
 		playerCreation.Render(renderer);

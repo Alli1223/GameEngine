@@ -25,6 +25,9 @@ public:
 	//! Load an instance
 	json LoadInstance();
 
+	//! Load Players
+	std::vector<Player> LoadPlayers();
+
 private:
 
 	std::ofstream shopSave;
@@ -35,6 +38,6 @@ private:
 	const std::string levelSavePath = "Resources\\Data\\level.json";
 
 	const std::string map1 = "Resources\\Data\\test.json";
-	const std::string playerSavePath = "Resources\\Data\\playerData.json";
+	const std::string playerSavePath = "Resources\\Data\\Characters\\";
 };
 

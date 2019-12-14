@@ -13,6 +13,9 @@ public:
 	//! Destroctor
 	~Menu();
 
+	//! Character List
+	void CharacterSelection(GameSettings& gameSettings, GL_Renderer& renderer, World& level, Player& player);
+
 	//! Run main menu loop
 	void MainMenu(GameSettings& gameSettings, World& level, Camera& camera, Player& player, GL_Renderer& renderer, SDL_Window* window, SDL_GLContext& glContext);
 
@@ -22,6 +25,7 @@ public:
 	// Set mouse pointer size
 	int setCursorSize(int newCursorSize) { return menuCursorSize = newCursorSize; }
 
+	std::vector<Player> existingPlayers;
 
 
 private:
@@ -35,6 +39,8 @@ private:
 	bool displayMainMenu = true;
 	//! To end character menu while loop
 	bool displayCharacterMenu = true;
+	//! To end selection menu while loop
+	bool displaySlectionMenu = true;
 	//! Texture locations
 	std::string menuTextures = "Resources\\UI\\";
 	std::string otherTextures = "Resources\\Sprites\\Menu\\";

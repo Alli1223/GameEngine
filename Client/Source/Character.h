@@ -28,9 +28,11 @@ public:
 	//! Player movement boolean
 	bool setPlayerMoving(bool yayornay) { return isMoving = yayornay; }
 	bool isPlayerMoving() { return isMoving; }
-
+	//! Sets the character sprite based on rotation
 	void RotateCharacter(GL_Renderer& renderer);
-
+	//! Gets and sets the Character Identifier
+	int setID(int id) { return CharacterID = id; }
+	int getID() { return CharacterID; }
 
 	//! Renders the characters clothes
 	void RenderCharacterBody(GL_Renderer& renderer, int index, bool flipSprite);
@@ -271,5 +273,7 @@ private:
 	bool incrementalRotating = false;
 	//! if the Character is moving
 	bool isMoving = false;
+
+	int CharacterID = -1;
 };
 
