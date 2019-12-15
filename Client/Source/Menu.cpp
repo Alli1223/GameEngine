@@ -27,7 +27,7 @@ void Menu::CharacterSelection(GameSettings& gameSettings, GL_Renderer& renderer,
 	std::vector<Button> existingPlayerButtons;
 	for (int i = 0; i < existingPlayers.size(); i++)
 	{
-		Button playerButton(std::to_string(player.getID()), { renderer.camera.windowSize.x / 2, 50 * i }, "Resources\\UI\\Buttons\\Plain_Button.png", { 200,50 }, { 123,123,123 }, { 255,255,255 });
+		Button playerButton(std::to_string(existingPlayers[i].getID()), { renderer.camera.windowSize.x / 2, renderer.camera.windowSize.x / 10 + 50 * i }, "Resources\\UI\\Buttons\\Plain_Button.png", { 200,50 }, { 123,123,123 }, { 255,255,255 });
 		existingPlayerButtons.push_back(playerButton);
 	}
 
@@ -158,7 +158,7 @@ void Menu::MainMenu(GameSettings& gameSettings, World& level, Camera& camera, Pl
 
 void Menu::CharacterCustomisationMenu(GameSettings& gameSettings, Camera& camera, Player& player, GL_Renderer& renderer, World& level)
 {
-	Player playerCreation = gameSettings.getPlayerFromSave();
+	Player playerCreation;
 
 	glm::vec3 textColour = { 255,255,255 };
 
@@ -169,6 +169,7 @@ void Menu::CharacterCustomisationMenu(GameSettings& gameSettings, Camera& camera
 	playerCreation.CharacterClothes.body = Player::Clothing::femaleTop1;
 	playerCreation.CharacterClothes.leg = Player::Clothing::femaleBottom2;
 	playerCreation.setRenderLayer(0);
+	player.setID(existingPlayers.size());
 
 	/////// Organic customisation buttons //////
 
@@ -181,7 +182,7 @@ void Menu::CharacterCustomisationMenu(GameSettings& gameSettings, Camera& camera
 
 	// Create buttons
 	Button back("", { 100,100 }, "Resources\\UI\\Buttons\\NoButton.png", { 100,100 }, { 200,100,50 }, textColour);
-	Button confirm("", { camera.windowSize.x - 200, camera.windowSize.y / 2 + 400 }, "Resources\\UI\\Buttons\\Confirm.png", { 200,50 }, { 200,100,50 }, textColour);
+	Button confirm("", { camera.windowSize.x - 200, camera.windowSize.y  - 50 }, "Resources\\UI\\Buttons\\Confirm.png", { 200,50 }, { 200,100,50 }, textColour);
 	Button loadSave("Load Save", { camera.windowSize.x / 2, camera.windowSize.y / 2 + (camera.windowSize.y / 4) }, "Resources\\UI\\Buttons\\Plain_Button.png", { 200,50 }, { 200,100,50 }, textColour);
 
 

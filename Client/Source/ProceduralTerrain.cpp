@@ -138,15 +138,15 @@ void ProceduralTerrain::generateGround(std::shared_ptr<Cell>& tile)
 	//	chunk->tile->isWalkable = false;
 	//}
 	//
-	//// Grass noise
-	//if (chunk->tile->isGrass && gNoise > 4.0 && gNoise < 10.0)
-	//{
-	//	int randSpawn = rand() % 10;
-	//	if (randSpawn == 0)
-	//		chunk->tile->isLongGrass = true;
-	//	else if(randSpawn == 3)
-	//		chunk->tile->isLongGrass2 = true;
-	//}
+	// Grass noise
+	if (tile->isGrass && gNoise > 4.0 && gNoise < 10.0)
+	{
+		int randSpawn = rand() % 10;
+		if (randSpawn == 0)
+			tile->SetGroundType(Cell::GroundType::spring_water, 1);
+		else if(randSpawn == 3)
+			tile->isLongGrass2 = true;
+	}
 
 
 	// RIVER NOISE

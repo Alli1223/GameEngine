@@ -91,7 +91,7 @@ void InfiniteWorld::CreateInfiniWorld(GL_Renderer& renderer, b2World* physicsWor
 
 void InfiniteWorld::OrientateCells(Camera& camera, int x, int y)
 {
-	if (MainLevel[{x, y}].updateOrientations.getTicks() > 200.0f || !MainLevel[{x, y}].updateOrientations.isStarted())
+	if (MainLevel[{x, y}].updateOrientations.getTicks() > 1000.0f || !MainLevel[{x, y}].updateOrientations.isStarted())
 	{
 		for (int cX = 0; cX < MainLevel[{x, y}].getChunkSize(); cX++)
 		{

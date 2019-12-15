@@ -17,7 +17,7 @@ public:
 	int WINDOW_HEIGHT = 600;
 
 	//! Save the players settings
-	void savePlayerSettings(Player& player);
+	//void savePlayerSettings(Player& player);
 	Player getPlayerFromSave();
 	//! Save the level
 	//Level loadGameFromSave(std::string file);

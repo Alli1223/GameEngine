@@ -64,8 +64,8 @@ MainGame::MainGame()
 	gameSettings.WINDOW_WIDTH;
 	if (!gameSettings.fullscreen)
 	{
-		gameSettings.WINDOW_WIDTH  /=2;  ///= 2 ;
-		gameSettings.WINDOW_HEIGHT  /=2; // /= 2;
+		gameSettings.WINDOW_WIDTH  = 1920;  ///= 2 ;
+		gameSettings.WINDOW_HEIGHT = 1080; // /= 2;
 	}
 	gameSettings.deltaTime = SDL_GetTicks();
 	
@@ -167,7 +167,7 @@ void MainGame::run()
 
 	// Create player
 	gameSettings.levelSaving.LoadWorld(world, world.I_player);
-	world.I_player.setPosition(100,0);
+	world.I_player.setPosition(100, 0);
 	world.I_player.setSize(100, 100);
 	world.I_player.Sprite = ResourceManager::LoadTexture("Resources\\Sprites\\Character\\Alli.png");
 	world.I_player.setEyeColour({ rand() % 255, rand() % 255 , rand() % 255 });
@@ -201,7 +201,7 @@ void MainGame::run()
 	//chest.setPosition(0, 100);
 	//chest.setSize(100, 100);
 	//chest.Sprite = ResourceManager::LoadTexture("Resources\\Sprites\\Character\\Alli.png");
-	
+
 	//world.I_player.inventory.add(wheatSeeds.getSharedPointer());
 	//for(int i =0;i < 10; i++)
 	//	world.I_player.inventory.add(sunflowerSeeds.getSharedPointer());
@@ -211,7 +211,7 @@ void MainGame::run()
 	//world.I_player.inventory.add(rod.getSharedPointer());
 	//world.I_player.inventory.add(net.getSharedPointer());
 	//world.I_player.inventory.add(scythe.getSharedPointer());
-	
+
 	//world.onEnter(world.I_player);
 
 	//GameSettings::currentInstance = gameSettings.levelSaving.LoadInstance();
@@ -225,13 +225,13 @@ void MainGame::run()
 	}
 	else
 	{
-		
+
 		room.onEnter(world.I_player);
 	}
 
 	//currentInstance->onEnter(world.I_player);
 	world.onEnter(world.I_player);
-	
+
 	//Shop.onEnter(world.I_player);
 	//Mix_PlayMusic(gMusic, -1);
 
@@ -254,11 +254,11 @@ void MainGame::run()
 		// Clear screen
 		glClearColor(0.4f, 0.4f, 0.4f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-		
+
 		// Process networking
-		if(gameSettings.useNetworking)
-			networkManager.NetworkUpdate(world, GameSettings::currentInstance->I_Physics.get(),world.networkPlayers, world.I_player);
-		
+		if (gameSettings.useNetworking)
+			networkManager.NetworkUpdate(world, GameSettings::currentInstance->I_Physics.get(), world.networkPlayers, world.I_player);
+
 		// User input
 		input.HandleUserInput(glRenderer, GameSettings::currentInstance->I_player, gameSettings, UI);
 
@@ -273,12 +273,12 @@ void MainGame::run()
 
 		// Render UI
 		UI.Render(glRenderer, world, GameSettings::currentInstance->I_player, gameSettings);
-		
+
 		// END Rendering
 		ImGui::Render();
 		SDL_GL_MakeCurrent(window, glContext);
 		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
-		
+
 		//glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 		SDL_GL_SwapWindow(window);
 
@@ -306,9 +306,9 @@ void MainGame::run()
 	//if (gameSettings.saveLevelOnExit && !gameSettings.useNetworking)
 		//gameSettings.levelSaving.SaveWorld(world, world.I_player);
 	if (gameSettings.savePlayerOnExit)
-		//gameSettings.savePlayerSettings(player);
-		if (gameSettings.restartGame)
-			needsRestart = true;
+		gameSettings.levelSaving.SavePlayer(GameSettings::currentInstance->I_player);
+	if (gameSettings.restartGame)
+		needsRestart = true;
 }
 
 //if (SDL_GetMouseState(NULL, NULL) & SDL_BUTTON(SDL_BUTTON_RIGHT))

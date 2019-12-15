@@ -374,6 +374,7 @@ json Player::getPlayerJson()
 {
 	json playerData;
 	playerData["PlayerData"]["name"] = playerName;
+	playerData["PlayerData"]["ID"] = getID();
 	playerData["PlayerData"]["rotation"] = getTargetRotation();
 	playerData["PlayerData"]["X"] = getX();
 	playerData["PlayerData"]["Y"] = getY();
@@ -393,7 +394,6 @@ json Player::getPlayerJson()
 	playerData["PlayerData"]["legColour"]["r"] = getJeansColour().r;
 	playerData["PlayerData"]["legColour"]["g"] = getJeansColour().g;
 	playerData["PlayerData"]["legColour"]["b"] = getJeansColour().b;
-
 	playerData["PlayerData"]["gender"] = body.gender;
 	playerData["PlayerData"]["earType"] = body.earType;
 	playerData["PlayerData"]["eyeType"] = body.eyeType;
@@ -427,6 +427,7 @@ Player Player::LoadFromJson(json playerData)
 	Player ExistingPlayer;
 	int x = playerData.at("X").get<float>();
 	int y = playerData.at("Y").get<float>();
+	int ID = playerData.at("ID").get<int>();
 	int rotation = playerData.at("rotation").get<int>();
 	std::string name = playerData.at("name").get<std::string>();
 	bool isMoving = playerData.at("isMoving").get<bool>();
@@ -500,6 +501,7 @@ Player Player::LoadFromJson(json playerData)
 	ExistingPlayer.CharacterClothes.body = (Player::Clothing::BodyWear)bodyWear;
 	ExistingPlayer.CharacterClothes.leg = (Player::Clothing::LegWear)legWear;
 	ExistingPlayer.setPlayerMoving(isMoving);
+	ExistingPlayer.setID(ID);
 	return ExistingPlayer;
 }
 

@@ -19,14 +19,14 @@ LevelSaving::~LevelSaving()
 void LevelSaving::LoadWorld(World& world, Player& player)
 {
 	// Load player
-	if (exists(playerSavePath))
-	{
-		std::ifstream t(playerSavePath);
-		std::string jsonData((std::istreambuf_iterator<char>(t)), std::istreambuf_iterator<char>());
-		json data = json::parse(jsonData.begin(), jsonData.end());
-		data = data.at("PlayerData");
-		player = player.LoadFromJson(data);
-	}
+	//if (exists(playerSavePath))
+	//{
+	//	std::ifstream t(playerSavePath);
+	//	std::string jsonData((std::istreambuf_iterator<char>(t)), std::istreambuf_iterator<char>());
+	//	json data = json::parse(jsonData.begin(), jsonData.end());
+	//	data = data.at("PlayerData");
+	//	player = player.LoadFromJson(data);
+	//}
 	// Load shop if file exists
 	if (exists(shopSavePath)) 
 	{
@@ -117,13 +117,14 @@ std::vector<Player> LevelSaving::LoadPlayers()
 	std::vector<Player> savedChars;
 	for (int i = 0; i < 30; i++)
 	{
-		if (exists(playerSavePath + std::to_string(i)))
+		std::string path = playerSavePath + std::to_string(i) + ".json";
+		if (exists(path))
 		{
-			std::ifstream t(playerSavePath);
+			std::ifstream t(path);
 			std::string jsonData((std::istreambuf_iterator<char>(t)), std::istreambuf_iterator<char>());
 			json data = json::parse(jsonData.begin(), jsonData.end());
 			Player player;
-			player.LoadFromJson(data);
+			player = player.LoadFromJson(data.at("PlayerData"));
 			savedChars.push_back(player);
 		}
 	}
@@ -141,7 +142,7 @@ void LevelSaving::SaveWorld(World& world, Player& player)
 void LevelSaving::SavePlayer(Player& player)
 {
 	json playerData = player.getPlayerJson();
-	playerSave.open(playerSavePath + std::to_string(player.getID()));
+	playerSave.open(playerSavePath + std::to_string(player.getID()) + ".json");
 	playerSave << playerData.dump();
 	std::cout << "Saved Player Shop" << std::endl;
 	playerSave.close();

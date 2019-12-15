@@ -46,16 +46,16 @@ void GameSettings::CalculateFramesPerSecond()
 
 
 //TODO: Create a mapdata json file for singleplayer
-void GameSettings::savePlayerSettings(Player& player)
-{
-	
-	json playerData = player.getPlayerJson();
-
-	playerSave.open(playerSavePath);
-	playerSave << playerData.dump();
-	std::cout << "Saved Player settings." << std::endl;
-	playerSave.close();
-}
+//void GameSettings::savePlayerSettings(Player& player)
+//{
+//	
+//	json playerData = player.getPlayerJson();
+//
+//	playerSave.open(playerSavePath);
+//	playerSave << playerData.dump();
+//	std::cout << "Saved Player settings." << std::endl;
+//	playerSave.close();
+//}
 
 TileSheet GameSettings::getTileSetFromID(int ID)
 {
