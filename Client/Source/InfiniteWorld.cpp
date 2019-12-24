@@ -91,23 +91,26 @@ void InfiniteWorld::CreateInfiniWorld(GL_Renderer& renderer, b2World* physicsWor
 
 void InfiniteWorld::OrientateCells(Camera& camera, int x, int y)
 {
-	if (MainLevel[{x, y}].updateOrientations.getTicks() > 1000.0f || !MainLevel[{x, y}].updateOrientations.isStarted())
+	if (MainLevel[{x, y}].tiles.size() > 0)
 	{
-		for (int cX = 0; cX < MainLevel[{x, y}].getChunkSize(); cX++)
+		if (MainLevel[{x, y}].updateOrientations.getTicks() > 1000.0f || !MainLevel[{x, y}].updateOrientations.isStarted())
 		{
-			for (int cY = 0; cY < MainLevel[{x, y}].getChunkSize(); cY++)
+			for (int cX = 0; cX < MainLevel[{x, y}].getChunkSize(); cX++)
 			{
-				if (MainLevel[{x, y}].tiles[cX][cY]->groundType != Cell::GroundType::empty)
+				for (int cY = 0; cY < MainLevel[{x, y}].getChunkSize(); cY++)
 				{
-					OrientateCell(MainLevel[{x, y}].tiles[cX][cY]);
+					if (MainLevel[{x, y}].tiles[cX][cY]->groundType != Cell::GroundType::empty)
+					{
+						OrientateCell(MainLevel[{x, y}].tiles[cX][cY]);
+					}
 				}
 			}
+			MainLevel[{x, y}].updateOrientations.restart();
 		}
-		MainLevel[{x, y}].updateOrientations.restart();
-	}
 
-	if (!MainLevel[{x, y}].updateOrientations.isStarted())
-		MainLevel[{x, y}].updateOrientations.start();
+		if (!MainLevel[{x, y}].updateOrientations.isStarted())
+			MainLevel[{x, y}].updateOrientations.start();
+	}
 }
 
 void InfiniteWorld::OrientateCell(std::shared_ptr<Cell> node)

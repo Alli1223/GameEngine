@@ -454,6 +454,7 @@ void CellAssignment::AssignCell(Cell& cell, std::string& type, int layer)
 
 int GetAtlasPositionFromOrientation(Cell::Orientation orient)
 {
+	
 	switch (orient)
 	{
 	default:
@@ -473,9 +474,15 @@ int GetAtlasPositionFromOrientation(Cell::Orientation orient)
 		break;
 
 	case Cell::Orientation::middle:
+	{
 		return 8;
+		// To get random middle for grass
+		std::vector<int> list{ 8, 11, 26, 27, 33, 34, 40, 41, 47 };
+		int index = rand() % list.size();
+		int value = list[index];
+		return value;
 		break;
-
+	}
 	case Cell::Orientation::middleRight:
 		return 9;
 		break;
@@ -514,21 +521,28 @@ int GetAtlasPositionFromOrientation(Cell::Orientation orient)
 
 void AssignLayer(Cell& cell, std::string textureName, int layer)
 {
+	int pos = GetAtlasPositionFromOrientation(cell.orientation);
 	if (layer == 0) // Set the ground sprite
 	{
-		cell.Sprite = ResourceManager::GetAtlasTexture(textureName, GetAtlasPositionFromOrientation(cell.orientation));
-		cell.NormalMap = ResourceManager::GetAtlasTexture(textureName + "_normal", GetAtlasPositionFromOrientation(cell.orientation));
+		
+		cell.Sprite = ResourceManager::GetAtlasTexture(textureName, pos);
+		cell.NormalMap = ResourceManager::GetAtlasTexture(textureName + "_normal", pos);
 		cell.renderLayer = 0;
 	}
 	else
 	{
-		cell.layerdSprite = ResourceManager::GetAtlasTexture(textureName, GetAtlasPositionFromOrientation(cell.orientation));
-		cell.layerdSprite_normal = ResourceManager::GetAtlasTexture(textureName + "_normal", GetAtlasPositionFromOrientation(cell.orientation));
+		cell.layerdSprite = ResourceManager::GetAtlasTexture(textureName, pos);
+		cell.layerdSprite_normal = ResourceManager::GetAtlasTexture(textureName + "_normal", pos);
 		cell.renderLayer = 1;
 	}
 }
 void CellAssignment::AssignCellFromType(Cell& cell, int layer)
 {
+	int pos = (cell.getPosition().x + cell.getPosition().y);
+	if (pos == 0)
+		pos = 1;
+	int randval = rand() % pos;
+	srand(randval);
 	switch (cell.groundType)
 	{
 	default:

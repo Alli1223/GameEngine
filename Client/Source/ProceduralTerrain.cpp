@@ -139,13 +139,25 @@ void ProceduralTerrain::generateGround(std::shared_ptr<Cell>& tile)
 	//}
 	//
 	// Grass noise
-	if (tile->isGrass && gNoise > 4.0 && gNoise < 10.0)
+	if (tile->isGrass && tile->orientation == Cell::Orientation::middle &&gNoise > 4.0 && gNoise < 10.0)
 	{
-		int randSpawn = rand() % 10;
-		if (randSpawn == 0)
-			tile->SetGroundType(Cell::GroundType::spring_water, 1);
-		else if(randSpawn == 3)
-			tile->isLongGrass2 = true;
+		if (tile->groundType == Cell::GroundType::spring_grass)
+		{
+			int randSpawn = 26;
+			tile->layerdSprite = ResourceManager::GetAtlasTexture("spring_grass_light", randSpawn);
+			tile->layerdSprite_normal = ResourceManager::GetAtlasTexture("spring_grass_light_normal", randSpawn);
+			tile->renderLayer = 1;
+		}
+	}
+	if (tile->isGrass && tile->orientation == Cell::Orientation::middle && gNoise > 9.9 && gNoise < 15.0)
+	{
+		if (tile->groundType == Cell::GroundType::spring_grass)
+		{
+			int randSpawn = 40;
+			tile->layerdSprite = ResourceManager::GetAtlasTexture("spring_grass_light", randSpawn);
+			tile->layerdSprite_normal = ResourceManager::GetAtlasTexture("spring_grass_light_normal", randSpawn);
+			tile->renderLayer = 1;
+		}
 	}
 
 
