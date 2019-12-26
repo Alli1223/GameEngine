@@ -56,9 +56,17 @@ void Menu::CharacterSelection(GameSettings& gameSettings, GL_Renderer& renderer,
 
 
 		// Render buttons
-		for each (auto playerButton in existingPlayerButtons)
+		for (int i = 0; i < existingPlayerButtons.size(); i++)
 		{
-			playerButton.Render(renderer);
+			renderer.camera.SetPos(0,0);
+			existingPlayerButtons[i].Render(renderer);
+			existingPlayers[i].setPosition({ existingPlayerButtons[i].getPosition().x + (existingPlayerButtons[i].getSize().x / 2.0f), existingPlayerButtons[i].getPosition().y });
+			existingPlayers[i].Render(renderer);
+			if (existingPlayerButtons[i].isPressed())
+			{
+				player = existingPlayers[i];
+				break;
+			}
 		}
 		createNew.Render(renderer);
 
