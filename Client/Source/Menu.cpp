@@ -54,20 +54,25 @@ void Menu::CharacterSelection(GameSettings& gameSettings, GL_Renderer& renderer,
 		ShowCursor(true);
 		SDL_ShowCursor(SDL_ENABLE);
 
-
+		
 		// Render buttons
 		for (int i = 0; i < existingPlayerButtons.size(); i++)
 		{
 			renderer.camera.SetPos(0,0);
 			existingPlayerButtons[i].Render(renderer);
+			existingPlayers[i].setSize(50, 50);
+			existingPlayers[i].setRenderLayer(0);
 			existingPlayers[i].setPosition({ existingPlayerButtons[i].getPosition().x + (existingPlayerButtons[i].getSize().x / 2.0f), existingPlayerButtons[i].getPosition().y });
 			existingPlayers[i].Render(renderer);
 			if (existingPlayerButtons[i].isPressed())
 			{
+				displayMainMenu = false;
 				player = existingPlayers[i];
+				player.setRenderLayer(3);
 				break;
 			}
 		}
+
 		createNew.Render(renderer);
 
 		if (createNew.isPressed())
@@ -79,17 +84,6 @@ void Menu::CharacterSelection(GameSettings& gameSettings, GL_Renderer& renderer,
 		SDL_GL_SwapWindow(window);
 	}
 }
-
-
-//Uint32 get_pixel_at(Uint32 * pixels, int x, int y, int w)
-//{
-//	return pixels[y * w + x];
-//}
-//
-//std::shared_ptr<Button> get_instance(Button& n)
-//{
-//	return std::make_shared<Button>(n);
-//}
 
 
 void Menu::MainMenu(GameSettings& gameSettings, World& level, Camera& camera, Player& player, GL_Renderer& renderer, SDL_Window* window, SDL_GLContext& glContext)
@@ -242,7 +236,7 @@ void Menu::CharacterCustomisationMenu(GameSettings& gameSettings, Camera& camera
 
 
 
-	Button randomiseAll("Random", { camera.windowSize.x / 2, camera.windowSize.y + camera.windowSize.y / 3 }, "Resources\\UI\\Buttons\\Plain_Button.png", { 200, 50 }, buttonColour, textColour);
+	Button randomiseAll("Random", { camera.windowSize.x / 2, camera.windowSize.y - camera.windowSize.y / 3 }, "Resources\\UI\\Buttons\\Plain_Button.png", { 200, 50 }, buttonColour, textColour);
 
 
 

@@ -166,8 +166,8 @@ void ProceduralTerrain::generateGround(std::shared_ptr<Cell>& tile)
 	{
 		tile->isWater = true;
 		tile->isGrass = false;
+		tile->SetGroundType(Cell::GroundType::spring_water,1);
 		tile->terrainElevationValue = -2.1;
-
 	}
 
 	else if (rNoise >= 1.0 && rNoise < 1.3 || rNoise >= 0.3 && rNoise <= 0.5 && tile->isGrass)
@@ -175,8 +175,6 @@ void ProceduralTerrain::generateGround(std::shared_ptr<Cell>& tile)
 		tile->isSand = true;
 		tile->isGrass = false;
 	}
-
-
 }
 
 /*
