@@ -149,7 +149,7 @@ void World::Render(GL_Renderer& renderer)
 			Chunk chunk(I_Physics.get(), x, y);
 			InfiniWorld.setChunSize(chunk.getChunkSize()); 
 			InfiniWorld.OrientateCells(renderer.camera, x, y);
-			chunk.generator.populateTerrain(chunk.tiles);
+			//chunk.generator.populateTerrain(chunk.tiles);
 			InfiniWorld.MainLevel[{x, y}] = chunk;
 			
 			

@@ -19,8 +19,8 @@ Cell::Cell(b2World* physicsWorld, int x, int y, int layer, std::string type)
 	cellTextureLayer[layer] = type;
 	AssignType(layer, type);
 	physicsptr = physicsWorld;
-
 }
+
 // Create with a position
 Cell::Cell(b2World* physicsWorld, int x, int y, std::string type)
 {
@@ -272,6 +272,7 @@ json Cell::GetJson()
 		cellData["Tree"] = isTree;
 	if(isWheat)
 		cellData["Wheat"] = isWheat;
+
 
 	if (CellItem != nullptr)
 		cellData["Item"] = CellItem->GetJson();

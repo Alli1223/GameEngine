@@ -19,6 +19,7 @@ void CharacerWindow::init(Player& player)
 {
 	if (!initilised)
 	{
+		colour = { 0,0,0 };
 		actualPlayer = &player;
 		initilised = true;
 		window.itemSelection.inventoryPointer = &player.inventory;

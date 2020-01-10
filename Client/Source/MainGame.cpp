@@ -215,19 +215,19 @@ void MainGame::run()
 	//world.onEnter(world.I_player);
 
 	//GameSettings::currentInstance = gameSettings.levelSaving.LoadInstance();
-	Room room;
-
-	json roomData = gameSettings.levelSaving.LoadInstance();
-	Room room2(roomData);
-	if (roomData != nullptr)
-	{
-		room2.onEnter(world.I_player);
-	}
-	else
-	{
-
-		room.onEnter(world.I_player);
-	}
+	//Room room;
+	//
+	//json roomData = gameSettings.levelSaving.LoadInstance();
+	//Room room2(roomData);
+	//if (roomData != nullptr)
+	//{
+	//	room2.onEnter(world.I_player);
+	//}
+	//else
+	//{
+	//
+	//	room.onEnter(world.I_player);
+	//}
 
 	//currentInstance->onEnter(world.I_player);
 	world.onEnter(world.I_player);

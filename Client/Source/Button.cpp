@@ -118,7 +118,7 @@ void Button::Render(GL_Renderer& renderer)
 	
 	
 	// If the button has text, render it in the center of the button
-	renderer.RenderGUI(this->Background, this->position, this->size, this->rotation, this->transparency, this->colour, this->flipSprite);
+	renderer.RenderGUI(this->Background, this->position, this->size, this->rotation, this->transparency, this->colour / 255.0f, this->flipSprite);
 	if (text.size() > 0)
 		renderer.RenderText(text, { this->position.x , position.y + size.y / 4 }, this->size, { textSize, textSize }, textColour);
 		//buttonText.render(renderer, text, getX() - (getWidth() / 2) +(getWidth() / 20), getY() - (getHeight() / 2) + (getHeight() / 5), getWidth() - (getWidth() / 10) / 2, getHeight() / 2, buttonTextColour);

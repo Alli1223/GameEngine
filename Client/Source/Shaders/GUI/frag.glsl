@@ -10,6 +10,5 @@ uniform vec3 imageColour;
 
 void main()
 {    
-	vec4 sampled = vec4(1.0, 1.0, 1.0, texture(image, TexCoords).r);
     color = vec4(texture(image, TexCoords).rgb * imageColour, texture(image, TexCoords).a * Transparency);
 }  

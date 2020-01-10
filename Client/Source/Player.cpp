@@ -258,18 +258,18 @@ void Player::RenderPlayer(GL_Renderer& renderer, Camera& camera)
 				blink = false;
 
 			// What a mess
-			if (idleAnimationTimer.getTicks() > 10000)
-			{
-				legFlipIdleAnimation.setStartIndex(36);
-				legFlipIdleAnimation.OnAnimate();
-				if (idleAnimationTimer.getTicks() > 11000)
-				{
-					idleAnimationTimer.restart();
-					legFlipIdleAnimation.setCurrentFrame(0);
-				}
-
-			}
-			else
+			//if (idleAnimationTimer.getTicks() > 10000)
+			//{
+			//	legFlipIdleAnimation.setStartIndex(36);
+			//	legFlipIdleAnimation.OnAnimate();
+			//	if (idleAnimationTimer.getTicks() > 11000)
+			//	{
+			//		idleAnimationTimer.restart();
+			//		legFlipIdleAnimation.setCurrentFrame(0);
+			//	}
+			//
+			//}
+			//else
 				legFlipIdleAnimation.setStartIndex(32);
 		}
 		

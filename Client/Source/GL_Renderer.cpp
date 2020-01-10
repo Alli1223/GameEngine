@@ -371,8 +371,10 @@ void GL_Renderer::RenderGUI(Texture2D &texture, glm::vec2& position, glm::vec2& 
 	this->GUIShader.SetMatrix4("model", model);
 
 	// Set Colour (and convert to 0.0/1.0 rather than 0/255)
+	if (color.r == 0.0f && color.g == 0.0f && color.b == 0.0f)
+		color = { 1.0f,1.0f,1.0f };
 
-	this->GUIShader.SetVector3f("imageColour", color / 255.0f);
+	this->GUIShader.SetVector3f("imageColour", color);
 	// Set transparency
 	this->GUIShader.SetFloat("Transparency", transparency);
 
