@@ -14,7 +14,7 @@ GameObject::~GameObject()
 	// Remove physics from world
 	if (rigidBody != nullptr)
 	{
-		getBody()->GetWorld()->DestroyBody(rigidBody);
+		//getBody()->GetWorld()->DestroyBody(rigidBody);
 	}
 }
 

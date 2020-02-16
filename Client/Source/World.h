@@ -39,8 +39,7 @@ public:
 	std::vector<std::shared_ptr<Building>> buildings;
 
 	std::vector<NetworkPlayer> networkPlayers;
-	//! Vector of cells that the user changes to send
-	std::vector<std::shared_ptr<Cell>> updatedCells;
+
 
 
 	//! List of bugs in the world

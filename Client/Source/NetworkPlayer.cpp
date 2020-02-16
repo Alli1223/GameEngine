@@ -46,7 +46,7 @@ void NetworkPlayer::Move(glm::vec2 newPos)
 	lerp_y = 10.0f;
 	//if (dist > 200.0f)
 	{
-		std::cout << "Distance to destination " << playerName << " is: " << dist << std::endl;
+		//std::cout << "Distance to destination " << playerName << " is: " << dist << std::endl;
 		//setPosition(newPos);
 		//getBody()->SetTransform(b2Vec2(newPos.x, newPos.y), getBody()->GetAngle());
 		getPosition();

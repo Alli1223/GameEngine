@@ -2,6 +2,7 @@
 #include "GameSettings.h"
 
 Instance* GameSettings::currentInstance = nullptr;
+glm::ivec2 GameSettings::windowSize = { 1920,1080 };
 
 GameSettings::GameSettings()
 {

@@ -19,6 +19,7 @@ Cell::Cell(b2World* physicsWorld, int x, int y, int layer, std::string type)
 	cellTextureLayer[layer] = type;
 	AssignType(layer, type);
 	physicsptr = physicsWorld;
+	isWalkable = true;
 }
 
 // Create with a position
@@ -31,6 +32,7 @@ Cell::Cell(b2World* physicsWorld, int x, int y, std::string type)
 	cellTextureLayer[0] = type;
 	AssignType(0, type);
 	physicsptr = physicsWorld;
+	isWalkable = true;
 }
 
 

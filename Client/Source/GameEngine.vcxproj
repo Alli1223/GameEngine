@@ -229,6 +229,7 @@
     <ClInclude Include="Room.h" />
     <ClInclude Include="RoomDesigner.h" />
     <ClInclude Include="SDL_project.h" />
+    <ClInclude Include="ServerWorld.h" />
     <ClInclude Include="Shader.h" />
     <ClInclude Include="ShopCounter.h" />
     <ClInclude Include="ShopDisplayShelf.h" />
@@ -323,6 +324,7 @@
     <ClCompile Include="Room.cpp" />
     <ClCompile Include="RoomDesigner.cpp" />
     <ClCompile Include="SDL_project.cpp" />
+    <ClCompile Include="ServerWorld.cpp" />
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="ShopCounter.cpp" />
     <ClCompile Include="ShopDisplayShelf.cpp" />

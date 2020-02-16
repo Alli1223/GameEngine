@@ -119,12 +119,12 @@ void WorldEditor::Render(GL_Renderer& renderer, World& world, Player& player)
 								for (int yp = -placementArea; yp < placementArea; yp++)
 								{
 									world.GetCell(mX + xp, mY + yp)->AssignType(0, cellNames[selected]);
-									world.updatedCells.push_back(world.GetCell(mX * xp, mY * yp));
+									GameSettings::currentInstance->updatedCells.push_back(world.GetCell(mX * xp, mY * yp));
 								}
 						else
 						{
 							world.GetCell(mX, mY)->AssignType(1, cellNames[selected]);
-							world.updatedCells.push_back(world.GetCell(mX, mY));
+							GameSettings::currentInstance->updatedCells.push_back(world.GetCell(mX, mY));
 							std::cout << "Updating cell: " << world.GetCell(mX, mY)->getX() << " " << world.GetCell(mX, mY)->getY() << " -- mouse Pos: " << mX << " " << mY << std::endl;
 						}
 					}
@@ -143,12 +143,12 @@ void WorldEditor::Render(GL_Renderer& renderer, World& world, Player& player)
 								for (int yp = 0; yp < placementArea; yp++)
 								{
 									world.GetCell(mX * xp, mY * yp)->AssignType(1, cellNames[selected]);
-									world.updatedCells.push_back(world.GetCell(mX * xp, mY * yp));
+									GameSettings::currentInstance->updatedCells.push_back(world.GetCell(mX * xp, mY * yp));
 								}
 						else
 						{
 							world.GetCell(mX, mY)->AssignType(1, cellNames[selected]);
-							world.updatedCells.push_back(world.GetCell(mX, mY));
+							GameSettings::currentInstance->updatedCells.push_back(world.GetCell(mX, mY));
 						}
 					}
 				}

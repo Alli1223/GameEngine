@@ -42,6 +42,9 @@ public:
 	std::vector<NetworkPlayer> networkPlayers;
 	std::vector<std::shared_ptr<NPC>> npcs;
 
+	//! Vector of cells that the user changes to send
+	std::vector<std::shared_ptr<Cell>> updatedCells;
+
 protected:
 
 private:

@@ -148,11 +148,16 @@ void MainGame::run()
 	glRenderer.SetProjectionMatrix();
 
 	// Main Menu
-	Menu menu;
-	menu.MainMenu(gameSettings, world, glRenderer.camera, world.I_player, glRenderer, window, glContext);
+	//Menu menu;
+	//menu.MainMenu(gameSettings, world, glRenderer.camera, world.I_player, glRenderer, window, glContext);
 
 	// Initilise the world with the physcis stored in glRenderer
 	world.InitiliseWorld(glRenderer);
+
+	if (gameSettings.useNetworking)
+	{
+		s_world.network = &networkManager;
+	}
 
 	// Get ticks used for delta time
 	int lastTicks = SDL_GetTicks();
@@ -166,7 +171,7 @@ void MainGame::run()
 	}
 
 	// Create player
-	gameSettings.levelSaving.LoadWorld(world, world.I_player);
+	//gameSettings.levelSaving.LoadWorld(world, world.I_player);
 	world.I_player.setPosition(100, 0);
 	world.I_player.setSize(100, 100);
 	world.I_player.Sprite = ResourceManager::LoadTexture("Resources\\Sprites\\Character\\Alli.png");
@@ -176,7 +181,7 @@ void MainGame::run()
 	// Create Level
 
 
-	world.InfiniWorld.CreateInfiniWorld(glRenderer, world.I_Physics.get());
+	//world.InfiniWorld.CreateInfiniWorld(glRenderer, world.I_Physics.get());
 
 	ProceduralTerrain pt;
 	//pt.populateTerrain(level);
@@ -189,6 +194,7 @@ void MainGame::run()
 	//for (int i = 0; i < 5; i++)
 	//			world.I_player.inventory.add(displayShelf.getSharedPointer());
 	//Fish fish;
+
 	Hoe hoe;
 	//FishingRod rod;
 	//BugNet net;
@@ -230,7 +236,9 @@ void MainGame::run()
 	//}
 
 	//currentInstance->onEnter(world.I_player);
-	world.onEnter(world.I_player);
+	//world.onEnter(world.I_player);
+
+	s_world.onEnter(world.I_player);
 
 	//Shop.onEnter(world.I_player);
 	//Mix_PlayMusic(gMusic, -1);
@@ -256,8 +264,8 @@ void MainGame::run()
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		// Process networking
-		if (gameSettings.useNetworking)
-			networkManager.NetworkUpdate(world, GameSettings::currentInstance->I_Physics.get(), world.networkPlayers, world.I_player);
+		//if (gameSettings.useNetworking)
+			//networkManager.NetworkUpdate(world, GameSettings::currentInstance->I_Physics.get(), world.networkPlayers, world.I_player);
 
 		// User input
 		input.HandleUserInput(glRenderer, GameSettings::currentInstance->I_player, gameSettings, UI);

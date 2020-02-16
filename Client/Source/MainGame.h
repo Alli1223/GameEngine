@@ -34,6 +34,7 @@
 #include "NetworkManager.h"
 #include "Instance.h"
 #include "CollisionListener.h"
+#include "ServerWorld.h"
 //! The main class
 /*!
 This is the main class where the game is laoded and run. 
@@ -59,10 +60,12 @@ public:
 	UserInput input;
 	GameUI UI;
 	World world;
+	ServerWorld s_world;
 	Room Shop;
 	Pathfinder pathfinder;
 	NetworkManager networkManager;
 	CollisionListener myListender;
+
 
 	static std::shared_ptr<Instance> currentInstance;
 	
