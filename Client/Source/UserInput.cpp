@@ -75,8 +75,8 @@ void UserInput::HandleUserInput(GL_Renderer& renderer, Player& player, GameSetti
 	}
 
 	// Set the players speed
-	float deltaTime = gameSettings.deltaTime;
-	player.setVelocity(player.getSpeed() * deltaTime, player.getSpeed() * deltaTime);
+	float deltaTime = gameSettings.deltaTime * 0.01;
+	//player.setVelocity(player.getSpeed() * deltaTime, player.getSpeed() * deltaTime);
 
 
 
@@ -95,7 +95,7 @@ void UserInput::HandleUserInput(GL_Renderer& renderer, Player& player, GameSetti
 		//player.setTargetRotation(225);
 		player.setTargetRotation(270);
 		player.setPlayerMoving(true);
-
+		
 		player.Move(Player::MovementDirection::right_up);
 	}
 	else if (state[SDL_SCANCODE_W] && state[SDL_SCANCODE_A])

@@ -115,8 +115,8 @@ json GameObject::GetJson()
 
 float GameObject::GetDistance(vec2 pointA, vec2 pointB)
 {
-	float dx = pointA.x - pointA.y;
-	float dy = pointB.x - pointB.y;
+	float dx = pointA.x - pointB.x;
+	float dy = pointA.y - pointB.y;
 	//pythagoras(sp)
 	float dist = 0.0;
 

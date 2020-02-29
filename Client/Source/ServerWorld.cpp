@@ -34,10 +34,10 @@ void ServerWorld::onExit(Player& player)
 
 void ServerWorld::Render(GL_Renderer& renderer)
 {
-	renderer.camera.Lerp_To(I_player.getPosition() - (glm::vec2)(GameSettings::windowSize / 2), 0.3f);
+	renderer.camera.Lerp_To(I_player.getPosition() - (glm::vec2)(GameSettings::GSInstance->windowSize / 2), 0.3f);
 	// Render the world
-	for (int x = renderer.camera.getX() / cellSize; x < renderer.camera.getX() / cellSize + (GameSettings::windowSize.x / cellSize); x++)
-		for (int y = renderer.camera.getY() / cellSize; y < renderer.camera.getY() / cellSize + (GameSettings::windowSize.y / cellSize); y++)
+	for (int x = renderer.camera.getX() / cellSize; x < renderer.camera.getX() / cellSize + (GameSettings::GSInstance->windowSize.x / cellSize); x++)
+		for (int y = renderer.camera.getY() / cellSize; y < renderer.camera.getY() / cellSize + (GameSettings::GSInstance->windowSize.y / cellSize); y++)
 		{
 			if (level[{x, y}] != nullptr)
 			{
@@ -45,16 +45,21 @@ void ServerWorld::Render(GL_Renderer& renderer)
 			}
 		}
 	I_player.Render(renderer);
+	for (int i = 0; i <networkPlayers.size(); i++)
+	{
+		networkPlayers[i].Render(renderer);
+	}
+	network->ProcessPlayerLocations(I_Physics.get(), I_player);
 }
 
 void ServerWorld::Update()
 {
-	if(!networkUpdate.isStarted())
-		networkUpdate.start();
-	if (networkUpdate.getTicks() > 200)
+	if(!networkUpdateTimer.isStarted())
+		networkUpdateTimer.start();
+	if (networkUpdateTimer.getTicks() > 200)
 	{
 		NetworkUpdate();
-		networkUpdate.restart();
+		networkUpdateTimer.restart();
 		network->ProcessPlayerLocations(I_Physics.get(), I_player);
 	}
 	I_Physics->Step(1.0f / 100.0f, 6, 2);

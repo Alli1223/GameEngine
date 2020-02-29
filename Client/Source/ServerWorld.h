@@ -29,7 +29,7 @@ public:
 
 	NetworkManager* network;
 
-	Timer networkUpdate;
+	Timer networkUpdateTimer;
 
 private:
 	int cellSize = 100;

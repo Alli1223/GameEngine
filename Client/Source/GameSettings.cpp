@@ -2,7 +2,8 @@
 #include "GameSettings.h"
 
 Instance* GameSettings::currentInstance = nullptr;
-glm::ivec2 GameSettings::windowSize = { 1920,1080 };
+
+GameSettings* GameSettings::GSInstance;
 
 GameSettings::GameSettings()
 {
@@ -29,6 +30,7 @@ glm::vec2 GameSettings::getScreenResolution()
 	}
 	WINDOW_HEIGHT = currentDisplay.h;
 	WINDOW_WIDTH = currentDisplay.w;
+	windowSize = { currentDisplay.w, currentDisplay.h };
 	return { WINDOW_WIDTH, WINDOW_HEIGHT };
 }
 

@@ -66,7 +66,10 @@ MainGame::MainGame()
 	{
 		gameSettings.WINDOW_WIDTH  = 1920;  ///= 2 ;
 		gameSettings.WINDOW_HEIGHT = 1080; // /= 2;
+		gameSettings.windowSize = { gameSettings.WINDOW_WIDTH, gameSettings.WINDOW_HEIGHT };
 	}
+	GameSettings::GSInstance = &gameSettings;
+	//GameSettings::windowSize = gameSettings.windowSize;
 	gameSettings.deltaTime = SDL_GetTicks();
 	
 
@@ -160,8 +163,8 @@ void MainGame::run()
 	}
 
 	// Get ticks used for delta time
-	int lastTicks = SDL_GetTicks();
-	int currentTicks = SDL_GetTicks();
+	float lastTicks = SDL_GetTicks();
+	float currentTicks = SDL_GetTicks();
 
 	// Music
 	gMusic = Mix_LoadMUS("Resources\\Sounds\\Music\\Fantasy_Game_Loop.wav");
@@ -243,9 +246,15 @@ void MainGame::run()
 	//Shop.onEnter(world.I_player);
 	//Mix_PlayMusic(gMusic, -1);
 
+	float lag = 0.0f;
 	/////////////////////////////////////////////// MAIN LOOP ///////////////////////////////////////
 	while (gameSettings.running)
 	{
+		// Compute timings
+		currentTicks = SDL_GetTicks();
+		float deltaTime = (currentTicks - lastTicks);
+
+
 		// Set up ImGui
 		ImGui_ImplOpenGL3_NewFrame();
 		ImGui_ImplSDL2_NewFrame(window);
@@ -255,9 +264,6 @@ void MainGame::run()
 		level.setCellsInWindowSize(gameSettings.WINDOW_WIDTH / level.getCellSize(), gameSettings.WINDOW_HEIGHT / level.getCellSize());
 		SDL_GetMouseState(&mouseX, &mouseY);
 
-		// Compute timings
-		currentTicks = SDL_GetTicks();
-		float deltaTime = (float)(currentTicks - lastTicks) / 1000.0f;
 
 		// Clear screen
 		glClearColor(0.4f, 0.4f, 0.4f, 1.0f);
@@ -292,6 +298,9 @@ void MainGame::run()
 
 		if (gameSettings.displayFPS)
 			gameSettings.CalculateFramesPerSecond();
+
+		lastTicks = currentTicks;
+		gameSettings.elapsedTime = currentTicks;
 
 		gameSettings.deltaTime = gameSettings.elapsedTime - gameSettings.lastFrameTimeElapsed;
 		gameSettings.lastFrameTimeElapsed = gameSettings.elapsedTime;

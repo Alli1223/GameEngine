@@ -287,7 +287,7 @@ void NetworkManager::MapNetworkUpdate(World& world)
 void NetworkManager::sendTCPMessage(std::string message)
 {
 	// Fill the buffer with the data from the string
-	boost::array<char, 16384> buf;
+	boost::array<char, 32768> buf;
 	for (int i = 0; i < message.size(); i++)
 	{
 		buf[i] = message[i];
@@ -319,7 +319,7 @@ std::string NetworkManager::RecieveMessage()
 	std::stringstream inStream;
 	try
 	{
-		boost::array<char, 16384> buffer;
+		boost::array<char, 32768> buffer;
 		boost::asio::streambuf read_buffer;
 		//bytes_transferred = boost::asio::write(*socket, write_buffer);
 		auto bytes_transferred = boost::asio::read_until(*socket, read_buffer, ("}\r\n"));

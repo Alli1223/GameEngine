@@ -128,6 +128,8 @@ void Player::Move(Player::MovementDirection direction)
 {
 
 	this->direction = direction;
+
+
 	switch(direction)
 	{
 	default:

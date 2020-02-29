@@ -11,12 +11,12 @@ public:
 	GameSettings();
 	~GameSettings();
 
-
+	static GameSettings* GSInstance;
 	//! initial window settings
 	int WINDOW_WIDTH = 800;
 	int WINDOW_HEIGHT = 600;
 
-	static glm::ivec2 windowSize;
+	glm::ivec2 windowSize;
 	//! Save the players settings
 	//void savePlayerSettings(Player& player);
 	Player getPlayerFromSave();
