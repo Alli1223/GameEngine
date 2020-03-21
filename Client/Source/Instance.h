@@ -41,6 +41,7 @@ public:
 	//! List of players in instance
 	std::vector<NetworkPlayer> networkPlayers;
 	std::vector<std::shared_ptr<NPC>> npcs;
+	std::vector<std::shared_ptr<NPC>> enemies;
 
 	//! Vector of cells that the user changes to send
 	std::vector<std::shared_ptr<Cell>> updatedCells;

@@ -6,6 +6,7 @@
 #include "Cell.h"
 #include "World.h"
 #include "GameSettings.h"
+#include "ServerWorld.h"
 class WorldEditor
 {
 public:

@@ -20,8 +20,8 @@ void NetworkPlayer::Update()
 	float lerp_x = getPosition().x + (lastKnownPos.x - getPosition().x) * 0.3f;
 	float lerp_y = getPosition().y + (lastKnownPos.y - getPosition().y) * 0.3f;
 
-	lerp_x = 100.0f;
-	lerp_y = 100.0f;
+	//lerp_x = 100.0f;
+	//lerp_y = 100.0f;
 	if (lastKnownPos.x > pos.x + 11.0f)
 		getBody()->ApplyForceToCenter(b2Vec2(+lerp_x, 0.0f), true);
 	if (lastKnownPos.x < pos.x - 11.0f)
@@ -35,7 +35,7 @@ void NetworkPlayer::Update()
 void NetworkPlayer::Move(glm::vec2 newPos)
 {
 	lastKnownPos = newPos;
-	
+	getBody()->SetLinearVelocity(b2Vec2(0.0f, 0.0f));
 	
 	vec2 pos = getPosition();// { getBody()->GetPosition().x, getBody()->GetPosition().y };
 	if ((glm::ivec2)pos != (glm::ivec2)newPos)

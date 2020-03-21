@@ -2,7 +2,7 @@
 #include "stdafx.h"
 #include "Level.h"
 #include "World.h"
-
+#include "Enemy.h"
 class NetworkManager
 {
 public:
@@ -12,6 +12,7 @@ public:
 	int init(std::string playerName);
 
 	std::vector<NetworkPlayer>* allPlayers;
+	std::map<int,Enemy> allEnemies;
 
 	void Connect();
 	//! Main Network update function
@@ -22,7 +23,7 @@ public:
 	void sendTCPMessage(std::string message);
 
 	//! Process the players location from json
-	void ProcessPlayerLocations(b2World* I_Physics, Player& player);
+	void ProcessNetworkObjects(b2World* I_Physics, Player& player);
 	//! Process cell data
 	void MapNetworkUpdate(World& level);
 	//! Return a string from recieve message

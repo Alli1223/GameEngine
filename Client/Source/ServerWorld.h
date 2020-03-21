@@ -2,6 +2,7 @@
 #include "Instance.h"
 #include "GameSettings.h"
 #include "NetworkManager.h"
+#include "Enemy.h"
 class ServerWorld : public Instance
 {
 public:

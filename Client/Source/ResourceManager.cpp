@@ -31,6 +31,7 @@ Texture2D ResourceManager::GetAtlasTexture(std::string atlasName, int index)
 	return CreateTextureFromAtlas(Atlass[atlasName], index);
 }
 
+// Load an atlas from file - SpritesWidth = total columns / tileSize = pixels in sprite
 Atlas ResourceManager::LoadAtlas(std::string name, std::string file, int SpritesInWidth, int tileSize)
 {
 	if (Atlass.count(name) > 0)

@@ -3,7 +3,7 @@
 #include "GL_Renderer.h"
 #include <Box2D/Box2D.h>
 #include "CollisionIdentifier.h"
-
+#include "Animation.h"
 class GameObject
 {
 public:
@@ -14,6 +14,8 @@ public:
 
 	//! Draw sprite
 	virtual void Render(GL_Renderer &renderer);
+
+	void RenderAnimation(Animation& anim, std::string atlasName);
 
 	//! Override Get Json Data
 	virtual json GetJson();

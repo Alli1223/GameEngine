@@ -16,6 +16,7 @@ void ServerWorld::onEnter(Player& player)
 	if (GameSettings::currentInstance != nullptr)
 		GameSettings::currentInstance->onExit(player);
 	GameSettings::currentInstance = this;
+
 	//player.InitPhysics(I_Physics.get(), player.colisionIdentity, b2BodyType::b2_dynamicBody, 1.0f, 0.3f);
 	I_player = player;
 	I_player.InitPhysics(I_Physics.get(), player.colisionIdentity, b2BodyType::b2_dynamicBody, 1.0f, 0.3f);
@@ -49,7 +50,12 @@ void ServerWorld::Render(GL_Renderer& renderer)
 	{
 		networkPlayers[i].Render(renderer);
 	}
-	network->ProcessPlayerLocations(I_Physics.get(), I_player);
+	for (std::map<int, Enemy>::iterator it = network->allEnemies.begin(); it != network->allEnemies.end(); it++)
+	{
+		it->second.Update();
+		it->second.Render(renderer);
+	}
+	network->ProcessNetworkObjects(I_Physics.get(), I_player);
 }
 
 void ServerWorld::Update()
@@ -60,7 +66,7 @@ void ServerWorld::Update()
 	{
 		NetworkUpdate();
 		networkUpdateTimer.restart();
-		network->ProcessPlayerLocations(I_Physics.get(), I_player);
+		network->ProcessNetworkObjects(I_Physics.get(), I_player);
 	}
 	I_Physics->Step(1.0f / 100.0f, 6, 2);
 }
@@ -105,16 +111,13 @@ void ServerWorld::NetworkUpdate()
 			// Range-based for loop to iterate through the map data
 			for (auto& element : jmapData)
 			{
+				int x = element.at("X").get<int>();
+				int y = element.at("Y").get<int>();
 
+				//if (level[{x, y}] != nullptr)
 				Cell newCell(I_Physics.get(), element);
-				//world.GetCell(newCell.getX(), newCell.getY()) = std::make_shared<Cell>(newCell);
 				level[{newCell.getX(), newCell.getY()}] = std::make_shared<Cell>(newCell);
-
 				level[{newCell.getX(), newCell.getY()}]->isWalkable = true;
-				//newCell = level.GetCellFromJson(element);
-				//level.SetCell(newCell.getX(), newCell.getY(), newCell);
-				//world.GetCell(newce)
-				//world.InfiniWorld.
 				cellsUpdated++;
 			}
 			std::cout << "Cells Updated: " << cellsUpdated << std::endl;

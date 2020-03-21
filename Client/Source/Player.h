@@ -87,8 +87,8 @@ private:
 	//! Speed is variable
 	float speed = 10.0f;
 	//! Walk and run speed are constants
-	float walkSpeed = 10.0f;
-	float runSpeed = 20.0f;
+	float walkSpeed = 3.0f;
+	float runSpeed = 6.0f;
 	int renderLayer = 3;
 	//! Render the player
 	void RenderPlayer(GL_Renderer& renderer, Camera& camera);

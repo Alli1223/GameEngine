@@ -44,6 +44,15 @@ int getNumber(std::string type)
 	return number;
 }
 
+bool startsWith(std::string& type, std::string name)
+{
+	if (type.compare(0, name.size(), name) == 0)
+	{
+		return true;
+	}
+	return false;
+}
+
 void CellAssignment::AssignCell(Cell& cell, std::string& type, int layer)
 {
 	// Load spring grass texture
@@ -312,7 +321,7 @@ void CellAssignment::AssignCell(Cell& cell, std::string& type, int layer)
 	}
 
 	// Load path textures
-	if (type.compare(0, 4, "Path") == 0)
+	if (startsWith(type, "Path"))
 	{
 		int i = getNumber(type);
 

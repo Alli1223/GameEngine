@@ -107,6 +107,11 @@ void GameObject::Render(GL_Renderer &renderer)
 	renderer.RenderSpriteLighting(this->Sprite, this->NormalMap, this->position, this->size, this->rotation,this->transparency,this->renderLayer, this->colour, flipSprite);
 }
 
+void GameObject::RenderAnimation(Animation& anim, std::string atlasName)
+{
+	this->Sprite = ResourceManager::GetAtlasTexture(atlasName, anim.getCurrentFrame());
+}
+
 json GameObject::GetJson()
 {
 	json empty;

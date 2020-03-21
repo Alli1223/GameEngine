@@ -102,7 +102,7 @@ void NetworkManager::NetworkUpdate(World& world, b2World* I_Physics, std::vector
 	if (runPlayerNetworkTick)
 	{
 		runPlayerNetworkTick = false;
-		ProcessPlayerLocations(I_Physics, player);
+		ProcessNetworkObjects(I_Physics, player);
 	}
 
 	if (runMapNetworkTick || world.updatedCells.size() > 0)
@@ -177,7 +177,7 @@ bool NetworkManager::UpdateNetworkPlayer(json& data, std::string name)
 }
 
 
-void NetworkManager::ProcessPlayerLocations(b2World* I_Physics, Player & player)
+void NetworkManager::ProcessNetworkObjects(b2World* I_Physics, Player& player)
 {
 	//Create the json to send to the server
 	json playerData = player.getPlayerJson();
@@ -192,6 +192,7 @@ void NetworkManager::ProcessPlayerLocations(b2World* I_Physics, Player & player)
 	{
 		json jsonData = ConvertToJson(updateData);
 		json playerData = jsonData.at("PlayerData");
+		json EnemyData = jsonData.at("EnemyData");
 
 		// Loop through each player
 		for (auto& player : playerData)
@@ -211,6 +212,28 @@ void NetworkManager::ProcessPlayerLocations(b2World* I_Physics, Player & player)
 					newPlayer.InitPhysics(I_Physics, newPlayer.colisionIdentity, b2BodyType::b2_dynamicBody, 1.0f, 0.3f);
 					allPlayers->push_back(newPlayer);
 				}
+			}
+		}
+
+		// Loop through each player
+		for (auto& enemy : EnemyData)
+		{
+			int ID = enemy.at("ID").get<int>();
+
+			if (allEnemies.count(ID) > 0)
+			{
+				allEnemies.at(ID).NetworkUpdate(enemy);
+			}
+			else
+			{
+
+				Enemy newEnemy;
+				newEnemy.setSize({ 100,100 });
+				newEnemy.setPosition({ enemy.at("X").get<float>(), enemy.at("Y").get<float>() });
+
+				newEnemy.InitPhysics(I_Physics, b2BodyType::b2_dynamicBody, 1.0f, 0.3f);
+				allEnemies.emplace(ID,newEnemy);
+
 			}
 		}
 	}
@@ -287,7 +310,8 @@ void NetworkManager::MapNetworkUpdate(World& world)
 void NetworkManager::sendTCPMessage(std::string message)
 {
 	// Fill the buffer with the data from the string
-	boost::array<char, 32768> buf;
+	//const size_t var = message.size();
+	boost::array<char, 100000> buf;
 	for (int i = 0; i < message.size(); i++)
 	{
 		buf[i] = message[i];
@@ -311,19 +335,28 @@ std::string make_string(boost::asio::streambuf & streambuf)
 	return { boost::asio::buffers_begin(streambuf.data()),
 		boost::asio::buffers_end(streambuf.data()) };
 }
+
+void read_handler(const boost::system::error_code& ec, std::size_t bytes_transferred){
+
+};
+
 //! returns a string from the socket
 std::string NetworkManager::RecieveMessage()
 {
 	//Create return messages and an instream to put the buffer data into
 	std::string returnMessage;
 	std::stringstream inStream;
+
 	try
 	{
-		boost::array<char, 32768> buffer;
+		boost::array<char, 100000> buffer;
 		boost::asio::streambuf read_buffer;
+		std::string data = "";
 		//bytes_transferred = boost::asio::write(*socket, write_buffer);
-		auto bytes_transferred = boost::asio::read_until(*socket, read_buffer, ("}\r\n"));
 
+		// Read until new line afer json
+		auto bytes_transferred = boost::asio::read_until(*socket, read_buffer, ("}\r\n"));
+		//auto bytes_transferred = boost::asio::async_read_until(*socket, data, ("}\r\n"),read_handler);
 		//std::cout << "Read: " << make_string(read_buffer) << std::endl;
 
 		return returnMessage = make_string(read_buffer);

@@ -178,6 +178,7 @@
     <ClInclude Include="CropSquare.h" />
     <ClInclude Include="CropTile.h" />
     <ClInclude Include="Door.h" />
+    <ClInclude Include="Enemy.h" />
     <ClInclude Include="FishingRod.h" />
     <ClInclude Include="FrameBuffer.h" />
     <ClInclude Include="Furniture.h" />
@@ -274,6 +275,7 @@
     <ClCompile Include="CropSquare.cpp" />
     <ClCompile Include="CropTile.cpp" />
     <ClCompile Include="Door.cpp" />
+    <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="FishingRod.cpp" />
     <ClCompile Include="FrameBuffer.cpp" />
     <ClCompile Include="Furniture.cpp" />

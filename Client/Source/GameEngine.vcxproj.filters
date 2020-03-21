@@ -259,10 +259,21 @@
     <ClCompile Include="Door.cpp">
       <Filter>Source Files\Core\Items\Furniture</Filter>
     </ClCompile>
-    <ClCompile Include="Shopkeeper.cpp" />
-    <ClCompile Include="SpeechBubble.cpp" />
-    <ClCompile Include="Kiosk.cpp" />
-    <ClCompile Include="ServerWorld.cpp" />
+    <ClCompile Include="Kiosk.cpp">
+      <Filter>Source Files\Core\Items\Furniture</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>Source Files\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="SpeechBubble.cpp">
+      <Filter>Source Files\Core\GUI\Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="ServerWorld.cpp">
+      <Filter>Source Files\Core\Level Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Shopkeeper.cpp">
+      <Filter>Source Files\Character</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cell.h">
@@ -541,10 +552,21 @@
     <ClInclude Include="ItemDescriptionWindow.h">
       <Filter>Headers\Core\GUI\Element</Filter>
     </ClInclude>
-    <ClInclude Include="Shopkeeper.h" />
-    <ClInclude Include="SpeechBubble.h" />
-    <ClInclude Include="Kiosk.h" />
-    <ClInclude Include="ServerWorld.h" />
+    <ClInclude Include="Kiosk.h">
+      <Filter>Headers\Core\Items\Furniture</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>Headers\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="SpeechBubble.h">
+      <Filter>Headers\Core\GUI\Element</Filter>
+    </ClInclude>
+    <ClInclude Include="ServerWorld.h">
+      <Filter>Headers\Core\Level Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Shopkeeper.h">
+      <Filter>Headers\Character</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="SDL_project.rc" />

@@ -184,7 +184,7 @@ void MainGame::run()
 	// Create Level
 
 
-	//world.InfiniWorld.CreateInfiniWorld(glRenderer, world.I_Physics.get());
+
 
 	ProceduralTerrain pt;
 	//pt.populateTerrain(level);
@@ -239,9 +239,10 @@ void MainGame::run()
 	//}
 
 	//currentInstance->onEnter(world.I_player);
-	//world.onEnter(world.I_player);
-
+	//world.InfiniWorld.CreateInfiniWorld(glRenderer, world.I_Physics.get());
 	s_world.onEnter(world.I_player);
+
+	//s_world.onEnter(world.I_player);
 
 	//Shop.onEnter(world.I_player);
 	//Mix_PlayMusic(gMusic, -1);

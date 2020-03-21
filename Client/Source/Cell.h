@@ -170,6 +170,7 @@ public:
 
 	bool isDisplayCase = false;
 
+	// For setting orientations
 	enum GroundType
 	{
 		empty,
