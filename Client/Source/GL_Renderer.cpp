@@ -64,6 +64,8 @@ GL_Renderer::GL_Renderer()
 	ResourceManager::LoadAtlas("spring_dirt_1", TerrainSprite + "Spring\\spring_dirt_1.png", 6, 63);
 	ResourceManager::LoadAtlas("spring_dirt_1_normal", TerrainSprite + "Spring\\spring_dirt_1_normal.png", 6, 63);
 	ResourceManager::LoadAtlas("spring_dirt_2", TerrainSprite + "Spring\\spring_dirt_2.png", 6, 63);
+	//ResourceManager::LoadAtlas("spring_grass_light", TerrainSprite + "Terrain.fw2.png", 8, 15);
+	//ResourceManager::LoadAtlas("spring_grass_light_normal", TerrainSprite + "Terrain.fw2.png", 8, 15);
 	ResourceManager::LoadAtlas("spring_grass_light", TerrainSprite + "Spring\\spring_grass_light.png", 6, 63);
 	ResourceManager::LoadAtlas("spring_grass_light_normal", TerrainSprite + "Spring\\spring_grass_normal.png", 6, 63);
 	ResourceManager::LoadAtlas("spring_grass_dark", TerrainSprite + "spring_grass_dark.png", 6, 63);

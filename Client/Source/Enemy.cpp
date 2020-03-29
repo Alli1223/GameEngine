@@ -6,8 +6,9 @@ Slime::Slime()
 	slimeAnim.oscillate = true;
 	slimeAnim.maxFrames = 3;
 
-	ResourceManager::LoadAtlas("SlimeBlue", SpriteDirctory + "\\slime-blue.png", 3, 16);
-
+	ResourceManager::LoadAtlas("SlimeBlue", SpriteDirctory + "mobs\\slime-blue.png", 3, 15);
+	slimeAnim.OnAnimate();
+	this->renderLayer = 3;
 	//this->Sprite = ResourceManager::GetAtlasTexture("crops", 1);
 	//this->NormalMap = ResourceManager::GetAtlasTexture("crops", 1);
 }
@@ -15,7 +16,10 @@ Slime::Slime()
 void Slime::Render(GL_Renderer& renderer)
 {
 	RenderAnimation(slimeAnim, "SlimeBlue");
-	//this->Sprite = ResourceManager::GetAtlasTexture("Slimeblue", slimeAnim.getCurrentFrame());
+
+	if (hasPhysics)
+		this->setPosition({ this->getBody()->GetPosition().x * physicsScaleUp,this->getBody()->GetPosition().y * physicsScaleUp });
+	renderer.RenderSpriteLighting(this->Sprite, this->NormalMap, this->position, this->size, this->rotation, this->transparency, this->renderLayer, this->colour, flipSprite);
 }
 
 void Enemy::NetworkUpdate(json data)
@@ -26,13 +30,20 @@ void Enemy::NetworkUpdate(json data)
 	int rotation = data.at("rotation").get<int>();
 	bool moving = data.at("isMoving").get<bool>();
 
-	setPosition(x, y);
+	lastKnownPos = { x,y };
+	//setPosition(x, y);
 	setRotation(rotation);
 	this->isMoving = moving;
 }
 
+void Enemy::Render(GL_Renderer& renderer)
+{
+	int test = 2;
+}
+
 void Enemy::Update()
 {
+	UpdatePosition();
 }
 
 void Enemy::UpdatePosition()
@@ -57,6 +68,7 @@ void Enemy::Move(glm::vec2 newPos)
 
 		lerp_x = getSpeed() * (dist * 0.01f);
 		lerp_y = getSpeed() * (dist * 0.01f);
+		//setSpeed(10.0f);
 
 		std::cout << dist << std::endl;
 		//if (dist > 1000000.0f)

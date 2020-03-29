@@ -220,6 +220,7 @@ public:
 
 		alone
 	} orientation;
+	bool orientated = false;
 
 	void SetOrientation(Cell::Orientation newOrientation) { orientation = newOrientation; }
 

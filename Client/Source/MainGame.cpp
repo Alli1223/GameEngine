@@ -155,7 +155,6 @@ void MainGame::run()
 	//menu.MainMenu(gameSettings, world, glRenderer.camera, world.I_player, glRenderer, window, glContext);
 
 	// Initilise the world with the physcis stored in glRenderer
-	world.InitiliseWorld(glRenderer);
 
 	if (gameSettings.useNetworking)
 	{
@@ -177,7 +176,7 @@ void MainGame::run()
 	//gameSettings.levelSaving.LoadWorld(world, world.I_player);
 	world.I_player.setPosition(100, 0);
 	world.I_player.setSize(100, 100);
-	world.I_player.Sprite = ResourceManager::LoadTexture("Resources\\Sprites\\Character\\Alli.png");
+	//world.I_player.Sprite = ResourceManager::LoadTexture("Resources\\Sprites\\Character\\Alli.png");
 	world.I_player.setEyeColour({ rand() % 255, rand() % 255 , rand() % 255 });
 	world.I_player.setHairColour({ rand() % 255, rand() % 255 , rand() % 255 });
 

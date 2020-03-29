@@ -12,7 +12,7 @@ public:
 	int init(std::string playerName);
 
 	std::vector<NetworkPlayer>* allPlayers;
-	std::map<int,Enemy> allEnemies;
+	std::map<int,std::shared_ptr<Enemy>> allEnemies;
 
 	void Connect();
 	//! Main Network update function

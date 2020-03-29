@@ -5,6 +5,7 @@ class Enemy : public GameObject
 public:
 	void NetworkUpdate(json data);
 
+	virtual void Render(GL_Renderer& renderer);
 	void Update();
 	void UpdatePosition();
 	void Move(glm::vec2 newPos);

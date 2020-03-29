@@ -35,5 +35,6 @@ public:
 private:
 	int cellSize = 100;
 	std::string mapData;
+	ProceduralTerrain procGen;
 };
 

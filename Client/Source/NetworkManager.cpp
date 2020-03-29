@@ -222,16 +222,17 @@ void NetworkManager::ProcessNetworkObjects(b2World* I_Physics, Player& player)
 
 			if (allEnemies.count(ID) > 0)
 			{
-				allEnemies.at(ID).NetworkUpdate(enemy);
+				allEnemies.at(ID)->NetworkUpdate(enemy);
 			}
 			else
 			{
 
-				Enemy newEnemy;
-				newEnemy.setSize({ 100,100 });
-				newEnemy.setPosition({ enemy.at("X").get<float>(), enemy.at("Y").get<float>() });
+				std::shared_ptr<Slime> newEnemy = std::make_shared<Slime>();
+				newEnemy->setSize({ 100,100 });
+				newEnemy->setPosition({ enemy.at("X").get<float>(), enemy.at("Y").get<float>() });
 
-				newEnemy.InitPhysics(I_Physics, b2BodyType::b2_dynamicBody, 1.0f, 0.3f);
+				newEnemy->InitPhysics(I_Physics, b2BodyType::b2_dynamicBody, 1.0f, 0.3f);
+				
 				allEnemies.emplace(ID,newEnemy);
 
 			}

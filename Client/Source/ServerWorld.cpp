@@ -37,12 +37,30 @@ void ServerWorld::Render(GL_Renderer& renderer)
 {
 	renderer.camera.Lerp_To(I_player.getPosition() - (glm::vec2)(GameSettings::GSInstance->windowSize / 2), 0.3f);
 	// Render the world
-	for (int x = renderer.camera.getX() / cellSize; x < renderer.camera.getX() / cellSize + (GameSettings::GSInstance->windowSize.x / cellSize); x++)
-		for (int y = renderer.camera.getY() / cellSize; y < renderer.camera.getY() / cellSize + (GameSettings::GSInstance->windowSize.y / cellSize); y++)
+	for (int x = renderer.camera.getX() / cellSize - 1; x < renderer.camera.getX() / cellSize + (GameSettings::GSInstance->windowSize.x / cellSize) + 1; x++)
+		for (int y = renderer.camera.getY() / cellSize -1; y < renderer.camera.getY() / cellSize + (GameSettings::GSInstance->windowSize.y / cellSize) + 2; y++)
 		{
 			if (level[{x, y}] != nullptr)
 			{
 				level[{x, y}]->Render(renderer);
+				if (!level[{x, y}]->orientated)
+				{
+					procGen.OrientateCells(level[{x, y}], &level);
+					level[{x, y}]->orientated = true;
+				}
+			}
+			else // Create cell
+			{
+				std::shared_ptr<Cell> cell = std::make_shared<Cell>();
+				cell->setX(x), cell->setY(y);
+				cell->setPosition(x * cell->getCellSize(), y * cell->getCellSize());
+				cell->setSize(cell->getCellSize(), cell->getCellSize());
+				procGen.generateGround(cell);
+				
+				
+				//cell->Sprite = ResourceManager::LoadTexture("Resources\\External\\rpg-pack\\tiles\\generic-rpg-Slice.png");
+				//cell->NormalMap = ResourceManager::LoadTexture("Resources\\External\\rpg-pack\\tiles\\generic-rpg-Slice.png");
+				level[{x, y}] = cell;
 			}
 		}
 	I_player.Render(renderer);
@@ -50,10 +68,9 @@ void ServerWorld::Render(GL_Renderer& renderer)
 	{
 		networkPlayers[i].Render(renderer);
 	}
-	for (std::map<int, Enemy>::iterator it = network->allEnemies.begin(); it != network->allEnemies.end(); it++)
+	for (std::map<int, std::shared_ptr<Enemy>>::iterator it = network->allEnemies.begin(); it != network->allEnemies.end(); it++)
 	{
-		it->second.Update();
-		it->second.Render(renderer);
+		it->second->Render(renderer);
 	}
 	network->ProcessNetworkObjects(I_Physics.get(), I_player);
 }
@@ -68,7 +85,11 @@ void ServerWorld::Update()
 		networkUpdateTimer.restart();
 		network->ProcessNetworkObjects(I_Physics.get(), I_player);
 	}
-	I_Physics->Step(1.0f / 100.0f, 6, 2);
+	for (std::map<int, std::shared_ptr<Enemy>>::iterator it = network->allEnemies.begin(); it != network->allEnemies.end(); it++)
+	{
+		it->second->Update();
+	}
+	I_Physics->Step(1.0f / 100.0f, 8, 3);
 }
 
 void ServerWorld::NetworkUpdate()

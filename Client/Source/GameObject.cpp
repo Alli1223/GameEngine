@@ -109,7 +109,10 @@ void GameObject::Render(GL_Renderer &renderer)
 
 void GameObject::RenderAnimation(Animation& anim, std::string atlasName)
 {
+	anim.OnAnimate();
+	int test = 2;
 	this->Sprite = ResourceManager::GetAtlasTexture(atlasName, anim.getCurrentFrame());
+
 }
 
 json GameObject::GetJson()

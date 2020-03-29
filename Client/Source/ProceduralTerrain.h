@@ -5,12 +5,18 @@
 #include "Camera.h"
 
 
-
 class ProceduralTerrain
 {
 public:
 	ProceduralTerrain();
 	~ProceduralTerrain();
+
+	std::shared_ptr<Cell> GetCell(int x, int y);
+
+	std::map<std::pair<int, int>, std::shared_ptr<Cell>>* levelptr;
+
+	void OrientateCells(std::shared_ptr<Cell> node, std::map<std::pair<int, int>, std::shared_ptr<Cell>>* level);
+
 	//! Elevation noise
 	PerlinNoise Elevation;
 	PerlinNoise ElevationLayerTwo;
