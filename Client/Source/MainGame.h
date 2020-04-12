@@ -60,7 +60,7 @@ public:
 	UserInput input;
 	GameUI UI;
 	World world;
-	ServerWorld s_world;
+	NetworkInstance s_world;
 	Room Shop;
 	Pathfinder pathfinder;
 	NetworkManager networkManager;

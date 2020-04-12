@@ -1,17 +1,17 @@
 #include "stdafx.h"
 #include "ServerWorld.h"
 
-ServerWorld::ServerWorld()
+NetworkInstance::NetworkInstance()
 {
 	b2Vec2 gravity(0.0f, 0.0f);
 	I_Physics = std::make_unique<b2World>(gravity);
 }
 
-ServerWorld::~ServerWorld()
+NetworkInstance::~NetworkInstance()
 {
 }
 
-void ServerWorld::onEnter(Player& player)
+void NetworkInstance::onEnter(Player& player)
 {
 	if (GameSettings::currentInstance != nullptr)
 		GameSettings::currentInstance->onExit(player);
@@ -24,16 +24,16 @@ void ServerWorld::onEnter(Player& player)
 	
 }
 
-void ServerWorld::InstanceSetup(Player& player)
+void NetworkInstance::InstanceSetup(Player& player)
 {
 	network->allPlayers = &networkPlayers;
 }
 
-void ServerWorld::onExit(Player& player)
+void NetworkInstance::onExit(Player& player)
 {
 }
 
-void ServerWorld::Render(GL_Renderer& renderer)
+void NetworkInstance::Render(GL_Renderer& renderer)
 {
 	renderer.camera.Lerp_To(I_player.getPosition() - (glm::vec2)(GameSettings::GSInstance->windowSize / 2), 0.3f);
 	// Render the world
@@ -75,7 +75,7 @@ void ServerWorld::Render(GL_Renderer& renderer)
 	network->ProcessNetworkObjects(I_Physics.get(), I_player);
 }
 
-void ServerWorld::Update()
+void NetworkInstance::Update()
 {
 	if(!networkUpdateTimer.isStarted())
 		networkUpdateTimer.start();
@@ -88,11 +88,12 @@ void ServerWorld::Update()
 	for (std::map<int, std::shared_ptr<Enemy>>::iterator it = network->allEnemies.begin(); it != network->allEnemies.end(); it++)
 	{
 		it->second->Update();
+		std::cout << it->second->getBody()->GetPosition().x << std::endl;
 	}
 	I_Physics->Step(1.0f / 100.0f, 8, 3);
 }
 
-void ServerWorld::NetworkUpdate()
+void NetworkInstance::NetworkUpdate()
 {
 	// IF there are cells to update
 	if (updatedCells.size() > 0)

@@ -3,6 +3,7 @@
 #include "CollisionListener.h"
 #include "NPC.h"
 
+
 class Instance
 {
 public:

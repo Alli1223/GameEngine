@@ -3,11 +3,11 @@
 #include "GameSettings.h"
 #include "NetworkManager.h"
 #include "Enemy.h"
-class ServerWorld : public Instance
+class NetworkInstance : public Instance
 {
 public:
-	ServerWorld::ServerWorld();
-	ServerWorld::~ServerWorld();
+	NetworkInstance::NetworkInstance();
+	NetworkInstance::~NetworkInstance();
 
 	std::map<std::pair<int, int>, std::shared_ptr<Cell>> level;
 

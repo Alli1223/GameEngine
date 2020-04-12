@@ -461,9 +461,76 @@ void CellAssignment::AssignCell(Cell& cell, std::string& type, int layer)
 	}
 }
 
+// Sam terrain
 int GetAtlasPositionFromOrientation(Cell::Orientation orient)
 {
 	
+	switch (orient)
+	{
+	default:
+		break;
+
+	case Cell::Orientation::topLeft:
+		return 0;
+		break;
+	case Cell::Orientation::topMiddle:
+		return 1;
+		break;
+	case Cell::Orientation::topRight:
+		return 2;
+		break;
+	case Cell::Orientation::middleLeft:
+		return 7;
+		break;
+
+	case Cell::Orientation::middle:
+	{
+		return 8;
+		// To get random middle for grass
+		std::vector<int> list{ 8, 11, 26, 27, 33, 34, 40, 41, 47 };
+		int index = rand() % list.size();
+		int value = list[index];
+		return value;
+		break;
+	}
+	case Cell::Orientation::middleRight:
+		return 9;
+		break;
+
+	case Cell::Orientation::bottomLeft:
+		return 14;
+		break;
+
+	case Cell::Orientation::bottomMiddle:
+		return 15;
+		break;
+
+	case Cell::Orientation::bottomRight:
+		return 16;
+		break;
+	case Cell::Orientation::alone:
+		return 58;
+		break;
+
+	case Cell::Orientation::inv_topLeft:
+		return 3;
+		break;
+	case Cell::Orientation::inv_topRight:
+		return 5;
+		break;
+
+	case Cell::Orientation::inv_bottomLeft:
+		return 17;
+		break;
+	case Cell::Orientation::inv_bottomRight:
+		return 19;
+		break;
+
+	}
+}
+int GetAtlasPosFromOrient(Cell::Orientation orient)
+{
+
 	switch (orient)
 	{
 	default:
@@ -545,6 +612,7 @@ void AssignLayer(Cell& cell, std::string textureName, int layer)
 		cell.renderLayer = 1;
 	}
 }
+
 void CellAssignment::AssignCellFromType(Cell& cell, int layer)
 {
 	int pos = (cell.getPosition().x + cell.getPosition().y);

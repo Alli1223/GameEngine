@@ -231,9 +231,9 @@ void NetworkManager::ProcessNetworkObjects(b2World* I_Physics, Player& player)
 				newEnemy->setSize({ 100,100 });
 				newEnemy->setPosition({ enemy.at("X").get<float>(), enemy.at("Y").get<float>() });
 
-				newEnemy->InitPhysics(I_Physics, b2BodyType::b2_dynamicBody, 1.0f, 0.3f);
+				newEnemy->InitPhysics(I_Physics, b2BodyType::b2_dynamicBody, 1.0f, 100.3f);
 				
-				allEnemies.emplace(ID,newEnemy);
+				allEnemies.emplace(ID,newEnemy->getSharedPointer());
 
 			}
 		}

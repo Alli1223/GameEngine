@@ -8,17 +8,33 @@ Slime::Slime()
 
 	ResourceManager::LoadAtlas("SlimeBlue", SpriteDirctory + "mobs\\slime-blue.png", 3, 15);
 	slimeAnim.OnAnimate();
+	this->setSize(50,50);
 	this->renderLayer = 3;
+
 	//this->Sprite = ResourceManager::GetAtlasTexture("crops", 1);
 	//this->NormalMap = ResourceManager::GetAtlasTexture("crops", 1);
+	//setSpeed(1.0f);
+	
+}
+
+std::shared_ptr<Slime> Slime::getSharedPointer()
+{
+	if (thisPointer != nullptr)
+		return thisPointer;
+	else
+		thisPointer = std::make_shared<Slime>(*this);
+
+
+	return thisPointer;
 }
 
 void Slime::Render(GL_Renderer& renderer)
 {
+	this->getBody()->SetBullet(true);
 	RenderAnimation(slimeAnim, "SlimeBlue");
 
 	if (hasPhysics)
-		this->setPosition({ this->getBody()->GetPosition().x * physicsScaleUp,this->getBody()->GetPosition().y * physicsScaleUp });
+		this->setPosition({ this->getBody()->GetPosition().x * physicsScaleUp,this->getBody()->GetPosition().y * physicsScaleUp }), fixture->SetSensor(true);
 	renderer.RenderSpriteLighting(this->Sprite, this->NormalMap, this->position, this->size, this->rotation, this->transparency, this->renderLayer, this->colour, flipSprite);
 }
 
@@ -70,8 +86,7 @@ void Enemy::Move(glm::vec2 newPos)
 		lerp_y = getSpeed() * (dist * 0.01f);
 		//setSpeed(10.0f);
 
-		std::cout << dist << std::endl;
-		//if (dist > 1000000.0f)
+		//if (dist == 1000000.0f)
 		{
 			if (newPos.x > pos.x + getSpeed())
 				getBody()->ApplyForceToCenter(b2Vec2(+lerp_x, 0.0f), true);
@@ -82,5 +97,18 @@ void Enemy::Move(glm::vec2 newPos)
 			if (newPos.y < pos.y - getSpeed())
 				getBody()->ApplyForceToCenter(b2Vec2(0.0f, -lerp_y), true);
 		}
+		//const b2Vec2 posL = { newPos.x * physicsScaleDown, newPos.y * physicsScaleDown };
+		//getBody()->SetTransform(posL, 0.0f);
 	}
+}
+
+std::shared_ptr<Enemy> Enemy::getSharedPointer()
+{
+	if (thisPointer != nullptr)
+		return thisPointer;
+	else
+		thisPointer = std::make_shared<Enemy>(*this);
+
+
+	return thisPointer;
 }

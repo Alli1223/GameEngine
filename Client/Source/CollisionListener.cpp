@@ -17,6 +17,7 @@ void CollisionListener::BeginContact(b2Contact* contact) {
 	void* bodyUserDataA = contact->GetFixtureA()->GetBody()->GetUserData();
 	void *bodyUserDataB = contact->GetFixtureB()->GetBody()->GetUserData();
 
+	std::cout << "Collision happened" << std::endl;
 	// A collided with B
 	if (bodyUserDataA)
 	{

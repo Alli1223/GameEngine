@@ -32,6 +32,8 @@ void GameObject::InitPhysics(b2World* physicsWorld, b2BodyType type, float densi
 
 		xMeters = physicsScaleDown * (size.x / 2.0f);
 		yMeters = physicsScaleDown * (size.y / 2.0f);
+		//density *= 4.0;
+		//friction *= 4.0;
 
 		//physicsScaleUp = 50.0f;
 		box.SetAsBox(xMeters, yMeters);
@@ -40,11 +42,11 @@ void GameObject::InitPhysics(b2World* physicsWorld, b2BodyType type, float densi
 		fixtureDef.shape = &box;
 		fixtureDef.density = density;
 		fixtureDef.friction = friction;
-		fixtureDef.userData = this;
+		//fixtureDef.userData = this;
 
 		// Empty identifier
 		CollisionIdentifier objectIdnetifier(CollisionIdentifier::CollisionEntityTypes::empty);
-		fixtureDef.userData = &objectIdnetifier;
+		//fixtureDef.userData = &objectIdnetifier;
 		rigidBody->SetUserData(&objectIdnetifier);
 
 		//b2ContactListener contact;
