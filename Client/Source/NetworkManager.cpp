@@ -230,13 +230,10 @@ void NetworkManager::ProcessNetworkObjects(b2World* I_Physics, Player& player)
 			}
 			else
 			{
-
 				std::shared_ptr<Slime> newEnemy = std::make_shared<Slime>();
 				newEnemy->setSize({ 100,100 });
 				newEnemy->setPosition({ enemy.at("X").get<float>(), enemy.at("Y").get<float>() });
-
 				newEnemy->InitPhysics(I_Physics, b2BodyType::b2_dynamicBody, 1.0f, 100.3f);
-				
 				allEnemies.emplace(ID,newEnemy->getSharedPointer());
 
 			}
@@ -259,9 +256,7 @@ void NetworkManager::ProcessNetworkObjects(b2World* I_Physics, Player& player)
 					std::shared_ptr<Projectile> newProjectile = std::make_shared<Projectile>();
 					newProjectile->setSize({ 10,10 });
 					newProjectile->setPosition({ projectile.at("X").get<float>(), projectile.at("Y").get<float>() });
-
 					newProjectile->InitPhysics(I_Physics, b2BodyType::b2_dynamicBody, 1.0f, 1.3f);
-
 					allProjectiles.emplace(ID, newProjectile->getSharedPointer());
 
 				}
@@ -270,7 +265,7 @@ void NetworkManager::ProcessNetworkObjects(b2World* I_Physics, Player& player)
 	}
 	catch (std::exception e)
 	{
-		std::cout << "Error processing player location data: " << e.what() << std::endl;
+		std::cout << "Error json update data: " << e.what() << std::endl;
 	}
 }
 

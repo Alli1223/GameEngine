@@ -27,6 +27,8 @@ Projectile::Projectile(b2World* physicsWorld, glm::vec2 startPosition, b2Vec2 ve
 
 Projectile::Projectile()
 {
+	//this->getBody()->SetBullet(true);
+
 	this->Sprite = ResourceManager::GetAtlasTexture("roguelike", 1015);
 }
 Projectile::~Projectile()
@@ -65,7 +67,6 @@ void Projectile::NetworkUpdate(json data)
 	float x = data.at("X").get<float>();
 	float y = data.at("Y").get<float>();
 	int rotation = data.at("rotation").get<int>();
-	bool moving = data.at("isMoving").get<bool>();
 	setBodyPosition({ x,y });
 }
 

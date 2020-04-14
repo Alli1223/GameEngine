@@ -3,6 +3,7 @@
 
 Slime::Slime()
 {
+
 	slimeAnim.oscillate = true;
 	slimeAnim.maxFrames = 3;
 
@@ -23,8 +24,6 @@ std::shared_ptr<Slime> Slime::getSharedPointer()
 		return thisPointer;
 	else
 		thisPointer = std::make_shared<Slime>(*this);
-
-
 	return thisPointer;
 }
 
