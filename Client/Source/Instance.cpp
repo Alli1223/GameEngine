@@ -36,7 +36,7 @@ void Instance::onEnter(Player& player)
 	GameSettings::currentInstance = this;
 	//player.InitPhysics(I_Physics.get(), player.colisionIdentity, b2BodyType::b2_dynamicBody, 1.0f, 0.3f);
 	I_player = player;
-	I_player.InitPhysics(I_Physics.get(), player.colisionIdentity, b2BodyType::b2_dynamicBody, 1.0f, 0.3f);
+	I_player.InitPhysics(I_Physics.get(), b2BodyType::b2_dynamicBody, 1.0f, 0.3f);
 	InstanceSetup(I_player);
 }
 

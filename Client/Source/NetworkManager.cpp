@@ -182,7 +182,6 @@ void NetworkManager::ProcessNetworkObjects(b2World* I_Physics, Player& player)
 	//Create the json to send to the server
 	json playerData = player.getPlayerJson();
 
-
 	sendTCPMessage("[PlayerUpdate]" + playerData.dump() + "\n");
 
 	// process the list of players
@@ -193,13 +192,14 @@ void NetworkManager::ProcessNetworkObjects(b2World* I_Physics, Player& player)
 		json jsonData = ConvertToJson(updateData);
 		json playerData = jsonData.at("PlayerData");
 		json EnemyData = jsonData.at("EnemyData");
+		json ProjectileData = jsonData.at("ProjectileData");
 
 		// Loop through each player
-		for (auto& player : playerData)
+		for (auto& _player : playerData)
 		{
-			std::string name = player.at("name").get<std::string>();
+			std::string name = _player.at("name").get<std::string>();
 
-			bool createPlayer = UpdateNetworkPlayer(player, name);
+			bool createPlayer = UpdateNetworkPlayer(_player, name);
 			if (createPlayer)
 			{
 				if (name.size() > 1 && name != localPlayerName)
@@ -207,10 +207,14 @@ void NetworkManager::ProcessNetworkObjects(b2World* I_Physics, Player& player)
 					otherPlayerNames.push_back(name);
 					NetworkPlayer newPlayer;
 					newPlayer.setSize({ 100,100 });
-					newPlayer.setPosition({ player.at("X").get<float>(), player.at("Y").get<float>() });
+					newPlayer.setPosition({ _player.at("X").get<float>(), _player.at("Y").get<float>() });
 					newPlayer.playerName = name;
-					newPlayer.InitPhysics(I_Physics, newPlayer.colisionIdentity, b2BodyType::b2_dynamicBody, 1.0f, 0.3f);
+					newPlayer.InitPhysics(I_Physics, b2BodyType::b2_dynamicBody, 1.0f, 0.3f);
 					allPlayers->push_back(newPlayer);
+				}
+				else if (name == localPlayerName)
+				{
+					player.setBodyPosition({ _player.at("X").get<float>(), _player.at("Y").get<float>() });
 				}
 			}
 		}
@@ -235,6 +239,32 @@ void NetworkManager::ProcessNetworkObjects(b2World* I_Physics, Player& player)
 				
 				allEnemies.emplace(ID,newEnemy->getSharedPointer());
 
+			}
+		}
+
+		// Loop through each projectile
+		for (auto& projectile : ProjectileData)
+		{
+			int ID = projectile.at("ID").get<int>();
+			std::string type = projectile.at("Type").get<std::string>();
+
+			if (type == "Projectile")
+			{
+				if (allProjectiles.count(ID) > 0)
+				{
+					allProjectiles.at(ID)->NetworkUpdate(projectile);
+				}
+				else
+				{
+					std::shared_ptr<Projectile> newProjectile = std::make_shared<Projectile>();
+					newProjectile->setSize({ 10,10 });
+					newProjectile->setPosition({ projectile.at("X").get<float>(), projectile.at("Y").get<float>() });
+
+					newProjectile->InitPhysics(I_Physics, b2BodyType::b2_dynamicBody, 1.0f, 1.3f);
+
+					allProjectiles.emplace(ID, newProjectile->getSharedPointer());
+
+				}
 			}
 		}
 	}
@@ -330,6 +360,20 @@ void NetworkManager::sendTCPMessage(std::string message)
 		std::cerr << e.what() << std::endl;
 	}
 }
+
+bool NetworkManager::SawnEntity(std::shared_ptr<GameObject> entity)
+{
+	json jsonData;
+	sendTCPMessage("[SpawnEntity]" + entity->GetJson().dump() + "\n");
+	std::string message = RecieveMessage();
+	if (message.find_first_of("OK"))
+	{
+		return true;
+	}
+	return
+		false;
+}
+
 
 std::string make_string(boost::asio::streambuf & streambuf)
 {

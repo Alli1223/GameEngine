@@ -33,6 +33,8 @@ public:
 	//! Set the position of the object
 	glm::vec2 setPosition(float newX, float newY) { return { position.x = newX, position.y = newY }; }
 	virtual glm::vec2 setPosition(glm::vec2 newPosition) { return position = newPosition; }
+	virtual glm::vec2 setBodyPosition(glm::vec2 newPosition);
+
 	glm::vec2 getPosition();
 	//! Getters and setters for velocity
 	float getSpeed() { return speed; }
@@ -54,9 +56,9 @@ public:
 	std::pair<bool, bool> flipSprite;
 
 
+
 	//! Rectangular Collision detection
 	bool collidesWith(GameObject object);
-	virtual void collidedWith(CollisionIdentifier& objectIdentity);
 	//! Transparency normalized between 0 and 1
 	float transparency = 1.0;
 
@@ -85,7 +87,6 @@ public:
 
 	//! Initilise the object in the physics world
 	void InitPhysics(b2World* physicsWorld, b2BodyType type, float density, float friction);
-	void InitPhysics(b2World* physicsWorld, CollisionIdentifier& objectIdnetifier, b2BodyType type, float density, float friction);
 	bool hasPhysics = false;
 
 	//! Used to decrese the sprites to a MKS factor for the physics simulation
@@ -104,5 +105,17 @@ protected:
 	glm::vec2 position, size, velocity;
 	glm::vec3 colour = { 0,0,0 };
 	GLfloat rotation;
+	float friction = 1.0f;
+	float density = 1.0f;
+
 };
 
+
+struct NetworkObject : public GameObject
+{
+public:
+	virtual void NetworkUpdate(json data);
+
+	vec2 lastKnownPos;
+
+};

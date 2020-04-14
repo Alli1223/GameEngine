@@ -45,7 +45,7 @@ void Enemy::NetworkUpdate(json data)
 	float y = data.at("Y").get<float>();
 	int rotation = data.at("rotation").get<int>();
 	bool moving = data.at("isMoving").get<bool>();
-
+	//int health = data.at("health").get<int>();
 	lastKnownPos = { x,y };
 	//setPosition(x, y);
 	setRotation(rotation);
@@ -85,20 +85,19 @@ void Enemy::Move(glm::vec2 newPos)
 		lerp_x = getSpeed() * (dist * 0.01f);
 		lerp_y = getSpeed() * (dist * 0.01f);
 		//setSpeed(10.0f);
-
 		//if (dist == 1000000.0f)
-		{
-			if (newPos.x > pos.x + getSpeed())
-				getBody()->ApplyForceToCenter(b2Vec2(+lerp_x, 0.0f), true);
-			if (newPos.x < pos.x - getSpeed())
-				getBody()->ApplyForceToCenter(b2Vec2(-lerp_x, 0.0f), true);
-			if (newPos.y > pos.y + getSpeed())
-				getBody()->ApplyForceToCenter(b2Vec2(0.0f, +lerp_y), true);
-			if (newPos.y < pos.y - getSpeed())
-				getBody()->ApplyForceToCenter(b2Vec2(0.0f, -lerp_y), true);
-		}
-		//const b2Vec2 posL = { newPos.x * physicsScaleDown, newPos.y * physicsScaleDown };
-		//getBody()->SetTransform(posL, 0.0f);
+		//{
+		//	if (newPos.x > pos.x + getSpeed())
+		//		getBody()->ApplyForceToCenter(b2Vec2(+lerp_x, 0.0f), true);
+		//	if (newPos.x < pos.x - getSpeed())
+		//		getBody()->ApplyForceToCenter(b2Vec2(-lerp_x, 0.0f), true);
+		//	if (newPos.y > pos.y + getSpeed())
+		//		getBody()->ApplyForceToCenter(b2Vec2(0.0f, +lerp_y), true);
+		//	if (newPos.y < pos.y - getSpeed())
+		//		getBody()->ApplyForceToCenter(b2Vec2(0.0f, -lerp_y), true);
+		//}
+		const b2Vec2 posL = { newPos.x * physicsScaleDown, newPos.y * physicsScaleDown };
+		getBody()->SetTransform(posL, 0.0f);
 	}
 }
 

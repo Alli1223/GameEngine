@@ -1,6 +1,6 @@
 #pragma once
 #include "NPC.h"
-class Enemy : public GameObject
+class Enemy : public NetworkObject
 {
 public:
 	void NetworkUpdate(json data);
@@ -18,6 +18,8 @@ protected:
 	glm::vec2 lastKnownPos;
 	std::shared_ptr<Enemy> thisPointer = nullptr;
 	bool isMoving = false;
+	int health = 100;
+	std::string type = "null";
 };
 
 class Slime : public Enemy
@@ -31,6 +33,8 @@ public:
 	void Render(GL_Renderer& renderer);
 private:
 	std::shared_ptr<Slime> thisPointer = nullptr;
+	std::string type = "Slime";
 	//float speed = 0.5f;
+
 
 };

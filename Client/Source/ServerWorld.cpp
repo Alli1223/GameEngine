@@ -19,7 +19,7 @@ void NetworkInstance::onEnter(Player& player)
 
 	//player.InitPhysics(I_Physics.get(), player.colisionIdentity, b2BodyType::b2_dynamicBody, 1.0f, 0.3f);
 	I_player = player;
-	I_player.InitPhysics(I_Physics.get(), player.colisionIdentity, b2BodyType::b2_dynamicBody, 1.0f, 0.3f);
+	I_player.InitPhysics(I_Physics.get(), b2BodyType::b2_dynamicBody, 1.0f, 0.3f);
 	InstanceSetup(I_player);
 	
 }
@@ -45,7 +45,7 @@ void NetworkInstance::Render(GL_Renderer& renderer)
 				level[{x, y}]->Render(renderer);
 				if (!level[{x, y}]->orientated)
 				{
-					procGen.OrientateCells(level[{x, y}], &level);
+					//procGen.OrientateCells(level[{x, y}], &level);
 					level[{x, y}]->orientated = true;
 				}
 			}
@@ -55,7 +55,7 @@ void NetworkInstance::Render(GL_Renderer& renderer)
 				cell->setX(x), cell->setY(y);
 				cell->setPosition(x * cell->getCellSize(), y * cell->getCellSize());
 				cell->setSize(cell->getCellSize(), cell->getCellSize());
-				procGen.generateGround(cell);
+				//procGen.generateGround(cell);
 				
 				
 				//cell->Sprite = ResourceManager::LoadTexture("Resources\\External\\rpg-pack\\tiles\\generic-rpg-Slice.png");
@@ -72,11 +72,24 @@ void NetworkInstance::Render(GL_Renderer& renderer)
 	{
 		it->second->Render(renderer);
 	}
+	for (std::map<int, std::shared_ptr<Projectile>>::iterator it = network->allProjectiles.begin(); it != network->allProjectiles.end(); it++)
+	{
+		it->second->Render(renderer);
+	}
 	network->ProcessNetworkObjects(I_Physics.get(), I_player);
 }
 
 void NetworkInstance::Update()
 {
+	int x, y;
+	if (SDL_GetMouseState(&x, &y) & SDL_BUTTON(SDL_BUTTON_LEFT))
+	{
+		float delta_x = 1920 / 2 - x;
+		float delta_y = 1080 / 2 - y;
+		Projectile proj(I_Physics.get(), I_player.getPosition() + 100.0f, b2Vec2(-delta_x / 10000.0f, -delta_y / 10000.0f));
+		network->SawnEntity(proj.getSharedPointer());
+	}
+
 	if(!networkUpdateTimer.isStarted())
 		networkUpdateTimer.start();
 	if (networkUpdateTimer.getTicks() > 200)
@@ -88,7 +101,10 @@ void NetworkInstance::Update()
 	for (std::map<int, std::shared_ptr<Enemy>>::iterator it = network->allEnemies.begin(); it != network->allEnemies.end(); it++)
 	{
 		it->second->Update();
-		std::cout << it->second->getBody()->GetPosition().x << std::endl;
+	}
+	for (std::map<int, std::shared_ptr<Projectile>>::iterator it = network->allProjectiles.begin(); it != network->allProjectiles.end(); it++)
+	{
+		it->second->Update();
 	}
 	I_Physics->Step(1.0f / 100.0f, 8, 3);
 }

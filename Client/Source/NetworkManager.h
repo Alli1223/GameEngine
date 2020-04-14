@@ -13,6 +13,7 @@ public:
 
 	std::vector<NetworkPlayer>* allPlayers;
 	std::map<int,std::shared_ptr<Enemy>> allEnemies;
+	std::map<int, std::shared_ptr<Projectile>> allProjectiles;
 
 	void Connect();
 	//! Main Network update function
@@ -21,6 +22,8 @@ public:
 	bool UpdateNetworkPlayer(json& data, std::string name);
 	//! Send a message using TCP
 	void sendTCPMessage(std::string message);
+	//! Sends a message to server to spawn entity
+	bool SawnEntity(std::shared_ptr<GameObject> entity);
 
 	//! Process the players location from json
 	void ProcessNetworkObjects(b2World* I_Physics, Player& player);

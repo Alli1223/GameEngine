@@ -5,7 +5,7 @@
 
 //Constructors
 GameObject::GameObject()
-	: position(0, 0), size(10, 10), velocity(0.0f), colour(0.0f), rotation(0.0f), Sprite() { }
+	: position(0, 0), size(10, 10), velocity(0.0f), colour(0.0f), rotation(0.0f), Sprite(){ }
 GameObject::GameObject(glm::vec2 pos, glm::vec2 size, Texture2D sprite, glm::vec3 color, glm::vec2 velocity)
 	: position(pos), size(size), velocity(velocity), colour(color), rotation(0.0f), Sprite(sprite) { }
 
@@ -59,40 +59,6 @@ void GameObject::InitPhysics(b2World* physicsWorld, b2BodyType type, float densi
 	}
 }
 
-void GameObject::InitPhysics(b2World * physicsWorld, CollisionIdentifier& objectIdnetifier, b2BodyType type, float density, float friction)
-{
-	// If it already has physics, remove it
-	if (!hasPhysics)
-	{
-		b2BodyDef rigidbody;
-		rigidbody.type = type;
-		rigidbody.position.Set(this->position.x * physicsScaleDown, this->position.y * physicsScaleDown);
-		rigidBody = physicsWorld->CreateBody(&rigidbody);
-
-		b2PolygonShape box;
-		xMeters = physicsScaleDown * (size.x / 2.0f);
-		yMeters = physicsScaleDown * (size.y / 2.0f);
-
-		//physicsScaleUp = 50.0f;
-		box.SetAsBox(xMeters, yMeters);
-
-		b2FixtureDef fixtureDef;
-		fixtureDef.shape = &box;
-		fixtureDef.density = density;
-		fixtureDef.friction = friction;
-		fixtureDef.userData = &objectIdnetifier;
-
-		rigidBody->SetUserData(&objectIdnetifier);
-
-		//b2ContactListener contact;
-		//objectContactListener = &contact;
-		//physicsWorld->SetContactListener(objectContactListener);
-
-		fixture = rigidBody->CreateFixture(&fixtureDef);
-		hasPhysics = true;
-	}
-}
-
 void GameObject::InitSprite()
 {
 	this->Sprite = ResourceManager::LoadTexture(spritePath);
@@ -138,6 +104,15 @@ float GameObject::GetDistance(vec2 pointA, vec2 pointB)
 
 
 
+glm::vec2 GameObject::setBodyPosition(glm::vec2 newPosition)
+{
+	if (getBody() != nullptr)
+	{
+		getBody()->SetTransform({ newPosition.x * physicsScaleDown, newPosition.y * physicsScaleDown }, getRotation());
+	}
+	return glm::vec2();
+}
+
 glm::vec2 GameObject::getPosition()
 {
 	return position;
@@ -166,6 +141,21 @@ bool GameObject::collidesWith(GameObject object)
 	return !(left2 > right1 ||	right2 < left1 ||	top2 > bottom1 ||	bottom2 < top1);
 }
 
-void GameObject::collidedWith(CollisionIdentifier & objectIdentity)
+void NetworkObject::NetworkUpdate(json data)
 {
+	std::string type = data.at("Type").get<std::string>();
+	if (type == "Projectile")
+	{
+
+	}
+
+	// Player movement
+	float x = data.at("X").get<float>();
+	float y = data.at("Y").get<float>();
+	int rotation = data.at("rotation").get<int>();
+	bool moving = data.at("isMoving").get<bool>();
+	//int health = data.at("health").get<int>();
+	lastKnownPos = { x,y };
+	//setPosition(x, y);
+	setRotation(rotation);
 }
