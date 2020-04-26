@@ -3,6 +3,8 @@
 class Enemy : public NetworkObject
 {
 public:
+	Enemy();
+	Enemy(int ID);
 	void NetworkUpdate(json data);
 
 	virtual void Render(GL_Renderer& renderer);
@@ -26,15 +28,11 @@ class Slime : public Enemy
 {
 public:
 	Slime::Slime();
+	Slime::Slime(int ID);
 	Animation slimeAnim;
-
 	std::shared_ptr<Slime> getSharedPointer();
-
 	void Render(GL_Renderer& renderer);
 private:
 	std::shared_ptr<Slime> thisPointer = nullptr;
 	std::string type = "Slime";
-	//float speed = 0.5f;
-
-
 };

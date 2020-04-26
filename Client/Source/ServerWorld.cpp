@@ -16,12 +16,9 @@ void NetworkInstance::onEnter(Player& player)
 	if (GameSettings::currentInstance != nullptr)
 		GameSettings::currentInstance->onExit(player);
 	GameSettings::currentInstance = this;
-
-	//player.InitPhysics(I_Physics.get(), player.colisionIdentity, b2BodyType::b2_dynamicBody, 1.0f, 0.3f);
 	I_player = player;
 	I_player.InitPhysics(I_Physics.get(), b2BodyType::b2_dynamicBody, 1.0f, 0.3f);
 	InstanceSetup(I_player);
-	
 }
 
 void NetworkInstance::InstanceSetup(Player& player)
@@ -31,6 +28,17 @@ void NetworkInstance::InstanceSetup(Player& player)
 
 void NetworkInstance::onExit(Player& player)
 {
+}
+
+void NetworkInstance::CreateCell(vec2 pos)
+{
+	std::shared_ptr<Cell> cell = std::make_shared<Cell>();
+	cell->setX(pos.x), cell->setY(pos.y);
+	cell->setPosition(pos.x * cell->getCellSize(), pos.y * cell->getCellSize());
+	cell->setSize(cell->getCellSize(), cell->getCellSize());
+	cell->orientationTimer.start();
+	procGen.generateGround(cell);
+	level[{pos.x, pos.y}] = cell;
 }
 
 void NetworkInstance::Render(GL_Renderer& renderer)
@@ -45,22 +53,17 @@ void NetworkInstance::Render(GL_Renderer& renderer)
 				level[{x, y}]->Render(renderer);
 				if (!level[{x, y}]->orientated)
 				{
-					//procGen.OrientateCells(level[{x, y}], &level);
+					if (level[{x, y}]->orientationTimer.getTicks() > 1000)
+					{
+						procGen.OrientateCells(level[{x, y}], &level);
+						level[{x, y}]->orientationTimer.stop();
+					}
 					level[{x, y}]->orientated = true;
 				}
 			}
 			else // Create cell
 			{
-				std::shared_ptr<Cell> cell = std::make_shared<Cell>();
-				cell->setX(x), cell->setY(y);
-				cell->setPosition(x * cell->getCellSize(), y * cell->getCellSize());
-				cell->setSize(cell->getCellSize(), cell->getCellSize());
-				//procGen.generateGround(cell);
-				
-				
-				//cell->Sprite = ResourceManager::LoadTexture("Resources\\External\\rpg-pack\\tiles\\generic-rpg-Slice.png");
-				//cell->NormalMap = ResourceManager::LoadTexture("Resources\\External\\rpg-pack\\tiles\\generic-rpg-Slice.png");
-				level[{x, y}] = cell;
+				CreateCell({ x,y });
 			}
 		}
 	I_player.Render(renderer);
@@ -84,9 +87,15 @@ void NetworkInstance::Update()
 	int x, y;
 	if (SDL_GetMouseState(&x, &y) & SDL_BUTTON(SDL_BUTTON_LEFT))
 	{
-		float delta_x = 1920 / 2 - x;
-		float delta_y = 1080 / 2 - y;
-		Projectile proj(I_Physics.get(), I_player.getPosition() + 100.0f, b2Vec2(-delta_x / 10000.0f, -delta_y / 10000.0f));
+		std::cout << level[{x / cellSize, y / cellSize}]->orientation << std::endl;
+		float delta_x = GameSettings::GSInstance->windowSize.x / 2 - x;
+		float delta_y = GameSettings::GSInstance->windowSize.y / 2 - y;
+		//if (delta_x > 10.0f)
+		//	delta_x = 10.0f;
+		//if (delta_y > 10.0f)
+		//	delta_y = 10.0f;
+		vec2 s_point = { -delta_x , -delta_y };
+		Projectile proj(I_Physics.get(), I_player.getPosition() + s_point, b2Vec2(-delta_x / 10000.0f, -delta_y / 10000.0f));
 		network->SawnEntity(proj.getSharedPointer());
 	}
 
@@ -105,6 +114,9 @@ void NetworkInstance::Update()
 	for (std::map<int, std::shared_ptr<Projectile>>::iterator it = network->allProjectiles.begin(); it != network->allProjectiles.end(); it++)
 	{
 		it->second->Update();
+		if (it->second->AliveTime <= 0)
+			network->allProjectiles.erase(it->first);
+		break;
 	}
 	I_Physics->Step(1.0f / 100.0f, 8, 3);
 }
@@ -122,7 +134,7 @@ void NetworkInstance::NetworkUpdate()
 			updatedCellsarray.push_back(cellData);
 		}
 		cellsData["CellDataArray"] = updatedCellsarray;
-	
+
 		network->sendTCPMessage("[CellData]" + cellsData.dump() + "\n");
 		updatedCells.clear();
 	}

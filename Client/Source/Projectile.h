@@ -9,7 +9,7 @@ public:
 	~Projectile();
 
 	std::shared_ptr<Projectile> getSharedPointer();
-	std::shared_ptr<Projectile> thisPointer = nullptr;
+	std::string getType() { return type; }
 
 	json GetJson();
 
@@ -24,11 +24,20 @@ public:
 	Timer experationTimer;
 
 	b2Vec2 direction;
-	float AliveTime = 10000; // Time till the sprite gets deleted in ms
+	float AliveTime = 20; // Time till the sprite gets deleted in ms
 
 protected:
 	int damage = 2;
 	std::string type = "Projectile";
 
+	std::shared_ptr<Projectile> thisPointer = nullptr;
+};
 
+struct Arrow : public Projectile
+{
+
+
+protected:
+	std::string type = "Arrow";
+	std::shared_ptr<Arrow> thisPointer = nullptr;
 };

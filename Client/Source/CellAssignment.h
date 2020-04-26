@@ -600,7 +600,6 @@ void AssignLayer(Cell& cell, std::string textureName, int layer)
 	int pos = GetAtlasPositionFromOrientation(cell.orientation);
 	if (layer == 0) // Set the ground sprite
 	{
-		
 		cell.Sprite = ResourceManager::GetAtlasTexture(textureName, pos);
 		cell.NormalMap = ResourceManager::GetAtlasTexture(textureName + "_normal", pos);
 		cell.renderLayer = 0;

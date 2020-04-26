@@ -41,7 +41,7 @@ int NetworkManager::init(std::string playerName)
 
 	sendTCPMessage(playerName + "\n");
 	setPlayerName(playerName);
-	//int ID = RecieveMessage()
+	int ID = std::stoi(RecieveMessage());
 	std::cout << "PlayerName: " << localPlayerName << std::endl;
 
 
@@ -215,6 +215,7 @@ void NetworkManager::ProcessNetworkObjects(b2World* I_Physics, Player& player)
 				else if (name == localPlayerName)
 				{
 					player.setBodyPosition({ _player.at("X").get<float>(), _player.at("Y").get<float>() });
+					player.setHealth(_player.at("Health").get<int>());
 				}
 			}
 		}
@@ -223,6 +224,7 @@ void NetworkManager::ProcessNetworkObjects(b2World* I_Physics, Player& player)
 		for (auto& enemy : EnemyData)
 		{
 			int ID = enemy.at("ID").get<int>();
+			std::string type = enemy.at("Type").get<std::string>();
 
 			if (allEnemies.count(ID) > 0)
 			{
@@ -230,12 +232,14 @@ void NetworkManager::ProcessNetworkObjects(b2World* I_Physics, Player& player)
 			}
 			else
 			{
-				std::shared_ptr<Slime> newEnemy = std::make_shared<Slime>();
-				newEnemy->setSize({ 100,100 });
-				newEnemy->setPosition({ enemy.at("X").get<float>(), enemy.at("Y").get<float>() });
-				newEnemy->InitPhysics(I_Physics, b2BodyType::b2_dynamicBody, 1.0f, 100.3f);
-				allEnemies.emplace(ID,newEnemy->getSharedPointer());
-
+				if (type == "Slime")
+				{
+					std::shared_ptr<Slime> newEnemy = std::make_shared<Slime>(ID);
+					newEnemy->setSize({ 100,100 });
+					newEnemy->setPosition({ enemy.at("X").get<float>(), enemy.at("Y").get<float>() });
+					newEnemy->InitPhysics(I_Physics, b2BodyType::b2_dynamicBody, 1.0f, 100.3f);
+					allEnemies.emplace(ID, newEnemy->getSharedPointer());
+				}
 			}
 		}
 
@@ -258,7 +262,6 @@ void NetworkManager::ProcessNetworkObjects(b2World* I_Physics, Player& player)
 					newProjectile->setPosition({ projectile.at("X").get<float>(), projectile.at("Y").get<float>() });
 					newProjectile->InitPhysics(I_Physics, b2BodyType::b2_dynamicBody, 1.0f, 1.3f);
 					allProjectiles.emplace(ID, newProjectile->getSharedPointer());
-
 				}
 			}
 		}

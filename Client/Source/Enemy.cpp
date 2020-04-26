@@ -3,7 +3,11 @@
 
 Slime::Slime()
 {
+}
 
+Slime::Slime(int ID)
+{
+	setID(ID);
 	slimeAnim.oscillate = true;
 	slimeAnim.maxFrames = 3;
 
@@ -11,12 +15,8 @@ Slime::Slime()
 	slimeAnim.OnAnimate();
 	this->setSize(50,50);
 	this->renderLayer = 3;
-
-	//this->Sprite = ResourceManager::GetAtlasTexture("crops", 1);
-	//this->NormalMap = ResourceManager::GetAtlasTexture("crops", 1);
-	//setSpeed(1.0f);
-	
 }
+
 
 std::shared_ptr<Slime> Slime::getSharedPointer()
 {
@@ -37,6 +37,15 @@ void Slime::Render(GL_Renderer& renderer)
 	renderer.RenderSpriteLighting(this->Sprite, this->NormalMap, this->position, this->size, this->rotation, this->transparency, this->renderLayer, this->colour, flipSprite);
 }
 
+Enemy::Enemy()
+{
+}
+
+Enemy::Enemy(int ID)
+{
+	setID(ID);
+}
+
 void Enemy::NetworkUpdate(json data)
 {
 	// Player movement
@@ -44,11 +53,13 @@ void Enemy::NetworkUpdate(json data)
 	float y = data.at("Y").get<float>();
 	int rotation = data.at("rotation").get<int>();
 	bool moving = data.at("isMoving").get<bool>();
+	int health = data.at("Health").get<int>();
 	//int health = data.at("health").get<int>();
 	lastKnownPos = { x,y };
 	//setPosition(x, y);
 	setRotation(rotation);
 	this->isMoving = moving;
+	this->health = health;
 }
 
 void Enemy::Render(GL_Renderer& renderer)

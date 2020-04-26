@@ -10,7 +10,7 @@ Projectile::Projectile(b2World* physicsWorld, glm::vec2 startPosition, b2Vec2 ve
 	// set position before initilsing physics
 	this->setPosition(startPosition);
 	this->setSize(25, 25);
-	this->renderLayer = 3;
+	this->renderLayer = 4;
 
 	InitPhysics(physicsWorld, b2BodyType::b2_dynamicBody, 1.0f, 100.3f);
 
@@ -28,7 +28,7 @@ Projectile::Projectile(b2World* physicsWorld, glm::vec2 startPosition, b2Vec2 ve
 Projectile::Projectile()
 {
 	//this->getBody()->SetBullet(true);
-
+	renderLayer = 3;
 	this->Sprite = ResourceManager::GetAtlasTexture("roguelike", 1015);
 }
 Projectile::~Projectile()
@@ -49,7 +49,7 @@ std::shared_ptr<Projectile> Projectile::getSharedPointer()
 json Projectile::GetJson()
 {
 	json Item;
-	Item["Type"] = type;
+	Item["Type"] = getType();
 	Item["X"] = this->getPosition().x;
 	Item["Y"] = this->getPosition().y;
 	Item["DX"] = this->direction.x;
@@ -68,10 +68,13 @@ void Projectile::NetworkUpdate(json data)
 	float y = data.at("Y").get<float>();
 	int rotation = data.at("rotation").get<int>();
 	setBodyPosition({ x,y });
+	AliveTime = 5;
 }
 
 void Projectile::Update()
 {
+	AliveTime--;
+
 }
 
 

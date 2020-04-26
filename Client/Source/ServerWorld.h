@@ -20,6 +20,8 @@ public:
 	//! When player exits instace
 	void onExit(Player& player);
 
+	void CreateCell(vec2 pos);
+
 	//! Render
 	void Render(GL_Renderer& Renderer);
 

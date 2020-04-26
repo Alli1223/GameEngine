@@ -114,8 +114,14 @@ protected:
 struct NetworkObject : public GameObject
 {
 public:
+	NetworkObject();
+	NetworkObject(int ID);
 	virtual void NetworkUpdate(json data);
 
 	vec2 lastKnownPos;
 
+	int setID(int newID) { return ID = newID; }
+	int getID() { return ID; }
+
+	int ID;
 };

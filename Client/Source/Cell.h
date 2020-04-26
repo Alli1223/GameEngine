@@ -243,6 +243,8 @@ public:
 	//! used to save where the tile is within the chunk
 	glm::ivec2 tilePos;
 
+	Timer orientationTimer;
+
 	Animation animation;
 private:
 	

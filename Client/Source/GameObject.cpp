@@ -141,6 +141,14 @@ bool GameObject::collidesWith(GameObject object)
 	return !(left2 > right1 ||	right2 < left1 ||	top2 > bottom1 ||	bottom2 < top1);
 }
 
+NetworkObject::NetworkObject()
+{
+}
+
+NetworkObject::NetworkObject(int ID)
+{
+}
+
 void NetworkObject::NetworkUpdate(json data)
 {
 	std::string type = data.at("Type").get<std::string>();
