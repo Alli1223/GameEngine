@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "ServerWorld.h"
+#include "NetworkInstance.h"
 
 NetworkInstance::NetworkInstance()
 {

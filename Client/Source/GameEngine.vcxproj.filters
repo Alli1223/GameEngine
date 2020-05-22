@@ -268,11 +268,11 @@
     <ClCompile Include="SpeechBubble.cpp">
       <Filter>Source Files\Core\GUI\Elements</Filter>
     </ClCompile>
-    <ClCompile Include="ServerWorld.cpp">
-      <Filter>Source Files\Core\Level Classes</Filter>
-    </ClCompile>
     <ClCompile Include="Shopkeeper.cpp">
       <Filter>Source Files\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="NetworkInstance.cpp">
+      <Filter>Source Files\Core\Level Classes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -561,11 +561,11 @@
     <ClInclude Include="SpeechBubble.h">
       <Filter>Headers\Core\GUI\Element</Filter>
     </ClInclude>
-    <ClInclude Include="ServerWorld.h">
-      <Filter>Headers\Core\Level Classes</Filter>
-    </ClInclude>
     <ClInclude Include="Shopkeeper.h">
       <Filter>Headers\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="NetworkInstance.h">
+      <Filter>Headers\Core\Level Classes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

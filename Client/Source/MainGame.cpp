@@ -195,30 +195,30 @@ void MainGame::run()
 	//ShopDisplayShelf displayShelf;
 	//for (int i = 0; i < 5; i++)
 	//			world.I_player.inventory.add(displayShelf.getSharedPointer());
-	//Fish fish;
 
+	Fish fish;
 	Hoe hoe;
-	//FishingRod rod;
-	//BugNet net;
-	//Scythe scythe;
-	//SunflowerSeeds sunflowerSeeds;
-	//WheatSeeds wheatSeeds;
-	//LavenderSeeds lavenderSeeds;
+	FishingRod rod;
+	BugNet net;
+	Scythe scythe;
+	SunflowerSeeds sunflowerSeeds;
+	WheatSeeds wheatSeeds;
+	LavenderSeeds lavenderSeeds;
 
-	//ItemChest chest;
-	//chest.setPosition(0, 100);
-	//chest.setSize(100, 100);
-	//chest.Sprite = ResourceManager::LoadTexture("Resources\\Sprites\\Character\\Alli.png");
+	ItemChest chest;
+	chest.setPosition(0, 100);
+	chest.setSize(100, 100);
+	chest.Sprite = ResourceManager::LoadTexture("Resources\\Sprites\\Character\\Alli.png");
 
-	//world.I_player.inventory.add(wheatSeeds.getSharedPointer());
-	//for(int i =0;i < 10; i++)
-	//	world.I_player.inventory.add(sunflowerSeeds.getSharedPointer());
-	//world.I_player.inventory.add(lavenderSeeds.getSharedPointer());
-	//world.I_player.inventory.add(fish.getSharedPointer());
-	//world.I_player.inventory.add(hoe.getSharedPointer());
-	//world.I_player.inventory.add(rod.getSharedPointer());
-	//world.I_player.inventory.add(net.getSharedPointer());
-	//world.I_player.inventory.add(scythe.getSharedPointer());
+	world.I_player.inventory.add(wheatSeeds.getSharedPointer());
+	for(int i =0;i < 10; i++)
+		world.I_player.inventory.add(sunflowerSeeds.getSharedPointer());
+	world.I_player.inventory.add(lavenderSeeds.getSharedPointer());
+	world.I_player.inventory.add(fish.getSharedPointer());
+	world.I_player.inventory.add(hoe.getSharedPointer());
+	world.I_player.inventory.add(rod.getSharedPointer());
+	world.I_player.inventory.add(net.getSharedPointer());
+	world.I_player.inventory.add(scythe.getSharedPointer());
 
 	//world.onEnter(world.I_player);
 
