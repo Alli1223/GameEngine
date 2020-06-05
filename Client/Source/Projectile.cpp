@@ -68,7 +68,7 @@ void Projectile::NetworkUpdate(json data)
 	float y = data.at("Y").get<float>();
 	int rotation = data.at("rotation").get<int>();
 	setBodyPosition({ x,y });
-	AliveTime = 5;
+	AliveTime = 2;
 }
 
 void Projectile::Update()

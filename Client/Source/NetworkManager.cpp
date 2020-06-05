@@ -214,7 +214,7 @@ void NetworkManager::ProcessNetworkObjects(b2World* I_Physics, Player& player)
 				}
 				else if (name == localPlayerName)
 				{
-					player.setBodyPosition({ _player.at("X").get<float>(), _player.at("Y").get<float>() });
+					//player.setBodyPosition({ _player.at("X").get<float>(), _player.at("Y").get<float>() });
 					player.setHealth(_player.at("Health").get<int>());
 				}
 			}
@@ -232,7 +232,7 @@ void NetworkManager::ProcessNetworkObjects(b2World* I_Physics, Player& player)
 			}
 			else
 			{
-				if (type == "Slime")
+				if (type == "Enemy")
 				{
 					std::shared_ptr<Slime> newEnemy = std::make_shared<Slime>(ID);
 					newEnemy->setSize({ 100,100 });
@@ -271,6 +271,8 @@ void NetworkManager::ProcessNetworkObjects(b2World* I_Physics, Player& player)
 		std::cout << "Error json update data: " << e.what() << std::endl;
 	}
 }
+
+
 
 
 
@@ -388,7 +390,6 @@ std::string NetworkManager::RecieveMessage()
 {
 	//Create return messages and an instream to put the buffer data into
 	std::string returnMessage;
-	std::stringstream inStream;
 
 	try
 	{

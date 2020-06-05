@@ -87,16 +87,19 @@ void NetworkInstance::Update()
 	int x, y;
 	if (SDL_GetMouseState(&x, &y) & SDL_BUTTON(SDL_BUTTON_LEFT))
 	{
-		std::cout << level[{x / cellSize, y / cellSize}]->orientation << std::endl;
-		float delta_x = GameSettings::GSInstance->windowSize.x / 2 - x;
-		float delta_y = GameSettings::GSInstance->windowSize.y / 2 - y;
-		//if (delta_x > 10.0f)
-		//	delta_x = 10.0f;
-		//if (delta_y > 10.0f)
-		//	delta_y = 10.0f;
-		vec2 s_point = { -delta_x , -delta_y };
-		Projectile proj(I_Physics.get(), I_player.getPosition() + s_point, b2Vec2(-delta_x / 10000.0f, -delta_y / 10000.0f));
-		network->SawnEntity(proj.getSharedPointer());
+		if (level[{x / cellSize, y / cellSize}] != nullptr)
+		{
+			std::cout << level[{x / cellSize, y / cellSize}]->orientation << std::endl;
+			float delta_x = GameSettings::GSInstance->windowSize.x / 2 - x;
+			float delta_y = GameSettings::GSInstance->windowSize.y / 2 - y;
+			//if (delta_x > 10.0f)
+			//	delta_x = 10.0f;
+			//if (delta_y > 10.0f)
+			//	delta_y = 10.0f;
+			vec2 s_point = { -delta_x , -delta_y };
+			Projectile proj(I_Physics.get(), I_player.getPosition() + s_point, b2Vec2(-delta_x / 10000.0f, -delta_y / 10000.0f));
+			network->SawnEntity(proj.getSharedPointer());
+		}
 	}
 
 	if(!networkUpdateTimer.isStarted())

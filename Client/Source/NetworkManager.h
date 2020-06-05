@@ -72,6 +72,9 @@ public:
 
 	//! Vector of all other players names in the game
 	std::vector<std::string> otherPlayerNames;
+	std::vector<int> PlayerIDs;
+	std::vector<int> EnemyIDs;
+	std::vector<int> ProjectileIDs;
 
 	//! the io service for creating the socket
 	boost::asio::io_service io_service;

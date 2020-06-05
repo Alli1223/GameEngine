@@ -525,7 +525,6 @@ void Menu::CharacterCustomisationMenu(GameSettings& gameSettings, Camera& camera
 		if (confirm.isPressed())
 		{
 			gameSettings.running = true;
-			gameSettings.useNetworking = false;
 			displayCharacterMenu = false;
 			displayMainMenu = false;
 		}
