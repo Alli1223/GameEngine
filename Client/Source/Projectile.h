@@ -8,23 +8,23 @@ public:
 	Projectile(b2World* physicsWorld, glm::vec2 startPosition, b2Vec2 velocity);
 	~Projectile();
 
-	std::shared_ptr<Projectile> getSharedPointer();
-	std::string getType() { return type; }
+	virtual std::shared_ptr<Projectile> getSharedPointer();
+	virtual std::string getType() { return type; }
 
-	json GetJson();
+	virtual json GetJson();
 
-	void startContact();
+	virtual void startContact();
 
-	void NetworkUpdate(json data);
+	virtual void NetworkUpdate(json data);
 
-	void Update();
+	virtual void Update();
 	//void Render(GL_Renderer& renderer);
 
 	bool isTraveling = false;
 	Timer experationTimer;
 
 	b2Vec2 direction;
-	float AliveTime = 20; // Time till the sprite gets deleted in ms
+
 
 protected:
 	int damage = 2;
@@ -35,7 +35,11 @@ protected:
 
 struct Arrow : public Projectile
 {
-
+	Arrow();
+	json GetJson();
+	Arrow(b2World* physicsWorld, glm::vec2 startPosition, b2Vec2 velocity);
+	std::shared_ptr<Projectile> getSharedPointer();
+	std::string getType() { return type; }
 
 protected:
 	std::string type = "Arrow";

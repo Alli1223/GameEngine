@@ -15,6 +15,7 @@ Slime::Slime(int ID)
 	slimeAnim.OnAnimate();
 	this->setSize(50,50);
 	this->renderLayer = 3;
+	//expirationTimer.start();
 }
 
 
@@ -60,6 +61,7 @@ void Enemy::NetworkUpdate(json data)
 	setRotation(rotation);
 	this->isMoving = moving;
 	this->health = health;
+	
 }
 
 void Enemy::Render(GL_Renderer& renderer)
@@ -70,6 +72,10 @@ void Enemy::Render(GL_Renderer& renderer)
 void Enemy::Update()
 {
 	UpdatePosition();
+	if (getHealth() == 0)
+		AliveTime -= 1;
+	if (AliveTime == 0)
+		this->removeObject = true;
 }
 
 void Enemy::UpdatePosition()

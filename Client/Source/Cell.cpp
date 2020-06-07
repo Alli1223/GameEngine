@@ -117,16 +117,17 @@ void Cell::Render(GL_Renderer& renderer)
 		}
 	}
 
-	float sizeIncreaseRate = 0.2f + (GetDistance(position, renderer.camera.getPosition() - renderer.camera.windowSize / 2.0f) / 1000.0f);
-	if (sizeIncreaseRate < 0.0f)
-		sizeIncreaseRate *= -1.0f;
+	//float sizeIncreaseRate = 0.2f + (GetDistance(position, renderer.camera.getPosition() - renderer.camera.windowSize / 2.0f) / 1000.0f);
+	//if (sizeIncreaseRate < 0.0f)
+	//	sizeIncreaseRate *= -1.0f;
+	//
+	//if (size.x == cellSize)
+	size = {cellSize,cellSize };
+	//if (size.x >= 0.0 && size.x < cellSize + sizeIncreaseRate)
+	//	size += sizeIncreaseRate, orientated = false;
+	//if (size.x >= cellSize + sizeIncreaseRate && orientated == true)
+	//	orientated = false;
 
-	if (size.x == cellSize)
-		size = { 0.0,0.0 };
-	if (size.x >= 0.0 && size.x < cellSize + sizeIncreaseRate)
-		size += sizeIncreaseRate, orientated = false;
-	if (size.x == cellSize + sizeIncreaseRate && orientated == true)
-		orientated = false;
 	// Render sprite
 	renderer.RenderSpriteLighting(this->Sprite, this->NormalMap, this->position, this->size, this->rotation, this->transparency, this->renderLayer, this->colour, { false, false });
 	// If the cell has a layerd sprite

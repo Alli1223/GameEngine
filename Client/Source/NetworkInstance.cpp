@@ -39,33 +39,36 @@ void NetworkInstance::CreateCell(vec2 pos)
 	cell->orientationTimer.start();
 	procGen.generateGround(cell);
 	level[{pos.x, pos.y}] = cell;
+	//updatedCells.push_back(cell);
 }
 
 void NetworkInstance::Render(GL_Renderer& renderer)
 {
+	// Move the camera to the player
 	renderer.camera.Lerp_To(I_player.getPosition() - (glm::vec2)(GameSettings::GSInstance->windowSize / 2), 0.3f);
-	// Render the world
+	// Render the world around the camera
 	for (int x = renderer.camera.getX() / cellSize - 1; x < renderer.camera.getX() / cellSize + (GameSettings::GSInstance->windowSize.x / cellSize) + 1; x++)
 		for (int y = renderer.camera.getY() / cellSize -1; y < renderer.camera.getY() / cellSize + (GameSettings::GSInstance->windowSize.y / cellSize) + 2; y++)
 		{
 			if (level[{x, y}] != nullptr)
 			{
 				level[{x, y}]->Render(renderer);
-				if (!level[{x, y}]->orientated)
+				//if (!level[{x, y}]->orientated)
 				{
 					if (level[{x, y}]->orientationTimer.getTicks() > 1000)
 					{
 						procGen.OrientateCells(level[{x, y}], &level);
-						level[{x, y}]->orientationTimer.stop();
+						level[{x, y}]->orientationTimer.restart();
+						level[{x, y}]->orientated = true;
 					}
-					level[{x, y}]->orientated = true;
 				}
 			}
-			else // Create cell
+			else // Create the cell
 			{
 				CreateCell({ x,y });
 			}
 		}
+	// Render player and other game objects
 	I_player.Render(renderer);
 	for (int i = 0; i <networkPlayers.size(); i++)
 	{
@@ -79,6 +82,7 @@ void NetworkInstance::Render(GL_Renderer& renderer)
 	{
 		it->second->Render(renderer);
 	}
+	// Get network update
 	network->ProcessNetworkObjects(I_Physics.get(), I_player);
 }
 
@@ -89,7 +93,7 @@ void NetworkInstance::Update()
 	{
 		if (level[{x / cellSize, y / cellSize}] != nullptr)
 		{
-			std::cout << level[{x / cellSize, y / cellSize}]->orientation << std::endl;
+			std::cout << level[{x / cellSize, y / cellSize}]->terrainElevationValue << std::endl;
 			float delta_x = GameSettings::GSInstance->windowSize.x / 2 - x;
 			float delta_y = GameSettings::GSInstance->windowSize.y / 2 - y;
 			//if (delta_x > 10.0f)
@@ -97,7 +101,8 @@ void NetworkInstance::Update()
 			//if (delta_y > 10.0f)
 			//	delta_y = 10.0f;
 			vec2 s_point = { -delta_x , -delta_y };
-			Projectile proj(I_Physics.get(), I_player.getPosition() + s_point, b2Vec2(-delta_x / 10000.0f, -delta_y / 10000.0f));
+			Arrow proj(I_Physics.get(), I_player.getPosition() + s_point, b2Vec2(-delta_x / 100.0f, -delta_y / 100.0f));
+			proj.Sprite = ResourceManager::LoadTexture("Resources\\Sprites\\SpriteSheets\\Items\\arrow.png");
 			network->SawnEntity(proj.getSharedPointer());
 		}
 	}
@@ -113,6 +118,11 @@ void NetworkInstance::Update()
 	for (std::map<int, std::shared_ptr<Enemy>>::iterator it = network->allEnemies.begin(); it != network->allEnemies.end(); it++)
 	{
 		it->second->Update();
+		if (it->second->removeObject)
+		{
+			network->allEnemies.erase(it->first);
+			break;
+		}
 	}
 	for (std::map<int, std::shared_ptr<Projectile>>::iterator it = network->allProjectiles.begin(); it != network->allProjectiles.end(); it++)
 	{

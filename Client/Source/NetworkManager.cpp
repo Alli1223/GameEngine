@@ -179,16 +179,15 @@ bool NetworkManager::UpdateNetworkPlayer(json& data, std::string name)
 
 void NetworkManager::ProcessNetworkObjects(b2World* I_Physics, Player& player)
 {
-	//Create the json to send to the server
-	json playerData = player.getPlayerJson();
+	// Get the players data and send to the server
+	sendTCPMessage("[PlayerUpdate]" + player.getPlayerJson().dump() + "\n");
 
-	sendTCPMessage("[PlayerUpdate]" + playerData.dump() + "\n");
-
-	// process the list of players
+	// process the list of game data
 	std::string updateData = RecieveMessage();
 
 	try
 	{
+		// Convert string to json
 		json jsonData = ConvertToJson(updateData);
 		json playerData = jsonData.at("PlayerData");
 		json EnemyData = jsonData.at("EnemyData");
@@ -214,7 +213,11 @@ void NetworkManager::ProcessNetworkObjects(b2World* I_Physics, Player& player)
 				}
 				else if (name == localPlayerName)
 				{
-					//player.setBodyPosition({ _player.at("X").get<float>(), _player.at("Y").get<float>() });
+					// Teleport the player to the correct loation if strayed too far
+					if (player.GetDistance(player.getPosition(), { _player.at("X").get<float>(), _player.at("Y").get<float>() }) > 100.0f)
+					{
+						player.setBodyPosition({ _player.at("X").get<float>(), _player.at("Y").get<float>() });
+					}
 					player.setHealth(_player.at("Health").get<int>());
 				}
 			}
@@ -225,6 +228,7 @@ void NetworkManager::ProcessNetworkObjects(b2World* I_Physics, Player& player)
 		{
 			int ID = enemy.at("ID").get<int>();
 			std::string type = enemy.at("Type").get<std::string>();
+			std::string subtype = enemy.at("Type").get<std::string>();
 
 			if (allEnemies.count(ID) > 0)
 			{
@@ -234,11 +238,22 @@ void NetworkManager::ProcessNetworkObjects(b2World* I_Physics, Player& player)
 			{
 				if (type == "Enemy")
 				{
-					std::shared_ptr<Slime> newEnemy = std::make_shared<Slime>(ID);
-					newEnemy->setSize({ 100,100 });
-					newEnemy->setPosition({ enemy.at("X").get<float>(), enemy.at("Y").get<float>() });
-					newEnemy->InitPhysics(I_Physics, b2BodyType::b2_dynamicBody, 1.0f, 100.3f);
-					allEnemies.emplace(ID, newEnemy->getSharedPointer());
+					if (subtype == "Slime")
+					{
+						std::shared_ptr<Slime> newEnemy = std::make_shared<Slime>(ID);
+						newEnemy->setSize({ 100,100 });
+						newEnemy->setPosition({ enemy.at("X").get<float>(), enemy.at("Y").get<float>() });
+						newEnemy->InitPhysics(I_Physics, b2BodyType::b2_dynamicBody, 1.0f, 100.3f);
+						allEnemies.emplace(ID, newEnemy->getSharedPointer());
+					}
+					if (subtype == "Enemy")
+					{
+						std::shared_ptr<Slime> newEnemy = std::make_shared<Slime>(ID);
+						newEnemy->setSize({ 100,100 });
+						newEnemy->setPosition({ enemy.at("X").get<float>(), enemy.at("Y").get<float>() });
+						newEnemy->InitPhysics(I_Physics, b2BodyType::b2_dynamicBody, 1.0f, 100.3f);
+						allEnemies.emplace(ID, newEnemy->getSharedPointer());
+					}
 				}
 			}
 		}
@@ -248,6 +263,7 @@ void NetworkManager::ProcessNetworkObjects(b2World* I_Physics, Player& player)
 		{
 			int ID = projectile.at("ID").get<int>();
 			std::string type = projectile.at("Type").get<std::string>();
+			std::string subtype = projectile.at("SubType").get<std::string>();
 
 			if (type == "Projectile")
 			{
@@ -257,13 +273,25 @@ void NetworkManager::ProcessNetworkObjects(b2World* I_Physics, Player& player)
 				}
 				else
 				{
-					std::shared_ptr<Projectile> newProjectile = std::make_shared<Projectile>();
-					newProjectile->setSize({ 10,10 });
-					newProjectile->setPosition({ projectile.at("X").get<float>(), projectile.at("Y").get<float>() });
-					newProjectile->InitPhysics(I_Physics, b2BodyType::b2_dynamicBody, 1.0f, 1.3f);
-					allProjectiles.emplace(ID, newProjectile->getSharedPointer());
+					if (subtype == "Projectile")
+					{
+						std::shared_ptr<Projectile> newProjectile = std::make_shared<Projectile>();
+						newProjectile->setSize({ 10,10 });
+						newProjectile->setPosition({ projectile.at("X").get<float>(), projectile.at("Y").get<float>() });
+						newProjectile->InitPhysics(I_Physics, b2BodyType::b2_dynamicBody, 1.0f, 1.3f);
+						allProjectiles.emplace(ID, newProjectile->getSharedPointer());
+					}
+					if (subtype == "Arrow")
+					{
+						std::shared_ptr<Arrow> newProjectile = std::make_shared<Arrow>();
+						newProjectile->setSize({ 10,10 });
+						newProjectile->setPosition({ projectile.at("X").get<float>(), projectile.at("Y").get<float>() });
+						newProjectile->InitPhysics(I_Physics, b2BodyType::b2_dynamicBody, 1.0f, 1.3f);
+						allProjectiles.emplace(ID, newProjectile->getSharedPointer());
+					}
 				}
 			}
+
 		}
 	}
 	catch (std::exception e)

@@ -171,3 +171,36 @@ void Scythe::Use(GL_Renderer& renderer, World& world, Player& player)
 		}
 	}
 }
+
+
+//////////////////////////////////////////////////////////////////////////////////////
+// Bow
+//////////////////////////////////////////////////////////////////////////////////////
+Bow::Bow()
+{
+	this->setSize(50, 50);
+	std::string directory = ToolSpriteDirectory + "bow.png";
+	this->icon.Background = ResourceManager::LoadTexture(directory.c_str());
+	this->Sprite = ResourceManager::LoadTexture(directory.c_str());
+}
+
+std::shared_ptr<Item> Bow::getSharedPointer()
+{
+	auto sharedItem = std::make_shared<Bow>(*this); // make shared Item
+	return sharedItem;
+}
+
+//! Render function
+void Bow::Render(GL_Renderer& renderer, World& world)
+{
+	if (isInFocus)
+	{
+		this->setPosition(renderer.playerPosition);
+		renderer.RenderSpriteLighting(this->Sprite, this->NormalMap, this->position, this->size, this->rotation, this->transparency, this->renderLayer, this->colour, { flipSprite, false });
+	}
+}
+//! Use the item
+void Bow::Use(GL_Renderer& renderer, World& world, Player& player)
+{
+	
+}

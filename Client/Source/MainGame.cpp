@@ -281,7 +281,7 @@ void MainGame::run()
 
 		// Render Scene
 		GameSettings::currentInstance->Render(glRenderer);
-		std::cout << GameSettings::currentInstance->I_player.getHealth() << std::endl;
+		//std::cout << GameSettings::currentInstance->I_player.getHealth() << std::endl;
 
 		// Render game
 		glRenderer.RenderAllLayers();

@@ -108,6 +108,8 @@ protected:
 	float friction = 1.0f;
 	float density = 1.0f;
 
+
+
 };
 
 
@@ -124,4 +126,14 @@ public:
 	int getID() { return ID; }
 
 	int ID;
+	float AliveTime = 10; // Time till the sprite gets deleted in ms
+
+	//! Whether to remove the object from the game
+	bool removeObject = false;
+protected:
+
+
+
+	//! Timer to declare the 
+	//Timer expirationTimer;
 };

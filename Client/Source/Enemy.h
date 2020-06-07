@@ -13,7 +13,11 @@ public:
 	void Move(glm::vec2 newPos);
 	
 	std::shared_ptr<Enemy> getSharedPointer();
-	
+
+	int getHealth() { return health; }
+	int setHealth(int newHealth) { return health = newHealth; }
+
+
 
 protected:
 	std::string SpriteDirctory = "Resources\\External\\";
@@ -22,6 +26,7 @@ protected:
 	bool isMoving = false;
 	int health = 100;
 	std::string type = "null";
+
 };
 
 class Slime : public Enemy

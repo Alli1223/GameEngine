@@ -96,3 +96,32 @@ private:
 	std::string itemDescription = "A basic scythe";
 	int maximumStackSize = 1;
 };
+
+//////////////////////////////////////////////////////////////////////
+// Bow
+//////////////////////////////////////////////////////////////////////
+struct Bow : public Tool
+{
+	//! Constructor
+	Bow::Bow();
+	//! Get shared pointer
+	std::shared_ptr<Item> getSharedPointer();
+	//! Render function
+	void Render(GL_Renderer& renderer, World& world);
+	//! Use the item
+	void Use(GL_Renderer& renderer, World& world, Player& player);
+	std::string getName() { return itemName; }
+	std::string getItemDescription() { return itemDescription; }
+
+private:
+	enum CastDirection
+	{
+		none, left, right, up, down
+	} castDirection;
+	Animation castingAnim;
+
+	bool flipSprite = false;
+	std::string itemName = "Bow";
+	std::string itemDescription = "A basic bow";
+	int maximumStackSize = 1;
+};

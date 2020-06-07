@@ -21,7 +21,6 @@ public:
 	void Move(Player::MovementDirection direction);
 	virtual void Move(glm::vec2 position);
 
-
 	json getPlayerJson();
 
 	glm::vec2 renderOffset;
