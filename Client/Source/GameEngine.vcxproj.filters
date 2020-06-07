@@ -274,6 +274,7 @@
     <ClCompile Include="NetworkInstance.cpp">
       <Filter>Source Files\Core\Level Classes</Filter>
     </ClCompile>
+    <ClCompile Include="Console.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cell.h">
@@ -567,6 +568,7 @@
     <ClInclude Include="NetworkInstance.h">
       <Filter>Headers\Core\Level Classes</Filter>
     </ClInclude>
+    <ClInclude Include="Console.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="SDL_project.rc" />

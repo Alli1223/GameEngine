@@ -1,6 +1,5 @@
 #include "stdafx.h"
 #include "NetworkManager.h"
-
 NetworkManager::NetworkManager()
 {
 }
@@ -43,6 +42,7 @@ int NetworkManager::init(std::string playerName)
 	setPlayerName(playerName);
 	int ID = std::stoi(RecieveMessage());
 	std::cout << "PlayerName: " << localPlayerName << std::endl;
+	Console::Print("Connected to server..");
 
 
 	//sendTCPMessage("[Init]\n");
@@ -54,7 +54,7 @@ int NetworkManager::init(std::string playerName)
 
 void NetworkManager::Connect()
 {
-	IPAddress = ExternalIPAddress;
+	IPAddress = InternalIPAddress;
 	socket = std::shared_ptr<tcp::socket>(new tcp::socket(io_service));
 	boost::asio::ip::tcp::endpoint endpoint(boost::asio::ip::address::from_string(getServerIP()), port);
 	socket->connect(endpoint);
@@ -210,6 +210,7 @@ void NetworkManager::ProcessNetworkObjects(b2World* I_Physics, Player& player)
 					newPlayer.playerName = name;
 					newPlayer.InitPhysics(I_Physics, b2BodyType::b2_dynamicBody, 1.0f, 0.3f);
 					allPlayers->push_back(newPlayer);
+					Console::Print("Player " + name + " joined.");
 				}
 				else if (name == localPlayerName)
 				{

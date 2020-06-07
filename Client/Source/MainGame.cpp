@@ -177,25 +177,21 @@ void MainGame::run()
 	world.I_player.setPosition(100, 0);
 	world.I_player.setSize(100, 100);
 	//world.I_player.Sprite = ResourceManager::LoadTexture("Resources\\Sprites\\Character\\Alli.png");
-	world.I_player.setEyeColour({ rand() % 255, rand() % 255 , rand() % 255 });
-	world.I_player.setHairColour({ rand() % 255, rand() % 255 , rand() % 255 });
+	//world.I_player.setEyeColour({ rand() % 255, rand() % 255 , rand() % 255 });
+	//world.I_player.setHairColour({ rand() % 255, rand() % 255 , rand() % 255 });
 
 	// Create Level
 
 
 
 
-	ProceduralTerrain pt;
+	//ProceduralTerrain pt;
 	//pt.populateTerrain(level);
 
 	// Projection matrix
 	glRenderer.SetProjectionMatrix();
 
-
-	//ShopDisplayShelf displayShelf;
-	//for (int i = 0; i < 5; i++)
-	//			world.I_player.inventory.add(displayShelf.getSharedPointer());
-
+	// Create default starting items and add to player
 	Fish fish;
 	Hoe hoe;
 	FishingRod rod;
@@ -239,7 +235,12 @@ void MainGame::run()
 
 	//currentInstance->onEnter(world.I_player);
 	//world.InfiniWorld.CreateInfiniWorld(glRenderer, world.I_Physics.get());
+
+	// player enters world
 	s_world.onEnter(world.I_player);
+
+	//! Init UI
+	UI.Init(world.I_player, gameSettings);
 
 	//s_world.onEnter(world.I_player);
 

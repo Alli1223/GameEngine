@@ -174,6 +174,7 @@
     <ClInclude Include="CellAssignment.h" />
     <ClInclude Include="CollisionIdentifier.h" />
     <ClInclude Include="CollisionListener.h" />
+    <ClInclude Include="Console.h" />
     <ClInclude Include="Crop.h" />
     <ClInclude Include="CropSquare.h" />
     <ClInclude Include="CropTile.h" />
@@ -271,6 +272,7 @@
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Cell.cpp" />
     <ClCompile Include="CollisionListener.cpp" />
+    <ClCompile Include="Console.cpp" />
     <ClCompile Include="Crop.cpp" />
     <ClCompile Include="CropSquare.cpp" />
     <ClCompile Include="CropTile.cpp" />

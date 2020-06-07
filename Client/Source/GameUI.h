@@ -5,6 +5,8 @@
 #include "CraftingUI.h"
 #include "WorldEditor.h"
 #include "CharacterWindow.h"
+#include "Console.h"
+
 ////////////////////////////////////////////////////////////////////////////
 //! Handles the ingame UI
 ////////////////////////////////////////////////////////////////////////////
@@ -17,6 +19,9 @@ public:
 	//! Destructor
 	~GameUI();
 
+	//! Initilise
+	void Init(Player& player, GameSettings& gs);
+
 	//! World editor
 	WorldEditor worldEdit;
 	//! Toolbar object
@@ -28,6 +33,9 @@ public:
 
 	//! Room Designer
 	RoomDesigner roomDesigner;
+
+	//! Console to write to
+	Console console;
 
 	//Function that renders all the UI elements
 	void Render(GL_Renderer& renderer, World& world, Player& player, GameSettings& gameSettings);

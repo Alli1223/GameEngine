@@ -12,10 +12,15 @@ GameUI::~GameUI()
 {
 }
 
+void GameUI::Init(Player& player, GameSettings& gs)
+{
+	console.Init(gs);
+	characterWindow.init(player);
+}
+
 
 void GameUI::Render(GL_Renderer& renderer, World& world, Player& player, GameSettings& gameSettings)
 {
-	characterWindow.init(player);
 	characterWindow.Render(renderer);
 	worldEdit.Render(renderer, world, player);
 
@@ -87,4 +92,5 @@ void GameUI::Render(GL_Renderer& renderer, World& world, Player& player, GameSet
 
 
 	toolbar.Render(renderer, world, player, gameSettings);
+	console.Render(renderer);
 }

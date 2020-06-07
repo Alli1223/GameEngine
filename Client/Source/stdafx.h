@@ -87,3 +87,5 @@ using boost::asio::ip::tcp;
 #include "json.hpp"
 using json = nlohmann::json;
 using namespace glm;
+
+#include "Console.h"
