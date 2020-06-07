@@ -54,7 +54,7 @@ int NetworkManager::init(std::string playerName)
 
 void NetworkManager::Connect()
 {
-	IPAddress = InternalIPAddress;
+	IPAddress = ExternalIPAddress;
 	socket = std::shared_ptr<tcp::socket>(new tcp::socket(io_service));
 	boost::asio::ip::tcp::endpoint endpoint(boost::asio::ip::address::from_string(getServerIP()), port);
 	socket->connect(endpoint);

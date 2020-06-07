@@ -74,12 +74,11 @@ void ToolBar::createToolbar(Player& player, GameSettings& gameSettings)
 {
 	int WW = gameSettings.WINDOW_WIDTH;
 	int WH = gameSettings.WINDOW_HEIGHT;
-	numberOfIcons = 10;
 	if (player.inventory.getCurrentSize() < numberOfIcons)
 		numberOfIcons = player.inventory.getCurrentSize();
 	toolbarIcons.clear();
 	this->setPosition({ WW / 2, iconSize / 2 });
-	this->setSize({ (10 * iconSize) + iconSize, iconSize + (iconSize / 4) });
+	this->setSize({ (numberOfIcons * iconSize) + iconSize, iconSize + (iconSize / 2) });
 	for (int i = 0; i < numberOfIcons; i++)
 	{
 		Icon icon;
