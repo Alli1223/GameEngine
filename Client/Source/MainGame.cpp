@@ -242,6 +242,8 @@ void MainGame::run()
 	//! Init UI
 	UI.Init(world.I_player, gameSettings);
 
+
+
 	//s_world.onEnter(world.I_player);
 
 	//Shop.onEnter(world.I_player);

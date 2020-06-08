@@ -36,13 +36,13 @@ json ConvertToJson(std::string data)
 }
 int NetworkManager::init(std::string playerName)
 {
+	Console::Print("Connecting to server..");
 	Connect();
 
 	sendTCPMessage(playerName + "\n");
 	setPlayerName(playerName);
 	int ID = std::stoi(RecieveMessage());
 	std::cout << "PlayerName: " << localPlayerName << std::endl;
-	Console::Print("Connected to server..");
 
 
 	//sendTCPMessage("[Init]\n");
@@ -54,11 +54,37 @@ int NetworkManager::init(std::string playerName)
 
 void NetworkManager::Connect()
 {
-	IPAddress = InternalIPAddress;
-	socket = std::shared_ptr<tcp::socket>(new tcp::socket(io_service));
-	boost::asio::ip::tcp::endpoint endpoint(boost::asio::ip::address::from_string(getServerIP()), port);
-	socket->connect(endpoint);
-	io_service.run();
+	bool connected = false;
+	try
+	{
+		IPAddress = ExternalIPAddress;
+		socket = std::shared_ptr<tcp::socket>(new tcp::socket(io_service));
+		boost::asio::ip::tcp::endpoint endpoint(boost::asio::ip::address::from_string(getServerIP()), port);
+		socket->connect(endpoint);
+		io_service.run();
+		connected = true;
+		Console::Print("Connected to External Server at: " + ExternalIPAddress);
+	}
+	catch (std::exception e)
+	{
+		std::cout << "Error connecting to external server.." << std::endl;
+	}
+	if (!connected)
+	{
+		try
+		{
+			IPAddress = InternalIPAddress;
+			socket = std::shared_ptr<tcp::socket>(new tcp::socket(io_service));
+			boost::asio::ip::tcp::endpoint endpoint(boost::asio::ip::address::from_string(getServerIP()), port);
+			socket->connect(endpoint);
+			io_service.run();
+			Console::Print("Connected to Internal Server at: " + InternalIPAddress);
+		}
+		catch (std::exception e)
+		{
+			std::cout << "Error connecting to internal server.." << std::endl;
+		}
+	}
 }
 
 //! Returns whether the player exists in the list of players
@@ -179,6 +205,7 @@ bool NetworkManager::UpdateNetworkPlayer(json& data, std::string name)
 
 void NetworkManager::ProcessNetworkObjects(b2World* I_Physics, Player& player)
 {
+
 	// Get the players data and send to the server
 	sendTCPMessage("[PlayerUpdate]" + player.getPlayerJson().dump() + "\n");
 
@@ -215,7 +242,7 @@ void NetworkManager::ProcessNetworkObjects(b2World* I_Physics, Player& player)
 				else if (name == localPlayerName)
 				{
 					// Teleport the player to the correct loation if strayed too far
-					if (player.GetDistance(player.getPosition(), { _player.at("X").get<float>(), _player.at("Y").get<float>() }) > 100.0f)
+					if (player.GetDistance(player.getPosition(), { _player.at("X").get<float>(), _player.at("Y").get<float>() }) > 1000.0f)
 					{
 						player.setBodyPosition({ _player.at("X").get<float>(), _player.at("Y").get<float>() });
 					}
@@ -299,6 +326,12 @@ void NetworkManager::ProcessNetworkObjects(b2World* I_Physics, Player& player)
 	{
 		std::cout << "Error json update data: " << e.what() << std::endl;
 	}
+
+}
+
+void NetworkManager::ProcessNetworkObjectsThread(b2World* I_Physics, Player& player)
+{
+
 }
 
 
@@ -410,9 +443,19 @@ std::string make_string(boost::asio::streambuf & streambuf)
 		boost::asio::buffers_end(streambuf.data()) };
 }
 
-void read_handler(const boost::system::error_code& ec, std::size_t bytes_transferred){
+boost::asio::streambuf b;
 
+void handler(const boost::system::error_code& ec, std::size_t bytes_transferred)
+{
+	if (!ec)
+	{
+		std::istream is(&b);
+		std::string line;
+		std::getline(is, line);
+	}
 };
+
+
 
 //! returns a string from the socket
 std::string NetworkManager::RecieveMessage()
@@ -424,12 +467,13 @@ std::string NetworkManager::RecieveMessage()
 	{
 		boost::array<char, 100000> buffer;
 		boost::asio::streambuf read_buffer;
-		std::string data = "";
+		
+		//std::string data = "";
 		//bytes_transferred = boost::asio::write(*socket, write_buffer);
 
 		// Read until new line afer json
 		auto bytes_transferred = boost::asio::read_until(*socket, read_buffer, ("}\r\n"));
-		//auto bytes_transferred = boost::asio::async_read_until(*socket, data, ("}\r\n"),read_handler);
+		//boost::asio::async_read_until(*socket, read_buffer, ("}\r\n"), handler);
 		//std::cout << "Read: " << make_string(read_buffer) << std::endl;
 
 		return returnMessage = make_string(read_buffer);

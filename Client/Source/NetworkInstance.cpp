@@ -82,8 +82,6 @@ void NetworkInstance::Render(GL_Renderer& renderer)
 	{
 		it->second->Render(renderer);
 	}
-	// Get network update
-	network->ProcessNetworkObjects(I_Physics.get(), I_player);
 }
 
 void NetworkInstance::Update()
@@ -109,7 +107,10 @@ void NetworkInstance::Update()
 
 	if(!networkUpdateTimer.isStarted())
 		networkUpdateTimer.start();
-	if (networkUpdateTimer.getTicks() > 200)
+	/// <summary>
+	/// NETWORK UPDATE
+	/// </summary>
+	if (networkUpdateTimer.getTicks() > updateRate)
 	{
 		NetworkUpdate();
 		networkUpdateTimer.restart();

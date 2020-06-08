@@ -21,6 +21,6 @@ void Console::Render(GL_Renderer& renderer)
 	renderer.RenderGUI(this->Background, this->position, this->size, this->rotation, this->transparency, this->colour, flipSprite);
 	for (int i = 0; i < textLog.size(); i++)
 	{
-		renderer.RenderText(textLog[i], { getPosition().x - getSize().x / 2, getPosition().y - (i * (textSize * 100)) }, getSize(), { textSize,textSize }, { 255,255,255 });
+		renderer.RenderText(textLog[i], { getPosition().x - getSize().x / 2, (getPosition().y + getSize().y / 2) - (i * (textSize * 100)) }, getSize(), { textSize,textSize }, { 255,255,255 });
 	}
 }

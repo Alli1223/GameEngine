@@ -20,6 +20,7 @@ public:
 	//! When player exits instace
 	void onExit(Player& player);
 
+	//! Create a cell at a location
 	void CreateCell(vec2 pos);
 
 	//! Render
@@ -35,8 +36,14 @@ public:
 	Timer networkUpdateTimer;
 
 private:
+	//! Update rate to server in ms
+	unsigned int updateRate = 20;
+	//! default Cellsize
 	int cellSize = 100;
+	
 	std::string mapData;
+
+	//! Procedural generation instance
 	ProceduralTerrain procGen;
 };
 

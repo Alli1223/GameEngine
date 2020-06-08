@@ -27,6 +27,8 @@ public:
 
 	//! Process the players location from json
 	void ProcessNetworkObjects(b2World* I_Physics, Player& player);
+	//! Process the players location from json
+	void ProcessNetworkObjectsThread(b2World* I_Physics, Player& player);
 	//! Process cell data
 	void MapNetworkUpdate(World& level);
 	//! Return a string from recieve message
@@ -35,7 +37,7 @@ public:
 	// Server connection deets
 	int port = 2222;
 
-	std::string ExternalIPAddress = "192.168.1.18";
+	std::string ExternalIPAddress = "157.245.46.192";
 	std::string InternalIPAddress = "127.0.0.1";
 
 	//! Whether the client should connect to external server
