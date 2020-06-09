@@ -30,6 +30,7 @@ bool SetOpenGLAttributes()
 
 MainGame::MainGame()
 {
+	tickRate.start();
 	// Try and Connect to server
 	try {
 		int initNetwork = networkManager.init(world.I_player.playerName);
@@ -151,8 +152,8 @@ void MainGame::run()
 	glRenderer.SetProjectionMatrix();
 
 	// Main Menu
-	//Menu menu;
-	//menu.MainMenu(gameSettings, world, glRenderer.camera, world.I_player, glRenderer, window, glContext);
+	Menu menu;
+	menu.MainMenu(gameSettings, world, glRenderer.camera, world.I_player, glRenderer, window, glContext);
 
 	// Initilise the world with the physcis stored in glRenderer
 
@@ -247,7 +248,7 @@ void MainGame::run()
 	//s_world.onEnter(world.I_player);
 
 	//Shop.onEnter(world.I_player);
-	//Mix_PlayMusic(gMusic, -1);
+	Mix_PlayMusic(gMusic, -1);
 
 	float lag = 0.0f;
 	/////////////////////////////////////////////// MAIN LOOP ///////////////////////////////////////
@@ -280,7 +281,8 @@ void MainGame::run()
 		input.HandleUserInput(glRenderer, GameSettings::currentInstance->I_player, gameSettings, UI);
 
 		// Update physics
-		GameSettings::currentInstance->Update();
+		//if(tickRate.getTicks() > tickrate)
+			GameSettings::currentInstance->Update(), tickRate.restart();
 
 		// Render Scene
 		GameSettings::currentInstance->Render(glRenderer);

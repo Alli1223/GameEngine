@@ -61,6 +61,7 @@ void Enemy::NetworkUpdate(json data)
 	setRotation(rotation);
 	this->isMoving = moving;
 	this->health = health;
+	AliveTime = 50;
 	
 }
 
@@ -73,9 +74,10 @@ void Enemy::Update()
 {
 	UpdatePosition();
 	if (getHealth() == 0)
-		AliveTime -= 1;
+		AliveTime = 0;
 	if (AliveTime == 0)
 		this->removeObject = true;
+	AliveTime -= 1;
 }
 
 void Enemy::UpdatePosition()

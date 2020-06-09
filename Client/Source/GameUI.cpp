@@ -48,32 +48,32 @@ void GameUI::Render(GL_Renderer& renderer, World& world, Player& player, GameSet
 
 		ImGui::Begin("Game Editor");                          // Create a window called "Hello, world!" and append into it.
 
-		ImGui::Text("This is some useful text.");               // Display some text (you can use a format strings too)
+		//ImGui::Text("This is some useful text.");               // Display some text (you can use a format strings too)
 		ImGui::Checkbox("Demo Window", &show_demo_window);      // Edit bools storing our window open/close state
 
 		if (ImGui::Button("Exit", { 50,50 }))
 			gameSettings.running = false;
 
 		ImGui::SameLine();
-		if (ImGui::Button("Save Shop", { 100,50 }))
-		{
-			gameSettings.levelSaving.SaveInstance(GameSettings::currentInstance);
-		}
-		ImGui::SameLine();
-		if (ImGui::Button("Load Shop", { 100,50 }))
-		{
-			//GameSettings::currentInstance =  gameSettings.levelSaving.LoadInstance();
-		}
-		ImGui::SameLine();
-		if (ImGui::Button("Save Level", { 100,50 }))
-		{
-			gameSettings.levelSaving.SaveLevel(world);
-		}
-		ImGui::SameLine();
-		if (ImGui::Button("Save Player", { 100,50 }))
-		{
-			gameSettings.levelSaving.SavePlayer(player);
-		}
+		//if (ImGui::Button("Save Shop", { 100,50 }))
+		//{
+		//	gameSettings.levelSaving.SaveInstance(GameSettings::currentInstance);
+		//}
+		//ImGui::SameLine();
+		//if (ImGui::Button("Load Shop", { 100,50 }))
+		//{
+		//	//GameSettings::currentInstance =  gameSettings.levelSaving.LoadInstance();
+		//}
+		//ImGui::SameLine();
+		//if (ImGui::Button("Save Level", { 100,50 }))
+		//{
+		//	gameSettings.levelSaving.SaveLevel(world);
+		//}
+		//ImGui::SameLine();
+		//if (ImGui::Button("Save Player", { 100,50 }))
+		//{
+		//	gameSettings.levelSaving.SavePlayer(player);
+		//}
 		ImGui::SliderFloat("Time of day", &renderer.timeOfDay, 0.0f, 1.0f, "%.3f", (1.0f));
 
 		ImGui::Text("player position = %f, %f",player.getX(), player.getY());

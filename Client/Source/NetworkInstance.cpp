@@ -39,6 +39,8 @@ void NetworkInstance::CreateCell(vec2 pos)
 	cell->orientationTimer.start();
 	procGen.generateGround(cell);
 	level[{pos.x, pos.y}] = cell;
+
+	//Uncomment for saving the entire world rather than only changed cells
 	//updatedCells.push_back(cell);
 }
 
@@ -55,7 +57,7 @@ void NetworkInstance::Render(GL_Renderer& renderer)
 				level[{x, y}]->Render(renderer);
 				//if (!level[{x, y}]->orientated)
 				{
-					if (level[{x, y}]->orientationTimer.getTicks() > 1000)
+					if (level[{x, y}]->orientationTimer.getTicks() > 100)
 					{
 						procGen.OrientateCells(level[{x, y}], &level);
 						level[{x, y}]->orientationTimer.restart();
@@ -89,20 +91,21 @@ void NetworkInstance::Update()
 	int x, y;
 	if (SDL_GetMouseState(&x, &y) & SDL_BUTTON(SDL_BUTTON_LEFT))
 	{
-		if (level[{x / cellSize, y / cellSize}] != nullptr)
-		{
-			std::cout << level[{x / cellSize, y / cellSize}]->terrainElevationValue << std::endl;
-			float delta_x = GameSettings::GSInstance->windowSize.x / 2 - x;
-			float delta_y = GameSettings::GSInstance->windowSize.y / 2 - y;
-			//if (delta_x > 10.0f)
-			//	delta_x = 10.0f;
-			//if (delta_y > 10.0f)
-			//	delta_y = 10.0f;
-			vec2 s_point = { -delta_x , -delta_y };
-			Arrow proj(I_Physics.get(), I_player.getPosition() + s_point, b2Vec2(-delta_x / 100.0f, -delta_y / 100.0f));
-			proj.Sprite = ResourceManager::LoadTexture("Resources\\Sprites\\SpriteSheets\\Items\\arrow.png");
-			network->SawnEntity(proj.getSharedPointer());
-		}
+		I_player.setBodyColour({ rand() % 255, rand() % 255, rand() % 255 });
+		//if (level[{x / cellSize, y / cellSize}] != nullptr)
+		//{
+		//	std::cout << level[{x / cellSize, y / cellSize}]->terrainElevationValue << std::endl;
+		//	float delta_x = GameSettings::GSInstance->windowSize.x / 2 - x;
+		//	float delta_y = GameSettings::GSInstance->windowSize.y / 2 - y;
+		//	//if (delta_x > 10.0f)
+		//	//	delta_x = 10.0f;
+		//	//if (delta_y > 10.0f)
+		//	//	delta_y = 10.0f;
+		//	vec2 s_point = { -delta_x , -delta_y };
+		//	Arrow proj(I_Physics.get(), I_player.getPosition() + s_point, b2Vec2(-delta_x / 100.0f, -delta_y / 100.0f));
+		//	proj.Sprite = ResourceManager::LoadTexture("Resources\\Sprites\\SpriteSheets\\Items\\arrow.png");
+		//	network->SawnEntity(proj.getSharedPointer());
+		//}
 	}
 
 	if(!networkUpdateTimer.isStarted())
@@ -112,9 +115,9 @@ void NetworkInstance::Update()
 	/// </summary>
 	if (networkUpdateTimer.getTicks() > updateRate)
 	{
-		NetworkUpdate();
+		//NetworkUpdate();
 		networkUpdateTimer.restart();
-		network->ProcessNetworkObjects(I_Physics.get(), I_player);
+		network->NetworkUpdate(I_Physics.get(), I_player);
 	}
 	for (std::map<int, std::shared_ptr<Enemy>>::iterator it = network->allEnemies.begin(); it != network->allEnemies.end(); it++)
 	{

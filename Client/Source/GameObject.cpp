@@ -47,14 +47,15 @@ void GameObject::InitPhysics(b2World* physicsWorld, b2BodyType type, float densi
 		// Empty identifier
 		CollisionIdentifier objectIdnetifier(CollisionIdentifier::CollisionEntityTypes::empty);
 		//fixtureDef.userData = &objectIdnetifier;
-		rigidBody->SetUserData(&objectIdnetifier);
+		if(rigidBody != nullptr)
+			rigidBody->SetUserData(&objectIdnetifier);
 
 		//b2ContactListener contact;
 		//contactListener = &contact;
 		//physicsWorld->SetContactListener(&contact);
 
-
-		fixture = rigidBody->CreateFixture(&fixtureDef);
+		if (rigidBody != nullptr)
+			fixture = rigidBody->CreateFixture(&fixtureDef);
 		hasPhysics = true;
 	}
 }

@@ -12,8 +12,11 @@ public:
 
 	int getID() { return ID; }
 	int setID(int newID) { return ID = newID; }
+
+	int AliveTime = 50;
 private:
 	vec2 lastKnownPos;
 	int ID = 0;
+
 };
 

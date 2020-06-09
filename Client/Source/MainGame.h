@@ -65,6 +65,7 @@ public:
 	Pathfinder pathfinder;
 	NetworkManager networkManager;
 	CollisionListener myListender;
+	Timer tickRate;
 
 
 	static std::shared_ptr<Instance> currentInstance;
@@ -98,6 +99,9 @@ private:
 	//! Some colours for text output
 	SDL_Color White = { 255, 255, 255 };
 	SDL_Color Black = { 0, 0, 0 };
+
+	//! Tick rate of game physics simulation
+	float tickrate = 20;
 
 	
 };

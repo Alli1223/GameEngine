@@ -16,6 +16,8 @@ public:
 	std::map<int, std::shared_ptr<Projectile>> allProjectiles;
 
 	void Connect();
+	//! Multi-threaded network update
+	void NetworkUpdate(b2World* I_Physics, Player& player);
 	//! Main Network update function
 	void NetworkUpdate(World& world, b2World* I_Physics, std::vector<NetworkPlayer>& players, Player& player);
 	// Update a player variables
@@ -38,6 +40,7 @@ public:
 	int port = 2222;
 
 	std::string ExternalIPAddress = "157.245.46.192";
+	//std::string ExternalIPAddress = "10.11.0.46";
 	std::string InternalIPAddress = "127.0.0.1";
 
 	//! Whether the client should connect to external server
@@ -81,7 +84,6 @@ public:
 	//! the io service for creating the socket
 	boost::asio::io_service io_service;
 	std::shared_ptr<tcp::socket> socket;
-	std::thread t;
 
 
 private:
@@ -91,5 +93,8 @@ private:
 	std::string IPAddress;
 	//! For the name of the local player
 	std::string localPlayerName;
+	//! Network thread
+	std::future<void> networkThread;
+	bool networkWait = false;
 };
 

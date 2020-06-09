@@ -39,6 +39,8 @@ int NetworkManager::init(std::string playerName)
 	Console::Print("Connecting to server..");
 	Connect();
 
+
+
 	sendTCPMessage(playerName + "\n");
 	setPlayerName(playerName);
 	int ID = std::stoi(RecieveMessage());
@@ -57,13 +59,13 @@ void NetworkManager::Connect()
 	bool connected = false;
 	try
 	{
-		IPAddress = ExternalIPAddress;
+		IPAddress = InternalIPAddress;
 		socket = std::shared_ptr<tcp::socket>(new tcp::socket(io_service));
 		boost::asio::ip::tcp::endpoint endpoint(boost::asio::ip::address::from_string(getServerIP()), port);
 		socket->connect(endpoint);
 		io_service.run();
 		connected = true;
-		Console::Print("Connected to External Server at: " + ExternalIPAddress);
+		Console::Print("Connected to Local Server at: " + InternalIPAddress);
 	}
 	catch (std::exception e)
 	{
@@ -73,12 +75,12 @@ void NetworkManager::Connect()
 	{
 		try
 		{
-			IPAddress = InternalIPAddress;
+			IPAddress = ExternalIPAddress;
 			socket = std::shared_ptr<tcp::socket>(new tcp::socket(io_service));
 			boost::asio::ip::tcp::endpoint endpoint(boost::asio::ip::address::from_string(getServerIP()), port);
 			socket->connect(endpoint);
 			io_service.run();
-			Console::Print("Connected to Internal Server at: " + InternalIPAddress);
+			Console::Print("Connected to Remote Server at: " + ExternalIPAddress);
 		}
 		catch (std::exception e)
 		{
@@ -100,6 +102,34 @@ bool PlayerExists(std::vector<std::string> & playerNames, std::string playername
 	return false;
 }
 
+void NetworkManager::NetworkUpdate(b2World* I_Physics, Player& player)
+{
+	// Update network
+	//if (runPlayerNetworkTick)
+	{
+		try
+		{
+			if (!networkWait)
+			{
+				auto thread = std::async(&NetworkManager::ProcessNetworkObjects, this, I_Physics, player);
+				networkThread = std::move(thread);
+				networkWait = true;
+			}
+			if (networkThread.valid() && networkWait)
+				if (networkThread.wait_for(std::chrono::seconds(0)) == std::future_status::ready) // return the path
+				{
+					runPlayerNetworkTick = false;
+					//ProcessNetworkObjects(I_Physics, player);
+					networkWait = false;
+				}
+		}
+		catch (std::exception e)
+		{
+			std::cout << "Error in network processing thread: " << e.what() << std::endl;
+			Console::Print("Error in network processing thread");
+		}
+	}
+}
 //! main netwrok update function
 void NetworkManager::NetworkUpdate(World& world, b2World* I_Physics, std::vector<NetworkPlayer>& players, Player& player)
 {
@@ -124,12 +154,7 @@ void NetworkManager::NetworkUpdate(World& world, b2World* I_Physics, std::vector
 		timebehindM -= networkMapUpdateInterval;
 	}
 
-	// Update network
-	if (runPlayerNetworkTick)
-	{
-		runPlayerNetworkTick = false;
-		ProcessNetworkObjects(I_Physics, player);
-	}
+	
 
 	if (runMapNetworkTick || world.updatedCells.size() > 0)
 	{
@@ -183,8 +208,9 @@ bool NetworkManager::UpdateNetworkPlayer(json& data, std::string name)
 
 		allPlayers->at(ID).setEyeColour(er, eg, eb);
 		allPlayers->at(ID).setHairColour(hr, hg, hb);
-		allPlayers->at(ID).setJacketColour(br, bg, bb);
 		allPlayers->at(ID).setJeansColour(lr, lg, lb);
+		allPlayers->at(ID).setJacketColour(br, bg, bb);
+		allPlayers->at(ID).setBodyColour(br, bg, bb);
 		allPlayers->at(ID).CharacterClothes.hat = (Player::Clothing::HeadWear)headWear;
 		allPlayers->at(ID).CharacterClothes.body = (Player::Clothing::BodyWear)bodyWear;
 		allPlayers->at(ID).CharacterClothes.leg = (Player::Clothing::LegWear)legWear;
@@ -193,6 +219,7 @@ bool NetworkManager::UpdateNetworkPlayer(json& data, std::string name)
 		//allPlayers->at(ID).setY(y);
 		allPlayers->at(ID).Move({ x,y });
 		allPlayers->at(ID).setTargetRotation(rotation);
+		allPlayers->at(ID).AliveTime = 50;
 		return false;
 	}
 	// Player does not exist create them

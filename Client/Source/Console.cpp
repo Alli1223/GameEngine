@@ -6,8 +6,8 @@ std::vector<std::string> Console::textLog;
 
 void Console::Init(GameSettings& gs)
 {
-	setSize(300, 100);
-	setPosition(150, gs.WINDOW_HEIGHT / 4);
+	setSize(500, 100);
+	setPosition(getSize().x /2, gs.WINDOW_HEIGHT - getSize().y);
 	this->Background = ResourceManager::LoadTexture("Resources\\UI\\CharacterSheet\\IconBorder.png");
 }
 
