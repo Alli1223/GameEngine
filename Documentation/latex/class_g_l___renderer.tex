@@ -1,0 +1,104 @@
+\hypertarget{class_g_l___renderer}{}\doxysection{G\+L\+\_\+\+Renderer Class Reference}
+\label{class_g_l___renderer}\index{GL\_Renderer@{GL\_Renderer}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_g_l___renderer_a52d1382ee750e05a8bff44a3fd63f623}\label{class_g_l___renderer_a52d1382ee750e05a8bff44a3fd63f623}} 
+\mbox{\hyperlink{class_g_l___renderer_a52d1382ee750e05a8bff44a3fd63f623}{G\+L\+\_\+\+Renderer}} ()
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_g_l___renderer_a261288875a5b687641d282b214381ec6}\label{class_g_l___renderer_a261288875a5b687641d282b214381ec6}} 
+\mbox{\hyperlink{class_g_l___renderer_a261288875a5b687641d282b214381ec6}{$\sim$\+G\+L\+\_\+\+Renderer}} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_g_l___renderer_abfa659a2ac1dc3e72c868adce280015c}\label{class_g_l___renderer_abfa659a2ac1dc3e72c868adce280015c}} 
+void \mbox{\hyperlink{class_g_l___renderer_abfa659a2ac1dc3e72c868adce280015c}{Render\+Line}} (glm\+::vec2 point1, glm\+::vec2 point2)
+\begin{DoxyCompactList}\small\item\em Update the renderers lights. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_g_l___renderer_a9eb121523b94d41a609b827d2f9ae426}{Render\+Sprite}} (\mbox{\hyperlink{class_texture2_d}{Texture2D}} \&texture, glm\+::vec2 \&position, glm\+::vec2 \&size=glm\+::vec2(10, 10), G\+Lfloat rotate=0.\+0f, G\+Lfloat transparency=255.\+0f, glm\+::vec3 \&color=glm\+::vec3(1.\+0f), std\+::pair$<$ bool, bool $>$ flip\+Sprite=\{ false, false \})
+\begin{DoxyCompactList}\small\item\em Render the sprite. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_g_l___renderer_a62a1a21b1285859b18f3939e80b8e4e9}\label{class_g_l___renderer_a62a1a21b1285859b18f3939e80b8e4e9}} 
+void {\bfseries Render\+All\+Layers} ()
+\item 
+void \mbox{\hyperlink{class_g_l___renderer_ace7b088329d11c9bd64b64c05a9117ae}{Render\+G\+UI}} (\mbox{\hyperlink{class_texture2_d}{Texture2D}} \&texture, glm\+::vec2 \&position, glm\+::vec2 \&size, G\+Lfloat rotate, G\+Lfloat transparency, glm\+::vec3 \&color, std\+::pair$<$ bool, bool $>$ flip\+Sprite)
+\begin{DoxyCompactList}\small\item\em Render a \mbox{\hyperlink{class_g_u_i}{G\+UI}} object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_g_l___renderer_a8a47631688380098265c34ba91fb8029}\label{class_g_l___renderer_a8a47631688380098265c34ba91fb8029}} 
+void {\bfseries Set\+Projection\+Matrix} ()
+\item 
+\mbox{\Hypertarget{class_g_l___renderer_ab5deaf0c0f8ffb7a9cc616adde8a24ab}\label{class_g_l___renderer_ab5deaf0c0f8ffb7a9cc616adde8a24ab}} 
+void \mbox{\hyperlink{class_g_l___renderer_ab5deaf0c0f8ffb7a9cc616adde8a24ab}{Render\+Sprite\+Lighting}} (\mbox{\hyperlink{class_texture2_d}{Texture2D}} \&texture, \mbox{\hyperlink{class_texture2_d}{Texture2D}} \&normals, glm\+::vec2 \&position, glm\+::vec2 \&size, G\+Lfloat rotate, G\+Lfloat transparency, int render\+Layer, glm\+::vec3 \&color, std\+::pair$<$ bool, bool $>$ flip\+Sprite)
+\begin{DoxyCompactList}\small\item\em Render with normals. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_g_l___renderer_aa13d5081c2dc6cb3fb04d6ff3a8c523b}\label{class_g_l___renderer_aa13d5081c2dc6cb3fb04d6ff3a8c523b}} 
+void {\bfseries Render\+Shadows} (\mbox{\hyperlink{class_texture2_d}{Texture2D}} \&texture, glm\+::vec2 \&position, glm\+::vec2 \&size, glm\+::vec2 resolution)
+\item 
+\mbox{\Hypertarget{class_g_l___renderer_af53c10b4e834ff7f4ca1c57a0e61dc49}\label{class_g_l___renderer_af53c10b4e834ff7f4ca1c57a0e61dc49}} 
+void \mbox{\hyperlink{class_g_l___renderer_af53c10b4e834ff7f4ca1c57a0e61dc49}{Render\+Text}} (std\+::string text, glm\+::vec2 position, glm\+::vec2 size, glm\+::vec2 text\+Size, glm\+::vec3 color)
+\begin{DoxyCompactList}\small\item\em Render text to the screen. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_g_l___renderer_a26a473dc59c8f9b6c5273bd216516bdc}\label{class_g_l___renderer_a26a473dc59c8f9b6c5273bd216516bdc}} 
+void \mbox{\hyperlink{class_g_l___renderer_a26a473dc59c8f9b6c5273bd216516bdc}{Render\+Outline}} (\mbox{\hyperlink{class_texture2_d}{Texture2D}} \&texture, glm\+::vec2 \&position, glm\+::vec2 \&size, G\+Lfloat rotate, G\+Lfloat transparency, glm\+::vec3 \&color, std\+::pair$<$ bool, bool $>$ flip\+Sprite)
+\begin{DoxyCompactList}\small\item\em Render outline. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_g_l___renderer_a21e65a6c3dc8fc654114555c9b49b600}\label{class_g_l___renderer_a21e65a6c3dc8fc654114555c9b49b600}} 
+void \mbox{\hyperlink{class_g_l___renderer_a21e65a6c3dc8fc654114555c9b49b600}{Create\+Text\+Character\+Atals}} ()
+\begin{DoxyCompactList}\small\item\em Create a map of all the ascii textures. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_g_l___renderer_ac29068ce0dfb353e494796e73a5e2635}\label{class_g_l___renderer_ac29068ce0dfb353e494796e73a5e2635}} 
+void {\bfseries Render\+Upper\+Sprites} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_g_l___renderer_a91cc802fadd529524c3b226a3d323371}\label{class_g_l___renderer_a91cc802fadd529524c3b226a3d323371}} 
+std\+::map$<$ int, \mbox{\hyperlink{class_light}{Light}} $>$ {\bfseries lights}
+\item 
+\mbox{\Hypertarget{class_g_l___renderer_a339ac0ca21551c373b57ddbcb903b087}\label{class_g_l___renderer_a339ac0ca21551c373b57ddbcb903b087}} 
+glm\+::vec2 {\bfseries resolution}
+\item 
+\mbox{\Hypertarget{class_g_l___renderer_a3e4239bdb29e82ac850792dc715061f3}\label{class_g_l___renderer_a3e4239bdb29e82ac850792dc715061f3}} 
+std\+::map$<$ int, \mbox{\hyperlink{struct_g_l___sprite}{G\+L\+\_\+\+Sprite}} $>$ {\bfseries layers}
+\item 
+\mbox{\Hypertarget{class_g_l___renderer_a7256214b7bfb3329c95a7469f273e9a6}\label{class_g_l___renderer_a7256214b7bfb3329c95a7469f273e9a6}} 
+std\+::map$<$ int, \mbox{\hyperlink{struct_g_l___sprite}{G\+L\+\_\+\+Sprite}} $>$ {\bfseries outlines}
+\item 
+\mbox{\Hypertarget{class_g_l___renderer_a0076c3d7a7739e69f36282ae62dbb031}\label{class_g_l___renderer_a0076c3d7a7739e69f36282ae62dbb031}} 
+glm\+::vec2 \mbox{\hyperlink{class_g_l___renderer_a0076c3d7a7739e69f36282ae62dbb031}{player\+Position}}
+\begin{DoxyCompactList}\small\item\em Used for calculating whether the sprite should be rendererd before or after the player. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_g_l___renderer_a2b18e3f6d2d97f2a96f58e1139e74395}\label{class_g_l___renderer_a2b18e3f6d2d97f2a96f58e1139e74395}} 
+bool {\bfseries is\+Player\+In\+World} = true
+\item 
+\mbox{\Hypertarget{class_g_l___renderer_a241afbe95c08159a7f2dbd82d3083181}\label{class_g_l___renderer_a241afbe95c08159a7f2dbd82d3083181}} 
+\mbox{\hyperlink{class_texture2_d}{Texture2D}} {\bfseries farming\+Highlight}
+\item 
+\mbox{\Hypertarget{class_g_l___renderer_ab80ab3d1d01173f516d27dc1ccfe9e48}\label{class_g_l___renderer_ab80ab3d1d01173f516d27dc1ccfe9e48}} 
+float {\bfseries time\+Of\+Day}
+\item 
+\mbox{\Hypertarget{class_g_l___renderer_a1d2513fdb3363f1c9f1e829ddd5096ba}\label{class_g_l___renderer_a1d2513fdb3363f1c9f1e829ddd5096ba}} 
+\mbox{\hyperlink{class_camera}{Camera}} \mbox{\hyperlink{class_g_l___renderer_a1d2513fdb3363f1c9f1e829ddd5096ba}{camera}}
+\begin{DoxyCompactList}\small\item\em The games camera. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_g_l___renderer_af2f6cd9ea1e74d2f9ab389c785f9efab}\label{class_g_l___renderer_af2f6cd9ea1e74d2f9ab389c785f9efab}} 
+int {\bfseries current\+Instance\+Cell\+Size} = 100
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_g_l___renderer_ace7b088329d11c9bd64b64c05a9117ae}\label{class_g_l___renderer_ace7b088329d11c9bd64b64c05a9117ae}} 
+\index{GL\_Renderer@{GL\_Renderer}!RenderGUI@{RenderGUI}}
+\index{RenderGUI@{RenderGUI}!GL\_Renderer@{GL\_Renderer}}
+\doxysubsubsection{\texorpdfstring{RenderGUI()}{RenderGUI()}}
+{\footnotesize\ttfamily void G\+L\+\_\+\+Renderer\+::\+Render\+G\+UI (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_texture2_d}{Texture2D}} \&}]{texture,  }\item[{glm\+::vec2 \&}]{position,  }\item[{glm\+::vec2 \&}]{size,  }\item[{G\+Lfloat}]{rotate,  }\item[{G\+Lfloat}]{transparency,  }\item[{glm\+::vec3 \&}]{color,  }\item[{std\+::pair$<$ bool, bool $>$}]{flip\+Sprite }\end{DoxyParamCaption})}
+
+
+
+Render a \mbox{\hyperlink{class_g_u_i}{G\+UI}} object. 
+
+Render a sprite to screen. \mbox{\Hypertarget{class_g_l___renderer_a9eb121523b94d41a609b827d2f9ae426}\label{class_g_l___renderer_a9eb121523b94d41a609b827d2f9ae426}} 
+\index{GL\_Renderer@{GL\_Renderer}!RenderSprite@{RenderSprite}}
+\index{RenderSprite@{RenderSprite}!GL\_Renderer@{GL\_Renderer}}
+\doxysubsubsection{\texorpdfstring{RenderSprite()}{RenderSprite()}}
+{\footnotesize\ttfamily void G\+L\+\_\+\+Renderer\+::\+Render\+Sprite (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_texture2_d}{Texture2D}} \&}]{texture,  }\item[{glm\+::vec2 \&}]{position,  }\item[{glm\+::vec2 \&}]{size = {\ttfamily glm\+:\+:vec2(10,~10)},  }\item[{G\+Lfloat}]{rotate = {\ttfamily 0.0f},  }\item[{G\+Lfloat}]{transparency = {\ttfamily 255.0f},  }\item[{glm\+::vec3 \&}]{color = {\ttfamily glm\+:\+:vec3(1.0f)},  }\item[{std\+::pair$<$ bool, bool $>$}]{flip\+Sprite = {\ttfamily \{~false,~false~\}} }\end{DoxyParamCaption})}
+
+
+
+Render the sprite. 
+
+Render a texture Render an in game sprite without lighting 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/alli0/\+Documents/\+Git\+Hub/\+Game\+Engine/\+Client/\+Source/\+Source/G\+L\+\_\+\+Renderer.\+h\item 
+C\+:/\+Users/alli0/\+Documents/\+Git\+Hub/\+Game\+Engine/\+Client/\+Source/\+Source/G\+L\+\_\+\+Renderer.\+cpp\end{DoxyCompactItemize}

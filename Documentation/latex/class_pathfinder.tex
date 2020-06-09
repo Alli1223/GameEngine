@@ -1,0 +1,41 @@
+\hypertarget{class_pathfinder}{}\doxysection{Pathfinder Class Reference}
+\label{class_pathfinder}\index{Pathfinder@{Pathfinder}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_pathfinder_a6627499d795744321710ca5c358809bc}\label{class_pathfinder_a6627499d795744321710ca5c358809bc}} 
+std\+::vector$<$ glm\+::ivec2 $>$ \mbox{\hyperlink{class_pathfinder_a6627499d795744321710ca5c358809bc}{find\+Path\+Thread}} (std\+::vector$<$ std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_cell}{Cell}} $>$$>$$>$ tiles, ivec2 startp, ivec2 goalp)
+\begin{DoxyCompactList}\small\item\em Finds a path in a seperate thread (requires to be run frequently to check if thread has completed) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_pathfinder_a164d675e6a0cfbe6efcec23b336b01c6}\label{class_pathfinder_a164d675e6a0cfbe6efcec23b336b01c6}} 
+std\+::vector$<$ glm\+::ivec2 $>$ \mbox{\hyperlink{class_pathfinder_a164d675e6a0cfbe6efcec23b336b01c6}{find\+Path\+Grid}} (std\+::vector$<$ std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_cell}{Cell}} $>$$>$$>$ tiles, ivec2 startp, ivec2 goalp)
+\begin{DoxyCompactList}\small\item\em Finds a path from point a to point b. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_pathfinder_a459543fdf6894355dda4a84a32c2c61d}\label{class_pathfinder_a459543fdf6894355dda4a84a32c2c61d}} 
+std\+::vector$<$ glm\+::ivec2 $>$ \mbox{\hyperlink{class_pathfinder_a459543fdf6894355dda4a84a32c2c61d}{reconstruct\+Path}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_node}{Node}} $>$ goal\+Node)
+\begin{DoxyCompactList}\small\item\em Returns the path that has been found. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_pathfinder_a474a743b6a8b5c86d461abeef1169b02}\label{class_pathfinder_a474a743b6a8b5c86d461abeef1169b02}} 
+bool {\bfseries is\+Computing\+Path} ()
+\item 
+\mbox{\Hypertarget{class_pathfinder_aab2a63ead46a02e88a513dd44bf31054}\label{class_pathfinder_aab2a63ead46a02e88a513dd44bf31054}} 
+bool {\bfseries is\+Computing\+Path} (bool new\+Val)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_pathfinder_a159b803cfb21893e3a48879da8255bfd}\label{class_pathfinder_a159b803cfb21893e3a48879da8255bfd}} 
+std\+::vector$<$ glm\+::ivec2 $>$ {\bfseries Path}
+\item 
+\mbox{\Hypertarget{class_pathfinder_ae44a6d910d9e09b0b5b2dd63800493ac}\label{class_pathfinder_ae44a6d910d9e09b0b5b2dd63800493ac}} 
+\mbox{\hyperlink{class_point}{Point}} \mbox{\hyperlink{class_pathfinder_ae44a6d910d9e09b0b5b2dd63800493ac}{start}}
+\begin{DoxyCompactList}\small\item\em Start and end points. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_pathfinder_a28f798a242240998ce29bc069d49b047}\label{class_pathfinder_a28f798a242240998ce29bc069d49b047}} 
+\mbox{\hyperlink{class_point}{Point}} {\bfseries goal}
+\item 
+\mbox{\Hypertarget{class_pathfinder_ad327f0f5c8f6885ef1e0ecc9856a8d50}\label{class_pathfinder_ad327f0f5c8f6885ef1e0ecc9856a8d50}} 
+int {\bfseries path\+Point\+Iterator} = 0
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/alli0/\+Documents/\+Git\+Hub/\+Game\+Engine/\+Client/\+Source/\+Source/Path\+Finder.\+h\item 
+C\+:/\+Users/alli0/\+Documents/\+Git\+Hub/\+Game\+Engine/\+Client/\+Source/\+Source/Path\+Finder.\+cpp\end{DoxyCompactItemize}

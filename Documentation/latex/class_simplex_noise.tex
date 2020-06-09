@@ -1,0 +1,137 @@
+\hypertarget{class_simplex_noise}{}\doxysection{Simplex\+Noise Class Reference}
+\label{class_simplex_noise}\index{SimplexNoise@{SimplexNoise}}
+
+
+A Perlin Simplex Noise C++ Implementation (1D, 2D, 3D, 4D).  
+
+
+
+
+{\ttfamily \#include $<$Simplex\+Noise.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+float \mbox{\hyperlink{class_simplex_noise_a868146cbed0ee0137b641b5b828a4c75}{fractal}} (size\+\_\+t octaves, float x) const
+\item 
+float \mbox{\hyperlink{class_simplex_noise_a4914fce2d033b3ed90d84b2602df362f}{fractal}} (size\+\_\+t octaves, float x, float y) const
+\item 
+\mbox{\hyperlink{class_simplex_noise_ad77bfbc6460cb65e45f587de7d0b28b9}{Simplex\+Noise}} (float frequency=0.\+2f, float amplitude=1.\+0f, float lacunarity=2.\+0f, float persistence=0.\+5f)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static float \mbox{\hyperlink{class_simplex_noise_ac7bd445e9b5e2d5aecb30c5f5840528c}{noise}} (float x)
+\item 
+static float \mbox{\hyperlink{class_simplex_noise_a0b42e3da3917901946b978991559496f}{noise}} (float x, float y)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A Perlin Simplex Noise C++ Implementation (1D, 2D, 3D, 4D). 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_simplex_noise_ad77bfbc6460cb65e45f587de7d0b28b9}\label{class_simplex_noise_ad77bfbc6460cb65e45f587de7d0b28b9}} 
+\index{SimplexNoise@{SimplexNoise}!SimplexNoise@{SimplexNoise}}
+\index{SimplexNoise@{SimplexNoise}!SimplexNoise@{SimplexNoise}}
+\doxysubsubsection{\texorpdfstring{SimplexNoise()}{SimplexNoise()}}
+{\footnotesize\ttfamily Simplex\+Noise\+::\+Simplex\+Noise (\begin{DoxyParamCaption}\item[{float}]{frequency = {\ttfamily 0.2f},  }\item[{float}]{amplitude = {\ttfamily 1.0f},  }\item[{float}]{lacunarity = {\ttfamily 2.0f},  }\item[{float}]{persistence = {\ttfamily 0.5f} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+Constructor of to initialize a fractal noise summation
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em frequency} & Frequency (\char`\"{}width\char`\"{}) of the first octave of noise (default to 1.\+0) \\
+\hline
+\mbox{\texttt{ in}}  & {\em amplitude} & Amplitude (\char`\"{}height\char`\"{}) of the first octave of noise (default to 1.\+0) \\
+\hline
+\mbox{\texttt{ in}}  & {\em lacunarity} & Lacunarity specifies the frequency multiplier between successive octaves (default to 2.\+0). \\
+\hline
+\mbox{\texttt{ in}}  & {\em persistence} & Persistence is the loss of amplitude between successive octaves (usually 1/lacunarity) \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_simplex_noise_a868146cbed0ee0137b641b5b828a4c75}\label{class_simplex_noise_a868146cbed0ee0137b641b5b828a4c75}} 
+\index{SimplexNoise@{SimplexNoise}!fractal@{fractal}}
+\index{fractal@{fractal}!SimplexNoise@{SimplexNoise}}
+\doxysubsubsection{\texorpdfstring{fractal()}{fractal()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily float Simplex\+Noise\+::fractal (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{octaves,  }\item[{float}]{x }\end{DoxyParamCaption}) const}
+
+Fractal/\+Fractional Brownian Motion (f\+Bm) summation of 1D Perlin Simplex noise
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em octaves} & number of fraction of noise to sum \\
+\hline
+\mbox{\texttt{ in}}  & {\em x} & float coordinate\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Noise value in the range\mbox{[}-\/1; 1\mbox{]}, value of 0 on all integer coordinates. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_simplex_noise_a4914fce2d033b3ed90d84b2602df362f}\label{class_simplex_noise_a4914fce2d033b3ed90d84b2602df362f}} 
+\index{SimplexNoise@{SimplexNoise}!fractal@{fractal}}
+\index{fractal@{fractal}!SimplexNoise@{SimplexNoise}}
+\doxysubsubsection{\texorpdfstring{fractal()}{fractal()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily float Simplex\+Noise\+::fractal (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{octaves,  }\item[{float}]{x,  }\item[{float}]{y }\end{DoxyParamCaption}) const}
+
+Fractal/\+Fractional Brownian Motion (f\+Bm) summation of 2D Perlin Simplex noise
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em octaves} & number of fraction of noise to sum \\
+\hline
+\mbox{\texttt{ in}}  & {\em x} & x float coordinate \\
+\hline
+\mbox{\texttt{ in}}  & {\em y} & y float coordinate\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Noise value in the range\mbox{[}-\/1; 1\mbox{]}, value of 0 on all integer coordinates. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_simplex_noise_ac7bd445e9b5e2d5aecb30c5f5840528c}\label{class_simplex_noise_ac7bd445e9b5e2d5aecb30c5f5840528c}} 
+\index{SimplexNoise@{SimplexNoise}!noise@{noise}}
+\index{noise@{noise}!SimplexNoise@{SimplexNoise}}
+\doxysubsubsection{\texorpdfstring{noise()}{noise()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily float Simplex\+Noise\+::noise (\begin{DoxyParamCaption}\item[{float}]{x }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+1D Perlin simplex noise
+
+Takes around 74ns on an A\+MD A\+PU.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em x} & float coordinate\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Noise value in the range\mbox{[}-\/1; 1\mbox{]}, value of 0 on all integer coordinates. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_simplex_noise_a0b42e3da3917901946b978991559496f}\label{class_simplex_noise_a0b42e3da3917901946b978991559496f}} 
+\index{SimplexNoise@{SimplexNoise}!noise@{noise}}
+\index{noise@{noise}!SimplexNoise@{SimplexNoise}}
+\doxysubsubsection{\texorpdfstring{noise()}{noise()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily float Simplex\+Noise\+::noise (\begin{DoxyParamCaption}\item[{float}]{x,  }\item[{float}]{y }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+2D Perlin simplex noise
+
+Takes around 150ns on an A\+MD A\+PU.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em x} & float coordinate \\
+\hline
+\mbox{\texttt{ in}}  & {\em y} & float coordinate\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Noise value in the range\mbox{[}-\/1; 1\mbox{]}, value of 0 on all integer coordinates. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/alli0/\+Documents/\+Git\+Hub/\+Game\+Engine/\+Client/\+Source/\+Source/\mbox{\hyperlink{_simplex_noise_8h}{Simplex\+Noise.\+h}}\item 
+C\+:/\+Users/alli0/\+Documents/\+Git\+Hub/\+Game\+Engine/\+Client/\+Source/\+Source/\mbox{\hyperlink{_simplex_noise_8cpp}{Simplex\+Noise.\+cpp}}\end{DoxyCompactItemize}

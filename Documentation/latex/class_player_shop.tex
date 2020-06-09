@@ -1,0 +1,69 @@
+\hypertarget{class_player_shop}{}\doxysection{Player\+Shop Class Reference}
+\label{class_player_shop}\index{PlayerShop@{PlayerShop}}
+Inheritance diagram for Player\+Shop\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_player_shop}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_player_shop_a4c5e7eeb2a9764c3c554398b8016c00a}\label{class_player_shop_a4c5e7eeb2a9764c3c554398b8016c00a}} 
+\mbox{\hyperlink{class_player_shop_a4c5e7eeb2a9764c3c554398b8016c00a}{Player\+Shop}} ()
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_player_shop_a2d8394d234762815946d564cff013609}\label{class_player_shop_a2d8394d234762815946d564cff013609}} 
+{\bfseries Player\+Shop} (b2\+World $\ast$physics\+World)
+\item 
+\mbox{\Hypertarget{class_player_shop_a5afab6896e1a83757a7a526c0e95fdd3}\label{class_player_shop_a5afab6896e1a83757a7a526c0e95fdd3}} 
+\mbox{\hyperlink{class_player_shop_a5afab6896e1a83757a7a526c0e95fdd3}{Player\+Shop}} (b2\+World $\ast$physics\+World, json shop\+Data)
+\begin{DoxyCompactList}\small\item\em Construct shop from json file. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_player_shop_a9e08ed66d2edb4d85099ab537f80897f}\label{class_player_shop_a9e08ed66d2edb4d85099ab537f80897f}} 
+\mbox{\hyperlink{class_player_shop_a9e08ed66d2edb4d85099ab537f80897f}{$\sim$\+Player\+Shop}} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_player_shop_a8af6b87759da2cd92f68cb2f0240b9b5}\label{class_player_shop_a8af6b87759da2cd92f68cb2f0240b9b5}} 
+bool \mbox{\hyperlink{class_player_shop_a8af6b87759da2cd92f68cb2f0240b9b5}{Add\+Shop\+Display}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_shop_display_shelf}{Shop\+Display\+Shelf}} $>$ \&counter)
+\begin{DoxyCompactList}\small\item\em Add display with grid cell coordinates. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_player_shop_afd88b9616946f60d3809de3812f81537}\label{class_player_shop_afd88b9616946f60d3809de3812f81537}} 
+void {\bfseries Add\+Customer} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_n_p_c}{N\+PC}} $>$ npc)
+\item 
+\mbox{\Hypertarget{class_player_shop_a29ecef1dd7adf3480c8c9fbc2e59cc59}\label{class_player_shop_a29ecef1dd7adf3480c8c9fbc2e59cc59}} 
+void {\bfseries Remove\+Customer} (int ID)
+\item 
+\mbox{\Hypertarget{class_player_shop_afe869837a45f1fa48f36f60f13da0e81}\label{class_player_shop_afe869837a45f1fa48f36f60f13da0e81}} 
+void {\bfseries On\+Enter} ()
+\item 
+\mbox{\Hypertarget{class_player_shop_a83faf915c56f4f1d72a630af27b39a1f}\label{class_player_shop_a83faf915c56f4f1d72a630af27b39a1f}} 
+void \mbox{\hyperlink{class_player_shop_a83faf915c56f4f1d72a630af27b39a1f}{Render}} (\mbox{\hyperlink{class_g_l___renderer}{G\+L\+\_\+\+Renderer}} \&renderer)
+\begin{DoxyCompactList}\small\item\em Polymorphed function. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_player_shop_aacb47b5b478ebdb1eba534e74323464a}\label{class_player_shop_aacb47b5b478ebdb1eba534e74323464a}} 
+void {\bfseries Update} (\mbox{\hyperlink{class_world}{World}} \&world)
+\item 
+\mbox{\Hypertarget{class_player_shop_a90b76b9beff5f0c0bc5b18dcc3375fd9}\label{class_player_shop_a90b76b9beff5f0c0bc5b18dcc3375fd9}} 
+void \mbox{\hyperlink{class_player_shop_a90b76b9beff5f0c0bc5b18dcc3375fd9}{Render\+Interior}} (\mbox{\hyperlink{class_g_l___renderer}{G\+L\+\_\+\+Renderer}} \&renderer)
+\begin{DoxyCompactList}\small\item\em Render interior. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_player_shop_ac01c11cff711836d954eb323858dbbee}\label{class_player_shop_ac01c11cff711836d954eb323858dbbee}} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_building}{Building}} $>$ {\bfseries get\+Shared\+Pointer} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_player_shop_a7151248f3e5074c0637466ea4d3ec218}\label{class_player_shop_a7151248f3e5074c0637466ea4d3ec218}} 
+\mbox{\hyperlink{class_item_chest}{Item\+Chest}} {\bfseries chest\+Test}
+\item 
+\mbox{\Hypertarget{class_player_shop_adc552099dc1c4fe0fe1c89db3c676187}\label{class_player_shop_adc552099dc1c4fe0fe1c89db3c676187}} 
+\mbox{\hyperlink{class_light_source}{Light\+Source}} {\bfseries outside\+Lantern}
+\item 
+\mbox{\Hypertarget{class_player_shop_afb74d892f34da0cbf1839b3f33c11f78}\label{class_player_shop_afb74d892f34da0cbf1839b3f33c11f78}} 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_n_p_c}{N\+PC}} $>$ $>$ {\bfseries customers}
+\item 
+\mbox{\Hypertarget{class_player_shop_a850ee98b4198c49730696e4a95c84769}\label{class_player_shop_a850ee98b4198c49730696e4a95c84769}} 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_shop_display_shelf}{Shop\+Display\+Shelf}} $>$ $>$ {\bfseries shop\+Displays}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/alli0/\+Documents/\+Git\+Hub/\+Game\+Engine/\+Client/\+Source/\+Source/Player\+Shop.\+h\item 
+C\+:/\+Users/alli0/\+Documents/\+Git\+Hub/\+Game\+Engine/\+Client/\+Source/\+Source/Player\+Shop.\+cpp\end{DoxyCompactItemize}

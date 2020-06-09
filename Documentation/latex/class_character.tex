@@ -1,0 +1,351 @@
+\hypertarget{class_character}{}\doxysection{Character Class Reference}
+\label{class_character}\index{Character@{Character}}
+Inheritance diagram for Character\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=5.000000cm]{class_character}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_character_1_1_body}{Body}}
+\item 
+struct \mbox{\hyperlink{struct_character_1_1_clothing}{Clothing}}
+\begin{DoxyCompactList}\small\item\em Enum for chacter customisation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_character_a8aec95f63dc6dfa89600e4e9cc1fcc05}\label{class_character_a8aec95f63dc6dfa89600e4e9cc1fcc05}} 
+enum {\bfseries Movement\+Direction} \{ \newline
+{\bfseries none}, 
+{\bfseries left}, 
+{\bfseries right}, 
+{\bfseries up}, 
+\newline
+{\bfseries down}, 
+{\bfseries left\+\_\+up}, 
+{\bfseries left\+\_\+down}, 
+{\bfseries right\+\_\+up}, 
+\newline
+{\bfseries right\+\_\+down}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_character_a89f658fdfc8096a7d9ba66e27f7b1e43}\label{class_character_a89f658fdfc8096a7d9ba66e27f7b1e43}} 
+float \mbox{\hyperlink{class_character_a89f658fdfc8096a7d9ba66e27f7b1e43}{get\+Health}} ()
+\begin{DoxyCompactList}\small\item\em Gets and the agents health. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_character_a221a2064b86b79c5c4e03c9471f114a8}\label{class_character_a221a2064b86b79c5c4e03c9471f114a8}} 
+int {\bfseries get\+Target\+Rotation} ()
+\item 
+\mbox{\Hypertarget{class_character_a3434f38d0c22e9ed3e58ca7d8a6f654b}\label{class_character_a3434f38d0c22e9ed3e58ca7d8a6f654b}} 
+int \mbox{\hyperlink{class_character_a3434f38d0c22e9ed3e58ca7d8a6f654b}{set\+CellX}} (int new\+CellX)
+\begin{DoxyCompactList}\small\item\em Sets the characters cellX value. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_character_a22bfd5a85d103564d85f919fe31da1c7}\label{class_character_a22bfd5a85d103564d85f919fe31da1c7}} 
+int \mbox{\hyperlink{class_character_a22bfd5a85d103564d85f919fe31da1c7}{set\+CellY}} (int new\+CellY)
+\begin{DoxyCompactList}\small\item\em Sets the characters cellY value. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_character_a79a6b1f16b081821b07a602a3925f478}\label{class_character_a79a6b1f16b081821b07a602a3925f478}} 
+float \mbox{\hyperlink{class_character_a79a6b1f16b081821b07a602a3925f478}{set\+Health}} (float new\+Health)
+\begin{DoxyCompactList}\small\item\em Sets the characters health. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_character_ab61cd9a2c3442672bbd02d99e212654c}\label{class_character_ab61cd9a2c3442672bbd02d99e212654c}} 
+int \mbox{\hyperlink{class_character_ab61cd9a2c3442672bbd02d99e212654c}{set\+Rotation}} (int new\+Rotation)
+\begin{DoxyCompactList}\small\item\em Sets rotations. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_character_a561030771673be729a3266abe520b33c}\label{class_character_a561030771673be729a3266abe520b33c}} 
+int {\bfseries set\+Target\+Rotation} (int new\+Target)
+\item 
+\mbox{\Hypertarget{class_character_a3abfaf1bb408ee1bf7683b63daa6e997}\label{class_character_a3abfaf1bb408ee1bf7683b63daa6e997}} 
+int {\bfseries set\+Rotation\+Speed} (int new\+Speed)
+\item 
+\mbox{\Hypertarget{class_character_a98d2a41bdc6ed1c80a0726a37a1ee7e0}\label{class_character_a98d2a41bdc6ed1c80a0726a37a1ee7e0}} 
+bool \mbox{\hyperlink{class_character_a98d2a41bdc6ed1c80a0726a37a1ee7e0}{set\+Player\+Moving}} (bool yayornay)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_player}{Player}} movement boolean. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_character_a3e92389ebe7cb85e9a75093b42e74112}\label{class_character_a3e92389ebe7cb85e9a75093b42e74112}} 
+bool {\bfseries is\+Player\+Moving} ()
+\item 
+\mbox{\Hypertarget{class_character_a7c821567e7d18c068fff85e829f7bffa}\label{class_character_a7c821567e7d18c068fff85e829f7bffa}} 
+void \mbox{\hyperlink{class_character_a7c821567e7d18c068fff85e829f7bffa}{Rotate\+Character}} (\mbox{\hyperlink{class_g_l___renderer}{G\+L\+\_\+\+Renderer}} \&renderer)
+\begin{DoxyCompactList}\small\item\em Sets the character sprite based on rotation. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_character_a78d75590b78413eff98eeaa85094468c}\label{class_character_a78d75590b78413eff98eeaa85094468c}} 
+int \mbox{\hyperlink{class_character_a78d75590b78413eff98eeaa85094468c}{set\+ID}} (int id)
+\begin{DoxyCompactList}\small\item\em Gets and sets the \mbox{\hyperlink{class_character}{Character}} Identifier. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_character_a0f2a503680ae812a5c324248bec247bb}\label{class_character_a0f2a503680ae812a5c324248bec247bb}} 
+int {\bfseries get\+ID} ()
+\item 
+\mbox{\Hypertarget{class_character_a37f5df680d7e226c0a008c7bf7ae8f8a}\label{class_character_a37f5df680d7e226c0a008c7bf7ae8f8a}} 
+void \mbox{\hyperlink{class_character_a37f5df680d7e226c0a008c7bf7ae8f8a}{Render\+Character\+Body}} (\mbox{\hyperlink{class_g_l___renderer}{G\+L\+\_\+\+Renderer}} \&renderer, int index, bool flip\+Sprite)
+\begin{DoxyCompactList}\small\item\em Renders the characters clothes. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_character_a31025145cbc3a1744dc73accc5cd673f}{Assign\+Sprites}} (\mbox{\hyperlink{class_g_l___renderer}{G\+L\+\_\+\+Renderer}} \&renderer, int index, bool flip)
+\item 
+\mbox{\Hypertarget{class_character_a48ae7e299c92e7a393969eae10dd99c2}\label{class_character_a48ae7e299c92e7a393969eae10dd99c2}} 
+void \mbox{\hyperlink{class_character_a48ae7e299c92e7a393969eae10dd99c2}{Move}} (int newX, int newY)
+\begin{DoxyCompactList}\small\item\em Move the Charater and check for collisions. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_character_ae265eefdd0523af107438c38151aa124}\label{class_character_ae265eefdd0523af107438c38151aa124}} 
+std\+::string \mbox{\hyperlink{class_character_ae265eefdd0523af107438c38151aa124}{character\+Type}} = \char`\"{}N\+PC\char`\"{}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_character}{Character}} Type. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_character_aa0f86a1a67fc02198af0eda5ccec427f}\label{class_character_aa0f86a1a67fc02198af0eda5ccec427f}} 
+glm\+::vec2 \mbox{\hyperlink{class_character_aa0f86a1a67fc02198af0eda5ccec427f}{chunk\+Pos}}
+\begin{DoxyCompactList}\small\item\em Position in the world. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_character_a449c335385f170da825e06de48cb5ba2}\label{class_character_a449c335385f170da825e06de48cb5ba2}} 
+glm\+::vec2 {\bfseries cell\+Pos}
+\item 
+\mbox{\Hypertarget{class_character_a3a53ed43d5d0b293b1f454a7295281ca}\label{class_character_a3a53ed43d5d0b293b1f454a7295281ca}} 
+\mbox{\hyperlink{class_speech_bubble}{Speech\+Bubble}} \mbox{\hyperlink{class_character_a3a53ed43d5d0b293b1f454a7295281ca}{speech\+Bubble}}
+\begin{DoxyCompactList}\small\item\em Text for the character. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_character_a2517b2568fd272472bb26e7e93174a16}\label{class_character_a2517b2568fd272472bb26e7e93174a16}} 
+enum Character\+::\+Movement\+Direction {\bfseries direction}
+\item 
+\mbox{\Hypertarget{class_character_ad014bb8721c05acda6c43a2ff09020ac}\label{class_character_ad014bb8721c05acda6c43a2ff09020ac}} 
+bool {\bfseries is\+In\+Building} = false
+\item 
+\mbox{\Hypertarget{class_character_a0845e7252a116df63ebff1643cd5f6e2}\label{class_character_a0845e7252a116df63ebff1643cd5f6e2}} 
+\mbox{\hyperlink{class_light_source}{Light\+Source}} {\bfseries player\+Light}
+\item 
+\mbox{\Hypertarget{class_character_a24bc89450a697e2ce6dd0ed705c4f087}\label{class_character_a24bc89450a697e2ce6dd0ed705c4f087}} 
+\mbox{\hyperlink{struct_character_1_1_body}{Body}} \mbox{\hyperlink{class_character_a24bc89450a697e2ce6dd0ed705c4f087}{body}}
+\begin{DoxyCompactList}\small\item\em Characters body options. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_character_ab9bd8236a8d057e802850538e939de02}\label{class_character_ab9bd8236a8d057e802850538e939de02}} 
+\mbox{\hyperlink{struct_character_1_1_clothing}{Clothing}} \mbox{\hyperlink{class_character_ab9bd8236a8d057e802850538e939de02}{Character\+Clothes}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_character}{Character}} clothes. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_character_afcabd3e24c591051c89547c9d923d126}\label{class_character_afcabd3e24c591051c89547c9d923d126}} 
+vec3 \mbox{\hyperlink{class_character_afcabd3e24c591051c89547c9d923d126}{hair\+Colour}} = \{ 255,255,255 \}
+\begin{DoxyCompactList}\small\item\em Default colours. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_character_a7e432d80a6ffc6bfd13911879726ebe8}\label{class_character_a7e432d80a6ffc6bfd13911879726ebe8}} 
+vec3 {\bfseries eye\+Colour} = \{ 255,255,255 \}
+\item 
+\mbox{\Hypertarget{class_character_a9fb0f422c45948ba311abe358f0bb033}\label{class_character_a9fb0f422c45948ba311abe358f0bb033}} 
+vec3 {\bfseries top\+Colour} = \{ 255,255,255 \}
+\item 
+\mbox{\Hypertarget{class_character_a2af0c5acefa9affb81ef944f03362926}\label{class_character_a2af0c5acefa9affb81ef944f03362926}} 
+vec3 {\bfseries bottom\+Colour} = \{ 255,255,255 \}
+\item 
+\mbox{\Hypertarget{class_character_a54b05fa84270573df418dd35825e2339}\label{class_character_a54b05fa84270573df418dd35825e2339}} 
+vec3 {\bfseries body\+Colour} = \{ 255,224,189 \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_character_ae254578511c3a2211957dbee9633230b}\label{class_character_ae254578511c3a2211957dbee9633230b}} 
+std\+::string {\bfseries Character\+Directory} = \char`\"{}Resources\textbackslash{}\textbackslash{}\+Characters\textbackslash{}\textbackslash{}\char`\"{}
+\item 
+\mbox{\Hypertarget{class_character_a6f6901175c04c26ec591ef79194e5c83}\label{class_character_a6f6901175c04c26ec591ef79194e5c83}} 
+std\+::string {\bfseries Character\+Clothing\+Directory} = \char`\"{}Resources\textbackslash{}\textbackslash{}\+Characters\textbackslash{}\textbackslash{}\+Clothing\textbackslash{}\textbackslash{}\char`\"{}
+\item 
+\mbox{\Hypertarget{class_character_aa24b2cc03147bf7e74867c02ebac0f4a}\label{class_character_aa24b2cc03147bf7e74867c02ebac0f4a}} 
+std\+::string {\bfseries Player\+Accessories\+Directory} = \char`\"{}Resources\textbackslash{}\textbackslash{}\+Characters\textbackslash{}\textbackslash{}\+Accessories\textbackslash{}\textbackslash{}\char`\"{}
+\item 
+\mbox{\Hypertarget{class_character_a70a337bddd8cec8decdcc4edc5358ac5}\label{class_character_a70a337bddd8cec8decdcc4edc5358ac5}} 
+std\+::string \mbox{\hyperlink{class_character_a70a337bddd8cec8decdcc4edc5358ac5}{character\+Texture\+Location}} = \char`\"{}Resources\textbackslash{}\textbackslash{}\+Sprites\textbackslash{}\textbackslash{}\+Character\textbackslash{}\textbackslash{}\char`\"{}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_texture}{Texture}} locations. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_character_a43469a1a477ee2b0c867916b0141fe1b}\label{class_character_a43469a1a477ee2b0c867916b0141fe1b}} 
+std\+::string {\bfseries clothes\+Texture\+Location} = \char`\"{}Resources\textbackslash{}\textbackslash{}\+Characters\textbackslash{}\textbackslash{}\+Accessories\textbackslash{}\textbackslash{}\+Clothing\textbackslash{}\textbackslash{}\char`\"{}
+\item 
+\mbox{\Hypertarget{class_character_afb86972dc51bab80fda5dd337f0bdd4d}\label{class_character_afb86972dc51bab80fda5dd337f0bdd4d}} 
+std\+::string {\bfseries Character\+Texture\+Location} = \char`\"{}Resources\textbackslash{}\textbackslash{}\+Characters\textbackslash{}\textbackslash{}\char`\"{}
+\item 
+\mbox{\Hypertarget{class_character_aec6fef5f3095c32be1fde56555f50ae0}\label{class_character_aec6fef5f3095c32be1fde56555f50ae0}} 
+std\+::string {\bfseries Character\+Ears\+Texture\+Location} = \char`\"{}Resources\textbackslash{}\textbackslash{}\+Characters\textbackslash{}\textbackslash{}\+Accessories\textbackslash{}\textbackslash{}\+Ears\textbackslash{}\textbackslash{}\char`\"{}
+\item 
+\mbox{\Hypertarget{class_character_a69288f211baecc2e54e2c17de76331cc}\label{class_character_a69288f211baecc2e54e2c17de76331cc}} 
+std\+::string {\bfseries Character\+Eyes\+Texture\+Location} = \char`\"{}Resources\textbackslash{}\textbackslash{}\+Characters\textbackslash{}\textbackslash{}\+Accessories\textbackslash{}\textbackslash{}\+Eyes\textbackslash{}\textbackslash{}\char`\"{}
+\item 
+\mbox{\Hypertarget{class_character_ab06416384da00ca20219ddcdf5f823c0}\label{class_character_ab06416384da00ca20219ddcdf5f823c0}} 
+std\+::string {\bfseries Character\+Hair\+Texture\+Location} = \char`\"{}Resources\textbackslash{}\textbackslash{}\+Characters\textbackslash{}\textbackslash{}\+Accessories\textbackslash{}\textbackslash{}\+Hair\textbackslash{}\textbackslash{}\char`\"{}
+\item 
+\mbox{\Hypertarget{class_character_a7a3737b0308054b35dd4d93251a160e5}\label{class_character_a7a3737b0308054b35dd4d93251a160e5}} 
+\mbox{\hyperlink{class_texture2_d}{Texture2D}} \mbox{\hyperlink{class_character_a7a3737b0308054b35dd4d93251a160e5}{naked\+Body}}
+\begin{DoxyCompactList}\small\item\em Gender Textures. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_character_afeef67d354e14394b9eb06bfb25bcd67}\label{class_character_afeef67d354e14394b9eb06bfb25bcd67}} 
+\mbox{\hyperlink{class_texture2_d}{Texture2D}} {\bfseries hair}
+\item 
+\mbox{\Hypertarget{class_character_aeecb3e0945845dd5bae2ebd3b3a90bba}\label{class_character_aeecb3e0945845dd5bae2ebd3b3a90bba}} 
+\mbox{\hyperlink{class_texture2_d}{Texture2D}} {\bfseries eyes}
+\item 
+\mbox{\Hypertarget{class_character_a13c13a5376b5e9604073d33f3006fcbb}\label{class_character_a13c13a5376b5e9604073d33f3006fcbb}} 
+\mbox{\hyperlink{class_texture2_d}{Texture2D}} {\bfseries ears}
+\item 
+\mbox{\Hypertarget{class_character_a363997041acd6c30330aba93509290ca}\label{class_character_a363997041acd6c30330aba93509290ca}} 
+\mbox{\hyperlink{class_texture2_d}{Texture2D}} {\bfseries shadow}
+\item 
+\mbox{\Hypertarget{class_character_a420bebea2216cea734bca35a71d5591e}\label{class_character_a420bebea2216cea734bca35a71d5591e}} 
+\mbox{\hyperlink{class_texture2_d}{Texture2D}} {\bfseries top}
+\item 
+\mbox{\Hypertarget{class_character_aef9757cd6e517533359bcfce540f05f4}\label{class_character_aef9757cd6e517533359bcfce540f05f4}} 
+\mbox{\hyperlink{class_texture2_d}{Texture2D}} {\bfseries bottom}
+\item 
+\mbox{\Hypertarget{class_character_ad8473e6f1d0cc8417a516d487e2988da}\label{class_character_ad8473e6f1d0cc8417a516d487e2988da}} 
+\mbox{\hyperlink{class_texture2_d}{Texture2D}} \mbox{\hyperlink{class_character_ad8473e6f1d0cc8417a516d487e2988da}{aquatic\+Ear}}
+\begin{DoxyCompactList}\small\item\em Ear Textures. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_character_ae22fedad7ecb8f911b5cc78efc1b562d}\label{class_character_ae22fedad7ecb8f911b5cc78efc1b562d}} 
+\mbox{\hyperlink{class_texture2_d}{Texture2D}} {\bfseries cat\+Ear1}
+\item 
+\mbox{\Hypertarget{class_character_af4a47b56ea47066b205a1980e3ed383f}\label{class_character_af4a47b56ea47066b205a1980e3ed383f}} 
+\mbox{\hyperlink{class_texture2_d}{Texture2D}} {\bfseries cat\+Ear2}
+\item 
+\mbox{\Hypertarget{class_character_a01822e59e13481dbf048851f9440027e}\label{class_character_a01822e59e13481dbf048851f9440027e}} 
+\mbox{\hyperlink{class_texture2_d}{Texture2D}} {\bfseries elf\+Ear1}
+\item 
+\mbox{\Hypertarget{class_character_a0ad59ab1925b52fa35925dc4721a5322}\label{class_character_a0ad59ab1925b52fa35925dc4721a5322}} 
+\mbox{\hyperlink{class_texture2_d}{Texture2D}} {\bfseries elf\+Ear2}
+\item 
+\mbox{\Hypertarget{class_character_a1713f5bc4f722a58c1b9fa7fbb6a53ec}\label{class_character_a1713f5bc4f722a58c1b9fa7fbb6a53ec}} 
+\mbox{\hyperlink{class_texture2_d}{Texture2D}} {\bfseries elf\+Ear3}
+\item 
+\mbox{\Hypertarget{class_character_a3839eecd07cbb7075108d1d8b1877a1c}\label{class_character_a3839eecd07cbb7075108d1d8b1877a1c}} 
+\mbox{\hyperlink{class_texture2_d}{Texture2D}} {\bfseries elf\+Ear4}
+\item 
+\mbox{\Hypertarget{class_character_a0d15afbef4ed5ecdefd4b3d8a544ddda}\label{class_character_a0d15afbef4ed5ecdefd4b3d8a544ddda}} 
+\mbox{\hyperlink{class_texture2_d}{Texture2D}} {\bfseries elf\+Ear5}
+\item 
+\mbox{\Hypertarget{class_character_a17a80bcb79c8a9a0b380beafbc05891c}\label{class_character_a17a80bcb79c8a9a0b380beafbc05891c}} 
+\mbox{\hyperlink{class_texture2_d}{Texture2D}} {\bfseries elf\+Ear6}
+\item 
+\mbox{\Hypertarget{class_character_a91bd48c97c80782b7fd3b6162805b4ed}\label{class_character_a91bd48c97c80782b7fd3b6162805b4ed}} 
+\mbox{\hyperlink{class_texture2_d}{Texture2D}} {\bfseries human}
+\item 
+\mbox{\Hypertarget{class_character_a3e9f5003a67e56692e868dc9b6615292}\label{class_character_a3e9f5003a67e56692e868dc9b6615292}} 
+\mbox{\hyperlink{class_texture2_d}{Texture2D}} {\bfseries eye1}
+\item 
+\mbox{\Hypertarget{class_character_aaa22a97691857f525fb987059c893041}\label{class_character_aaa22a97691857f525fb987059c893041}} 
+\mbox{\hyperlink{class_texture2_d}{Texture2D}} {\bfseries eye2}
+\item 
+\mbox{\Hypertarget{class_character_a18c65c1ae51efd8db52dcf7c1c4bbb98}\label{class_character_a18c65c1ae51efd8db52dcf7c1c4bbb98}} 
+\mbox{\hyperlink{class_texture2_d}{Texture2D}} {\bfseries eye3}
+\item 
+\mbox{\Hypertarget{class_character_a886f324d62f38efa6eb1e150fc5dfdf0}\label{class_character_a886f324d62f38efa6eb1e150fc5dfdf0}} 
+\mbox{\hyperlink{class_texture2_d}{Texture2D}} {\bfseries eye4}
+\item 
+\mbox{\Hypertarget{class_character_a5b0c35406fabc2b8a6c256d6567816c2}\label{class_character_a5b0c35406fabc2b8a6c256d6567816c2}} 
+\mbox{\hyperlink{class_texture2_d}{Texture2D}} {\bfseries eye5}
+\item 
+\mbox{\Hypertarget{class_character_a0a727eff887820cd842b03cc5d7fd449}\label{class_character_a0a727eff887820cd842b03cc5d7fd449}} 
+\mbox{\hyperlink{class_texture2_d}{Texture2D}} {\bfseries eye6}
+\item 
+\mbox{\Hypertarget{class_character_a3c71e22530772db5be8a8f3519cdca13}\label{class_character_a3c71e22530772db5be8a8f3519cdca13}} 
+\mbox{\hyperlink{class_texture2_d}{Texture2D}} {\bfseries eye7}
+\item 
+\mbox{\Hypertarget{class_character_a233c2b0bcb4859471c6c958a8a403f82}\label{class_character_a233c2b0bcb4859471c6c958a8a403f82}} 
+\mbox{\hyperlink{class_texture2_d}{Texture2D}} {\bfseries eye8}
+\item 
+\mbox{\Hypertarget{class_character_acdf4ff74c9e27c849c9e38af55ee3924}\label{class_character_acdf4ff74c9e27c849c9e38af55ee3924}} 
+\mbox{\hyperlink{class_texture2_d}{Texture2D}} {\bfseries eye9}
+\item 
+\mbox{\Hypertarget{class_character_abd45ad11c0bfa3e9a8b271c9e4aaab25}\label{class_character_abd45ad11c0bfa3e9a8b271c9e4aaab25}} 
+\mbox{\hyperlink{class_texture2_d}{Texture2D}} {\bfseries eye10}
+\item 
+\mbox{\Hypertarget{class_character_aa540107d4c598b2e02eb943aa8fb8561}\label{class_character_aa540107d4c598b2e02eb943aa8fb8561}} 
+\mbox{\hyperlink{class_texture2_d}{Texture2D}} {\bfseries eye11}
+\item 
+\mbox{\Hypertarget{class_character_af60df934b37718353cfa535c59e3b233}\label{class_character_af60df934b37718353cfa535c59e3b233}} 
+\mbox{\hyperlink{class_texture2_d}{Texture2D}} {\bfseries eye12}
+\item 
+\mbox{\Hypertarget{class_character_a210fd2defe5ad50e989c6d951b4e3590}\label{class_character_a210fd2defe5ad50e989c6d951b4e3590}} 
+\mbox{\hyperlink{class_texture2_d}{Texture2D}} {\bfseries eye13}
+\item 
+\mbox{\Hypertarget{class_character_a179bb4d122937e13a1c48a3efdd3d3d4}\label{class_character_a179bb4d122937e13a1c48a3efdd3d3d4}} 
+\mbox{\hyperlink{class_texture2_d}{Texture2D}} {\bfseries hair1}
+\item 
+\mbox{\Hypertarget{class_character_adc41f7858c0fb27bb6fc984311ad5472}\label{class_character_adc41f7858c0fb27bb6fc984311ad5472}} 
+\mbox{\hyperlink{class_texture2_d}{Texture2D}} {\bfseries hair2}
+\item 
+\mbox{\Hypertarget{class_character_a365f23f6bb1812c09457a8b1908da489}\label{class_character_a365f23f6bb1812c09457a8b1908da489}} 
+\mbox{\hyperlink{class_texture2_d}{Texture2D}} {\bfseries hair3}
+\item 
+\mbox{\Hypertarget{class_character_ab880562f96b80fc21eb04e1332c129b2}\label{class_character_ab880562f96b80fc21eb04e1332c129b2}} 
+\mbox{\hyperlink{class_texture2_d}{Texture2D}} {\bfseries hair4}
+\item 
+\mbox{\Hypertarget{class_character_aec9b699b412af446e513a70b1b0595f7}\label{class_character_aec9b699b412af446e513a70b1b0595f7}} 
+\mbox{\hyperlink{class_texture2_d}{Texture2D}} {\bfseries hair5}
+\item 
+\mbox{\Hypertarget{class_character_a5f95fdcaa5eee165256579f6c3fc1fbc}\label{class_character_a5f95fdcaa5eee165256579f6c3fc1fbc}} 
+\mbox{\hyperlink{class_texture2_d}{Texture2D}} {\bfseries hair6}
+\item 
+\mbox{\Hypertarget{class_character_a4413895bda2a177c3c22568500ebaf03}\label{class_character_a4413895bda2a177c3c22568500ebaf03}} 
+\mbox{\hyperlink{class_texture2_d}{Texture2D}} {\bfseries hair7}
+\item 
+\mbox{\Hypertarget{class_character_af3eb7ef9ed9f32a7a1fd2b65553ea8fb}\label{class_character_af3eb7ef9ed9f32a7a1fd2b65553ea8fb}} 
+\mbox{\hyperlink{class_texture2_d}{Texture2D}} {\bfseries hair8}
+\item 
+\mbox{\Hypertarget{class_character_a7dc7bbdbd7cfdee7b2362d3d1712c3a2}\label{class_character_a7dc7bbdbd7cfdee7b2362d3d1712c3a2}} 
+\mbox{\hyperlink{class_texture2_d}{Texture2D}} \mbox{\hyperlink{class_character_a7dc7bbdbd7cfdee7b2362d3d1712c3a2}{player\+Shadow}}
+\begin{DoxyCompactList}\small\item\em Shadow. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_character_a4c47c6a1552150f35df763bcca7f6482}\label{class_character_a4c47c6a1552150f35df763bcca7f6482}} 
+\mbox{\hyperlink{class_texture2_d}{Texture2D}} \mbox{\hyperlink{class_character_a4c47c6a1552150f35df763bcca7f6482}{character\+Idle\+Texture}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_texture}{Texture}} for the \mbox{\hyperlink{class_character}{Character}}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_character_a096e6d7fba9e9f8370385d823148ee59}\label{class_character_a096e6d7fba9e9f8370385d823148ee59}} 
+\mbox{\hyperlink{class_texture2_d}{Texture2D}} {\bfseries walk\+Texture}
+\item 
+\mbox{\Hypertarget{class_character_aa5cc94d1a193ffa7067377fc5f924fda}\label{class_character_aa5cc94d1a193ffa7067377fc5f924fda}} 
+\mbox{\hyperlink{class_texture2_d}{Texture2D}} {\bfseries side\+Blink\+Texture}
+\item 
+\mbox{\Hypertarget{class_character_a6f8993bc38a7537d3ab1706bc1705b0e}\label{class_character_a6f8993bc38a7537d3ab1706bc1705b0e}} 
+\mbox{\hyperlink{class_texture2_d}{Texture2D}} {\bfseries short\+Hair\+Texture}
+\item 
+\mbox{\Hypertarget{class_character_ad756efeaaf071b7014a0c23405af3ec7}\label{class_character_ad756efeaaf071b7014a0c23405af3ec7}} 
+\mbox{\hyperlink{class_texture2_d}{Texture2D}} {\bfseries long\+Hair\+Texture}
+\item 
+\mbox{\Hypertarget{class_character_a580a027454084d300842053cf990aea3}\label{class_character_a580a027454084d300842053cf990aea3}} 
+\mbox{\hyperlink{class_texture2_d}{Texture2D}} {\bfseries eyes\+Texture}
+\item 
+\mbox{\Hypertarget{class_character_a2621148ca98f5b3abca2db57575958b7}\label{class_character_a2621148ca98f5b3abca2db57575958b7}} 
+\mbox{\hyperlink{class_texture2_d}{Texture2D}} \mbox{\hyperlink{class_character_a2621148ca98f5b3abca2db57575958b7}{female\+Top1}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_texture}{Texture}} for the clothes. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_character_ac3ce3bd22b46db994176ffb90b15064a}\label{class_character_ac3ce3bd22b46db994176ffb90b15064a}} 
+\mbox{\hyperlink{class_texture2_d}{Texture2D}} {\bfseries female\+Top2}
+\item 
+\mbox{\Hypertarget{class_character_a6320b74de78e27eeae78b002490f2199}\label{class_character_a6320b74de78e27eeae78b002490f2199}} 
+\mbox{\hyperlink{class_texture2_d}{Texture2D}} {\bfseries female\+Bottom1}
+\item 
+\mbox{\Hypertarget{class_character_aab719bec2379ce9b8c86b3aef591792e}\label{class_character_aab719bec2379ce9b8c86b3aef591792e}} 
+\mbox{\hyperlink{class_texture2_d}{Texture2D}} {\bfseries female\+Bottom2}
+\item 
+\mbox{\Hypertarget{class_character_a9a832bb53ce1babd36906da104a379b0}\label{class_character_a9a832bb53ce1babd36906da104a379b0}} 
+\mbox{\hyperlink{class_animation}{Animation}} \mbox{\hyperlink{class_character_a9a832bb53ce1babd36906da104a379b0}{walk\+Horizontal\+Animation}}
+\begin{DoxyCompactList}\small\item\em Animations. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_character_a3a110932cbfb8fb29e703070ee571793}\label{class_character_a3a110932cbfb8fb29e703070ee571793}} 
+\mbox{\hyperlink{class_animation}{Animation}} {\bfseries walk\+Vertical\+Animation}
+\item 
+\mbox{\Hypertarget{class_character_aad1584df1d5bc6935be68e5a55d87653}\label{class_character_aad1584df1d5bc6935be68e5a55d87653}} 
+\mbox{\hyperlink{class_animation}{Animation}} {\bfseries leg\+Flip\+Idle\+Animation}
+\item 
+\mbox{\Hypertarget{class_character_ad4202abe36374b461dbe85ed5b74b344}\label{class_character_ad4202abe36374b461dbe85ed5b74b344}} 
+\mbox{\hyperlink{class_animation}{Animation}} {\bfseries fishing\+Cast}
+\item 
+\mbox{\Hypertarget{class_character_a16e7647a85ed522d785abd38d5fdb551}\label{class_character_a16e7647a85ed522d785abd38d5fdb551}} 
+\mbox{\hyperlink{class_animation}{Animation}} {\bfseries fishing\+Reel}
+\item 
+\mbox{\Hypertarget{class_character_acd64a971e9234496566c5020f12e9d4d}\label{class_character_acd64a971e9234496566c5020f12e9d4d}} 
+\mbox{\hyperlink{class_timer}{Timer}} \mbox{\hyperlink{class_character_acd64a971e9234496566c5020f12e9d4d}{idle\+Animation\+Timer}}
+\begin{DoxyCompactList}\small\item\em Idle and blink timers. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_character_a1f890cb0b8755305a9365183456838fa}\label{class_character_a1f890cb0b8755305a9365183456838fa}} 
+\mbox{\hyperlink{class_timer}{Timer}} {\bfseries blink\+Speed}
+\item 
+\mbox{\Hypertarget{class_character_a7d89000f9d1df68a569b76fd945eda06}\label{class_character_a7d89000f9d1df68a569b76fd945eda06}} 
+bool {\bfseries blink} = false
+\item 
+\mbox{\Hypertarget{class_character_ac877f0a9fa245fd429dc4a328b746a58}\label{class_character_ac877f0a9fa245fd429dc4a328b746a58}} 
+float \mbox{\hyperlink{class_character_ac877f0a9fa245fd429dc4a328b746a58}{blink\+Frequency}} = 5000.\+0f
+\begin{DoxyCompactList}\small\item\em How often the player blinks in ms. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_character_a3bc57d7f0bdc2d3772243b240e0fe39d}\label{class_character_a3bc57d7f0bdc2d3772243b240e0fe39d}} 
+float \mbox{\hyperlink{class_character_a3bc57d7f0bdc2d3772243b240e0fe39d}{blink\+Duration}} = 100.\+0f
+\begin{DoxyCompactList}\small\item\em Length the player has their eyes closed. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_character_a31025145cbc3a1744dc73accc5cd673f}\label{class_character_a31025145cbc3a1744dc73accc5cd673f}} 
+\index{Character@{Character}!AssignSprites@{AssignSprites}}
+\index{AssignSprites@{AssignSprites}!Character@{Character}}
+\doxysubsubsection{\texorpdfstring{AssignSprites()}{AssignSprites()}}
+{\footnotesize\ttfamily void Character\+::\+Assign\+Sprites (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_g_l___renderer}{G\+L\+\_\+\+Renderer}} \&}]{renderer,  }\item[{int}]{index,  }\item[{bool}]{flip }\end{DoxyParamCaption})}
+
+Load Fising cast
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/alli0/\+Documents/\+Git\+Hub/\+Game\+Engine/\+Client/\+Source/\+Source/Character.\+h\item 
+C\+:/\+Users/alli0/\+Documents/\+Git\+Hub/\+Game\+Engine/\+Client/\+Source/\+Source/Character.\+cpp\end{DoxyCompactItemize}

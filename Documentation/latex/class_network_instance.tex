@@ -1,0 +1,71 @@
+\hypertarget{class_network_instance}{}\doxysection{Network\+Instance Class Reference}
+\label{class_network_instance}\index{NetworkInstance@{NetworkInstance}}
+Inheritance diagram for Network\+Instance\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_network_instance}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_network_instance_a44f75d5ee3bfea9c0a4390a3d92bc10c}\label{class_network_instance_a44f75d5ee3bfea9c0a4390a3d92bc10c}} 
+void \mbox{\hyperlink{class_network_instance_a44f75d5ee3bfea9c0a4390a3d92bc10c}{on\+Enter}} (\mbox{\hyperlink{class_player}{Player}} \&player)
+\begin{DoxyCompactList}\small\item\em When player enters instance. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_network_instance_a494661a33723bab77477cbc101e8923d}\label{class_network_instance_a494661a33723bab77477cbc101e8923d}} 
+void \mbox{\hyperlink{class_network_instance_a494661a33723bab77477cbc101e8923d}{Instance\+Setup}} (\mbox{\hyperlink{class_player}{Player}} \&player)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_instance}{Instance}} setup. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_network_instance_ae6cd725063f1295ecc59eca472f2f0a5}\label{class_network_instance_ae6cd725063f1295ecc59eca472f2f0a5}} 
+void \mbox{\hyperlink{class_network_instance_ae6cd725063f1295ecc59eca472f2f0a5}{on\+Exit}} (\mbox{\hyperlink{class_player}{Player}} \&player)
+\begin{DoxyCompactList}\small\item\em When player exits instace. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_network_instance_a37d76ca0d025907faff8bbb5d476da40}\label{class_network_instance_a37d76ca0d025907faff8bbb5d476da40}} 
+void \mbox{\hyperlink{class_network_instance_a37d76ca0d025907faff8bbb5d476da40}{Create\+Cell}} (vec2 pos)
+\begin{DoxyCompactList}\small\item\em Create a cell at a location. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_network_instance_a64223877a80118b5cf1085586bdf3228}\label{class_network_instance_a64223877a80118b5cf1085586bdf3228}} 
+void \mbox{\hyperlink{class_network_instance_a64223877a80118b5cf1085586bdf3228}{Render}} (\mbox{\hyperlink{class_g_l___renderer}{G\+L\+\_\+\+Renderer}} \&Renderer)
+\begin{DoxyCompactList}\small\item\em Render. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_network_instance_ac9c3d4a7bd11773c8cbde153c7451e8b}{Update}} ()
+\begin{DoxyCompactList}\small\item\em Update. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_network_instance_abc0cb8896a635507b7589dc463422a7b}{Network\+Update}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_network_instance_aee4c8b657fdc8a74e8ffb182d8dffbda}\label{class_network_instance_aee4c8b657fdc8a74e8ffb182d8dffbda}} 
+std\+::map$<$ std\+::pair$<$ int, int $>$, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_cell}{Cell}} $>$ $>$ {\bfseries level}
+\item 
+\mbox{\Hypertarget{class_network_instance_afbb059a5bc51f8e44a36596f1c5dd69f}\label{class_network_instance_afbb059a5bc51f8e44a36596f1c5dd69f}} 
+\mbox{\hyperlink{class_network_manager}{Network\+Manager}} $\ast$ {\bfseries network}
+\item 
+\mbox{\Hypertarget{class_network_instance_a88f633bca5967af1ceecf595404492b2}\label{class_network_instance_a88f633bca5967af1ceecf595404492b2}} 
+\mbox{\hyperlink{class_timer}{Timer}} {\bfseries network\+Update\+Timer}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_network_instance_abc0cb8896a635507b7589dc463422a7b}\label{class_network_instance_abc0cb8896a635507b7589dc463422a7b}} 
+\index{NetworkInstance@{NetworkInstance}!NetworkUpdate@{NetworkUpdate}}
+\index{NetworkUpdate@{NetworkUpdate}!NetworkInstance@{NetworkInstance}}
+\doxysubsubsection{\texorpdfstring{NetworkUpdate()}{NetworkUpdate()}}
+{\footnotesize\ttfamily void Network\+Instance\+::\+Network\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+What an empty map looks like\mbox{\Hypertarget{class_network_instance_ac9c3d4a7bd11773c8cbde153c7451e8b}\label{class_network_instance_ac9c3d4a7bd11773c8cbde153c7451e8b}} 
+\index{NetworkInstance@{NetworkInstance}!Update@{Update}}
+\index{Update@{Update}!NetworkInstance@{NetworkInstance}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void Network\+Instance\+::\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Update. 
+
+N\+E\+T\+W\+O\+RK U\+P\+D\+A\+TE 
+
+Reimplemented from \mbox{\hyperlink{class_instance_a781a039b22f47994f54aed6f3148d5f6}{Instance}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/alli0/\+Documents/\+Git\+Hub/\+Game\+Engine/\+Client/\+Source/\+Source/Network\+Instance.\+h\item 
+C\+:/\+Users/alli0/\+Documents/\+Git\+Hub/\+Game\+Engine/\+Client/\+Source/\+Source/Network\+Instance.\+cpp\end{DoxyCompactItemize}

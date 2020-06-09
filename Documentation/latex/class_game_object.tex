@@ -1,0 +1,197 @@
+\hypertarget{class_game_object}{}\doxysection{Game\+Object Class Reference}
+\label{class_game_object}\index{GameObject@{GameObject}}
+Inheritance diagram for Game\+Object\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=12.000000cm]{class_game_object}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_game_object_a0348e3ee2e83d56eafca7a3547f432c4}\label{class_game_object_a0348e3ee2e83d56eafca7a3547f432c4}} 
+\mbox{\hyperlink{class_game_object_a0348e3ee2e83d56eafca7a3547f432c4}{Game\+Object}} ()
+\begin{DoxyCompactList}\small\item\em Constructor(s) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_object_a10b5bac2382453ce7e7effa70e2f110d}\label{class_game_object_a10b5bac2382453ce7e7effa70e2f110d}} 
+{\bfseries Game\+Object} (glm\+::vec2 pos, glm\+::vec2 size, \mbox{\hyperlink{class_texture2_d}{Texture2D}} sprite, glm\+::vec3 color=glm\+::vec3(1.\+0f), glm\+::vec2 velocity=glm\+::vec2(0.\+0f, 0.\+0f))
+\item 
+\mbox{\Hypertarget{class_game_object_a05f9341e68153fe84897cf5369c62c4b}\label{class_game_object_a05f9341e68153fe84897cf5369c62c4b}} 
+virtual void \mbox{\hyperlink{class_game_object_a05f9341e68153fe84897cf5369c62c4b}{Render}} (\mbox{\hyperlink{class_g_l___renderer}{G\+L\+\_\+\+Renderer}} \&renderer)
+\begin{DoxyCompactList}\small\item\em Draw sprite. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_object_af0eff69894a9fc82d42b93136e22f1cd}\label{class_game_object_af0eff69894a9fc82d42b93136e22f1cd}} 
+void {\bfseries Render\+Animation} (\mbox{\hyperlink{class_animation}{Animation}} \&anim, std\+::string atlas\+Name)
+\item 
+\mbox{\Hypertarget{class_game_object_a657742386b9563f132eb7b018716fcb9}\label{class_game_object_a657742386b9563f132eb7b018716fcb9}} 
+virtual json \mbox{\hyperlink{class_game_object_a657742386b9563f132eb7b018716fcb9}{Get\+Json}} ()
+\begin{DoxyCompactList}\small\item\em Override Get Json Data. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_object_a4e944ae43980e9ada64b6745ab625648}\label{class_game_object_a4e944ae43980e9ada64b6745ab625648}} 
+float \mbox{\hyperlink{class_game_object_a4e944ae43980e9ada64b6745ab625648}{getX}} ()
+\begin{DoxyCompactList}\small\item\em Getters and setters for positions. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_object_a6fcc29a31729e1bd7bfa24795a99f7f7}\label{class_game_object_a6fcc29a31729e1bd7bfa24795a99f7f7}} 
+float {\bfseries getY} ()
+\item 
+\mbox{\Hypertarget{class_game_object_a9f2e13dd86307729b552a322800a3b8c}\label{class_game_object_a9f2e13dd86307729b552a322800a3b8c}} 
+float {\bfseries setX} (float newX)
+\item 
+\mbox{\Hypertarget{class_game_object_ac7a5d4c6cae9911a5ebaafa429af27f0}\label{class_game_object_ac7a5d4c6cae9911a5ebaafa429af27f0}} 
+float {\bfseries setY} (float newY)
+\item 
+\mbox{\Hypertarget{class_game_object_a292cf30e4df1baf269cbb4ecc5dc7cbc}\label{class_game_object_a292cf30e4df1baf269cbb4ecc5dc7cbc}} 
+float {\bfseries Get\+Distance} (vec2 pointA, vec2 pointB)
+\item 
+\mbox{\Hypertarget{class_game_object_ad67f913f15207a94462eb7ca866681a1}\label{class_game_object_ad67f913f15207a94462eb7ca866681a1}} 
+glm\+::vec2 \mbox{\hyperlink{class_game_object_ad67f913f15207a94462eb7ca866681a1}{set\+Position}} (float newX, float newY)
+\begin{DoxyCompactList}\small\item\em Set the position of the object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_object_ac9ff8adb6189d78d8b9b2bc40f28f4c7}\label{class_game_object_ac9ff8adb6189d78d8b9b2bc40f28f4c7}} 
+virtual glm\+::vec2 {\bfseries set\+Position} (glm\+::vec2 new\+Position)
+\item 
+\mbox{\Hypertarget{class_game_object_a9c1c157948bf92da1492e494c3ad150d}\label{class_game_object_a9c1c157948bf92da1492e494c3ad150d}} 
+virtual glm\+::vec2 {\bfseries set\+Body\+Position} (glm\+::vec2 new\+Position)
+\item 
+\mbox{\Hypertarget{class_game_object_a4a4042f7e6ccb8ed9a65e0d6a6b9b7f3}\label{class_game_object_a4a4042f7e6ccb8ed9a65e0d6a6b9b7f3}} 
+glm\+::vec2 {\bfseries get\+Position} ()
+\item 
+\mbox{\Hypertarget{class_game_object_a7564fd9698930504bba92dee1ff3d467}\label{class_game_object_a7564fd9698930504bba92dee1ff3d467}} 
+float \mbox{\hyperlink{class_game_object_a7564fd9698930504bba92dee1ff3d467}{get\+Speed}} ()
+\begin{DoxyCompactList}\small\item\em Getters and setters for velocity. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_object_a66551f2615994870255e49a10b09ea75}\label{class_game_object_a66551f2615994870255e49a10b09ea75}} 
+float {\bfseries set\+Speed} (float new\+Speed)
+\item 
+\mbox{\Hypertarget{class_game_object_ad89e27e5d6cd0357152f68b31cce1ccc}\label{class_game_object_ad89e27e5d6cd0357152f68b31cce1ccc}} 
+glm\+::vec2 {\bfseries get\+Velocity} ()
+\item 
+\mbox{\Hypertarget{class_game_object_a7ddb20c81b5f717df359799581bc002b}\label{class_game_object_a7ddb20c81b5f717df359799581bc002b}} 
+float {\bfseries set\+Velocity} (float x, float y)
+\item 
+\mbox{\Hypertarget{class_game_object_a5b36410ddaaec5133828e484225f63d0}\label{class_game_object_a5b36410ddaaec5133828e484225f63d0}} 
+float {\bfseries set\+Size} (float x, float y)
+\item 
+\mbox{\Hypertarget{class_game_object_aff9ee7e2dfa7809d2acd6a22e02eae60}\label{class_game_object_aff9ee7e2dfa7809d2acd6a22e02eae60}} 
+glm\+::vec2 {\bfseries set\+Size} (glm\+::vec2 new\+Size)
+\item 
+\mbox{\Hypertarget{class_game_object_ae8f9654217d37136d29663eeb3a89b22}\label{class_game_object_ae8f9654217d37136d29663eeb3a89b22}} 
+glm\+::vec2 {\bfseries get\+Size} ()
+\item 
+\mbox{\Hypertarget{class_game_object_a67a7e01ff8aa200bb1b570de1074a752}\label{class_game_object_a67a7e01ff8aa200bb1b570de1074a752}} 
+glm\+::vec2 {\bfseries get\+Half\+Size} ()
+\item 
+\mbox{\Hypertarget{class_game_object_af20cde3a6ee2a92f030268b3dedafa9c}\label{class_game_object_af20cde3a6ee2a92f030268b3dedafa9c}} 
+float {\bfseries get\+Width} ()
+\item 
+\mbox{\Hypertarget{class_game_object_ac92c2ac682f12271dc3264bf5926222e}\label{class_game_object_ac92c2ac682f12271dc3264bf5926222e}} 
+float {\bfseries get\+Height} ()
+\item 
+\mbox{\Hypertarget{class_game_object_afce9e152fe23dc4aab3510581e8f69d4}\label{class_game_object_afce9e152fe23dc4aab3510581e8f69d4}} 
+G\+Lfloat \mbox{\hyperlink{class_game_object_afce9e152fe23dc4aab3510581e8f69d4}{get\+Rotation}} ()
+\begin{DoxyCompactList}\small\item\em Set or Get Rotation. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_object_ab16f693e8cd3db098a8f2eb4f0dfdbc7}\label{class_game_object_ab16f693e8cd3db098a8f2eb4f0dfdbc7}} 
+G\+Lfloat {\bfseries set\+Rotation} (G\+Lfloat new\+Rotation)
+\item 
+\mbox{\Hypertarget{class_game_object_aa280a0bcd7034050a4e0915abc015098}\label{class_game_object_aa280a0bcd7034050a4e0915abc015098}} 
+bool \mbox{\hyperlink{class_game_object_aa280a0bcd7034050a4e0915abc015098}{collides\+With}} (\mbox{\hyperlink{class_game_object}{Game\+Object}} object)
+\begin{DoxyCompactList}\small\item\em Rectangular Collision detection. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_object_a2ff7dcbb3dd0c621c5f02cc2e318391e}\label{class_game_object_a2ff7dcbb3dd0c621c5f02cc2e318391e}} 
+b2\+Body $\ast$ {\bfseries get\+Body} ()
+\item 
+\mbox{\Hypertarget{class_game_object_af2122b02401141e39b78ecb1c13e0de0}\label{class_game_object_af2122b02401141e39b78ecb1c13e0de0}} 
+b2\+Fixture $\ast$ {\bfseries get\+Fixture} ()
+\item 
+\mbox{\Hypertarget{class_game_object_ad1418c5e4552924cc54b99cd4ce76c96}\label{class_game_object_ad1418c5e4552924cc54b99cd4ce76c96}} 
+void \mbox{\hyperlink{class_game_object_ad1418c5e4552924cc54b99cd4ce76c96}{Init\+Physics}} (b2\+World $\ast$physics\+World, b2\+Body\+Type type, float density, float friction)
+\begin{DoxyCompactList}\small\item\em Initilise the object in the physics world. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_game_object_af6f2282ff964bd145ab173fb8f523733}\label{class_game_object_af6f2282ff964bd145ab173fb8f523733}} 
+std\+::pair$<$ bool, bool $>$ {\bfseries flip\+Sprite}
+\item 
+\mbox{\Hypertarget{class_game_object_a12ac824f85fe1b2990d71c575bf63022}\label{class_game_object_a12ac824f85fe1b2990d71c575bf63022}} 
+float \mbox{\hyperlink{class_game_object_a12ac824f85fe1b2990d71c575bf63022}{transparency}} = 1.\+0
+\begin{DoxyCompactList}\small\item\em Transparency normalized between 0 and 1. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_object_aa3df419098d04f870132287eecd4156c}\label{class_game_object_aa3df419098d04f870132287eecd4156c}} 
+float {\bfseries x\+Meters}
+\item 
+\mbox{\Hypertarget{class_game_object_ae2d2b75d2ae19fe11b9e23bbf3f29431}\label{class_game_object_ae2d2b75d2ae19fe11b9e23bbf3f29431}} 
+float {\bfseries y\+Meters}
+\item 
+\mbox{\Hypertarget{class_game_object_a0b13b0332425cfa619594205993e7ce4}\label{class_game_object_a0b13b0332425cfa619594205993e7ce4}} 
+\mbox{\hyperlink{class_texture2_d}{Texture2D}} \mbox{\hyperlink{class_game_object_a0b13b0332425cfa619594205993e7ce4}{Sprite}}
+\begin{DoxyCompactList}\small\item\em Render state. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_object_a83223a30ea4f5e8cc7674cd8fc350e65}\label{class_game_object_a83223a30ea4f5e8cc7674cd8fc350e65}} 
+\mbox{\hyperlink{class_texture2_d}{Texture2D}} {\bfseries Normal\+Map}
+\item 
+\mbox{\Hypertarget{class_game_object_a1b8eda1cb7e3808074bf580f93c40410}\label{class_game_object_a1b8eda1cb7e3808074bf580f93c40410}} 
+int \mbox{\hyperlink{class_game_object_a1b8eda1cb7e3808074bf580f93c40410}{render\+Layer}} = 0
+\begin{DoxyCompactList}\small\item\em What layer the object gets rendererd. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_object_a2bfe4258a8725ee9e0f9394d4d5b6105}\label{class_game_object_a2bfe4258a8725ee9e0f9394d4d5b6105}} 
+bool {\bfseries Render\+Above\+Player} = false
+\item 
+\mbox{\Hypertarget{class_game_object_af65f45e152f6662acb4563f22bd25f48}\label{class_game_object_af65f45e152f6662acb4563f22bd25f48}} 
+b2\+Body $\ast$ {\bfseries rigid\+Body} = nullptr
+\item 
+\mbox{\Hypertarget{class_game_object_a02960e5dac7c70d61f8caf751be66547}\label{class_game_object_a02960e5dac7c70d61f8caf751be66547}} 
+b2\+Fixture $\ast$ {\bfseries fixture} = nullptr
+\item 
+\mbox{\Hypertarget{class_game_object_aa778d504d90bba89fc6ebee7bf8bdb64}\label{class_game_object_aa778d504d90bba89fc6ebee7bf8bdb64}} 
+b2\+Contact\+Listener $\ast$ {\bfseries contact\+Listener} = nullptr
+\item 
+\mbox{\Hypertarget{class_game_object_a0b1afb4d4ce7d46e9d0d99ce7fd5ec17}\label{class_game_object_a0b1afb4d4ce7d46e9d0d99ce7fd5ec17}} 
+b2\+World $\ast$ {\bfseries physicsptr} = nullptr
+\item 
+\mbox{\Hypertarget{class_game_object_af76a54a3735cce685aab3b020b424408}\label{class_game_object_af76a54a3735cce685aab3b020b424408}} 
+bool {\bfseries has\+Physics} = false
+\item 
+\mbox{\Hypertarget{class_game_object_adb99d9bc014fc5433ae14a5535a66d73}\label{class_game_object_adb99d9bc014fc5433ae14a5535a66d73}} 
+float \mbox{\hyperlink{class_game_object_adb99d9bc014fc5433ae14a5535a66d73}{physics\+Scale\+Down}} = 0.\+001f
+\begin{DoxyCompactList}\small\item\em Used to decrese the sprites to a M\+KS factor for the physics simulation. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_object_a2435906f55635cbbc00ed09294baa5d8}\label{class_game_object_a2435906f55635cbbc00ed09294baa5d8}} 
+float \mbox{\hyperlink{class_game_object_a2435906f55635cbbc00ed09294baa5d8}{physics\+Scale\+Up}} = 1000.\+0f
+\begin{DoxyCompactList}\small\item\em Used to rescale the sprites to pixel size from M\+KS size. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_game_object_a080337446d2eca5a63991cce5abe9523}\label{class_game_object_a080337446d2eca5a63991cce5abe9523}} 
+virtual void {\bfseries Init\+Sprite} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_game_object_a0e00a55d99d3f523b5fe2131fa42668e}\label{class_game_object_a0e00a55d99d3f523b5fe2131fa42668e}} 
+const G\+Lchar $\ast$ {\bfseries sprite\+Path}
+\item 
+\mbox{\Hypertarget{class_game_object_ac07025589e147dd68e8d0a6f0f87b4b5}\label{class_game_object_ac07025589e147dd68e8d0a6f0f87b4b5}} 
+const G\+Lchar $\ast$ {\bfseries sprite\+Path\+\_\+normal}
+\item 
+\mbox{\Hypertarget{class_game_object_aaba639b18ebc4ef034c7c273e52e43c2}\label{class_game_object_aaba639b18ebc4ef034c7c273e52e43c2}} 
+bool {\bfseries initalised} = false
+\item 
+\mbox{\Hypertarget{class_game_object_a938272352e22e9418514d618758511d5}\label{class_game_object_a938272352e22e9418514d618758511d5}} 
+float \mbox{\hyperlink{class_game_object_a938272352e22e9418514d618758511d5}{speed}} = 1.\+0f
+\begin{DoxyCompactList}\small\item\em Values. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_object_add5af9f39a206da074735a7f116a760c}\label{class_game_object_add5af9f39a206da074735a7f116a760c}} 
+glm\+::vec2 {\bfseries position}
+\item 
+\mbox{\Hypertarget{class_game_object_a8c952f8a0dc485f827e268ea84a291ae}\label{class_game_object_a8c952f8a0dc485f827e268ea84a291ae}} 
+glm\+::vec2 {\bfseries size}
+\item 
+\mbox{\Hypertarget{class_game_object_afd1e835f6f621f91f50a0fc7ed942e6e}\label{class_game_object_afd1e835f6f621f91f50a0fc7ed942e6e}} 
+glm\+::vec2 {\bfseries velocity}
+\item 
+\mbox{\Hypertarget{class_game_object_a5eed566e17a8fc9a34a239d9e36df021}\label{class_game_object_a5eed566e17a8fc9a34a239d9e36df021}} 
+glm\+::vec3 {\bfseries colour} = \{ 0,0,0 \}
+\item 
+\mbox{\Hypertarget{class_game_object_a588e9d8af0aa5015770e9fa5e24b2505}\label{class_game_object_a588e9d8af0aa5015770e9fa5e24b2505}} 
+G\+Lfloat {\bfseries rotation}
+\item 
+\mbox{\Hypertarget{class_game_object_acc3bcd5cb8f7ca7883df1fb844193429}\label{class_game_object_acc3bcd5cb8f7ca7883df1fb844193429}} 
+float {\bfseries friction} = 1.\+0f
+\item 
+\mbox{\Hypertarget{class_game_object_a76bc9fb2b9cf615172166b24976cac85}\label{class_game_object_a76bc9fb2b9cf615172166b24976cac85}} 
+float {\bfseries density} = 1.\+0f
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/alli0/\+Documents/\+Git\+Hub/\+Game\+Engine/\+Client/\+Source/\+Source/Game\+Object.\+h\item 
+C\+:/\+Users/alli0/\+Documents/\+Git\+Hub/\+Game\+Engine/\+Client/\+Source/\+Source/Game\+Object.\+cpp\end{DoxyCompactItemize}

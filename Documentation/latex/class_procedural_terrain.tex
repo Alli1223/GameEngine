@@ -1,0 +1,62 @@
+\hypertarget{class_procedural_terrain}{}\doxysection{Procedural\+Terrain Class Reference}
+\label{class_procedural_terrain}\index{ProceduralTerrain@{ProceduralTerrain}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_procedural_terrain_a061a98ff1fb54b6742f1d1007fec9696}\label{class_procedural_terrain_a061a98ff1fb54b6742f1d1007fec9696}} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_cell}{Cell}} $>$ {\bfseries Get\+Cell} (int x, int y)
+\item 
+\mbox{\Hypertarget{class_procedural_terrain_abec2c7e19b16a07fc8220541bae896c9}\label{class_procedural_terrain_abec2c7e19b16a07fc8220541bae896c9}} 
+void {\bfseries Orientate\+Cells} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_cell}{Cell}} $>$ node, std\+::map$<$ std\+::pair$<$ int, int $>$, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_cell}{Cell}} $>$$>$ $\ast$level)
+\item 
+\mbox{\Hypertarget{class_procedural_terrain_a8ac18b82858c0ace333f46f513b89cc0}\label{class_procedural_terrain_a8ac18b82858c0ace333f46f513b89cc0}} 
+int \mbox{\hyperlink{class_procedural_terrain_a8ac18b82858c0ace333f46f513b89cc0}{get\+Seed}} ()
+\begin{DoxyCompactList}\small\item\em Getters and setters for seed. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_procedural_terrain_ab1bd0924a30efd39f3380c4a6a732d9e}\label{class_procedural_terrain_ab1bd0924a30efd39f3380c4a6a732d9e}} 
+int {\bfseries set\+Seed} (int new\+Seed)
+\item 
+\mbox{\Hypertarget{class_procedural_terrain_ac1e8b863c5cdff238d2b5a65a98ef96e}\label{class_procedural_terrain_ac1e8b863c5cdff238d2b5a65a98ef96e}} 
+void \mbox{\hyperlink{class_procedural_terrain_ac1e8b863c5cdff238d2b5a65a98ef96e}{populate\+Terrain}} (int x, int y)
+\begin{DoxyCompactList}\small\item\em function that calls the functions below \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_procedural_terrain_a9ed01ee3503e876fa2e57062dc0cd73b}\label{class_procedural_terrain_a9ed01ee3503e876fa2e57062dc0cd73b}} 
+void {\bfseries populate\+Terrain} (std\+::vector$<$ std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_cell}{Cell}} $>$$>$$>$ \&level)
+\item 
+\mbox{\Hypertarget{class_procedural_terrain_a63f99b999449a6797decf37141809f77}\label{class_procedural_terrain_a63f99b999449a6797decf37141809f77}} 
+void \mbox{\hyperlink{class_procedural_terrain_a63f99b999449a6797decf37141809f77}{generate\+Ground}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_cell}{Cell}} $>$ \&tiles)
+\begin{DoxyCompactList}\small\item\em Spawns the trees in a chunk. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_procedural_terrain_ab5014cd5a40976bca6d332ab2d514685}\label{class_procedural_terrain_ab5014cd5a40976bca6d332ab2d514685}} 
+std\+::map$<$ std\+::pair$<$ int, int $>$, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_cell}{Cell}} $>$ $>$ $\ast$ {\bfseries levelptr}
+\item 
+\mbox{\Hypertarget{class_procedural_terrain_a037895bad4054230cdca458945927929}\label{class_procedural_terrain_a037895bad4054230cdca458945927929}} 
+\mbox{\hyperlink{class_perlin_noise}{Perlin\+Noise}} \mbox{\hyperlink{class_procedural_terrain_a037895bad4054230cdca458945927929}{Elevation}}
+\begin{DoxyCompactList}\small\item\em Elevation noise. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_procedural_terrain_ab408feba76a7dec49dcfb8f7f5ce8108}\label{class_procedural_terrain_ab408feba76a7dec49dcfb8f7f5ce8108}} 
+\mbox{\hyperlink{class_perlin_noise}{Perlin\+Noise}} {\bfseries Elevation\+Layer\+Two}
+\item 
+\mbox{\Hypertarget{class_procedural_terrain_adb78bd73e31e1867340f3e2b107dae95}\label{class_procedural_terrain_adb78bd73e31e1867340f3e2b107dae95}} 
+\mbox{\hyperlink{class_perlin_noise}{Perlin\+Noise}} {\bfseries Elevation\+Layer\+Three}
+\item 
+\mbox{\Hypertarget{class_procedural_terrain_afbfe0f2627138f4570209d5197ca6ed2}\label{class_procedural_terrain_afbfe0f2627138f4570209d5197ca6ed2}} 
+\mbox{\hyperlink{class_simplex_noise}{Simplex\+Noise}} {\bfseries sim\+Noise}
+\item 
+\mbox{\Hypertarget{class_procedural_terrain_acb2dff0c68f952c5f50355695993f6fa}\label{class_procedural_terrain_acb2dff0c68f952c5f50355695993f6fa}} 
+\mbox{\hyperlink{class_simplex_noise}{Simplex\+Noise}} {\bfseries grass\+Noise}
+\item 
+\mbox{\Hypertarget{class_procedural_terrain_a25ad08d1b74d73ff57fe0ae0868ba81d}\label{class_procedural_terrain_a25ad08d1b74d73ff57fe0ae0868ba81d}} 
+\mbox{\hyperlink{class_perlin_noise}{Perlin\+Noise}} \mbox{\hyperlink{class_procedural_terrain_a25ad08d1b74d73ff57fe0ae0868ba81d}{forrest\+Noise}}
+\begin{DoxyCompactList}\small\item\em Other noise generations. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_procedural_terrain_a8448846f196f5852ad517c23ef5e6a48}\label{class_procedural_terrain_a8448846f196f5852ad517c23ef5e6a48}} 
+\mbox{\hyperlink{class_perlin_noise}{Perlin\+Noise}} {\bfseries river\+Noise}
+\item 
+\mbox{\Hypertarget{class_procedural_terrain_a74dd0828a09b023bc7c9ce107c5818df}\label{class_procedural_terrain_a74dd0828a09b023bc7c9ce107c5818df}} 
+\mbox{\hyperlink{class_perlin_noise}{Perlin\+Noise}} {\bfseries river\+Noise\+Layer\+Two}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/alli0/\+Documents/\+Git\+Hub/\+Game\+Engine/\+Client/\+Source/\+Source/Procedural\+Terrain.\+h\item 
+C\+:/\+Users/alli0/\+Documents/\+Git\+Hub/\+Game\+Engine/\+Client/\+Source/\+Source/Procedural\+Terrain.\+cpp\end{DoxyCompactItemize}

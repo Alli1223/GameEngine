@@ -1,0 +1,156 @@
+\hypertarget{class_player}{}\doxysection{Player Class Reference}
+\label{class_player}\index{Player@{Player}}
+Inheritance diagram for Player\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{class_player}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_player_a3c66c6d4c215039f7fb627c63e6df2a8}\label{class_player_a3c66c6d4c215039f7fb627c63e6df2a8}} 
+enum {\bfseries Player\+Actions} \{ \newline
+{\bfseries none}, 
+{\bfseries fishing\+Casting}, 
+{\bfseries fishing\+Reeling}, 
+{\bfseries digging}, 
+\newline
+{\bfseries hoeing}, 
+{\bfseries harvesting}, 
+{\bfseries sytheing}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_player_aaee21564800c343f16c9b5e839a89155}\label{class_player_aaee21564800c343f16c9b5e839a89155}} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_player}{Player}} $>$ {\bfseries get\+Shared\+Pointer} ()
+\item 
+\mbox{\Hypertarget{class_player_a45e14dca47779215e6a83dc664253f54}\label{class_player_a45e14dca47779215e6a83dc664253f54}} 
+\mbox{\hyperlink{class_player}{Player}} {\bfseries Load\+From\+Json} (json player\+Data)
+\item 
+\mbox{\Hypertarget{class_player_ac99b92ccea4ae47d1f09d318af4b76ca}\label{class_player_ac99b92ccea4ae47d1f09d318af4b76ca}} 
+void \mbox{\hyperlink{class_player_ac99b92ccea4ae47d1f09d318af4b76ca}{Render}} (\mbox{\hyperlink{class_g_l___renderer}{G\+L\+\_\+\+Renderer}} \&renderer)
+\begin{DoxyCompactList}\small\item\em Render the player polymorphed from game object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_player_acada7bab4a049a4d454085e4fd770495}\label{class_player_acada7bab4a049a4d454085e4fd770495}} 
+void \mbox{\hyperlink{class_player_acada7bab4a049a4d454085e4fd770495}{render\+Character\+Body}} (\mbox{\hyperlink{class_g_l___renderer}{G\+L\+\_\+\+Renderer}} \&renderer, int index, bool flip\+Sprite)
+\begin{DoxyCompactList}\small\item\em Renders the characters clothes. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_player_a43d237c3e71202216c0a5ee42538f914}\label{class_player_a43d237c3e71202216c0a5ee42538f914}} 
+void \mbox{\hyperlink{class_player_a43d237c3e71202216c0a5ee42538f914}{Move}} (Player\+::\+Movement\+Direction direction)
+\begin{DoxyCompactList}\small\item\em Move the player to the position. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_player_a8eb123f1909bf6d49b0bed933fadd95e}\label{class_player_a8eb123f1909bf6d49b0bed933fadd95e}} 
+virtual void {\bfseries Move} (glm\+::vec2 position)
+\item 
+\mbox{\Hypertarget{class_player_a21216f921d09c87fa10a7da3a55deab6}\label{class_player_a21216f921d09c87fa10a7da3a55deab6}} 
+json {\bfseries get\+Player\+Json} ()
+\item 
+\mbox{\Hypertarget{class_player_a1d03985324981c107aea2f9885ff020a}\label{class_player_a1d03985324981c107aea2f9885ff020a}} 
+void \mbox{\hyperlink{class_player_a1d03985324981c107aea2f9885ff020a}{collided\+With}} (\mbox{\hyperlink{class_collision_identifier}{Collision\+Identifier}} \&object\+Identity)
+\begin{DoxyCompactList}\small\item\em @\+Overloaded \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_player_a05b60cac1922c5be5c1be16baffa4497}\label{class_player_a05b60cac1922c5be5c1be16baffa4497}} 
+virtual void {\bfseries Update} ()
+\item 
+\mbox{\Hypertarget{class_player_ad9038e96eae8bcacd9c44a7b670801d5}\label{class_player_ad9038e96eae8bcacd9c44a7b670801d5}} 
+\mbox{\hyperlink{class_animation}{Animation}} {\bfseries get\+Walk\+Animation} ()
+\item 
+\mbox{\Hypertarget{class_player_aad0b227d824d50c11d1c6277985ae4f1}\label{class_player_aad0b227d824d50c11d1c6277985ae4f1}} 
+vec3 {\bfseries gethair\+Colour} ()
+\item 
+\mbox{\Hypertarget{class_player_a389b616ef4f04b3df09183f699ad4db4}\label{class_player_a389b616ef4f04b3df09183f699ad4db4}} 
+vec3 {\bfseries get\+Eye\+Colour} ()
+\item 
+\mbox{\Hypertarget{class_player_a4e5030561b8b052e5899054477320143}\label{class_player_a4e5030561b8b052e5899054477320143}} 
+vec3 {\bfseries get\+Jacket\+Colour} ()
+\item 
+\mbox{\Hypertarget{class_player_a3da4d7d044f7765a9b05e507a67f9ad4}\label{class_player_a3da4d7d044f7765a9b05e507a67f9ad4}} 
+vec3 {\bfseries get\+Jeans\+Colour} ()
+\item 
+\mbox{\Hypertarget{class_player_ae442ebd5d3ef7a204a293592e1ff0d62}\label{class_player_ae442ebd5d3ef7a204a293592e1ff0d62}} 
+vec3 {\bfseries get\+Body\+Colour} ()
+\item 
+\mbox{\Hypertarget{class_player_a9e5679ec3841facaaa93b6e50e4f8a4c}\label{class_player_a9e5679ec3841facaaa93b6e50e4f8a4c}} 
+int {\bfseries set\+Hair\+Colour} (int r, int g, int b)
+\item 
+\mbox{\Hypertarget{class_player_a65920d190574dba760d3015c47869556}\label{class_player_a65920d190574dba760d3015c47869556}} 
+int {\bfseries set\+Eye\+Colour} (int r, int g, int b)
+\item 
+\mbox{\Hypertarget{class_player_a2a9cb7662f5ae4a74b378db922cfcca6}\label{class_player_a2a9cb7662f5ae4a74b378db922cfcca6}} 
+int {\bfseries set\+Jacket\+Colour} (int r, int g, int b)
+\item 
+\mbox{\Hypertarget{class_player_a8ed2126ab91fa28bed55ae8713aba5e2}\label{class_player_a8ed2126ab91fa28bed55ae8713aba5e2}} 
+int {\bfseries set\+Jeans\+Colour} (int r, int g, int b)
+\item 
+\mbox{\Hypertarget{class_player_a382622a7fb6ad5f5a71712ab99b1d86e}\label{class_player_a382622a7fb6ad5f5a71712ab99b1d86e}} 
+int {\bfseries set\+Body\+Colour} (int r, int g, int b)
+\item 
+\mbox{\Hypertarget{class_player_a22dda0b0c93a911925ffe471653b41f8}\label{class_player_a22dda0b0c93a911925ffe471653b41f8}} 
+vec3 {\bfseries set\+Body\+Colour} (vec3 colour)
+\item 
+\mbox{\Hypertarget{class_player_af91d24c7428b6a8db486b0f92b202644}\label{class_player_af91d24c7428b6a8db486b0f92b202644}} 
+vec3 {\bfseries set\+Eye\+Colour} (vec3 colour)
+\item 
+\mbox{\Hypertarget{class_player_a6b9d632b0aa86c23841be53efd14db36}\label{class_player_a6b9d632b0aa86c23841be53efd14db36}} 
+vec3 {\bfseries set\+Hair\+Colour} (vec3 colour)
+\item 
+\mbox{\Hypertarget{class_player_a4334a0723c4fef62729910f47f6df6bf}\label{class_player_a4334a0723c4fef62729910f47f6df6bf}} 
+vec3 {\bfseries set\+Top\+Colour} (vec3 colour)
+\item 
+\mbox{\Hypertarget{class_player_ab2ea67750ad904c4b426604a4987450a}\label{class_player_ab2ea67750ad904c4b426604a4987450a}} 
+vec3 {\bfseries set\+Bottom\+Colour} (vec3 colour)
+\item 
+\mbox{\Hypertarget{class_player_a63caffe9c0cbb3b776811ad45a545aa9}\label{class_player_a63caffe9c0cbb3b776811ad45a545aa9}} 
+float \mbox{\hyperlink{class_player_a63caffe9c0cbb3b776811ad45a545aa9}{get\+Speed}} ()
+\begin{DoxyCompactList}\small\item\em Getters and setters for speed. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_player_ae5d0ae135fb9350ec1634e4b1e53686f}\label{class_player_ae5d0ae135fb9350ec1634e4b1e53686f}} 
+float {\bfseries set\+Speed} (float new\+Speed)
+\item 
+\mbox{\Hypertarget{class_player_a4bbedb07174a6f49f6d813b9999759fc}\label{class_player_a4bbedb07174a6f49f6d813b9999759fc}} 
+float {\bfseries get\+Run\+Speed} ()
+\item 
+\mbox{\Hypertarget{class_player_a138c13106dc71ce87237b1124525baf4}\label{class_player_a138c13106dc71ce87237b1124525baf4}} 
+float {\bfseries get\+Walk\+Speed} ()
+\item 
+\mbox{\Hypertarget{class_player_a6d071957c33d3be1d06d08c1a0972b62}\label{class_player_a6d071957c33d3be1d06d08c1a0972b62}} 
+int {\bfseries get\+Render\+Layer} ()
+\item 
+\mbox{\Hypertarget{class_player_a04081b35fcaf80fec98438c1f906782f}\label{class_player_a04081b35fcaf80fec98438c1f906782f}} 
+int {\bfseries set\+Render\+Layer} (int new\+Layer)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_player_a2293b966ad6d9e60401fb54fa99fecc8}\label{class_player_a2293b966ad6d9e60401fb54fa99fecc8}} 
+\mbox{\hyperlink{class_collision_identifier}{Collision\+Identifier}} {\bfseries colision\+Identity}
+\item 
+\mbox{\Hypertarget{class_player_ad6cf248862b9ccff66f2b3ff0a07d2fb}\label{class_player_ad6cf248862b9ccff66f2b3ff0a07d2fb}} 
+glm\+::vec2 {\bfseries render\+Offset}
+\item 
+\mbox{\Hypertarget{class_player_aa76a5a5baceb1875b59d06be4842418d}\label{class_player_aa76a5a5baceb1875b59d06be4842418d}} 
+glm\+::vec2 {\bfseries screen\+Center}
+\item 
+\mbox{\Hypertarget{class_player_ac6f6a1450716c82df39825847745eb04}\label{class_player_ac6f6a1450716c82df39825847745eb04}} 
+int {\bfseries x\+Offset}
+\item 
+\mbox{\Hypertarget{class_player_a61392fb0939cb239baefc6194e81042e}\label{class_player_a61392fb0939cb239baefc6194e81042e}} 
+int {\bfseries y\+Offset}
+\item 
+\mbox{\Hypertarget{class_player_ab8d436b5727749f7be05ffdf744d1041}\label{class_player_ab8d436b5727749f7be05ffdf744d1041}} 
+\mbox{\hyperlink{class_inventory}{Inventory}} \mbox{\hyperlink{class_player_ab8d436b5727749f7be05ffdf744d1041}{inventory}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_inventory}{Inventory}}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_player_adfbc30519b4dff69f58e44a94704baa3}\label{class_player_adfbc30519b4dff69f58e44a94704baa3}} 
+bool {\bfseries pressing\+Use\+Key} = false
+\item 
+\mbox{\Hypertarget{class_player_ac2318ad78969130e7837709e5b713e0b}\label{class_player_ac2318ad78969130e7837709e5b713e0b}} 
+enum Player\+::\+Player\+Actions {\bfseries player\+Action}
+\item 
+\mbox{\Hypertarget{class_player_ac8724832bda948103de2e55bb898d96a}\label{class_player_ac8724832bda948103de2e55bb898d96a}} 
+std\+::string \mbox{\hyperlink{class_player_ac8724832bda948103de2e55bb898d96a}{player\+Name}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_player}{Player}} Name. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/alli0/\+Documents/\+Git\+Hub/\+Game\+Engine/\+Client/\+Source/\+Source/Player.\+h\item 
+C\+:/\+Users/alli0/\+Documents/\+Git\+Hub/\+Game\+Engine/\+Client/\+Source/\+Source/Player.\+cpp\end{DoxyCompactItemize}

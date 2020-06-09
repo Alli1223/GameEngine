@@ -1,0 +1,75 @@
+\hypertarget{class_light_source}{}\doxysection{Light\+Source Class Reference}
+\label{class_light_source}\index{LightSource@{LightSource}}
+Inheritance diagram for Light\+Source\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_light_source}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_light_source_a9d4698fc344b1f321756b650eb52a10c}\label{class_light_source_a9d4698fc344b1f321756b650eb52a10c}} 
+enum \mbox{\hyperlink{class_light_source_a9d4698fc344b1f321756b650eb52a10c}{Light\+Type}} \{ \newline
+{\bfseries no\+Light}, 
+{\bfseries campfire}, 
+{\bfseries street\+Light}, 
+{\bfseries lantern}, 
+\newline
+{\bfseries player\+Ambient\+Light}, 
+{\bfseries npc\+Ambient\+Light}, 
+{\bfseries firefly\+Light}
+ \}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_light}{Light}} type. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_light_source_adcdaf865d0cf3e72c4eca0cc20c0825c}{Light\+Source}} ()
+\begin{DoxyCompactList}\small\item\em Constuct without type. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_light_source_a55e5876407fd4af9e9b4ede7ff46cc85}\label{class_light_source_a55e5876407fd4af9e9b4ede7ff46cc85}} 
+\mbox{\hyperlink{class_light_source_a55e5876407fd4af9e9b4ede7ff46cc85}{$\sim$\+Light\+Source}} ()
+\begin{DoxyCompactList}\small\item\em Desconstructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_light_source_aefea1ea1bc9d10c8dfb3697fb49f6e8d}\label{class_light_source_aefea1ea1bc9d10c8dfb3697fb49f6e8d}} 
+void \mbox{\hyperlink{class_light_source_aefea1ea1bc9d10c8dfb3697fb49f6e8d}{Render}} (\mbox{\hyperlink{class_g_l___renderer}{G\+L\+\_\+\+Renderer}} \&renderer)
+\begin{DoxyCompactList}\small\item\em Render polymorphism. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_light_source_a36e5aba1b56ddb1bccd19c66ac00875d}\label{class_light_source_a36e5aba1b56ddb1bccd19c66ac00875d}} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_light_source}{Light\+Source}} $>$ {\bfseries get\+Pointer} ()
+\item 
+\mbox{\Hypertarget{class_light_source_acfaeb71344575e109dfa7b2b00ad603b}\label{class_light_source_acfaeb71344575e109dfa7b2b00ad603b}} 
+\mbox{\hyperlink{class_light_source_acfaeb71344575e109dfa7b2b00ad603b}{Light\+Source}} (glm\+::vec2 position, \mbox{\hyperlink{class_light_source_a9d4698fc344b1f321756b650eb52a10c}{Light\+Source\+::\+Light\+Type}} type)
+\begin{DoxyCompactList}\small\item\em Construct with type. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_light_source_a2e9c49f1f18b270db5296112238045a7}\label{class_light_source_a2e9c49f1f18b270db5296112238045a7}} 
+int {\bfseries get\+Light\+ID} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_light_source_a6a6e230177f3206a3c3812b3527a10dc}\label{class_light_source_a6a6e230177f3206a3c3812b3527a10dc}} 
+enum \mbox{\hyperlink{class_light_source_a9d4698fc344b1f321756b650eb52a10c}{Light\+Source\+::\+Light\+Type}} {\bfseries light\+Type}
+\item 
+\mbox{\Hypertarget{class_light_source_a8c378fc3b428eeb8486c3a34a8ace6ff}\label{class_light_source_a8c378fc3b428eeb8486c3a34a8ace6ff}} 
+bool {\bfseries is\+On} = true
+\item 
+\mbox{\Hypertarget{class_light_source_a6b735c7e811b8cffdb2b164853b4674d}\label{class_light_source_a6b735c7e811b8cffdb2b164853b4674d}} 
+float \mbox{\hyperlink{class_light_source_a6b735c7e811b8cffdb2b164853b4674d}{light\+Intensity}} = 0.\+075f
+\begin{DoxyCompactList}\small\item\em How close the light is to the ground (lower is closer) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_light_source_adcdaf865d0cf3e72c4eca0cc20c0825c}\label{class_light_source_adcdaf865d0cf3e72c4eca0cc20c0825c}} 
+\index{LightSource@{LightSource}!LightSource@{LightSource}}
+\index{LightSource@{LightSource}!LightSource@{LightSource}}
+\doxysubsubsection{\texorpdfstring{LightSource()}{LightSource()}}
+{\footnotesize\ttfamily Light\+Source\+::\+Light\+Source (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Constuct without type. 
+
+get a random numer to start with (R\+E\+DO this)
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/alli0/\+Documents/\+Git\+Hub/\+Game\+Engine/\+Client/\+Source/\+Source/Light\+Source.\+h\item 
+C\+:/\+Users/alli0/\+Documents/\+Git\+Hub/\+Game\+Engine/\+Client/\+Source/\+Source/Light\+Source.\+cpp\end{DoxyCompactItemize}

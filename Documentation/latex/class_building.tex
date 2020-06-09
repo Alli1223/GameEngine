@@ -1,0 +1,111 @@
+\hypertarget{class_building}{}\doxysection{Building Class Reference}
+\label{class_building}\index{Building@{Building}}
+Inheritance diagram for Building\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_building}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_building_ab570ec0a203ee621f9f522c678a147d9}\label{class_building_ab570ec0a203ee621f9f522c678a147d9}} 
+\mbox{\hyperlink{class_building_ab570ec0a203ee621f9f522c678a147d9}{Building}} ()
+\begin{DoxyCompactList}\small\item\em Constructors. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_building_adffbb6a828794c9cc8ee3d0dda84eb87}\label{class_building_adffbb6a828794c9cc8ee3d0dda84eb87}} 
+{\bfseries Building} (b2\+World $\ast$physics\+World)
+\item 
+\mbox{\Hypertarget{class_building_a3e497b77f9876f0fa952fb217d1ce07a}\label{class_building_a3e497b77f9876f0fa952fb217d1ce07a}} 
+{\bfseries Building} (b2\+World $\ast$physics\+World, json building)
+\item 
+\mbox{\Hypertarget{class_building_ae1c6762e8ffb1c5ce223439b1e2133ba}\label{class_building_ae1c6762e8ffb1c5ce223439b1e2133ba}} 
+{\bfseries Building} (json building)
+\item 
+\mbox{\Hypertarget{class_building_ab675c6a382e110b84031956cda708439}\label{class_building_ab675c6a382e110b84031956cda708439}} 
+\mbox{\hyperlink{class_building_ab675c6a382e110b84031956cda708439}{$\sim$\+Building}} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_building_a447787b45712ebc11d5407786196c4d5}\label{class_building_a447787b45712ebc11d5407786196c4d5}} 
+void {\bfseries Init\+Building} (b2\+World $\ast$physics\+World)
+\item 
+\mbox{\Hypertarget{class_building_a69859ef2c2f632135ec03bfbe79d0981}\label{class_building_a69859ef2c2f632135ec03bfbe79d0981}} 
+virtual void {\bfseries On\+Enter} ()
+\item 
+\mbox{\Hypertarget{class_building_a57f5d3b6e2a779c73acb1a330b7eb4a1}\label{class_building_a57f5d3b6e2a779c73acb1a330b7eb4a1}} 
+virtual void {\bfseries On\+Exit} ()
+\item 
+\mbox{\Hypertarget{class_building_a9c98150eeb7dc0410f2fdda452dcab47}\label{class_building_a9c98150eeb7dc0410f2fdda452dcab47}} 
+void \mbox{\hyperlink{class_building_a9c98150eeb7dc0410f2fdda452dcab47}{Render\+Interior}} (\mbox{\hyperlink{class_g_l___renderer}{G\+L\+\_\+\+Renderer}} \&renderer)
+\begin{DoxyCompactList}\small\item\em Render interior. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_building_a794965b9e9d9c2a9b3f92dc983fedce7}\label{class_building_a794965b9e9d9c2a9b3f92dc983fedce7}} 
+\mbox{\hyperlink{struct_building_exit}{Building\+Exit}} {\bfseries exit}
+\item 
+\mbox{\Hypertarget{class_building_a5b1b4ec4bb1ef2299efd25715ffa9440}\label{class_building_a5b1b4ec4bb1ef2299efd25715ffa9440}} 
+\mbox{\hyperlink{struct_building_entrance}{Building\+Entrance}} {\bfseries entrance}
+\item 
+\mbox{\Hypertarget{class_building_a4306dd3305d208ef390181c2b8145ed4}\label{class_building_a4306dd3305d208ef390181c2b8145ed4}} 
+\mbox{\hyperlink{struct_spawn_location}{Spawn\+Location}} {\bfseries spawn}
+\item 
+\mbox{\Hypertarget{class_building_a63e27f452ea4e2f43942fac9ba42afd8}\label{class_building_a63e27f452ea4e2f43942fac9ba42afd8}} 
+std\+::string {\bfseries Building\+Type}
+\item 
+\mbox{\Hypertarget{class_building_a409711f1d3cbacb5f85ce5406a41b7c8}\label{class_building_a409711f1d3cbacb5f85ce5406a41b7c8}} 
+int {\bfseries construction\+Level} = 0
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_building_a61fc7fe11e69bc79b8ade0ee4cd01f8a}\label{class_building_a61fc7fe11e69bc79b8ade0ee4cd01f8a}} 
+std\+::string {\bfseries modular\+House\+Directory} = \char`\"{}Resources\textbackslash{}\textbackslash{}\+Sprites\textbackslash{}\textbackslash{}\+Buildings\textbackslash{}\textbackslash{}\+Templates\textbackslash{}\textbackslash{}\char`\"{}
+\item 
+\mbox{\Hypertarget{class_building_a07551315191918eb347711e02ee4d223}\label{class_building_a07551315191918eb347711e02ee4d223}} 
+glm\+::vec2 {\bfseries cell\+Pos}
+\item 
+\mbox{\Hypertarget{class_building_a13959de325b794a1a04f5b0294fa7719}\label{class_building_a13959de325b794a1a04f5b0294fa7719}} 
+glm\+::vec2 {\bfseries spawn\+Point}
+\item 
+\mbox{\Hypertarget{class_building_a389341d80a80fdb1a741af4992eca671}\label{class_building_a389341d80a80fdb1a741af4992eca671}} 
+glm\+::vec2 {\bfseries exit\+Point}
+\item 
+\mbox{\Hypertarget{class_building_ab93e92669926943b39f6e76a1841111f}\label{class_building_ab93e92669926943b39f6e76a1841111f}} 
+glm\+::vec2 {\bfseries return\+Cell}
+\item 
+\mbox{\Hypertarget{class_building_ab9a786e74c7494c1a21883db66726f9a}\label{class_building_ab9a786e74c7494c1a21883db66726f9a}} 
+glm\+::vec2 {\bfseries entrance\+Point}
+\item 
+\mbox{\Hypertarget{class_building_a735543e1b8e471b380a7905c99822729}\label{class_building_a735543e1b8e471b380a7905c99822729}} 
+\mbox{\hyperlink{class_texture2_d}{Texture2D}} {\bfseries Ground\+Floor\+Background}
+\item 
+\mbox{\Hypertarget{class_building_ae3365f8762d74b7a4544c998ec1cdefd}\label{class_building_ae3365f8762d74b7a4544c998ec1cdefd}} 
+\mbox{\hyperlink{class_texture2_d}{Texture2D}} {\bfseries Ground\+Floor\+Decoration}
+\item 
+\mbox{\Hypertarget{class_building_ac6233edfcdffc0f206f640ef6285f926}\label{class_building_ac6233edfcdffc0f206f640ef6285f926}} 
+\mbox{\hyperlink{class_texture2_d}{Texture2D}} {\bfseries Ground\+Floor\+Windows}
+\item 
+\mbox{\Hypertarget{class_building_a3c10dc2b0378294140841007488d21a4}\label{class_building_a3c10dc2b0378294140841007488d21a4}} 
+\mbox{\hyperlink{class_texture2_d}{Texture2D}} {\bfseries Ground\+Floor\+Door}
+\item 
+\mbox{\Hypertarget{class_building_a11c174b6bd91412d5af3de26f01bf451}\label{class_building_a11c174b6bd91412d5af3de26f01bf451}} 
+\mbox{\hyperlink{class_texture2_d}{Texture2D}} {\bfseries First\+Floor\+Background}
+\item 
+\mbox{\Hypertarget{class_building_a70ce35305060f02f95b4c2644bbe7d48}\label{class_building_a70ce35305060f02f95b4c2644bbe7d48}} 
+\mbox{\hyperlink{class_texture2_d}{Texture2D}} {\bfseries First\+Floor\+Decoration}
+\item 
+\mbox{\Hypertarget{class_building_ab4645f278bf28af432a260a2f4a02bc4}\label{class_building_ab4645f278bf28af432a260a2f4a02bc4}} 
+\mbox{\hyperlink{class_texture2_d}{Texture2D}} {\bfseries Roof\+Background}
+\item 
+\mbox{\Hypertarget{class_building_a6c8b4e2d47b1c92a2c312e6d22cdb728}\label{class_building_a6c8b4e2d47b1c92a2c312e6d22cdb728}} 
+\mbox{\hyperlink{class_texture2_d}{Texture2D}} {\bfseries Roof\+Decoration}
+\item 
+\mbox{\Hypertarget{class_building_a0654f3c9e9b059824946761c886501f5}\label{class_building_a0654f3c9e9b059824946761c886501f5}} 
+bool {\bfseries init} = false
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/alli0/\+Documents/\+Git\+Hub/\+Game\+Engine/\+Client/\+Source/\+Source/Building.\+h\item 
+C\+:/\+Users/alli0/\+Documents/\+Git\+Hub/\+Game\+Engine/\+Client/\+Source/\+Source/Building.\+cpp\end{DoxyCompactItemize}

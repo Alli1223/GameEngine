@@ -1,0 +1,75 @@
+\hypertarget{class_world}{}\doxysection{World Class Reference}
+\label{class_world}\index{World@{World}}
+Inheritance diagram for World\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_world}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_world_a1453fe90f339d18b509cca9e79acdfd0}\label{class_world_a1453fe90f339d18b509cca9e79acdfd0}} 
+enum {\bfseries Direction} \{ {\bfseries left}, 
+{\bfseries right}, 
+{\bfseries up}, 
+{\bfseries down}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_world_a24301199213d0509ab1e64998dd28f10}\label{class_world_a24301199213d0509ab1e64998dd28f10}} 
+void {\bfseries On\+Enter} (\mbox{\hyperlink{class_player}{Player}} \&player)
+\item 
+\mbox{\Hypertarget{class_world_a3042cb2482c3c297764612fd5cca3857}\label{class_world_a3042cb2482c3c297764612fd5cca3857}} 
+void {\bfseries On\+Exit} (\mbox{\hyperlink{class_player}{Player}} \&player)
+\item 
+\mbox{\Hypertarget{class_world_ad0c20872ee9de81b721a2c14654096ae}\label{class_world_ad0c20872ee9de81b721a2c14654096ae}} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_cell}{Cell}} $>$ \& \mbox{\hyperlink{class_world_ad0c20872ee9de81b721a2c14654096ae}{Get\+Cell}} (float x, float y)
+\begin{DoxyCompactList}\small\item\em Gets a cell from the infinite world. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_world_ad05e897d3265c75b28c6902c16467046}\label{class_world_ad05e897d3265c75b28c6902c16467046}} 
+void \mbox{\hyperlink{class_world_ad05e897d3265c75b28c6902c16467046}{Render}} (\mbox{\hyperlink{class_g_l___renderer}{G\+L\+\_\+\+Renderer}} \&renderer)
+\begin{DoxyCompactList}\small\item\em Render the world. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_world_aec4c79eb3becec1110cc910bf1555181}\label{class_world_aec4c79eb3becec1110cc910bf1555181}} 
+void \mbox{\hyperlink{class_world_aec4c79eb3becec1110cc910bf1555181}{Update}} ()
+\begin{DoxyCompactList}\small\item\em Update. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_world_ae5f12685e2269c194a52de06c69fe1a4}\label{class_world_ae5f12685e2269c194a52de06c69fe1a4}} 
+void {\bfseries Initilise\+World} (\mbox{\hyperlink{class_g_l___renderer}{G\+L\+\_\+\+Renderer}} \&renderer)
+\item 
+\mbox{\Hypertarget{class_world_ac896288e4a5fe59a9bb8c3c0ee022ab0}\label{class_world_ac896288e4a5fe59a9bb8c3c0ee022ab0}} 
+void \mbox{\hyperlink{class_world_ac896288e4a5fe59a9bb8c3c0ee022ab0}{Orientate\+Tillage}} (glm\+::vec2 world\+Pos)
+\begin{DoxyCompactList}\small\item\em The player. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_world_ac2cf6edc6ac7b37a4246cdbc3651303a}\label{class_world_ac2cf6edc6ac7b37a4246cdbc3651303a}} 
+int {\bfseries get\+Cell\+Size} ()
+\item 
+\mbox{\Hypertarget{class_world_ad2dc145f0d3ecd6aaf3fe7200c2464eb}\label{class_world_ad2dc145f0d3ecd6aaf3fe7200c2464eb}} 
+int {\bfseries get\+Chunk\+Size} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_world_ae22e6d8b5446c7b8b2b832e22417784d}\label{class_world_ae22e6d8b5446c7b8b2b832e22417784d}} 
+\mbox{\hyperlink{class_infinite_world}{Infinite\+World}} {\bfseries Infini\+World}
+\item 
+\mbox{\Hypertarget{class_world_ade3f4a8d65fe8d85f1ec0f532ddd24bc}\label{class_world_ade3f4a8d65fe8d85f1ec0f532ddd24bc}} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_player_shop}{Player\+Shop}} $>$ \mbox{\hyperlink{class_world_ade3f4a8d65fe8d85f1ec0f532ddd24bc}{player\+Shop}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_player}{Player}} shop. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_world_afaa96c53235e62e54c80eca4054b769b}\label{class_world_afaa96c53235e62e54c80eca4054b769b}} 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_building}{Building}} $>$ $>$ \mbox{\hyperlink{class_world_afaa96c53235e62e54c80eca4054b769b}{buildings}}
+\begin{DoxyCompactList}\small\item\em All the buildings in the world. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_world_af0f7337097ab9050414c785726f6b9b4}\label{class_world_af0f7337097ab9050414c785726f6b9b4}} 
+std\+::vector$<$ \mbox{\hyperlink{class_network_player}{Network\+Player}} $>$ {\bfseries network\+Players}
+\item 
+\mbox{\Hypertarget{class_world_a263b6ca440426e5bbc5dc70f5453f762}\label{class_world_a263b6ca440426e5bbc5dc70f5453f762}} 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_bug}{Bug}} $>$ $>$ \mbox{\hyperlink{class_world_a263b6ca440426e5bbc5dc70f5453f762}{insects}}
+\begin{DoxyCompactList}\small\item\em List of bugs in the world. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_world_a8aee66688d91c6d1f059dac23a279511}\label{class_world_a8aee66688d91c6d1f059dac23a279511}} 
+std\+::vector$<$ \mbox{\hyperlink{class_projectile}{Projectile}} $>$ \mbox{\hyperlink{class_world_a8aee66688d91c6d1f059dac23a279511}{projectiles}}
+\begin{DoxyCompactList}\small\item\em List of projectiles in the world. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/alli0/\+Documents/\+Git\+Hub/\+Game\+Engine/\+Client/\+Source/\+Source/World.\+h\item 
+C\+:/\+Users/alli0/\+Documents/\+Git\+Hub/\+Game\+Engine/\+Client/\+Source/\+Source/World.\+cpp\end{DoxyCompactItemize}

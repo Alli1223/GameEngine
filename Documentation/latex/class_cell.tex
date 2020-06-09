@@ -1,0 +1,243 @@
+\hypertarget{class_cell}{}\doxysection{Cell Class Reference}
+\label{class_cell}\index{Cell@{Cell}}
+Inheritance diagram for Cell\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_cell}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_cell_a0bd1a311fb4a8ed227b9534a2fd83d3c}\label{class_cell_a0bd1a311fb4a8ed227b9534a2fd83d3c}} 
+enum {\bfseries Ground\+Type} \{ \newline
+{\bfseries empty}, 
+{\bfseries spring\+\_\+grass}, 
+{\bfseries summer\+\_\+grass}, 
+{\bfseries autumn\+\_\+grass}, 
+\newline
+{\bfseries winter\+\_\+grass}, 
+{\bfseries spring\+\_\+dirt}, 
+{\bfseries summer\+\_\+dirt}, 
+{\bfseries autumn\+\_\+dirt}, 
+\newline
+{\bfseries winter\+\_\+dirt}, 
+{\bfseries spring\+\_\+sand}, 
+{\bfseries summer\+\_\+sand}, 
+{\bfseries autumn\+\_\+sand}, 
+\newline
+{\bfseries winter\+\_\+sand}, 
+{\bfseries spring\+\_\+water}, 
+{\bfseries summer\+\_\+water}, 
+{\bfseries autumn\+\_\+water}, 
+\newline
+{\bfseries winter\+\_\+water}, 
+{\bfseries dirt2}
+ \}
+\item 
+\mbox{\Hypertarget{class_cell_abc5452b06fc925d8ad8826b934598a03}\label{class_cell_abc5452b06fc925d8ad8826b934598a03}} 
+enum {\bfseries Orientation} \{ \newline
+{\bfseries none}, 
+{\bfseries top\+Left}, 
+{\bfseries top\+Middle}, 
+{\bfseries top\+Right}, 
+\newline
+{\bfseries middle\+Left}, 
+{\bfseries middle}, 
+{\bfseries middle\+Right}, 
+{\bfseries bottom\+Left}, 
+\newline
+{\bfseries bottom\+Middle}, 
+{\bfseries bottom\+Right}, 
+{\bfseries inv\+\_\+top\+Left}, 
+{\bfseries inv\+\_\+top\+Right}, 
+\newline
+{\bfseries inv\+\_\+bottom\+Left}, 
+{\bfseries inv\+\_\+bottom\+Right}, 
+{\bfseries alone}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_cell_a394510643e8664cf12b5efaf5cb99f71}\label{class_cell_a394510643e8664cf12b5efaf5cb99f71}} 
+\mbox{\hyperlink{class_cell_a394510643e8664cf12b5efaf5cb99f71}{Cell}} ()
+\begin{DoxyCompactList}\small\item\em A constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_cell_ab517256beb40178f8752ce68196dce07}{Cell}} (b2\+World $\ast$physics\+World, int x, int y, int layer, std\+::string type)
+\begin{DoxyCompactList}\small\item\em An alternate constructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_cell_adc271b29a8afebbd14b6bfa4e591eba1}\label{class_cell_adc271b29a8afebbd14b6bfa4e591eba1}} 
+\mbox{\hyperlink{class_cell_adc271b29a8afebbd14b6bfa4e591eba1}{Cell}} (b2\+World $\ast$physics\+World, int x, int y, std\+::string type)
+\begin{DoxyCompactList}\small\item\em Without specified layer ( defaults to 0) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_cell_a1bdd684be165f11924867f83f29ead4f}\label{class_cell_a1bdd684be165f11924867f83f29ead4f}} 
+{\bfseries Cell} (b2\+World $\ast$physics\+World, json cell\+Data)
+\item 
+\mbox{\Hypertarget{class_cell_a9fa559f7a28e2b4336c6879ca09304d8}\label{class_cell_a9fa559f7a28e2b4336c6879ca09304d8}} 
+\mbox{\hyperlink{class_cell_a9fa559f7a28e2b4336c6879ca09304d8}{$\sim$\+Cell}} ()
+\begin{DoxyCompactList}\small\item\em A destructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_cell_aea1902fd14e80c35066030010f8b9034}\label{class_cell_aea1902fd14e80c35066030010f8b9034}} 
+void {\bfseries Clear} ()
+\item 
+\mbox{\Hypertarget{class_cell_a1df656558ac565108468e89410fcbe70}\label{class_cell_a1df656558ac565108468e89410fcbe70}} 
+json \mbox{\hyperlink{class_cell_a1df656558ac565108468e89410fcbe70}{Get\+Json}} ()
+\begin{DoxyCompactList}\small\item\em Gets the cells data and returns it in json format. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_cell_aaec0b41542b788f57442951a8f798927}\label{class_cell_aaec0b41542b788f57442951a8f798927}} 
+void \mbox{\hyperlink{class_cell_aaec0b41542b788f57442951a8f798927}{Assign\+Type}} (std\+::string type, bool Istype)
+\begin{DoxyCompactList}\small\item\em Assign the cells type. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_cell_a06d4341c4b4178fa926373ac54367369}\label{class_cell_a06d4341c4b4178fa926373ac54367369}} 
+void {\bfseries Assign\+Type} (int layer, std\+::string type)
+\item 
+\mbox{\Hypertarget{class_cell_a13de442e4f435e6f0d79ce70c3fa394e}\label{class_cell_a13de442e4f435e6f0d79ce70c3fa394e}} 
+void {\bfseries Assign\+Type} (int layer)
+\item 
+\mbox{\Hypertarget{class_cell_a5d5872cfe5ae0454b4f4fdf0801dffd8}\label{class_cell_a5d5872cfe5ae0454b4f4fdf0801dffd8}} 
+void \mbox{\hyperlink{class_cell_a5d5872cfe5ae0454b4f4fdf0801dffd8}{Render}} (\mbox{\hyperlink{class_g_l___renderer}{G\+L\+\_\+\+Renderer}} \&renderer)
+\begin{DoxyCompactList}\small\item\em Render the cell. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_cell_a40caf41e5ab28c67e0e8c547eb5281ee}\label{class_cell_a40caf41e5ab28c67e0e8c547eb5281ee}} 
+int \mbox{\hyperlink{class_cell_a40caf41e5ab28c67e0e8c547eb5281ee}{getX}} () const
+\begin{DoxyCompactList}\small\item\em Gets the \mbox{\hyperlink{class_cell}{Cell}}\textquotesingle{}s X value. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_cell_a0dc1e0edf77cb2c49840928025ef7360}\label{class_cell_a0dc1e0edf77cb2c49840928025ef7360}} 
+int \mbox{\hyperlink{class_cell_a0dc1e0edf77cb2c49840928025ef7360}{getY}} () const
+\begin{DoxyCompactList}\small\item\em Gets the \mbox{\hyperlink{class_cell}{Cell}}\textquotesingle{}s Y value. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_cell_a989cee545edaa818bab0ae6627419250}\label{class_cell_a989cee545edaa818bab0ae6627419250}} 
+int \mbox{\hyperlink{class_cell_a989cee545edaa818bab0ae6627419250}{setX}} (int newX)
+\begin{DoxyCompactList}\small\item\em Sets the Cells X value. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_cell_a4cc90d99e603947aca4d36636c5868f8}\label{class_cell_a4cc90d99e603947aca4d36636c5868f8}} 
+int \mbox{\hyperlink{class_cell_a4cc90d99e603947aca4d36636c5868f8}{setY}} (int newY)
+\begin{DoxyCompactList}\small\item\em Sets the Cells Y value. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_cell_a7b85b2a5fb3ada8d2c72a7b47d0be0c8}\label{class_cell_a7b85b2a5fb3ada8d2c72a7b47d0be0c8}} 
+int \mbox{\hyperlink{class_cell_a7b85b2a5fb3ada8d2c72a7b47d0be0c8}{set\+Pos}} (int newX, int newY)
+\begin{DoxyCompactList}\small\item\em Sets the Cells X and Y values. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_cell_a9069ff95da52ea9b5d26afb31491b0f0}\label{class_cell_a9069ff95da52ea9b5d26afb31491b0f0}} 
+void {\bfseries Set\+Ground\+Type} (Cell\+::\+Ground\+Type type, int layer)
+\item 
+\mbox{\Hypertarget{class_cell_a76f8fc5512d9b90e64cb517caf35b520}\label{class_cell_a76f8fc5512d9b90e64cb517caf35b520}} 
+void {\bfseries Set\+Orientation} (Cell\+::\+Orientation new\+Orientation)
+\item 
+\mbox{\Hypertarget{class_cell_a07939c41f7c23d94fce21d0cc0386c5f}\label{class_cell_a07939c41f7c23d94fce21d0cc0386c5f}} 
+\mbox{\hyperlink{class_crop_square}{Crop\+Square}} \& {\bfseries Get\+Crop\+Square} ()
+\item 
+\mbox{\Hypertarget{class_cell_a2daf4768d03bff19c99d98b57e21fcae}\label{class_cell_a2daf4768d03bff19c99d98b57e21fcae}} 
+int {\bfseries get\+Cell\+Size} ()
+\item 
+\mbox{\Hypertarget{class_cell_a7ed4062121f066b1e24a33bd50253076}\label{class_cell_a7ed4062121f066b1e24a33bd50253076}} 
+int {\bfseries set\+Cell\+Size} (int new\+Size)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_cell_a7751d5fd43695331203955bbcea6fea8}\label{class_cell_a7751d5fd43695331203955bbcea6fea8}} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_item}{Item}} $>$ \mbox{\hyperlink{class_cell_a7751d5fd43695331203955bbcea6fea8}{Cell\+Item}} = nullptr
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_item}{Item}} that is in the cell. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_cell_ae044a0c1ef1dd0ca08ffe22c4b763433}\label{class_cell_ae044a0c1ef1dd0ca08ffe22c4b763433}} 
+bool \mbox{\hyperlink{class_cell_ae044a0c1ef1dd0ca08ffe22c4b763433}{is\+Room}} = false
+\begin{DoxyCompactList}\small\item\em Whether the cell is part of a room. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_cell_a69d99aeda5f9117695c42ed209b7cf60}\label{class_cell_a69d99aeda5f9117695c42ed209b7cf60}} 
+bool \mbox{\hyperlink{class_cell_a69d99aeda5f9117695c42ed209b7cf60}{is\+Walkable}} = true
+\begin{DoxyCompactList}\small\item\em Whether the cell is walkable. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_cell_ade10d579da1368e1549f459b0f7817e4}\label{class_cell_ade10d579da1368e1549f459b0f7817e4}} 
+double \mbox{\hyperlink{class_cell_ade10d579da1368e1549f459b0f7817e4}{terrain\+Elevation\+Value}} = 0
+\begin{DoxyCompactList}\small\item\em Variables used for terrain. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_cell_aa60b88885904744c1fcf2dcc33340b5b}\label{class_cell_aa60b88885904744c1fcf2dcc33340b5b}} 
+double {\bfseries climate} = 0
+\item 
+\mbox{\Hypertarget{class_cell_a5c5c2e992a94ad163631182d5ca781dc}\label{class_cell_a5c5c2e992a94ad163631182d5ca781dc}} 
+bool \mbox{\hyperlink{class_cell_a5c5c2e992a94ad163631182d5ca781dc}{is\+Grass}} = false
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_cell}{Cell}} types. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_cell_a7f6480ca2d7a2cac831f6f002b003f34}\label{class_cell_a7f6480ca2d7a2cac831f6f002b003f34}} 
+bool {\bfseries is\+Long\+Grass} = false
+\item 
+\mbox{\Hypertarget{class_cell_a4780ed406c80c504ec56ceeba687b669}\label{class_cell_a4780ed406c80c504ec56ceeba687b669}} 
+bool {\bfseries is\+Dirt} = false
+\item 
+\mbox{\Hypertarget{class_cell_aa487b6da2393cfcb56fd8d932760c8f2}\label{class_cell_aa487b6da2393cfcb56fd8d932760c8f2}} 
+bool {\bfseries is\+Tree} = false
+\item 
+\mbox{\Hypertarget{class_cell_a8a9e257ea9bc4b82a08c7f12e0cd86b4}\label{class_cell_a8a9e257ea9bc4b82a08c7f12e0cd86b4}} 
+bool {\bfseries is\+Wheat} = false
+\item 
+\mbox{\Hypertarget{class_cell_a5104aee73ce094c52fc1031189abba06}\label{class_cell_a5104aee73ce094c52fc1031189abba06}} 
+bool {\bfseries is\+Crop} = false
+\item 
+\mbox{\Hypertarget{class_cell_a21a30bfbc3060c24eb6827bb1e8f5e6d}\label{class_cell_a21a30bfbc3060c24eb6827bb1e8f5e6d}} 
+bool {\bfseries is\+Water} = false
+\item 
+\mbox{\Hypertarget{class_cell_a383109f46a09e873a77bd87f190ed127}\label{class_cell_a383109f46a09e873a77bd87f190ed127}} 
+bool {\bfseries is\+Fishing\+Bob} = false
+\item 
+\mbox{\Hypertarget{class_cell_a26ed869cefc2c04f0cf5d6b5b7a501a6}\label{class_cell_a26ed869cefc2c04f0cf5d6b5b7a501a6}} 
+bool {\bfseries is\+Sand} = false
+\item 
+\mbox{\Hypertarget{class_cell_a392fad3eb5320d10ae2662ade6e5d3b2}\label{class_cell_a392fad3eb5320d10ae2662ade6e5d3b2}} 
+bool {\bfseries is\+Snow} = false
+\item 
+\mbox{\Hypertarget{class_cell_a91362373fad9059334644537bc1359fe}\label{class_cell_a91362373fad9059334644537bc1359fe}} 
+bool {\bfseries is\+Wood} = false
+\item 
+\mbox{\Hypertarget{class_cell_a375ea846999641332a33d178a7f03620}\label{class_cell_a375ea846999641332a33d178a7f03620}} 
+bool {\bfseries is\+Stone} = false
+\item 
+\mbox{\Hypertarget{class_cell_a72ddbd29197ae6ca765bd8b3cc101510}\label{class_cell_a72ddbd29197ae6ca765bd8b3cc101510}} 
+bool {\bfseries is\+Rock} = false
+\item 
+\mbox{\Hypertarget{class_cell_a18a31874213ac8e564a7275cc9513de3}\label{class_cell_a18a31874213ac8e564a7275cc9513de3}} 
+bool {\bfseries is\+Wall} = false
+\item 
+\mbox{\Hypertarget{class_cell_adc3ea16f0b3507ec57314c926f5ebeef}\label{class_cell_adc3ea16f0b3507ec57314c926f5ebeef}} 
+bool {\bfseries is\+Display\+Case} = false
+\item 
+\mbox{\Hypertarget{class_cell_ae9801c9244755bf172aa850eec6563c6}\label{class_cell_ae9801c9244755bf172aa850eec6563c6}} 
+enum Cell\+::\+Ground\+Type {\bfseries ground\+Type}
+\item 
+\mbox{\Hypertarget{class_cell_a52b2d149bd8862de50cf890a7966297f}\label{class_cell_a52b2d149bd8862de50cf890a7966297f}} 
+enum Cell\+::\+Orientation {\bfseries orientation}
+\item 
+\mbox{\Hypertarget{class_cell_a4297a912d73d5d03ef4a9a843a06f437}\label{class_cell_a4297a912d73d5d03ef4a9a843a06f437}} 
+bool {\bfseries orientated} = false
+\item 
+\mbox{\Hypertarget{class_cell_a898f425bcd78a91fd4a85cfde07f9d56}\label{class_cell_a898f425bcd78a91fd4a85cfde07f9d56}} 
+\mbox{\hyperlink{class_texture2_d}{Texture2D}} {\bfseries layerd\+Sprite}
+\item 
+\mbox{\Hypertarget{class_cell_ab8b6e57403ca6bb3eb91f47c14017d26}\label{class_cell_ab8b6e57403ca6bb3eb91f47c14017d26}} 
+\mbox{\hyperlink{class_texture2_d}{Texture2D}} {\bfseries layerd\+Sprite\+\_\+normal}
+\item 
+\mbox{\Hypertarget{class_cell_a011ad5687c2240f9bc76ff994dbccac8}\label{class_cell_a011ad5687c2240f9bc76ff994dbccac8}} 
+std\+::map$<$ int, std\+::string $>$ {\bfseries cell\+Texture\+Layer}
+\item 
+\mbox{\Hypertarget{class_cell_a6cf716866c455e8f709f8256d3ade696}\label{class_cell_a6cf716866c455e8f709f8256d3ade696}} 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{struct_vegetation}{Vegetation}} $>$ $>$ \mbox{\hyperlink{class_cell_a6cf716866c455e8f709f8256d3ade696}{vegetation}}
+\begin{DoxyCompactList}\small\item\em Any dense vegetation on the cell. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_cell_a11e8737e7ee17b550d7b196e4b13607e}\label{class_cell_a11e8737e7ee17b550d7b196e4b13607e}} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_crop_square}{Crop\+Square}} $>$ {\bfseries crop\+Square}
+\item 
+\mbox{\Hypertarget{class_cell_adb0029991bea8c1b77957959aa0f4bf2}\label{class_cell_adb0029991bea8c1b77957959aa0f4bf2}} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_light_source}{Light\+Source}} $>$ \mbox{\hyperlink{class_cell_adb0029991bea8c1b77957959aa0f4bf2}{light}}
+\begin{DoxyCompactList}\small\item\em Lights that are placed on the cell. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_cell_a662f587184605cf4cac595ac35456c61}\label{class_cell_a662f587184605cf4cac595ac35456c61}} 
+glm\+::ivec2 \mbox{\hyperlink{class_cell_a662f587184605cf4cac595ac35456c61}{tile\+Pos}}
+\begin{DoxyCompactList}\small\item\em used to save where the tile is within the chunk \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_cell_ad593a4610787bf7d723b459a0b6ff3f2}\label{class_cell_ad593a4610787bf7d723b459a0b6ff3f2}} 
+\mbox{\hyperlink{class_timer}{Timer}} {\bfseries orientation\+Timer}
+\item 
+\mbox{\Hypertarget{class_cell_ab69a2a0ed14647641caffaea55cabeed}\label{class_cell_ab69a2a0ed14647641caffaea55cabeed}} 
+\mbox{\hyperlink{class_animation}{Animation}} {\bfseries animation}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_cell_ab517256beb40178f8752ce68196dce07}\label{class_cell_ab517256beb40178f8752ce68196dce07}} 
+\index{Cell@{Cell}!Cell@{Cell}}
+\index{Cell@{Cell}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{Cell()}{Cell()}}
+{\footnotesize\ttfamily Cell\+::\+Cell (\begin{DoxyParamCaption}\item[{b2\+World $\ast$}]{physics\+World,  }\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{layer,  }\item[{std\+::string}]{type }\end{DoxyParamCaption})}
+
+
+
+An alternate constructor. 
+
+This constructor requires an X and Y for the \mbox{\hyperlink{class_cell}{Cell}} 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/alli0/\+Documents/\+Git\+Hub/\+Game\+Engine/\+Client/\+Source/\+Source/Cell.\+h\item 
+C\+:/\+Users/alli0/\+Documents/\+Git\+Hub/\+Game\+Engine/\+Client/\+Source/\+Source/Cell.\+cpp\end{DoxyCompactItemize}

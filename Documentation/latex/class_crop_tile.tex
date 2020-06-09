@@ -1,0 +1,71 @@
+\hypertarget{class_crop_tile}{}\doxysection{Crop\+Tile Class Reference}
+\label{class_crop_tile}\index{CropTile@{CropTile}}
+Inheritance diagram for Crop\+Tile\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_crop_tile}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_crop_tile_a63db05cf374c47e885e9e83b7b56b02e}\label{class_crop_tile_a63db05cf374c47e885e9e83b7b56b02e}} 
+enum {\bfseries Orientation} \{ \newline
+{\bfseries top\+Left}, 
+{\bfseries top\+Middle}, 
+{\bfseries top\+Right}, 
+{\bfseries middle\+Left}, 
+\newline
+{\bfseries middle}, 
+{\bfseries middle\+Right}, 
+{\bfseries bottom\+Left}, 
+{\bfseries bottom\+Middle}, 
+\newline
+{\bfseries bottom\+Right}, 
+{\bfseries alone}, 
+{\bfseries vertical\+Middle}, 
+{\bfseries vertical\+End\+Top}, 
+\newline
+{\bfseries vertical\+End\+Bottom}, 
+{\bfseries horizontal\+Middle}, 
+{\bfseries horizontal\+End\+Left}, 
+{\bfseries horizontal\+End\+Right}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_crop_tile_a9e27550d8e48e60347027f346d17e9a4}\label{class_crop_tile_a9e27550d8e48e60347027f346d17e9a4}} 
+{\bfseries Crop\+Tile} (glm\+::ivec2 pos, int size)
+\item 
+\mbox{\Hypertarget{class_crop_tile_aff6dcca245fb184697b5a8194328f44b}\label{class_crop_tile_aff6dcca245fb184697b5a8194328f44b}} 
+json {\bfseries get\+Json} ()
+\item 
+\mbox{\Hypertarget{class_crop_tile_a77f453ce4252ef6da9f0d6eb96362cb5}\label{class_crop_tile_a77f453ce4252ef6da9f0d6eb96362cb5}} 
+void {\bfseries Set\+Orientation} (Orientation orient)
+\item 
+\mbox{\Hypertarget{class_crop_tile_ab717fde1a196c124d70de29890102275}\label{class_crop_tile_ab717fde1a196c124d70de29890102275}} 
+void \mbox{\hyperlink{class_crop_tile_ab717fde1a196c124d70de29890102275}{Render}} (\mbox{\hyperlink{class_g_l___renderer}{G\+L\+\_\+\+Renderer}} \&renderer)
+\begin{DoxyCompactList}\small\item\em Draw sprite. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_crop_tile_a0632506997a8d7cba8ebc5c4e818a980}\label{class_crop_tile_a0632506997a8d7cba8ebc5c4e818a980}} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_crop}{Crop}} $>$ {\bfseries crop}
+\item 
+\mbox{\Hypertarget{class_crop_tile_a4b50a682c022c15eaaebc38d7b228527}\label{class_crop_tile_a4b50a682c022c15eaaebc38d7b228527}} 
+enum Crop\+Tile\+::\+Orientation {\bfseries orientation}
+\item 
+\mbox{\Hypertarget{class_crop_tile_ac73bd35065d4a17f8b66f3212b4e53b1}\label{class_crop_tile_ac73bd35065d4a17f8b66f3212b4e53b1}} 
+bool {\bfseries is\+Tilled} = false
+\item 
+\mbox{\Hypertarget{class_crop_tile_a0c2ac43dbc9b80d655972d901a200297}\label{class_crop_tile_a0c2ac43dbc9b80d655972d901a200297}} 
+int {\bfseries ID} = -\/1
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/alli0/\+Documents/\+Git\+Hub/\+Game\+Engine/\+Client/\+Source/\+Source/Crop\+Tile.\+h\item 
+C\+:/\+Users/alli0/\+Documents/\+Git\+Hub/\+Game\+Engine/\+Client/\+Source/\+Source/Crop\+Tile.\+cpp\end{DoxyCompactItemize}

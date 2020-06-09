@@ -1,0 +1,101 @@
+\hypertarget{class_villager}{}\doxysection{Villager Class Reference}
+\label{class_villager}\index{Villager@{Villager}}
+Inheritance diagram for Villager\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=5.000000cm]{class_villager}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_villager_abf642785cf523f3c1888a0e7a1824efe}\label{class_villager_abf642785cf523f3c1888a0e7a1824efe}} 
+\mbox{\hyperlink{class_villager_abf642785cf523f3c1888a0e7a1824efe}{Villager}} ()
+\begin{DoxyCompactList}\small\item\em Constructor / Destructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_villager_ac8c76203e1f84f5f7b0dc7c4a01f6ad9}\label{class_villager_ac8c76203e1f84f5f7b0dc7c4a01f6ad9}} 
+void \mbox{\hyperlink{class_villager_ac8c76203e1f84f5f7b0dc7c4a01f6ad9}{Generate\+Villager}} ()
+\begin{DoxyCompactList}\small\item\em Generate the \mbox{\hyperlink{class_n_p_c}{N\+PC}} with random values. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_villager_a6ab079ce22f820fe96a4a1f456b50772}\label{class_villager_a6ab079ce22f820fe96a4a1f456b50772}} 
+void \mbox{\hyperlink{class_villager_a6ab079ce22f820fe96a4a1f456b50772}{Update}} ()
+\begin{DoxyCompactList}\small\item\em Get a shared pointer to this object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_villager_a8cfb905de79e5e4a226c0098fd2a2756}\label{class_villager_a8cfb905de79e5e4a226c0098fd2a2756}} 
+void \mbox{\hyperlink{class_villager_a8cfb905de79e5e4a226c0098fd2a2756}{Render}} (\mbox{\hyperlink{class_g_l___renderer}{G\+L\+\_\+\+Renderer}} \&renderer)
+\begin{DoxyCompactList}\small\item\em Draw sprite. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_villager_ac4d82c95c54d58adf95277f92e2ee29b}\label{class_villager_ac4d82c95c54d58adf95277f92e2ee29b}} 
+enum {\bfseries World\+Actions} \{ {\bfseries none}, 
+{\bfseries to\+Shop}, 
+{\bfseries to\+Home}, 
+{\bfseries wondering}
+ \}
+\item 
+\mbox{\Hypertarget{class_villager_a22e459a993381abd206431bbbdafcd71}\label{class_villager_a22e459a993381abd206431bbbdafcd71}} 
+enum {\bfseries Shop\+Actions} \{ \newline
+{\bfseries browsing}, 
+{\bfseries look\+At\+Item}, 
+{\bfseries paying}, 
+{\bfseries exiting}, 
+\newline
+{\bfseries idle}, 
+{\bfseries moving\+To\+Postion}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_villager_ad7bc46be4e5338553282885e2bb122eb}\label{class_villager_ad7bc46be4e5338553282885e2bb122eb}} 
+void {\bfseries Render\+Body} (int index)
+\item 
+virtual void \mbox{\hyperlink{class_villager_abf3236a8aa45c2311c01ae7d6033e254}{Update\+Path\+Position}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_villager_a5faf0212c5588b2b12a7aad192e49961}\label{class_villager_a5faf0212c5588b2b12a7aad192e49961}} 
+\mbox{\hyperlink{class_g_l___renderer}{G\+L\+\_\+\+Renderer}} $\ast$ {\bfseries I\+\_\+renderer}
+\item 
+\mbox{\Hypertarget{class_villager_a8b6b33e10401a8b36aa1fd5f57b39331}\label{class_villager_a8b6b33e10401a8b36aa1fd5f57b39331}} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_villager}{Villager}} $>$ {\bfseries this\+Villager\+Pointer} = nullptr
+\item 
+\mbox{\Hypertarget{class_villager_a107d91bab127b4454d09c6c1f8ad8642}\label{class_villager_a107d91bab127b4454d09c6c1f8ad8642}} 
+float {\bfseries walk\+Speed} = 1.\+0f
+\item 
+\mbox{\Hypertarget{class_villager_a24a01dd04fea6388b4a56e2ab3586b30}\label{class_villager_a24a01dd04fea6388b4a56e2ab3586b30}} 
+bool \mbox{\hyperlink{class_villager_a24a01dd04fea6388b4a56e2ab3586b30}{is\+Wondering}} = true
+\begin{DoxyCompactList}\small\item\em If the villager has nothing to do. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_villager_a040e9a936947f0b040785326d822092e}\label{class_villager_a040e9a936947f0b040785326d822092e}} 
+bool {\bfseries is\+Traveling\+To\+Shop} = false
+\item 
+\mbox{\Hypertarget{class_villager_abbdd0ce0f5bd32c29d8259001c5b5fd9}\label{class_villager_abbdd0ce0f5bd32c29d8259001c5b5fd9}} 
+enum Villager\+::\+World\+Actions {\bfseries w\+\_\+action}
+\item 
+\mbox{\Hypertarget{class_villager_a6a39e96217b6a1137b931065e48f6d13}\label{class_villager_a6a39e96217b6a1137b931065e48f6d13}} 
+enum Villager\+::\+Shop\+Actions {\bfseries s\+\_\+action}
+\item 
+\mbox{\Hypertarget{class_villager_ab7cff8528c6f643fb4582fcbcafc5479}\label{class_villager_ab7cff8528c6f643fb4582fcbcafc5479}} 
+bool {\bfseries is\+In\+Shop} = false
+\item 
+\mbox{\Hypertarget{class_villager_a7351aee5daad086b1af3d43d3d98df73}\label{class_villager_a7351aee5daad086b1af3d43d3d98df73}} 
+int {\bfseries shop\+Timeout} = 50000
+\item 
+\mbox{\Hypertarget{class_villager_a9673ef7c1f8ce49c4d7126c32e511c4d}\label{class_villager_a9673ef7c1f8ce49c4d7126c32e511c4d}} 
+unsigned int \mbox{\hyperlink{class_villager_a9673ef7c1f8ce49c4d7126c32e511c4d}{money}} = 0
+\begin{DoxyCompactList}\small\item\em Money (proportional to how well the town is doing?) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_villager_abf3236a8aa45c2311c01ae7d6033e254}\label{class_villager_abf3236a8aa45c2311c01ae7d6033e254}} 
+\index{Villager@{Villager}!UpdatePathPosition@{UpdatePathPosition}}
+\index{UpdatePathPosition@{UpdatePathPosition}!Villager@{Villager}}
+\doxysubsubsection{\texorpdfstring{UpdatePathPosition()}{UpdatePathPosition()}}
+{\footnotesize\ttfamily void Villager\+::\+Update\+Path\+Position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+this-\/$>$rotation = angle\+In\+Degrees + 90;
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/alli0/\+Documents/\+Git\+Hub/\+Game\+Engine/\+Client/\+Source/\+Source/Villager.\+h\item 
+C\+:/\+Users/alli0/\+Documents/\+Git\+Hub/\+Game\+Engine/\+Client/\+Source/\+Source/Villager.\+cpp\end{DoxyCompactItemize}

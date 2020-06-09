@@ -1,0 +1,72 @@
+\hypertarget{class_button}{}\doxysection{Button Class Reference}
+\label{class_button}\index{Button@{Button}}
+Inheritance diagram for Button\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_button}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_button_a7a335d37786e9386cda256af268b3488}\label{class_button_a7a335d37786e9386cda256af268b3488}} 
+{\bfseries Button} (glm\+::vec2 pos, glm\+::vec2 size, \mbox{\hyperlink{class_texture2_d}{Texture2D}} sprite, glm\+::vec3 color=glm\+::vec3(1.\+0f))
+\item 
+\mbox{\Hypertarget{class_button_a22ff670280124491a9719f6f22513df3}\label{class_button_a22ff670280124491a9719f6f22513df3}} 
+{\bfseries Button} (std\+::string button\+Text, glm\+::vec2 position, std\+::string texture\+Location, glm\+::vec2 size, glm\+::vec3 button\+Colour, glm\+::vec3 text\+Colour)
+\item 
+\mbox{\Hypertarget{class_button_a22160a1c9488afe1fe5fdd4747665625}\label{class_button_a22160a1c9488afe1fe5fdd4747665625}} 
+\mbox{\hyperlink{class_button_a22160a1c9488afe1fe5fdd4747665625}{Button}} (std\+::string new\+Text)
+\begin{DoxyCompactList}\small\item\em Constructor (takes in text for the button) Leave \char`\"{} \char`\"{}\char`\"{} \char`\"{} for no text. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_button_a7890ab6f89aa45852ba0f2eede225ffa}\label{class_button_a7890ab6f89aa45852ba0f2eede225ffa}} 
+{\bfseries Button} (std\+::string new\+Text, std\+::string background\+Type)
+\item 
+\mbox{\Hypertarget{class_button_a2bccfb068783da2e429da4991fe482dd}\label{class_button_a2bccfb068783da2e429da4991fe482dd}} 
+{\bfseries Button} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_item}{Item}} $>$ \&item)
+\item 
+\mbox{\Hypertarget{class_button_a2a001eb9c3cc8ae54768a850dd345002}\label{class_button_a2a001eb9c3cc8ae54768a850dd345002}} 
+\mbox{\hyperlink{class_button_a2a001eb9c3cc8ae54768a850dd345002}{$\sim$\+Button}} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_button_af14a19bce4f7b915780afe2850f6426b}\label{class_button_af14a19bce4f7b915780afe2850f6426b}} 
+void \mbox{\hyperlink{class_button_af14a19bce4f7b915780afe2850f6426b}{Render}} (\mbox{\hyperlink{class_g_l___renderer}{G\+L\+\_\+\+Renderer}} \&renderer)
+\begin{DoxyCompactList}\small\item\em Render the button. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_button_af8218a7290ca4727f3f159b6bdca99d0}\label{class_button_af8218a7290ca4727f3f159b6bdca99d0}} 
+std\+::string \mbox{\hyperlink{class_button_af8218a7290ca4727f3f159b6bdca99d0}{set\+Text}} (std\+::string new\+Text)
+\begin{DoxyCompactList}\small\item\em Change the buttons text. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_button_adb67b08cffa9d45128b9703ec86632a6}\label{class_button_adb67b08cffa9d45128b9703ec86632a6}} 
+bool \mbox{\hyperlink{class_button_adb67b08cffa9d45128b9703ec86632a6}{set\+Mouse\+Over\+Increase\+Size}} (int yay\+Or\+Nay)
+\begin{DoxyCompactList}\small\item\em If the button should increase size when mouseover. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_button_a7206642fe70ada37b636542b69bf93e5}\label{class_button_a7206642fe70ada37b636542b69bf93e5}} 
+int {\bfseries set\+Size\+Increase} (int new\+Size)
+\item 
+\mbox{\Hypertarget{class_button_a143f0a274b03d2bede8a84e37cd43dc7}\label{class_button_a143f0a274b03d2bede8a84e37cd43dc7}} 
+bool \mbox{\hyperlink{class_button_a143f0a274b03d2bede8a84e37cd43dc7}{is\+Pressed}} ()
+\begin{DoxyCompactList}\small\item\em If the button has been pressed. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_button_a70c28ee3bec38814f77e6606e2da19ef}\label{class_button_a70c28ee3bec38814f77e6606e2da19ef}} 
+bool {\bfseries is\+Hovered} ()
+\item 
+\mbox{\Hypertarget{class_button_adda602048d4c435972b6b996d4f43da8}\label{class_button_adda602048d4c435972b6b996d4f43da8}} 
+void {\bfseries Update\+Info} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_button_af4b5344b701260ec7005be52f3905fa9}\label{class_button_af4b5344b701260ec7005be52f3905fa9}} 
+glm\+::vec3 {\bfseries text\+Colour}
+\item 
+\mbox{\Hypertarget{class_button_ab9782f3b07bceaed91c52359ffacbe89}\label{class_button_ab9782f3b07bceaed91c52359ffacbe89}} 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_item}{Item}} $>$ $>$ \mbox{\hyperlink{class_button_ab9782f3b07bceaed91c52359ffacbe89}{button\+Item}}
+\begin{DoxyCompactList}\small\item\em pointer to buttons item (if any) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_button_aceda19f740159a556fdcba75c5978919}\label{class_button_aceda19f740159a556fdcba75c5978919}} 
+void \mbox{\hyperlink{class_button_aceda19f740159a556fdcba75c5978919}{Button\+Pressed}} ()
+\begin{DoxyCompactList}\small\item\em Runs when the button is pressed. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/alli0/\+Documents/\+Git\+Hub/\+Game\+Engine/\+Client/\+Source/\+Source/Button.\+h\item 
+C\+:/\+Users/alli0/\+Documents/\+Git\+Hub/\+Game\+Engine/\+Client/\+Source/\+Source/Button.\+cpp\end{DoxyCompactItemize}

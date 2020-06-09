@@ -1,0 +1,65 @@
+\hypertarget{class_instance}{}\doxysection{Instance Class Reference}
+\label{class_instance}\index{Instance@{Instance}}
+Inheritance diagram for Instance\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_instance}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_instance_a399506c7e75ab9ab78fbc34a25932bbd}\label{class_instance_a399506c7e75ab9ab78fbc34a25932bbd}} 
+\mbox{\hyperlink{class_instance_a399506c7e75ab9ab78fbc34a25932bbd}{Instance}} ()
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_instance_a8b82a161d58f361dab500c5d977474f0}\label{class_instance_a8b82a161d58f361dab500c5d977474f0}} 
+{\bfseries Instance} (json data)
+\item 
+\mbox{\Hypertarget{class_instance_a6e6f2ab25aa37838f8c4af014f663117}\label{class_instance_a6e6f2ab25aa37838f8c4af014f663117}} 
+\mbox{\hyperlink{class_instance_a6e6f2ab25aa37838f8c4af014f663117}{$\sim$\+Instance}} ()
+\begin{DoxyCompactList}\small\item\em Deconstructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_instance_ace8b1a3164c9a5172c720126cc6f09eb}\label{class_instance_ace8b1a3164c9a5172c720126cc6f09eb}} 
+virtual json {\bfseries Get\+Json} ()
+\item 
+\mbox{\Hypertarget{class_instance_aa5b54a74ddfcc0bb361d57092c89df8c}\label{class_instance_aa5b54a74ddfcc0bb361d57092c89df8c}} 
+virtual void \mbox{\hyperlink{class_instance_aa5b54a74ddfcc0bb361d57092c89df8c}{on\+Enter}} (\mbox{\hyperlink{class_player}{Player}} \&player)
+\begin{DoxyCompactList}\small\item\em When player enters instance. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_instance_a2630b7db553c0937232073ace143917f}\label{class_instance_a2630b7db553c0937232073ace143917f}} 
+virtual void \mbox{\hyperlink{class_instance_a2630b7db553c0937232073ace143917f}{Instance\+Setup}} (\mbox{\hyperlink{class_player}{Player}} \&player)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_instance}{Instance}} setup. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_instance_ae9a3b8d321420890ae917f125f16683e}\label{class_instance_ae9a3b8d321420890ae917f125f16683e}} 
+virtual void \mbox{\hyperlink{class_instance_ae9a3b8d321420890ae917f125f16683e}{on\+Exit}} (\mbox{\hyperlink{class_player}{Player}} \&player)
+\begin{DoxyCompactList}\small\item\em When player exits instace. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_instance_a31675454c429ea87750fc389e151f0ad}\label{class_instance_a31675454c429ea87750fc389e151f0ad}} 
+virtual void \mbox{\hyperlink{class_instance_a31675454c429ea87750fc389e151f0ad}{Render}} (\mbox{\hyperlink{class_g_l___renderer}{G\+L\+\_\+\+Renderer}} \&Renderer)
+\begin{DoxyCompactList}\small\item\em Render. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_instance_a781a039b22f47994f54aed6f3148d5f6}\label{class_instance_a781a039b22f47994f54aed6f3148d5f6}} 
+virtual void \mbox{\hyperlink{class_instance_a781a039b22f47994f54aed6f3148d5f6}{Update}} ()
+\begin{DoxyCompactList}\small\item\em Update. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_instance_add2a41e5ed93e90184197aaf8ca870fd}\label{class_instance_add2a41e5ed93e90184197aaf8ca870fd}} 
+std\+::unique\+\_\+ptr$<$ b2\+World $>$ \mbox{\hyperlink{class_instance_add2a41e5ed93e90184197aaf8ca870fd}{I\+\_\+\+Physics}}
+\begin{DoxyCompactList}\small\item\em Physics instance. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_instance_a23bbe1d13d5981be726e28fd14bef7de}\label{class_instance_a23bbe1d13d5981be726e28fd14bef7de}} 
+\mbox{\hyperlink{class_player}{Player}} \mbox{\hyperlink{class_instance_a23bbe1d13d5981be726e28fd14bef7de}{I\+\_\+player}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_player}{Player}} for instance. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_instance_a86d74a92fd42227c9d18cf9fc8ceeaa0}\label{class_instance_a86d74a92fd42227c9d18cf9fc8ceeaa0}} 
+std\+::vector$<$ \mbox{\hyperlink{class_network_player}{Network\+Player}} $>$ \mbox{\hyperlink{class_instance_a86d74a92fd42227c9d18cf9fc8ceeaa0}{network\+Players}}
+\begin{DoxyCompactList}\small\item\em List of players in instance. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_instance_af2b1f6a248de0256842de16f29dde5ef}\label{class_instance_af2b1f6a248de0256842de16f29dde5ef}} 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_n_p_c}{N\+PC}} $>$ $>$ {\bfseries npcs}
+\item 
+\mbox{\Hypertarget{class_instance_a4571bd3e9b0abe9d523267b07506a78e}\label{class_instance_a4571bd3e9b0abe9d523267b07506a78e}} 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_n_p_c}{N\+PC}} $>$ $>$ {\bfseries enemies}
+\item 
+\mbox{\Hypertarget{class_instance_a19a8ec2b8bf0e20d3221ac191783ef33}\label{class_instance_a19a8ec2b8bf0e20d3221ac191783ef33}} 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_cell}{Cell}} $>$ $>$ \mbox{\hyperlink{class_instance_a19a8ec2b8bf0e20d3221ac191783ef33}{updated\+Cells}}
+\begin{DoxyCompactList}\small\item\em Vector of cells that the user changes to send. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/alli0/\+Documents/\+Git\+Hub/\+Game\+Engine/\+Client/\+Source/\+Source/Instance.\+h\item 
+C\+:/\+Users/alli0/\+Documents/\+Git\+Hub/\+Game\+Engine/\+Client/\+Source/\+Source/Instance.\+cpp\end{DoxyCompactItemize}

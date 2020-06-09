@@ -1,0 +1,56 @@
+\hypertarget{class_rendering}{}\doxysection{Rendering Class Reference}
+\label{class_rendering}\index{Rendering@{Rendering}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_rendering_a2d6135f6f0563031d59f12e81c15416d}\label{class_rendering_a2d6135f6f0563031d59f12e81c15416d}} 
+\mbox{\hyperlink{class_rendering_a2d6135f6f0563031d59f12e81c15416d}{Rendering}} ()
+\begin{DoxyCompactList}\small\item\em Constructor that initalises all the texture file locations. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_rendering_a8bbf821e06ed0a707b080a12cdda8896}\label{class_rendering_a8bbf821e06ed0a707b080a12cdda8896}} 
+\mbox{\hyperlink{class_rendering_a8bbf821e06ed0a707b080a12cdda8896}{$\sim$\+Rendering}} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_rendering_a4f9169ae0196311cf66351536c423505}{Render\+Objects}} (\mbox{\hyperlink{class_world}{World}} \&world, \mbox{\hyperlink{class_g_l___renderer}{G\+L\+\_\+\+Renderer}} \&renderer, \mbox{\hyperlink{class_player}{Player}} \&player, \mbox{\hyperlink{class_game_settings}{Game\+Settings}} \&game\+Settings)
+\begin{DoxyCompactList}\small\item\em Render all game objects. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_rendering_ab1ec3b0222092b6facd14fc6379211de}\label{class_rendering_ab1ec3b0222092b6facd14fc6379211de}} 
+void \mbox{\hyperlink{class_rendering_ab1ec3b0222092b6facd14fc6379211de}{Render\+Level}} (\mbox{\hyperlink{class_level}{Level}} \&level, \mbox{\hyperlink{class_game_settings}{Game\+Settings}} \&game\+Settings, \mbox{\hyperlink{class_player}{Player}} \&player, \mbox{\hyperlink{class_g_l___renderer}{G\+L\+\_\+\+Renderer}} \&renderer)
+\begin{DoxyCompactList}\small\item\em Renders the level. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_rendering_a03828a12409c463c48bf0169541feafd}\label{class_rendering_a03828a12409c463c48bf0169541feafd}} 
+void \mbox{\hyperlink{class_rendering_a03828a12409c463c48bf0169541feafd}{Render\+Building}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_building}{Building}} $>$ \&building, \mbox{\hyperlink{class_game_settings}{Game\+Settings}} \&game\+Settings, \mbox{\hyperlink{class_player}{Player}} \&player, S\+D\+L\+\_\+\+Renderer $\ast$renderer)
+\begin{DoxyCompactList}\small\item\em Renders a building. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_rendering_a1022318901e5a8af37c49b6086cf0a48}\label{class_rendering_a1022318901e5a8af37c49b6086cf0a48}} 
+void \mbox{\hyperlink{class_rendering_a1022318901e5a8af37c49b6086cf0a48}{Render\+Player}} (S\+D\+L\+\_\+\+Renderer $\ast$renderer, \mbox{\hyperlink{class_player}{Player}} \&player, \mbox{\hyperlink{class_level}{Level}} \&level)
+\begin{DoxyCompactList}\small\item\em Render player. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_rendering_a27cb9dd1eb16459cdf2ae0ab463d3183}\label{class_rendering_a27cb9dd1eb16459cdf2ae0ab463d3183}} 
+void \mbox{\hyperlink{class_rendering_a27cb9dd1eb16459cdf2ae0ab463d3183}{render\+Cells\+Around\+Object}} (\mbox{\hyperlink{class_level}{Level}} \&level, int \&x, int \&y)
+\begin{DoxyCompactList}\small\item\em render cells around objects \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_rendering_abcecfb953aa211a754a296848846c72b}\label{class_rendering_abcecfb953aa211a754a296848846c72b}} 
+void {\bfseries Assign\+Tile\+Sprites} (std\+::vector$<$ std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_cell}{Cell}} $>$$>$$>$ \&tiles, int x, int y)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_rendering_ab431960e0eb283b5d26a16c3116c4978}\label{class_rendering_ab431960e0eb283b5d26a16c3116c4978}} 
+bool \mbox{\hyperlink{class_rendering_ab431960e0eb283b5d26a16c3116c4978}{render\+Stats}} = false
+\begin{DoxyCompactList}\small\item\em Render player stats. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_rendering_ae1ae39a7f2b2bced88f8ee080b2d4bc8}\label{class_rendering_ae1ae39a7f2b2bced88f8ee080b2d4bc8}} 
+bool \mbox{\hyperlink{class_rendering_ae1ae39a7f2b2bced88f8ee080b2d4bc8}{is\+There\+Darkness}} = true
+\begin{DoxyCompactList}\small\item\em If the game has darkness. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_rendering_a4f9169ae0196311cf66351536c423505}\label{class_rendering_a4f9169ae0196311cf66351536c423505}} 
+\index{Rendering@{Rendering}!RenderObjects@{RenderObjects}}
+\index{RenderObjects@{RenderObjects}!Rendering@{Rendering}}
+\doxysubsubsection{\texorpdfstring{RenderObjects()}{RenderObjects()}}
+{\footnotesize\ttfamily void Rendering\+::\+Render\+Objects (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_world}{World}} \&}]{world,  }\item[{\mbox{\hyperlink{class_g_l___renderer}{G\+L\+\_\+\+Renderer}} \&}]{renderer,  }\item[{\mbox{\hyperlink{class_player}{Player}} \&}]{player,  }\item[{\mbox{\hyperlink{class_game_settings}{Game\+Settings}} \&}]{game\+Settings }\end{DoxyParamCaption})}
+
+
+
+Render all game objects. 
+
+Renders the chunks of cells. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/alli0/\+Documents/\+Git\+Hub/\+Game\+Engine/\+Client/\+Source/\+Source/Rendering.\+h\item 
+C\+:/\+Users/alli0/\+Documents/\+Git\+Hub/\+Game\+Engine/\+Client/\+Source/\+Source/Rendering.\+cpp\end{DoxyCompactItemize}

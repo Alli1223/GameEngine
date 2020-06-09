@@ -1,0 +1,70 @@
+\hypertarget{class_fishing_rod}{}\doxysection{Fishing\+Rod Class Reference}
+\label{class_fishing_rod}\index{FishingRod@{FishingRod}}
+Inheritance diagram for Fishing\+Rod\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{class_fishing_rod}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_fishing_rod_a5119fbd71e88d917b8df5c9afe21bfc0}\label{class_fishing_rod_a5119fbd71e88d917b8df5c9afe21bfc0}} 
+enum {\bfseries Cast\+Direction} \{ \newline
+{\bfseries none}, 
+{\bfseries left}, 
+{\bfseries right}, 
+{\bfseries up}, 
+\newline
+{\bfseries down}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_fishing_rod_a9558658aa0de98a3e0e3e6840419ca66}\label{class_fishing_rod_a9558658aa0de98a3e0e3e6840419ca66}} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_item}{Item}} $>$ {\bfseries get\+Shared\+Pointer} ()
+\item 
+\mbox{\Hypertarget{class_fishing_rod_a42c480201f361ade3863343666e4ed91}\label{class_fishing_rod_a42c480201f361ade3863343666e4ed91}} 
+void {\bfseries Render} (\mbox{\hyperlink{class_g_l___renderer}{G\+L\+\_\+\+Renderer}} \&renderer, \mbox{\hyperlink{class_world}{World}} \&world)
+\item 
+\mbox{\Hypertarget{class_fishing_rod_a14047b05eee869e82ca0962d91efbc30}\label{class_fishing_rod_a14047b05eee869e82ca0962d91efbc30}} 
+void \mbox{\hyperlink{class_fishing_rod_a14047b05eee869e82ca0962d91efbc30}{Use}} (\mbox{\hyperlink{class_g_l___renderer}{G\+L\+\_\+\+Renderer}} \&renderer, \mbox{\hyperlink{class_world}{World}} \&world, \mbox{\hyperlink{class_player}{Player}} \&player)
+\begin{DoxyCompactList}\small\item\em Runs when an item is selected and clicked. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_fishing_rod_ad6620ded5642df741959b1be94e50f6b}\label{class_fishing_rod_ad6620ded5642df741959b1be94e50f6b}} 
+void {\bfseries Stop} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_fishing_rod_a97510f55739594716469142fef0bae81}\label{class_fishing_rod_a97510f55739594716469142fef0bae81}} 
+enum Fishing\+Rod\+::\+Cast\+Direction {\bfseries cast\+Direction}
+\item 
+\mbox{\Hypertarget{class_fishing_rod_acd09960fe128d0bcdc9b81524b74aaec}\label{class_fishing_rod_acd09960fe128d0bcdc9b81524b74aaec}} 
+\mbox{\hyperlink{struct_bobber}{Bobber}} {\bfseries bobber}
+\item 
+\mbox{\Hypertarget{class_fishing_rod_a58a2e46ac747506fcfe0320158b575ef}\label{class_fishing_rod_a58a2e46ac747506fcfe0320158b575ef}} 
+\mbox{\hyperlink{class_animation}{Animation}} {\bfseries casting\+Anim}
+\item 
+\mbox{\Hypertarget{class_fishing_rod_ac400c863c7dc0418a1712504b192012e}\label{class_fishing_rod_ac400c863c7dc0418a1712504b192012e}} 
+bool {\bfseries casting\+Line} = false
+\item 
+\mbox{\Hypertarget{class_fishing_rod_a38e7d0266d5dabdcae115f3b68534fa7}\label{class_fishing_rod_a38e7d0266d5dabdcae115f3b68534fa7}} 
+bool {\bfseries is\+Fishing} = false
+\item 
+\mbox{\Hypertarget{class_fishing_rod_af98f7b7032ad23b2c6d6f16cc74a4913}\label{class_fishing_rod_af98f7b7032ad23b2c6d6f16cc74a4913}} 
+bool {\bfseries flip\+Sprite}
+\item 
+\mbox{\Hypertarget{class_fishing_rod_a198b26d50d44d5d895a7b440fec97132}\label{class_fishing_rod_a198b26d50d44d5d895a7b440fec97132}} 
+bool {\bfseries waiting\+For\+Hook} = false
+\item 
+\mbox{\Hypertarget{class_fishing_rod_ad6b0f9e6481d8a59ff23dc4c04eba26b}\label{class_fishing_rod_ad6b0f9e6481d8a59ff23dc4c04eba26b}} 
+float {\bfseries bobber\+Distance} = 0
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/alli0/\+Documents/\+Git\+Hub/\+Game\+Engine/\+Client/\+Source/\+Source/Fishing\+Rod.\+h\item 
+C\+:/\+Users/alli0/\+Documents/\+Git\+Hub/\+Game\+Engine/\+Client/\+Source/\+Source/Fishing\+Rod.\+cpp\end{DoxyCompactItemize}

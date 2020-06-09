@@ -1,0 +1,170 @@
+\hypertarget{class_network_manager}{}\doxysection{Network\+Manager Class Reference}
+\label{class_network_manager}\index{NetworkManager@{NetworkManager}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_network_manager_a2cccd3111fc831792a1f1d2539a18280}\label{class_network_manager_a2cccd3111fc831792a1f1d2539a18280}} 
+int {\bfseries init} (std\+::string player\+Name)
+\item 
+\mbox{\Hypertarget{class_network_manager_ac1b129b74a81aba737be5b001e20966c}\label{class_network_manager_ac1b129b74a81aba737be5b001e20966c}} 
+void {\bfseries Connect} ()
+\item 
+\mbox{\Hypertarget{class_network_manager_ac40326b25a2f59fb56878be4fedf47a4}\label{class_network_manager_ac40326b25a2f59fb56878be4fedf47a4}} 
+void \mbox{\hyperlink{class_network_manager_ac40326b25a2f59fb56878be4fedf47a4}{Network\+Update}} (b2\+World $\ast$I\+\_\+\+Physics, \mbox{\hyperlink{class_player}{Player}} \&player)
+\begin{DoxyCompactList}\small\item\em Multi-\/threaded network update. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_network_manager_a5044f57d90776918ddf5df8e5e62065b}{Network\+Update}} (\mbox{\hyperlink{class_world}{World}} \&world, b2\+World $\ast$I\+\_\+\+Physics, std\+::vector$<$ \mbox{\hyperlink{class_network_player}{Network\+Player}} $>$ \&players, \mbox{\hyperlink{class_player}{Player}} \&player)
+\begin{DoxyCompactList}\small\item\em Main Network update function. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_network_manager_af756c09e534cd254471099f7d3495f5b}\label{class_network_manager_af756c09e534cd254471099f7d3495f5b}} 
+bool {\bfseries Update\+Network\+Player} (json \&data, std\+::string name)
+\item 
+void \mbox{\hyperlink{class_network_manager_af437b7384d25d4e2328d6666860ae1b2}{send\+T\+C\+P\+Message}} (std\+::string message)
+\begin{DoxyCompactList}\small\item\em Send a message using T\+CP. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_network_manager_abb0fe5a59d1589f86fceab2b0b284251}\label{class_network_manager_abb0fe5a59d1589f86fceab2b0b284251}} 
+bool \mbox{\hyperlink{class_network_manager_abb0fe5a59d1589f86fceab2b0b284251}{Sawn\+Entity}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_game_object}{Game\+Object}} $>$ entity)
+\begin{DoxyCompactList}\small\item\em Sends a message to server to spawn entity. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_network_manager_aaa5eefe2020839ee668e6a42126a25e8}\label{class_network_manager_aaa5eefe2020839ee668e6a42126a25e8}} 
+void \mbox{\hyperlink{class_network_manager_aaa5eefe2020839ee668e6a42126a25e8}{Process\+Network\+Objects}} (b2\+World $\ast$I\+\_\+\+Physics, \mbox{\hyperlink{class_player}{Player}} \&player)
+\begin{DoxyCompactList}\small\item\em Process the players location from json. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_network_manager_a1a1f7af606108069df0d65aa06325536}\label{class_network_manager_a1a1f7af606108069df0d65aa06325536}} 
+void \mbox{\hyperlink{class_network_manager_a1a1f7af606108069df0d65aa06325536}{Process\+Network\+Objects\+Thread}} (b2\+World $\ast$I\+\_\+\+Physics, \mbox{\hyperlink{class_player}{Player}} \&player)
+\begin{DoxyCompactList}\small\item\em Process the players location from json. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_network_manager_a85c1aaacd114ae4f088fd9ed5f443a3b}{Map\+Network\+Update}} (\mbox{\hyperlink{class_world}{World}} \&level)
+\begin{DoxyCompactList}\small\item\em Process cell data. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_network_manager_a03b82933d6b245722d88a226f49c877a}{Recieve\+Message}} ()
+\begin{DoxyCompactList}\small\item\em Return a string from recieve message. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_network_manager_adca0f04cb6be9396235bcac36f87f25b}\label{class_network_manager_adca0f04cb6be9396235bcac36f87f25b}} 
+std\+::string \mbox{\hyperlink{class_network_manager_adca0f04cb6be9396235bcac36f87f25b}{get\+Server\+IP}} ()
+\begin{DoxyCompactList}\small\item\em get and set server IP address \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_network_manager_add68880a0e4324aaf3b0d69abc5d6aa7}\label{class_network_manager_add68880a0e4324aaf3b0d69abc5d6aa7}} 
+std\+::string {\bfseries set\+Server\+IP} (std\+::string new\+IP)
+\item 
+\mbox{\Hypertarget{class_network_manager_af025f4f41cf21252ca2725529781c2a3}\label{class_network_manager_af025f4f41cf21252ca2725529781c2a3}} 
+std\+::string \mbox{\hyperlink{class_network_manager_af025f4f41cf21252ca2725529781c2a3}{get\+Player\+Name}} ()
+\begin{DoxyCompactList}\small\item\em get and set server IP address \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_network_manager_a3557612eb616fa65ce53051397626d01}\label{class_network_manager_a3557612eb616fa65ce53051397626d01}} 
+std\+::string {\bfseries set\+Player\+Name} (std\+::string new\+Player\+Name)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_network_manager_a5e039fb8cf5596dbac6d477b873560ad}\label{class_network_manager_a5e039fb8cf5596dbac6d477b873560ad}} 
+std\+::vector$<$ \mbox{\hyperlink{class_network_player}{Network\+Player}} $>$ $\ast$ {\bfseries all\+Players}
+\item 
+\mbox{\Hypertarget{class_network_manager_a85418cd54130c42bed5ad47bee681b3b}\label{class_network_manager_a85418cd54130c42bed5ad47bee681b3b}} 
+std\+::map$<$ int, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_enemy}{Enemy}} $>$ $>$ {\bfseries all\+Enemies}
+\item 
+\mbox{\Hypertarget{class_network_manager_a48d9de0ebcd0ad4c823253e5ddce7c36}\label{class_network_manager_a48d9de0ebcd0ad4c823253e5ddce7c36}} 
+std\+::map$<$ int, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_projectile}{Projectile}} $>$ $>$ {\bfseries all\+Projectiles}
+\item 
+\mbox{\Hypertarget{class_network_manager_af7ae9d3adcce857e5e2ce4824c3bb48e}\label{class_network_manager_af7ae9d3adcce857e5e2ce4824c3bb48e}} 
+int {\bfseries port} = 2222
+\item 
+\mbox{\Hypertarget{class_network_manager_a0bf26ed26602a305d3600779daf90968}\label{class_network_manager_a0bf26ed26602a305d3600779daf90968}} 
+std\+::string {\bfseries External\+I\+P\+Address} = \char`\"{}157.\+245.\+46.\+192\char`\"{}
+\item 
+\mbox{\Hypertarget{class_network_manager_aed92a41f44a656250bb918583ecd0e67}\label{class_network_manager_aed92a41f44a656250bb918583ecd0e67}} 
+std\+::string {\bfseries Internal\+I\+P\+Address} = \char`\"{}127.\+0.\+0.\+1\char`\"{}
+\item 
+\mbox{\Hypertarget{class_network_manager_ad33819562233e695c73ba6b4395263b1}\label{class_network_manager_ad33819562233e695c73ba6b4395263b1}} 
+bool \mbox{\hyperlink{class_network_manager_ad33819562233e695c73ba6b4395263b1}{is\+Server\+Local}} = true
+\begin{DoxyCompactList}\small\item\em Whether the client should connect to external server. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_network_manager_a707fa431dbaa321d67d5e7ccc42cd309}\label{class_network_manager_a707fa431dbaa321d67d5e7ccc42cd309}} 
+bool \mbox{\hyperlink{class_network_manager_a707fa431dbaa321d67d5e7ccc42cd309}{client\+Can\+Enter\+Name}} = false
+\begin{DoxyCompactList}\small\item\em Whether the client can enter their name in console. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_network_manager_a4d72398470f56c7563d63dc062dca3e1}\label{class_network_manager_a4d72398470f56c7563d63dc062dca3e1}} 
+bool \mbox{\hyperlink{class_network_manager_a4d72398470f56c7563d63dc062dca3e1}{Get\+Num\+Players}} = false
+\begin{DoxyCompactList}\small\item\em Whether the client should request playernumers. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_network_manager_a9b24a3b5c91c40ba8329c98c82871cb4}\label{class_network_manager_a9b24a3b5c91c40ba8329c98c82871cb4}} 
+int \mbox{\hyperlink{class_network_manager_a9b24a3b5c91c40ba8329c98c82871cb4}{network\+Player\+Update\+Interval}} = 100
+\begin{DoxyCompactList}\small\item\em How frequent the client will update player positions. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_network_manager_a03cec291148e4cd3d1203a2b01b7ddd7}\label{class_network_manager_a03cec291148e4cd3d1203a2b01b7ddd7}} 
+int \mbox{\hyperlink{class_network_manager_a03cec291148e4cd3d1203a2b01b7ddd7}{network\+Map\+Update\+Interval}} = 1000
+\begin{DoxyCompactList}\small\item\em How frequent the client will update the map from server. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_network_manager_afab3e8b97ac125b6f5efef44e1007b4c}\label{class_network_manager_afab3e8b97ac125b6f5efef44e1007b4c}} 
+int \mbox{\hyperlink{class_network_manager_afab3e8b97ac125b6f5efef44e1007b4c}{number\+Of\+Players}} = 0
+\begin{DoxyCompactList}\small\item\em Stores the number of players in the game. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_network_manager_ae70c1bebe8e6e77195f6a02ef5d7cff3}\label{class_network_manager_ae70c1bebe8e6e77195f6a02ef5d7cff3}} 
+double {\bfseries last\+TimeP} = S\+D\+L\+\_\+\+Get\+Ticks()
+\item 
+\mbox{\Hypertarget{class_network_manager_ab6500cc75d98541868279c3070146469}\label{class_network_manager_ab6500cc75d98541868279c3070146469}} 
+double {\bfseries last\+TimeM} = S\+D\+L\+\_\+\+Get\+Ticks()
+\item 
+\mbox{\Hypertarget{class_network_manager_a0ed6ebc01e73c3ae129ac6658420e109}\label{class_network_manager_a0ed6ebc01e73c3ae129ac6658420e109}} 
+double {\bfseries timebehindP} = 0
+\item 
+\mbox{\Hypertarget{class_network_manager_ac5af0e680089e09871442abcfb4313b0}\label{class_network_manager_ac5af0e680089e09871442abcfb4313b0}} 
+double {\bfseries timebehindM} = 0
+\item 
+\mbox{\Hypertarget{class_network_manager_acfd190a9293fa13464669d4454d53752}\label{class_network_manager_acfd190a9293fa13464669d4454d53752}} 
+bool {\bfseries run\+Player\+Network\+Tick} = false
+\item 
+\mbox{\Hypertarget{class_network_manager_a4ac7f606870f822376b5c1e280025560}\label{class_network_manager_a4ac7f606870f822376b5c1e280025560}} 
+bool {\bfseries run\+Map\+Network\+Tick} = false
+\item 
+\mbox{\Hypertarget{class_network_manager_ae4ed432674dd0f25b30db1c7d43d1054}\label{class_network_manager_ae4ed432674dd0f25b30db1c7d43d1054}} 
+std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{class_network_manager_ae4ed432674dd0f25b30db1c7d43d1054}{other\+Player\+Names}}
+\begin{DoxyCompactList}\small\item\em Vector of all other players names in the game. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_network_manager_ac011ccefc185e9e80d5b04fdc8d1790b}\label{class_network_manager_ac011ccefc185e9e80d5b04fdc8d1790b}} 
+std\+::vector$<$ int $>$ {\bfseries Player\+I\+Ds}
+\item 
+\mbox{\Hypertarget{class_network_manager_a895194234bed8e83b34b0dfc8d2f2378}\label{class_network_manager_a895194234bed8e83b34b0dfc8d2f2378}} 
+std\+::vector$<$ int $>$ {\bfseries Enemy\+I\+Ds}
+\item 
+\mbox{\Hypertarget{class_network_manager_af9828c5f197b2509fba25fb09feb981d}\label{class_network_manager_af9828c5f197b2509fba25fb09feb981d}} 
+std\+::vector$<$ int $>$ {\bfseries Projectile\+I\+Ds}
+\item 
+\mbox{\Hypertarget{class_network_manager_a1817a11c93b42092323118f6539c2a84}\label{class_network_manager_a1817a11c93b42092323118f6539c2a84}} 
+boost\+::asio\+::io\+\_\+service \mbox{\hyperlink{class_network_manager_a1817a11c93b42092323118f6539c2a84}{io\+\_\+service}}
+\begin{DoxyCompactList}\small\item\em the io service for creating the socket \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_network_manager_accab49474ad8d56ed969c9f579e7e426}\label{class_network_manager_accab49474ad8d56ed969c9f579e7e426}} 
+std\+::shared\+\_\+ptr$<$ tcp\+::socket $>$ {\bfseries socket}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_network_manager_a85c1aaacd114ae4f088fd9ed5f443a3b}\label{class_network_manager_a85c1aaacd114ae4f088fd9ed5f443a3b}} 
+\index{NetworkManager@{NetworkManager}!MapNetworkUpdate@{MapNetworkUpdate}}
+\index{MapNetworkUpdate@{MapNetworkUpdate}!NetworkManager@{NetworkManager}}
+\doxysubsubsection{\texorpdfstring{MapNetworkUpdate()}{MapNetworkUpdate()}}
+{\footnotesize\ttfamily void Network\+Manager\+::\+Map\+Network\+Update (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_world}{World}} \&}]{level }\end{DoxyParamCaption})}
+
+
+
+Process cell data. 
+
+Process map network update. What an empty map looks like\mbox{\Hypertarget{class_network_manager_a5044f57d90776918ddf5df8e5e62065b}\label{class_network_manager_a5044f57d90776918ddf5df8e5e62065b}} 
+\index{NetworkManager@{NetworkManager}!NetworkUpdate@{NetworkUpdate}}
+\index{NetworkUpdate@{NetworkUpdate}!NetworkManager@{NetworkManager}}
+\doxysubsubsection{\texorpdfstring{NetworkUpdate()}{NetworkUpdate()}}
+{\footnotesize\ttfamily void Network\+Manager\+::\+Network\+Update (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_world}{World}} \&}]{world,  }\item[{b2\+World $\ast$}]{I\+\_\+\+Physics,  }\item[{std\+::vector$<$ \mbox{\hyperlink{class_network_player}{Network\+Player}} $>$ \&}]{players,  }\item[{\mbox{\hyperlink{class_player}{Player}} \&}]{player }\end{DoxyParamCaption})}
+
+
+
+Main Network update function. 
+
+main netwrok update function \mbox{\Hypertarget{class_network_manager_a03b82933d6b245722d88a226f49c877a}\label{class_network_manager_a03b82933d6b245722d88a226f49c877a}} 
+\index{NetworkManager@{NetworkManager}!RecieveMessage@{RecieveMessage}}
+\index{RecieveMessage@{RecieveMessage}!NetworkManager@{NetworkManager}}
+\doxysubsubsection{\texorpdfstring{RecieveMessage()}{RecieveMessage()}}
+{\footnotesize\ttfamily std\+::string Network\+Manager\+::\+Recieve\+Message (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Return a string from recieve message. 
+
+returns a string from the socket \mbox{\Hypertarget{class_network_manager_af437b7384d25d4e2328d6666860ae1b2}\label{class_network_manager_af437b7384d25d4e2328d6666860ae1b2}} 
+\index{NetworkManager@{NetworkManager}!sendTCPMessage@{sendTCPMessage}}
+\index{sendTCPMessage@{sendTCPMessage}!NetworkManager@{NetworkManager}}
+\doxysubsubsection{\texorpdfstring{sendTCPMessage()}{sendTCPMessage()}}
+{\footnotesize\ttfamily void Network\+Manager\+::send\+T\+C\+P\+Message (\begin{DoxyParamCaption}\item[{std\+::string}]{message }\end{DoxyParamCaption})}
+
+
+
+Send a message using T\+CP. 
+
+Sends a tcp message to the socket. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/alli0/\+Documents/\+Git\+Hub/\+Game\+Engine/\+Client/\+Source/\+Source/Network\+Manager.\+h\item 
+C\+:/\+Users/alli0/\+Documents/\+Git\+Hub/\+Game\+Engine/\+Client/\+Source/\+Source/Network\+Manager.\+cpp\end{DoxyCompactItemize}

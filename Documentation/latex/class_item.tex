@@ -1,0 +1,102 @@
+\hypertarget{class_item}{}\doxysection{Item Class Reference}
+\label{class_item}\index{Item@{Item}}
+Inheritance diagram for Item\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=5.333333cm]{class_item}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_item_a297720c02984eab37332ae795d22189d}\label{class_item_a297720c02984eab37332ae795d22189d}} 
+\mbox{\hyperlink{class_item_a297720c02984eab37332ae795d22189d}{Item}} ()
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_item_a3f64c04850ccafe80d97b5de65b54462}\label{class_item_a3f64c04850ccafe80d97b5de65b54462}} 
+{\bfseries Item} (json json\+Data)
+\item 
+\mbox{\Hypertarget{class_item_a11663c84075b78c3ae5e30fdfcd7c458}\label{class_item_a11663c84075b78c3ae5e30fdfcd7c458}} 
+\mbox{\hyperlink{class_item_a11663c84075b78c3ae5e30fdfcd7c458}{$\sim$\+Item}} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_item_a0feb6ac1e888b8e2fadc2f149908e722}\label{class_item_a0feb6ac1e888b8e2fadc2f149908e722}} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_item}{Item}} $>$ {\bfseries Construct\+From\+Json} (json data)
+\item 
+\mbox{\Hypertarget{class_item_a6e990ef2a20d9dc8753e81e613114075}\label{class_item_a6e990ef2a20d9dc8753e81e613114075}} 
+glm\+::vec2 {\bfseries set\+Position} (glm\+::vec2 new\+Position)
+\item 
+\mbox{\Hypertarget{class_item_a6580473600b1a3a006359db3f07a6deb}\label{class_item_a6580473600b1a3a006359db3f07a6deb}} 
+virtual void \mbox{\hyperlink{class_item_a6580473600b1a3a006359db3f07a6deb}{Use}} (\mbox{\hyperlink{class_g_l___renderer}{G\+L\+\_\+\+Renderer}} \&renderer, \mbox{\hyperlink{class_world}{World}} \&world, \mbox{\hyperlink{class_player}{Player}} \&player)
+\begin{DoxyCompactList}\small\item\em Runs when an item is selected and clicked. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_item_a609608fc4b8dca743b93209aa136b801}\label{class_item_a609608fc4b8dca743b93209aa136b801}} 
+virtual void \mbox{\hyperlink{class_item_a609608fc4b8dca743b93209aa136b801}{Selected}} (\mbox{\hyperlink{class_g_l___renderer}{G\+L\+\_\+\+Renderer}} \&renderer, \mbox{\hyperlink{class_world}{World}} \&world, \mbox{\hyperlink{class_player}{Player}} \&player)
+\begin{DoxyCompactList}\small\item\em Runs when an item is selected. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_item_aeb8b9fd438deeea84bf6e6fdc5bc358f}\label{class_item_aeb8b9fd438deeea84bf6e6fdc5bc358f}} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_item}{Item}} $>$ \mbox{\hyperlink{class_item_aeb8b9fd438deeea84bf6e6fdc5bc358f}{get\+Shared\+Pointer}} ()
+\begin{DoxyCompactList}\small\item\em Needs \mbox{\hyperlink{class_item_aeb8b9fd438deeea84bf6e6fdc5bc358f}{get\+Shared\+Pointer()}} Override to that class. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_item_a258dfa6e1b27aa480856386ca4ca3f35}\label{class_item_a258dfa6e1b27aa480856386ca4ca3f35}} 
+virtual json \mbox{\hyperlink{class_item_a258dfa6e1b27aa480856386ca4ca3f35}{Get\+Json}} ()
+\begin{DoxyCompactList}\small\item\em Needs \mbox{\hyperlink{class_item_a258dfa6e1b27aa480856386ca4ca3f35}{Get\+Json()}} Override for that class. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_item_a0efe08ed7a75ab9c9cf991c74532330c}\label{class_item_a0efe08ed7a75ab9c9cf991c74532330c}} 
+virtual std\+::string {\bfseries get\+Name} ()
+\item 
+\mbox{\Hypertarget{class_item_aba671969df0dcd6bd5c385c619cd4649}\label{class_item_aba671969df0dcd6bd5c385c619cd4649}} 
+virtual std\+::string {\bfseries set\+Name} (std\+::string new\+Name)
+\item 
+\mbox{\Hypertarget{class_item_abef33670216f8dfed8abc2c5bd64fae9}\label{class_item_abef33670216f8dfed8abc2c5bd64fae9}} 
+virtual std\+::string {\bfseries get\+Item\+Description} ()
+\item 
+\mbox{\Hypertarget{class_item_aa554941ed80947d3874a3a8c42463e35}\label{class_item_aa554941ed80947d3874a3a8c42463e35}} 
+virtual int {\bfseries get\+Maximum\+Stack\+Size} ()
+\item 
+\mbox{\Hypertarget{class_item_a5828a0aad6efa19d6d37bb8700a11005}\label{class_item_a5828a0aad6efa19d6d37bb8700a11005}} 
+virtual int {\bfseries get\+Stack} ()
+\item 
+\mbox{\Hypertarget{class_item_af669cfd956ff429e74b8019a0ec6f42e}\label{class_item_af669cfd956ff429e74b8019a0ec6f42e}} 
+virtual int {\bfseries set\+Stack} (int new\+Stack)
+\item 
+\mbox{\Hypertarget{class_item_a59ff9bf6c655ee05bdf557a6f9ef403a}\label{class_item_a59ff9bf6c655ee05bdf557a6f9ef403a}} 
+virtual void \mbox{\hyperlink{class_item_a59ff9bf6c655ee05bdf557a6f9ef403a}{Render}} (\mbox{\hyperlink{class_g_l___renderer}{G\+L\+\_\+\+Renderer}} \&renderer)
+\begin{DoxyCompactList}\small\item\em Draw sprite. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_item_a7c7c167cba64c7d3bbdadaf27304122e}\label{class_item_a7c7c167cba64c7d3bbdadaf27304122e}} 
+virtual void {\bfseries Render} (\mbox{\hyperlink{class_g_l___renderer}{G\+L\+\_\+\+Renderer}} \&renderer, \mbox{\hyperlink{class_world}{World}} \&world)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_item_a1498107cdc64d752dc1a6ed7c5c07bf5}\label{class_item_a1498107cdc64d752dc1a6ed7c5c07bf5}} 
+\mbox{\hyperlink{class_icon}{Icon}} {\bfseries icon}
+\item 
+\mbox{\Hypertarget{class_item_a6230b1bdd63010339d15b07acf78c1b8}\label{class_item_a6230b1bdd63010339d15b07acf78c1b8}} 
+bool {\bfseries is\+In\+Focus} = false
+\item 
+\mbox{\Hypertarget{class_item_af877c9b8e97a3a523ea8beb907c2dea4}\label{class_item_af877c9b8e97a3a523ea8beb907c2dea4}} 
+b2\+Body\+Type {\bfseries body\+Type}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_item_afbeca117c64968f036c13d9392f6558e}\label{class_item_afbeca117c64968f036c13d9392f6558e}} 
+std\+::string {\bfseries Tool\+Sprite\+Directory} = \char`\"{}Resources\textbackslash{}\textbackslash{}\+Sprites\textbackslash{}\textbackslash{}\+Items\textbackslash{}\textbackslash{}\+Tools\textbackslash{}\textbackslash{}\char`\"{}
+\item 
+\mbox{\Hypertarget{class_item_a768eb50d1a4f0795789fa37b6ebadb8d}\label{class_item_a768eb50d1a4f0795789fa37b6ebadb8d}} 
+std\+::string {\bfseries Icon\+Sprite\+Directory} = \char`\"{}Resources\textbackslash{}\textbackslash{}\+Sprites\textbackslash{}\textbackslash{}\+Items\textbackslash{}\textbackslash{}\+Icons\textbackslash{}\textbackslash{}\char`\"{}
+\item 
+\mbox{\Hypertarget{class_item_a912571d9e98d2f3c2b6586d32e9dbbe2}\label{class_item_a912571d9e98d2f3c2b6586d32e9dbbe2}} 
+std\+::string {\bfseries U\+I\+Sprite\+Directory} = \char`\"{}Resources\textbackslash{}\textbackslash{}\+U\+I\textbackslash{}\textbackslash{}\char`\"{}
+\item 
+\mbox{\Hypertarget{class_item_a6b3db98d3c68b3de9c9cef05257b88f5}\label{class_item_a6b3db98d3c68b3de9c9cef05257b88f5}} 
+std\+::string \mbox{\hyperlink{class_item_a6b3db98d3c68b3de9c9cef05257b88f5}{item\+Description}} = \char`\"{}Item does not have description overload\char`\"{}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_item}{Item}} Description. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_item_a388412525fc50d7739724c9c3358db6c}\label{class_item_a388412525fc50d7739724c9c3358db6c}} 
+int {\bfseries stack} = 0
+\item 
+\mbox{\Hypertarget{class_item_a7ac11fd2bfc453c4eb5c03100eb4c211}\label{class_item_a7ac11fd2bfc453c4eb5c03100eb4c211}} 
+int {\bfseries maximum\+Stack\+Size} = 20
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/alli0/\+Documents/\+Git\+Hub/\+Game\+Engine/\+Client/\+Source/\+Source/Item.\+h\item 
+C\+:/\+Users/alli0/\+Documents/\+Git\+Hub/\+Game\+Engine/\+Client/\+Source/\+Source/Item.\+cpp\end{DoxyCompactItemize}

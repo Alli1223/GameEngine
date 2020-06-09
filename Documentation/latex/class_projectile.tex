@@ -1,0 +1,63 @@
+\hypertarget{class_projectile}{}\doxysection{Projectile Class Reference}
+\label{class_projectile}\index{Projectile@{Projectile}}
+Inheritance diagram for Projectile\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{class_projectile}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_projectile_a27e7dac2188cfa1d8620674fc269383d}\label{class_projectile_a27e7dac2188cfa1d8620674fc269383d}} 
+{\bfseries Projectile} (b2\+World $\ast$physics\+World, glm\+::vec2 start\+Position, b2\+Vec2 velocity)
+\item 
+\mbox{\Hypertarget{class_projectile_a1366e7dbda8c0f0a072d267a945c5800}\label{class_projectile_a1366e7dbda8c0f0a072d267a945c5800}} 
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_projectile}{Projectile}} $>$ {\bfseries get\+Shared\+Pointer} ()
+\item 
+\mbox{\Hypertarget{class_projectile_a51963a97e85a37b5ab93dd056d4547a3}\label{class_projectile_a51963a97e85a37b5ab93dd056d4547a3}} 
+virtual std\+::string {\bfseries get\+Type} ()
+\item 
+\mbox{\Hypertarget{class_projectile_ab840be9c13a7a7f4b496850485caaf57}\label{class_projectile_ab840be9c13a7a7f4b496850485caaf57}} 
+virtual json \mbox{\hyperlink{class_projectile_ab840be9c13a7a7f4b496850485caaf57}{Get\+Json}} ()
+\begin{DoxyCompactList}\small\item\em Override Get Json Data. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_projectile_a8bc4a798af4d3a373f5be86a585026a5}\label{class_projectile_a8bc4a798af4d3a373f5be86a585026a5}} 
+virtual void {\bfseries start\+Contact} ()
+\item 
+\mbox{\Hypertarget{class_projectile_a352706b74a255f12a0b4ba3c86ede812}\label{class_projectile_a352706b74a255f12a0b4ba3c86ede812}} 
+virtual void {\bfseries Network\+Update} (json data)
+\item 
+\mbox{\Hypertarget{class_projectile_a42c3fc33d84481ac3e7b46eaa3990719}\label{class_projectile_a42c3fc33d84481ac3e7b46eaa3990719}} 
+virtual void {\bfseries Update} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_projectile_a53d55f18125069b984066943479a653e}\label{class_projectile_a53d55f18125069b984066943479a653e}} 
+bool {\bfseries is\+Traveling} = false
+\item 
+\mbox{\Hypertarget{class_projectile_a6a5839a30f54da294cbf40abea834a37}\label{class_projectile_a6a5839a30f54da294cbf40abea834a37}} 
+\mbox{\hyperlink{class_timer}{Timer}} {\bfseries experation\+Timer}
+\item 
+\mbox{\Hypertarget{class_projectile_a381b079edcbea52fe255fc360c2f6ac3}\label{class_projectile_a381b079edcbea52fe255fc360c2f6ac3}} 
+b2\+Vec2 {\bfseries direction}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_projectile_a90f5793efb184c30d6c74544a6b91bb4}\label{class_projectile_a90f5793efb184c30d6c74544a6b91bb4}} 
+int {\bfseries damage} = 2
+\item 
+\mbox{\Hypertarget{class_projectile_a187a74e570fa6d0674232f20781b9396}\label{class_projectile_a187a74e570fa6d0674232f20781b9396}} 
+std\+::string {\bfseries type} = \char`\"{}Projectile\char`\"{}
+\item 
+\mbox{\Hypertarget{class_projectile_ab222561250a07442b0674ca6b33d19e3}\label{class_projectile_ab222561250a07442b0674ca6b33d19e3}} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_projectile}{Projectile}} $>$ {\bfseries this\+Pointer} = nullptr
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/alli0/\+Documents/\+Git\+Hub/\+Game\+Engine/\+Client/\+Source/\+Source/Projectile.\+h\item 
+C\+:/\+Users/alli0/\+Documents/\+Git\+Hub/\+Game\+Engine/\+Client/\+Source/\+Source/Projectile.\+cpp\end{DoxyCompactItemize}

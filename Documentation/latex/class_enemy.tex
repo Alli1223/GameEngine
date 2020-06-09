@@ -1,0 +1,66 @@
+\hypertarget{class_enemy}{}\doxysection{Enemy Class Reference}
+\label{class_enemy}\index{Enemy@{Enemy}}
+Inheritance diagram for Enemy\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{class_enemy}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_enemy_a2dd895ac976942e3c9357d65033fdcac}\label{class_enemy_a2dd895ac976942e3c9357d65033fdcac}} 
+{\bfseries Enemy} (int ID)
+\item 
+\mbox{\Hypertarget{class_enemy_ace03a9b62572c6642144d89579c67d83}\label{class_enemy_ace03a9b62572c6642144d89579c67d83}} 
+void {\bfseries Network\+Update} (json data)
+\item 
+\mbox{\Hypertarget{class_enemy_a182f05fde8d2d5443a3488fc9f027da9}\label{class_enemy_a182f05fde8d2d5443a3488fc9f027da9}} 
+virtual void \mbox{\hyperlink{class_enemy_a182f05fde8d2d5443a3488fc9f027da9}{Render}} (\mbox{\hyperlink{class_g_l___renderer}{G\+L\+\_\+\+Renderer}} \&renderer)
+\begin{DoxyCompactList}\small\item\em Draw sprite. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_enemy_af9a83b4e458b77eef0ffce785164fbcd}\label{class_enemy_af9a83b4e458b77eef0ffce785164fbcd}} 
+void {\bfseries Update} ()
+\item 
+\mbox{\Hypertarget{class_enemy_a94392bfb7a59924a71659d5a220a044b}\label{class_enemy_a94392bfb7a59924a71659d5a220a044b}} 
+void {\bfseries Update\+Position} ()
+\item 
+\mbox{\Hypertarget{class_enemy_a5ceab2eda6950a5b22e6326dd45eb1e7}\label{class_enemy_a5ceab2eda6950a5b22e6326dd45eb1e7}} 
+void {\bfseries Move} (glm\+::vec2 new\+Pos)
+\item 
+\mbox{\Hypertarget{class_enemy_aff2f98cecc3d64b53e0bc85831bff163}\label{class_enemy_aff2f98cecc3d64b53e0bc85831bff163}} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_enemy}{Enemy}} $>$ {\bfseries get\+Shared\+Pointer} ()
+\item 
+\mbox{\Hypertarget{class_enemy_a46341636350ca2bc6aac929b2a84f215}\label{class_enemy_a46341636350ca2bc6aac929b2a84f215}} 
+int {\bfseries get\+Health} ()
+\item 
+\mbox{\Hypertarget{class_enemy_a05dcea6167eaf9ae87b1065781260632}\label{class_enemy_a05dcea6167eaf9ae87b1065781260632}} 
+int {\bfseries set\+Health} (int new\+Health)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_enemy_a128cdf2a270afeb5325fc130fca8e02e}\label{class_enemy_a128cdf2a270afeb5325fc130fca8e02e}} 
+std\+::string {\bfseries Sprite\+Dirctory} = \char`\"{}Resources\textbackslash{}\textbackslash{}\+External\textbackslash{}\textbackslash{}\char`\"{}
+\item 
+\mbox{\Hypertarget{class_enemy_abeffbfb060603173bcb57d53307807b1}\label{class_enemy_abeffbfb060603173bcb57d53307807b1}} 
+glm\+::vec2 {\bfseries last\+Known\+Pos}
+\item 
+\mbox{\Hypertarget{class_enemy_accd5223046266ffb6110146034d1dd33}\label{class_enemy_accd5223046266ffb6110146034d1dd33}} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_enemy}{Enemy}} $>$ {\bfseries this\+Pointer} = nullptr
+\item 
+\mbox{\Hypertarget{class_enemy_a851223ca1b4b1c09a75a83d54b9e43cc}\label{class_enemy_a851223ca1b4b1c09a75a83d54b9e43cc}} 
+bool {\bfseries is\+Moving} = false
+\item 
+\mbox{\Hypertarget{class_enemy_aedd5e7bf8ef07ee97be433c853a10d8d}\label{class_enemy_aedd5e7bf8ef07ee97be433c853a10d8d}} 
+int {\bfseries health} = 100
+\item 
+\mbox{\Hypertarget{class_enemy_a74b29e72a00003c3a2a17b1778b7fe1f}\label{class_enemy_a74b29e72a00003c3a2a17b1778b7fe1f}} 
+std\+::string {\bfseries type} = \char`\"{}null\char`\"{}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/alli0/\+Documents/\+Git\+Hub/\+Game\+Engine/\+Client/\+Source/\+Source/Enemy.\+h\item 
+C\+:/\+Users/alli0/\+Documents/\+Git\+Hub/\+Game\+Engine/\+Client/\+Source/\+Source/Enemy.\+cpp\end{DoxyCompactItemize}

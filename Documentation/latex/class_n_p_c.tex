@@ -1,0 +1,78 @@
+\hypertarget{class_n_p_c}{}\doxysection{N\+PC Class Reference}
+\label{class_n_p_c}\index{NPC@{NPC}}
+Inheritance diagram for N\+PC\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=5.000000cm]{class_n_p_c}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_n_p_c_a59b45912692304d555df9d6957046962}\label{class_n_p_c_a59b45912692304d555df9d6957046962}} 
+\mbox{\hyperlink{class_n_p_c_a59b45912692304d555df9d6957046962}{N\+PC}} ()
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_n_p_c_a67c0caca129b56c82bb7ec8bce6be52b}\label{class_n_p_c_a67c0caca129b56c82bb7ec8bce6be52b}} 
+\mbox{\hyperlink{class_n_p_c_a67c0caca129b56c82bb7ec8bce6be52b}{$\sim$\+N\+PC}} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_n_p_c_a024be01dd0f533c66eb080e82edc1016}\label{class_n_p_c_a024be01dd0f533c66eb080e82edc1016}} 
+void {\bfseries Move} (Movement\+Direction direction)
+\item 
+\mbox{\Hypertarget{class_n_p_c_a11b42c5f0567cd8d1e4cf24debc1a7fc}\label{class_n_p_c_a11b42c5f0567cd8d1e4cf24debc1a7fc}} 
+virtual void {\bfseries Update} (\mbox{\hyperlink{class_world}{World}} \&world)
+\item 
+\mbox{\Hypertarget{class_n_p_c_af62e98d4bc6e38d355934fe41511d2b4}\label{class_n_p_c_af62e98d4bc6e38d355934fe41511d2b4}} 
+virtual void {\bfseries Update} ()
+\item 
+\mbox{\Hypertarget{class_n_p_c_a5c821ca31f00dfcc62f4360eb761899f}\label{class_n_p_c_a5c821ca31f00dfcc62f4360eb761899f}} 
+virtual bool \mbox{\hyperlink{class_n_p_c_a5c821ca31f00dfcc62f4360eb761899f}{Find\+Path}} (glm\+::ivec2 start, glm\+::ivec2 end)
+\begin{DoxyCompactList}\small\item\em Find Path. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_n_p_c_ac4588139be32c307a0d31e302f377dea}\label{class_n_p_c_ac4588139be32c307a0d31e302f377dea}} 
+int {\bfseries get\+ID} ()
+\item 
+\mbox{\Hypertarget{class_n_p_c_afea170aa27cf2d4fbdb315f5de6993ea}\label{class_n_p_c_afea170aa27cf2d4fbdb315f5de6993ea}} 
+int {\bfseries set\+ID} (int new\+ID)
+\item 
+\mbox{\Hypertarget{class_n_p_c_a85d7b800493df3860c0bba5ea80e6c2c}\label{class_n_p_c_a85d7b800493df3860c0bba5ea80e6c2c}} 
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_n_p_c}{N\+PC}} $>$ \mbox{\hyperlink{class_n_p_c_a85d7b800493df3860c0bba5ea80e6c2c}{get\+Shared\+Pointer}} ()
+\begin{DoxyCompactList}\small\item\em Get a shared pointer to this object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_n_p_c_afb712eed416ae6a5c92f5a8ef00e736c}\label{class_n_p_c_afb712eed416ae6a5c92f5a8ef00e736c}} 
+virtual void \mbox{\hyperlink{class_n_p_c_afb712eed416ae6a5c92f5a8ef00e736c}{Reset\+Path}} ()
+\begin{DoxyCompactList}\small\item\em Reset Path if there have been any changes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_n_p_c_a01d6527f4229aaf00edd380209b563fe}\label{class_n_p_c_a01d6527f4229aaf00edd380209b563fe}} 
+b2\+Body\+Type \mbox{\hyperlink{class_n_p_c_a01d6527f4229aaf00edd380209b563fe}{body\+Type}}
+\begin{DoxyCompactList}\small\item\em Whether a static or dynamic body. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_n_p_c_abbf08f91e20c633f0fc0535add727c28}\label{class_n_p_c_abbf08f91e20c633f0fc0535add727c28}} 
+bool \mbox{\hyperlink{class_n_p_c_abbf08f91e20c633f0fc0535add727c28}{is\+At\+Home}} = false
+\begin{DoxyCompactList}\small\item\em Whether the \mbox{\hyperlink{class_n_p_c}{N\+PC}} is at home. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_n_p_c_a17c806564edefdd9b73fe1cb14622adf}\label{class_n_p_c_a17c806564edefdd9b73fe1cb14622adf}} 
+bool {\bfseries is\+Selected} = false
+\item 
+\mbox{\Hypertarget{class_n_p_c_a56d46f298965858549f9d61a6839d9ac}\label{class_n_p_c_a56d46f298965858549f9d61a6839d9ac}} 
+std\+::vector$<$ std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_cell}{Cell}} $>$ $>$ $>$ \mbox{\hyperlink{class_n_p_c_a56d46f298965858549f9d61a6839d9ac}{tiles}}
+\begin{DoxyCompactList}\small\item\em Pointers to current level. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_n_p_c_a6f7f1296b75e1471b082df0c37d10d1f}\label{class_n_p_c_a6f7f1296b75e1471b082df0c37d10d1f}} 
+std\+::vector$<$ glm\+::ivec2 $>$ \mbox{\hyperlink{class_n_p_c_a6f7f1296b75e1471b082df0c37d10d1f}{path}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_pathfinder}{Pathfinder}} path. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_n_p_c_a79383e17137f4a5ff34de376e0b324bb}\label{class_n_p_c_a79383e17137f4a5ff34de376e0b324bb}} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_pathfinder}{Pathfinder}} $>$ {\bfseries pathfinder}
+\item 
+\mbox{\Hypertarget{class_n_p_c_ae8e1e230767a7b2193214146e5521bb8}\label{class_n_p_c_ae8e1e230767a7b2193214146e5521bb8}} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_n_p_c}{N\+PC}} $>$ {\bfseries thisptr} = nullptr
+\item 
+\mbox{\Hypertarget{class_n_p_c_a0616bec9f1676317dada8422e81c14af}\label{class_n_p_c_a0616bec9f1676317dada8422e81c14af}} 
+int {\bfseries ID} = -\/1
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/alli0/\+Documents/\+Git\+Hub/\+Game\+Engine/\+Client/\+Source/\+Source/N\+P\+C.\+h\item 
+C\+:/\+Users/alli0/\+Documents/\+Git\+Hub/\+Game\+Engine/\+Client/\+Source/\+Source/N\+P\+C.\+cpp\end{DoxyCompactItemize}

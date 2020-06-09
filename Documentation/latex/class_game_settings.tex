@@ -1,0 +1,113 @@
+\hypertarget{class_game_settings}{}\doxysection{Game\+Settings Class Reference}
+\label{class_game_settings}\index{GameSettings@{GameSettings}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_game_settings_a4630eba2c61f8a8cab32289b21007a50}\label{class_game_settings_a4630eba2c61f8a8cab32289b21007a50}} 
+\mbox{\hyperlink{class_player}{Player}} \mbox{\hyperlink{class_game_settings_a4630eba2c61f8a8cab32289b21007a50}{get\+Player\+From\+Save}} ()
+\begin{DoxyCompactList}\small\item\em Save the players settings. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_settings_ac62a7d759af3e7649d495d230945abef}\label{class_game_settings_ac62a7d759af3e7649d495d230945abef}} 
+glm\+::vec2 \mbox{\hyperlink{class_game_settings_ac62a7d759af3e7649d495d230945abef}{get\+Screen\+Resolution}} ()
+\begin{DoxyCompactList}\small\item\em Get screen resolution. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_settings_a7f23412dc4efc796896684fb26d02f06}\label{class_game_settings_a7f23412dc4efc796896684fb26d02f06}} 
+void \mbox{\hyperlink{class_game_settings_a7f23412dc4efc796896684fb26d02f06}{Calculate\+Frames\+Per\+Second}} ()
+\begin{DoxyCompactList}\small\item\em Calculate F\+PS. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_settings_a8c0d5d99aa064ba3c62a5329c30344a4}\label{class_game_settings_a8c0d5d99aa064ba3c62a5329c30344a4}} 
+float {\bfseries get\+Average\+F\+PS} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_game_settings_ad7ab595cc408853b20ac98b064fd9272}\label{class_game_settings_ad7ab595cc408853b20ac98b064fd9272}} 
+int \mbox{\hyperlink{class_game_settings_ad7ab595cc408853b20ac98b064fd9272}{W\+I\+N\+D\+O\+W\+\_\+\+W\+I\+D\+TH}} = 800
+\begin{DoxyCompactList}\small\item\em initial window settings \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_settings_a87eb5f9c3d55aabe1780871b0005cbf9}\label{class_game_settings_a87eb5f9c3d55aabe1780871b0005cbf9}} 
+int {\bfseries W\+I\+N\+D\+O\+W\+\_\+\+H\+E\+I\+G\+HT} = 600
+\item 
+\mbox{\Hypertarget{class_game_settings_abdb7399f313f182e7e95605327b37ede}\label{class_game_settings_abdb7399f313f182e7e95605327b37ede}} 
+glm\+::ivec2 {\bfseries window\+Size}
+\item 
+bool \mbox{\hyperlink{class_game_settings_a37eabd5ffb00ac299cb48b3abad55ded}{save\+Level\+On\+Exit}} = true
+\begin{DoxyCompactList}\small\item\em Save the level. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_settings_a45bcb2b931741b148856b3cec87b1f8d}\label{class_game_settings_a45bcb2b931741b148856b3cec87b1f8d}} 
+bool {\bfseries save\+Player\+On\+Exit} = true
+\item 
+\mbox{\Hypertarget{class_game_settings_a4b6c53c407f7d24fe745cd80120d1202}\label{class_game_settings_a4b6c53c407f7d24fe745cd80120d1202}} 
+bool {\bfseries restart\+Game} = false
+\item 
+\mbox{\Hypertarget{class_game_settings_a1985b85516bb1a06f08b13d7cc315180}\label{class_game_settings_a1985b85516bb1a06f08b13d7cc315180}} 
+\mbox{\hyperlink{class_timer}{Timer}} {\bfseries fps\+Timer}
+\item 
+\mbox{\Hypertarget{class_game_settings_ad674b5a63890fffc67b1eb7a08da8d7a}\label{class_game_settings_ad674b5a63890fffc67b1eb7a08da8d7a}} 
+Uint32 {\bfseries elapsed\+Time} = 0
+\item 
+\mbox{\Hypertarget{class_game_settings_a8fdcdc7d4606cc021bd9b239e1679872}\label{class_game_settings_a8fdcdc7d4606cc021bd9b239e1679872}} 
+Uint32 {\bfseries last\+Frame\+Time\+Elapsed} = 0
+\item 
+\mbox{\Hypertarget{class_game_settings_a6d2bc63fb17cdd3af63645ddc2046f1a}\label{class_game_settings_a6d2bc63fb17cdd3af63645ddc2046f1a}} 
+float {\bfseries delta\+Time} = 0
+\item 
+\mbox{\Hypertarget{class_game_settings_ac38e368e94d990cde54d8b0c0dca65de}\label{class_game_settings_ac38e368e94d990cde54d8b0c0dca65de}} 
+bool \mbox{\hyperlink{class_game_settings_ac38e368e94d990cde54d8b0c0dca65de}{fullscreen}} = false
+\begin{DoxyCompactList}\small\item\em Whether the game is fullscreen. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_settings_a72411a1083cdec400800496bd2a0a585}\label{class_game_settings_a72411a1083cdec400800496bd2a0a585}} 
+bool {\bfseries display\+Mouse} = false
+\item 
+\mbox{\Hypertarget{class_game_settings_a8fd76ab2ec0a345ad82eb5c3b752728b}\label{class_game_settings_a8fd76ab2ec0a345ad82eb5c3b752728b}} 
+int {\bfseries mouse\+Pointer\+Size} = 25
+\item 
+\mbox{\Hypertarget{class_game_settings_a114454a61426a14f569ad610a40c3013}\label{class_game_settings_a114454a61426a14f569ad610a40c3013}} 
+bool \mbox{\hyperlink{class_game_settings_a114454a61426a14f569ad610a40c3013}{main\+Menu}} = false
+\begin{DoxyCompactList}\small\item\em Main \mbox{\hyperlink{class_menu}{Menu}} toggle. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_settings_aa3474d4a997c212758d13fb0a7f38887}\label{class_game_settings_aa3474d4a997c212758d13fb0a7f38887}} 
+bool {\bfseries in\+Game\+Menu} = false
+\item 
+\mbox{\Hypertarget{class_game_settings_a155738fbe042f60d7af61ffeb2340e61}\label{class_game_settings_a155738fbe042f60d7af61ffeb2340e61}} 
+bool {\bfseries goto\+Main\+Menu} = false
+\item 
+\mbox{\Hypertarget{class_game_settings_a60de83f06c2e19f700614acb1067fa94}\label{class_game_settings_a60de83f06c2e19f700614acb1067fa94}} 
+glm\+::vec2 \mbox{\hyperlink{class_game_settings_a60de83f06c2e19f700614acb1067fa94}{mouse\+Cell\+Pos}}
+\begin{DoxyCompactList}\small\item\em The cell the mouse is hovering over. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_settings_a296fcaca68afcc5e1a128cf2cbba5575}\label{class_game_settings_a296fcaca68afcc5e1a128cf2cbba5575}} 
+bool \mbox{\hyperlink{class_game_settings_a296fcaca68afcc5e1a128cf2cbba5575}{use\+Networking}} = true
+\begin{DoxyCompactList}\small\item\em Whether the game uses networking and false if singleplayer. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_settings_abacbfe18cb7700de65cead5a9ff524e9}\label{class_game_settings_abacbfe18cb7700de65cead5a9ff524e9}} 
+bool \mbox{\hyperlink{class_game_settings_abacbfe18cb7700de65cead5a9ff524e9}{running}} = true
+\begin{DoxyCompactList}\small\item\em Whether the game is running or not. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_settings_a71c452d4138b06276d7825047a654bc0}\label{class_game_settings_a71c452d4138b06276d7825047a654bc0}} 
+S\+D\+L\+\_\+\+Display\+Mode \mbox{\hyperlink{class_game_settings_a71c452d4138b06276d7825047a654bc0}{current\+Display}}
+\begin{DoxyCompactList}\small\item\em stores screen resolution \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_game_settings_a71dbc0c5372e9f073c0c556291c640d8}\label{class_game_settings_a71dbc0c5372e9f073c0c556291c640d8}} 
+\mbox{\hyperlink{class_level_saving}{Level\+Saving}} \mbox{\hyperlink{class_game_settings_a71dbc0c5372e9f073c0c556291c640d8}{level\+Saving}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_level}{Level}} saving class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_game_settings_a839107ec1bc79d55eaeaa5a64324a5f0}\label{class_game_settings_a839107ec1bc79d55eaeaa5a64324a5f0}} 
+static \mbox{\hyperlink{class_game_settings}{Game\+Settings}} $\ast$ {\bfseries G\+S\+Instance}
+\item 
+\mbox{\Hypertarget{class_game_settings_a4f5cb82bf6a44b4ad3fc30f3d0f7b7a5}\label{class_game_settings_a4f5cb82bf6a44b4ad3fc30f3d0f7b7a5}} 
+static const bool {\bfseries display\+F\+PS} = false
+\item 
+\mbox{\Hypertarget{class_game_settings_a9154e418ed13357fe53d52ecca949e8c}\label{class_game_settings_a9154e418ed13357fe53d52ecca949e8c}} 
+static \mbox{\hyperlink{class_instance}{Instance}} $\ast$ \mbox{\hyperlink{class_game_settings_a9154e418ed13357fe53d52ecca949e8c}{current\+Instance}} = nullptr
+\begin{DoxyCompactList}\small\item\em Current instance to render/update. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_game_settings_a37eabd5ffb00ac299cb48b3abad55ded}\label{class_game_settings_a37eabd5ffb00ac299cb48b3abad55ded}} 
+\index{GameSettings@{GameSettings}!saveLevelOnExit@{saveLevelOnExit}}
+\index{saveLevelOnExit@{saveLevelOnExit}!GameSettings@{GameSettings}}
+\doxysubsubsection{\texorpdfstring{saveLevelOnExit}{saveLevelOnExit}}
+{\footnotesize\ttfamily bool Game\+Settings\+::save\+Level\+On\+Exit = true}
+
+
+
+Save the level. 
+
+Whether the game will save the game when it closes 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/alli0/\+Documents/\+Git\+Hub/\+Game\+Engine/\+Client/\+Source/\+Source/Game\+Settings.\+h\item 
+C\+:/\+Users/alli0/\+Documents/\+Git\+Hub/\+Game\+Engine/\+Client/\+Source/\+Source/Game\+Settings.\+cpp\end{DoxyCompactItemize}

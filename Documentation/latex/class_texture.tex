@@ -1,0 +1,91 @@
+\hypertarget{class_texture}{}\doxysection{Texture Class Reference}
+\label{class_texture}\index{Texture@{Texture}}
+
+
+Loads and renders images in the window.  
+
+
+
+
+{\ttfamily \#include $<$Texture.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_texture_ab303a4548e5c5822de490b99b5d3f928}{Texture}} (const std\+::string \&file\+Name)
+\begin{DoxyCompactList}\small\item\em A constructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_texture_a09c4bcb7462f64c1d20fa69dba3cee8a}\label{class_texture_a09c4bcb7462f64c1d20fa69dba3cee8a}} 
+\mbox{\hyperlink{class_texture_a09c4bcb7462f64c1d20fa69dba3cee8a}{$\sim$\+Texture}} ()
+\begin{DoxyCompactList}\small\item\em A destructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_texture_a684e829a07a77e13b17a10e65734562b}\label{class_texture_a684e829a07a77e13b17a10e65734562b}} 
+S\+D\+L\+\_\+\+Texture $\ast$ \mbox{\hyperlink{class_texture_a684e829a07a77e13b17a10e65734562b}{get\+Texture}} ()
+\begin{DoxyCompactList}\small\item\em Loads the texture. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_texture_a3a541d62f7e282d8f206a0b6a4022006}\label{class_texture_a3a541d62f7e282d8f206a0b6a4022006}} 
+void \mbox{\hyperlink{class_texture_a3a541d62f7e282d8f206a0b6a4022006}{render}} (S\+D\+L\+\_\+\+Renderer $\ast$renderer, int x, int y, int width, int height)
+\begin{DoxyCompactList}\small\item\em Renders the image in the window. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_texture_a98bfcf5f64dd7b1d63f799537b09334d}\label{class_texture_a98bfcf5f64dd7b1d63f799537b09334d}} 
+void \mbox{\hyperlink{class_texture_a98bfcf5f64dd7b1d63f799537b09334d}{render\+Atlas}} (S\+D\+L\+\_\+\+Renderer $\ast$renderer, int x, int y, int width, int height, int index)
+\begin{DoxyCompactList}\small\item\em Render an \mbox{\hyperlink{class_atlas}{Atlas}}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_texture_abadbea608d1cbfb2663e0f72f931ac47}\label{class_texture_abadbea608d1cbfb2663e0f72f931ac47}} 
+void \mbox{\hyperlink{class_texture_abadbea608d1cbfb2663e0f72f931ac47}{render\+Rotation}} (S\+D\+L\+\_\+\+Renderer $\ast$renderer, int x, int y, int width, int height, int angle)
+\begin{DoxyCompactList}\small\item\em Renders the image in the window with rotation. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_texture_afd8b5fe2f1836f15d2441616141c883e}\label{class_texture_afd8b5fe2f1836f15d2441616141c883e}} 
+void \mbox{\hyperlink{class_texture_afd8b5fe2f1836f15d2441616141c883e}{render\+Anim}} (S\+D\+L\+\_\+\+Renderer $\ast$renderer, int sourceX, int sourceY, int destX, int destY, int pixel\+Size, int render\+Size)
+\begin{DoxyCompactList}\small\item\em Renders the animation. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_texture_ab6cab0ed8e45a144b576268d004367ff}\label{class_texture_ab6cab0ed8e45a144b576268d004367ff}} 
+void {\bfseries render\+Anim} (S\+D\+L\+\_\+\+Renderer $\ast$renderer, int sourceX, int sourceY, int destX, int destY, int pixel\+Size, int render\+Size, bool flip\+Horizontal)
+\item 
+\mbox{\Hypertarget{class_texture_a8490357d840a7a64b12afd464a910cef}\label{class_texture_a8490357d840a7a64b12afd464a910cef}} 
+void \mbox{\hyperlink{class_texture_a8490357d840a7a64b12afd464a910cef}{render\+Light}} (S\+D\+L\+\_\+\+Renderer $\ast$renderer, int sourceX, int sourceY, int destX, int destY, int pixel\+Size, int render\+Size)
+\begin{DoxyCompactList}\small\item\em Render light. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_texture_a5b56b0778a0417bddf0442aadad3a444}\label{class_texture_a5b56b0778a0417bddf0442aadad3a444}} 
+void \mbox{\hyperlink{class_texture_a5b56b0778a0417bddf0442aadad3a444}{alter\+Transparency}} (int transparency\+Level)
+\begin{DoxyCompactList}\small\item\em Alters the alpha value of the image to make it appear transparent in the window. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_texture_a9fa98f7326aebee23beb05167689faa8}\label{class_texture_a9fa98f7326aebee23beb05167689faa8}} 
+void \mbox{\hyperlink{class_texture_a9fa98f7326aebee23beb05167689faa8}{alter\+Texture\+Colour}} (int r, int g, int b)
+\begin{DoxyCompactList}\small\item\em Alters the r,g,b colours of the texture. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_texture_ac28fb631f06f02337d53e874fdbeb4e9}\label{class_texture_ac28fb631f06f02337d53e874fdbeb4e9}} 
+void {\bfseries alter\+Texture\+Colour} (vec3 \&color)
+\item 
+\mbox{\Hypertarget{class_texture_a58e51d30005c312df238254feff97bc7}\label{class_texture_a58e51d30005c312df238254feff97bc7}} 
+void {\bfseries alter\+Texture\+Colour} (vec3 \&color, int hue\+Change)
+\item 
+\mbox{\Hypertarget{class_texture_a103742a60e353103511ef8f4d2454e54}\label{class_texture_a103742a60e353103511ef8f4d2454e54}} 
+void {\bfseries set\+Blend\+Mode} (S\+D\+L\+\_\+\+Blend\+Mode blending)
+\item 
+\mbox{\Hypertarget{class_texture_abb38cd5ae0cf54f1ad4fb9a2ac1f26d0}\label{class_texture_abb38cd5ae0cf54f1ad4fb9a2ac1f26d0}} 
+char \mbox{\hyperlink{class_texture_abb38cd5ae0cf54f1ad4fb9a2ac1f26d0}{set\+Atlas\+Type}} (char type)
+\begin{DoxyCompactList}\small\item\em Set \mbox{\hyperlink{class_atlas}{Atlas}} type -- Type 0 = 128px / no border -- Type 1 = 16bit / 1px border. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_texture_af318f13a6bccf3e0fc70b5a9a11d7f13}\label{class_texture_af318f13a6bccf3e0fc70b5a9a11d7f13}} 
+int \mbox{\hyperlink{class_texture_af318f13a6bccf3e0fc70b5a9a11d7f13}{set\+Tile\+Size}} (int size)
+\begin{DoxyCompactList}\small\item\em Set \mbox{\hyperlink{class_atlas}{Atlas}} tile size. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_texture_acfb195af3f1df21de49078c5c37d486a}\label{class_texture_acfb195af3f1df21de49078c5c37d486a}} 
+int \mbox{\hyperlink{class_texture_acfb195af3f1df21de49078c5c37d486a}{set\+Tile\+Width}} (int width)
+\begin{DoxyCompactList}\small\item\em Set \mbox{\hyperlink{class_atlas}{Atlas}} tile width number. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_texture_aaa6b739845ef6aa36d0c6c6fcaf93e3d}\label{class_texture_aaa6b739845ef6aa36d0c6c6fcaf93e3d}} 
+S\+D\+L\+\_\+\+Rect \& {\bfseries get\+Rect} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Loads and renders images in the window. 
+
+This class is used for all the images in the game. It loads textures from a given file location and can alter the image transparency if the image is a P\+NG. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_texture_ab303a4548e5c5822de490b99b5d3f928}\label{class_texture_ab303a4548e5c5822de490b99b5d3f928}} 
+\index{Texture@{Texture}!Texture@{Texture}}
+\index{Texture@{Texture}!Texture@{Texture}}
+\doxysubsubsection{\texorpdfstring{Texture()}{Texture()}}
+{\footnotesize\ttfamily Texture\+::\+Texture (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{file\+Name }\end{DoxyParamCaption})}
+
+
+
+A constructor. 
+
+Requires a file path to load the image from 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/alli0/\+Documents/\+Git\+Hub/\+Game\+Engine/\+Client/\+Source/\+Source/Texture.\+h\item 
+C\+:/\+Users/alli0/\+Documents/\+Git\+Hub/\+Game\+Engine/\+Client/\+Source/\+Source/Texture.\+cpp\end{DoxyCompactItemize}

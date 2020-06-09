@@ -1,0 +1,65 @@
+\hypertarget{class_room}{}\doxysection{Room Class Reference}
+\label{class_room}\index{Room@{Room}}
+Inheritance diagram for Room\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_room}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_room_ac6ef93a7d9c3e1d624e025058d5f16ff}\label{class_room_ac6ef93a7d9c3e1d624e025058d5f16ff}} 
+\mbox{\hyperlink{class_room_ac6ef93a7d9c3e1d624e025058d5f16ff}{Room}} ()
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_room_a557b1d51636d42d5294740164bb6a8cc}\label{class_room_a557b1d51636d42d5294740164bb6a8cc}} 
+{\bfseries Room} (json data)
+\item 
+\mbox{\Hypertarget{class_room_a67d5da09983cc53097807fd43ba5481a}\label{class_room_a67d5da09983cc53097807fd43ba5481a}} 
+\mbox{\hyperlink{class_room_a67d5da09983cc53097807fd43ba5481a}{$\sim$\+Room}} ()
+\begin{DoxyCompactList}\small\item\em Deconstructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_room_ac618ebc59b8bf6d225759bc766b058fd}\label{class_room_ac618ebc59b8bf6d225759bc766b058fd}} 
+json {\bfseries Get\+Json} ()
+\item 
+\mbox{\Hypertarget{class_room_a3593021e13f3f3de9bb0a8943cca6619}\label{class_room_a3593021e13f3f3de9bb0a8943cca6619}} 
+void \mbox{\hyperlink{class_room_a3593021e13f3f3de9bb0a8943cca6619}{Instance\+Setup}} (\mbox{\hyperlink{class_player}{Player}} \&player)
+\begin{DoxyCompactList}\small\item\em Setup room override. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_room_a286e2df4a05accff853b18105dc45f2c}\label{class_room_a286e2df4a05accff853b18105dc45f2c}} 
+virtual void \mbox{\hyperlink{class_room_a286e2df4a05accff853b18105dc45f2c}{Render}} (\mbox{\hyperlink{class_g_l___renderer}{G\+L\+\_\+\+Renderer}} \&renderer)
+\begin{DoxyCompactList}\small\item\em Render. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_room_aeb4ac37cb202acbe6b0f95c3f06ebb9d}\label{class_room_aeb4ac37cb202acbe6b0f95c3f06ebb9d}} 
+virtual void \mbox{\hyperlink{class_room_aeb4ac37cb202acbe6b0f95c3f06ebb9d}{Update}} ()
+\begin{DoxyCompactList}\small\item\em Update. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_room_a6a9c125af936cafcd783c9a0afafb105}\label{class_room_a6a9c125af936cafcd783c9a0afafb105}} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_cell}{Cell}} $>$ \& {\bfseries Get\+Cell} (int x, int y)
+\item 
+\mbox{\Hypertarget{class_room_a3d1936af5ee57802b1f47532abea836f}\label{class_room_a3d1936af5ee57802b1f47532abea836f}} 
+void {\bfseries Set\+Cell\+Item} (int x, int y, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_item}{Item}} $>$ item)
+\item 
+\mbox{\Hypertarget{class_room_acba88669b6335ac5fd2ff42e232ca70a}\label{class_room_acba88669b6335ac5fd2ff42e232ca70a}} 
+void \mbox{\hyperlink{class_room_acba88669b6335ac5fd2ff42e232ca70a}{Set\+Cell\+Item}} (int x, int y, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_item}{Item}} $>$ item, b2\+Body\+Type type)
+\begin{DoxyCompactList}\small\item\em Initilise with physics. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_room_aa0da5ac81b6425de395fbded3c39b7f2}\label{class_room_aa0da5ac81b6425de395fbded3c39b7f2}} 
+int {\bfseries get\+Room\+Size} ()
+\item 
+\mbox{\Hypertarget{class_room_ad0f5ec0cc6f623f8c2633c421b1ab7e4}\label{class_room_ad0f5ec0cc6f623f8c2633c421b1ab7e4}} 
+void {\bfseries Spawn\+N\+PC} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_n_p_c}{N\+PC}} $>$ npc)
+\item 
+\mbox{\Hypertarget{class_room_ae930175895efbd39f125392cf68b5555}\label{class_room_ae930175895efbd39f125392cf68b5555}} 
+int \mbox{\hyperlink{class_room_ae930175895efbd39f125392cf68b5555}{get\+Tile\+Size}} ()
+\begin{DoxyCompactList}\small\item\em Get the tile size in the building. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_room_a7a6c8f07e32081201f3c4cebdeb4cfa3}\label{class_room_a7a6c8f07e32081201f3c4cebdeb4cfa3}} 
+int {\bfseries set\+Tile\+Size} (int new\+Size)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_room_a586e1713588c5f7b2995f98183b2f432}\label{class_room_a586e1713588c5f7b2995f98183b2f432}} 
+std\+::vector$<$ std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_cell}{Cell}} $>$ $>$ $>$ \mbox{\hyperlink{class_room_a586e1713588c5f7b2995f98183b2f432}{tiles}}
+\begin{DoxyCompactList}\small\item\em room tiles \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/alli0/\+Documents/\+Git\+Hub/\+Game\+Engine/\+Client/\+Source/\+Source/Room.\+h\item 
+C\+:/\+Users/alli0/\+Documents/\+Git\+Hub/\+Game\+Engine/\+Client/\+Source/\+Source/Room.\+cpp\end{DoxyCompactItemize}

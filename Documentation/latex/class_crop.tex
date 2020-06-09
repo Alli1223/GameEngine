@@ -1,0 +1,69 @@
+\hypertarget{class_crop}{}\doxysection{Crop Class Reference}
+\label{class_crop}\index{Crop@{Crop}}
+Inheritance diagram for Crop\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_crop}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_crop_a21332e4b42000fb24e1407912b42f465}\label{class_crop_a21332e4b42000fb24e1407912b42f465}} 
+virtual int \mbox{\hyperlink{class_crop_a21332e4b42000fb24e1407912b42f465}{get\+Current\+Growth\+Stage}} ()
+\begin{DoxyCompactList}\small\item\em Get the current stage. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_crop_a3fdfa2c502a39f820de69d2a9ff15f87}\label{class_crop_a3fdfa2c502a39f820de69d2a9ff15f87}} 
+virtual int {\bfseries set\+Current\+Growth\+Stage} (int new\+Stage)
+\item 
+\mbox{\Hypertarget{class_crop_a723456653f6010c9b1d1ec1d0f652ff3}\label{class_crop_a723456653f6010c9b1d1ec1d0f652ff3}} 
+virtual int \mbox{\hyperlink{class_crop_a723456653f6010c9b1d1ec1d0f652ff3}{get\+Total\+Stages}} ()
+\begin{DoxyCompactList}\small\item\em Get total stages the plant has. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_crop_a32db6c0c8c3323c48219e54f37c5a5e1}\label{class_crop_a32db6c0c8c3323c48219e54f37c5a5e1}} 
+virtual \mbox{\hyperlink{class_animation}{Animation}} \& \mbox{\hyperlink{class_crop_a32db6c0c8c3323c48219e54f37c5a5e1}{get\+Animation}} ()
+\begin{DoxyCompactList}\small\item\em Get the animation. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_crop_abebd917960b3e2691b9625184c9fadc6}\label{class_crop_abebd917960b3e2691b9625184c9fadc6}} 
+virtual std\+::string \mbox{\hyperlink{class_crop_abebd917960b3e2691b9625184c9fadc6}{get\+Name}} ()
+\begin{DoxyCompactList}\small\item\em Get the crops name. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_crop_ac9bce249d9913c5b7302279b2e33c741}\label{class_crop_ac9bce249d9913c5b7302279b2e33c741}} 
+json {\bfseries get\+Json} ()
+\item 
+\mbox{\Hypertarget{class_crop_ad5bd3125d878b1efb36ed144ee8600de}\label{class_crop_ad5bd3125d878b1efb36ed144ee8600de}} 
+void \mbox{\hyperlink{class_crop_ad5bd3125d878b1efb36ed144ee8600de}{Render}} (\mbox{\hyperlink{class_g_l___renderer}{G\+L\+\_\+\+Renderer}} \&renderer)
+\begin{DoxyCompactList}\small\item\em Draw sprite. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_crop_a68ff149056bfe92acb16df89345ead6b}\label{class_crop_a68ff149056bfe92acb16df89345ead6b}} 
+\mbox{\hyperlink{class_animation}{Animation}} \mbox{\hyperlink{class_crop_a68ff149056bfe92acb16df89345ead6b}{growth\+Anim}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_animation}{Animation}} stores the frames of the sprite. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_crop_a7e895438670c1c8b0a93dd92477e8a32}\label{class_crop_a7e895438670c1c8b0a93dd92477e8a32}} 
+\mbox{\hyperlink{class_timer}{Timer}} {\bfseries growth\+Timer}
+\item 
+\mbox{\Hypertarget{class_crop_a4028a1c893a1d715414b0f2303286241}\label{class_crop_a4028a1c893a1d715414b0f2303286241}} 
+bool {\bfseries wobble} = false
+\item 
+\mbox{\Hypertarget{class_crop_a6c139dd868e9e71aa2f3b19e94d4ee12}\label{class_crop_a6c139dd868e9e71aa2f3b19e94d4ee12}} 
+float {\bfseries rotation\+Speed} = 0.\+05f
+\item 
+\mbox{\Hypertarget{class_crop_a182b5896fe7b69680cd71d5783da7ec4}\label{class_crop_a182b5896fe7b69680cd71d5783da7ec4}} 
+float {\bfseries rotation\+Amount} = 0.\+3f
+\item 
+\mbox{\Hypertarget{class_crop_a77c030a8b0981ad1e7c96fb314371494}\label{class_crop_a77c030a8b0981ad1e7c96fb314371494}} 
+int \mbox{\hyperlink{class_crop_a77c030a8b0981ad1e7c96fb314371494}{total\+Stages}} = 3
+\begin{DoxyCompactList}\small\item\em Total stages the plant has. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_crop_aaff896861a2dad76ac9cf65b18df6520}\label{class_crop_aaff896861a2dad76ac9cf65b18df6520}} 
+int {\bfseries current\+Growth\+Stage} = 0
+\item 
+\mbox{\Hypertarget{class_crop_a4e5d04f98483474c442101837ebe9ea9}\label{class_crop_a4e5d04f98483474c442101837ebe9ea9}} 
+float \mbox{\hyperlink{class_crop_a4e5d04f98483474c442101837ebe9ea9}{growth\+Iterator\+Time}} = 10000
+\begin{DoxyCompactList}\small\item\em Time it takes for plant to grow each stage. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_crop_a018b0836a7314417421ff3436f5e6958}\label{class_crop_a018b0836a7314417421ff3436f5e6958}} 
+std\+::string \mbox{\hyperlink{class_crop_a018b0836a7314417421ff3436f5e6958}{crop\+Name}} = \char`\"{}N\+U\+LL\char`\"{}
+\begin{DoxyCompactList}\small\item\em Name. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/alli0/\+Documents/\+Git\+Hub/\+Game\+Engine/\+Client/\+Source/\+Source/Crop.\+h\item 
+C\+:/\+Users/alli0/\+Documents/\+Git\+Hub/\+Game\+Engine/\+Client/\+Source/\+Source/Crop.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,56 @@
+\hypertarget{class_inventory}{}\doxysection{Inventory Class Reference}
+\label{class_inventory}\index{Inventory@{Inventory}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_inventory_af5a69f39cca2652c4c38782cb6158736}\label{class_inventory_af5a69f39cca2652c4c38782cb6158736}} 
+bool \mbox{\hyperlink{class_inventory_af5a69f39cca2652c4c38782cb6158736}{add}} (std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_item}{Item}} $>$$>$ \&new\+Items, unsigned int position)
+\begin{DoxyCompactList}\small\item\em Add an item at a specified index. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_inventory_a34cb23d3838262fa34d05cc2ebb97b6e}\label{class_inventory_a34cb23d3838262fa34d05cc2ebb97b6e}} 
+bool {\bfseries add} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_item}{Item}} $>$ \&item)
+\item 
+\mbox{\Hypertarget{class_inventory_ae6fced724174918f39749249685354c0}\label{class_inventory_ae6fced724174918f39749249685354c0}} 
+bool {\bfseries add} (std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_item}{Item}} $>$$>$ \&new\+Stack)
+\item 
+\mbox{\Hypertarget{class_inventory_a770890747a90644d5abc9318f36affdb}\label{class_inventory_a770890747a90644d5abc9318f36affdb}} 
+unsigned int {\bfseries get\+Capacity} () const
+\item 
+\mbox{\Hypertarget{class_inventory_a253a0004f087309a10132e1c1be080d7}\label{class_inventory_a253a0004f087309a10132e1c1be080d7}} 
+unsigned int {\bfseries get\+Current\+Size} ()
+\item 
+\mbox{\Hypertarget{class_inventory_ac74d75f85e40be1c04cf3e5fa90fb735}\label{class_inventory_ac74d75f85e40be1c04cf3e5fa90fb735}} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_item}{Item}} $>$ \& {\bfseries get} (unsigned int index)
+\item 
+\mbox{\Hypertarget{class_inventory_a0dfa9f93ab7045e8796ee8d1c06dc573}\label{class_inventory_a0dfa9f93ab7045e8796ee8d1c06dc573}} 
+std\+::vector$<$ std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_item}{Item}} $>$ $>$ $>$ \& \mbox{\hyperlink{class_inventory_a0dfa9f93ab7045e8796ee8d1c06dc573}{get\+Vector\+Of\+Only\+The\+Items}} ()
+\begin{DoxyCompactList}\small\item\em Returns a list of only the items in the inventory. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_inventory_a964d25e19a7be81e6cdca08c876a45a9}\label{class_inventory_a964d25e19a7be81e6cdca08c876a45a9}} 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_item}{Item}} $>$ $>$ \& {\bfseries get\+Stack} (unsigned int index)
+\item 
+\mbox{\Hypertarget{class_inventory_aaa3598e587a13eb36ef34fa31cfc0571}\label{class_inventory_aaa3598e587a13eb36ef34fa31cfc0571}} 
+unsigned int \mbox{\hyperlink{class_inventory_aaa3598e587a13eb36ef34fa31cfc0571}{get\+Item\+Stack\+Size}} (unsigned int index)
+\begin{DoxyCompactList}\small\item\em get amount of items in a specified stack \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_inventory_a16f87d6e48b537d55404b683ccdafdb5}\label{class_inventory_a16f87d6e48b537d55404b683ccdafdb5}} 
+void \mbox{\hyperlink{class_inventory_a16f87d6e48b537d55404b683ccdafdb5}{swap}} (unsigned int from, unsigned int to)
+\begin{DoxyCompactList}\small\item\em Swap two items in the inventory. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_inventory_afb9f87415cafc6a2013251f14fcfdc3f}\label{class_inventory_afb9f87415cafc6a2013251f14fcfdc3f}} 
+bool \mbox{\hyperlink{class_inventory_afb9f87415cafc6a2013251f14fcfdc3f}{move}} (\mbox{\hyperlink{class_inventory}{Inventory}} \&inventory, unsigned int this\+Index, unsigned int new\+Inventory\+Index)
+\begin{DoxyCompactList}\small\item\em Move an item to another inventory. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_inventory_acefffc675c3790085267a9b2621f88a1}\label{class_inventory_acefffc675c3790085267a9b2621f88a1}} 
+bool {\bfseries remove} (unsigned int index)
+\item 
+\mbox{\Hypertarget{class_inventory_aa8bb8dbb56b721405694b21253b22865}\label{class_inventory_aa8bb8dbb56b721405694b21253b22865}} 
+bool {\bfseries remove\+Item} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_item}{Item}} $>$ \&item)
+\item 
+\mbox{\Hypertarget{class_inventory_a873b0e37d0a4811d27ef70dc67ad988f}\label{class_inventory_a873b0e37d0a4811d27ef70dc67ad988f}} 
+unsigned int \mbox{\hyperlink{class_inventory_a873b0e37d0a4811d27ef70dc67ad988f}{set\+Capacity}} (unsigned int new\+Capacity)
+\begin{DoxyCompactList}\small\item\em Set inventory to a new size. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_inventory_a465a6a426cce682564d8fa667d29a1b2}\label{class_inventory_a465a6a426cce682564d8fa667d29a1b2}} 
+std\+::vector$<$ std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_item}{Item}} $>$ $>$ $>$ \& \mbox{\hyperlink{class_inventory_a465a6a426cce682564d8fa667d29a1b2}{get\+Item\+List}} ()
+\begin{DoxyCompactList}\small\item\em Get the list of all the items in inventory (including null items) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/alli0/\+Documents/\+Git\+Hub/\+Game\+Engine/\+Client/\+Source/\+Source/Inventory.\+h\item 
+C\+:/\+Users/alli0/\+Documents/\+Git\+Hub/\+Game\+Engine/\+Client/\+Source/\+Source/Inventory.\+cpp\end{DoxyCompactItemize}

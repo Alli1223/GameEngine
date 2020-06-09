@@ -1,0 +1,79 @@
+\hypertarget{class_level}{}\doxysection{Level Class Reference}
+\label{class_level}\index{Level@{Level}}
+
+
+This class generates the base of the level.  
+
+
+
+
+{\ttfamily \#include $<$Level.\+h$>$}
+
+Inheritance diagram for Level\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_level}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_level_a7a696c928ca5d5354db6e50e46d0f67d}\label{class_level_a7a696c928ca5d5354db6e50e46d0f67d}} 
+\mbox{\hyperlink{class_level_a7a696c928ca5d5354db6e50e46d0f67d}{Level}} ()
+\begin{DoxyCompactList}\small\item\em A constructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_level_a249eac1e8f19ff44134efa5e986feaca}\label{class_level_a249eac1e8f19ff44134efa5e986feaca}} 
+\mbox{\hyperlink{class_level_a249eac1e8f19ff44134efa5e986feaca}{$\sim$\+Level}} ()
+\begin{DoxyCompactList}\small\item\em A deconstructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_level_a4946e90e352eea75f8785ac43cbec42e}\label{class_level_a4946e90e352eea75f8785ac43cbec42e}} 
+void {\bfseries Create\+Level} (int x, int y)
+\item 
+\mbox{\Hypertarget{class_level_a716412e0dd21da6161b81b29f6a130ad}\label{class_level_a716412e0dd21da6161b81b29f6a130ad}} 
+void {\bfseries Create\+Level\+From\+Json} (json level)
+\item 
+\mbox{\Hypertarget{class_level_a0b6d16a7850bee00c1079ae6caa09658}\label{class_level_a0b6d16a7850bee00c1079ae6caa09658}} 
+int {\bfseries get\+Cell\+Size} ()
+\item 
+\mbox{\Hypertarget{class_level_a097cc355bb986141ab1293b6326fc7dd}\label{class_level_a097cc355bb986141ab1293b6326fc7dd}} 
+int {\bfseries set\+Cell\+Size} (int new\+Cell\+Size)
+\item 
+\mbox{\Hypertarget{class_level_a46e9bc7ae3fa366c5ff636fe4d0d113f}\label{class_level_a46e9bc7ae3fa366c5ff636fe4d0d113f}} 
+int {\bfseries set\+Cells\+In\+Window\+Size} (int x\+Val, int y\+Val)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_level_a1d3eb38d8e80556a4ed95254a04e0f8a}\label{class_level_a1d3eb38d8e80556a4ed95254a04e0f8a}} 
+std\+::vector$<$ std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_cell}{Cell}} $>$ $>$ $>$ \mbox{\hyperlink{class_level_a1d3eb38d8e80556a4ed95254a04e0f8a}{tiles}}
+\begin{DoxyCompactList}\small\item\em The base grid that contains the cells. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_level_a1f6cfebd759853a5bc96e54f4aeb34b1}\label{class_level_a1f6cfebd759853a5bc96e54f4aeb34b1}} 
+int {\bfseries cells\+In\+Window\+Width} = 0
+\item 
+\mbox{\Hypertarget{class_level_aa049f833818b5e8e3c0f8ee49cdd71f9}\label{class_level_aa049f833818b5e8e3c0f8ee49cdd71f9}} 
+int {\bfseries cells\+In\+Window\+Height} = 0
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_level_a96a0acf0f21c6d980f9b8c75f13b1672}\label{class_level_a96a0acf0f21c6d980f9b8c75f13b1672}} 
+int {\bfseries level\+Width}
+\item 
+\mbox{\Hypertarget{class_level_a629c045305fc11af293d710df7cadc5e}\label{class_level_a629c045305fc11af293d710df7cadc5e}} 
+int {\bfseries level\+Height}
+\item 
+\mbox{\Hypertarget{class_level_a50fe4de705aaa281592ddc26c21362ec}\label{class_level_a50fe4de705aaa281592ddc26c21362ec}} 
+int {\bfseries cell\+Size}
+\item 
+\mbox{\Hypertarget{class_level_aa6f1c5e1f00c5ae7f814e79cbf8c7e5e}\label{class_level_aa6f1c5e1f00c5ae7f814e79cbf8c7e5e}} 
+int {\bfseries default\+Level\+Size} = 100
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This class generates the base of the level. 
+
+This class creates a vector of vector of shared pointers to cells 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/alli0/\+Documents/\+Git\+Hub/\+Game\+Engine/\+Client/\+Source/\+Source/Level.\+h\item 
+C\+:/\+Users/alli0/\+Documents/\+Git\+Hub/\+Game\+Engine/\+Client/\+Source/\+Source/Level.\+cpp\end{DoxyCompactItemize}

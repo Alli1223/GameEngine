@@ -1,0 +1,53 @@
+\hypertarget{class_resource_manager}{}\doxysection{Resource\+Manager Class Reference}
+\label{class_resource_manager}\index{ResourceManager@{ResourceManager}}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_resource_manager_a35d79546a21bf344be729011cdd45a25}\label{class_resource_manager_a35d79546a21bf344be729011cdd45a25}} 
+static \mbox{\hyperlink{class_shader}{Shader}} {\bfseries Load\+Shader} (const G\+Lchar $\ast$v\+Shader\+File, const G\+Lchar $\ast$f\+Shader\+File, const G\+Lchar $\ast$g\+Shader\+File, std\+::string name)
+\item 
+\mbox{\Hypertarget{class_resource_manager_a0b9cc7ab026e234c138efae97810b3e2}\label{class_resource_manager_a0b9cc7ab026e234c138efae97810b3e2}} 
+static \mbox{\hyperlink{class_shader}{Shader}} {\bfseries Get\+Shader} (std\+::string name)
+\item 
+\mbox{\Hypertarget{class_resource_manager_a8487e03c1b12fd74631184b91f7ffc11}\label{class_resource_manager_a8487e03c1b12fd74631184b91f7ffc11}} 
+static \mbox{\hyperlink{class_texture2_d}{Texture2D}} {\bfseries Load\+Texture} (const std\+::string \&file)
+\item 
+\mbox{\Hypertarget{class_resource_manager_adddd78b0314ace7ca14c13429e30b0df}\label{class_resource_manager_adddd78b0314ace7ca14c13429e30b0df}} 
+static \mbox{\hyperlink{class_texture2_d}{Texture2D}} {\bfseries Create\+Texture\+From\+Atlas} (\mbox{\hyperlink{class_atlas}{Atlas}} \&atlas, int index)
+\item 
+\mbox{\Hypertarget{class_resource_manager_ae190bdc1b6610ee67d8f8e7cc5c846ab}\label{class_resource_manager_ae190bdc1b6610ee67d8f8e7cc5c846ab}} 
+static \mbox{\hyperlink{class_texture2_d}{Texture2D}} {\bfseries Get\+Atlas\+Texture} (std\+::string atlas\+Name, int index)
+\item 
+\mbox{\Hypertarget{class_resource_manager_a343b8599f59fa180cd86c9ae0709538e}\label{class_resource_manager_a343b8599f59fa180cd86c9ae0709538e}} 
+static \mbox{\hyperlink{class_texture2_d}{Texture2D}} {\bfseries Get\+Texture} (std\+::string name)
+\item 
+\mbox{\Hypertarget{class_resource_manager_a02265b55ed0f6625349189bf34b318a1}\label{class_resource_manager_a02265b55ed0f6625349189bf34b318a1}} 
+static \mbox{\hyperlink{class_atlas}{Atlas}} {\bfseries Get\+Atlas} (std\+::string name)
+\item 
+\mbox{\Hypertarget{class_resource_manager_a6252c33a6baee6b5782f3c1bd46a56f4}\label{class_resource_manager_a6252c33a6baee6b5782f3c1bd46a56f4}} 
+static \mbox{\hyperlink{class_atlas}{Atlas}} \mbox{\hyperlink{class_resource_manager_a6252c33a6baee6b5782f3c1bd46a56f4}{Load\+Atlas}} (std\+::string name, std\+::string file, int tile\+Width, int tile\+Size)
+\begin{DoxyCompactList}\small\item\em Loads and generates an atlas file. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_resource_manager_a3cf65bfe20d442f638b2695451764b0d}\label{class_resource_manager_a3cf65bfe20d442f638b2695451764b0d}} 
+static \mbox{\hyperlink{class_atlas}{Atlas}} \mbox{\hyperlink{class_resource_manager_a3cf65bfe20d442f638b2695451764b0d}{Load\+Atlas}} (std\+::string name, std\+::string file, int tile\+Width, glm\+::ivec2 sprite\+Size)
+\begin{DoxyCompactList}\small\item\em Loads and generates an atlas file. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_resource_manager_aecd08b92634fad3316442c267a04e8c4}\label{class_resource_manager_aecd08b92634fad3316442c267a04e8c4}} 
+static void {\bfseries Clear} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_resource_manager_a8c1bc8fe6e0f92ab3c7e2dca94b0e491}\label{class_resource_manager_a8c1bc8fe6e0f92ab3c7e2dca94b0e491}} 
+static std\+::map$<$ std\+::string, \mbox{\hyperlink{class_shader}{Shader}} $>$ {\bfseries Shaders}
+\item 
+\mbox{\Hypertarget{class_resource_manager_a1e5099e4a3efa14c2cbf837a14c2ea11}\label{class_resource_manager_a1e5099e4a3efa14c2cbf837a14c2ea11}} 
+static std\+::map$<$ std\+::string, \mbox{\hyperlink{class_texture2_d}{Texture2D}} $>$ {\bfseries Textures}
+\item 
+\mbox{\Hypertarget{class_resource_manager_a74ec069e8044f1767ac5f5a21070a536}\label{class_resource_manager_a74ec069e8044f1767ac5f5a21070a536}} 
+static std\+::map$<$ std\+::string, \mbox{\hyperlink{class_atlas}{Atlas}} $>$ {\bfseries Atlass}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/alli0/\+Documents/\+Git\+Hub/\+Game\+Engine/\+Client/\+Source/\+Source/Resource\+Manager.\+h\item 
+C\+:/\+Users/alli0/\+Documents/\+Git\+Hub/\+Game\+Engine/\+Client/\+Source/\+Source/Resource\+Manager.\+cpp\end{DoxyCompactItemize}
