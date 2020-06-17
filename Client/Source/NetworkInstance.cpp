@@ -91,7 +91,6 @@ void NetworkInstance::Update()
 	int x, y;
 	if (SDL_GetMouseState(&x, &y) & SDL_BUTTON(SDL_BUTTON_LEFT))
 	{
-		I_player.setBodyColour({ rand() % 255, rand() % 255, rand() % 255 });
 		//if (level[{x / cellSize, y / cellSize}] != nullptr)
 		//{
 		//	std::cout << level[{x / cellSize, y / cellSize}]->terrainElevationValue << std::endl;
