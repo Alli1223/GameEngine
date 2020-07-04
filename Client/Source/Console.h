@@ -15,6 +15,6 @@ public:
 private:
 	static std::vector<std::string> textLog;
 	float textSize = 0.2f;
-	float transparency = 0.3f;
+	float transparency = 0.8f;
 
 };

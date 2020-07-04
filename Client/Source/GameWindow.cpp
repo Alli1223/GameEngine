@@ -5,8 +5,8 @@
 GameWindow::GameWindow() 
 {
 
-	imageLocation = "Resources\\UI\\Background.png";
-	//this->Background = ResourceManager::LoadTexture("Resources\\UI\\Background.png");
+	imageLocation = "Resources\\UI\\Windows\\panel1.png";
+	//this->Background = ResourceManager::LoadTexture("Resources\\UI\\Windows\\panel1.png");
 }
 
 
@@ -16,7 +16,8 @@ GameWindow::~GameWindow()
 
 void GameWindow::Render(GL_Renderer& renderer)
 {
-	renderer.RenderGUI(this->Background, this->position, this->size, this->rotation, this->transparency, this->colour, flipSprite);
+	if(this->Background.Height> 0 && this->Background.Width > 0)
+		renderer.RenderGUI(this->Background, this->position, this->size, this->rotation, this->transparency, this->colour, flipSprite);
 	itemSelection.Render(renderer);
 	if (buttons.size() > 0)
 	{

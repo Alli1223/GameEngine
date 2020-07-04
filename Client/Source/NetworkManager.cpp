@@ -69,7 +69,7 @@ void NetworkManager::Connect()
 	}
 	catch (std::exception e)
 	{
-		std::cout << "Error connecting to external server.." << std::endl;
+		std::cout << "Error connecting to local server.." << std::endl;
 	}
 	if (!connected)
 	{
@@ -84,7 +84,7 @@ void NetworkManager::Connect()
 		}
 		catch (std::exception e)
 		{
-			std::cout << "Error connecting to internal server.." << std::endl;
+			std::cout << "Error connecting to External server.." << std::endl;
 		}
 	}
 }

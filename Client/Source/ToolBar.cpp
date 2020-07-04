@@ -91,6 +91,5 @@ void ToolBar::createToolbar(Player& player, GameSettings& gameSettings)
 		sharedIcon->setHeight(iconSize);
 		toolbarIcons.push_back(sharedIcon);
 	}
-
 }
 

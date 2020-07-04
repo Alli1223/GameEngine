@@ -7,7 +7,7 @@ CharacerWindow::CharacerWindow()
 	this->setPosition(500, 500);
 	window.itemSelection.setSize({ this->getWidth(), this->getHeight() / 2.0f });
 	window.itemSelection.setPosition({ this->getX(), this->getY() + (this->getSize().y / 4) });
-	this->imageLocation = "Resources\\UI\\CharacterSheet\\IconBorder.png";
+	this->imageLocation = "Resources\\UI\\Windows\\panel1.png";
 }
 
 
@@ -22,8 +22,10 @@ void CharacerWindow::init(Player& player)
 		colour = { 0,0,0 };
 		actualPlayer = &player;
 		initilised = true;
+		
 		window.itemSelection.inventoryPointer = &player.inventory;
 		window.itemSelection.CreateItemSelection(player.inventory.getItemList());
+		
 		this->Background = ResourceManager::LoadTexture(imageLocation);
 	}
 }

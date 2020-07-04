@@ -48,24 +48,26 @@ void NetworkInstance::Render(GL_Renderer& renderer)
 {
 	// Move the camera to the player
 	renderer.camera.Lerp_To(I_player.getPosition() - (glm::vec2)(GameSettings::GSInstance->windowSize / 2), 0.3f);
+
 	// Render the world around the camera
 	for (int x = renderer.camera.getX() / cellSize - 1; x < renderer.camera.getX() / cellSize + (GameSettings::GSInstance->windowSize.x / cellSize) + 1; x++)
 		for (int y = renderer.camera.getY() / cellSize -1; y < renderer.camera.getY() / cellSize + (GameSettings::GSInstance->windowSize.y / cellSize) + 2; y++)
 		{
 			if (level[{x, y}] != nullptr)
 			{
-				level[{x, y}]->Render(renderer);
-				//if (!level[{x, y}]->orientated)
 				{
-					if (level[{x, y}]->orientationTimer.getTicks() > 100)
+					// Orientate cells every X ms
+					if (level[{x, y}]->orientationTimer.getTicks() > 200)
 					{
 						procGen.OrientateCells(level[{x, y}], &level);
 						level[{x, y}]->orientationTimer.restart();
 						level[{x, y}]->orientated = true;
 					}
 				}
+				// Render cell
+				level[{x, y}]->Render(renderer);
 			}
-			else // Create the cell
+			else // Otherwise create the cell
 			{
 				CreateCell({ x,y });
 			}
@@ -114,7 +116,7 @@ void NetworkInstance::Update()
 	/// </summary>
 	if (networkUpdateTimer.getTicks() > updateRate)
 	{
-		//NetworkUpdate();
+		NetworkUpdate();
 		networkUpdateTimer.restart();
 		network->NetworkUpdate(I_Physics.get(), I_player);
 	}

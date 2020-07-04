@@ -152,8 +152,8 @@ void MainGame::run()
 	glRenderer.SetProjectionMatrix();
 
 	// Main Menu
-	Menu menu;
-	menu.MainMenu(gameSettings, world, glRenderer.camera, world.I_player, glRenderer, window, glContext);
+	//Menu menu;
+	//menu.MainMenu(gameSettings, world, glRenderer.camera, world.I_player, glRenderer, window, glContext);
 
 	// Initilise the world with the physcis stored in glRenderer
 
@@ -193,29 +193,29 @@ void MainGame::run()
 	glRenderer.SetProjectionMatrix();
 
 	// Create default starting items and add to player
-	Fish fish;
-	Hoe hoe;
-	FishingRod rod;
-	BugNet net;
-	Scythe scythe;
-	SunflowerSeeds sunflowerSeeds;
-	WheatSeeds wheatSeeds;
-	LavenderSeeds lavenderSeeds;
-
-	ItemChest chest;
-	chest.setPosition(0, 100);
-	chest.setSize(100, 100);
-	chest.Sprite = ResourceManager::LoadTexture("Resources\\Sprites\\Character\\Alli.png");
-
-	world.I_player.inventory.add(wheatSeeds.getSharedPointer());
-	for(int i =0;i < 10; i++)
-		world.I_player.inventory.add(sunflowerSeeds.getSharedPointer());
-	world.I_player.inventory.add(lavenderSeeds.getSharedPointer());
-	world.I_player.inventory.add(fish.getSharedPointer());
-	world.I_player.inventory.add(hoe.getSharedPointer());
-	world.I_player.inventory.add(rod.getSharedPointer());
-	world.I_player.inventory.add(net.getSharedPointer());
-	world.I_player.inventory.add(scythe.getSharedPointer());
+	//Fish fish;
+	//Hoe hoe;
+	//FishingRod rod;
+	//BugNet net;
+	//Scythe scythe;
+	//SunflowerSeeds sunflowerSeeds;
+	//WheatSeeds wheatSeeds;
+	//LavenderSeeds lavenderSeeds;
+	//
+	//ItemChest chest;
+	//chest.setPosition(0, 100);
+	//chest.setSize(100, 100);
+	//chest.Sprite = ResourceManager::LoadTexture("Resources\\Sprites\\Character\\Alli.png");
+	//
+	//world.I_player.inventory.add(wheatSeeds.getSharedPointer());
+	//for(int i =0;i < 10; i++)
+	//	world.I_player.inventory.add(sunflowerSeeds.getSharedPointer());
+	//world.I_player.inventory.add(lavenderSeeds.getSharedPointer());
+	//world.I_player.inventory.add(fish.getSharedPointer());
+	//world.I_player.inventory.add(hoe.getSharedPointer());
+	//world.I_player.inventory.add(rod.getSharedPointer());
+	//world.I_player.inventory.add(net.getSharedPointer());
+	//world.I_player.inventory.add(scythe.getSharedPointer());
 
 	//world.onEnter(world.I_player);
 
@@ -248,7 +248,7 @@ void MainGame::run()
 	//s_world.onEnter(world.I_player);
 
 	//Shop.onEnter(world.I_player);
-	Mix_PlayMusic(gMusic, -1);
+	//Mix_PlayMusic(gMusic, -1);
 
 	float lag = 0.0f;
 	/////////////////////////////////////////////// MAIN LOOP ///////////////////////////////////////

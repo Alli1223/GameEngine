@@ -275,6 +275,7 @@
       <Filter>Source Files\Core\Level Classes</Filter>
     </ClCompile>
     <ClCompile Include="Console.cpp" />
+    <ClCompile Include="SpriteSelector.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cell.h">
@@ -569,6 +570,7 @@
       <Filter>Headers\Core\Level Classes</Filter>
     </ClInclude>
     <ClInclude Include="Console.h" />
+    <ClInclude Include="SpriteSelector.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="SDL_project.rc" />

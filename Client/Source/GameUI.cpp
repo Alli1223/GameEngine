@@ -91,6 +91,6 @@ void GameUI::Render(GL_Renderer& renderer, World& world, Player& player, GameSet
 
 
 
-	toolbar.Render(renderer, world, player, gameSettings);
+	//toolbar.Render(renderer, world, player, gameSettings);
 	console.Render(renderer);
 }

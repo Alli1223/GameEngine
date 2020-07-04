@@ -22,6 +22,6 @@ public:
 	std::vector<Button> buttons;
 
 	//! Whether the window is open
-	bool isOpen;
+	bool isOpen = false;
 };
 

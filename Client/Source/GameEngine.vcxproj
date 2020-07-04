@@ -246,6 +246,7 @@
     <ClInclude Include="Source\imgui\imstb_textedit.h" />
     <ClInclude Include="Source\imgui\imstb_truetype.h" />
     <ClInclude Include="SpeechBubble.h" />
+    <ClInclude Include="SpriteSelector.h" />
     <ClInclude Include="TextUI.h" />
     <ClInclude Include="Texture2D.h" />
     <ClInclude Include="TileSheet.h" />
@@ -357,6 +358,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="SpeechBubble.cpp" />
+    <ClCompile Include="SpriteSelector.cpp" />
     <ClCompile Include="TextUI.cpp" />
     <ClCompile Include="Texture2D.cpp" />
     <ClCompile Include="TileSheet.cpp" />
