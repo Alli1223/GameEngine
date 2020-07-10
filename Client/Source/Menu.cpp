@@ -107,6 +107,9 @@ void Menu::MainMenu(GameSettings& gameSettings, World& level, Camera& camera, Pl
 	play.setColour({ 200,100,50 });
 	play.textColour = { 255,255,255 };
 
+	TextInput networkAddress;
+	networkAddress.setPosition({ camera.windowSize.x / 2, camera.windowSize.y / 2 + 200 });
+	networkAddress.setSize({ 200,40 });
 
 	// Scale mouse correctly depending on resolution
 	menuCursorSize = gameSettings.WINDOW_WIDTH / 25;
@@ -139,6 +142,9 @@ void Menu::MainMenu(GameSettings& gameSettings, World& level, Camera& camera, Pl
 		// Render buttons
 		exit.Render(renderer);
 		play.Render(renderer);
+
+		networkAddress.Update();
+		networkAddress.Render(renderer);
 
 		if (play.isPressed())
 		{

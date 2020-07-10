@@ -50,7 +50,6 @@ bool Button::isPressed()
 	}
 	else
 		return false;
-	
 }
 
 bool Button::isHovered()

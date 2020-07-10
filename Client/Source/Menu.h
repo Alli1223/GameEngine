@@ -5,6 +5,7 @@
 #include "Button.h"
 #include "GameSettings.h"
 #include "ColourSlider.h"
+#include "TextInput.h"
 class Menu
 {
 public:

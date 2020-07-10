@@ -152,8 +152,8 @@ void MainGame::run()
 	glRenderer.SetProjectionMatrix();
 
 	// Main Menu
-	//Menu menu;
-	//menu.MainMenu(gameSettings, world, glRenderer.camera, world.I_player, glRenderer, window, glContext);
+	Menu menu;
+	menu.MainMenu(gameSettings, world, glRenderer.camera, world.I_player, glRenderer, window, glContext);
 
 	// Initilise the world with the physcis stored in glRenderer
 

@@ -247,6 +247,7 @@
     <ClInclude Include="Source\imgui\imstb_truetype.h" />
     <ClInclude Include="SpeechBubble.h" />
     <ClInclude Include="SpriteSelector.h" />
+    <ClInclude Include="TextInput.h" />
     <ClInclude Include="TextUI.h" />
     <ClInclude Include="Texture2D.h" />
     <ClInclude Include="TileSheet.h" />
@@ -359,6 +360,7 @@
     </ClCompile>
     <ClCompile Include="SpeechBubble.cpp" />
     <ClCompile Include="SpriteSelector.cpp" />
+    <ClCompile Include="TextInput.cpp" />
     <ClCompile Include="TextUI.cpp" />
     <ClCompile Include="Texture2D.cpp" />
     <ClCompile Include="TileSheet.cpp" />

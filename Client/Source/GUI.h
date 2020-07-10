@@ -41,8 +41,13 @@ public:
 	//! Render this GUI object
 	void Render(GL_Renderer& renderer);
 
+	//! Render this GUI object
+	void Update();
+
 	// Flip the sprite horizontally or vertiacally
 	std::pair<bool, bool> flipSprite;
+
+	bool isMouseOver();
 protected:
 	virtual void Initalise();
 	bool isInitalised = false;
@@ -50,5 +55,8 @@ protected:
 	glm::vec2 position, size;
 	glm::vec3 colour = { 0,0,0 };
 	GLfloat rotation;
+
+private:
+	int m_x, m_y;
 };
 
