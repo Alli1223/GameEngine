@@ -59,13 +59,13 @@ void NetworkManager::Connect()
 	bool connected = false;
 	try
 	{
-		IPAddress = InternalIPAddress;
+		IPAddress = getServerIP();
 		socket = std::shared_ptr<tcp::socket>(new tcp::socket(io_service));
 		boost::asio::ip::tcp::endpoint endpoint(boost::asio::ip::address::from_string(getServerIP()), port);
 		socket->connect(endpoint);
 		io_service.run();
 		connected = true;
-		Console::Print("Connected to Local Server at: " + InternalIPAddress);
+		Console::Print("Connected to Server at: " + getServerIP());
 	}
 	catch (std::exception e)
 	{
@@ -75,12 +75,13 @@ void NetworkManager::Connect()
 	{
 		try
 		{
-			IPAddress = ExternalIPAddress;
+			IPAddress = InternalIPAddress;
 			socket = std::shared_ptr<tcp::socket>(new tcp::socket(io_service));
-			boost::asio::ip::tcp::endpoint endpoint(boost::asio::ip::address::from_string(getServerIP()), port);
+			boost::asio::ip::tcp::endpoint endpoint(boost::asio::ip::address::from_string(InternalIPAddress), port);
 			socket->connect(endpoint);
 			io_service.run();
-			Console::Print("Connected to Remote Server at: " + ExternalIPAddress);
+			Console::Print("Failed to connect to server at: " + getServerIP());
+			Console::Print("Connected to Local Server at: " + InternalIPAddress);
 		}
 		catch (std::exception e)
 		{

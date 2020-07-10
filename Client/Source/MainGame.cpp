@@ -31,20 +31,7 @@ bool SetOpenGLAttributes()
 MainGame::MainGame()
 {
 	tickRate.start();
-	// Try and Connect to server
-	try {
-		int initNetwork = networkManager.init(world.I_player.playerName);
-		if (initNetwork != 0)
-			std::cout << "Error init network" << std::endl;
-		gameSettings.useNetworking = true;
-		std::cout << "Connected to server at IP: " << networkManager.getServerIP() << std::endl;
-	}
-	// Else single player
-	catch (std::exception e)
-	{
-		gameSettings.useNetworking = false;
-		std::cout << "Could not connect to server: " << e.what() << std::endl;
-	}
+
 	// Initialize video and otehr good SDL stuff
 	if (SDL_Init(SDL_INIT_VIDEO) < 0 || SDL_Init(SDL_INIT_TIMER | SDL_INIT_JOYSTICK) < 0)
 	{
@@ -153,9 +140,22 @@ void MainGame::run()
 
 	// Main Menu
 	Menu menu;
-	menu.MainMenu(gameSettings, world, glRenderer.camera, world.I_player, glRenderer, window, glContext);
+	menu.MainMenu(gameSettings, world, glRenderer.camera, world.I_player, glRenderer, window, glContext, networkManager);
 
-	// Initilise the world with the physcis stored in glRenderer
+	// Try and Connect to server
+	try {
+		int initNetwork = networkManager.init(world.I_player.playerName);
+		if (initNetwork != 0)
+			std::cout << "Error init network" << std::endl;
+		gameSettings.useNetworking = true;
+		std::cout << "Connected to server at IP: " << networkManager.getServerIP() << std::endl;
+	}
+	// Else single player
+	catch (std::exception e)
+	{
+		gameSettings.useNetworking = false;
+		std::cout << "Could not connect to server: " << e.what() << std::endl;
+	}
 
 	if (gameSettings.useNetworking)
 	{

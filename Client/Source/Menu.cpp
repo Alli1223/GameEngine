@@ -86,7 +86,7 @@ void Menu::CharacterSelection(GameSettings& gameSettings, GL_Renderer& renderer,
 }
 
 
-void Menu::MainMenu(GameSettings& gameSettings, World& level, Camera& camera, Player& player, GL_Renderer& renderer, SDL_Window* window, SDL_GLContext& glContext)
+void Menu::MainMenu(GameSettings& gameSettings, World& level, Camera& camera, Player& player, GL_Renderer& renderer, SDL_Window* window, SDL_GLContext& glContext, NetworkManager& nm)
 {
 	this->window = window;
 	this->glContext = &glContext;
@@ -107,8 +107,15 @@ void Menu::MainMenu(GameSettings& gameSettings, World& level, Camera& camera, Pl
 	play.setColour({ 200,100,50 });
 	play.textColour = { 255,255,255 };
 
+	Button serverSelect("Server Address");
+	serverSelect.Background = ResourceManager::LoadTexture("Resources\\UI\\Buttons\\Plain_Button.png");
+	serverSelect.setPosition({ camera.windowSize.x / 2, camera.windowSize.y / 2 + 100 });
+	serverSelect.setSize({ 200,40 });
+	serverSelect.setColour({ 200,100,50 });
+	serverSelect.textColour = { 255,255,255 };
+
 	TextInput networkAddress;
-	networkAddress.setPosition({ camera.windowSize.x / 2, camera.windowSize.y / 2 + 200 });
+	networkAddress.setPosition({ camera.windowSize.x / 2 + 200, camera.windowSize.y / 2 + 100 });
 	networkAddress.setSize({ 200,40 });
 
 	// Scale mouse correctly depending on resolution
@@ -143,8 +150,13 @@ void Menu::MainMenu(GameSettings& gameSettings, World& level, Camera& camera, Pl
 		exit.Render(renderer);
 		play.Render(renderer);
 
-		networkAddress.Update();
-		networkAddress.Render(renderer);
+		serverSelect.Render(renderer);
+		if (serverSelect.isToggled())
+		{
+			networkAddress.Update();
+			networkAddress.Render(renderer);
+			nm.setServerIP(networkAddress.inputText);
+		}
 
 		if (play.isPressed())
 		{

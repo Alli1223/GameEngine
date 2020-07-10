@@ -84,6 +84,10 @@ void Button::UpdateInfo()
 		if (SDL_GetMouseState(&tx, &ty) & SDL_BUTTON(SDL_BUTTON_LEFT) && !timeout)
 		{
 			isActivated = true;
+			if (toggle)
+				toggle = false;
+			else
+				toggle = true;
 			timeButtonWasPressed = SDL_GetTicks() / 1000.0;
 			timeout = true;
 			ButtonPressed();
@@ -91,6 +95,11 @@ void Button::UpdateInfo()
 	}
 	else
 		isMouseOver = false;
+}
+
+bool Button::isToggled()
+{
+	return toggle;
 }
 
 void Button::ButtonPressed()
@@ -118,8 +127,9 @@ void Button::Render(GL_Renderer& renderer)
 	
 	// If the button has text, render it in the center of the button
 	renderer.RenderGUI(this->Background, this->position, this->size, this->rotation, this->transparency, this->colour / 255.0f, this->flipSprite);
+	
 	if (text.size() > 0)
-		renderer.RenderText(text, { this->position.x , position.y + size.y / 4 }, this->size, { textSize, textSize }, textColour);
+		renderer.RenderText(text, { this->position.x - (text.size() * (textSize * 25)) , position.y + size.y / 4 }, this->size, { textSize, textSize }, textColour);
 		//buttonText.render(renderer, text, getX() - (getWidth() / 2) +(getWidth() / 20), getY() - (getHeight() / 2) + (getHeight() / 5), getWidth() - (getWidth() / 10) / 2, getHeight() / 2, buttonTextColour);
 }
 

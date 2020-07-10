@@ -14,10 +14,10 @@ public:
 	Button(std::shared_ptr<Item>& item);
 	//! Destructor
 	~Button();
+
+
 	//! Render the button
 	void Render(GL_Renderer& renderer);
-
-
 
 	//! Change the buttons text
 	std::string setText(std::string newText) { return text = newText; }
@@ -31,6 +31,7 @@ public:
 	bool isHovered();
 	void UpdateInfo();
 
+	bool isToggled();
 	glm::vec3 textColour;
 
 	//! pointer to buttons item (if any)
@@ -50,6 +51,9 @@ private:
 	bool timeout = false;
 	bool isMouseOver = false;
 	bool runOnceUpdate = true;
+
+	//! toggle for if button is toggle
+	bool toggle = false;
 
 	//! Text size
 	float textSize = 0.2f;

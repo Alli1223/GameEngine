@@ -3,6 +3,8 @@
 
 void TextInput::Update()
 {
+	if (!initilised)
+		Init();
 	if (isMouseOver())
 	{
 		//if (SDL_GetMouseState(NULL, NULL) & SDL_BUTTON(SDL_BUTTON_LEFT))
@@ -68,7 +70,13 @@ void TextInput::Update()
 
 void TextInput::Render(GL_Renderer& renderer)
 {
+	renderer.RenderGUI(this->Background, this->position, this->size, this->rotation, this->transparency, this->colour, flipSprite);
 	if(renderText && inputText.size() > 0)
-		renderer.RenderText(inputText, { (this->position.x - renderer.camera.getPosition().x) - size.x / 2, position.y - renderer.camera.getPosition().y }, this->size, { textSize, textSize }, { 0.5,1.0,1.0 });
+		renderer.RenderText(inputText, { this->position.x - getWidth() / 2 + 20, position.y + getHeight() / 4}, this->size, { textSize, textSize }, { 0,0,0 });
+}
+
+void TextInput::Init()
+{
+	this->Background = ResourceManager::LoadTexture("Resources\\UI\\Windows\\panel1.png");
 }
 

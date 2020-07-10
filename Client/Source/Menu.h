@@ -6,6 +6,7 @@
 #include "GameSettings.h"
 #include "ColourSlider.h"
 #include "TextInput.h"
+#include "NetworkManager.h"
 class Menu
 {
 public:
@@ -18,7 +19,7 @@ public:
 	void CharacterSelection(GameSettings& gameSettings, GL_Renderer& renderer, World& level, Player& player);
 
 	//! Run main menu loop
-	void MainMenu(GameSettings& gameSettings, World& level, Camera& camera, Player& player, GL_Renderer& renderer, SDL_Window* window, SDL_GLContext& glContext);
+	void MainMenu(GameSettings& gameSettings, World& level, Camera& camera, Player& player, GL_Renderer& renderer, SDL_Window* window, SDL_GLContext& glContext, NetworkManager& nm);
 
 	//! Run character screen loop
 	void CharacterCustomisationMenu(GameSettings& gameSettings, Camera& camera, Player& player, GL_Renderer& renderer, World& level);
