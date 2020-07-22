@@ -7,7 +7,7 @@ NetworkManager::NetworkManager()
 NetworkManager::~NetworkManager()
 {
 }
-json ConvertToJson(std::string data)
+json ValidateJson(std::string data)
 {
 	try {
 		// Remove anything at the end of the json string that isn't suppose to be there
@@ -243,7 +243,7 @@ void NetworkManager::ProcessNetworkObjects(b2World* I_Physics, Player& player)
 	try
 	{
 		// Convert string to json
-		json jsonData = ConvertToJson(updateData);
+		json jsonData = ValidateJson(updateData);
 		json playerData = jsonData.at("PlayerData");
 		json EnemyData = jsonData.at("EnemyData");
 		json ProjectileData = jsonData.at("ProjectileData");

@@ -254,7 +254,7 @@ void Menu::CharacterCustomisationMenu(GameSettings& gameSettings, Camera& camera
 
 
 
-	Button randomiseAll("Random", { camera.windowSize.x / 2, camera.windowSize.y - camera.windowSize.y / 3 }, "Resources\\UI\\Buttons\\Plain_Button.png", { 200, 50 }, buttonColour, textColour);
+	Button randomiseAll("Random", { camera.windowSize.x / 2, camera.windowSize.y - camera.windowSize.y / 4 }, "Resources\\UI\\Buttons\\Plain_Button.png", { 200, 50 }, buttonColour, textColour);
 
 
 
