@@ -161,7 +161,6 @@ void WorldEditor::Render(GL_Renderer& renderer, World& world, Player& player)
 
 	ImGui::Checkbox("Open / Close", &this->window.isOpen);
 
-
 	// Opens the spritesheets
 	if (ImGui::TreeNode("Sprite Sheets"))
 	{
@@ -358,6 +357,31 @@ void WorldEditor::Render(GL_Renderer& renderer, World& world, Player& player)
 				selectedLight = -1;
 			}
 		}
+	}
+
+	ImGui::Checkbox("Place Tree", &placeTree);
+	{
+		Tree tree;
+		if (placeTree)
+		{
+			if (SDL_GetMouseState(&X, &Y) & SDL_BUTTON(SDL_BUTTON_LEFT))
+			{
+				mX = (X + renderer.camera.getX() + (cellSize / 2)) / cellSize;
+				mY = (Y + renderer.camera.getY() + (cellSize / 2)) / cellSize;
+
+				Tree tree;
+				tree.setPosition(world.GetCell(mX, mY)->getPosition());
+				
+				world.InfiniWorld.GetCell(mX, mY)->CellItem = tree.getSharedPointer();
+
+				NetworkInstance* sw = (NetworkInstance*)GameSettings::currentInstance;
+
+				GameSettings::currentInstance->updatedCells.push_back(world.GetCell(mX, mY));
+
+				std::cout << mX << " " << mY << " : " << world.InfiniWorld.GetCell(mX, mY)->orientation << std::endl;
+			}
+		}
+
 	}
 
 	ImGui::Checkbox("Place Grass", &placeGrass);

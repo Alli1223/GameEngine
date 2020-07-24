@@ -258,6 +258,7 @@
     <ClInclude Include="Texture.h" />
     <ClInclude Include="Tool.h" />
     <ClInclude Include="ToolBar.h" />
+    <ClInclude Include="Tree.h" />
     <ClInclude Include="UserInput.h" />
     <ClInclude Include="Villager.h" />
     <ClInclude Include="Wall.h" />
@@ -375,6 +376,7 @@
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="Tool.cpp" />
     <ClCompile Include="ToolBar.cpp" />
+    <ClCompile Include="Tree.cpp" />
     <ClCompile Include="UserInput.cpp" />
     <ClCompile Include="Villager.cpp" />
     <ClCompile Include="Wall.cpp" />

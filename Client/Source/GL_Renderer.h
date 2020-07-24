@@ -55,32 +55,45 @@ public:
 
 	//! Render outline
 	void RenderOutline(Texture2D& texture, glm::vec2& position, glm::vec2& size, GLfloat rotate, GLfloat transparency, glm::vec3& color, std::pair<bool, bool> flipSprite);
+
 	//! Create a map of all the ascii textures
 	void CreateTextCharacterAtals();
+
+	//! Map of all the lights
 	std::map<int, Light> lights;
-	//std::vector<Light> lights;
+
+	//! Screen resolution
 	glm::vec2 resolution;
 
+	//! Map of all the render layers
 	std::map<int, GL_Sprite> layers;
+	//! Map of object outlines to render on highlighted objects
 	std::map<int, GL_Sprite> outlines;
 
 	//! Used for calculating whether the sprite should be rendererd before or after the player 
 	glm::vec2 playerPosition;
 
+	// OLD
 	void RenderUpperSprites();
 
 	bool isPlayerInWorld = true;
 
+	//! Texture for cell highlught
 	Texture2D farmingHighlight;
 	
+	//! Time of day (0.0 night, 1.0 day)
 	float timeOfDay;
+
 	//! The games camera
 	Camera camera;
 
+	//! Cell size of current level
 	int currentInstanceCellSize = 100;
 private:
 
+	//! TODO
 	void RenderOutlines(Texture2D& texture, glm::vec2& position, glm::vec2& size, GLfloat rotate, GLfloat transparency, glm::vec3& color, std::pair<bool, bool> flipSprite);
+	//! Initilise renderer
 	void init();
 	// Init shadows shader FBO
 	GLuint fbo;
@@ -107,8 +120,5 @@ private:
 	const std::string SpriteSheets = "Resources\\Sprites\\SpriteSheets\\";
 	const std::string CropSprites = "Resources\\Sprites\\Crops\\";
 	int g_i = 0;
-
-
-
 };
 

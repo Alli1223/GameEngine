@@ -70,7 +70,7 @@ public:
 	Texture2D NormalMap;
 
 	//! What layer the object gets rendererd
-	//* 1: Ground3 is player level *//
+	//* 1: Ground, 3 is player level *//
 	int renderLayer = 0;
 	bool RenderAbovePlayer = false;
 
@@ -107,9 +107,6 @@ protected:
 	GLfloat rotation;
 	float friction = 1.0f;
 	float density = 1.0f;
-
-
-
 };
 
 

@@ -145,10 +145,14 @@ void MainGame::run()
 	// Try and Connect to server
 	try {
 		int initNetwork = networkManager.init(world.I_player.playerName);
-		if (initNetwork != 0)
+
+		if (initNetwork != 0) // can't connect
 			std::cout << "Error init network" << std::endl;
-		gameSettings.useNetworking = true;
-		std::cout << "Connected to server at IP: " << networkManager.getServerIP() << std::endl;
+		else // connected
+		{
+			gameSettings.useNetworking = true;
+			std::cout << "Connected to server at IP: " << networkManager.getServerIP() << std::endl;
+		}
 	}
 	// Else single player
 	catch (std::exception e)
@@ -220,19 +224,19 @@ void MainGame::run()
 	//world.onEnter(world.I_player);
 
 	//GameSettings::currentInstance = gameSettings.levelSaving.LoadInstance();
-	//Room room;
-	//
-	//json roomData = gameSettings.levelSaving.LoadInstance();
-	//Room room2(roomData);
-	//if (roomData != nullptr)
-	//{
-	//	room2.onEnter(world.I_player);
-	//}
-	//else
-	//{
-	//
-	//	room.onEnter(world.I_player);
-	//}
+	Room room;
+	
+	json roomData = gameSettings.levelSaving.LoadInstance();
+	Room room2(roomData);
+	if (roomData != nullptr)
+	{
+		room2.onEnter(world.I_player);
+	}
+	else
+	{
+	
+		room.onEnter(world.I_player);
+	}
 
 	//currentInstance->onEnter(world.I_player);
 	//world.InfiniWorld.CreateInfiniWorld(glRenderer, world.I_Physics.get());
@@ -243,9 +247,6 @@ void MainGame::run()
 	//! Init UI
 	UI.Init(world.I_player, gameSettings);
 
-
-
-	//s_world.onEnter(world.I_player);
 
 	//Shop.onEnter(world.I_player);
 	//Mix_PlayMusic(gMusic, -1);
@@ -282,7 +283,7 @@ void MainGame::run()
 
 		// Update physics
 		//if(tickRate.getTicks() > tickrate)
-			GameSettings::currentInstance->Update(), tickRate.restart();
+		GameSettings::currentInstance->Update(), tickRate.restart();
 
 		// Render Scene
 		GameSettings::currentInstance->Render(glRenderer);

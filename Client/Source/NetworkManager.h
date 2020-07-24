@@ -15,7 +15,8 @@ public:
 	std::map<int,std::shared_ptr<Enemy>> allEnemies;
 	std::map<int, std::shared_ptr<Projectile>> allProjectiles;
 
-	void Connect();
+	//! Connect to server - returns false if no connection can be established
+	bool Connect();
 	//! Multi-threaded network update
 	void NetworkUpdate(b2World* I_Physics, Player& player);
 	//! Main Network update function

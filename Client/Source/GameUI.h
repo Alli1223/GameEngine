@@ -6,6 +6,7 @@
 #include "WorldEditor.h"
 #include "CharacterWindow.h"
 #include "Console.h"
+#include "Tree.h"
 
 ////////////////////////////////////////////////////////////////////////////
 //! Handles the ingame UI

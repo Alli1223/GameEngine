@@ -37,24 +37,22 @@ json ValidateJson(std::string data)
 int NetworkManager::init(std::string playerName)
 {
 	Console::Print("Connecting to server..");
-	Connect();
+	bool connected = Connect();
 
 
-
-	sendTCPMessage(playerName + "\n");
-	setPlayerName(playerName);
-	int ID = std::stoi(RecieveMessage());
-	std::cout << "PlayerName: " << localPlayerName << std::endl;
-
-
-	//sendTCPMessage("[Init]\n");
-	//std::string gameData = RecieveMessage();
-	//json gameDataJson = ConvertToJson(gameData);
-	//int totalPlayers = gameDataJson.at("TotalCurrentPlayers");
-	return 0;
+	if (connected)
+	{
+		sendTCPMessage(playerName + "\n");
+		setPlayerName(playerName);
+		int ID = std::stoi(RecieveMessage());
+		std::cout << "PlayerName: " << localPlayerName << std::endl;
+		return 0;
+	}
+	Console::Print("Failed connecting to server..");
+	return -1;
 }
 
-void NetworkManager::Connect()
+bool NetworkManager::Connect()
 {
 	bool connected = false;
 	try
@@ -82,12 +80,14 @@ void NetworkManager::Connect()
 			io_service.run();
 			Console::Print("Failed to connect to server at: " + getServerIP());
 			Console::Print("Connected to Local Server at: " + InternalIPAddress);
+			connected = true;
 		}
 		catch (std::exception e)
 		{
 			std::cout << "Error connecting to External server.." << std::endl;
 		}
 	}
+	return connected;
 }
 
 //! Returns whether the player exists in the list of players

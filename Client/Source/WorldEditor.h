@@ -7,6 +7,7 @@
 #include "World.h"
 #include "GameSettings.h"
 #include "NetworkInstance.h"
+#include "Tree.h"
 class WorldEditor
 {
 public:
@@ -46,6 +47,7 @@ private:
 	bool initalisedCells = false;
 	//! Button size
 	int iconSize = 50;
+	bool placeTree = false;
 	bool placeGrass = false;
 	bool placeFerns = false;
 	bool PlaceHosue = false;

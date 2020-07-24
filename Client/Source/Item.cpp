@@ -57,7 +57,6 @@ std::shared_ptr<Item> Item::ConstructFromJson(json jsonData)
 			return wall.getSharedPointer();
 		}
 	}
-
 }
 
 void Item::Render(GL_Renderer& renderer)
