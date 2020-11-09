@@ -28,7 +28,6 @@ Wall::~Wall()
 }
 
 
-
 json Wall::GetJson()
 {
 	json itemData;

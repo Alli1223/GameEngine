@@ -105,6 +105,7 @@ protected:
 	glm::vec2 position, size, velocity;
 	glm::vec3 colour = { 0,0,0 };
 	GLfloat rotation;
+	b2BodyType BodyType;
 	float friction = 1.0f;
 	float density = 1.0f;
 };

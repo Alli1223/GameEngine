@@ -204,6 +204,7 @@ Cell::Cell(b2World* physicsWorld, json cellData)
 		json itemData = cellData.at("Item");
 		Item item2(itemData);
 		std::shared_ptr<Item> item = item2.ConstructFromJson(itemData);
+		item->CreatePhysics(physicsWorld);
 		this->CellItem = item;
 	}
 	if (cellData.count("UpdateTime") > 0)

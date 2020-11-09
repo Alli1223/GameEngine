@@ -37,6 +37,9 @@ public:
 	//! Needs GetJson() Override for that class
 	virtual json GetJson();
 
+	//! Create Physics
+	virtual void CreatePhysics(b2World* world);
+
 	virtual std::string getName() { return itemName; }
 	virtual std::string setName(std::string newName) { return itemName = newName; }
 	virtual std::string getItemDescription() { return itemDescription; }

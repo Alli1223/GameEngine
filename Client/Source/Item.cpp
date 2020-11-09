@@ -95,6 +95,12 @@ json Item::GetJson()
 	return itemData;
 }
 
+void Item::CreatePhysics(b2World* world)
+{
+
+	InitPhysics(world, BodyType, density, friction);
+}
+
 
 Item::~Item()
 {

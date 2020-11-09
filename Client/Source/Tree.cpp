@@ -17,7 +17,7 @@ Tree::Tree(json data)
 	this->Stump = ResourceManager::LoadTexture("Resources\\Sprites\\Terrain\\treeStump.png");
 	this->StumpNormal = ResourceManager::LoadTexture("Resources\\Sprites\\Terrain\\treeStump.png");
 
-	this->Leaves = ResourceManager::LoadTexture("Resources\\Sprites\\Terrain\\treeLeaves.png");
+	this->Leaves = ResourceManager::LoadTexture("Resources\\Sprites\\Terrain\\TreeLeaves2.png");
 	this->LeavesNormal = ResourceManager::LoadTexture("Resources\\Sprites\\Terrain\\treeLeaves.png");
 
 	float x = data.at("X");
@@ -27,10 +27,23 @@ Tree::Tree(json data)
 
 	setPosition({ x, y });
 	setSize({ w,h });
+	bodyType = b2BodyType::b2_staticBody;
 }
 
 Tree::~Tree()
 {
+}
+void Tree::CreatePhysics(b2World* world)
+{
+	// Position the collider
+	setSize(getSize() / 20.0f);
+	setSize({ getSize().x, getSize().y / 10.0f });
+	setPosition({ getPosition().x, getPosition().y - getSize().y });
+	InitPhysics(world, BodyType, density, friction);
+	//Reset the body size
+	setPosition({ getPosition().x, getPosition().y + getSize().y });
+	setSize({ getSize().x, getSize().y * 10.0f });
+	setSize(getSize() * 20.0f);
 }
 
 json Tree::GetJson()
@@ -47,17 +60,17 @@ json Tree::GetJson()
 void Tree::Render(GL_Renderer& renderer)
 {
 	//Render from base of tree rather than mid
-	glm::vec2 pos = { this->position.x, this->position.y - this->size.y / 2 };
-	float leafTransp = 1.0f;
+	glm::vec2 pos = { this->position.x, this->position.y - (this->size.y / 2) + (size.y / 10) };
+	leafTransp = 1.0f;
 	// Turn transparent if player is underneath
 	if (GameSettings::currentInstance->I_player.getPosition().y > pos.y - (size.y / 2) && GameSettings::currentInstance->I_player.getPosition().y < pos.y + (size.y / 4))
 		if(GameSettings::currentInstance->I_player.getPosition().x > pos.x - (size.x / 2)&& GameSettings::currentInstance->I_player.getPosition().x < pos.x + (size.x / 2))
 			leafTransp = 0.25f;
 
-
+	leafColour = { 200,100,200 };
 
 	renderer.RenderSpriteLighting(this->Stump, this->StumpNormal, pos, this->size, this->rotation, this->transparency, this->renderLayer, this->colour, flipSprite);
-	renderer.RenderSpriteLighting(this->Leaves, this->LeavesNormal, pos, this->size, this->rotation, leafTransp, this->renderLayer, this->colour, flipSprite);
+	renderer.RenderSpriteLighting(this->Leaves, this->LeavesNormal, pos, this->size, this->rotation, leafTransp, this->renderLayer, leafColour, flipSprite);
 	//renderer.RenderSpriteLighting(this->Sprite, this->NormalMap, this->position, this->size, this->rotation, this->transparency, this->renderLayer, this->colour, flipSprite);
 }
 
