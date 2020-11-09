@@ -49,6 +49,7 @@ void WorldEditor::Render(GL_Renderer& renderer, World& world, Player& player)
 	float mX = 0, mY = 0;
 	int cellSize = world.getCellSize();
 
+	SDL_GetMouseState(&X, &Y);
 	mX = (X + renderer.camera.getX() + (cellSize / 2)) / cellSize;
 	mY = (Y + renderer.camera.getY() + (cellSize / 2)) / cellSize;
 
@@ -91,7 +92,6 @@ void WorldEditor::Render(GL_Renderer& renderer, World& world, Player& player)
 		{
 			int X = 0, Y = 0;
 			SDL_GetMouseState(&X, &Y);
-
 			mX = (X + renderer.camera.getX() + (cellSize / 2)) / cellSize;
 			mY = (Y + renderer.camera.getY() + (cellSize / 2)) / cellSize;
 			
@@ -330,9 +330,6 @@ void WorldEditor::Render(GL_Renderer& renderer, World& world, Player& player)
 	// Place light
 	if (selectedLight >= 0)
 	{
-		SDL_GetMouseState(&X, &Y);
-		mX = (X + renderer.camera.getX() + (cellSize / 2)) / cellSize;
-		mY = (Y + renderer.camera.getY() + (cellSize / 2)) / cellSize;
 		if (SDL_GetMouseState(&X, &Y) & SDL_BUTTON(SDL_BUTTON_LEFT))
 		{
 			// Streetlight
@@ -366,22 +363,17 @@ void WorldEditor::Render(GL_Renderer& renderer, World& world, Player& player)
 		{
 			if (SDL_GetMouseState(&X, &Y) & SDL_BUTTON(SDL_BUTTON_LEFT))
 			{
-				mX = (X + renderer.camera.getX() + (cellSize / 2)) / cellSize;
-				mY = (Y + renderer.camera.getY() + (cellSize / 2)) / cellSize;
-
-				Tree tree;
-				tree.setPosition(world.GetCell(mX, mY)->getPosition());
-				
-				world.InfiniWorld.GetCell(mX, mY)->CellItem = tree.getSharedPointer();
-
 				NetworkInstance* sw = (NetworkInstance*)GameSettings::currentInstance;
-
-				GameSettings::currentInstance->updatedCells.push_back(world.GetCell(mX, mY));
-
-				std::cout << mX << " " << mY << " : " << world.InfiniWorld.GetCell(mX, mY)->orientation << std::endl;
+				if (sw->level[{mX, mY}] != nullptr)
+				{
+					Tree tree;
+					tree.setPosition({ mX,mY });
+					sw->level[{mX, mY}]->CellItem = tree.getSharedPointer();
+					sw->UpdateCell(sw->level[{mX, mY}]);
+					std::cout << mX << " " << mY << " : " << sw->level[{mX, mY}]->orientation << std::endl;
+				}				
 			}
 		}
-
 	}
 
 	ImGui::Checkbox("Place Grass", &placeGrass);
@@ -390,9 +382,6 @@ void WorldEditor::Render(GL_Renderer& renderer, World& world, Player& player)
 		placeFerns = false;
 		if (SDL_GetMouseState(&X, &Y) & SDL_BUTTON(SDL_BUTTON_LEFT))
 		{
-			mX = (X + renderer.camera.getX() + (cellSize / 2)) / cellSize;
-			mY = (Y + renderer.camera.getY() + (cellSize / 2)) / cellSize;
-
 			std::string vegSting = "LongGrass";
 			//if (world.GetCell(mX, mY)->vegetation.size() < 5)
 				//world.GetCell(mX, mY)->AssignType(1, vegSting);
@@ -410,8 +399,6 @@ void WorldEditor::Render(GL_Renderer& renderer, World& world, Player& player)
 		placeGrass = false;
 		if (SDL_GetMouseState(&X, &Y) & SDL_BUTTON(SDL_BUTTON_LEFT))
 		{
-			mX = (X + renderer.camera.getX() + (cellSize / 2)) / cellSize;
-			mY = (Y + renderer.camera.getY() + (cellSize / 2)) / cellSize;
 			std::string vegSting = "Fern";
 			if (world.GetCell(mX, mY)->vegetation.size() < 1)
 				world.GetCell(mX, mY)->AssignType(1, vegSting);

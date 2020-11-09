@@ -5,6 +5,7 @@ class Tree : public Item
 public:
 	//! Constructor
 	Tree::Tree();
+	Tree(json jsonData);
 
 	//! Destructor
 	Tree::~Tree();
@@ -18,6 +19,12 @@ public:
 	std::shared_ptr<Item> getSharedPointer();
 
 private:
+
+	//! Tree leaves
+	Texture2D Leaves;
+	Texture2D LeavesNormal;
+
+
 	std::string itemName = "Tree";
 	std::string itemDescription = "Tree Item";
 };

@@ -23,6 +23,9 @@ public:
 	//! Create a cell at a location
 	void CreateCell(vec2 pos);
 
+	//! Add cell to update list
+	void UpdateCell(std::shared_ptr<Cell> cell);
+
 	//! Render
 	void Render(GL_Renderer& Renderer);
 

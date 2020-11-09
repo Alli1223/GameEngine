@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "Item.h"
 #include "World.h"
-
+#include "Tree.h"
 Item::Item()
 {
 }
@@ -38,25 +38,34 @@ Item::Item(json jsonData)
 		}
 	}
 }
+template <typename T> std::shared_ptr<Item> C(T name)
+{
+	return name.getSharedPointer();
+}
+
 std::shared_ptr<Item> Item::ConstructFromJson(json jsonData)
 {
+	Tree t;
+	C(t);
+	std::shared_ptr<Item> item = nullptr;
 	if (jsonData.count("Type") >= 0)
 	{
 		if (jsonData.at("Type") == "Wall")
 		{
-			Wall wall;
-
-			float x = jsonData.at("X");
-			float y = jsonData.at("Y");
-			float w = jsonData.at("W");
-			float h = jsonData.at("H");
-
-			wall.setPosition({ x, y });
-			wall.setSize({ w,h });
-			*this = wall;
-			return wall.getSharedPointer();
+			Wall obj(jsonData);
+			item = obj.getSharedPointer();
+			//*this = obj;
 		}
+		else if (jsonData.at("Type") == "Tree")
+		{
+			Tree obj(jsonData); 
+			item = obj.getSharedPointer();
+			//*this = obj;
+		}
+		
 	}
+	
+	return item;
 }
 
 void Item::Render(GL_Renderer& renderer)

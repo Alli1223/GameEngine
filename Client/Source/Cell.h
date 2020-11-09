@@ -243,6 +243,9 @@ public:
 	//! used to save where the tile is within the chunk
 	glm::ivec2 tilePos;
 
+	//Time Cell was updated
+	long updatedTime = 0;
+
 	Timer orientationTimer;
 
 	Animation animation;

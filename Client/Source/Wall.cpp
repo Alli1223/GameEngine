@@ -14,7 +14,12 @@ Wall::Wall()
 
 Wall::Wall(json data)
 {
-
+	float x = data.at("X");
+	float y = data.at("Y");
+	float w = data.at("W");
+	float h = data.at("H");
+	setPosition({ x, y });
+	setSize({ w,h });
 }
 
 Wall::~Wall()

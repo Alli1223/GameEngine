@@ -86,7 +86,6 @@ void World::Render(GL_Renderer& renderer)
 	// Buildings
 	for (auto& house : buildings)
 	{
-
 		// Check if player entered a house
 		if (I_player.collidesWith(house->entrance) && I_player.pressingUseKey)
 		{

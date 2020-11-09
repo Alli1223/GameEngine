@@ -206,6 +206,10 @@ Cell::Cell(b2World* physicsWorld, json cellData)
 		std::shared_ptr<Item> item = item2.ConstructFromJson(itemData);
 		this->CellItem = item;
 	}
+	if (cellData.count("UpdateTime") > 0)
+	{
+		updatedTime = cellData.at("UpdateTime");
+	}
 
 	//cellType = cellData.at("Type").get<std::string>();
 }
@@ -223,6 +227,7 @@ json Cell::GetJson()
 	cellData["TileY"] = tilePos.y;
 	cellData["Width"] = getSize().x;
 	cellData["Height"] = getSize().y;
+	cellData["UpdateTime"] = updatedTime;
 
 	json textures;
 	for (auto& texture : cellTextureLayer)

@@ -18,7 +18,6 @@ public:
 	void OnEnter(Player& player);
 	void OnExit(Player& player);
 
-
 	// Stores all the cells for the infinite world
 	InfiniteWorld InfiniWorld;
 
@@ -39,17 +38,11 @@ public:
 	//! All the buildings in the world
 	std::vector<std::shared_ptr<Building>> buildings;
 
-	std::vector<NetworkPlayer> networkPlayers;
-
-
 
 	//! List of bugs in the world
 	std::vector<std::shared_ptr<Bug>> insects;
 	//! List of projectiles in the world
 	std::vector<Projectile> projectiles;
-
-	//! The player
-	//Player player;
 
 	void OrientateTillage(glm::vec2 worldPos);
 
@@ -65,8 +58,6 @@ public:
 private:
 	int cellSize = 100;
 	int chunkSize = 8;
-
-	
 
 	bool CheckIfTilled(glm::vec2 pos, Direction direction);
 

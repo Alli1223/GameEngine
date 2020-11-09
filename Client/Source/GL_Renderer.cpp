@@ -450,7 +450,7 @@ void GL_Renderer::RenderSpriteLighting(Texture2D &texture, Texture2D &normals, g
 	// If on same layer as player determine whether to render player on top or below object
 	if (renderLayer == 3)
 	{
-		if (playerPosition.y < position.y)
+		if (GameSettings::currentInstance->I_player.getPosition().y < position.y)
 		{
 			renderLayer = 3;
 		}

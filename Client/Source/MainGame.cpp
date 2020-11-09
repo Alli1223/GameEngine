@@ -52,8 +52,8 @@ MainGame::MainGame()
 	gameSettings.WINDOW_WIDTH;
 	if (!gameSettings.fullscreen)
 	{
-		gameSettings.WINDOW_WIDTH = 1920;
-		gameSettings.WINDOW_HEIGHT = 1080;
+		gameSettings.WINDOW_WIDTH = 1920 / 2;
+		gameSettings.WINDOW_HEIGHT = 1080 / 2;
 		gameSettings.windowSize = { gameSettings.WINDOW_WIDTH, gameSettings.WINDOW_HEIGHT };
 	}
 	GameSettings::GSInstance = &gameSettings;
@@ -241,9 +241,9 @@ void MainGame::run()
 	//currentInstance->onEnter(world.I_player);
 	//world.InfiniWorld.CreateInfiniWorld(glRenderer, world.I_Physics.get());
 
-	world.onEnter(world.I_player);
+	//world.onEnter(world.I_player);
 	// player enters world
-	//s_world.onEnter(world.I_player);
+	s_world.onEnter(world.I_player);
 
 	//! Init UI
 	UI.Init(world.I_player, gameSettings);

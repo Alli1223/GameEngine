@@ -44,6 +44,11 @@ void NetworkInstance::CreateCell(vec2 pos)
 	//updatedCells.push_back(cell);
 }
 
+void NetworkInstance::UpdateCell(std::shared_ptr<Cell> cell)
+{
+	updatedCells.push_back(cell);
+}
+
 void NetworkInstance::Render(GL_Renderer& renderer)
 {
 	// Move the camera to the player
@@ -181,12 +186,22 @@ void NetworkInstance::NetworkUpdate()
 			{
 				int x = element.at("X").get<int>();
 				int y = element.at("Y").get<int>();
-
-				//if (level[{x, y}] != nullptr)
-				Cell newCell(I_Physics.get(), element);
-				level[{newCell.getX(), newCell.getY()}] = std::make_shared<Cell>(newCell);
-				level[{newCell.getX(), newCell.getY()}]->isWalkable = true;
-				cellsUpdated++;
+				long updateTime = element.at("UpdateTime").get<long>();
+				if (level[{x, y}] != nullptr)
+				{
+					if (level[{x, y}]->updatedTime != updateTime)
+					{
+						Cell newCell(I_Physics.get(), element);
+						level[{newCell.getX(), newCell.getY()}] = std::make_shared<Cell>(newCell);
+						cellsUpdated++;
+					}
+				}
+				else
+				{
+					Cell newCell(I_Physics.get(), element);
+					level[{newCell.getX(), newCell.getY()}] = std::make_shared<Cell>(newCell);
+					cellsUpdated++;
+				}
 			}
 			std::cout << "Cells Updated: " << cellsUpdated << std::endl;
 		}

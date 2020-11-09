@@ -15,6 +15,7 @@ public:
 	//! Constructor
 	Item();
 	Item(json jsonData);
+	
 	//! Destructor
 	~Item();
 
