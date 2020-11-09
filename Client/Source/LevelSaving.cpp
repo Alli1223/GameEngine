@@ -49,29 +49,40 @@ void LevelSaving::SaveLevel(World& world)
 	json levelData;
 	json chunks;
 
+	//TODO: Save Cells rather than chunks
 	std::pair<int, int> pos;
-	for (auto& chunjobj : world.InfiniWorld.MainLevel)
+	for (auto& cellobj : world.InfiniWorld.Level)
 	{
-		pos = { chunjobj.first.first, chunjobj.first.second };
-		if (world.InfiniWorld.MainLevel[pos].tiles.size() > 0)
-		{
-
-			json chunk;
-			json tiles;
-			for (int x = 0; x < world.InfiniWorld.MainLevel[pos].tiles.size(); x++)
-				for (int y = 0; y < world.InfiniWorld.MainLevel[pos].tiles[0].size(); y++)
-					tiles.push_back(world.InfiniWorld.MainLevel[pos].tiles[x][y]->GetJson());
-
-			chunk["Pos"] = std::to_string(pos.first) + "_" + std::to_string(pos.second);
-			chunk["Tiles"] = tiles;
-			chunk["ChunkSize"] = world.InfiniWorld.MainLevel[pos].getChunkSize();
-			chunks.push_back(chunk);
-			levelSave.open("Resources\\Data\\Chunks\\" + std::to_string(pos.first) + "_" + std::to_string(pos.second) + ".json");
-			levelSave << chunk.dump();
-			levelSave.close();
-		}
-
+		json cell;
+		pos = { cellobj.first.first, cellobj.first.second };
+		levelSave.open("Resources\\Data\\Cells\\" + std::to_string(pos.first) + "_" + std::to_string(pos.second) + ".json");
+		levelSave << cell.dump();
+		levelSave.close();
 	}
+
+	//for (auto& chunjobj : world.InfiniWorld.MainLevel)
+	//{
+	//	pos = { chunjobj.first.first, chunjobj.first.second };
+	//	if (world.InfiniWorld.MainLevel[pos].tiles.size() > 0)
+	//	{
+	//
+	//		json chunk;
+	//		json tiles;
+	//		for (int x = 0; x < world.InfiniWorld.MainLevel[pos].tiles.size(); x++)
+	//			for (int y = 0; y < world.InfiniWorld.MainLevel[pos].tiles[0].size(); y++)
+	//				tiles.push_back(world.InfiniWorld.MainLevel[pos].tiles[x][y]->GetJson());
+	//
+	//		chunk["Pos"] = std::to_string(pos.first) + "_" + std::to_string(pos.second);
+	//		chunk["Tiles"] = tiles;
+	//		chunk["ChunkSize"] = world.InfiniWorld.MainLevel[pos].getChunkSize();
+	//		chunks.push_back(chunk);
+	//		levelSave.open("Resources\\Data\\Chunks\\" + std::to_string(pos.first) + "_" + std::to_string(pos.second) + ".json");
+	//		levelSave << chunk.dump();
+	//		levelSave.close();
+	//	}
+	//
+	//}
+
 	//levelData["Chunks"] = chunks;
 	//
 	////levelData["Level"] = tiles;

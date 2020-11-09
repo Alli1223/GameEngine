@@ -52,8 +52,8 @@ MainGame::MainGame()
 	gameSettings.WINDOW_WIDTH;
 	if (!gameSettings.fullscreen)
 	{
-		gameSettings.WINDOW_WIDTH  = 1920;  ///= 2 ;
-		gameSettings.WINDOW_HEIGHT = 1080; // /= 2;
+		gameSettings.WINDOW_WIDTH = 1920;
+		gameSettings.WINDOW_HEIGHT = 1080;
 		gameSettings.windowSize = { gameSettings.WINDOW_WIDTH, gameSettings.WINDOW_HEIGHT };
 	}
 	GameSettings::GSInstance = &gameSettings;
@@ -224,35 +224,37 @@ void MainGame::run()
 	//world.onEnter(world.I_player);
 
 	//GameSettings::currentInstance = gameSettings.levelSaving.LoadInstance();
-	Room room;
-	
-	json roomData = gameSettings.levelSaving.LoadInstance();
-	Room room2(roomData);
-	if (roomData != nullptr)
-	{
-		room2.onEnter(world.I_player);
-	}
-	else
-	{
-	
-		room.onEnter(world.I_player);
-	}
+	//Room room;
+	//
+	//json roomData = gameSettings.levelSaving.LoadInstance();
+	//Room room2(roomData);
+	//if (roomData != nullptr)
+	//{
+	//	room2.onEnter(world.I_player);
+	//}
+	//else
+	//{
+	//
+	//	room.onEnter(world.I_player);
+	//}
 
 	//currentInstance->onEnter(world.I_player);
 	//world.InfiniWorld.CreateInfiniWorld(glRenderer, world.I_Physics.get());
 
+	world.onEnter(world.I_player);
 	// player enters world
-	s_world.onEnter(world.I_player);
+	//s_world.onEnter(world.I_player);
 
 	//! Init UI
 	UI.Init(world.I_player, gameSettings);
+
 
 
 	//Shop.onEnter(world.I_player);
 	//Mix_PlayMusic(gMusic, -1);
 
 	float lag = 0.0f;
-	/////////////////////////////////////////////// MAIN LOOP ///////////////////////////////////////
+	/////////////////////////////////////////////// MAIN LOOP ///////////////////////////////////////////////
 	while (gameSettings.running)
 	{
 		// Compute timings
@@ -327,8 +329,8 @@ void MainGame::run()
 	}
 
 	// Save player settings when the game ends the game loop
-	//if (gameSettings.saveLevelOnExit && !gameSettings.useNetworking)
-		//gameSettings.levelSaving.SaveWorld(world, world.I_player);
+	if (gameSettings.saveLevelOnExit && !gameSettings.useNetworking)
+		gameSettings.levelSaving.SaveWorld(world, world.I_player);
 	if (gameSettings.savePlayerOnExit)
 		gameSettings.levelSaving.SavePlayer(GameSettings::currentInstance->I_player);
 	if (gameSettings.restartGame)

@@ -22,6 +22,7 @@ public:
 	// Stores all the cells for the infinite world
 	InfiniteWorld InfiniWorld;
 
+
 	//! Gets a cell from the infinite world
 	std::shared_ptr<Cell>& GetCell(float x, float y);
 

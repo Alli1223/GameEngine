@@ -40,7 +40,7 @@ void Hoe::Use(GL_Renderer& renderer, World& world, Player& player)
 	if (!inUse)
 	{
 		inUse = true;
-		int cellSize = world.InfiniWorld.getCellSize();
+		int cellSize = world.getCellSize();
 		if (player.direction == Player::MovementDirection::right)
 			offset = 50, flipSprite = false;
 		else if (player.direction == Player::MovementDirection::left)

@@ -15,6 +15,8 @@ public:
 
 	virtual json GetJson();
 
+	virtual json CreateFromJson(json data);
+
 
 	//! When player enters instance
 	virtual void onEnter(Player& player);
@@ -34,7 +36,7 @@ public:
 	//! Update
 	virtual void Update();
 
-
+	virtual std::string GetType() { return I_Type; }
 
 	//! Player for instance
 	Player I_player;
@@ -48,7 +50,7 @@ public:
 	std::vector<std::shared_ptr<Cell>> updatedCells;
 
 protected:
-
+	std::string I_Type = "Default";
 private:
 
 

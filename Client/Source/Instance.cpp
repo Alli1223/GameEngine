@@ -26,6 +26,11 @@ json Instance::GetJson()
 	return instanceJson;
 }
 
+json Instance::CreateFromJson(json data)
+{
+	return json();
+}
+
 
 
 
@@ -34,6 +39,8 @@ void Instance::onEnter(Player& player)
 	if(GameSettings::currentInstance != nullptr)
 		GameSettings::currentInstance->onExit(player);
 	GameSettings::currentInstance = this;
+
+	// Setup instance of player
 	//player.InitPhysics(I_Physics.get(), player.colisionIdentity, b2BodyType::b2_dynamicBody, 1.0f, 0.3f);
 	I_player = player;
 	I_player.InitPhysics(I_Physics.get(), b2BodyType::b2_dynamicBody, 1.0f, 0.3f);

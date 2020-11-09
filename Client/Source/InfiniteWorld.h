@@ -1,5 +1,5 @@
 #pragma once
-#include "Chunk.h"
+#include "Instance.h"
 #include "ProceduralTerrain.h"
 class InfiniteWorld
 {
@@ -9,29 +9,17 @@ public:
 	//! Destructor
 	~InfiniteWorld();
 
+	//! Get a cell from the map of cells
 	std::shared_ptr<Cell> GetCell(float X, float Y);
-
 
 	//ProceduralTerrain generator;
 
-	//! Creates the infinite world
-	void CreateInfiniWorld(GL_Renderer & renderer, b2World* physicsWorld);
-
-	//! Send Chunk
-	void OrientateCells(Camera& camera, int x, int y);
+	//! Orientate a cell based on surrounding cell types
 	void OrientateCell(std::shared_ptr<Cell> node);
 
 	//! Infini World chunks
-	std::map<std::pair<int, int>, Chunk> MainLevel;
-
-	int getCellSize() { return cellSize; }
-	int getChunkSize() { return chunkSize; }
-	int setChunSize(int newSize) { return chunkSize = newSize; }
-
+	std::map<std::pair<int, int>, std::shared_ptr<Cell>> Level;
 
 private:
-	int cellSize = 1;
-	int chunkSize = 8;
-	int levelGenerationRadius = 1;
 
 };

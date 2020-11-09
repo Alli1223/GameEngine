@@ -58,7 +58,7 @@ public:
 	glm::vec2 mouseCellPos;
 
 	//! Whether the game uses networking and false if singleplayer
-	bool useNetworking = true;
+	bool useNetworking = false;
 
 
 	//! Whether the game is running or not

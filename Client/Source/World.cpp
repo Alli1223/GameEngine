@@ -27,50 +27,53 @@ void World::OnExit(Player& player)
 // Convert world pos into chunk vector value 
 std::shared_ptr<Cell>& World::GetCell(float X, float Y)
 {
-	// Get the chunk
-	float chunkSize = InfiniWorld.getChunkSize();
-	int chunkX = (X / chunkSize);
-	int chunkY = (Y / chunkSize);
-	// Get the cell pos
-	int cellX = X - (float)(chunkX * chunkSize);
-	int cellY = Y - (float)(chunkY * chunkSize);
-
-	if (cellX > chunkSize)
-		cellX = cellX - (chunkX * chunkSize);
-	if (cellY > chunkSize)
-		cellY = cellY - (chunkY * chunkSize);
-	
-	// If the cell is negative then offset the position by chunksize
-	if (X < 0.0f)
-	{
-		cellX += chunkSize - 1;
-		chunkX -= 1;
-
-	}
-	if (Y < 0.0f)
-	{
-		cellY += chunkSize - 1;
-		chunkY -= 1;
-	}
-
-	//std::cout << "Getting Chunk: " << chunkX << ", " << chunkY << " -- Cell: " <<cellX << ", " << cellY << std::endl;
-
-	if (cellX < chunkSize && cellY < chunkSize)
-	{
-		// If tiles doesnt exist
-		if (InfiniWorld.MainLevel[{ chunkX, chunkY }].tiles.size() == 0)
-		{
-			Chunk chunk(I_Physics.get(), chunkX, chunkY);
-			InfiniWorld.MainLevel[{chunkX, chunkY}] = chunk;
-			return InfiniWorld.MainLevel[{ chunkX, chunkY }].tiles[cellX][cellY];
-		}
-		// Return the tile
-		else
-		{
-			return InfiniWorld.MainLevel[{ chunkX, chunkY }].tiles[cellX][cellY];
-			
-		}
-	}
+	//// Get the chunk
+	//float chunkSize = InfiniWorld.getChunkSize();
+	//int chunkX = (X / chunkSize);
+	//int chunkY = (Y / chunkSize);
+	//// Get the cell pos
+	//int cellX = X - (float)(chunkX * chunkSize);
+	//int cellY = Y - (float)(chunkY * chunkSize);
+	//
+	//if (cellX > chunkSize)
+	//	cellX = cellX - (chunkX * chunkSize);
+	//if (cellY > chunkSize)
+	//	cellY = cellY - (chunkY * chunkSize);
+	//
+	//// If the cell is negative then offset the position by chunksize
+	//if (X < 0.0f)
+	//{
+	//	cellX += chunkSize - 1;
+	//	chunkX -= 1;
+	//
+	//}
+	//if (Y < 0.0f)
+	//{
+	//	cellY += chunkSize - 1;
+	//	chunkY -= 1;
+	//}
+	//
+	////std::cout << "Getting Chunk: " << chunkX << ", " << chunkY << " -- Cell: " <<cellX << ", " << cellY << std::endl;
+	//
+	//if (cellX < chunkSize && cellY < chunkSize)
+	//{
+	//	// If tiles doesnt exist
+	//	if (InfiniWorld.MainLevel[{ chunkX, chunkY }].tiles.size() == 0)
+	//	{
+	//		Chunk chunk(I_Physics.get(), chunkX, chunkY);
+	//		InfiniWorld.MainLevel[{chunkX, chunkY}] = chunk;
+	//		return InfiniWorld.MainLevel[{ chunkX, chunkY }].tiles[cellX][cellY];
+	//	}
+	//	// Return the tile
+	//	else
+	//	{
+	//		return InfiniWorld.MainLevel[{ chunkX, chunkY }].tiles[cellX][cellY];
+	//		
+	//	}
+	//}
+	Cell cell1;
+	std::shared_ptr<Cell> cell = std::make_shared<Cell>(cell1);
+	return cell;
 	
 }
 
@@ -138,26 +141,26 @@ void World::Render(GL_Renderer& renderer)
 	renderer.camera.Lerp_To(I_player.getPosition() - halfCameraSize, renderer.camera.getCameraSpeed());
 
 
-	// Render the world
-	for (int x = ((renderer.camera.getX() / InfiniWorld.getCellSize()) / InfiniWorld.getChunkSize()) - 1;
-		x < ((renderer.camera.getX() / InfiniWorld.getCellSize()) / InfiniWorld.getChunkSize()) + renderer.camera.ChunksOnScreen.x; x++)
-		for (int y = (renderer.camera.getY() / InfiniWorld.getCellSize()) / InfiniWorld.getChunkSize() - 1;
-			y < ((renderer.camera.getY() / InfiniWorld.getCellSize()) / InfiniWorld.getChunkSize()) + renderer.camera.ChunksOnScreen.y; y++)
-	{
-		if (!InfiniWorld.MainLevel[{x, y}].tiles.size() > 0)
-		{
-			Chunk chunk(I_Physics.get(), x, y);
-			InfiniWorld.setChunSize(chunk.getChunkSize()); 
-			InfiniWorld.OrientateCells(renderer.camera, x, y);
-			//chunk.generator.populateTerrain(chunk.tiles);
-			InfiniWorld.MainLevel[{x, y}] = chunk;
-			
-			
-		}
-		InfiniWorld.OrientateCells(renderer.camera, x, y);
-		InfiniWorld.MainLevel[{x, y}].Render(renderer);
-		
-	}
+	//// Render the world
+	//for (int x = ((renderer.camera.getX() / InfiniWorld.getCellSize()) / InfiniWorld.getChunkSize()) - 1;
+	//	x < ((renderer.camera.getX() / InfiniWorld.getCellSize()) / InfiniWorld.getChunkSize()) + renderer.camera.ChunksOnScreen.x; x++)
+	//	for (int y = (renderer.camera.getY() / InfiniWorld.getCellSize()) / InfiniWorld.getChunkSize() - 1;
+	//		y < ((renderer.camera.getY() / InfiniWorld.getCellSize()) / InfiniWorld.getChunkSize()) + renderer.camera.ChunksOnScreen.y; y++)
+	//{
+	//	if (!InfiniWorld.MainLevel[{x, y}].tiles.size() > 0)
+	//	{
+	//		Chunk chunk(I_Physics.get(), x, y);
+	//		InfiniWorld.setChunSize(chunk.getChunkSize()); 
+	//		InfiniWorld.OrientateCells(renderer.camera, x, y);
+	//		//chunk.generator.populateTerrain(chunk.tiles);
+	//		InfiniWorld.MainLevel[{x, y}] = chunk;
+	//		
+	//		
+	//	}
+	//	InfiniWorld.OrientateCells(renderer.camera, x, y);
+	//	InfiniWorld.MainLevel[{x, y}].Render(renderer);
+	//	
+	//}
 
 	// Bugs
 	for (int i = 0; i < insects.size(); i++)
