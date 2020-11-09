@@ -14,6 +14,12 @@ Tree::Tree(json data)
 	this->Sprite = ResourceManager::LoadTexture("Resources\\Sprites\\Terrain\\tree.png");
 	this->NormalMap = ResourceManager::LoadTexture("Resources\\Sprites\\Terrain\\tree.png");
 
+	this->Stump = ResourceManager::LoadTexture("Resources\\Sprites\\Terrain\\treeStump.png");
+	this->StumpNormal = ResourceManager::LoadTexture("Resources\\Sprites\\Terrain\\treeStump.png");
+
+	this->Leaves = ResourceManager::LoadTexture("Resources\\Sprites\\Terrain\\treeLeaves.png");
+	this->LeavesNormal = ResourceManager::LoadTexture("Resources\\Sprites\\Terrain\\treeLeaves.png");
+
 	float x = data.at("X");
 	float y = data.at("Y");
 	float w = data.at("W");
@@ -42,11 +48,17 @@ void Tree::Render(GL_Renderer& renderer)
 {
 	//Render from base of tree rather than mid
 	glm::vec2 pos = { this->position.x, this->position.y - this->size.y / 2 };
-	if (GameSettings::currentInstance->I_player.getPosition().y > pos.y && GameSettings::currentInstance->I_player.getPosition().y < pos.y + (size.y / 2))
-		this->transparency = 0.25f;
-	else
-		this->transparency = 1.0f;
-	renderer.RenderSpriteLighting(this->Sprite, this->NormalMap, this->position, this->size, this->rotation, this->transparency, this->renderLayer, this->colour, flipSprite);
+	float leafTransp = 1.0f;
+	// Turn transparent if player is underneath
+	if (GameSettings::currentInstance->I_player.getPosition().y > pos.y - (size.y / 2) && GameSettings::currentInstance->I_player.getPosition().y < pos.y + (size.y / 4))
+		if(GameSettings::currentInstance->I_player.getPosition().x > pos.x - (size.x / 2)&& GameSettings::currentInstance->I_player.getPosition().x < pos.x + (size.x / 2))
+			leafTransp = 0.25f;
+
+
+
+	renderer.RenderSpriteLighting(this->Stump, this->StumpNormal, pos, this->size, this->rotation, this->transparency, this->renderLayer, this->colour, flipSprite);
+	renderer.RenderSpriteLighting(this->Leaves, this->LeavesNormal, pos, this->size, this->rotation, leafTransp, this->renderLayer, this->colour, flipSprite);
+	//renderer.RenderSpriteLighting(this->Sprite, this->NormalMap, this->position, this->size, this->rotation, this->transparency, this->renderLayer, this->colour, flipSprite);
 }
 
 std::shared_ptr<Item> Tree::getSharedPointer()

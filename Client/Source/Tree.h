@@ -18,11 +18,20 @@ public:
 	//! Get a shared pointer to this object
 	std::shared_ptr<Item> getSharedPointer();
 
-private:
-
+protected:
 	//! Tree leaves
 	Texture2D Leaves;
 	Texture2D LeavesNormal;
+
+	//! Tree Stump
+	Texture2D Stump;
+	Texture2D StumpNormal;
+
+	//! Tree Shadow
+	Texture2D Shadow;
+private:
+
+
 
 
 	std::string itemName = "Tree";

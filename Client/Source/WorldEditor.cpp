@@ -367,7 +367,7 @@ void WorldEditor::Render(GL_Renderer& renderer, World& world, Player& player)
 				if (sw->level[{mX, mY}] != nullptr)
 				{
 					Tree tree;
-					tree.setPosition({ mX,mY });
+					tree.setPosition(sw->level[{mX, mY}]->getPosition());
 					sw->level[{mX, mY}]->CellItem = tree.getSharedPointer();
 					sw->UpdateCell(sw->level[{mX, mY}]);
 					std::cout << mX << " " << mY << " : " << sw->level[{mX, mY}]->orientation << std::endl;
