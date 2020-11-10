@@ -50,8 +50,13 @@ void WorldEditor::Render(GL_Renderer& renderer, World& world, Player& player)
 	int cellSize = world.getCellSize();
 
 	SDL_GetMouseState(&X, &Y);
-	mX = (X + renderer.camera.getX() + (cellSize / 2)) / cellSize;
-	mY = (Y + renderer.camera.getY() + (cellSize / 2)) / cellSize;
+	mX = ((float)X + renderer.camera.getX() + (float)(cellSize / 2.0f)) / (float)cellSize;
+	mY = ((float)Y + renderer.camera.getY() + (float)(cellSize / 2.0f)) / (float)cellSize;
+
+	if (mX <= 0)
+		mX -= 1;
+	if (mY <= 0)
+		mY -= 1;
 
 	// Create cells
 	if (!initalisedCells)
@@ -87,14 +92,18 @@ void WorldEditor::Render(GL_Renderer& renderer, World& world, Player& player)
 			this->window.buttons[i].Render(renderer);
 			x += iconSize;
 		}
+		NetworkInstance* sw = (NetworkInstance*)GameSettings::currentInstance;
+		if (sw->level[{mX, mY}] != nullptr)
+		{
+			cellHighlight.setPosition(sw->level[{mX, mY}]->getPosition());
+			cellHighlight.setSize(cellSize, cellSize);
+
+			cellHighlight.Render(renderer);
+		}
 		// If an item is selected
 		if (selected >= 0)
 		{
 			int X = 0, Y = 0;
-			SDL_GetMouseState(&X, &Y);
-			mX = (X + renderer.camera.getX() + (cellSize / 2)) / cellSize;
-			mY = (Y + renderer.camera.getY() + (cellSize / 2)) / cellSize;
-			
 
 			// If the mouse is ouside of the box
 			if (X > window.getX() - (window.getWidth() / 2) && X < window.getX() + (window.getWidth() / 2) && Y > window.getY() - (window.getHeight() / 2) && Y < window.getY() + (window.getHeight() / 2))
@@ -118,20 +127,21 @@ void WorldEditor::Render(GL_Renderer& renderer, World& world, Player& player)
 							for (int xp = -placementArea; xp < placementArea; xp++)
 								for (int yp = -placementArea; yp < placementArea; yp++)
 								{
-									world.GetCell(mX + xp, mY + yp)->AssignType(0, cellNames[selected]);
-									GameSettings::currentInstance->updatedCells.push_back(world.GetCell(mX * xp, mY * yp));
+									sw->GetCell(mX + xp, mY + yp)->AssignType(0, cellNames[selected]);
+									GameSettings::currentInstance->updatedCells.push_back(sw->GetCell(mX * xp, mY * yp));
 								}
 						else
 						{
-							world.GetCell(mX, mY)->AssignType(1, cellNames[selected]);
-							GameSettings::currentInstance->updatedCells.push_back(world.GetCell(mX, mY));
-							std::cout << "Updating cell: " << world.GetCell(mX, mY)->getX() << " " << world.GetCell(mX, mY)->getY() << " -- mouse Pos: " << mX << " " << mY << std::endl;
+							sw->GetCell(mX, mY)->AssignType(1, cellNames[selected]);
+							GameSettings::currentInstance->updatedCells.push_back(sw->GetCell(mX, mY));
+							//std::cout << "Updating cell: " << world.GetCell(mX, mY)->getX() << " " << world.GetCell(mX, mY)->getY() << " -- mouse Pos: " << mX << " " << mY << std::endl;
 						}
 					}
 				}
 				if (SDL_GetMouseState(&X, &Y) & SDL_BUTTON(SDL_BUTTON_MIDDLE))
 				{
-					world.GetCell(mX, mY)->Clear();
+					sw->GetCell(mX, mY)->Clear();
+					GameSettings::currentInstance->updatedCells.push_back(sw->GetCell(mX, mY));
 				}
 				// Place on upper layer
 				if (SDL_GetMouseState(&X, &Y) & SDL_BUTTON(SDL_BUTTON_RIGHT))
@@ -142,13 +152,13 @@ void WorldEditor::Render(GL_Renderer& renderer, World& world, Player& player)
 							for (int xp = 0; xp < placementArea; xp++)
 								for (int yp = 0; yp < placementArea; yp++)
 								{
-									world.GetCell(mX * xp, mY * yp)->AssignType(1, cellNames[selected]);
-									GameSettings::currentInstance->updatedCells.push_back(world.GetCell(mX * xp, mY * yp));
+									sw->GetCell(mX * xp, mY * yp)->AssignType(1, cellNames[selected]);
+									GameSettings::currentInstance->updatedCells.push_back(sw->GetCell(mX * xp, mY * yp));
 								}
 						else
 						{
-							world.GetCell(mX, mY)->AssignType(1, cellNames[selected]);
-							GameSettings::currentInstance->updatedCells.push_back(world.GetCell(mX, mY));
+							sw->GetCell(mX, mY)->AssignType(1, cellNames[selected]);
+							GameSettings::currentInstance->updatedCells.push_back(sw->GetCell(mX, mY));
 						}
 					}
 				}
@@ -382,14 +392,21 @@ void WorldEditor::Render(GL_Renderer& renderer, World& world, Player& player)
 		placeFerns = false;
 		if (SDL_GetMouseState(&X, &Y) & SDL_BUTTON(SDL_BUTTON_LEFT))
 		{
-			std::string vegSting = "LongGrass";
+			//std::string vegSting = "LongGrass";
 			//if (world.GetCell(mX, mY)->vegetation.size() < 5)
 				//world.GetCell(mX, mY)->AssignType(1, vegSting);
 
-			world.InfiniWorld.GetCell(mX, mY)->SetGroundType(Cell::GroundType::spring_grass, 1);
+			//world.InfiniWorld.GetCell(mX, mY)->SetGroundType(Cell::GroundType::spring_grass, 1);
 			NetworkInstance* sw = (NetworkInstance*)GameSettings::currentInstance;
+			if (sw->level[{mX, mY}] != nullptr)
+			{
+				sw->level[{mX, mY}]->SetGroundType(Cell::GroundType::spring_grass, 1);
+				sw->level[{mX, mY}]->isWater = true;
+				sw->UpdateCell(sw->level[{mX, mY}]);
+			}
 			
-			std::cout << mX << " " << mY << " : " << world.InfiniWorld.GetCell(mX, mY)->orientation << std::endl;
+			
+			std::cout << mX << " " << mY << std::endl;
 		}
 	}
 	ImGui::SameLine();

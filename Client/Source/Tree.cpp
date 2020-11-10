@@ -5,11 +5,12 @@ Tree::Tree()
 {
 	renderLayer = 3;
 	setSize(500, 500);
+	bodyType = b2BodyType::b2_staticBody;
 }
 Tree::Tree(json data)
 {
 	renderLayer = 3;
-	setSize(500, 500);
+	//setSize(500, 500);
 
 	this->Sprite = ResourceManager::LoadTexture("Resources\\Sprites\\Terrain\\tree.png");
 	this->NormalMap = ResourceManager::LoadTexture("Resources\\Sprites\\Terrain\\tree.png");
@@ -33,15 +34,16 @@ Tree::Tree(json data)
 Tree::~Tree()
 {
 }
+
 void Tree::CreatePhysics(b2World* world)
 {
 	// Position the collider
 	setSize(getSize() / 20.0f);
 	setSize({ getSize().x, getSize().y / 10.0f });
-	setPosition({ getPosition().x, getPosition().y - getSize().y });
+	setPosition({ getPosition().x, getPosition().y - getSize().x });
 	InitPhysics(world, BodyType, density, friction);
 	//Reset the body size
-	setPosition({ getPosition().x, getPosition().y + getSize().y });
+	setPosition({ getPosition().x, getPosition().y + getSize().x });
 	setSize({ getSize().x, getSize().y * 10.0f });
 	setSize(getSize() * 20.0f);
 }
@@ -65,7 +67,7 @@ void Tree::Render(GL_Renderer& renderer)
 	// Turn transparent if player is underneath
 	if (GameSettings::currentInstance->I_player.getPosition().y > pos.y - (size.y / 2) && GameSettings::currentInstance->I_player.getPosition().y < pos.y + (size.y / 4))
 		if(GameSettings::currentInstance->I_player.getPosition().x > pos.x - (size.x / 2)&& GameSettings::currentInstance->I_player.getPosition().x < pos.x + (size.x / 2))
-			leafTransp = 0.25f;
+			leafTransp = 0.5f;
 
 	leafColour = { 200,100,200 };
 

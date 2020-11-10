@@ -172,7 +172,9 @@ Cell::Cell(b2World* physicsWorld, json cellData)
 		this->cellTextureLayer[layer] = j_sprite;
 		AssignType(layer, j_sprite);
 	}
-
+	int gt = cellData.at("GT").get<int>();
+	groundType = GroundType(gt);
+	AssignType(groundType);
 	json j_vegetation = cellData.at("Vegetation");
 	for (auto& item : j_vegetation)
 	{
@@ -229,6 +231,7 @@ json Cell::GetJson()
 	cellData["Width"] = getSize().x;
 	cellData["Height"] = getSize().y;
 	cellData["UpdateTime"] = updatedTime;
+	cellData["GT"] = groundType;
 
 	json textures;
 	for (auto& texture : cellTextureLayer)
