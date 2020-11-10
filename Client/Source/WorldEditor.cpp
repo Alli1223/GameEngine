@@ -400,13 +400,11 @@ void WorldEditor::Render(GL_Renderer& renderer, World& world, Player& player)
 			NetworkInstance* sw = (NetworkInstance*)GameSettings::currentInstance;
 			if (sw->level[{mX, mY}] != nullptr)
 			{
-				sw->level[{mX, mY}]->SetGroundType(Cell::GroundType::spring_grass, 1);
+				sw->level[{mX, mY}]->SetGroundType(Cell::GroundType::spring_water, 1);
+				sw->procGen.OrientateCells(sw->level[{mX, mY}], &sw->level);
 				sw->level[{mX, mY}]->isWater = true;
 				sw->UpdateCell(sw->level[{mX, mY}]);
 			}
-			
-			
-			std::cout << mX << " " << mY << std::endl;
 		}
 	}
 	ImGui::SameLine();

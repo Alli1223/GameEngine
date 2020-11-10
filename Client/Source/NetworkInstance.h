@@ -41,6 +41,9 @@ public:
 
 	Timer networkUpdateTimer;
 
+	//! Procedural generation instance
+	ProceduralTerrain procGen;
+
 private:
 	//! Update rate to server in ms
 	unsigned int updateRate = 20;
@@ -49,7 +52,6 @@ private:
 	
 	std::string mapData;
 
-	//! Procedural generation instance
-	ProceduralTerrain procGen;
+	
 };
 
