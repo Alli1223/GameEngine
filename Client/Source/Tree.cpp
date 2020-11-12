@@ -71,8 +71,12 @@ void Tree::Render(GL_Renderer& renderer)
 
 	leafColour = { 200,100,200 };
 
-	renderer.RenderSpriteLighting(this->Stump, this->StumpNormal, pos, this->size, this->rotation, this->transparency, this->renderLayer, this->colour, flipSprite);
-	renderer.RenderSpriteLighting(this->Leaves, this->LeavesNormal, pos, this->size, this->rotation, leafTransp, this->renderLayer, leafColour, flipSprite);
+	int layeroffset = 0;
+	if (GameSettings::currentInstance->I_player.getPosition().y < this->position.y)
+		layeroffset = 1;
+
+	renderer.RenderSpriteLighting(this->Stump, this->StumpNormal, pos, this->size, this->rotation, this->transparency, this->renderLayer + layeroffset, this->colour, flipSprite);
+	renderer.RenderSpriteLighting(this->Leaves, this->LeavesNormal, pos, this->size, this->rotation, leafTransp, this->renderLayer + layeroffset, leafColour, flipSprite);
 	//renderer.RenderSpriteLighting(this->Sprite, this->NormalMap, this->position, this->size, this->rotation, this->transparency, this->renderLayer, this->colour, flipSprite);
 }
 
