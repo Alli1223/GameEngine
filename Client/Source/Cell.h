@@ -246,7 +246,6 @@ public:
 	//Time Cell was updated
 	long updatedTime = 0;
 
-	Timer orientationTimer;
 
 	Animation animation;
 private:

@@ -39,6 +39,12 @@ std::shared_ptr<Cell> ProceduralTerrain::GetCell(int x, int y)
 void ProceduralTerrain::OrientateCells(std::shared_ptr<Cell> node, std::map<std::pair<int, int>, std::shared_ptr<Cell>>* level)
 {
 	levelptr = level;
+
+	if (GetCell(node->getX() + 1, node->getY()) != nullptr)
+		GetCell(node->getX() + 1, node->getY())->orientated = false;
+	node->orientated = true;
+		
+	
 	// Check that the cells exist before querying
 	if (GetCell(node->getX() - 1, node->getY()) != nullptr && GetCell(node->getX() + 1, node->getY()) != nullptr && GetCell(node->getX(), node->getY() - 1) != nullptr && GetCell(node->getX(), node->getY() + 1) != nullptr)
 	{

@@ -36,7 +36,7 @@ void NetworkInstance::CreateCell(vec2 pos)
 	cell->setX(pos.x), cell->setY(pos.y);
 	cell->setPosition(pos.x * cell->getCellSize(), pos.y * cell->getCellSize());
 	cell->setSize(cell->getCellSize(), cell->getCellSize());
-	cell->orientationTimer.start();
+	cell->orientated = false;
 	procGen.generateGround(cell);
 	level[{pos.x, pos.y}] = cell;
 
@@ -75,19 +75,17 @@ void NetworkInstance::Render(GL_Renderer& renderer)
 
 	// Render the world around the camera
 	for (int x = renderer.camera.getX() / cellSize - 1; x < renderer.camera.getX() / cellSize + (GameSettings::GSInstance->windowSize.x / cellSize) + 1; x++)
-		for (int y = renderer.camera.getY() / cellSize -1; y < renderer.camera.getY() / cellSize + (GameSettings::GSInstance->windowSize.y / cellSize) + 2; y++)
+		for (int y = renderer.camera.getY() / cellSize - 1; y < renderer.camera.getY() / cellSize + (GameSettings::GSInstance->windowSize.y / cellSize) + 2; y++)
 		{
 			if (level[{x, y}] != nullptr)
 			{
+
+				// Orientate cells every X ms
+				if (!level[{x, y}]->orientated)
 				{
-					// Orientate cells every X ms
-					if (level[{x, y}]->orientationTimer.getTicks() > 200)
-					{
-						procGen.OrientateCells(level[{x, y}], &level);
-						level[{x, y}]->orientationTimer.restart();
-						level[{x, y}]->orientated = true;
-					}
+					procGen.OrientateCells(level[{x, y}], &level);
 				}
+
 				// Render cell
 				level[{x, y}]->Render(renderer);
 			}
@@ -98,7 +96,7 @@ void NetworkInstance::Render(GL_Renderer& renderer)
 		}
 	// Render player and other game objects
 	I_player.Render(renderer);
-	for (int i = 0; i <networkPlayers.size(); i++)
+	for (int i = 0; i < networkPlayers.size(); i++)
 	{
 		networkPlayers[i].Render(renderer);
 	}
