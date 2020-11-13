@@ -52,6 +52,8 @@ private:
 	
 	std::string mapData;
 
+	bool refreshScreen = false;
+
 	
 };
 

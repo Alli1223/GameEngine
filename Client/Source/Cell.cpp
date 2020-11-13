@@ -209,9 +209,9 @@ Cell::Cell(b2World* physicsWorld, json cellData)
 		item->CreatePhysics(physicsWorld);
 		this->CellItem = item;
 	}
-	if (cellData.count("UpdateTime") > 0)
+	if (cellData.count("UT") > 0)
 	{
-		updatedTime = cellData.at("UpdateTime");
+		updatedTime = cellData.at("UT");
 	}
 
 	//cellType = cellData.at("Type").get<std::string>();
@@ -230,7 +230,7 @@ json Cell::GetJson()
 	cellData["TileY"] = tilePos.y;
 	cellData["Width"] = getSize().x;
 	cellData["Height"] = getSize().y;
-	cellData["UpdateTime"] = updatedTime;
+	cellData["UT"] = updatedTime;
 	cellData["GT"] = groundType;
 
 	json textures;

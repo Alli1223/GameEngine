@@ -41,7 +41,7 @@ void NetworkInstance::CreateCell(vec2 pos)
 	level[{pos.x, pos.y}] = cell;
 
 	//Uncomment for saving the entire world rather than only changed cells
-	//UpdateCell(cell);
+	UpdateCell(cell);
 }
 
 std::shared_ptr<Cell> NetworkInstance::GetCell(vec2 pos)
@@ -80,8 +80,8 @@ void NetworkInstance::Render(GL_Renderer& renderer)
 			if (level[{x, y}] != nullptr)
 			{
 
-				// Orientate cells every X ms
-				if (!level[{x, y}]->orientated)
+				// Orientate cell
+				if (refreshScreen)
 				{
 					procGen.OrientateCells(level[{x, y}], &level);
 				}
@@ -92,8 +92,12 @@ void NetworkInstance::Render(GL_Renderer& renderer)
 			else // Otherwise create the cell
 			{
 				CreateCell({ x,y });
+				procGen.OrientateCells(level[{x, y}], &level);
+				level[{x, y}]->orientated = false;
 			}
 		}
+	if (refreshScreen)
+		refreshScreen = false;
 	// Render player and other game objects
 	I_player.Render(renderer);
 	for (int i = 0; i < networkPlayers.size(); i++)
@@ -203,20 +207,23 @@ void NetworkInstance::NetworkUpdate()
 			{
 				int x = element.at("X").get<int>();
 				int y = element.at("Y").get<int>();
-				long updateTime = element.at("UpdateTime").get<long>();
+				long updateTime = element.at("UT").get<long>();
 				if (level[{x, y}] != nullptr)
 				{
 					if (level[{x, y}]->updatedTime != updateTime)
 					{
 						Cell newCell(I_Physics.get(), element);
 						level[{newCell.getX(), newCell.getY()}] = std::make_shared<Cell>(newCell);
+						refreshScreen = true;
 						cellsUpdated++;
 					}
 				}
 				else
 				{
-					Cell newCell(I_Physics.get(), element);
+					Cell newCell(I_Physics.get(), element);					
 					level[{newCell.getX(), newCell.getY()}] = std::make_shared<Cell>(newCell);
+					refreshScreen = true;
+					procGen.OrientateCells(level[{newCell.getX(), newCell.getY()}], &level);
 					cellsUpdated++;
 				}
 			}
