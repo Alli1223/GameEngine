@@ -400,6 +400,26 @@ void WorldEditor::Render(GL_Renderer& renderer, World& world, Player& player)
 			NetworkInstance* sw = (NetworkInstance*)GameSettings::currentInstance;
 			if (sw->level[{mX, mY}] != nullptr)
 			{
+				sw->level[{mX, mY}]->SetGroundType(Cell::GroundType::spring_grass, 1);
+				sw->procGen.OrientateCells(sw->level[{mX, mY}], &sw->level);
+				sw->level[{mX, mY}]->isWater = true;
+				sw->UpdateCell(sw->level[{mX, mY}]);
+			}
+		}
+	}
+	ImGui::Checkbox("Place Water", &placeWater);
+	if (placeWater)
+	{
+		if (SDL_GetMouseState(&X, &Y) & SDL_BUTTON(SDL_BUTTON_LEFT))
+		{
+			//std::string vegSting = "LongGrass";
+			//if (world.GetCell(mX, mY)->vegetation.size() < 5)
+				//world.GetCell(mX, mY)->AssignType(1, vegSting);
+
+			//world.InfiniWorld.GetCell(mX, mY)->SetGroundType(Cell::GroundType::spring_grass, 1);
+			NetworkInstance* sw = (NetworkInstance*)GameSettings::currentInstance;
+			if (sw->level[{mX, mY}] != nullptr)
+			{
 				sw->level[{mX, mY}]->SetGroundType(Cell::GroundType::spring_water, 1);
 				sw->procGen.OrientateCells(sw->level[{mX, mY}], &sw->level);
 				sw->level[{mX, mY}]->isWater = true;

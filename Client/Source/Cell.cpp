@@ -150,6 +150,8 @@ void Cell::Render(GL_Renderer& renderer)
 	//renderer.RenderText(std::to_string(getX()) + "," + std::to_string(getY()), this->position - renderer.camera.getPosition(), this->size, { 0.2,0.2 }, this->colour);
 }
 
+Cell::
+
 // Create with json data
 Cell::Cell(b2World* physicsWorld, json cellData)
 {
@@ -175,6 +177,7 @@ Cell::Cell(b2World* physicsWorld, json cellData)
 	int gt = cellData.at("GT").get<int>();
 	groundType = GroundType(gt);
 	AssignType(groundType);
+	
 	json j_vegetation = cellData.at("Vegetation");
 	for (auto& item : j_vegetation)
 	{

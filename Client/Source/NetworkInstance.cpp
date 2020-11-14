@@ -223,7 +223,7 @@ void NetworkInstance::NetworkUpdate()
 					Cell newCell(I_Physics.get(), element);					
 					level[{newCell.getX(), newCell.getY()}] = std::make_shared<Cell>(newCell);
 					refreshScreen = true;
-					procGen.OrientateCells(level[{newCell.getX(), newCell.getY()}], &level);
+					//procGen.OrientateCells(level[{newCell.getX(), newCell.getY()}], &level);
 					cellsUpdated++;
 				}
 			}

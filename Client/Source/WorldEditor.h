@@ -49,6 +49,7 @@ private:
 	int iconSize = 50;
 	bool placeTree = false;
 	bool placeGrass = false;
+	bool placeWater = false;
 	bool placeFerns = false;
 	bool PlaceHosue = false;
 	int selectedLight = -1;
