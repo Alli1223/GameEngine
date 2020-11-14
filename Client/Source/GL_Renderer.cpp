@@ -51,6 +51,7 @@ GL_Renderer::GL_Renderer()
 	this->spriteShader = ResourceManager::LoadShader("Shaders\\vert.glsl", "Shaders\\frag.glsl", nullptr, "shader");
 	this->GUIShader = ResourceManager::LoadShader("Shaders\\GUI\\vert.glsl", "Shaders\\GUI\\frag.glsl", nullptr, "GUIShader");
 	this->lightingShader = ResourceManager::LoadShader("Shaders\\v_2DLightingShader.glsl", "Shaders\\f_2DLightingShader.glsl", nullptr, "normalShader");
+	this->shadowShader = ResourceManager::LoadShader("Shaders\\shadowVertShader.glsl", "Shaders\\shadowFragShader.glsl", nullptr, "shadowShader");
 	this->outlineShader = ResourceManager::LoadShader("Shaders\\Outline\\vert.glsl", "Shaders\\Outline\\frag.glsl", nullptr, "outlineShader");
 	this->textShader = ResourceManager::LoadShader("Shaders\\Text\\vert.glsl", "Shaders\\Text\\frag.glsl", nullptr, "textShader");
 
@@ -248,6 +249,9 @@ void GL_Renderer::SetProjectionMatrix()
 
 	ResourceManager::GetShader("normalShader").Use().SetInteger("image", 0);
 	ResourceManager::GetShader("normalShader").SetMatrix4("projection", projection);
+
+	ResourceManager::GetShader("shadowShader").Use().SetInteger("image", 0);
+	ResourceManager::GetShader("shadowShader").SetMatrix4("projection", projection);
 
 	ResourceManager::GetShader("outlineShader").Use().SetInteger("image", 0);
 	ResourceManager::GetShader("outlineShader").SetMatrix4("projection", projection);
@@ -567,92 +571,88 @@ void GL_Renderer::RenderSpriteLighting(Texture2D &texture, Texture2D &normals, g
 }
 
 
-void GL_Renderer::RenderShadows(Texture2D& texture, glm::vec2& position, glm::vec2& size, glm::vec2 resolution, std::pair<bool, bool> flipSprite)
+void GL_Renderer::RenderShadows(Texture2D& texture, glm::vec2& position, glm::vec2& size, std::pair<bool, bool> flipSprite)
 {
-	this->lightingShader.Use();
-
-	GLfloat rotate = 0.0f;
+	this->shadowShader.Use();
+	GLfloat rotate = sin(SDL_GetTicks() / 100000.0f);
+	vec2 offset = { 0.0f, size.y / 2.0f };
 	// Prepare transformations
 	glm::mat4 model;
-	model = glm::translate(model, glm::vec3((position - size / 2.0f) - camera.getPosition(), 0.0f));  // First translate (transformations are: scale happens first, then rotation and then final translation happens; reversed order)
+	model = glm::translate(model, glm::vec3((((position - size / 2.0f)) - camera.getPosition()) + offset, 0.0f));  // First translate (transformations are: scale happens first, then rotation and then final translation happens; reversed order)
 
 	model = glm::translate(model, glm::vec3(0.5f * size.x, 0.5f * size.y, 0.0f)); // Move origin of rotation to center of quad
-	if (rotate != 0.0f)
-		model = glm::rotate(model, rotate, glm::vec3(0.0f, 0.0f, 1.0f)); // Then rotate
-	if (flipSprite.first)
+	//if (rotate != 0.0f)
+		//model = glm::rotate(model, rotate, glm::vec3(0.0f, 0.0f, 1.0f)); // Then rotate
+	if (!flipSprite.first)
 		model = glm::scale(model, glm::vec3(-1.0f, 1.0f, 1.0f)); // flip horizontally
-
-	else if (flipSprite.second)
+	if (!flipSprite.second)
 		model = glm::scale(model, glm::vec3(1.0f, -1.0f, 1.0f)); // flip vertically
+
+	//model = glm::scale(model, glm::vec3(size / 2.0f, 1.0f)); // Reduce size of shadow
 
 	model = glm::translate(model, glm::vec3(-0.5f * size.x, -0.5f * size.y, 0.0f)); // Move origin back
 	model = glm::scale(model, glm::vec3(size, 1.0f)); // Last scale	
 
+	this->shadowShader.SetVector2f("skew", { 0.0f, rotate });
+
 	if (timeOfDay > 0.6)
 	{
-		lights.erase(lights.begin(), lights.end());
+		//lights.erase(lights.begin(), lights.end());
 	}
 
 	// Get light positions
 
 	for (auto const& light : lights)
 	{
-		vec3 pos = light.second.position;
-		pos.x -= camera.getPosition().x;
-		pos.y -= camera.getPosition().y;
-
-
-		pos.x = pos.x / resolution.x;
-		pos.y = (-pos.y / resolution.y) + 1.0f; // flip the normalized y axis
-		//TODO: optimise this to not re-reate the list each frame
-		light_positions.push_back(pos);
-
-
-		vec3 lightColour = { light.second.colour.r, light.second.colour.g, light.second.colour.b };
-		light_colours.push_back(lightColour);
+		//vec3 pos = light.second.position;
+		//pos.x -= camera.getPosition().x;
+		//pos.y -= camera.getPosition().y;
+		//
+		//
+		//pos.x = pos.x / resolution.x;
+		//pos.y = (-pos.y / resolution.y) + 1.0f; // flip the normalized y axis
+		////TODO: optimise this to not re-reate the list each frame
+		//light_positions.push_back(pos);
+		//
+		//
+		//vec3 lightColour = { light.second.colour.r, light.second.colour.g, light.second.colour.b };
+		//light_colours.push_back(lightColour);
 	}
 
-	this->lightingShader.SetInteger("UseLights", 1);
-
-	this->lightingShader.SetInteger("TotalLights", lights.size());
+	//this->lightingShader.SetInteger("UseLights", 1);
+	//this->lightingShader.SetInteger("TotalLights", lights.size());
 
 	// Set the vectors of light positions and colours
-	if (lights.size() > 0)
-	{
-		this->lightingShader.SetVectorOfVector3f("ColouredLights", light_colours);
-		this->lightingShader.SetVectorOfVector3f("LightPositions", light_positions);
-	}
-
-	// If the sprite has a set colour then override the default colour
-	if (color.r > 0 || color.g > 0 || color.b > 0)
-	{
-		this->lightingShader.SetInteger("useColorOverride", 1);
-		this->lightingShader.SetVector4f("ColorOverride", { color, transparency });
-	}
-	else
-		this->lightingShader.SetInteger("useColorOverride", 0);
+	//if (lights.size() > 0)
+	//{
+	//	this->lightingShader.SetVectorOfVector3f("ColouredLights", light_colours);
+	//	this->lightingShader.SetVectorOfVector3f("LightPositions", light_positions);
+	//}
+	//
+	//// If the sprite has a set colour then override the default colour
+	//if (color.r > 0 || color.g > 0 || color.b > 0)
+	//{
+	//	this->lightingShader.SetInteger("useColorOverride", 1);
+	//	this->lightingShader.SetVector4f("ColorOverride", { color, transparency });
+	//}
+	//else
+	//	this->lightingShader.SetInteger("useColorOverride", 0);
 
 	// Set lighting variables
 	// Set transparency
-	this->lightingShader.SetFloat("Transparency", transparency);
-	this->lightingShader.SetMatrix4("model", model);
-	this->lightingShader.SetVector2f("Resolution", resolution);
-	this->lightingShader.SetVector3f("LightPos", { camera.mouse_position.x / resolution.x, (-camera.mouse_position.y / resolution.y) + 1.0f, 0.15f }); // normalized mouse pos
-	this->lightingShader.SetVector4f("LightColor", { 1.0f, 1.0f, 1.0f, 1.0f });
-	this->lightingShader.SetVector4f("AmbientColor", { 0.5f, 0.5f, 0.5f, 0.2f });
-	this->lightingShader.SetVector3f("Falloff", { 0.4f, 8.0f, 20.0f }); //Z is area (smaller is bigger)
-	this->lightingShader.SetTextureLocation("u_normals", 1); //GL_TEXTURE1
-	this->lightingShader.SetFloat("TimeOfDay", timeOfDay);
+	this->shadowShader.SetFloat("Transparency", 0.5f);
+	this->shadowShader.SetMatrix4("model", model);
+	//this->shadowShader.SetVector2f("Resolution", resolution); 
+	this->shadowShader.SetVector3f("imageColour", { 0.0f,0.0f,0.0f });
+	//this->lightingShader.SetVector4f("LightColor", { 1.0f, 1.0f, 1.0f, 1.0f });
+	//this->lightingShader.SetVector4f("AmbientColor", { 0.5f, 0.5f, 0.5f, 0.2f });
+	//this->lightingShader.SetVector3f("Falloff", { 0.4f, 8.0f, 20.0f }); //Z is area (smaller is bigger)
+	//this->lightingShader.SetTextureLocation("u_normals", 1); //GL_TEXTURE1
+	//this->shadowShader.SetFloat("TimeOfDay", timeOfDay);
 
 	// Render textured quad
 	glActiveTexture(GL_TEXTURE0);
 	texture.Bind();
-
-	//normals
-	//bind normal map to texture unit 1
-	glActiveTexture(GL_TEXTURE1);
-	//glBindTexture(GL_TEXTURE_2D, normals.ID);
-	normals.Bind();
 
 	glBindVertexArray(this->quadVAO);
 	glDrawArrays(GL_TRIANGLES, 0, 6);

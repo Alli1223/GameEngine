@@ -6,6 +6,15 @@ Tree::Tree()
 	renderLayer = 3;
 	setSize(500, 500);
 	bodyType = b2BodyType::b2_staticBody;
+
+	this->Sprite = ResourceManager::LoadTexture("Resources\\Sprites\\Terrain\\tree.png");
+	this->NormalMap = ResourceManager::LoadTexture("Resources\\Sprites\\Terrain\\tree.png");
+
+	this->Stump = ResourceManager::LoadTexture("Resources\\Sprites\\Terrain\\treeStump.png");
+	this->StumpNormal = ResourceManager::LoadTexture("Resources\\Sprites\\Terrain\\treeStump.png");
+
+	this->Leaves = ResourceManager::LoadTexture("Resources\\Sprites\\Terrain\\TreeLeaves2.png");
+	this->LeavesNormal = ResourceManager::LoadTexture("Resources\\Sprites\\Terrain\\treeLeaves.png");
 }
 Tree::Tree(json data)
 {
@@ -77,7 +86,8 @@ void Tree::Render(GL_Renderer& renderer)
 
 	renderer.RenderSpriteLighting(this->Stump, this->StumpNormal, pos, this->size, this->rotation, this->transparency, this->renderLayer + layeroffset, this->colour, flipSprite);
 	renderer.RenderSpriteLighting(this->Leaves, this->LeavesNormal, pos, this->size, this->rotation, leafTransp, this->renderLayer + layeroffset, leafColour, flipSprite);
-	//renderer.RenderSpriteLighting(this->Sprite, this->NormalMap, this->position, this->size, this->rotation, this->transparency, this->renderLayer, this->colour, flipSprite);
+	renderer.RenderShadows(this->Stump, this->position, this->size, flipSprite);
+	renderer.RenderShadows(this->Leaves, this->position, this->size, flipSprite);
 }
 
 std::shared_ptr<Item> Tree::getSharedPointer()

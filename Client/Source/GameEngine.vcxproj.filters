@@ -770,5 +770,8 @@
     <None Include="Shaders\GUI\frag.glsl">
       <Filter>Source Files\Shaders\GUI Shaders</Filter>
     </None>
+    <None Include="Shaders\shadowVertShader.glsl">
+      <Filter>Source Files\Shaders\Lighting Shaders</Filter>
+    </None>
   </ItemGroup>
 </Project>

@@ -405,6 +405,7 @@
     <None Include="Shaders\Outline\frag.glsl" />
     <None Include="Shaders\Outline\vert.glsl" />
     <None Include="Shaders\shadowFragShader.glsl" />
+    <None Include="Shaders\shadowVertShader.glsl" />
     <None Include="Shaders\Text\frag.glsl" />
     <None Include="Shaders\Text\vert.glsl" />
     <None Include="Shaders\UIFrag.glsl" />
