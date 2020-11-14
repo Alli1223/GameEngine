@@ -48,8 +48,8 @@ public:
 
 	//! Render with normals
 	void RenderSpriteLighting(Texture2D &texture, Texture2D &normals, glm::vec2& position, glm::vec2& size, GLfloat rotate, GLfloat transparency, int renderLayer, glm::vec3& color, std::pair<bool, bool> flipSprite);
+	void RenderShadow(Texture2D& texture, glm::vec2& position, glm::vec2& size, std::pair<bool, bool> flipSprite);
 	void RenderShadows(Texture2D& texture, glm::vec2& position, glm::vec2& size, std::pair<bool, bool> flipSprite);
-
 	//! Render text to the screen
 	void RenderText(std::string text, glm::vec2 position, glm::vec2 size, glm::vec2 textSize, glm::vec3 color);
 
@@ -69,6 +69,8 @@ public:
 	std::map<int, GL_Sprite> layers;
 	//! Map of object outlines to render on highlighted objects
 	std::map<int, GL_Sprite> outlines;
+	//! Map of object outlines to render on highlighted objects
+	std::map<int, GL_Sprite> shadows;
 
 	//! Used for calculating whether the sprite should be rendererd before or after the player 
 	glm::vec2 playerPosition;

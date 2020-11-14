@@ -41,7 +41,7 @@ void NetworkInstance::CreateCell(vec2 pos)
 	level[{pos.x, pos.y}] = cell;
 
 	//Uncomment for saving the entire world rather than only changed cells
-	UpdateCell(cell);
+	//UpdateCell(cell);
 }
 
 std::shared_ptr<Cell> NetworkInstance::GetCell(vec2 pos)

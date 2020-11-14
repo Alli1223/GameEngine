@@ -3,8 +3,9 @@
 
 Tree::Tree()
 {
-	renderLayer = 3;
+	renderLayer = 2;
 	setSize(500, 500);
+	leafColour = { rand() % 200,200,rand() % 200 };
 	bodyType = b2BodyType::b2_staticBody;
 
 	this->Sprite = ResourceManager::LoadTexture("Resources\\Sprites\\Terrain\\tree.png");
@@ -18,8 +19,9 @@ Tree::Tree()
 }
 Tree::Tree(json data)
 {
-	renderLayer = 3;
+	renderLayer = 2;
 	//setSize(500, 500);
+	leafColour = { rand() % 200,100,rand() % 200 };
 
 	this->Sprite = ResourceManager::LoadTexture("Resources\\Sprites\\Terrain\\tree.png");
 	this->NormalMap = ResourceManager::LoadTexture("Resources\\Sprites\\Terrain\\tree.png");
@@ -78,14 +80,15 @@ void Tree::Render(GL_Renderer& renderer)
 		if(GameSettings::currentInstance->I_player.getPosition().x > pos.x - (size.x / 2)&& GameSettings::currentInstance->I_player.getPosition().x < pos.x + (size.x / 2))
 			leafTransp = 0.5f;
 
-	leafColour = { 200,100,200 };
-
+	
+	//leafColour = { rand() % 200,100,rand() % 200 };
+	
 	int layeroffset = 0;
-	if (GameSettings::currentInstance->I_player.getPosition().y < this->position.y)
+	if (GameSettings::currentInstance->I_player.getPosition().y < this->position.y && GetDistance(GameSettings::currentInstance->I_player.getPosition(), this->position) < (size.x / 2.0f))
 		layeroffset = 1;
 
-	renderer.RenderSpriteLighting(this->Stump, this->StumpNormal, pos, this->size, this->rotation, this->transparency, this->renderLayer + layeroffset, this->colour, flipSprite);
-	renderer.RenderSpriteLighting(this->Leaves, this->LeavesNormal, pos, this->size, this->rotation, leafTransp, this->renderLayer + layeroffset, leafColour, flipSprite);
+	renderer.RenderSpriteLighting(this->Stump, this->StumpNormal, pos, this->size, this->rotation, this->transparency, this->renderLayer, this->colour, flipSprite);
+	renderer.RenderSpriteLighting(this->Leaves, this->LeavesNormal, pos, this->size, this->rotation, leafTransp, this->renderLayer , leafColour, flipSprite);
 	renderer.RenderShadows(this->Stump, this->position, this->size, flipSprite);
 	renderer.RenderShadows(this->Leaves, this->position, this->size, flipSprite);
 }

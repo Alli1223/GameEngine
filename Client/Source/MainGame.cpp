@@ -52,8 +52,8 @@ MainGame::MainGame()
 	gameSettings.WINDOW_WIDTH;
 	if (!gameSettings.fullscreen)
 	{
-		gameSettings.WINDOW_WIDTH = 1920 / 2;
-		gameSettings.WINDOW_HEIGHT = 1080 / 2;
+		gameSettings.WINDOW_WIDTH = 1920;
+		gameSettings.WINDOW_HEIGHT = 1080;
 		gameSettings.windowSize = { gameSettings.WINDOW_WIDTH, gameSettings.WINDOW_HEIGHT };
 	}
 	GameSettings::GSInstance = &gameSettings;

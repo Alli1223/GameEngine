@@ -429,10 +429,16 @@ void GL_Renderer::RenderAllLayers()
 			for (int i = 0; i < layer.second.g_Sprite.size(); i++)
 				RenderSpriteLighting(layer.second.g_Sprite[i], layer.second.g_Normal[i], layer.second.g_Pos[i], layer.second.g_Size[i], layer.second.g_Rotate[i], layer.second.g_Transparency[i], -1, layer.second.g_Colour[i], layer.second.g_flip[i]);
 		}
-		else if (layer.first == 3)
+		for (auto shdow : shadows)
+		{
+			for (int i = 0; i < shdow.second.g_Sprite.size(); i++)
+				RenderShadow(shdow.second.g_Sprite[i], shdow.second.g_Pos[i], shdow.second.g_Size[i], shdow.second.g_flip[i]);
+		}
+		if (layer.first == 3)
 		{
 			for (int i = 0; i < layer.second.g_Sprite.size(); i++)
 				RenderSpriteLighting(layer.second.g_Sprite[i], layer.second.g_Normal[i], layer.second.g_Pos[i], layer.second.g_Size[i], layer.second.g_Rotate[i], layer.second.g_Transparency[i], -1, layer.second.g_Colour[i], layer.second.g_flip[i]);
+
 		}
 		else if (layer.first == 4)
 		{
@@ -445,7 +451,9 @@ void GL_Renderer::RenderAllLayers()
 		for (int i = 0; i < outline.second.g_Sprite.size(); i++)
 			RenderOutlines(outline.second.g_Sprite[i], outline.second.g_Pos[i], outline.second.g_Size[i], outline.second.g_Rotate[i], outline.second.g_Transparency[i], outline.second.g_Colour[i], outline.second.g_flip[i]);
 	}
+
 	outlines.erase(outlines.begin(), outlines.end());
+	shadows.erase(shadows.begin(), shadows.end());
 	layers.erase(layers.begin(), layers.end());
 }
 
@@ -571,35 +579,45 @@ void GL_Renderer::RenderSpriteLighting(Texture2D &texture, Texture2D &normals, g
 }
 
 
-void GL_Renderer::RenderShadows(Texture2D& texture, glm::vec2& position, glm::vec2& size, std::pair<bool, bool> flipSprite)
+void GL_Renderer::RenderShadow(Texture2D& texture, glm::vec2& position, glm::vec2& size, std::pair<bool, bool> flipSprite)
 {
 	this->shadowShader.Use();
-	GLfloat rotate = sin(SDL_GetTicks() / 100000.0f);
-	vec2 offset = { 0.0f, size.y / 2.0f };
+	GLfloat rotate = timeOfDay - 0.5f;
+	vec2 offset = { 0.0f, (size.y / 2.0f) + size.y / 50.0f };
 	// Prepare transformations
 	glm::mat4 model;
 	model = glm::translate(model, glm::vec3((((position - size / 2.0f)) - camera.getPosition()) + offset, 0.0f));  // First translate (transformations are: scale happens first, then rotation and then final translation happens; reversed order)
 
-	model = glm::translate(model, glm::vec3(0.5f * size.x, 0.5f * size.y, 0.0f)); // Move origin of rotation to center of quad
-	//if (rotate != 0.0f)
-		//model = glm::rotate(model, rotate, glm::vec3(0.0f, 0.0f, 1.0f)); // Then rotate
-	if (!flipSprite.first)
+	model = glm::translate(model, glm::vec3(0.0f, cos(timeOfDay) * (size.y / 2.0f), 0.0f)); // Change height based on time of day
+
+	model = glm::translate(model, glm::vec3(0.5f * size.x, 1.0f, 0.0f)); // Move origin of rotation to center of quad
+
+	if (flipSprite.first)
 		model = glm::scale(model, glm::vec3(-1.0f, 1.0f, 1.0f)); // flip horizontally
 	if (!flipSprite.second)
 		model = glm::scale(model, glm::vec3(1.0f, -1.0f, 1.0f)); // flip vertically
 
+	model = glm::scale(model, glm::vec3(1.0f, cos(timeOfDay), 1.0f)); // change height based on time of day
+
+	//if (rotate != 0.0f)
+		//model = glm::rotate(model, rotate, glm::vec3(0.0f, 0.0f, 1.0f)); // Then rotate
+	
 	//model = glm::scale(model, glm::vec3(size / 2.0f, 1.0f)); // Reduce size of shadow
 
 	model = glm::translate(model, glm::vec3(-0.5f * size.x, -0.5f * size.y, 0.0f)); // Move origin back
 	model = glm::scale(model, glm::vec3(size, 1.0f)); // Last scale	
 
-	this->shadowShader.SetVector2f("skew", { 0.0f, rotate });
+	//model = glm::translate(model, glm::vec3((sin(timeOfDay) /10.0f), 0.0f, 0.0f)); // Move origin back
+	// Skew
+	this->shadowShader.SetVector2f("skew", { 0.0f, 0.0f });
 
 	if (timeOfDay > 0.6)
 	{
 		//lights.erase(lights.begin(), lights.end());
 	}
 
+
+	// TODO: create more shadows for each nearby lightsource
 	// Get light positions
 
 	for (auto const& light : lights)
@@ -640,7 +658,7 @@ void GL_Renderer::RenderShadows(Texture2D& texture, glm::vec2& position, glm::ve
 
 	// Set lighting variables
 	// Set transparency
-	this->shadowShader.SetFloat("Transparency", 0.5f);
+	this->shadowShader.SetFloat("Transparency", sin(timeOfDay -0.3));
 	this->shadowShader.SetMatrix4("model", model);
 	//this->shadowShader.SetVector2f("Resolution", resolution); 
 	this->shadowShader.SetVector3f("imageColour", { 0.0f,0.0f,0.0f });
@@ -657,8 +675,15 @@ void GL_Renderer::RenderShadows(Texture2D& texture, glm::vec2& position, glm::ve
 	glBindVertexArray(this->quadVAO);
 	glDrawArrays(GL_TRIANGLES, 0, 6);
 	glBindVertexArray(0);
+}
 
-
+void GL_Renderer::RenderShadows(Texture2D& texture, glm::vec2& position, glm::vec2& size, std::pair<bool, bool> flipSprite)
+{
+	int i = shadows.size();
+	shadows[i].g_Sprite.push_back(texture);
+	shadows[i].g_Pos.push_back(position);
+	shadows[i].g_Size.push_back(size);
+	shadows[i].g_flip.push_back(flipSprite);
 }
 
 void GL_Renderer::RenderOutlines(Texture2D& texture, glm::vec2& position, glm::vec2& size, GLfloat rotate, GLfloat transparency, glm::vec3& color, std::pair<bool, bool> flipSprite)
