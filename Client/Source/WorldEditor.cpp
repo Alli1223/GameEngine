@@ -365,6 +365,22 @@ void WorldEditor::Render(GL_Renderer& renderer, World& world, Player& player)
 			}
 		}
 	}
+	ImGui::Checkbox("Debug", &debugCell);
+	if (debugCell)
+	{
+		if (SDL_GetMouseState(&X, &Y) & SDL_BUTTON(SDL_BUTTON_LEFT))
+		{
+			
+			NetworkInstance* sw = (NetworkInstance*)GameSettings::currentInstance;
+			if (sw->level[{mX, mY}] != nullptr)
+			{
+				cellHighlight.setPosition(sw->level[{mX, mY}]->getPosition());
+				cellHighlight.setSize(cellSize, cellSize);
+				cellHighlight.Render(renderer);
+				Console::Print(sw->level[{mX, mY}]->GetJson().dump());
+			}
+		}
+	}
 
 	ImGui::Checkbox("Place Tree", &placeTree);
 	{
@@ -385,7 +401,7 @@ void WorldEditor::Render(GL_Renderer& renderer, World& world, Player& player)
 			}
 		}
 	}
-
+	
 	ImGui::Checkbox("Place Grass", &placeGrass);
 	if (placeGrass)
 	{

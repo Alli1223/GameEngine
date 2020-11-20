@@ -42,7 +42,7 @@ public:
 
 	std::string ExternalIPAddress = "157.245.46.192";
 	//std::string ExternalIPAddress = "10.11.0.46";
-	std::string InternalIPAddress = "127.0.0.1";
+	const std::string InternalIPAddress = "127.0.0.1";
 
 	//! Whether the client should connect to external server
 	bool isServerLocal = true;

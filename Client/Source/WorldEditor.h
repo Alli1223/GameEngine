@@ -52,6 +52,7 @@ private:
 	bool placeWater = false;
 	bool placeFerns = false;
 	bool PlaceHosue = false;
+	bool debugCell = false;
 	int selectedLight = -1;
 	int placementArea = 1;
 

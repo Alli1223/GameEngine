@@ -47,8 +47,6 @@ public:
 private:
 	//! Update rate to server in ms
 	unsigned int updateRate = 20;
-	//! default Cellsize
-	int cellSize = 100;
 	
 	std::string mapData;
 

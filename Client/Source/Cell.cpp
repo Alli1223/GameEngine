@@ -102,8 +102,7 @@ void Cell::Render(GL_Renderer& renderer)
 	if (hasPhysics && getBody() != nullptr)
 		this->setPosition(getBody()->GetPosition().x *  physicsScaleUp, getBody()->GetPosition().y  * physicsScaleUp);// Set sprite position from scaled down plysics
 	
-	if (CellItem != nullptr)
-		CellItem->Render(renderer);
+
 	
 	if (isWater)
 	{
@@ -147,6 +146,8 @@ void Cell::Render(GL_Renderer& renderer)
 	{
 		this->cropSquare->Render(renderer);
 	}
+	if (CellItem != nullptr)
+		CellItem->Render(renderer);
 	//renderer.RenderText(std::to_string(getX()) + "," + std::to_string(getY()), this->position - renderer.camera.getPosition(), this->size, { 0.2,0.2 }, this->colour);
 }
 
@@ -159,8 +160,8 @@ Cell::Cell(b2World* physicsWorld, json cellData)
 	int y = cellData.at("Y").get<int>();
 	int tileX = cellData.at("TileX").get<int>();
 	int tileY = cellData.at("TileY").get<int>();
-	int width = cellData.at("Width").get<int>();
-	int height = cellData.at("Height").get<int>();
+	int width = cellData.at("W").get<int>();
+	int height = cellData.at("H").get<int>();
 	setSize(width, height);
 	setPos(x, y);
 	setPosition(x * cellSize, y * cellSize);
@@ -231,8 +232,8 @@ json Cell::GetJson()
 	cellData["Y"] = y;
 	cellData["TileX"] = tilePos.x;
 	cellData["TileY"] = tilePos.y;
-	cellData["Width"] = getSize().x;
-	cellData["Height"] = getSize().y;
+	cellData["W"] = getSize().x;
+	cellData["H"] = getSize().y;
 	cellData["UT"] = updatedTime;
 	cellData["GT"] = groundType;
 

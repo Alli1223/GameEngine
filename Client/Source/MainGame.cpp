@@ -291,15 +291,14 @@ void MainGame::run()
 		GameSettings::currentInstance->Render(glRenderer);
 		//std::cout << GameSettings::currentInstance->I_player.getHealth() << std::endl;
 
-		Tree tree;
-		tree.setPosition({ 100, 100 });
+
 		
 		// Render game
 		glRenderer.RenderAllLayers();
 
 		// Render UI
 		UI.Render(glRenderer, world, GameSettings::currentInstance->I_player, gameSettings);
-		tree.Render(glRenderer);
+
 
 		// END Rendering
 		ImGui::Render();

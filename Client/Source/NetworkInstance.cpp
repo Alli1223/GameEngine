@@ -67,27 +67,43 @@ void NetworkInstance::UpdateCell(std::shared_ptr<Cell> cell)
 {
 	updatedCells.push_back(cell);
 }
-
+int m_x = 0;
+int m_y = 0;
 void NetworkInstance::Render(GL_Renderer& renderer)
 {
 	// Move the camera to the player
 	renderer.camera.Lerp_To(I_player.getPosition() - (glm::vec2)(GameSettings::GSInstance->windowSize / 2), 0.3f);
 
+	//if (level[{m_x, m_y}] != nullptr)
+	//{
+	//	level[{m_x, m_y}]->Render(renderer);
+	//}
+	//if (m_x >= renderer.camera.getX() / getCellSize() + (GameSettings::GSInstance->windowSize.x / getCellSize()) + 1)
+	//{
+	//	m_x = renderer.camera.getX() / getCellSize() - 1;
+	//	m_y++;
+	//}
+	//
+	//	m_x++;
+	//if (m_y >= renderer.camera.getY() / getCellSize() + (GameSettings::GSInstance->windowSize.y / getCellSize()) + 2)
+	//	m_y = renderer.camera.getY() / getCellSize() - 2;
+	
 	// Render the world around the camera
-	for (int x = renderer.camera.getX() / cellSize - 1; x < renderer.camera.getX() / cellSize + (GameSettings::GSInstance->windowSize.x / cellSize) + 1; x++)
-		for (int y = renderer.camera.getY() / cellSize - 1; y < renderer.camera.getY() / cellSize + (GameSettings::GSInstance->windowSize.y / cellSize) + 2; y++)
+	for (int y = renderer.camera.getY() / getCellSize() - 2; y < renderer.camera.getY() / getCellSize() + (GameSettings::GSInstance->windowSize.y / getCellSize()) + 2; y++)
+		for (int x = renderer.camera.getX() / getCellSize() - 1; x < renderer.camera.getX() / getCellSize() + (GameSettings::GSInstance->windowSize.x / getCellSize()) + 1; x++)
 		{
 			if (level[{x, y}] != nullptr)
 			{
-
+	
 				// Orientate cell
 				if (refreshScreen)
 				{
 					procGen.OrientateCells(level[{x, y}], &level);
 				}
-
+	
 				// Render cell
 				level[{x, y}]->Render(renderer);
+	
 			}
 			else // Otherwise create the cell
 			{

@@ -364,7 +364,7 @@ void Player::renderCharacterBody(GL_Renderer& renderer, int index, bool flipSpri
 		renderer.RenderSpriteLighting(this->bottom, this->NormalMap, this->position, this->size, this->rotation, this->transparency, this->renderLayer, this->bottomColour, { flipSprite, false });
 	if(top.Width > 0 && top.Height > 0)
 		renderer.RenderSpriteLighting(this->top, this->NormalMap, this->position, this->size, this->rotation, this->transparency, this->renderLayer, this->topColour, { flipSprite, false });
-
+	renderer.RenderShadows(this->nakedBody, this->position, this->size, { flipSprite, false });
 	playerLight.lightType = LightSource::LightType::playerAmbientLight;
 	playerLight.setPosition(this->getPosition());
 	playerLight.Render(renderer);
@@ -438,12 +438,12 @@ Player Player::LoadFromJson(json playerData)
 	// Player clothes
 
 	// ints for converting the json enums
-	int headWear;
-	int bodyWear;
-	int legWear;
-	int EarType;
-	int EyeType;
-	int gender;
+	int headWear = 0;
+	int bodyWear = 0;
+	int legWear = 0;
+	int EarType = 0;
+	int EyeType = 0;
+	int gender = 0;
 
 	// Check to see if the data is there
 	if (playerData.count("headWear") > 0)

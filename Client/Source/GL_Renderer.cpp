@@ -429,11 +429,19 @@ void GL_Renderer::RenderAllLayers()
 			for (int i = 0; i < layer.second.g_Sprite.size(); i++)
 				RenderSpriteLighting(layer.second.g_Sprite[i], layer.second.g_Normal[i], layer.second.g_Pos[i], layer.second.g_Size[i], layer.second.g_Rotate[i], layer.second.g_Transparency[i], -1, layer.second.g_Colour[i], layer.second.g_flip[i]);
 		}
+		//glDisable(GL_BLEND);
+		//glBlendFunc(GL_SRC_ALPHA, GL_MIN);
+		//GLclampf red = 1.0f;
+		//glBlendColor(red, red, red, GL_SRC_ALPHA);
+		
 		for (auto shdow : shadows)
 		{
 			for (int i = 0; i < shdow.second.g_Sprite.size(); i++)
 				RenderShadow(shdow.second.g_Sprite[i], shdow.second.g_Pos[i], shdow.second.g_Size[i], shdow.second.g_flip[i]);
-		}
+		}		
+		//glEnable(GL_BLEND);
+		//glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
 		if (layer.first == 3)
 		{
 			for (int i = 0; i < layer.second.g_Sprite.size(); i++)
@@ -499,7 +507,7 @@ void GL_Renderer::RenderSpriteLighting(Texture2D &texture, Texture2D &normals, g
 		else if (flipSprite.second)
 			model = glm::scale(model, glm::vec3(1.0f, -1.0f, 1.0f)); // flip vertically
 
-		model = glm::translate(model, glm::vec3(-0.5f * size.x, -0.5f * size.y, 0.0f)); // Move origin back
+		model = glm::translate(model, glm::vec3(-0.5f * size.x, -0.5f * size.y,0.0f)); // Move origin back
 		model = glm::scale(model, glm::vec3(size, 1.0f)); // Last scale	
 
 		if (timeOfDay > 0.6)
@@ -583,7 +591,7 @@ void GL_Renderer::RenderShadow(Texture2D& texture, glm::vec2& position, glm::vec
 {
 	this->shadowShader.Use();
 	GLfloat rotate = timeOfDay - 0.5f;
-	vec2 offset = { 0.0f, (size.y / 2.0f) + size.y / 50.0f };
+	vec2 offset = { 0.0f, size.y  - size.y / 20.0f };
 	// Prepare transformations
 	glm::mat4 model;
 	model = glm::translate(model, glm::vec3((((position - size / 2.0f)) - camera.getPosition()) + offset, 0.0f));  // First translate (transformations are: scale happens first, then rotation and then final translation happens; reversed order)
@@ -658,7 +666,7 @@ void GL_Renderer::RenderShadow(Texture2D& texture, glm::vec2& position, glm::vec
 
 	// Set lighting variables
 	// Set transparency
-	this->shadowShader.SetFloat("Transparency", sin(timeOfDay -0.3));
+	this->shadowShader.SetFloat("Transparency", min(timeOfDay, 0.3f));
 	this->shadowShader.SetMatrix4("model", model);
 	//this->shadowShader.SetVector2f("Resolution", resolution); 
 	this->shadowShader.SetVector3f("imageColour", { 0.0f,0.0f,0.0f });

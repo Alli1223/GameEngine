@@ -41,6 +41,10 @@ public:
 	//! Player for instance
 	Player I_player;
 
+	//! Set cells Size
+	int getCellSize() { return cellSize; }
+	int setCellSize(int newSize) { return cellSize = newSize; }
+
 	//! List of players in instance
 	std::vector<NetworkPlayer> networkPlayers;
 	std::vector<std::shared_ptr<NPC>> npcs;
@@ -52,7 +56,8 @@ public:
 protected:
 	std::string I_Type = "Default";
 private:
-
+	//! default Cellsize
+	int cellSize = 100;
 
 };
 
