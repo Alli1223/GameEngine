@@ -263,6 +263,14 @@ void GL_Renderer::SetProjectionMatrix()
 	ResourceManager::GetShader("textShader").SetMatrix4("projection", projection);
 }
 
+void GL_Renderer::Clear()
+{
+	lights.erase(lights.begin(), lights.end());
+	shadows.erase(shadows.begin(), shadows.end());
+	outlines.erase(outlines.begin(), outlines.end());
+	layers.erase(layers.begin(), layers.end());
+}
+
 GL_Renderer::~GL_Renderer()
 {
 	glDeleteVertexArrays(1, &this->quadVAO);
@@ -433,12 +441,13 @@ void GL_Renderer::RenderAllLayers()
 		//glBlendFunc(GL_SRC_ALPHA, GL_MIN);
 		//GLclampf red = 1.0f;
 		//glBlendColor(red, red, red, GL_SRC_ALPHA);
-		
+		//glBlendEquation(GL_FUNC_SUBTRACT);
 		for (auto shdow : shadows)
 		{
 			for (int i = 0; i < shdow.second.g_Sprite.size(); i++)
 				RenderShadow(shdow.second.g_Sprite[i], shdow.second.g_Pos[i], shdow.second.g_Size[i], shdow.second.g_flip[i]);
-		}		
+		}	
+		//glBlendEquation(GL_FUNC_ADD);
 		//glEnable(GL_BLEND);
 		//glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
@@ -460,9 +469,10 @@ void GL_Renderer::RenderAllLayers()
 			RenderOutlines(outline.second.g_Sprite[i], outline.second.g_Pos[i], outline.second.g_Size[i], outline.second.g_Rotate[i], outline.second.g_Transparency[i], outline.second.g_Colour[i], outline.second.g_flip[i]);
 	}
 
-	outlines.erase(outlines.begin(), outlines.end());
-	shadows.erase(shadows.begin(), shadows.end());
-	layers.erase(layers.begin(), layers.end());
+	Clear();
+	//outlines.erase(outlines.begin(), outlines.end());
+	//shadows.erase(shadows.begin(), shadows.end());
+	//layers.erase(layers.begin(), layers.end());
 }
 
 void GL_Renderer::RenderSpriteLighting(Texture2D &texture, Texture2D &normals, glm::vec2& position, glm::vec2& size, GLfloat rotate, GLfloat transparency, int renderLayer, glm::vec3& color, std::pair<bool, bool> flipSprite)
@@ -628,22 +638,22 @@ void GL_Renderer::RenderShadow(Texture2D& texture, glm::vec2& position, glm::vec
 	// TODO: create more shadows for each nearby lightsource
 	// Get light positions
 
-	for (auto const& light : lights)
-	{
-		//vec3 pos = light.second.position;
-		//pos.x -= camera.getPosition().x;
-		//pos.y -= camera.getPosition().y;
-		//
-		//
-		//pos.x = pos.x / resolution.x;
-		//pos.y = (-pos.y / resolution.y) + 1.0f; // flip the normalized y axis
-		////TODO: optimise this to not re-reate the list each frame
-		//light_positions.push_back(pos);
-		//
-		//
-		//vec3 lightColour = { light.second.colour.r, light.second.colour.g, light.second.colour.b };
-		//light_colours.push_back(lightColour);
-	}
+	//for (auto const& light : lights)
+	//{
+	//	//vec3 pos = light.second.position;
+	//	//pos.x -= camera.getPosition().x;
+	//	//pos.y -= camera.getPosition().y;
+	//	//
+	//	//
+	//	//pos.x = pos.x / resolution.x;
+	//	//pos.y = (-pos.y / resolution.y) + 1.0f; // flip the normalized y axis
+	//	////TODO: optimise this to not re-reate the list each frame
+	//	//light_positions.push_back(pos);
+	//	//
+	//	//
+	//	//vec3 lightColour = { light.second.colour.r, light.second.colour.g, light.second.colour.b };
+	//	//light_colours.push_back(lightColour);
+	//}
 
 	//this->lightingShader.SetInteger("UseLights", 1);
 	//this->lightingShader.SetInteger("TotalLights", lights.size());

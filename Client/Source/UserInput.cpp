@@ -213,6 +213,7 @@ void UserInput::HandleUserInput(GL_Renderer& renderer, Player& player, GameSetti
 	{
 		LavenderSeeds ls;
 		player.inventory.add(ls.getSharedPointer());
+		GameSettings::currentInstance->setCellSize(GameSettings::currentInstance->getCellSize() - 1);
 		//level.setCellSize(level.getCellSize() + 1);
 	}
 

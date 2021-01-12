@@ -41,7 +41,7 @@ void NetworkInstance::CreateCell(vec2 pos)
 	level[{pos.x, pos.y}] = cell;
 
 	//Uncomment for saving the entire world rather than only changed cells
-	//UpdateCell(cell);
+	UpdateCell(cell);
 }
 
 std::shared_ptr<Cell> NetworkInstance::GetCell(vec2 pos)
@@ -135,9 +135,9 @@ void NetworkInstance::Update()
 	int x, y;
 	if (SDL_GetMouseState(&x, &y) & SDL_BUTTON(SDL_BUTTON_LEFT))
 	{
-		//if (level[{x / cellSize, y / cellSize}] != nullptr)
+		//if (level[{x / GameSettings::currentInstance->getCellSize(), y / GameSettings::currentInstance->getCellSize()}] != nullptr)
 		//{
-		//	std::cout << level[{x / cellSize, y / cellSize}]->terrainElevationValue << std::endl;
+		//	std::cout << level[{x / GameSettings::currentInstance->getCellSize(), y / GameSettings::currentInstance->getCellSize()}]->terrainElevationValue << std::endl;
 		//	float delta_x = GameSettings::GSInstance->windowSize.x / 2 - x;
 		//	float delta_y = GameSettings::GSInstance->windowSize.y / 2 - y;
 		//	//if (delta_x > 10.0f)

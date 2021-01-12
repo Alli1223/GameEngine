@@ -254,7 +254,7 @@ void Menu::CharacterCustomisationMenu(GameSettings& gameSettings, Camera& camera
 
 
 
-	Button randomiseAll("Random", { camera.windowSize.x / 2, camera.windowSize.y - camera.windowSize.y / 4 }, "Resources\\UI\\Buttons\\Plain_Button.png", { 200, 50 }, buttonColour, textColour);
+	Button randomiseAll("Random", { camera.windowSize.x / 2, camera.windowSize.y - camera.windowSize.y / 4 + 100 }, "Resources\\UI\\Buttons\\Plain_Button.png", { 200, 50 }, buttonColour, textColour);
 
 
 
@@ -278,7 +278,8 @@ void Menu::CharacterCustomisationMenu(GameSettings& gameSettings, Camera& camera
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		//menuBackground.render(renderer, gameSettings.WINDOW_WIDTH / 2, gameSettings.WINDOW_HEIGHT / 2, gameSettings.WINDOW_WIDTH, gameSettings.WINDOW_HEIGHT);
-
+		renderer.lights.erase(renderer.lights.begin(), renderer.lights.end());
+		renderer.timeOfDay = 1.0f;
 
 
 		back.Render(renderer);
