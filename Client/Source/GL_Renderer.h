@@ -45,6 +45,8 @@ public:
 	//! Render a GUI object
 	void RenderGUI(Texture2D &texture, glm::vec2& position, glm::vec2& size, GLfloat rotate, GLfloat transparency, glm::vec3& color, std::pair<bool, bool> flipSprite);
 	void SetProjectionMatrix();
+	//! Clear all stored frame related arrays
+	void Clear();
 
 	//! Render with normals
 	void RenderSpriteLighting(Texture2D &texture, Texture2D &normals, glm::vec2& position, glm::vec2& size, GLfloat rotate, GLfloat transparency, int renderLayer, glm::vec3& color, std::pair<bool, bool> flipSprite);

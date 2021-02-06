@@ -5,9 +5,9 @@
 #include "SDL_project.h"
 #include "MainGame.h"
 
+
 int main(int argc, char* args[])
 {
-
 	// Create new Game
 	MainGame game;
 	game.run();

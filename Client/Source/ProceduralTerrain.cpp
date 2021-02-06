@@ -558,11 +558,14 @@ void ProceduralTerrain::generateGround(std::shared_ptr<Cell>& tile)
 
 	// FORREST NOISE ///////////
 	// If spawn something cool when the forrest value is greater than the max set ( the center of a forrest)
-	//if (chunk->tile->isGrass && fNoise > 14.0 && rand() % numberOfTrees == 1)
-	//{
-	//	chunk->tile->isTree = true;
-	//	chunk->tile->isWalkable = false;
-	//}
+	if (tile->groundType == Cell::GroundType::spring_grass && fNoise > 14.0 && rand() % numberOfTrees == 1)
+	{
+		Tree tree;
+		tree.setPosition(tile->getPosition());
+		tile->CellItem = tree.getSharedPointer();
+		tile->isTree = true;
+		tile->isWalkable = false;
+	}
 	//else if (chunk->tile->isGrass && fNoise > 8.0 && fNoise < 12.0 && rand() % numberOfTrees == 1)
 	//{
 	//	chunk->tile->isTree = true;

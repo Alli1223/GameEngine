@@ -95,7 +95,7 @@ void Tree::Render(GL_Renderer& renderer)
 	//leafColour = { rand() % 200,100,rand() % 200 };
 	
 	int layeroffset = 0;
-	if (GameSettings::currentInstance->I_player.getPosition().y < pos.y && GetDistance(GameSettings::currentInstance->I_player.getPosition(), pos) < (size.x / 2.0f))
+	if (GameSettings::currentInstance->I_player.getPosition().y < position.y && GetDistance(GameSettings::currentInstance->I_player.getPosition(), position) < (size.x / 4.0f))
 		layeroffset = 1;
 
 

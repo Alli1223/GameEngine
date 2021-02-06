@@ -55,6 +55,7 @@ int NetworkManager::init(std::string playerName)
 bool NetworkManager::Connect()
 {
 	bool connected = false;
+	// Try and connect to external first
 	try
 	{
 		IPAddress = getServerIP();
@@ -69,8 +70,10 @@ bool NetworkManager::Connect()
 	}
 	catch (std::exception e)
 	{
-		std::cout << "Error connecting to remote server.." << std::endl;
+		std::cout << "Error connecting to external server.." << std::endl;
+		return false;
 	}
+	// Then try and connect to internal
 	if (!connected)
 	{
 		try
@@ -81,13 +84,13 @@ bool NetworkManager::Connect()
 			boost::asio::ip::tcp::endpoint endpoint(boost::asio::ip::address::from_string(getServerIP()), port);
 			socket->connect(endpoint);
 			io_service.run();
-			Console::Print("Failed to connect to remote server. ");
+			//Console::Print("Failed to connect to remote server. ");
 			Console::Print("Connected to Local Server at: " + InternalIPAddress);
 			connected = true;
 		}
 		catch (std::exception e)
 		{
-			std::cout << "Error connecting to External server.." << std::endl;
+			std::cout << "Error connecting to internal server.." << std::endl;
 		}
 	}
 	return connected;
@@ -186,14 +189,15 @@ bool NetworkManager::UpdateNetworkPlayer(json& data, std::string name)
 
 		bool isMoving = data.at("isMoving").get<bool>();
 
+		json body = data.at("Body");
 		// Player clothes
-		int headWear = data.at("headWear").get<int>();
-		int bodyWear = data.at("bodyWear").get<int>();
-		int legWear = data.at("legWear").get<int>();
+		int headWear = body.at("headWear").get<int>();
+		int bodyWear = body.at("bodyWear").get<int>();
+		int legWear = body.at("legWear").get<int>();
 
 		// Hair and eye colour
-		json hairColour = data.at("hairColour");
-		json eyeColour = data.at("eyeColour");
+		json hairColour = body.at("hairColour");
+		json eyeColour = body.at("eyeColour");
 		int hr = hairColour.at("r").get<int>();
 		int hg = hairColour.at("g").get<int>();
 		int hb = hairColour.at("b").get<int>();
@@ -201,11 +205,11 @@ bool NetworkManager::UpdateNetworkPlayer(json& data, std::string name)
 		int eg = eyeColour.at("g").get<int>();
 		int eb = eyeColour.at("b").get<int>();
 
-		json bodyColour = data.at("bodyColour");
+		json bodyColour = body.at("bodyColour");
 		int br = bodyColour.at("r").get<int>();
 		int bg = bodyColour.at("g").get<int>();
 		int bb = bodyColour.at("b").get<int>();
-		json legsColour = data.at("legColour");
+		json legsColour = body.at("legColour");
 		int lr = legsColour.at("r").get<int>();
 		int lg = legsColour.at("g").get<int>();
 		int lb = legsColour.at("b").get<int>();

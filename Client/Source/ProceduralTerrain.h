@@ -3,7 +3,7 @@
 #include "PerlinNoise.h"
 #include "SimplexNoise.h"
 #include "Camera.h"
-
+#include "Tree.h"
 
 class ProceduralTerrain
 {
