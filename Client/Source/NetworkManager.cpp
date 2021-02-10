@@ -71,7 +71,7 @@ bool NetworkManager::Connect()
 	catch (std::exception e)
 	{
 		std::cout << "Error connecting to external server.." << std::endl;
-		return false;
+		//return false;
 	}
 	// Then try and connect to internal
 	if (!connected)
