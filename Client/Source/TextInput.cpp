@@ -7,12 +7,13 @@ void TextInput::Update()
 		Init();
 	if (isMouseOver())
 	{
-		//if (SDL_GetMouseState(NULL, NULL) & SDL_BUTTON(SDL_BUTTON_LEFT))
+		if (SDL_GetMouseState(NULL, NULL) & SDL_BUTTON(SDL_BUTTON_LEFT))
 		{
 			isSelected = true;
-			
 		}
 	}
+	else
+		isSelected = false;
 	if (isSelected)
 	{
 		//Event handler
@@ -64,15 +65,27 @@ void TextInput::Update()
 	}
 	else {
 		//Disable text input
-		SDL_StopTextInput();
+		//SDL_StopTextInput();
 	}
 }
 
 void TextInput::Render(GL_Renderer& renderer)
 {
+	if (isSelected)
+		this->setTransparency(1.0f);
+	else
+		this->setTransparency(0.5f);
 	renderer.RenderGUI(this->Background, this->position, this->size, this->rotation, this->transparency, this->colour, flipSprite);
 	if(renderText && inputText.size() > 0)
 		renderer.RenderText(inputText, { this->position.x - getWidth() / 2 + 20, position.y + getHeight() / 4}, this->size, { textSize, textSize }, { 0,0,0 });
+}
+
+bool TextInput::fieldSelected()
+{
+	if (isSelected)
+		return true;
+
+	return false;
 }
 
 void TextInput::Init()

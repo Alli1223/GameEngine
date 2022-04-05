@@ -12,7 +12,7 @@ int main(int argc, char* args[])
 	MainGame game;
 	game.run();
 
-	if(game.needsRestart)
+	while(game.needsRestart)
 	{
 		MainGame game;
 		game.run();

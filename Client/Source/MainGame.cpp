@@ -139,8 +139,8 @@ void MainGame::run()
 	glRenderer.SetProjectionMatrix();
 
 	// Main Menu
-	Menu menu;
-	menu.MainMenu(gameSettings, world, glRenderer.camera, world.I_player, glRenderer, window, glContext, networkManager);
+	//Menu menu;
+	//menu.MainMenu(gameSettings, world, glRenderer.camera, world.I_player, glRenderer, window, glContext, networkManager);
 
 	// Try and Connect to server
 	try {
@@ -177,21 +177,6 @@ void MainGame::run()
 		printf("Failed to load beat music! SDL_mixer Error: %s\n", Mix_GetError());
 	}
 
-	// Create player
-	//gameSettings.levelSaving.LoadWorld(world, world.I_player);
-	world.I_player.setPosition(100, 0);
-	world.I_player.setSize(100, 100);
-	//world.I_player.Sprite = ResourceManager::LoadTexture("Resources\\Sprites\\Character\\Alli.png");
-	//world.I_player.setEyeColour({ rand() % 255, rand() % 255 , rand() % 255 });
-	//world.I_player.setHairColour({ rand() % 255, rand() % 255 , rand() % 255 });
-
-	// Create Level
-
-
-
-
-	//ProceduralTerrain pt;
-	//pt.populateTerrain(level);
 
 	// Projection matrix
 	glRenderer.SetProjectionMatrix();
@@ -220,7 +205,7 @@ void MainGame::run()
 	//world.I_player.inventory.add(rod.getSharedPointer());
 	//world.I_player.inventory.add(net.getSharedPointer());
 	//world.I_player.inventory.add(scythe.getSharedPointer());
-
+	
 	//world.onEnter(world.I_player);
 
 	//GameSettings::currentInstance = gameSettings.levelSaving.LoadInstance();
@@ -247,7 +232,6 @@ void MainGame::run()
 
 	//! Init UI
 	UI.Init(world.I_player, gameSettings);
-
 
 
 	//Shop.onEnter(world.I_player);

@@ -14,8 +14,9 @@ public:
 	//! Render the text
 	void Render(GL_Renderer& renderer);
 
-	//! initilise
+	bool fieldSelected();
 
+	//! initilise
 	void Init();
 
 private:

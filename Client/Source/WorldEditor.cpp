@@ -6,7 +6,7 @@ WorldEditor::WorldEditor()
 {
 	this->window.setPosition(300, 400);
 	this->window.setSize(500, 500);
-	this->window.transparency = 0.5;
+	this->window.setTransparency(0.5);
 }
 
 

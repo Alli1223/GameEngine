@@ -6,6 +6,7 @@
 #include "GameSettings.h"
 #include "ColourSlider.h"
 #include "TextInput.h"
+#include "Label.h"
 #include "NetworkManager.h"
 class Menu
 {

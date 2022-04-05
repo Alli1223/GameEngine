@@ -135,20 +135,20 @@ void NetworkInstance::Update()
 	int x, y;
 	if (SDL_GetMouseState(&x, &y) & SDL_BUTTON(SDL_BUTTON_LEFT))
 	{
-		//if (level[{x / GameSettings::currentInstance->getCellSize(), y / GameSettings::currentInstance->getCellSize()}] != nullptr)
-		//{
-		//	std::cout << level[{x / GameSettings::currentInstance->getCellSize(), y / GameSettings::currentInstance->getCellSize()}]->terrainElevationValue << std::endl;
-		//	float delta_x = GameSettings::GSInstance->windowSize.x / 2 - x;
-		//	float delta_y = GameSettings::GSInstance->windowSize.y / 2 - y;
-		//	//if (delta_x > 10.0f)
-		//	//	delta_x = 10.0f;
-		//	//if (delta_y > 10.0f)
-		//	//	delta_y = 10.0f;
-		//	vec2 s_point = { -delta_x , -delta_y };
-		//	Arrow proj(I_Physics.get(), I_player.getPosition() + s_point, b2Vec2(-delta_x / 100.0f, -delta_y / 100.0f));
-		//	proj.Sprite = ResourceManager::LoadTexture("Resources\\Sprites\\SpriteSheets\\Items\\arrow.png");
-		//	network->SawnEntity(proj.getSharedPointer());
-		//}
+		if (level[{x / GameSettings::currentInstance->getCellSize(), y / GameSettings::currentInstance->getCellSize()}] != nullptr)
+		{
+			std::cout << level[{x / GameSettings::currentInstance->getCellSize(), y / GameSettings::currentInstance->getCellSize()}]->terrainElevationValue << std::endl;
+			float delta_x = GameSettings::GSInstance->windowSize.x / 2 - x;
+			float delta_y = GameSettings::GSInstance->windowSize.y / 2 - y;
+			//if (delta_x > 10.0f)
+			//	delta_x = 10.0f;
+			//if (delta_y > 10.0f)
+			//	delta_y = 10.0f;
+			vec2 s_point = { -delta_x , -delta_y };
+			Arrow proj(I_Physics.get(), I_player.getPosition() + s_point, b2Vec2(-delta_x / 100.0f, -delta_y / 100.0f));
+			proj.Sprite = ResourceManager::LoadTexture("Resources\\Sprites\\SpriteSheets\\Items\\arrow.png");
+			network->SawnEntity(proj.getSharedPointer());
+		}
 	}
 
 	if(!networkUpdateTimer.isStarted())

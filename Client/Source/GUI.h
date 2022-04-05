@@ -31,12 +31,15 @@ public:
 	//! Set or Get Rotation
 	GLfloat getRotation() { return rotation; }
 	GLfloat setRotation(GLfloat newRotation) { return rotation = newRotation; }
-
+	//! Set or Get Colour
 	glm::vec3 setColour(glm::vec3 newColour) { return colour = newColour; }
 	glm::vec3 getColour() { return colour; }
+	//! Set or Get Transparency
+	float getTransparency() { return transparency; }
+	float setTransparency(float newVal) { return transparency = newVal; }
 
 	Texture2D Background;
-	float transparency = 1.0;
+
 
 	//! Render this GUI object
 	void Render(GL_Renderer& renderer);
@@ -54,7 +57,8 @@ protected:
 	const GLchar* imageLocation;
 	glm::vec2 position, size;
 	glm::vec3 colour = { 0,0,0 };
-	GLfloat rotation;
+	GLfloat rotation;	
+	float transparency = 1.0;
 
 private:
 	int m_x, m_y;

@@ -278,8 +278,13 @@
     <ClCompile Include="Console.cpp">
       <Filter>Source Files\Core\GUI\Windows</Filter>
     </ClCompile>
-    <ClCompile Include="TextInput.cpp" />
     <ClCompile Include="Tree.cpp" />
+    <ClCompile Include="TextInput.cpp">
+      <Filter>Source Files\Core\GUI\Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="Label.cpp">
+      <Filter>Source Files\Core\GUI\Elements</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cell.h">
@@ -577,8 +582,13 @@
     <ClInclude Include="Console.h">
       <Filter>Headers\Core\GUI\Windows</Filter>
     </ClInclude>
-    <ClInclude Include="TextInput.h" />
     <ClInclude Include="Tree.h" />
+    <ClInclude Include="TextInput.h">
+      <Filter>Headers\Core\GUI\Element</Filter>
+    </ClInclude>
+    <ClInclude Include="Label.h">
+      <Filter>Headers\Core\GUI\Element</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="SDL_project.rc" />

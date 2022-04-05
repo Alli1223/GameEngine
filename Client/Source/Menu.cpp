@@ -27,7 +27,7 @@ void Menu::CharacterSelection(GameSettings& gameSettings, GL_Renderer& renderer,
 	std::vector<Button> existingPlayerButtons;
 	for (int i = 0; i < existingPlayers.size(); i++)
 	{
-		Button playerButton(std::to_string(existingPlayers[i].getID()), { renderer.camera.windowSize.x / 2, renderer.camera.windowSize.x / 10 + 50 * i }, "Resources\\UI\\Buttons\\Plain_Button.png", { 200,50 }, { 123,123,123 }, { 255,255,255 });
+		Button playerButton(std::to_string(existingPlayers[i].getID()), { renderer.camera.windowSize.x / 10, renderer.camera.windowSize.x / 10 + 50 * i }, "Resources\\UI\\Buttons\\Plain_Button.png", { 200,50 }, { 123,123,123 }, { 255,255,255 });
 		existingPlayerButtons.push_back(playerButton);
 	}
 
@@ -114,9 +114,21 @@ void Menu::MainMenu(GameSettings& gameSettings, World& level, Camera& camera, Pl
 	serverSelect.setColour({ 200,100,50 });
 	serverSelect.textColour = { 255,255,255 };
 
+
+	
+	TextInput playerName;
+	playerName.setPosition({ camera.windowSize.x / 2 , camera.windowSize.y / 2 - 300 });
+	playerName.setSize({ 200,50 });
+
+	Label enterName("Enter Name");
+	enterName.setPosition({ camera.windowSize.x / 2 , playerName.getY() - playerName.getHeight() });
+	enterName.setSize({ 200,50 });
+
 	TextInput networkAddress;
 	networkAddress.setPosition({ camera.windowSize.x / 2 + 200, camera.windowSize.y / 2 + 100 });
-	networkAddress.setSize({ 200,40 });
+	networkAddress.setSize({ 200,50 });
+	
+	
 
 	// Scale mouse correctly depending on resolution
 	menuCursorSize = gameSettings.WINDOW_WIDTH / 25;
@@ -149,6 +161,10 @@ void Menu::MainMenu(GameSettings& gameSettings, World& level, Camera& camera, Pl
 		// Render buttons
 		exit.Render(renderer);
 		play.Render(renderer);
+
+		playerName.Update();
+		playerName.Render(renderer);
+		enterName.Render(renderer);
 
 		serverSelect.Render(renderer);
 		if (serverSelect.isToggled())

@@ -56,24 +56,24 @@ bool NetworkManager::Connect()
 {
 	bool connected = false;
 	// Try and connect to external first
-	try
-	{
-		IPAddress = getServerIP();
-		if (IPAddress == "")
-			setServerIP(ExternalIPAddress);
-		socket = std::shared_ptr<tcp::socket>(new tcp::socket(io_service));
-		boost::asio::ip::tcp::endpoint endpoint(boost::asio::ip::address::from_string(getServerIP()), port);
-		socket->connect(endpoint);
-		io_service.run();
-		connected = true;
-		Console::Print("Connected to Server at: " + getServerIP());
-	}
-	catch (std::exception e)
-	{
-		std::cout << "Error connecting to external server.." << std::endl;
-		//return false;
-	}
-	// Then try and connect to internal
+	//try
+	//{
+	//	IPAddress = getServerIP();
+	//	if (IPAddress == "")
+	//		setServerIP(ExternalIPAddress);
+	//	socket = std::shared_ptr<tcp::socket>(new tcp::socket(io_service));
+	//	boost::asio::ip::tcp::endpoint endpoint(boost::asio::ip::address::from_string(getServerIP()), port);
+	//	socket->connect(endpoint);
+	//	io_service.run();
+	//	connected = true;
+	//	Console::Print("Connected to Server at: " + getServerIP());
+	//}
+	//catch (std::exception e)
+	//{
+	//	std::cout << "Error connecting to external server.." << std::endl;
+	//	//return false;
+	//}
+	//// Then try and connect to internal
 	if (!connected)
 	{
 		try
